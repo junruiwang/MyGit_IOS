@@ -93,9 +93,15 @@ CATransform3D rotationTransform1[PHOTONUM];
     
 	if(currenttag == tag)
 	{
-		UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"点击" message: @"添加自己的处理" delegate:nil  cancelButtonTitle:@"OK" otherButtonTitles:nil];
-		av.tag=110;
-		[av show];	
+        switch (currenttag) {
+            case TAGSTART:
+                [self performSegueWithIdentifier:@"busSearch" sender:nil];
+                break;
+                
+            default:
+                break;
+        }
+        
 		return;
 	}
 	int t = [self getblank:tag];

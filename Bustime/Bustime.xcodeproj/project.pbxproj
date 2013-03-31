@@ -9,6 +9,20 @@
 /* Begin PBXBuildFile section */
 		C4086CF91708039C007A4EC8 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C4086CF71708039C007A4EC8 /* Icon@2x.png */; };
 		C4086CFB170803B8007A4EC8 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C4086CFA170803B8007A4EC8 /* Icon.png */; };
+		C46179F61708263400783192 /* datamanage.png in Resources */ = {isa = PBXBuildFile; fileRef = C46179F01708263400783192 /* datamanage.png */; };
+		C46179F71708263400783192 /* datamanage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C46179F11708263400783192 /* datamanage@2x.png */; };
+		C46179F81708263400783192 /* line.png in Resources */ = {isa = PBXBuildFile; fileRef = C46179F21708263400783192 /* line.png */; };
+		C46179F91708263400783192 /* line@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C46179F31708263400783192 /* line@2x.png */; };
+		C46179FA1708263400783192 /* stop.png in Resources */ = {isa = PBXBuildFile; fileRef = C46179F41708263400783192 /* stop.png */; };
+		C46179FB1708263400783192 /* stop@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C46179F51708263400783192 /* stop@2x.png */; };
+		C4617A001708286100783192 /* history.png in Resources */ = {isa = PBXBuildFile; fileRef = C46179FC1708286100783192 /* history.png */; };
+		C4617A011708286100783192 /* history@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C46179FD1708286100783192 /* history@2x.png */; };
+		C4617A021708286100783192 /* stationtostation.png in Resources */ = {isa = PBXBuildFile; fileRef = C46179FE1708286100783192 /* stationtostation.png */; };
+		C4617A031708286100783192 /* stationtostation@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C46179FF1708286100783192 /* stationtostation@2x.png */; };
+		C4617A0717082AA200783192 /* BusLineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4617A0617082AA200783192 /* BusLineViewController.m */; };
+		C4617A0A17082AF900783192 /* StationSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4617A0917082AF900783192 /* StationSearchViewController.m */; };
+		C4617A0D17082B2700783192 /* HistoryInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4617A0C17082B2700783192 /* HistoryInfoViewController.m */; };
+		C4617A1017082B7B00783192 /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4617A0F17082B7B00783192 /* SettingViewController.m */; };
 		C46886151707C51000564DE9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C46886141707C51000564DE9 /* UIKit.framework */; };
 		C46886171707C51000564DE9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C46886161707C51000564DE9 /* Foundation.framework */; };
 		C46886191707C51000564DE9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C46886181707C51000564DE9 /* CoreGraphics.framework */; };
@@ -44,6 +58,24 @@
 /* Begin PBXFileReference section */
 		C4086CF71708039C007A4EC8 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon@2x.png"; path = "Resources/Icon@2x.png"; sourceTree = "<group>"; };
 		C4086CFA170803B8007A4EC8 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = Resources/Icon.png; sourceTree = "<group>"; };
+		C46179F01708263400783192 /* datamanage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = datamanage.png; path = Resources/datamanage.png; sourceTree = "<group>"; };
+		C46179F11708263400783192 /* datamanage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "datamanage@2x.png"; path = "Resources/datamanage@2x.png"; sourceTree = "<group>"; };
+		C46179F21708263400783192 /* line.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = line.png; path = Resources/line.png; sourceTree = "<group>"; };
+		C46179F31708263400783192 /* line@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "line@2x.png"; path = "Resources/line@2x.png"; sourceTree = "<group>"; };
+		C46179F41708263400783192 /* stop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = stop.png; path = Resources/stop.png; sourceTree = "<group>"; };
+		C46179F51708263400783192 /* stop@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "stop@2x.png"; path = "Resources/stop@2x.png"; sourceTree = "<group>"; };
+		C46179FC1708286100783192 /* history.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = history.png; path = Resources/history.png; sourceTree = "<group>"; };
+		C46179FD1708286100783192 /* history@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "history@2x.png"; path = "Resources/history@2x.png"; sourceTree = "<group>"; };
+		C46179FE1708286100783192 /* stationtostation.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = stationtostation.png; path = Resources/stationtostation.png; sourceTree = "<group>"; };
+		C46179FF1708286100783192 /* stationtostation@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "stationtostation@2x.png"; path = "Resources/stationtostation@2x.png"; sourceTree = "<group>"; };
+		C4617A0517082AA200783192 /* BusLineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BusLineViewController.h; path = Classes/BusLineViewController.h; sourceTree = "<group>"; };
+		C4617A0617082AA200783192 /* BusLineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BusLineViewController.m; path = Classes/BusLineViewController.m; sourceTree = "<group>"; };
+		C4617A0817082AF900783192 /* StationSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StationSearchViewController.h; path = Classes/StationSearchViewController.h; sourceTree = "<group>"; };
+		C4617A0917082AF900783192 /* StationSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StationSearchViewController.m; path = Classes/StationSearchViewController.m; sourceTree = "<group>"; };
+		C4617A0B17082B2700783192 /* HistoryInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HistoryInfoViewController.h; path = Classes/HistoryInfoViewController.h; sourceTree = "<group>"; };
+		C4617A0C17082B2700783192 /* HistoryInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HistoryInfoViewController.m; path = Classes/HistoryInfoViewController.m; sourceTree = "<group>"; };
+		C4617A0E17082B7B00783192 /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingViewController.h; path = Classes/SettingViewController.h; sourceTree = "<group>"; };
+		C4617A0F17082B7B00783192 /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingViewController.m; path = Classes/SettingViewController.m; sourceTree = "<group>"; };
 		C46886111707C51000564DE9 /* 城市公交导航.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "城市公交导航.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C46886141707C51000564DE9 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C46886161707C51000564DE9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -123,6 +155,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C4617A0417082A3200783192 /* Buses */ = {
+			isa = PBXGroup;
+			children = (
+				C4617A0517082AA200783192 /* BusLineViewController.h */,
+				C4617A0617082AA200783192 /* BusLineViewController.m */,
+				C4617A0817082AF900783192 /* StationSearchViewController.h */,
+				C4617A0917082AF900783192 /* StationSearchViewController.m */,
+				C4617A0B17082B2700783192 /* HistoryInfoViewController.h */,
+				C4617A0C17082B2700783192 /* HistoryInfoViewController.m */,
+				C4617A0E17082B7B00783192 /* SettingViewController.h */,
+				C4617A0F17082B7B00783192 /* SettingViewController.m */,
+			);
+			name = Buses;
+			sourceTree = "<group>";
+		};
 		C46886081707C51000564DE9 = {
 			isa = PBXGroup;
 			children = (
@@ -189,6 +236,7 @@
 		C46886311707C68F00564DE9 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				C4617A0417082A3200783192 /* Buses */,
 				C48AA8251707D4DA00FDE374 /* Index */,
 				C46886361707C93800564DE9 /* Common */,
 				C46886231707C51000564DE9 /* AppDelegate.h */,
@@ -210,6 +258,16 @@
 		C46886331707C6BB00564DE9 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				C46179FC1708286100783192 /* history.png */,
+				C46179FD1708286100783192 /* history@2x.png */,
+				C46179FE1708286100783192 /* stationtostation.png */,
+				C46179FF1708286100783192 /* stationtostation@2x.png */,
+				C46179F01708263400783192 /* datamanage.png */,
+				C46179F11708263400783192 /* datamanage@2x.png */,
+				C46179F21708263400783192 /* line.png */,
+				C46179F31708263400783192 /* line@2x.png */,
+				C46179F41708263400783192 /* stop.png */,
+				C46179F51708263400783192 /* stop@2x.png */,
 				C48AA82D1707E04000FDE374 /* 121.png */,
 				C48AA82E1707E04000FDE374 /* icon0.png */,
 				C48AA82F1707E04000FDE374 /* icon1.png */,
@@ -335,6 +393,16 @@
 				C48AA8381707E04000FDE374 /* icon4.png in Resources */,
 				C4086CF91708039C007A4EC8 /* Icon@2x.png in Resources */,
 				C4086CFB170803B8007A4EC8 /* Icon.png in Resources */,
+				C46179F61708263400783192 /* datamanage.png in Resources */,
+				C46179F71708263400783192 /* datamanage@2x.png in Resources */,
+				C46179F81708263400783192 /* line.png in Resources */,
+				C46179F91708263400783192 /* line@2x.png in Resources */,
+				C46179FA1708263400783192 /* stop.png in Resources */,
+				C46179FB1708263400783192 /* stop@2x.png in Resources */,
+				C4617A001708286100783192 /* history.png in Resources */,
+				C4617A011708286100783192 /* history@2x.png in Resources */,
+				C4617A021708286100783192 /* stationtostation.png in Resources */,
+				C4617A031708286100783192 /* stationtostation@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -350,6 +418,10 @@
 				C48AA8241707D1D700FDE374 /* BannerViewController.m in Sources */,
 				C46AD9121707EC8800AE95C5 /* MyImageView.m in Sources */,
 				C46AD9151707EF4100AE95C5 /* IndexViewController.m in Sources */,
+				C4617A0717082AA200783192 /* BusLineViewController.m in Sources */,
+				C4617A0A17082AF900783192 /* StationSearchViewController.m in Sources */,
+				C4617A0D17082B2700783192 /* HistoryInfoViewController.m in Sources */,
+				C4617A1017082B7B00783192 /* SettingViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

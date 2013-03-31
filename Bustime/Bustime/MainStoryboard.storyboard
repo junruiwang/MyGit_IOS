@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12D78" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="wR3-Wz-a16">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12D78" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="wR3-Wz-a16">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
@@ -29,15 +29,176 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="LZ8-9n-A5c"/>
+                    <connections>
+                        <segue destination="4Y9-kl-KEM" kind="push" identifier="busSearch" id="HOO-lr-kU0"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wZ9-Fo-xfq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="173" y="-302"/>
         </scene>
+        <!--History Info View Controller - 历史查询-->
+        <scene sceneID="f45-if-7tg">
+            <objects>
+                <viewController storyboardIdentifier="HistoryInfoViewController" id="8GW-56-Wbn" customClass="HistoryInfoViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="vkV-B1-ORv">
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="hBK-io-BLM">
+                                <rect key="frame" x="54" y="212" width="73" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Buttonsafds">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="历史查询" image="history.png" id="Nwi-wA-NXb"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7gp-qa-01w" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1781" y="-511"/>
+        </scene>
+        <!--Setting View Controller - 设置-->
+        <scene sceneID="EUa-sw-3NX">
+            <objects>
+                <viewController storyboardIdentifier="SettingViewController" id="edQ-ia-dmX" customClass="SettingViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="PWH-sK-OJK">
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="DOJ-mW-o39">
+                                <rect key="frame" x="139" y="87" width="73" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="fdsafd">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="设置" image="datamanage.png" id="i7n-D6-fng"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NLR-tX-UBD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1779" y="151"/>
+        </scene>
+        <!--Station Search View Controller - 站名查询-->
+        <scene sceneID="4Ap-rr-cdv">
+            <objects>
+                <viewController storyboardIdentifier="StationSearchViewController" id="yOr-dT-dy1" customClass="StationSearchViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="PJ0-L5-PX3">
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Vx1-3T-ki6">
+                                <rect key="frame" x="79" y="102" width="73" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="hah">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="站名查询" image="stop.png" id="wF4-jf-ljy"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ioN-1Y-JC0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1327" y="145"/>
+        </scene>
+        <!--Bus Line View Controller - 线路查询-->
+        <scene sceneID="rHI-fD-oYn">
+            <objects>
+                <viewController storyboardIdentifier="BusLineViewController" id="tOO-xk-rAS" customClass="BusLineViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="PmO-Ix-dSt">
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="bJN-id-WRf">
+                                <rect key="frame" x="100" y="267" width="146" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="线路查询" image="line.png" id="VU9-NL-Wa5"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aSf-AL-Hbh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1327" y="-524"/>
+        </scene>
+        <!--Tab Bar Controller - 公交查询-->
+        <scene sceneID="rVe-dU-xbC">
+            <objects>
+                <tabBarController title="公交查询" definesPresentationContext="YES" id="4Y9-kl-KEM" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" title="公交查询" id="Sla-Jc-0cB">
+                        <barButtonItem key="backBarButtonItem" title="返回" id="ugL-eX-2CD"/>
+                    </navigationItem>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="lcY-ao-c67">
+                        <rect key="frame" x="129" y="330" width="163" height="49"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="tOO-xk-rAS" kind="relationship" relationship="viewControllers" id="aRW-pu-MMz"/>
+                        <segue destination="yOr-dT-dy1" kind="relationship" relationship="viewControllers" id="xP9-z6-5xs"/>
+                        <segue destination="8GW-56-Wbn" kind="relationship" relationship="viewControllers" id="oTv-G1-3aw"/>
+                        <segue destination="edQ-ia-dmX" kind="relationship" relationship="viewControllers" id="lCj-u0-VXN"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4bT-1i-QZN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="787" y="-297"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="datamanage.png" width="26" height="26"/>
+        <image name="history.png" width="24" height="24"/>
+        <image name="line.png" width="26" height="26"/>
+        <image name="stop.png" width="26" height="26"/>
+    </resources>
     <classes>
-        <class className="IndexViewController" superclassName="UIViewController">
+        <class className="BannerViewController" superclassName="GAITrackedViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/BannerViewController.h"/>
+        </class>
+        <class className="BusLineViewController" superclassName="BannerViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/BusLineViewController.h"/>
+        </class>
+        <class className="GAITrackedViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/GAITrackedViewController.h"/>
+        </class>
+        <class className="HistoryInfoViewController" superclassName="BannerViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/HistoryInfoViewController.h"/>
+        </class>
+        <class className="IndexViewController" superclassName="BannerViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/IndexViewController.h"/>
+        </class>
+        <class className="SettingViewController" superclassName="BannerViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SettingViewController.h"/>
+        </class>
+        <class className="StationSearchViewController" superclassName="BannerViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/StationSearchViewController.h"/>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

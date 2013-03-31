@@ -23,10 +23,18 @@
     }
     return self;
 }
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:NO animated:animated];
+}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc] init];
+    barButtonItem.title = @"返回";
+    self.navigationItem.leftBarButtonItem = barButtonItem;
 }
 
 - (void)didReceiveMemoryWarning
