@@ -25,6 +25,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self loadCustomBanner];
 }
 
 - (void)didReceiveMemoryWarning
