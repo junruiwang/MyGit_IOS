@@ -32,9 +32,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc] init];
-    barButtonItem.title = @"返回";
-    self.navigationItem.leftBarButtonItem = barButtonItem;
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"navigation_bg.png"] forBarMetrics:nil];
+    
+    [self addLeftBarButton:@"topbar-back.png"];
 }
 
 - (void)didReceiveMemoryWarning
@@ -70,6 +70,31 @@
     //Make the request for a test ad
     //request.testDevices = [NSArray arrayWithObjects: GAD_SIMULATOR_ID, nil];
     return request;
+}
+
+- (void)backHome:(id)sender
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)addLeftBarButton:(NSString *) imageName
+{
+    //add left back button
+    UIButton *backButton = [self generateNavButton:imageName action:@selector(backHome:)];
+    backButton.frame = CGRectMake(0, 0, 48, 44);
+    
+    UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
+    self.navigationItem.leftBarButtonItem = barButtonItem;
+}
+
+- (UIButton *)generateNavButton:(NSString *)imageName action:(SEL)actionName
+{
+    UIButton* targetBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [targetBtn setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
+    [targetBtn setShowsTouchWhenHighlighted:YES];
+    [targetBtn addTarget:self action:actionName forControlEvents:UIControlEventTouchUpInside];
+    
+    return targetBtn;
 }
 
 #pragma mark GADBannerViewDelegate impl

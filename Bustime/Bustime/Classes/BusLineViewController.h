@@ -7,7 +7,18 @@
 //
 
 #import "BannerViewController.h"
+#import "BusLineParser.h"
 
-@interface BusLineViewController : BannerViewController
+@interface BusLineViewController : BannerViewController<UITableViewDataSource, UITableViewDelegate, GDataParserDelegate>
+
+
+@property(nonatomic, weak) IBOutlet UITableView *tableView;
+@property(nonatomic, weak) IBOutlet UITextField *queryField;
+@property (nonatomic, strong) NSMutableArray *busLineArray;
+@property (nonatomic, strong) BusLineParser *busLineParser;
+
+- (IBAction)searchButtonTapped:(id)sender;
+
+- (IBAction)dismissFirstResponder:(id)sender;
 
 @end

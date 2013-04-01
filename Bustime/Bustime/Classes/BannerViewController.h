@@ -20,4 +20,8 @@
 
 - (GADRequest *)createRequest;
 
+- (UIButton *)generateNavButton:(NSString *) imageName action:(SEL) actionName;
+
+- (void) backHome: (id) sender;
+
 @end
