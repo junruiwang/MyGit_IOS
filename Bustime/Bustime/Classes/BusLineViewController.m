@@ -12,6 +12,7 @@
 #import "BusLineTableViewCell.h"
 #import "BusLine.h"
 #import "RegexKitLite.h"
+#import "BusDetailViewController.h"
 
 @interface BusLineViewController ()
 

@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		C4086CF91708039C007A4EC8 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C4086CF71708039C007A4EC8 /* Icon@2x.png */; };
 		C4086CFB170803B8007A4EC8 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C4086CFA170803B8007A4EC8 /* Icon.png */; };
+		C4175D49170AD87F005C3DC4 /* BusDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4175D48170AD87F005C3DC4 /* BusDetailViewController.m */; };
+		C420EF10170ABC5400986AFF /* search_bar_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = C420EF0C170ABC5400986AFF /* search_bar_bg.png */; };
+		C420EF11170ABC5400986AFF /* search_bar_edit_normal.9.png in Resources */ = {isa = PBXBuildFile; fileRef = C420EF0D170ABC5400986AFF /* search_bar_edit_normal.9.png */; };
+		C420EF12170ABC5400986AFF /* search_btn_press.png in Resources */ = {isa = PBXBuildFile; fileRef = C420EF0E170ABC5400986AFF /* search_btn_press.png */; };
+		C420EF13170ABC5400986AFF /* search_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = C420EF0F170ABC5400986AFF /* search_btn.png */; };
 		C445A70C170A9B3400DEC528 /* line-next.png in Resources */ = {isa = PBXBuildFile; fileRef = C445A70A170A9B3400DEC528 /* line-next.png */; };
 		C445A70D170A9B3400DEC528 /* line-next@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C445A70B170A9B3400DEC528 /* line-next@2x.png */; };
 		C445A716170AA72300DEC528 /* shareviewhead_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = C445A714170AA72300DEC528 /* shareviewhead_bg.png */; };
@@ -96,6 +101,12 @@
 /* Begin PBXFileReference section */
 		C4086CF71708039C007A4EC8 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon@2x.png"; path = "Resources/Icon@2x.png"; sourceTree = "<group>"; };
 		C4086CFA170803B8007A4EC8 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = Resources/Icon.png; sourceTree = "<group>"; };
+		C4175D47170AD87F005C3DC4 /* BusDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BusDetailViewController.h; path = Classes/BusDetailViewController.h; sourceTree = "<group>"; };
+		C4175D48170AD87F005C3DC4 /* BusDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BusDetailViewController.m; path = Classes/BusDetailViewController.m; sourceTree = "<group>"; };
+		C420EF0C170ABC5400986AFF /* search_bar_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = search_bar_bg.png; path = Resources/search_bar_bg.png; sourceTree = "<group>"; };
+		C420EF0D170ABC5400986AFF /* search_bar_edit_normal.9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = search_bar_edit_normal.9.png; path = Resources/search_bar_edit_normal.9.png; sourceTree = "<group>"; };
+		C420EF0E170ABC5400986AFF /* search_btn_press.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = search_btn_press.png; path = Resources/search_btn_press.png; sourceTree = "<group>"; };
+		C420EF0F170ABC5400986AFF /* search_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = search_btn.png; path = Resources/search_btn.png; sourceTree = "<group>"; };
 		C445A70A170A9B3400DEC528 /* line-next.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "line-next.png"; path = "Resources/line-next.png"; sourceTree = "<group>"; };
 		C445A70B170A9B3400DEC528 /* line-next@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "line-next@2x.png"; path = "Resources/line-next@2x.png"; sourceTree = "<group>"; };
 		C445A714170AA72300DEC528 /* shareviewhead_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = shareviewhead_bg.png; path = Resources/shareviewhead_bg.png; sourceTree = "<group>"; };
@@ -267,17 +278,19 @@
 		C4617A0417082A3200783192 /* Buses */ = {
 			isa = PBXGroup;
 			children = (
-				C4E67D721709BCC000B3803E /* Parser */,
-				C4617A0517082AA200783192 /* BusLineViewController.h */,
-				C4617A0617082AA200783192 /* BusLineViewController.m */,
-				C4617A0817082AF900783192 /* StationSearchViewController.h */,
-				C4617A0917082AF900783192 /* StationSearchViewController.m */,
-				C4617A0B17082B2700783192 /* HistoryInfoViewController.h */,
-				C4617A0C17082B2700783192 /* HistoryInfoViewController.m */,
-				C4617A0E17082B7B00783192 /* SettingViewController.h */,
-				C4617A0F17082B7B00783192 /* SettingViewController.m */,
+				C4175D47170AD87F005C3DC4 /* BusDetailViewController.h */,
+				C4175D48170AD87F005C3DC4 /* BusDetailViewController.m */,
 				C44D56891709780D0007CF97 /* BusLineTableViewCell.h */,
 				C44D568A1709780D0007CF97 /* BusLineTableViewCell.m */,
+				C4617A0517082AA200783192 /* BusLineViewController.h */,
+				C4617A0617082AA200783192 /* BusLineViewController.m */,
+				C4617A0B17082B2700783192 /* HistoryInfoViewController.h */,
+				C4617A0C17082B2700783192 /* HistoryInfoViewController.m */,
+				C4E67D721709BCC000B3803E /* Parser */,
+				C4617A0E17082B7B00783192 /* SettingViewController.h */,
+				C4617A0F17082B7B00783192 /* SettingViewController.m */,
+				C4617A0817082AF900783192 /* StationSearchViewController.h */,
+				C4617A0917082AF900783192 /* StationSearchViewController.m */,
 			);
 			name = Buses;
 			sourceTree = "<group>";
@@ -375,6 +388,10 @@
 		C46886331707C6BB00564DE9 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				C420EF0C170ABC5400986AFF /* search_bar_bg.png */,
+				C420EF0D170ABC5400986AFF /* search_bar_edit_normal.9.png */,
+				C420EF0E170ABC5400986AFF /* search_btn_press.png */,
+				C420EF0F170ABC5400986AFF /* search_btn.png */,
 				C445A718170AA8A300DEC528 /* adsmogo_btnbg.png */,
 				C445A719170AA8A300DEC528 /* adsmogo_btnbg@2x.png */,
 				C445A714170AA72300DEC528 /* shareviewhead_bg.png */,
@@ -610,6 +627,10 @@
 				C445A717170AA72300DEC528 /* shareviewhead_bg@2x.png in Resources */,
 				C445A71A170AA8A300DEC528 /* adsmogo_btnbg.png in Resources */,
 				C445A71B170AA8A300DEC528 /* adsmogo_btnbg@2x.png in Resources */,
+				C420EF10170ABC5400986AFF /* search_bar_bg.png in Resources */,
+				C420EF11170ABC5400986AFF /* search_bar_edit_normal.9.png in Resources */,
+				C420EF12170ABC5400986AFF /* search_btn_press.png in Resources */,
+				C420EF13170ABC5400986AFF /* search_btn.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -650,6 +671,7 @@
 				C4E67DA61709C93B00B3803E /* BusLineParser.m in Sources */,
 				C4E67DA91709CA7800B3803E /* BusLine.m in Sources */,
 				C48BABE11709D46300D1DC61 /* RegexKitLite.m in Sources */,
+				C4175D49170AD87F005C3DC4 /* BusDetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

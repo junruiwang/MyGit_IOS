@@ -34,7 +34,7 @@
     [super viewDidLoad];
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"navigation_bg.png"] forBarMetrics:nil];
     
-    [self addLeftBarButton:@"topbar-back.png"];
+    //[self addLeftBarButton:@"topbar-back.png"];
 }
 
 - (void)didReceiveMemoryWarning
