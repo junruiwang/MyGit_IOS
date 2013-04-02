@@ -140,9 +140,9 @@
                                         <rect key="frame" x="20" y="7" width="202" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" keyboardType="namePhonePad" returnKeyType="done"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="namePhonePad" returnKeyType="search"/>
                                         <connections>
-                                            <action selector="dismissFirstResponder:" destination="tOO-xk-rAS" eventType="editingDidEndOnExit" id="hoM-A7-DSc"/>
+                                            <action selector="searchButtonTapped:" destination="tOO-xk-rAS" eventType="editingDidEndOnExit" id="Y8j-QZ-dLd"/>
                                         </connections>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="oxW-vt-BHY">
@@ -150,7 +150,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <state key="normal" title="查询">
-                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <state key="highlighted">
@@ -161,7 +161,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="0.55294120311737061" green="0.63529413938522339" blue="0.729411780834198" alpha="1" colorSpace="deviceRGB"/>
+                                <color key="backgroundColor" red="0.23529413342475891" green="0.4901961088180542" blue="0.67058825492858887" alpha="1" colorSpace="deviceRGB"/>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="54" sectionHeaderHeight="22" sectionFooterHeight="22" id="pBR-CK-G5b">
                                 <rect key="frame" x="0.0" y="44" width="320" height="411"/>
@@ -193,6 +193,10 @@
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="line-next.png" id="fP9-PV-lBR">
+                                                    <rect key="frame" x="293" y="23" width="7" height="10"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
@@ -249,6 +253,7 @@
     <resources>
         <image name="datamanage.png" width="26" height="26"/>
         <image name="history.png" width="24" height="24"/>
+        <image name="line-next.png" width="7" height="10"/>
         <image name="line.png" width="26" height="26"/>
         <image name="stop.png" width="26" height="26"/>
     </resources>
@@ -267,7 +272,6 @@
         <class className="BusLineViewController" superclassName="BannerViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/BusLineViewController.h"/>
             <relationships>
-                <relationship kind="action" name="dismissFirstResponder:"/>
                 <relationship kind="action" name="searchButtonTapped:"/>
                 <relationship kind="outlet" name="queryField" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>

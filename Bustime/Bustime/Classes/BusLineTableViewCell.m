@@ -10,12 +10,10 @@
 
 @implementation BusLineTableViewCell
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+- (id)initWithCoder:(NSCoder *)aDecoder
 {
-    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
-    if (self) {
+    if (self = [super initWithCoder:aDecoder]) {
         self.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"tablecell_line-bg.png"]];
-        self.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     return self;
 }

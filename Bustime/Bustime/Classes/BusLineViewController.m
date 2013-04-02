@@ -42,12 +42,8 @@
 
 - (IBAction)searchButtonTapped:(id)sender
 {
+    [self.queryField resignFirstResponder];
     [self downloadData];
-}
-
-- (IBAction)dismissFirstResponder:(id)sender
-{
-    [sender resignFirstResponder];
 }
 
 - (void)downloadData
@@ -90,10 +86,11 @@
     } else {
         cell.nameLabel.text = busLine.lineNumber;
     }
-    //上唐街 - 火车站北广场
+    
     cell.stationLabel.text = [NSString stringWithFormat:@"%@ - %@", busLine.startStation, busLine.endStation];
-    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-        
+    [cell setSelectionStyle:UITableViewCellSelectionStyleGray];
+    //cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
+    
     return cell;
 }
 

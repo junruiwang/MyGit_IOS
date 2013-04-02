@@ -60,7 +60,7 @@
     self.adBanner.rootViewController = self;
     [self.view addSubview:self.adBanner];
     [self.adBanner loadRequest:[self createRequest]];
-    self.adBanner = [[GADBannerView alloc] initWithAdSize:kGADAdSizeBanner];
+    //self.adBanner = [[GADBannerView alloc] initWithAdSize:kGADAdSizeBanner];
 }
 
 - (GADRequest *)createRequest
@@ -97,6 +97,17 @@
     return targetBtn;
 }
 
+- (void)closeBannerView
+{
+    [UIView animateWithDuration:0.5 animations:^ {
+        self.adBanner.frame = CGRectMake(0.0,
+                                  self.view.frame.size.height,
+                                  self.adBanner.frame.size.width,
+                                  self.adBanner.frame.size.height);
+        
+    }];
+}
+
 #pragma mark GADBannerViewDelegate impl
 - (void)adViewDidReceiveAd:(GADBannerView *)adView {
     [UIView animateWithDuration:1.0 animations:^ {
@@ -107,6 +118,13 @@
                                   adView.frame.size.height);
         
     }];
+    
+    UIButton *closeButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    closeButton.frame = CGRectMake(280, 10, 40, 30);
+    [closeButton addTarget:self action:@selector(closeBannerView) forControlEvents:UIControlEventTouchUpInside];
+    [closeButton setImage:[UIImage imageNamed:@"ads_close.png"] forState:UIControlStateNormal];
+    [adView addSubview:closeButton];
+    
 }
 
 - (void)adView:(GADBannerView *)view didFailToReceiveAdWithError:(GADRequestError *)error {

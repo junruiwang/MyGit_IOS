@@ -19,6 +19,4 @@
 
 - (IBAction)searchButtonTapped:(id)sender;
 
-- (IBAction)dismissFirstResponder:(id)sender;
-
 @end
