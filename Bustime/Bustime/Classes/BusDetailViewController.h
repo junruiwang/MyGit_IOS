@@ -10,4 +10,8 @@
 
 @interface BusDetailViewController : BannerViewController
 
+@property(nonatomic, weak) IBOutlet UIView *topTitleView;
+@property(nonatomic, strong) UIView *bottomView;
+@property(nonatomic, strong) UIScrollView *subScrollView;
+
 @end

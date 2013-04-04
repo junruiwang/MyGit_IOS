@@ -25,7 +25,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+    self.navigationItem.title = @"站点查询";
+	[self loadCustomBanner];
 }
 
 - (void)didReceiveMemoryWarning

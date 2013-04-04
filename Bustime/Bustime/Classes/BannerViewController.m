@@ -31,7 +31,6 @@
 {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor colorWithWhite:0.902 alpha:1.000];
-//    self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:0 green:179/255.0 blue:134/255.0 alpha:1];
     [self customizeNavBar];
     
 //    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"返回" style:UIBarButtonItemStyleBordered target:self action:@selector(backHome:)];
@@ -45,6 +44,9 @@
     navBar.bottomLineColor = [UIColor colorWithHex:0x990000];
     navBar.tintColor = navBar.gradientEndColor;
     navBar.roundedCornerRadius = 8;
+    
+//    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleBlackOpaque;
+//    self.navigationController.navigationBar.barStyle = UIBarStyleBlackOpaque;
 }
 
 - (void)didReceiveMemoryWarning

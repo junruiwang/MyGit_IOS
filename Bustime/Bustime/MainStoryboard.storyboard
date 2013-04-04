@@ -9,7 +9,7 @@
             <objects>
                 <navigationController definesPresentationContext="YES" id="6Ab-AH-h2W" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="站点查询" image="stop.png" id="sIF-J8-fDe"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="6II-Jk-kDl">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="6II-Jk-kDl" customClass="PrettyNavigationBar">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -25,7 +25,7 @@
             <objects>
                 <navigationController definesPresentationContext="YES" id="QiE-95-Us4" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="历史记录" image="history.png" id="aGP-U6-jEZ"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="mK9-5i-YiO">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="mK9-5i-YiO" customClass="PrettyNavigationBar">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -74,7 +74,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" id="QGO-ck-UQA">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="15"/>
+                                <rect key="frame" x="0.0" y="10" width="300" height="70"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text=" 首末班时间：06:30-22:10" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8Tc-BO-qMV">
@@ -114,23 +114,26 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="全程线路共18站" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="CaS-lJ-UCd">
-                                        <rect key="frame" x="175" y="12" width="106" height="21"/>
+                                        <rect key="frame" x="188" y="12" width="106" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" red="0.40947690219999999" green="0.095053214819999995" blue="0.255229594" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.65303782799999999" green="0.76375960430000001" blue="0.91234290080000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="25c-EX-Juf"/>
+                    <connections>
+                        <outlet property="topTitleView" destination="QGO-ck-UQA" id="nl9-k9-Yb3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R1v-Ja-Wie" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1408" y="-861"/>
+            <point key="canvasLocation" x="1327" y="-861"/>
         </scene>
         <!--Station Search View Controller-->
         <scene sceneID="4Ap-rr-cdv">
@@ -166,7 +169,7 @@
             <objects>
                 <navigationController definesPresentationContext="YES" id="dcT-iV-gNE" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="设置" image="datamanage.png" id="u0s-Ug-Nap"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="G4j-DT-RDj">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="G4j-DT-RDj" customClass="PrettyNavigationBar">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -370,6 +373,9 @@
         </class>
         <class className="BusDetailViewController" superclassName="BannerViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/BusDetailViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="topTitleView" candidateClass="UIView"/>
+            </relationships>
         </class>
         <class className="BusLineTableViewCell" superclassName="UITableViewCell">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/BusLineTableViewCell.h"/>

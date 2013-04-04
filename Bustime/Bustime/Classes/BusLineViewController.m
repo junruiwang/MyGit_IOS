@@ -34,7 +34,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.navigationItem.title = @"公交查询";
+    self.navigationItem.title = @"线路查询";
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"苏州" style:UIBarButtonItemStyleBordered target:self action:@selector(showMenu)];
     [self loadCustomBanner];
 }
