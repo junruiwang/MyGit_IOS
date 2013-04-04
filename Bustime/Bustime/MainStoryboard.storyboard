@@ -74,7 +74,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" id="QGO-ck-UQA">
-                                <rect key="frame" x="0.0" y="10" width="300" height="70"/>
+                                <rect key="frame" x="0.0" y="5" width="314" height="90"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text=" 首末班时间：06:30-22:10" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8Tc-BO-qMV">
@@ -100,14 +100,14 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="终点：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8bJ-Pv-u2h">
-                                        <rect key="frame" x="175" y="42" width="42" height="21"/>
+                                        <rect key="frame" x="20" y="66" width="42" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" red="0.60028872280000001" green="0.02191260846" blue="0.12780220810000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="苏生首末站北" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="xmJ-Ww-TGH">
-                                        <rect key="frame" x="213" y="42" width="108" height="21"/>
+                                        <rect key="frame" x="58" y="66" width="108" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -128,7 +128,11 @@
                     </view>
                     <navigationItem key="navigationItem" id="25c-EX-Juf"/>
                     <connections>
+                        <outlet property="endStationLabel" destination="xmJ-Ww-TGH" id="eKv-lI-n14"/>
+                        <outlet property="startStationLabel" destination="8Q3-ne-KjB" id="sAP-gr-mk4"/>
+                        <outlet property="timeLabel" destination="8Tc-BO-qMV" id="Uw9-u3-WZY"/>
                         <outlet property="topTitleView" destination="QGO-ck-UQA" id="nl9-k9-Yb3"/>
+                        <outlet property="totalStationLabel" destination="CaS-lJ-UCd" id="53O-Cg-4yS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R1v-Ja-Wie" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -309,7 +313,7 @@
                                             <outlet property="iconView" destination="ssR-4m-bTs" id="eCe-QY-Ep6"/>
                                             <outlet property="nameLabel" destination="aWk-1u-Zvw" id="xJB-3A-DbE"/>
                                             <outlet property="stationLabel" destination="KSk-SY-TlV" id="hBq-DN-XsD"/>
-                                            <segue destination="gqp-Ki-Z1a" kind="push" id="hMd-Xr-bVS"/>
+                                            <segue destination="gqp-Ki-Z1a" kind="push" id="Eoi-Yn-sMA"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -374,7 +378,11 @@
         <class className="BusDetailViewController" superclassName="BannerViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/BusDetailViewController.h"/>
             <relationships>
+                <relationship kind="outlet" name="endStationLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="startStationLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="timeLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="topTitleView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="totalStationLabel" candidateClass="UILabel"/>
             </relationships>
         </class>
         <class className="BusLineTableViewCell" superclassName="UITableViewCell">

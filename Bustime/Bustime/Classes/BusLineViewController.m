@@ -18,6 +18,10 @@
 @interface BusLineViewController ()
 
 @property (strong, nonatomic) REMenu *menu;
+@property (nonatomic, strong) NSMutableArray *busLineArray;
+@property (nonatomic, strong) NSMutableArray *busLineTotalArray;
+
+@property (nonatomic, strong) BusLineParser *busLineParser;
 
 @end
 
@@ -27,6 +31,7 @@
     self = [super initWithCoder:aDecoder];
     if (self) {
         _busLineArray = [[NSMutableArray alloc] initWithCapacity:10];
+        _busLineTotalArray = [[NSMutableArray alloc] initWithCapacity:10];
     }
     return self;
 }
@@ -64,6 +69,24 @@
     self.busLineParser.delegate = self;
     [self.busLineParser start];
     [SVProgressHUD showWithStatus:@"正在加载" maskType:SVProgressHUDMaskTypeGradient];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.destinationViewController isKindOfClass:[BusDetailViewController class]]) {
+        BusDetailViewController *busDetailViewController = (BusDetailViewController *)segue.destinationViewController;
+        
+        BusLine *busLine = [self.busLineArray objectAtIndex:[[self.tableView indexPathForSelectedRow] row]];
+        
+        NSMutableArray *doubleArray = [[NSMutableArray alloc] initWithCapacity:2];
+        for (BusLine *tmpBusLine in self.busLineTotalArray) {
+            if ([tmpBusLine.lineNumber isEqualToString:busLine.lineNumber]) {
+                [doubleArray addObject:tmpBusLine];
+            }
+        }
+        busDetailViewController.busLineArray = doubleArray;
+    }
+    
 }
 
 #pragma mark - UITableViewDataSource
@@ -117,6 +140,7 @@
 - (void)parser:(GDataParser*)parser DidParsedData:(NSDictionary *)data
 {
     self.busLineArray = [data valueForKey:@"data"];
+    self.busLineTotalArray = [data valueForKey:@"busLineArry"];
     [self.tableView reloadData];
     [SVProgressHUD dismiss];
 }

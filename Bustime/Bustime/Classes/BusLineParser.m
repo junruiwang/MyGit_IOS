@@ -18,25 +18,24 @@
         
         NSArray *array = [dictionary valueForKey:@"data"];
         NSMutableArray *busLineArry = [[NSMutableArray alloc] initWithCapacity:10];
-        NSMutableSet *pairSet = [NSMutableSet setWithCapacity:10];
+        NSMutableArray *busLineOnlyArry = [[NSMutableArray alloc] initWithCapacity:10];
+    
         for (NSDictionary *dict in array)
         {
             BusLine *busLine = [[BusLine alloc] initWithDictionary:dict];
-            [pairSet addObject:busLine.lineNumber];
-            [busLineArry addObject:busLine];
-        }
-        
-        //快速枚举遍历
-        NSMutableArray *busLineOnlyArry = [[NSMutableArray alloc] initWithCapacity:10];
-        for (NSString *lineNumber in pairSet) {
-            for(BusLine *busLine in busLineArry) {
-                if ([lineNumber isEqualToString:busLine.lineNumber]) {
-                    [busLineOnlyArry addObject:busLine];
+            BOOL isExist = NO;
+            for (BusLine *busLineOnly in busLineOnlyArry) {
+                if ([busLine.lineNumber isEqualToString:busLineOnly.lineNumber]) {
+                    isExist = YES;
                     break;
                 }
             }
+            if (!isExist) {
+                [busLineOnlyArry addObject:busLine];
+            }
+            [busLineArry addObject:busLine];
         }
-        
+             
         NSDictionary *data = @{@"data":busLineOnlyArry, @"busLineArry":busLineArry};
         
         if(self.delegate != nil && [self.delegate respondsToSelector:@selector(parser:DidParsedData:)]){
