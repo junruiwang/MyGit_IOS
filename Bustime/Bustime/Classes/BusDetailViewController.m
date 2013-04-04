@@ -139,8 +139,8 @@
     UIView *graphcisView = [[UIView alloc] initWithFrame:CGRectMake(20, 20, 300, 800)];
     graphcisView.backgroundColor = [UIColor clearColor];
     
-    for (int i=0; i< 15; i++) {
-        if (i%10 == 0) {
+    for (int i=0; i< 18; i++) {
+        if (i%10 == 0 || i == 17) {
             UIImageView *imageStartView = [[UIImageView alloc] initWithFrame:CGRectMake(15, i*79, 13, 51)];
             imageStartView.image = [UIImage imageNamed:@"start_icon.png"];
             [graphcisView addSubview:imageStartView];
@@ -149,22 +149,22 @@
             imageStationView.image = [UIImage imageNamed:@"run_current_station.9.png"];
             [graphcisView addSubview:imageStationView];
             
-            UIImageView *imageTopView = [[UIImageView alloc] initWithFrame:CGRectMake(49, 11+(i*79), 221, 39)];
+            UIImageView *imageTopView = [[UIImageView alloc] initWithFrame:CGRectMake(49, 21+(i*79), 221, 39)];
             imageTopView.image = [UIImage imageNamed:@"current_top.png"];
             [graphcisView addSubview:imageTopView];
             
-            UIImageView *imageBottomView = [[UIImageView alloc] initWithFrame:CGRectMake(49, 50+(i*79), 221, 35)];
+            UIImageView *imageBottomView = [[UIImageView alloc] initWithFrame:CGRectMake(49, 60+(i*79), 221, 35)];
             imageBottomView.image = [UIImage imageNamed:@"current_bottom.png"];
             [graphcisView addSubview:imageBottomView];
             
-            UILabel *stationLabel = [[UILabel alloc] initWithFrame:CGRectMake(60, 22+(i*79), 197, 21)];
+            UILabel *stationLabel = [[UILabel alloc] initWithFrame:CGRectMake(60, 32+(i*79), 197, 21)];
             stationLabel.backgroundColor = [UIColor clearColor];
             stationLabel.font = [UIFont boldSystemFontOfSize:17];
             stationLabel.textColor = [UIColor whiteColor];
             stationLabel.text = @"火车站南广场";
             [graphcisView addSubview:stationLabel];
             
-            UILabel *stationTimeLabel = [[UILabel alloc] initWithFrame:CGRectMake(60, 56+(i*79), 197, 18)];
+            UILabel *stationTimeLabel = [[UILabel alloc] initWithFrame:CGRectMake(60, 66+(i*79), 197, 18)];
             stationTimeLabel.backgroundColor = [UIColor clearColor];
             stationTimeLabel.font = [UIFont systemFontOfSize:14];
             stationTimeLabel.text = @"进站时间  21:15:30";
