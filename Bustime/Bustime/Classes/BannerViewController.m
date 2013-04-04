@@ -8,6 +8,9 @@
 
 #import "BannerViewController.h"
 #import "SampleConstants.h"
+#import "PrettyNavigationBar.h"
+#import "PrettyDrawing.h"
+
 
 @interface BannerViewController ()
 
@@ -23,18 +26,25 @@
     }
     return self;
 }
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    [self.navigationController setNavigationBarHidden:NO animated:animated];
-}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"navigation_bg.png"] forBarMetrics:nil];
+    self.view.backgroundColor = [UIColor colorWithWhite:0.902 alpha:1.000];
+//    self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:0 green:179/255.0 blue:134/255.0 alpha:1];
+    [self customizeNavBar];
     
-    //[self addLeftBarButton:@"topbar-back.png"];
+//    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"返回" style:UIBarButtonItemStyleBordered target:self action:@selector(backHome:)];
+}
+
+- (void) customizeNavBar {
+    PrettyNavigationBar *navBar = (PrettyNavigationBar *)self.navigationController.navigationBar;
+    navBar.topLineColor = [UIColor colorWithHex:0xFF1000];
+    navBar.gradientStartColor = [UIColor colorWithHex:0xDD0000];
+    navBar.gradientEndColor = [UIColor colorWithHex:0xAA0000];
+    navBar.bottomLineColor = [UIColor colorWithHex:0x990000];
+    navBar.tintColor = navBar.gradientEndColor;
+    navBar.roundedCornerRadius = 8;
 }
 
 - (void)didReceiveMemoryWarning

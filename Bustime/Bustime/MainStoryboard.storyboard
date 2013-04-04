@@ -1,43 +1,42 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12D78" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="wR3-Wz-a16">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12D78" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="4Y9-kl-KEM">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
     <scenes>
-        <!--Navigation Controller-->
-        <scene sceneID="fHe-8N-dKy">
+        <!--Navigation Controller - 站点查询-->
+        <scene sceneID="5mt-Lw-pri">
             <objects>
-                <navigationController definesPresentationContext="YES" id="wR3-Wz-a16" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="VSX-4G-bwR">
+                <navigationController definesPresentationContext="YES" id="6Ab-AH-h2W" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="站点查询" image="stop.png" id="sIF-J8-fDe"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="6II-Jk-kDl">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="vQV-Wk-0VI" kind="relationship" relationship="rootViewController" id="0JV-n6-iqX"/>
+                        <segue destination="yOr-dT-dy1" kind="relationship" relationship="rootViewController" id="QDm-c7-ylw"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="sQK-Lm-3Rn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="W5p-1h-nf9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-444" y="-302"/>
+            <point key="canvasLocation" x="285" y="-180"/>
         </scene>
-        <!--Index View Controller-->
-        <scene sceneID="StZ-gw-WIz">
+        <!--Navigation Controller - 历史记录-->
+        <scene sceneID="SDx-v3-gl0">
             <objects>
-                <viewController storyboardIdentifier="IndexViewController" id="vQV-Wk-0VI" customClass="IndexViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="rCV-zi-Rf8">
-                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="LZ8-9n-A5c"/>
+                <navigationController definesPresentationContext="YES" id="QiE-95-Us4" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="历史记录" image="history.png" id="aGP-U6-jEZ"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="mK9-5i-YiO">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
                     <connections>
-                        <segue destination="4Y9-kl-KEM" kind="push" identifier="busSearch" id="HOO-lr-kU0"/>
+                        <segue destination="8GW-56-Wbn" kind="relationship" relationship="rootViewController" id="1xy-We-7al"/>
                     </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="wZ9-Fo-xfq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="20H-uy-44o" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="173" y="-302"/>
+            <point key="canvasLocation" x="285" y="518"/>
         </scene>
-        <!--History Info View Controller - 历史查询-->
+        <!--History Info View Controller-->
         <scene sceneID="f45-if-7tg">
             <objects>
                 <viewController storyboardIdentifier="HistoryInfoViewController" id="8GW-56-Wbn" customClass="HistoryInfoViewController" sceneMemberID="viewController">
@@ -60,51 +59,22 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="历史查询" image="history.png" id="Nwi-wA-NXb"/>
+                    <navigationItem key="navigationItem" id="Gbn-4t-fhf"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7gp-qa-01w" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1779" y="-519"/>
-        </scene>
-        <!--Setting View Controller - 设置-->
-        <scene sceneID="EUa-sw-3NX">
-            <objects>
-                <viewController storyboardIdentifier="SettingViewController" id="edQ-ia-dmX" customClass="SettingViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="PWH-sK-OJK">
-                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="DOJ-mW-o39">
-                                <rect key="frame" x="139" y="87" width="73" height="44"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="fdsafd">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="设置" image="datamanage.png" id="i7n-D6-fng"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="NLR-tX-UBD" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1779" y="151"/>
+            <point key="canvasLocation" x="845" y="518"/>
         </scene>
         <!--Bus Detail View Controller-->
         <scene sceneID="Md9-DY-Q3n">
             <objects>
                 <viewController storyboardIdentifier="BusDetailViewController" id="gqp-Ki-Z1a" customClass="BusDetailViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ZED-d4-WvC">
-                        <rect key="frame" x="0.0" y="20" width="320" height="499"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" id="QGO-ck-UQA">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="59"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="15"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text=" 首末班时间：06:30-22:10" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8Tc-BO-qMV">
@@ -157,13 +127,12 @@
                         <color key="backgroundColor" red="0.65303782799999999" green="0.76375960430000001" blue="0.91234290080000002" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="25c-EX-Juf"/>
-                    <nil key="simulatedTopBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R1v-Ja-Wie" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2256" y="-524"/>
+            <point key="canvasLocation" x="1408" y="-861"/>
         </scene>
-        <!--Station Search View Controller - 站名查询-->
+        <!--Station Search View Controller-->
         <scene sceneID="4Ap-rr-cdv">
             <objects>
                 <viewController storyboardIdentifier="StationSearchViewController" id="yOr-dT-dy1" customClass="StationSearchViewController" sceneMemberID="viewController">
@@ -186,11 +155,72 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="站名查询" image="stop.png" id="wF4-jf-ljy"/>
+                    <navigationItem key="navigationItem" id="oGh-1J-bue"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ioN-1Y-JC0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1327" y="145"/>
+            <point key="canvasLocation" x="845" y="-180"/>
+        </scene>
+        <!--Navigation Controller - 设置-->
+        <scene sceneID="BiB-Ag-fSB">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="dcT-iV-gNE" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="设置" image="datamanage.png" id="u0s-Ug-Nap"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="G4j-DT-RDj">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="7mq-sF-flc" kind="relationship" relationship="rootViewController" id="Fwt-7w-EJm"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tuD-Vb-kRs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="285" y="1256"/>
+        </scene>
+        <!--Setting View Controller-->
+        <scene sceneID="SzH-IO-uZK">
+            <objects>
+                <viewController id="7mq-sF-flc" customClass="SettingViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="4wo-V3-mXf">
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ELX-sd-Ysr">
+                                <rect key="frame" x="77" y="242" width="73" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="q3E-Ez-iip"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eau-VY-GEO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="853" y="1256"/>
+        </scene>
+        <!--Navigation Controller - 线路查询-->
+        <scene sceneID="Azr-6U-KJe">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="uEE-fb-J06" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="线路查询" image="line.png" id="sRH-Ms-fFO"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="2DQ-3a-412" customClass="PrettyNavigationBar">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="tOO-xk-rAS" kind="relationship" relationship="rootViewController" id="k3U-gd-bbD"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bmM-dd-4ii" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="285" y="-861"/>
         </scene>
         <!--Bus Line View Controller - 线路查询-->
         <scene sceneID="rHI-fD-oYn">
@@ -233,7 +263,7 @@
                                         </connections>
                                     </textField>
                                 </subviews>
-                                <color key="backgroundColor" red="0.23529413342475891" green="0.4901961088180542" blue="0.67058825492858887" alpha="1" colorSpace="deviceRGB"/>
+                                <color key="backgroundColor" red="0.51764708757400513" green="0.60784316062927246" blue="0.70588237047195435" alpha="1" colorSpace="deviceRGB"/>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="54" sectionHeaderHeight="22" sectionFooterHeight="22" id="pBR-CK-G5b">
                                 <rect key="frame" x="0.0" y="44" width="320" height="411"/>
@@ -276,7 +306,7 @@
                                             <outlet property="iconView" destination="ssR-4m-bTs" id="eCe-QY-Ep6"/>
                                             <outlet property="nameLabel" destination="aWk-1u-Zvw" id="xJB-3A-DbE"/>
                                             <outlet property="stationLabel" destination="KSk-SY-TlV" id="hBq-DN-XsD"/>
-                                            <segue destination="gqp-Ki-Z1a" kind="push" id="rqJ-rh-MCl"/>
+                                            <segue destination="gqp-Ki-Z1a" kind="push" id="hMd-Xr-bVS"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -289,6 +319,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="线路查询" image="line.png" id="VU9-NL-Wa5"/>
+                    <navigationItem key="navigationItem" id="ni8-qO-hF7"/>
                     <connections>
                         <outlet property="queryField" destination="bJN-id-WRf" id="CD5-9B-zPz"/>
                         <outlet property="tableView" destination="pBR-CK-G5b" id="wwQ-g4-RLn"/>
@@ -296,7 +327,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aSf-AL-Hbh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1327" y="-524"/>
+            <point key="canvasLocation" x="853" y="-861"/>
         </scene>
         <!--Tab Bar Controller - 公交查询-->
         <scene sceneID="rVe-dU-xbC">
@@ -312,15 +343,15 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="tOO-xk-rAS" kind="relationship" relationship="viewControllers" id="aRW-pu-MMz"/>
-                        <segue destination="yOr-dT-dy1" kind="relationship" relationship="viewControllers" id="xP9-z6-5xs"/>
-                        <segue destination="8GW-56-Wbn" kind="relationship" relationship="viewControllers" id="oTv-G1-3aw"/>
-                        <segue destination="edQ-ia-dmX" kind="relationship" relationship="viewControllers" id="lCj-u0-VXN"/>
+                        <segue destination="uEE-fb-J06" kind="relationship" relationship="viewControllers" id="n2S-hz-zHt"/>
+                        <segue destination="6Ab-AH-h2W" kind="relationship" relationship="viewControllers" id="ySW-Po-8zT"/>
+                        <segue destination="QiE-95-Us4" kind="relationship" relationship="viewControllers" id="awh-hc-oRv"/>
+                        <segue destination="dcT-iV-gNE" kind="relationship" relationship="viewControllers" id="3Oq-Z5-alx"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4bT-1i-QZN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="787" y="-297"/>
+            <point key="canvasLocation" x="-501" y="135"/>
         </scene>
     </scenes>
     <resources>
@@ -362,8 +393,8 @@
         <class className="HistoryInfoViewController" superclassName="BannerViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/HistoryInfoViewController.h"/>
         </class>
-        <class className="IndexViewController" superclassName="BannerViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/IndexViewController.h"/>
+        <class className="PrettyNavigationBar" superclassName="UINavigationBar">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PrettyNavigationBar.h"/>
         </class>
         <class className="SettingViewController" superclassName="BannerViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SettingViewController.h"/>

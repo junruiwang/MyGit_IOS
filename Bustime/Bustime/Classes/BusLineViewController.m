@@ -13,8 +13,11 @@
 #import "BusLine.h"
 #import "RegexKitLite.h"
 #import "BusDetailViewController.h"
+#import "REMenu.h"
 
 @interface BusLineViewController ()
+
+@property (strong, nonatomic) REMenu *menu;
 
 @end
 
@@ -31,6 +34,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.navigationItem.title = @"公交查询";
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"苏州" style:UIBarButtonItemStyleBordered target:self action:@selector(showMenu)];
     [self loadCustomBanner];
 }
 
@@ -114,6 +119,56 @@
     self.busLineArray = [data valueForKey:@"data"];
     [self.tableView reloadData];
     [SVProgressHUD dismiss];
+}
+
+- (void)showMenu
+{
+    if (_menu.isOpen)
+        return [_menu close];
+    REMenuItem *homeItem = [[REMenuItem alloc] initWithTitle:@"Home"
+                                                    subtitle:@"Return to Home Screen"
+                                                       image:[UIImage imageNamed:@"Icon_Home"]
+                                            highlightedImage:nil
+                                                      action:^(REMenuItem *item) {
+                                                          NSLog(@"Item: %@", item);
+                                                      }];
+    
+    REMenuItem *exploreItem = [[REMenuItem alloc] initWithTitle:@"Explore"
+                                                       subtitle:@"Explore 47 additional options"
+                                                          image:[UIImage imageNamed:@"Icon_Explore"]
+                                               highlightedImage:nil
+                                                         action:^(REMenuItem *item) {
+                                                             NSLog(@"Item: %@", item);
+                                                         }];
+    
+    REMenuItem *activityItem = [[REMenuItem alloc] initWithTitle:@"Activity"
+                                                        subtitle:@"Perform 3 additional activities"
+                                                           image:[UIImage imageNamed:@"Icon_Activity"]
+                                                highlightedImage:nil
+                                                          action:^(REMenuItem *item) {
+                                                              NSLog(@"Item: %@", item);
+                                                          }];
+    
+    REMenuItem *profileItem = [[REMenuItem alloc] initWithTitle:@"Profile"
+                                                          image:[UIImage imageNamed:@"Icon_Profile"]
+                                               highlightedImage:nil
+                                                         action:^(REMenuItem *item) {
+                                                             NSLog(@"Item: %@", item);
+                                                         }];
+    
+    homeItem.tag = 0;
+    exploreItem.tag = 1;
+    activityItem.tag = 2;
+    profileItem.tag = 3;
+    
+    _menu = [[REMenu alloc] initWithItems:@[homeItem, exploreItem, activityItem, profileItem]];
+    _menu.cornerRadius = 4;
+    _menu.shadowColor = [UIColor blackColor];
+    _menu.shadowOffset = CGSizeMake(0, 1);
+    _menu.shadowOpacity = 1;
+    _menu.imageOffset = CGSizeMake(5, -1);
+    
+    [_menu showFromNavigationController:self.navigationController];
 }
 
 @end

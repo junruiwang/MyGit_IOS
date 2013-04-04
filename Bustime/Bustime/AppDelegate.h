@@ -12,6 +12,6 @@
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (nonatomic, strong) UIWindow *window;
-@property(nonatomic, strong) id<GAITracker> tracker;
+@property (nonatomic, strong) id<GAITracker> tracker;
 
 @end
