@@ -7,7 +7,6 @@
 //
 
 #import "BannerViewController.h"
-#import "SampleConstants.h"
 #import "PrettyNavigationBar.h"
 #import "PrettyDrawing.h"
 

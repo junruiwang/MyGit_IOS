@@ -7,14 +7,17 @@
 //
 
 #import "BusDetailViewController.h"
-#import "SampleConstants.h"
 #import <QuartzCore/QuartzCore.h>
-#import "RegexKitLite.h"
 #import "BusLine.h"
 
 @interface BusDetailViewController ()
 
 @property(nonatomic, strong) UIColor *defaultTintColor;
+@property(nonatomic, strong) BusSingleLineParser *busSingleLineParser;
+@property(nonatomic, strong) BusLine *currentBusLine;
+@property(nonatomic, assign) BOOL isFirst;
+
+@property(nonatomic, strong) NSMutableArray *busSingleStationArry;
 
 @end
 
@@ -24,7 +27,8 @@
 {
     self = [super initWithCoder:aDecoder];
     if (self) {
-        // Custom initialization
+        _isFirst = YES;
+        _busSingleStationArry = [[NSMutableArray alloc] initWithCapacity:20];
     }
     return self;
 }
@@ -39,26 +43,42 @@
     
     [self loadSegmentedButton];
     [self loadTopTitleView];
-    [self loadBottomView];
-    [self.subScrollView setContentSize:CGSizeMake(320, 110 + self.bottomView.frame.size.height + 80)];
     self.subScrollView.scrollEnabled = YES;
     self.subScrollView.showsHorizontalScrollIndicator = NO;
     self.subScrollView.showsVerticalScrollIndicator = NO;
     [self.view addSubview:self.subScrollView];
 }
 
+- (void)downloadDataForBusStation
+{
+    if (self.isFirst) {
+        [SVProgressHUD showWithStatus:@"正在加载" maskType:SVProgressHUDMaskTypeGradient];
+    }
+    
+    if (self.busSingleLineParser != nil) {
+        [self.busSingleLineParser cancel];
+        self.busSingleLineParser = nil;
+    }
+    self.busSingleLineParser = [[BusSingleLineParser alloc] init];
+    self.busSingleLineParser.serverAddress = [ServerAddressManager serverAddress:@"query_bus_single_line"];
+    self.busSingleLineParser.delegate = self;
+    self.busSingleLineParser.requestString = [NSString stringWithFormat:@"lineCode=%@",self.currentBusLine.lineCode];
+    [self.busSingleLineParser start];
+}
+
+
 - (void)loadDefaultPageView
 {
-    BusLine *busLine = self.busLineArray[0];
+    self.currentBusLine = self.busLineArray[0];
     NSString *regexString = @"^[0-9]*$";
-    BOOL matched = [busLine.lineNumber isMatchedByRegex:regexString];
+    BOOL matched = [self.currentBusLine.lineNumber isMatchedByRegex:regexString];
     if (matched) {
-        self.title =[NSString stringWithFormat:@"%@路", busLine.lineNumber];
+        self.title =[NSString stringWithFormat:@"%@路", self.currentBusLine.lineNumber];
     } else {
-        self.title = busLine.lineNumber;
+        self.title = self.currentBusLine.lineNumber;
     }
-    [self loadBusBaseInfo:busLine];
-    
+    [self loadBusBaseInfo:self.currentBusLine];
+    [self downloadDataForBusStation];
 }
 
 - (void)loadBusBaseInfo:(BusLine *) busLine
@@ -110,12 +130,13 @@
     [self.subScrollView addSubview:topView];
 }
 
-- (void)loadBottomView
+- (void)loadBottomView:(int) index
 {
+    [self.bottomView removeFromSuperview];
     self.bottomView = [[UIView alloc] initWithFrame:CGRectMake(0, 100, 320, 800)];
     self.bottomView.backgroundColor = [UIColor clearColor];
     
-    UIView *graphcisView = [self graphcisStationViews];
+    UIView *graphcisView = [self graphcisStationViews:index];
     self.bottomView.frame = CGRectMake(0, 100, 320, graphcisView.frame.size.height);
     CALayer *subLayer = [CALayer layer];
     subLayer.backgroundColor = [UIColor whiteColor].CGColor;
@@ -130,17 +151,24 @@
     
     [self.bottomView addSubview:graphcisView];
     [self.subScrollView addSubview:self.bottomView];
+    [self.subScrollView setContentSize:CGSizeMake(320, 110 + self.bottomView.frame.size.height + 80)];
+    [self.subScrollView setContentOffset:CGPointMake(0.0, 0.0) animated:YES];
 }
 
 
-- (UIView *)graphcisStationViews
+- (UIView *)graphcisStationViews:(int) index
 {
+    BusLine *bline = self.busLineArray[index];
+    
+    
     CGFloat totalHeight = 0;
     UIView *graphcisView = [[UIView alloc] initWithFrame:CGRectMake(20, 20, 300, 800)];
     graphcisView.backgroundColor = [UIColor clearColor];
     
-    for (int i=0; i< 18; i++) {
-        if (i%10 == 0 || i == 17) {
+    for (int i=0; i< [bline.stationArray count]; i++) {
+        BusSingleLine *singStation = [bline.stationArray objectAtIndex:i];
+        
+        if (singStation.time != nil && ![singStation.time isEqualToString:@""]) {
             UIImageView *imageStartView = [[UIImageView alloc] initWithFrame:CGRectMake(15, i*79, 13, 51)];
             imageStartView.image = [UIImage imageNamed:@"start_icon.png"];
             [graphcisView addSubview:imageStartView];
@@ -161,13 +189,13 @@
             stationLabel.backgroundColor = [UIColor clearColor];
             stationLabel.font = [UIFont boldSystemFontOfSize:17];
             stationLabel.textColor = [UIColor whiteColor];
-            stationLabel.text = @"火车站南广场";
+            stationLabel.text = singStation.standName;
             [graphcisView addSubview:stationLabel];
             
             UILabel *stationTimeLabel = [[UILabel alloc] initWithFrame:CGRectMake(60, 66+(i*79), 197, 18)];
             stationTimeLabel.backgroundColor = [UIColor clearColor];
             stationTimeLabel.font = [UIFont systemFontOfSize:14];
-            stationTimeLabel.text = @"进站时间  21:15:30";
+            stationTimeLabel.text = [NSString stringWithFormat:@"进站时间  %@",singStation.time];
             [graphcisView addSubview:stationTimeLabel];
             
             totalHeight = 51+(i*79) + 80;
@@ -184,7 +212,7 @@
             UILabel *stationLabel = [[UILabel alloc] initWithFrame:CGRectMake(49, 51+(i*79)+6, 221, 18)];
             stationLabel.backgroundColor = [UIColor clearColor];
             stationLabel.font = [UIFont boldSystemFontOfSize:14];
-            stationLabel.text = @"火车站南广场";
+            stationLabel.text = singStation.standName;
             [graphcisView addSubview:stationLabel];
             totalHeight = 51+(i*79) + 80;
         }
@@ -207,12 +235,48 @@
     if ([self.busLineArray count] > 1) {
         BusLine *busLine = self.busLineArray[segmentedControl.selectedSegmentIndex];
         [self loadBusBaseInfo:busLine];
-        [self loadBottomView];
+        [self loadBottomView:segmentedControl.selectedSegmentIndex];
     } else {
         BusLine *busLine = self.busLineArray[0];
         [self loadBusBaseInfo:busLine];
-        [self loadBottomView];
+        [self loadBottomView:0];
     }
+}
+
+- (void) mergeDataFromArry
+{    
+    if (self.isFirst) {
+        BusLine *bline = self.busLineArray[0];
+        [bline.stationArray removeAllObjects];
+        [bline.stationArray addObjectsFromArray:self.busSingleStationArry];
+        self.isFirst = NO;
+        [self loadBottomView:0];
+        [SVProgressHUD dismiss];
+ 
+        if ([self.busLineArray count] > 1) {
+            self.currentBusLine = self.busLineArray[1];
+            [self downloadDataForBusStation];
+        }
+        
+    } else {
+        BusLine *bline = self.busLineArray[1];
+        [bline.stationArray removeAllObjects];
+        [bline.stationArray addObjectsFromArray:self.busSingleStationArry];
+    }
+}
+
+#pragma mark - BaseJSONParserDelegate
+- (void)parser:(GDataParser*)parser DidFailedParseWithMsg:(NSString*)msg errCode:(NSInteger)code
+{
+    
+}
+
+- (void)parser:(GDataParser*)parser DidParsedData:(NSDictionary *)data
+{
+    if ([parser isKindOfClass:[BusSingleLineParser class]]) {
+        self.busSingleStationArry = [data valueForKey:@"data"];
+        [self mergeDataFromArry];
+    } 
 }
 
 @end

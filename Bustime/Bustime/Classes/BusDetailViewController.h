@@ -7,8 +7,9 @@
 //
 
 #import "BannerViewController.h"
+#import "BusSingleLineParser.h"
 
-@interface BusDetailViewController : BannerViewController
+@interface BusDetailViewController : BannerViewController<GDataParserDelegate>
 
 @property(nonatomic, weak) IBOutlet UIView *topTitleView;
 @property(nonatomic, strong) UIView *bottomView;

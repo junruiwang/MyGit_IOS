@@ -113,6 +113,9 @@
 		C4E67DA31709C65A00B3803E /* ServerAddressManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C4E67DA21709C65A00B3803E /* ServerAddressManager.m */; };
 		C4E67DA61709C93B00B3803E /* BusLineParser.m in Sources */ = {isa = PBXBuildFile; fileRef = C4E67DA51709C93B00B3803E /* BusLineParser.m */; };
 		C4E67DA91709CA7800B3803E /* BusLine.m in Sources */ = {isa = PBXBuildFile; fileRef = C4E67DA81709CA7800B3803E /* BusLine.m */; };
+		C4EBBF36170E5C14001308A1 /* BusSingleLineParser.m in Sources */ = {isa = PBXBuildFile; fileRef = C4EBBF35170E5C14001308A1 /* BusSingleLineParser.m */; };
+		C4EBBF3A170E5C78001308A1 /* BusSingleLine.m in Sources */ = {isa = PBXBuildFile; fileRef = C4EBBF39170E5C78001308A1 /* BusSingleLine.m */; };
+		C4EBBF3D170E6860001308A1 /* SingleLineTimeParser.m in Sources */ = {isa = PBXBuildFile; fileRef = C4EBBF3C170E6860001308A1 /* SingleLineTimeParser.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -285,6 +288,12 @@
 		C4E67DA51709C93B00B3803E /* BusLineParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BusLineParser.m; path = Classes/BusLineParser.m; sourceTree = "<group>"; };
 		C4E67DA71709CA7800B3803E /* BusLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BusLine.h; path = Classes/BusLine.h; sourceTree = "<group>"; };
 		C4E67DA81709CA7800B3803E /* BusLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BusLine.m; path = Classes/BusLine.m; sourceTree = "<group>"; };
+		C4EBBF34170E5C14001308A1 /* BusSingleLineParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BusSingleLineParser.h; path = Classes/BusSingleLineParser.h; sourceTree = "<group>"; };
+		C4EBBF35170E5C14001308A1 /* BusSingleLineParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BusSingleLineParser.m; path = Classes/BusSingleLineParser.m; sourceTree = "<group>"; };
+		C4EBBF38170E5C78001308A1 /* BusSingleLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BusSingleLine.h; path = Classes/BusSingleLine.h; sourceTree = "<group>"; };
+		C4EBBF39170E5C78001308A1 /* BusSingleLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BusSingleLine.m; path = Classes/BusSingleLine.m; sourceTree = "<group>"; };
+		C4EBBF3B170E6860001308A1 /* SingleLineTimeParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SingleLineTimeParser.h; path = Classes/SingleLineTimeParser.h; sourceTree = "<group>"; };
+		C4EBBF3C170E6860001308A1 /* SingleLineTimeParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SingleLineTimeParser.m; path = Classes/SingleLineTimeParser.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -392,6 +401,7 @@
 		C4617A0417082A3200783192 /* Buses */ = {
 			isa = PBXGroup;
 			children = (
+				C4EBBF37170E5C4A001308A1 /* Model */,
 				C4175D47170AD87F005C3DC4 /* BusDetailViewController.h */,
 				C4175D48170AD87F005C3DC4 /* BusDetailViewController.m */,
 				C44D56891709780D0007CF97 /* BusLineTableViewCell.h */,
@@ -620,8 +630,10 @@
 			children = (
 				C4E67DA41709C93B00B3803E /* BusLineParser.h */,
 				C4E67DA51709C93B00B3803E /* BusLineParser.m */,
-				C4E67DA71709CA7800B3803E /* BusLine.h */,
-				C4E67DA81709CA7800B3803E /* BusLine.m */,
+				C4EBBF34170E5C14001308A1 /* BusSingleLineParser.h */,
+				C4EBBF35170E5C14001308A1 /* BusSingleLineParser.m */,
+				C4EBBF3B170E6860001308A1 /* SingleLineTimeParser.h */,
+				C4EBBF3C170E6860001308A1 /* SingleLineTimeParser.m */,
 			);
 			name = Parser;
 			sourceTree = "<group>";
@@ -656,6 +668,17 @@
 				C4E67D921709C0AC00B3803E /* SBJsonWriter.m */,
 			);
 			name = SBJson;
+			sourceTree = "<group>";
+		};
+		C4EBBF37170E5C4A001308A1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C4E67DA71709CA7800B3803E /* BusLine.h */,
+				C4E67DA81709CA7800B3803E /* BusLine.m */,
+				C4EBBF38170E5C78001308A1 /* BusSingleLine.h */,
+				C4EBBF39170E5C78001308A1 /* BusSingleLine.m */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -810,6 +833,9 @@
 				C43EB0BC170D1B0600A2C266 /* REMenuContainerView.m in Sources */,
 				C43EB0BD170D1B0600A2C266 /* REMenuItem.m in Sources */,
 				C43EB0BE170D1B0600A2C266 /* REMenuItemView.m in Sources */,
+				C4EBBF36170E5C14001308A1 /* BusSingleLineParser.m in Sources */,
+				C4EBBF3A170E5C78001308A1 /* BusSingleLine.m in Sources */,
+				C4EBBF3D170E6860001308A1 /* SingleLineTimeParser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

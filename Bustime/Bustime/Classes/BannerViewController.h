@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SampleConstants.h"
 #import "GADBannerViewDelegate.h"
 #import "GADBannerView.h"
 #import "GADRequest.h"

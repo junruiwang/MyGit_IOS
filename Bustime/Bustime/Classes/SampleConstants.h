@@ -11,3 +11,7 @@
 #define kSampleAdUnitID @"a15153e9211c6b8";
 #define kTrackingId  @"UA-39510485-1"
 #define kCustomButtonHeight		30.0
+
+#import "SVProgressHUD.h"
+#import "ServerAddressManager.h"
+#import "RegexKitLite.h"

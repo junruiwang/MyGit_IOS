@@ -14,6 +14,7 @@
 {
     if (dict == nil) {
         self = [super init];
+        _stationArray = [[NSMutableArray alloc] initWithCapacity:10];
         return self;
     }
     
@@ -24,6 +25,7 @@
         self.startStation = [dict objectForKey:@"startStation"];
         self.endStation = [dict objectForKey:@"endStation"];
         self.runTime = [dict objectForKey:@"runTime"];
+        _stationArray = [[NSMutableArray alloc] initWithCapacity:10];
     }
     return self;
 }
