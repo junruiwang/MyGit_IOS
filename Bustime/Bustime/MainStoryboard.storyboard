@@ -24,7 +24,7 @@
         <scene sceneID="SDx-v3-gl0">
             <objects>
                 <navigationController definesPresentationContext="YES" id="QiE-95-Us4" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="我的收藏" image="history.png" id="aGP-U6-jEZ"/>
+                    <tabBarItem key="tabBarItem" title="我的收藏" image="bus_favorites.png" id="aGP-U6-jEZ"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="mK9-5i-YiO" customClass="PrettyNavigationBar">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -362,13 +362,13 @@
         </scene>
     </scenes>
     <resources>
+        <image name="bus_favorites.png" width="24" height="24"/>
         <image name="datamanage.png" width="26" height="26"/>
-        <image name="history.png" width="24" height="24"/>
         <image name="line-next.png" width="7" height="10"/>
         <image name="line.png" width="26" height="26"/>
         <image name="search_bar_edit_normal.9.png" width="350" height="53"/>
-        <image name="search_btn.png" width="93" height="51"/>
-        <image name="search_btn_press.png" width="93" height="51"/>
+        <image name="search_btn.png" width="100" height="50"/>
+        <image name="search_btn_press.png" width="100" height="50"/>
         <image name="stop.png" width="26" height="26"/>
     </resources>
     <classes>
