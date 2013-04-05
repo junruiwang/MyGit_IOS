@@ -25,7 +25,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	self.navigationItem.title = @"历史记录";
+	self.navigationItem.title = @"我的收藏";
 	[self loadCustomBanner];
 }
 

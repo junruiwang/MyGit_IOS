@@ -20,11 +20,11 @@
             </objects>
             <point key="canvasLocation" x="285" y="-180"/>
         </scene>
-        <!--Navigation Controller - 历史记录-->
+        <!--Navigation Controller - 我的收藏-->
         <scene sceneID="SDx-v3-gl0">
             <objects>
                 <navigationController definesPresentationContext="YES" id="QiE-95-Us4" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="历史记录" image="history.png" id="aGP-U6-jEZ"/>
+                    <tabBarItem key="tabBarItem" title="我的收藏" image="history.png" id="aGP-U6-jEZ"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="mK9-5i-YiO" customClass="PrettyNavigationBar">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -264,7 +264,7 @@
                                         <rect key="frame" x="44" y="8" width="178" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" keyboardType="namePhonePad" returnKeyType="search"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" returnKeyType="search"/>
                                         <connections>
                                             <action selector="searchButtonTapped:" destination="tOO-xk-rAS" eventType="editingDidEndOnExit" id="Y8j-QZ-dLd"/>
                                         </connections>
