@@ -8,5 +8,7 @@
 	<string>http://42.121.117.61:6068/bustime/api/querySingleLine</string>
 	<key>query_bus_single_time</key>
 	<string>http://42.121.117.61:6068/bustime/api/queryRunSingleLine</string>
+	<key>query_bus_station</key>
+	<string>http://42.121.117.61:6068/bustime/api/queryStation</string>
 </dict>
 </plist>

@@ -87,6 +87,9 @@
 		C47851BB170EE62300EECCB4 /* bus_favorites@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C47851B7170EE62300EECCB4 /* bus_favorites@2x.png */; };
 		C47851BC170EE62300EECCB4 /* dianjin_navigation_bar_background1.png in Resources */ = {isa = PBXBuildFile; fileRef = C47851B8170EE62300EECCB4 /* dianjin_navigation_bar_background1.png */; };
 		C47851BD170EE62300EECCB4 /* dianjin_navigation_bar_background1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C47851B9170EE62300EECCB4 /* dianjin_navigation_bar_background1@2x.png */; };
+		C47851C1170EEDB600EECCB4 /* StationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C47851C0170EEDB600EECCB4 /* StationTableViewCell.m */; };
+		C47851C6170EF23A00EECCB4 /* BusStation.m in Sources */ = {isa = PBXBuildFile; fileRef = C47851C5170EF23A00EECCB4 /* BusStation.m */; };
+		C47851C9170EF38600EECCB4 /* BusStationParser.m in Sources */ = {isa = PBXBuildFile; fileRef = C47851C8170EF38600EECCB4 /* BusStationParser.m */; };
 		C48AA8201707CC9D00FDE374 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C48AA81F1707CC9D00FDE374 /* MainStoryboard.storyboard */; };
 		C48AA8241707D1D700FDE374 /* BannerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C48AA8231707D1D700FDE374 /* BannerViewController.m */; };
 		C48BABE11709D46300D1DC61 /* RegexKitLite.m in Sources */ = {isa = PBXBuildFile; fileRef = C48BABE01709D46300D1DC61 /* RegexKitLite.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -245,6 +248,12 @@
 		C47851B7170EE62300EECCB4 /* bus_favorites@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "bus_favorites@2x.png"; path = "Resources/bus_favorites@2x.png"; sourceTree = "<group>"; };
 		C47851B8170EE62300EECCB4 /* dianjin_navigation_bar_background1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = dianjin_navigation_bar_background1.png; path = Resources/dianjin_navigation_bar_background1.png; sourceTree = "<group>"; };
 		C47851B9170EE62300EECCB4 /* dianjin_navigation_bar_background1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "dianjin_navigation_bar_background1@2x.png"; path = "Resources/dianjin_navigation_bar_background1@2x.png"; sourceTree = "<group>"; };
+		C47851BF170EEDB600EECCB4 /* StationTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StationTableViewCell.h; path = Classes/StationTableViewCell.h; sourceTree = "<group>"; };
+		C47851C0170EEDB600EECCB4 /* StationTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StationTableViewCell.m; path = Classes/StationTableViewCell.m; sourceTree = "<group>"; };
+		C47851C4170EF23A00EECCB4 /* BusStation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BusStation.h; path = Classes/BusStation.h; sourceTree = "<group>"; };
+		C47851C5170EF23A00EECCB4 /* BusStation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BusStation.m; path = Classes/BusStation.m; sourceTree = "<group>"; };
+		C47851C7170EF38600EECCB4 /* BusStationParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BusStationParser.h; path = Classes/BusStationParser.h; sourceTree = "<group>"; };
+		C47851C8170EF38600EECCB4 /* BusStationParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BusStationParser.m; path = Classes/BusStationParser.m; sourceTree = "<group>"; };
 		C48AA81F1707CC9D00FDE374 /* MainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard.storyboard; sourceTree = "<group>"; };
 		C48AA8211707D18600FDE374 /* SampleConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SampleConstants.h; path = Classes/SampleConstants.h; sourceTree = "<group>"; };
 		C48AA8221707D1D700FDE374 /* BannerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BannerViewController.h; path = Classes/BannerViewController.h; sourceTree = "<group>"; };
@@ -421,8 +430,6 @@
 				C4E67D721709BCC000B3803E /* Parser */,
 				C4617A0E17082B7B00783192 /* SettingViewController.h */,
 				C4617A0F17082B7B00783192 /* SettingViewController.m */,
-				C4617A0817082AF900783192 /* StationSearchViewController.h */,
-				C4617A0917082AF900783192 /* StationSearchViewController.m */,
 			);
 			name = Buses;
 			sourceTree = "<group>";
@@ -496,11 +503,12 @@
 			children = (
 				C46886231707C51000564DE9 /* AppDelegate.h */,
 				C46886241707C51000564DE9 /* AppDelegate.m */,
+				C4E67D9F1709C5F400B3803E /* server.plist */,
+				C48AA81F1707CC9D00FDE374 /* MainStoryboard.storyboard */,
 				C4617A0417082A3200783192 /* Buses */,
 				C46886361707C93800564DE9 /* Common */,
 				C48AA8251707D4DA00FDE374 /* Index */,
-				C48AA81F1707CC9D00FDE374 /* MainStoryboard.storyboard */,
-				C4E67D9F1709C5F400B3803E /* server.plist */,
+				C47851BE170EED5200EECCB4 /* station */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -603,6 +611,37 @@
 				C468865D1707CB8100564DE9 /* libGoogleAnalytics.a */,
 			);
 			name = GoogleAnalytics;
+			sourceTree = "<group>";
+		};
+		C47851BE170EED5200EECCB4 /* station */ = {
+			isa = PBXGroup;
+			children = (
+				C47851C3170EF20F00EECCB4 /* Parser */,
+				C47851C2170EF20800EECCB4 /* Model */,
+				C4617A0817082AF900783192 /* StationSearchViewController.h */,
+				C4617A0917082AF900783192 /* StationSearchViewController.m */,
+				C47851BF170EEDB600EECCB4 /* StationTableViewCell.h */,
+				C47851C0170EEDB600EECCB4 /* StationTableViewCell.m */,
+			);
+			name = station;
+			sourceTree = "<group>";
+		};
+		C47851C2170EF20800EECCB4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C47851C4170EF23A00EECCB4 /* BusStation.h */,
+				C47851C5170EF23A00EECCB4 /* BusStation.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		C47851C3170EF20F00EECCB4 /* Parser */ = {
+			isa = PBXGroup;
+			children = (
+				C47851C7170EF38600EECCB4 /* BusStationParser.h */,
+				C47851C8170EF38600EECCB4 /* BusStationParser.m */,
+			);
+			name = Parser;
 			sourceTree = "<group>";
 		};
 		C48AA8251707D4DA00FDE374 /* Index */ = {
@@ -852,6 +891,9 @@
 				C4EBBF36170E5C14001308A1 /* BusSingleLineParser.m in Sources */,
 				C4EBBF3A170E5C78001308A1 /* BusSingleLine.m in Sources */,
 				C4EBBF3D170E6860001308A1 /* SingleLineTimeParser.m in Sources */,
+				C47851C1170EEDB600EECCB4 /* StationTableViewCell.m in Sources */,
+				C47851C6170EF23A00EECCB4 /* BusStation.m in Sources */,
+				C47851C9170EF38600EECCB4 /* BusStationParser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
