@@ -19,6 +19,7 @@
 @property (nonatomic, strong) NSMutableArray *busLineTotalArray;
 
 @property (nonatomic, strong) BusLineParser *busLineParser;
+@property (nonatomic, strong) UIControl *touchView;
 
 @end
 
@@ -39,6 +40,11 @@
     self.navigationItem.title = @"线路查询";
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"苏州" style:UIBarButtonItemStyleBordered target:self action:@selector(showMenu)];
     [self loadCustomBanner];
+    
+    self.touchView = [[UIControl alloc] initWithFrame:self.tableView.frame];
+    [self.touchView addTarget:self action:@selector(closeTouchView) forControlEvents:UIControlEventTouchUpInside];
+    self.touchView.backgroundColor = [UIColor blackColor];
+    self.touchView.alpha = 0.8;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -57,7 +63,14 @@
 - (IBAction)searchButtonTapped:(id)sender
 {
     [self.queryField resignFirstResponder];
+    [self.touchView removeFromSuperview];
     [self downloadData];
+}
+
+- (void)closeTouchView
+{
+    [self.queryField resignFirstResponder];
+    [self.touchView removeFromSuperview];
 }
 
 - (void)downloadData
@@ -146,6 +159,12 @@
     self.busLineTotalArray = [data valueForKey:@"busLineArry"];
     [self.tableView reloadData];
     [SVProgressHUD dismiss];
+}
+
+#pragma mark - UITextFieldDelegate
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    [self.view addSubview:self.touchView];
 }
 
 - (void)showMenu

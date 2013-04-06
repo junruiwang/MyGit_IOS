@@ -17,6 +17,8 @@
 @property (nonatomic, strong) NSMutableArray *stationTotalArray;
 @property (nonatomic, strong) BusStationParser *busStationParser;
 
+@property (nonatomic, strong) UIControl *touchView;
+
 @end
 
 @implementation StationSearchViewController
@@ -35,6 +37,11 @@
     [super viewDidLoad];
     self.navigationItem.title = @"站点查询";
 	[self loadCustomBanner];
+    
+    self.touchView = [[UIControl alloc] initWithFrame:self.tableView.frame];
+    [self.touchView addTarget:self action:@selector(closeTouchView) forControlEvents:UIControlEventTouchUpInside];
+    self.touchView.backgroundColor = [UIColor blackColor];
+    self.touchView.alpha = 0.8;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -60,7 +67,14 @@
 - (IBAction)searchButtonTapped:(id)sender
 {
     [self.queryField resignFirstResponder];
+    [self.touchView removeFromSuperview];
     [self downloadData];
+}
+
+- (void)closeTouchView
+{
+    [self.queryField resignFirstResponder];
+    [self.touchView removeFromSuperview];
 }
 
 - (void)didReceiveMemoryWarning
@@ -125,6 +139,12 @@
     self.stationTotalArray = [data valueForKey:@"stationTotalArray"];
     [self.tableView reloadData];
     [SVProgressHUD dismiss];
+}
+
+#pragma mark - UITextFieldDelegate
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    [self.view addSubview:self.touchView];
 }
 
 @end

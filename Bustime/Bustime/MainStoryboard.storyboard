@@ -162,6 +162,7 @@
                                         <textInputTraits key="textInputTraits" returnKeyType="search"/>
                                         <connections>
                                             <action selector="searchButtonTapped:" destination="yOr-dT-dy1" eventType="editingDidEndOnExit" id="SXs-uv-Fov"/>
+                                            <outlet property="delegate" destination="yOr-dT-dy1" id="oR1-k2-c40"/>
                                         </connections>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Vx1-3T-ki6">
@@ -413,6 +414,7 @@
                                         <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" returnKeyType="search"/>
                                         <connections>
                                             <action selector="searchButtonTapped:" destination="tOO-xk-rAS" eventType="editingDidEndOnExit" id="Y8j-QZ-dLd"/>
+                                            <outlet property="delegate" destination="tOO-xk-rAS" id="tjE-WM-hNF"/>
                                         </connections>
                                     </textField>
                                 </subviews>
@@ -591,6 +593,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="J2Q-0B-HwB"/>
+        <segue reference="Eoi-Yn-sMA"/>
     </inferredMetricsTieBreakers>
 </document>

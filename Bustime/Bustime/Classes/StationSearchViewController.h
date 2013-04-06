@@ -9,7 +9,7 @@
 #import "BannerViewController.h"
 #import "BusStationParser.h"
 
-@interface StationSearchViewController : BannerViewController<UITableViewDataSource, UITableViewDelegate, GDataParserDelegate>
+@interface StationSearchViewController : BannerViewController<UITableViewDataSource, UITableViewDelegate, GDataParserDelegate, UITextFieldDelegate>
 
 @property(nonatomic, weak) IBOutlet UITableView *tableView;
 @property(nonatomic, weak) IBOutlet UITextField *queryField;

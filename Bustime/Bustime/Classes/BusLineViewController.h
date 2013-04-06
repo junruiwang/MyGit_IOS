@@ -9,7 +9,7 @@
 #import "BannerViewController.h"
 #import "BusLineParser.h"
 
-@interface BusLineViewController : BannerViewController<UITableViewDataSource, UITableViewDelegate, GDataParserDelegate>
+@interface BusLineViewController : BannerViewController<UITableViewDataSource, UITableViewDelegate, GDataParserDelegate, UITextFieldDelegate>
 
 
 @property(nonatomic, weak) IBOutlet UITableView *tableView;
