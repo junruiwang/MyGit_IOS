@@ -36,6 +36,12 @@
 	[self loadCustomBanner];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self customizeNavBar];
+}
+
 - (void)downloadData
 {
     if (self.busStationParser != nil) {

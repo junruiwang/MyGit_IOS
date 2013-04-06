@@ -49,6 +49,12 @@
     [self.view addSubview:self.subScrollView];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self customizeNavBar];
+}
+
 - (void)downloadDataForBusStation
 {
     if (self.isFirst) {
