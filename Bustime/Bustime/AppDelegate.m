@@ -13,11 +13,19 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackOpaque];
     // Initialize Google Analytics with a 120-second dispatch interval.
     [GAI sharedInstance].debug = NO;
     [GAI sharedInstance].dispatchInterval = 120;
     [GAI sharedInstance].trackUncaughtExceptions = YES;
     self.tracker = [[GAI sharedInstance] trackerWithTrackingId:kTrackingId];
+    
+    //设置导航栏颜色风格
+    NSString *styleColor = [[NSUserDefaults standardUserDefaults] stringForKey:kNavigationBarDefaultColor];
+    if (styleColor == nil) {
+        [[NSUserDefaults standardUserDefaults] setObject:kNavigationBarRedColor forKey:kNavigationBarDefaultColor];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
     
     return YES;
 }

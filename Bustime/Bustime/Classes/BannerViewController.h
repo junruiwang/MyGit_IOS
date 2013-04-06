@@ -25,4 +25,6 @@
 
 - (void) backHome: (id) sender;
 
+- (void) customizeNavBar;
+
 @end

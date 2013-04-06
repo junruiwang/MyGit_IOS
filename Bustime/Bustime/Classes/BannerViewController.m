@@ -36,12 +36,23 @@
 }
 
 - (void) customizeNavBar {
+    NSString *styleColor = [[NSUserDefaults standardUserDefaults] stringForKey:kNavigationBarDefaultColor];
     PrettyNavigationBar *navBar = (PrettyNavigationBar *)self.navigationController.navigationBar;
-    navBar.topLineColor = [UIColor colorWithHex:0xFF1000];
-    navBar.gradientStartColor = [UIColor colorWithHex:0xDD0000];
-    navBar.gradientEndColor = [UIColor colorWithHex:0xAA0000];
-    navBar.bottomLineColor = [UIColor colorWithHex:0x990000];
-    navBar.tintColor = navBar.gradientEndColor;
+    if ([styleColor isEqualToString:kNavigationBarRedColor]) {
+        navBar.topLineColor = [UIColor colorWithHex:0xFF1000];
+        navBar.gradientStartColor = [UIColor colorWithHex:0xDD0000];
+        navBar.gradientEndColor = [UIColor colorWithHex:0xAA0000];
+        navBar.bottomLineColor = [UIColor colorWithHex:0x990000];
+        navBar.tintColor = navBar.gradientEndColor;
+    } else {
+        navBar.topLineColor = [UIColor colorWithHex:0x84B7D5];
+        navBar.gradientStartColor = [UIColor colorWithHex:0x53A4DE];
+        navBar.gradientEndColor = [UIColor colorWithHex:0x297CB7];
+        navBar.bottomLineColor = [UIColor colorWithHex:0x186399];
+        navBar.tintColor = [UIColor colorWithHex:0x3D89BF];
+    }
+    
+    //设置导航条圆角
     navBar.roundedCornerRadius = 8;
     
 //    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleBlackOpaque;

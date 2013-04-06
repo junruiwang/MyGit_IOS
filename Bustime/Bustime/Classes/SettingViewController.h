@@ -8,6 +8,8 @@
 
 #import "BannerViewController.h"
 
-@interface SettingViewController : BannerViewController
+@interface SettingViewController : BannerViewController<UITableViewDataSource, UITableViewDelegate>
+
+@property(nonatomic, weak) IBOutlet UITableView *tableView;
 
 @end

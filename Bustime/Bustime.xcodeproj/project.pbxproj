@@ -80,8 +80,6 @@
 		C468864A1707CAB200564DE9 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C46886491707CAB200564DE9 /* MobileCoreServices.framework */; };
 		C46886561707CB5700564DE9 /* libGoogleAdMobAds.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C46886551707CB5700564DE9 /* libGoogleAdMobAds.a */; };
 		C468865E1707CB8100564DE9 /* libGoogleAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C468865D1707CB8100564DE9 /* libGoogleAnalytics.a */; };
-		C46AD9121707EC8800AE95C5 /* MyImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = C46AD9111707EC8800AE95C5 /* MyImageView.m */; };
-		C46AD9151707EF4100AE95C5 /* IndexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C46AD9141707EF4100AE95C5 /* IndexViewController.m */; };
 		C46F361117087E42002C7BC2 /* PagePushSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = C46F361017087E42002C7BC2 /* PagePushSegue.m */; };
 		C47851BA170EE62300EECCB4 /* bus_favorites.png in Resources */ = {isa = PBXBuildFile; fileRef = C47851B6170EE62300EECCB4 /* bus_favorites.png */; };
 		C47851BB170EE62300EECCB4 /* bus_favorites@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C47851B7170EE62300EECCB4 /* bus_favorites@2x.png */; };
@@ -238,10 +236,6 @@
 		C468865B1707CB8100564DE9 /* GAITransaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GAITransaction.h; path = Libraries/GoogleAnalytics/GAITransaction.h; sourceTree = "<group>"; };
 		C468865C1707CB8100564DE9 /* GAITransactionItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GAITransactionItem.h; path = Libraries/GoogleAnalytics/GAITransactionItem.h; sourceTree = "<group>"; };
 		C468865D1707CB8100564DE9 /* libGoogleAnalytics.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGoogleAnalytics.a; path = Libraries/GoogleAnalytics/libGoogleAnalytics.a; sourceTree = "<group>"; };
-		C46AD9101707EC8800AE95C5 /* MyImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyImageView.h; path = Classes/MyImageView.h; sourceTree = "<group>"; };
-		C46AD9111707EC8800AE95C5 /* MyImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyImageView.m; path = Classes/MyImageView.m; sourceTree = "<group>"; };
-		C46AD9131707EF4100AE95C5 /* IndexViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IndexViewController.h; path = Classes/IndexViewController.h; sourceTree = "<group>"; };
-		C46AD9141707EF4100AE95C5 /* IndexViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IndexViewController.m; path = Classes/IndexViewController.m; sourceTree = "<group>"; };
 		C46F360F17087E42002C7BC2 /* PagePushSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PagePushSegue.h; path = Classes/PagePushSegue.h; sourceTree = "<group>"; };
 		C46F361017087E42002C7BC2 /* PagePushSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PagePushSegue.m; path = Classes/PagePushSegue.m; sourceTree = "<group>"; };
 		C47851B6170EE62300EECCB4 /* bus_favorites.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bus_favorites.png; path = Resources/bus_favorites.png; sourceTree = "<group>"; };
@@ -507,7 +501,6 @@
 				C48AA81F1707CC9D00FDE374 /* MainStoryboard.storyboard */,
 				C4617A0417082A3200783192 /* Buses */,
 				C46886361707C93800564DE9 /* Common */,
-				C48AA8251707D4DA00FDE374 /* Index */,
 				C47851BE170EED5200EECCB4 /* station */,
 			);
 			name = Classes;
@@ -642,17 +635,6 @@
 				C47851C8170EF38600EECCB4 /* BusStationParser.m */,
 			);
 			name = Parser;
-			sourceTree = "<group>";
-		};
-		C48AA8251707D4DA00FDE374 /* Index */ = {
-			isa = PBXGroup;
-			children = (
-				C46AD9131707EF4100AE95C5 /* IndexViewController.h */,
-				C46AD9141707EF4100AE95C5 /* IndexViewController.m */,
-				C46AD9101707EC8800AE95C5 /* MyImageView.h */,
-				C46AD9111707EC8800AE95C5 /* MyImageView.m */,
-			);
-			name = Index;
 			sourceTree = "<group>";
 		};
 		C48BABDE1709D44C00D1DC61 /* RegexKitLite */ = {
@@ -847,8 +829,6 @@
 				C46886211707C51000564DE9 /* main.m in Sources */,
 				C46886251707C51000564DE9 /* AppDelegate.m in Sources */,
 				C48AA8241707D1D700FDE374 /* BannerViewController.m in Sources */,
-				C46AD9121707EC8800AE95C5 /* MyImageView.m in Sources */,
-				C46AD9151707EF4100AE95C5 /* IndexViewController.m in Sources */,
 				C4617A0717082AA200783192 /* BusLineViewController.m in Sources */,
 				C4617A0A17082AF900783192 /* StationSearchViewController.m in Sources */,
 				C4617A0D17082B2700783192 /* HistoryInfoViewController.m in Sources */,
