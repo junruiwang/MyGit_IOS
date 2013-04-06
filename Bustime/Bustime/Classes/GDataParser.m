@@ -43,7 +43,8 @@
     [self cancel];
     [_requestData resetBytesInRange:NSMakeRange(0, [_requestData length])];
     [_requestData setLength:0];
-    NSString* url = [NSString stringWithFormat:@"%@?%@", self.serverAddress, self.requestString];
+    NSString *url = [NSString stringWithFormat:@"%@?%@", self.serverAddress, self.requestString];
+    NSLog(@"%@",url);
     NSURL *nsURL = [NSURL URLWithString:[url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
     NSURLRequest *request = [NSURLRequest requestWithURL:nsURL cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval: 5];
     _connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];

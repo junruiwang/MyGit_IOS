@@ -39,6 +39,7 @@
 		C445A70D170A9B3400DEC528 /* line-next@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C445A70B170A9B3400DEC528 /* line-next@2x.png */; };
 		C445A71A170AA8A300DEC528 /* adsmogo_btnbg.png in Resources */ = {isa = PBXBuildFile; fileRef = C445A718170AA8A300DEC528 /* adsmogo_btnbg.png */; };
 		C445A71B170AA8A300DEC528 /* adsmogo_btnbg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C445A719170AA8A300DEC528 /* adsmogo_btnbg@2x.png */; };
+		C447152C17104CCB0080DE0B /* StationBusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C447152B17104CCB0080DE0B /* StationBusViewController.m */; };
 		C44D567B1709262E0007CF97 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C44D56781709262E0007CF97 /* SVProgressHUD.bundle */; };
 		C44D567C1709262E0007CF97 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = C44D567A1709262E0007CF97 /* SVProgressHUD.m */; };
 		C44D567F170933FC0007CF97 /* navigation_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = C44D567D170933FC0007CF97 /* navigation_bg.png */; };
@@ -171,6 +172,8 @@
 		C445A70B170A9B3400DEC528 /* line-next@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "line-next@2x.png"; path = "Resources/line-next@2x.png"; sourceTree = "<group>"; };
 		C445A718170AA8A300DEC528 /* adsmogo_btnbg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = adsmogo_btnbg.png; path = Resources/adsmogo_btnbg.png; sourceTree = "<group>"; };
 		C445A719170AA8A300DEC528 /* adsmogo_btnbg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "adsmogo_btnbg@2x.png"; path = "Resources/adsmogo_btnbg@2x.png"; sourceTree = "<group>"; };
+		C447152A17104CCB0080DE0B /* StationBusViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StationBusViewController.h; path = Classes/StationBusViewController.h; sourceTree = "<group>"; };
+		C447152B17104CCB0080DE0B /* StationBusViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StationBusViewController.m; path = Classes/StationBusViewController.m; sourceTree = "<group>"; };
 		C44D56781709262E0007CF97 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = SVProgressHUD.bundle; path = Libraries/SVProgressHUD/SVProgressHUD.bundle; sourceTree = "<group>"; };
 		C44D56791709262E0007CF97 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SVProgressHUD.h; path = Libraries/SVProgressHUD/SVProgressHUD.h; sourceTree = "<group>"; };
 		C44D567A1709262E0007CF97 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SVProgressHUD.m; path = Libraries/SVProgressHUD/SVProgressHUD.m; sourceTree = "<group>"; };
@@ -615,6 +618,8 @@
 				C4617A0917082AF900783192 /* StationSearchViewController.m */,
 				C47851BF170EEDB600EECCB4 /* StationTableViewCell.h */,
 				C47851C0170EEDB600EECCB4 /* StationTableViewCell.m */,
+				C447152A17104CCB0080DE0B /* StationBusViewController.h */,
+				C447152B17104CCB0080DE0B /* StationBusViewController.m */,
 			);
 			name = station;
 			sourceTree = "<group>";
@@ -874,6 +879,7 @@
 				C47851C1170EEDB600EECCB4 /* StationTableViewCell.m in Sources */,
 				C47851C6170EF23A00EECCB4 /* BusStation.m in Sources */,
 				C47851C9170EF38600EECCB4 /* BusStationParser.m in Sources */,
+				C447152C17104CCB0080DE0B /* StationBusViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,6 +9,7 @@
 #import "StationSearchViewController.h"
 #import "StationTableViewCell.h"
 #import "BusStation.h"
+#import "StationBusViewController.h"
 
 @interface StationSearchViewController ()
 
@@ -66,6 +67,24 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.destinationViewController isKindOfClass:[StationBusViewController class]]) {
+        StationBusViewController *stationBusViewController = (StationBusViewController *)segue.destinationViewController;
+        
+        BusStation *busStation = [self.stationArray objectAtIndex:[[self.tableView indexPathForSelectedRow] row]];
+        
+        NSMutableArray *doubleArray = [[NSMutableArray alloc] initWithCapacity:2];
+        for (BusStation *tmpBusStation in self.stationTotalArray) {
+            if ([tmpBusStation.standName isEqualToString:busStation.standName]) {
+                [doubleArray addObject:tmpBusStation];
+            }
+        }
+        stationBusViewController.stationArray = doubleArray;
+    }
+    
 }
 
 #pragma mark - UITableViewDataSource

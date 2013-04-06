@@ -10,5 +10,7 @@
 	<string>http://42.121.117.61:6068/bustime/api/queryRunSingleLine</string>
 	<key>query_bus_station</key>
 	<string>http://42.121.117.61:6068/bustime/api/queryStation</string>
+	<key>query_station_line</key>
+	<string>http://42.121.117.61:6068/bustime/api/queryStationBus</string>
 </dict>
 </plist>

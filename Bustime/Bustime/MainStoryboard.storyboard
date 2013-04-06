@@ -223,6 +223,7 @@
                                             <outlet property="areaLabel" destination="xdj-im-E2L" id="V8n-qS-wh5"/>
                                             <outlet property="iconView" destination="VN3-3s-ZVo" id="Rlb-zQ-L3l"/>
                                             <outlet property="stationLabel" destination="Zdb-jU-pDQ" id="xvL-ZJ-y1z"/>
+                                            <segue destination="sZa-PI-RFg" kind="push" identifier="buslist" id="XuQ-Kq-RA4"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -243,6 +244,75 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ioN-1Y-JC0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="845" y="-180"/>
+        </scene>
+        <!--Station Bus View Controller-->
+        <scene sceneID="K6C-6Y-bcl">
+            <objects>
+                <viewController storyboardIdentifier="StationBusViewController" id="sZa-PI-RFg" customClass="StationBusViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="h94-Y3-EAl">
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="bGp-5i-RpC">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="BusLineTableViewCell" rowHeight="54" id="ufj-ov-Ric" customClass="BusLineTableViewCell">
+                                        <rect key="frame" x="0.0" y="22" width="320" height="54"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="53"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="line.png" id="dpo-SS-rM4">
+                                                    <rect key="frame" x="14" y="15" width="26" height="26"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="19路" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="gFq-r8-OpG">
+                                                    <rect key="frame" x="55" y="6" width="175" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </label>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="上唐街 - 火车站北广场" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="bVw-be-Np6">
+                                                    <rect key="frame" x="55" y="28" width="250" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="line-next.png" id="zze-bp-3Vx">
+                                                    <rect key="frame" x="293" y="23" width="7" height="10"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <connections>
+                                            <outlet property="nameLabel" destination="gFq-r8-OpG" id="gCq-fF-Oix"/>
+                                            <outlet property="stationLabel" destination="bVw-be-Np6" id="61Y-Wg-Ss9"/>
+                                            <segue destination="gqp-Ki-Z1a" kind="push" id="J2Q-0B-HwB"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="sZa-PI-RFg" id="vpH-Fi-Dyt"/>
+                                    <outlet property="delegate" destination="sZa-PI-RFg" id="mZe-Ek-lsv"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="K2P-gN-jCC"/>
+                    <connections>
+                        <outlet property="tableView" destination="bGp-5i-RpC" id="1Hj-uu-qo7"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hF9-Pb-Gaq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1332" y="-180"/>
         </scene>
         <!--Navigation Controller - 设置-->
         <scene sceneID="BiB-Ag-fSB">
@@ -492,6 +562,12 @@
                 <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
             </relationships>
         </class>
+        <class className="StationBusViewController" superclassName="BannerViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/StationBusViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
         <class className="StationSearchViewController" superclassName="BannerViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/StationSearchViewController.h"/>
             <relationships>
@@ -514,4 +590,7 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="J2Q-0B-HwB"/>
+    </inferredMetricsTieBreakers>
 </document>
