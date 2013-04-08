@@ -76,7 +76,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text=" 首末班时间：06:30-22:10" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8Tc-BO-qMV">
-                                        <rect key="frame" x="20" y="11" width="144" height="23"/>
+                                        <rect key="frame" x="156" y="8" width="144" height="23"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.2267482867" green="0.3050691217" blue="0.60631471869999998" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -91,7 +91,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="沪宁城铁园区站" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8Q3-ne-KjB">
-                                        <rect key="frame" x="58" y="42" width="230" height="21"/>
+                                        <rect key="frame" x="58" y="42" width="185" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -105,17 +105,31 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="苏生首末站北" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="xmJ-Ww-TGH">
-                                        <rect key="frame" x="58" y="66" width="230" height="21"/>
+                                        <rect key="frame" x="58" y="66" width="185" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="全程线路共18站" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="CaS-lJ-UCd">
-                                        <rect key="frame" x="188" y="12" width="106" height="21"/>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="全程18站" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="CaS-lJ-UCd">
+                                        <rect key="frame" x="232" y="64" width="68" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" red="0.40947690219999999" green="0.095053214819999995" blue="0.255229594" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="班次：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="tBw-wy-56f">
+                                        <rect key="frame" x="20" y="14" width="42" height="18"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="19路" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="0pn-gg-zO3">
+                                        <rect key="frame" x="58" y="12" width="106" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -126,6 +140,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="25c-EX-Juf"/>
                     <connections>
+                        <outlet property="busNumber" destination="0pn-gg-zO3" id="dqe-wN-qhh"/>
                         <outlet property="endStationLabel" destination="xmJ-Ww-TGH" id="eKv-lI-n14"/>
                         <outlet property="startStationLabel" destination="8Q3-ne-KjB" id="sAP-gr-mk4"/>
                         <outlet property="timeLabel" destination="8Tc-BO-qMV" id="Uw9-u3-WZY"/>
@@ -524,6 +539,7 @@
         <class className="BusDetailViewController" superclassName="BannerViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/BusDetailViewController.h"/>
             <relationships>
+                <relationship kind="outlet" name="busNumber" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="endStationLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="startStationLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="timeLabel" candidateClass="UILabel"/>

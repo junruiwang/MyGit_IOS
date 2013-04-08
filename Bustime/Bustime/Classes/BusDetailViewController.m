@@ -9,15 +9,16 @@
 #import "BusDetailViewController.h"
 #import <QuartzCore/QuartzCore.h>
 #import "BusLine.h"
+#import "FaverateBusLineManager.h"
 
 @interface BusDetailViewController ()
 
-@property(nonatomic, strong) UIColor *defaultTintColor;
 @property(nonatomic, strong) BusSingleLineParser *busSingleLineParser;
 @property(nonatomic, strong) BusLine *currentBusLine;
 @property(nonatomic, assign) BOOL isFirst;
-
 @property(nonatomic, strong) NSMutableArray *busSingleStationArry;
+
+@property(nonatomic, strong) FaverateBusLineManager *faverateBusLineManager;
 
 @end
 
@@ -29,6 +30,7 @@
     if (self) {
         _isFirst = YES;
         _busSingleStationArry = [[NSMutableArray alloc] initWithCapacity:20];
+        _faverateBusLineManager = [[FaverateBusLineManager alloc] init];
     }
     return self;
 }
@@ -77,21 +79,23 @@
 - (void)loadDefaultPageView
 {
     self.currentBusLine = self.busLineArray[0];
-    NSString *regexString = @"^[0-9]*$";
-    BOOL matched = [self.currentBusLine.lineNumber isMatchedByRegex:regexString];
-    if (matched) {
-        self.title =[NSString stringWithFormat:@"%@路", self.currentBusLine.lineNumber];
-    } else {
-        self.title = self.currentBusLine.lineNumber;
-    }
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"收藏" style:UIBarButtonItemStyleBordered target:self action:@selector(storeToFavourite)];
+    
     [self loadBusBaseInfo:self.currentBusLine];
     [self downloadDataForBusStation];
 }
 
 - (void)loadBusBaseInfo:(BusLine *) busLine
 {
+    NSString *regexString = @"^[0-9]*$";
+    BOOL matched = [self.currentBusLine.lineNumber isMatchedByRegex:regexString];
+    if (matched) {
+        self.busNumber.text =[NSString stringWithFormat:@"%@路", self.currentBusLine.lineNumber];
+    } else {
+        self.busNumber.text = self.currentBusLine.lineNumber;
+    }
     self.timeLabel.text = [NSString stringWithFormat:@" 首末班时间：%@", busLine.runTime];
-    self.totalStationLabel.text = [NSString stringWithFormat:@"全程线路共%d站", busLine.totalStation];
+    self.totalStationLabel.text = [NSString stringWithFormat:@"全程%d站", busLine.totalStation];
     self.startStationLabel.text = busLine.startStation;
     self.endStationLabel.text = busLine.endStation;
 }
@@ -100,21 +104,16 @@
 - (void)loadSegmentedButton
 {
     // segmented control as the custom title view
-	NSArray *segmentTextContent = [NSArray arrayWithObjects:
-                                   NSLocalizedString(@"上行", @""),
-                                   NSLocalizedString(@"下行", @""),
-								   nil];
+	NSArray *segmentTextContent = [NSArray arrayWithObjects: @"上行", @"下行", nil];
 	UISegmentedControl *segmentedControl = [[UISegmentedControl alloc] initWithItems:segmentTextContent];
 	segmentedControl.selectedSegmentIndex = 0;
 	segmentedControl.autoresizingMask = UIViewAutoresizingFlexibleWidth;
 	segmentedControl.segmentedControlStyle = UISegmentedControlStyleBar;
 	segmentedControl.frame = CGRectMake(0, 0, 100, kCustomButtonHeight);
 	[segmentedControl addTarget:self action:@selector(segmentAction:) forControlEvents:UIControlEventValueChanged];
-	
-	self.defaultTintColor = segmentedControl.tintColor;	// keep track of this for later
     
-	//self.navigationItem.titleView = segmentedControl;
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:segmentedControl];
+	self.navigationItem.titleView = segmentedControl;
+    //self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:segmentedControl];
 }
 
 - (void)loadTopTitleView
@@ -247,6 +246,19 @@
         BusLine *busLine = self.busLineArray[0];
         [self loadBusBaseInfo:busLine];
         [self loadBottomView:0];
+    }
+}
+
+- (void)storeToFavourite
+{
+    BusLine *busLine = self.busLineArray[0];
+    BOOL isFaverate = [self.faverateBusLineManager isBusLineInFaverate:busLine.lineNumber];
+    if (isFaverate) {
+        return;
+    }
+    [self.faverateBusLineManager insertIntoFaverateWithBusLine:busLine];
+    if ([self.busLineArray count] > 1) {
+        [self.faverateBusLineManager insertIntoFaverateWithBusLine:self.busLineArray[1]];
     }
 }
 

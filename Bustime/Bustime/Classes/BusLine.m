@@ -10,6 +10,11 @@
 
 @implementation BusLine
 
++ (BusLine *)unarchived:(NSData *) data
+{
+    return (BusLine *)[NSKeyedUnarchiver unarchiveObjectWithData:data];
+}
+
 - (id) initWithDictionary : (NSDictionary *) dict
 {
     if (dict == nil) {
@@ -28,6 +33,52 @@
         _stationArray = [[NSMutableArray alloc] initWithCapacity:10];
     }
     return self;
+}
+
+- (NSData *)archived
+{
+    return [NSKeyedArchiver archivedDataWithRootObject:self];
+}
+
+#pragma mark - NSCoding
+
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    if (self = [super init])
+    {
+        self.lineNumber = [aDecoder decodeObjectForKey:@"lineNumber"];
+        self.lineCode = [aDecoder decodeObjectForKey:@"lineCode"];
+        self.totalStation = [aDecoder decodeIntegerForKey:@"totalStation"];
+        self.startStation = [aDecoder decodeObjectForKey:@"startStation"];
+        self.endStation = [aDecoder decodeObjectForKey:@"endStation"];
+        self.runTime = [aDecoder decodeObjectForKey:@"runTime"];
+    }
+    
+    return self;
+}
+
+-(void)encodeWithCoder:(NSCoder *)aCoder
+{
+    [aCoder encodeObject:self.lineNumber forKey:@"lineNumber"];
+    [aCoder encodeObject:self.lineCode forKey:@"lineCode"];
+    [aCoder encodeInteger:self.totalStation forKey:@"totalStation"];
+    [aCoder encodeObject:self.startStation forKey:@"startStation"];
+    [aCoder encodeObject:self.endStation forKey:@"endStation"];
+    [aCoder encodeObject:self.runTime forKey:@"runTime"];
+}
+
+#pragma mark - NSCopying
+
+- (id)copyWithZone:(NSZone *)zone
+{
+    BusLine *busLine = [[self class] allocWithZone:zone];
+    self.lineNumber = [self.lineNumber copyWithZone:zone];
+    self.lineCode = [self.lineCode copyWithZone:zone];
+    self.totalStation = self.totalStation;
+    self.startStation = [self.startStation copyWithZone:zone];
+    self.endStation = [self.endStation copyWithZone:zone];
+    self.runTime = [self.runTime copyWithZone:zone];
+    return busLine;
 }
 
 @end

@@ -41,6 +41,8 @@
     self.trackedViewName = @"站点关联线路查询页面";
     self.navigationItem.title = @"站点查询";
     
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"收藏" style:UIBarButtonItemStyleBordered target:self action:@selector(storeToFavourite)];
+    
     if ([self.stationArray count] >0) {
         BusStation *busStation = [self.stationArray objectAtIndex:0];
         [self downloadData:busStation.standCode];
@@ -58,6 +60,11 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)storeToFavourite
+{
+    
 }
 
 - (void)downloadData:(NSString *) stationCode

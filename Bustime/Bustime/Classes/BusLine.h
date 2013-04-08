@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "BusSingleLine.h"
 
-@interface BusLine : NSObject
+@interface BusLine : NSObject<NSCoding, NSCopying>
 
 @property(nonatomic, copy) NSString *lineNumber;
 @property(nonatomic, copy) NSString *lineCode;
@@ -20,6 +20,9 @@
 
 @property (nonatomic, strong) NSMutableArray *stationArray;
 
++ (BusLine *)unarchived:(NSData *) data;
+
 - (id) initWithDictionary : (NSDictionary *) dict;
+- (NSData *)archived;
 
 @end
