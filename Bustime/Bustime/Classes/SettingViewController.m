@@ -26,6 +26,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.trackedViewName = @"系统设置页面";
 	self.navigationItem.title = @"设置";
 }
 
@@ -114,6 +115,10 @@
                     }
                     
                     segmentedCell.actionBlock = ^(NSIndexPath *indexPath, int selectedIndex) {
+                        
+                        //GA跟踪搜索按钮
+                        [[GAI sharedInstance].defaultTracker sendEventWithCategory:@"系统主题设置" withAction:@"用户点击" withLabel:@"主题设置按钮" withValue:nil];
+                        
                         if (selectedIndex == 0) {
                             [[NSUserDefaults standardUserDefaults] setObject:kNavigationBarRedColor forKey:kNavigationBarDefaultColor];
                         } else {

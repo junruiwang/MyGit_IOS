@@ -25,6 +25,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.trackedViewName = @"我的收藏页面";
 	self.navigationItem.title = @"我的收藏";
 	[self loadCustomBanner];
 }

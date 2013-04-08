@@ -38,6 +38,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.trackedViewName = @"站点关联线路查询页面";
     self.navigationItem.title = @"站点查询";
     
     if ([self.stationArray count] >0) {
@@ -143,7 +144,7 @@
 #pragma mark - BaseJSONParserDelegate
 - (void)parser:(GDataParser*)parser DidFailedParseWithMsg:(NSString*)msg errCode:(NSInteger)code
 {
-    
+    NSLog(@"查询站点运行车辆信息发生异常：%@，错误代码：%d", msg, code);
 }
 
 - (void)parser:(GDataParser*)parser DidParsedData:(NSDictionary *)data

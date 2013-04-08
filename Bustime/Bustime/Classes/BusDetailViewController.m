@@ -36,6 +36,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.trackedViewName = @"运行车俩详情页面";
     [self loadDefaultPageView];
     
     self.subScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
@@ -274,7 +275,7 @@
 #pragma mark - BaseJSONParserDelegate
 - (void)parser:(GDataParser*)parser DidFailedParseWithMsg:(NSString*)msg errCode:(NSInteger)code
 {
-    
+    NSLog(@"查询运行车辆发生异常：%@，错误代码：%d", msg, code);
 }
 
 - (void)parser:(GDataParser*)parser DidParsedData:(NSDictionary *)data

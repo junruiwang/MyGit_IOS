@@ -66,6 +66,9 @@
 
 - (IBAction)searchButtonTapped:(id)sender
 {
+    //GA跟踪搜索按钮
+    [[GAI sharedInstance].defaultTracker sendEventWithCategory:@"站点查询" withAction:@"用户点击" withLabel:@"查询按钮" withValue:nil];
+    
     [self.queryField resignFirstResponder];
     [self.touchView removeFromSuperview];
     [self downloadData];
@@ -130,7 +133,7 @@
 #pragma mark BaseJSONParserDelegate
 - (void)parser:(GDataParser*)parser DidFailedParseWithMsg:(NSString*)msg errCode:(NSInteger)code
 {
-    
+    NSLog(@"查询站点信息发生异常：%@，错误代码：%d", msg, code);
 }
 
 - (void)parser:(GDataParser*)parser DidParsedData:(NSDictionary *)data

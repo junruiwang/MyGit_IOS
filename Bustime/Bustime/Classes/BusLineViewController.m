@@ -37,6 +37,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.trackedViewName = @"线路查询页面";
     self.navigationItem.title = @"线路查询";
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"苏州" style:UIBarButtonItemStyleBordered target:self action:@selector(showMenu)];
     [self loadCustomBanner];
@@ -62,6 +63,9 @@
 
 - (IBAction)searchButtonTapped:(id)sender
 {
+    //GA跟踪搜索按钮
+    [[GAI sharedInstance].defaultTracker sendEventWithCategory:@"线路查询" withAction:@"用户点击" withLabel:@"查询按钮" withValue:nil];
+    
     [self.queryField resignFirstResponder];
     [self.touchView removeFromSuperview];
     [self downloadData];
@@ -150,7 +154,7 @@
 #pragma mark BaseJSONParserDelegate
 - (void)parser:(GDataParser*)parser DidFailedParseWithMsg:(NSString*)msg errCode:(NSInteger)code
 {
-    
+    NSLog(@"查询线路信息发生异常：%@，错误代码：%d", msg, code);
 }
 
 - (void)parser:(GDataParser*)parser DidParsedData:(NSDictionary *)data

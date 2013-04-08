@@ -154,7 +154,8 @@
 }
 
 - (void)adViewWillLeaveApplication:(GADBannerView *)adView {
-    NSLog(@"用户触摸 Click-to-App-Store 或 Click-to-iTunes 横幅广告而转至后台或终止！");
+    //GA跟踪搜索按钮
+    [[GAI sharedInstance].defaultTracker sendEventWithCategory:@"用户触摸" withAction:@"Click-to-App-Store" withLabel:@"横幅广告条" withValue:nil];
 }
 
 @end
