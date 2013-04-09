@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface BusStation : NSObject
+@interface BusStation : NSObject<NSCoding, NSCopying>
 
 @property(nonatomic, copy) NSString *standCode;
 @property(nonatomic, copy) NSString *standName;
@@ -17,6 +17,10 @@
 @property(nonatomic, copy) NSString *road;
 @property(nonatomic, copy) NSString *bus;
 
++ (BusStation *)unarchived:(NSData *) data;
+
 - (id) initWithDictionary : (NSDictionary *) dict;
+
+- (NSData *)archived;
 
 @end

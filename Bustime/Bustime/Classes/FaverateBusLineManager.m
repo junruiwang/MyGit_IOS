@@ -26,6 +26,7 @@
         busArray = [[NSMutableArray alloc] initWithCapacity:20];
     }
     [busArray addObject:[busLine archived]];
+    
     return [busArray writeToFile: path atomically:YES];
     
 }
@@ -49,12 +50,23 @@
 {
     NSMutableArray *busArray = [self readFaverateBusListFromLocalFile];
     if (busArray) {
-        for (int i=0; i < [busArray count]; i++) {
+        NSInteger count = 0;
+        for (NSInteger i=0; i < [busArray count]; i++) {
             NSData *data = [busArray objectAtIndex:i];
             BusLine *busLine = [BusLine unarchived:data];
             if ([lineNumber caseInsensitiveCompare:busLine.lineNumber] == NSOrderedSame) {
-                [busArray removeObjectAtIndex:i];
-                break;
+                count += 1;
+            }
+        }
+        
+        for (NSInteger m=0; m < count; m++) {
+            for (NSInteger i=0; i < [busArray count]; i++) {
+                NSData *data = [busArray objectAtIndex:i];
+                BusLine *busLine = [BusLine unarchived:data];
+                if ([lineNumber caseInsensitiveCompare:busLine.lineNumber] == NSOrderedSame) {
+                    [busArray removeObjectAtIndex:i];
+                    break;
+                }
             }
         }
     }

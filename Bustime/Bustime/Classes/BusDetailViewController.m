@@ -17,8 +17,10 @@
 @property(nonatomic, strong) BusLine *currentBusLine;
 @property(nonatomic, assign) BOOL isFirst;
 @property(nonatomic, strong) NSMutableArray *busSingleStationArry;
-
 @property(nonatomic, strong) FaverateBusLineManager *faverateBusLineManager;
+
+@property(nonatomic, assign) BOOL isFaverate;
+@property(nonatomic, strong) UIButton *faverateButton;
 
 @end
 
@@ -79,7 +81,17 @@
 - (void)loadDefaultPageView
 {
     self.currentBusLine = self.busLineArray[0];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"收藏" style:UIBarButtonItemStyleBordered target:self action:@selector(storeToFavourite)];
+    self.isFaverate = [self.faverateBusLineManager isBusLineInFaverate:self.currentBusLine.lineNumber];
+    
+    if (self.isFaverate)
+    {
+        self.faverateButton = [self generateNavButton:@"heart_icon_red.png"  action:@selector(faverateButtonClicked:)];
+    }
+    else
+    {
+        self.faverateButton = [self generateNavButton:@"heart_icon.png" action:@selector(faverateButtonClicked:)];
+    }
+    [self addRightBarButton:self.faverateButton];
     
     [self loadBusBaseInfo:self.currentBusLine];
     [self downloadDataForBusStation];
@@ -249,17 +261,20 @@
     }
 }
 
-- (void)storeToFavourite
+- (void)faverateButtonClicked:(id) sender
 {
     BusLine *busLine = self.busLineArray[0];
-    BOOL isFaverate = [self.faverateBusLineManager isBusLineInFaverate:busLine.lineNumber];
-    if (isFaverate) {
-        return;
+    if (self.isFaverate) {
+        [self.faverateBusLineManager deleteBusLineInFaverate:busLine.lineNumber];
+        [self.faverateButton setImage:[UIImage imageNamed:@"heart_icon.png"] forState:UIControlStateNormal];
+    } else {
+        [self.faverateBusLineManager insertIntoFaverateWithBusLine:busLine];
+        if ([self.busLineArray count] > 1) {
+            [self.faverateBusLineManager insertIntoFaverateWithBusLine:self.busLineArray[1]];
+            [self.faverateButton setImage:[UIImage imageNamed:@"heart_icon_red.png"] forState:UIControlStateNormal];
+        }
     }
-    [self.faverateBusLineManager insertIntoFaverateWithBusLine:busLine];
-    if ([self.busLineArray count] > 1) {
-        [self.faverateBusLineManager insertIntoFaverateWithBusLine:self.busLineArray[1]];
-    }
+    self.isFaverate = !self.isFaverate;
 }
 
 - (void) mergeDataFromArry

@@ -70,7 +70,7 @@
     self.adBanner = nil;
 }
 
-- (void) loadCustomBanner
+- (void)loadCustomBanner
 {
     //Initialize the banner off the screen so that it animates up when displaying
     self.adBanner = [[GADBannerView alloc] initWithFrame:CGRectMake(0.0,
@@ -107,6 +107,14 @@
     
     UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
     self.navigationItem.leftBarButtonItem = barButtonItem;
+}
+
+- (void)addRightBarButton:(UIButton *) button
+{
+    button.frame = CGRectMake(0, 0, 40, 44);
+    
+    UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
+    self.navigationItem.rightBarButtonItem = barButtonItem;
 }
 
 - (UIButton *)generateNavButton:(NSString *)imageName action:(SEL)actionName

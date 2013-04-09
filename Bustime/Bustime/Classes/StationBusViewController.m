@@ -19,6 +19,8 @@
 @property(nonatomic, strong) BusLineParser *busLineParser;
 @property(nonatomic, assign) BOOL isFirst;
 
+@property(nonatomic, assign) BOOL isFaverate;
+@property(nonatomic, strong) UIButton *faverateButton;
 
 @end
 

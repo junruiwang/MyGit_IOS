@@ -17,14 +17,14 @@
 
 @property(nonatomic, strong) GADBannerView *adBanner;
 
-- (void) loadCustomBanner;
-
+- (void)loadCustomBanner;
 - (GADRequest *)createRequest;
-
 - (UIButton *)generateNavButton:(NSString *) imageName action:(SEL) actionName;
 
-- (void) backHome: (id) sender;
+- (void)addLeftBarButton:(NSString *) imageName;
+- (void)backHome: (id) sender;
+- (void)addRightBarButton:(UIButton *) button;
 
-- (void) customizeNavBar;
+- (void)customizeNavBar;
 
 @end
