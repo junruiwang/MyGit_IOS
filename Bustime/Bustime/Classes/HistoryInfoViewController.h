@@ -8,6 +8,9 @@
 
 #import "BannerViewController.h"
 
-@interface HistoryInfoViewController : BannerViewController
+@interface HistoryInfoViewController : BannerViewController<UITableViewDataSource, UITableViewDelegate>
+
+@property(nonatomic, weak) IBOutlet UITableView *busLineTableView;
+@property(nonatomic, weak) IBOutlet UITableView *stationTableView;
 
 @end

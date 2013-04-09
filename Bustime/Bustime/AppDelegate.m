@@ -23,7 +23,7 @@
     //设置导航栏颜色风格
     NSString *styleColor = [[NSUserDefaults standardUserDefaults] stringForKey:kNavigationBarDefaultColor];
     if (styleColor == nil) {
-        [[NSUserDefaults standardUserDefaults] setObject:kNavigationBarRedColor forKey:kNavigationBarDefaultColor];
+        [[NSUserDefaults standardUserDefaults] setObject:kNavigationBarblueColor forKey:kNavigationBarDefaultColor];
         [[NSUserDefaults standardUserDefaults] synchronize];
     }
     

@@ -49,6 +49,7 @@
 - (BOOL)deleteBusLineInFaverate:(NSString *) lineNumber
 {
     NSMutableArray *busArray = [self readFaverateBusListFromLocalFile];
+    
     if (busArray) {
         NSInteger count = 0;
         for (NSInteger i=0; i < [busArray count]; i++) {
@@ -79,6 +80,31 @@
 {
     NSString *path = [FileManager fileCachesPath:@"FaverateBusList.plist"];
     return [[NSMutableArray alloc] initWithContentsOfFile:path];
+}
+
+- (void)buildLocalFileToArray:(NSMutableArray *) busLineArray total:(NSMutableArray *) busLineTotalArray
+{
+    NSMutableArray *busArray = [self readFaverateBusListFromLocalFile];
+    [busLineArray removeAllObjects];
+    [busLineTotalArray removeAllObjects];
+    if (busArray) {
+        for (NSInteger i=0; i < [busArray count]; i++) {
+            NSData *data = [busArray objectAtIndex:i];
+            BusLine *busLine = [BusLine unarchived:data];
+            
+            BOOL isExist = NO;
+            for (BusLine *busLineOnly in busLineArray) {
+                if ([busLine.lineNumber isEqualToString:busLineOnly.lineNumber]) {
+                    isExist = YES;
+                    break;
+                }
+            }
+            if (!isExist) {
+                [busLineArray addObject:busLine];
+            }
+            [busLineTotalArray addObject:busLine];
+        }
+    }
 }
 
 @end

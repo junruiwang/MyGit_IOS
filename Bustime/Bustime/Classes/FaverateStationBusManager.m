@@ -27,7 +27,6 @@
         stationArray = [[NSMutableArray alloc] initWithCapacity:20];
     }
     [stationArray addObject:[busStation archived]];
-    
     return [stationArray writeToFile: path atomically:YES];
 }
 
@@ -78,6 +77,33 @@
 {
     NSString *path = [FileManager fileCachesPath:@"FaverateBusStation.plist"];
     return [[NSMutableArray alloc] initWithContentsOfFile:path];
+}
+
+- (void)buildLocalFileToArray:(NSMutableArray *) stationArray total:(NSMutableArray *) stationTotalArray
+{
+    NSMutableArray *busStationArray = [self readFaverateBusStationFromLocalFile];
+    [stationArray removeAllObjects];
+    [stationTotalArray removeAllObjects];
+    
+    if (busStationArray) {
+        for (NSInteger i=0; i < [busStationArray count]; i++) {
+            NSData *data = [busStationArray objectAtIndex:i];
+            BusStation *busStation = [BusStation unarchived:data];
+            
+            BOOL isExist = NO;
+            for (BusStation *busStationOnly in stationArray) {
+                if ([busStation.standName isEqualToString:busStationOnly.standName]) {
+                    isExist = YES;
+                    break;
+                }
+            }
+            if (!isExist) {
+                [stationArray addObject:busStation];
+            }
+            [stationTotalArray addObject:busStation];
+            
+        }
+    }
 }
 
 @end

@@ -15,4 +15,6 @@
 - (BOOL)isBusLineInFaverate:(NSString *) lineNumber;
 - (BOOL)deleteBusLineInFaverate:(NSString *) lineNumber;
 
+- (void)buildLocalFileToArray:(NSMutableArray *) busLineArray total:(NSMutableArray *) busLineTotalArray;
+
 @end

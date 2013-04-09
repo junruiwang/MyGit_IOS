@@ -15,4 +15,6 @@
 - (BOOL)isBusStationInFaverate:(NSString *) standName;
 - (BOOL)deleteBusStationInFaverate:(NSString *) standName;
 
+- (void)buildLocalFileToArray:(NSMutableArray *) stationArray total:(NSMutableArray *) stationTotalArray;
+
 @end

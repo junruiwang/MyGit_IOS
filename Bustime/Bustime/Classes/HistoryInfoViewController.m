@@ -8,8 +8,23 @@
 
 #import "HistoryInfoViewController.h"
 #import "PrettyNavigationBar.h"
+#import "FaverateBusLineManager.h"
+#import "FaverateStationBusManager.h"
+#import "BusLineTableViewCell.h"
+#import "StationTableViewCell.h"
+
+#define kBusLineTag 100
+#define kStationTag 101
 
 @interface HistoryInfoViewController ()
+
+@property(nonatomic, strong) FaverateBusLineManager *faverateBusLineManager;
+@property (nonatomic, strong) NSMutableArray *busLineArray;
+@property (nonatomic, strong) NSMutableArray *busLineTotalArray;
+
+@property(nonatomic, strong) FaverateStationBusManager *faverateStationBusManager;
+@property (nonatomic, strong) NSMutableArray *stationArray;
+@property (nonatomic, strong) NSMutableArray *stationTotalArray;
 
 @end
 
@@ -18,7 +33,13 @@
 - (id)initWithCoder:(NSCoder *)aDecoder{
     self = [super initWithCoder:aDecoder];
     if (self) {
-        // Custom initialization
+        _faverateBusLineManager = [[FaverateBusLineManager alloc] init];
+        _busLineArray = [[NSMutableArray alloc] initWithCapacity:10];
+        _busLineTotalArray = [[NSMutableArray alloc] initWithCapacity:10];
+        
+        _faverateStationBusManager = [[FaverateStationBusManager alloc] init];
+        _stationArray = [[NSMutableArray alloc] initWithCapacity:10];
+        _stationTotalArray = [[NSMutableArray alloc] initWithCapacity:10];
     }
     return self;
 }
@@ -29,16 +50,25 @@
     self.trackedViewName = @"我的收藏页面";
 	self.navigationItem.title = @"我的收藏";
     [self loadSegmentedButton];
-    
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"编辑" style:UIBarButtonItemStyleBordered target:self action:@selector(modifyTable)];
     
 	[self loadCustomBanner];
+}
+
+- (void)downloadData
+{
+    [self.faverateBusLineManager buildLocalFileToArray:self.busLineArray total:self.busLineTotalArray];
+    [self.faverateStationBusManager buildLocalFileToArray:self.stationArray total:self.stationTotalArray];
+    
+    [self.busLineTableView reloadData];
+    [self.stationTableView reloadData];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     [self customizeNavBar];
+    [self downloadData];
 }
 
 - (void)loadSegmentedButton
@@ -74,12 +104,71 @@
 - (void)segmentAction:(id)sender
 {
 	// The segmented control was clicked, handle it here
-	//UISegmentedControl *segmentedControl = (UISegmentedControl *)sender;
-    //[segmentedControl.selectedSegmentIndex];
+	UISegmentedControl *segmentedControl = (UISegmentedControl *)sender;
+    if (segmentedControl.selectedSegmentIndex == 0) {
+        self.busLineTableView.hidden = NO;
+        self.stationTableView.hidden = YES;
+    } else {
+        self.busLineTableView.hidden = YES;
+        self.stationTableView.hidden = NO;
+    }
 }
 
 - (void)modifyTable
 {
+    
+}
+
+#pragma mark - UITableViewDataSource
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    if (tableView.tag == kBusLineTag) {
+        return [self.busLineArray count];
+    } else {
+        return [self.stationArray count];
+    }
+    
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (tableView.tag == kBusLineTag) {
+        BusLineTableViewCell *cell = (BusLineTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"BusLineTableViewCell"];
+        cell.iconView.clipsToBounds = YES;
+        
+        BusLine *busLine = [self.busLineArray objectAtIndex:[indexPath row]];
+        
+        NSString *regexString = @"^[0-9]*$";
+        
+        BOOL matched = [busLine.lineNumber isMatchedByRegex:regexString];
+        if (matched) {
+            cell.nameLabel.text =[NSString stringWithFormat:@"%@路", busLine.lineNumber];
+        } else {
+            cell.nameLabel.text = busLine.lineNumber;
+        }
+        
+        cell.stationLabel.text = [NSString stringWithFormat:@"%@ - %@", busLine.startStation, busLine.endStation];
+        [cell setSelectionStyle:UITableViewCellSelectionStyleGray];
+        //cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
+        
+        return cell;
+    } else {
+        StationTableViewCell *cell = (StationTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"StationTableViewCell"];
+        cell.iconView.clipsToBounds = YES;
+        
+        BusStation *busStation = [self.stationArray objectAtIndex:[indexPath row]];
+        cell.stationLabel.text = busStation.standName;
+        cell.areaLabel.text = busStation.area;
+        [cell setSelectionStyle:UITableViewCellSelectionStyleGray];
+        //cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
+        
+        return cell;
+    }
     
 }
 

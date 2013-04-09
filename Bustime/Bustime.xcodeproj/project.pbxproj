@@ -208,7 +208,7 @@
 		C4617A0C17082B2700783192 /* HistoryInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HistoryInfoViewController.m; path = Classes/HistoryInfoViewController.m; sourceTree = "<group>"; };
 		C4617A0E17082B7B00783192 /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingViewController.h; path = Classes/SettingViewController.h; sourceTree = "<group>"; };
 		C4617A0F17082B7B00783192 /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingViewController.m; path = Classes/SettingViewController.m; sourceTree = "<group>"; };
-		C46886111707C51000564DE9 /* 城市公交导航.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "城市公交导航.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C46886111707C51000564DE9 /* 苏州实时公交.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "苏州实时公交.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C46886141707C51000564DE9 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C46886161707C51000564DE9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C46886181707C51000564DE9 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -458,7 +458,7 @@
 		C46886121707C51000564DE9 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C46886111707C51000564DE9 /* 城市公交导航.app */,
+				C46886111707C51000564DE9 /* 苏州实时公交.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -771,7 +771,7 @@
 			);
 			name = Bustime;
 			productName = Bustime;
-			productReference = C46886111707C51000564DE9 /* 城市公交导航.app */;
+			productReference = C46886111707C51000564DE9 /* 苏州实时公交.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -1008,7 +1008,7 @@
 					"\"$(SRCROOT)/Bustime/Libraries/GoogleAnalytics\"",
 				);
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = "城市公交导航";
+				PRODUCT_NAME = "苏州实时公交";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1026,7 +1026,7 @@
 					"\"$(SRCROOT)/Bustime/Libraries/GoogleAnalytics\"",
 				);
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = "城市公交导航";
+				PRODUCT_NAME = "苏州实时公交";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

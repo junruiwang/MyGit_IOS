@@ -11,6 +11,7 @@
 #import "BusLine.h"
 #import "BusStation.h"
 #import "BusDetailViewController.h"
+#import "FaverateStationBusManager.h"
 
 @interface StationBusViewController ()
 
@@ -18,7 +19,7 @@
 @property (nonatomic, strong) NSMutableArray *busLineTotalArray;
 @property(nonatomic, strong) BusLineParser *busLineParser;
 @property(nonatomic, assign) BOOL isFirst;
-
+@property(nonatomic, strong) FaverateStationBusManager *faverateStationBusManager;
 @property(nonatomic, assign) BOOL isFaverate;
 @property(nonatomic, strong) UIButton *faverateButton;
 
@@ -32,6 +33,7 @@
     if (self) {
         _busLineArray = [[NSMutableArray alloc] initWithCapacity:10];
         _busLineTotalArray = [[NSMutableArray alloc] initWithCapacity:10];
+        _faverateStationBusManager = [[FaverateStationBusManager alloc] init];
         _isFirst = YES;
     }
     return self;
@@ -42,14 +44,7 @@
     [super viewDidLoad];
     self.trackedViewName = @"站点关联线路查询页面";
     self.navigationItem.title = @"站点查询";
-    
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"收藏" style:UIBarButtonItemStyleBordered target:self action:@selector(storeToFavourite)];
-    
-    if ([self.stationArray count] >0) {
-        BusStation *busStation = [self.stationArray objectAtIndex:0];
-        [self downloadData:busStation.standCode];
-    }
-    
+    [self loadDefaultPageView];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -58,15 +53,30 @@
     [self customizeNavBar];
 }
 
+- (void)loadDefaultPageView
+{
+    BusStation *busStation = [self.stationArray objectAtIndex:0];
+    self.isFaverate = [self.faverateStationBusManager isBusStationInFaverate:busStation.standName];
+    
+    if (self.isFaverate)
+    {
+        self.faverateButton = [self generateNavButton:@"heart_icon_red.png"  action:@selector(faverateButtonClicked:)];
+    }
+    else
+    {
+        self.faverateButton = [self generateNavButton:@"heart_icon.png" action:@selector(faverateButtonClicked:)];
+    }
+    [self addRightBarButton:self.faverateButton];
+    if ([self.stationArray count] >0) {
+        BusStation *busStation = [self.stationArray objectAtIndex:0];
+        [self downloadData:busStation.standCode];
+    }
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-- (void)storeToFavourite
-{
-    
 }
 
 - (void)downloadData:(NSString *) stationCode
@@ -84,6 +94,22 @@
     if (self.isFirst) {
         [SVProgressHUD showWithStatus:@"正在加载" maskType:SVProgressHUDMaskTypeGradient];
     }
+}
+
+- (void)faverateButtonClicked:(id) sender
+{
+    BusStation *busStation = [self.stationArray objectAtIndex:0];
+    if (self.isFaverate) {
+        [self.faverateStationBusManager deleteBusStationInFaverate:busStation.standName];
+        [self.faverateButton setImage:[UIImage imageNamed:@"heart_icon.png"] forState:UIControlStateNormal];
+    } else {
+        [self.faverateStationBusManager insertIntoFaverateWithStation:busStation];
+        if ([self.stationArray count] > 1) {
+            [self.faverateStationBusManager insertIntoFaverateWithStation:[self.stationArray objectAtIndex:1]];
+        }
+        [self.faverateButton setImage:[UIImage imageNamed:@"heart_icon_red.png"] forState:UIControlStateNormal];
+    }
+    self.isFaverate = !self.isFaverate;
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender

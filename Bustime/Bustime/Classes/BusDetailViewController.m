@@ -271,8 +271,8 @@
         [self.faverateBusLineManager insertIntoFaverateWithBusLine:busLine];
         if ([self.busLineArray count] > 1) {
             [self.faverateBusLineManager insertIntoFaverateWithBusLine:self.busLineArray[1]];
-            [self.faverateButton setImage:[UIImage imageNamed:@"heart_icon_red.png"] forState:UIControlStateNormal];
         }
+        [self.faverateButton setImage:[UIImage imageNamed:@"heart_icon_red.png"] forState:UIControlStateNormal];
     }
     self.isFaverate = !self.isFaverate;
 }
