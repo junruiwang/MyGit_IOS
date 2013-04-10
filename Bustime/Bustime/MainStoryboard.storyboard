@@ -45,12 +45,12 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" id="deM-Mc-la9">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="40"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="48"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                             <tableView clipsSubviews="YES" tag="100" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="54" sectionHeaderHeight="22" sectionFooterHeight="22" id="iWC-0r-QkY">
-                                <rect key="frame" x="0.0" y="40" width="320" height="415"/>
+                                <rect key="frame" x="0.0" y="48" width="320" height="415"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -98,7 +98,7 @@
                                 </connections>
                             </tableView>
                             <tableView hidden="YES" clipsSubviews="YES" tag="101" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="54" sectionHeaderHeight="22" sectionFooterHeight="22" id="Jkd-lb-FEe">
-                                <rect key="frame" x="0.0" y="40" width="320" height="415"/>
+                                <rect key="frame" x="0.0" y="48" width="320" height="415"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -256,15 +256,15 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" id="F7W-Ys-ChX">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="40"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="search_bar_edit_normal.9.png" id="Rp9-Cv-uwd">
-                                        <rect key="frame" x="20" y="5" width="202" height="31"/>
+                                        <rect key="frame" x="20" y="5" width="202" height="40"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     </imageView>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="例如：高新区" minimumFontSize="17" id="S1b-F3-knJ">
-                                        <rect key="frame" x="44" y="5" width="178" height="30"/>
+                                        <rect key="frame" x="44" y="6" width="178" height="40"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" returnKeyType="search"/>
@@ -274,7 +274,7 @@
                                         </connections>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Vx1-3T-ki6">
-                                        <rect key="frame" x="244" y="3" width="57" height="33"/>
+                                        <rect key="frame" x="244" y="8" width="57" height="33"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <state key="normal" title="查询" backgroundImage="search_btn.png">
@@ -292,7 +292,7 @@
                                 <color key="backgroundColor" red="0.5176470876" green="0.60784316059999999" blue="0.70588237050000002" alpha="1" colorSpace="deviceRGB"/>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="54" sectionHeaderHeight="22" sectionFooterHeight="22" id="EF5-5I-0ls">
-                                <rect key="frame" x="0.0" y="40" width="320" height="415"/>
+                                <rect key="frame" x="0.0" y="48" width="320" height="415"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -493,11 +493,11 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" id="5de-Ii-NgM">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="40"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="oxW-vt-BHY">
-                                        <rect key="frame" x="244" y="3" width="57" height="33"/>
+                                        <rect key="frame" x="244" y="8" width="57" height="33"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <state key="normal" title="查询" backgroundImage="search_btn.png">
@@ -512,11 +512,11 @@
                                         </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="search_bar_edit_normal.9.png" id="GqD-cL-HfH">
-                                        <rect key="frame" x="20" y="5" width="202" height="31"/>
+                                        <rect key="frame" x="20" y="5" width="202" height="40"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="例如：168" minimumFontSize="17" id="bJN-id-WRf">
-                                        <rect key="frame" x="44" y="5" width="178" height="30"/>
+                                        <rect key="frame" x="44" y="6" width="178" height="40"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" returnKeyType="search"/>
@@ -529,7 +529,7 @@
                                 <color key="backgroundColor" red="0.51764708757400513" green="0.60784316062927246" blue="0.70588237047195435" alpha="1" colorSpace="deviceRGB"/>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="54" sectionHeaderHeight="22" sectionFooterHeight="22" id="pBR-CK-G5b">
-                                <rect key="frame" x="0.0" y="40" width="320" height="415"/>
+                                <rect key="frame" x="0.0" y="48" width="320" height="407"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>

@@ -74,7 +74,7 @@
 - (void)loadSegmentedButton
 {
     
-    UINavigationBar *navBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0, 0, 320, 40)];
+    UINavigationBar *navBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0, 0, 320, 48)];
     // segmented control as the custom title view
 	NSArray *segmentTextContent = [NSArray arrayWithObjects:
                                    NSLocalizedString(@"收藏线路", @""),
@@ -84,7 +84,7 @@
 	segmentedControl.selectedSegmentIndex = 0;
 	segmentedControl.autoresizingMask = UIViewAutoresizingFlexibleWidth;
 	segmentedControl.segmentedControlStyle = UISegmentedControlStyleBar;
-	segmentedControl.frame = CGRectMake(100, 5, 140, kCustomButtonHeight);
+	segmentedControl.frame = CGRectMake(100, 6, 140, kCustomButtonHeight);
 	[segmentedControl addTarget:self action:@selector(segmentAction:) forControlEvents:UIControlEventValueChanged];
         
     [navBar addSubview:segmentedControl];
