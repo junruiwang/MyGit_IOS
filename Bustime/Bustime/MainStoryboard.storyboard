@@ -89,6 +89,7 @@
                                         <connections>
                                             <outlet property="nameLabel" destination="zZT-RQ-8Mm" id="AMj-wW-57k"/>
                                             <outlet property="stationLabel" destination="0bJ-Ot-4cY" id="EOk-W6-3to"/>
+                                            <segue destination="gqp-Ki-Z1a" kind="push" identifier="faverateToBusDetail" id="BRN-fs-MPr"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -137,6 +138,7 @@
                                         <connections>
                                             <outlet property="areaLabel" destination="fgg-rz-K8q" id="G27-3h-DH5"/>
                                             <outlet property="stationLabel" destination="T9i-wK-gsW" id="43l-3b-wu4"/>
+                                            <segue destination="sZa-PI-RFg" kind="push" identifier="faverateToStationBus" id="K4d-Vi-WEq"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -245,7 +247,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R1v-Ja-Wie" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1327" y="-861"/>
+            <point key="canvasLocation" x="1503" y="-861"/>
         </scene>
         <!--Station Search View Controller-->
         <scene sceneID="4Ap-rr-cdv">
@@ -421,7 +423,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hF9-Pb-Gaq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1332" y="-180"/>
+            <point key="canvasLocation" x="1516" y="118"/>
         </scene>
         <!--Navigation Controller - 设置-->
         <scene sceneID="BiB-Ag-fSB">
@@ -706,6 +708,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="Eoi-Yn-sMA"/>
+        <segue reference="K4d-Vi-WEq"/>
+        <segue reference="J2Q-0B-HwB"/>
     </inferredMetricsTieBreakers>
 </document>

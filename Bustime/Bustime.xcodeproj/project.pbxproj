@@ -90,6 +90,7 @@
 		C48BA5E81713BBAB0033393D /* heart_icon_red@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C48BA5E61713BBAB0033393D /* heart_icon_red@2x.png */; };
 		C48BA5EB17141A8E0033393D /* FaverateStationBusManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C48BA5EA17141A8E0033393D /* FaverateStationBusManager.m */; };
 		C48BABE11709D46300D1DC61 /* RegexKitLite.m in Sources */ = {isa = PBXBuildFile; fileRef = C48BABE01709D46300D1DC61 /* RegexKitLite.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		C4AAC1E817159E2E0090E067 /* ValidateInputUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = C4AAC1E717159E2E0090E067 /* ValidateInputUtil.m */; };
 		C4BC3F3D1712F664009C87DC /* FileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C4BC3F3C1712F663009C87DC /* FileManager.m */; };
 		C4BC3F4517130454009C87DC /* FaverateBusLineManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C4BC3F4417130454009C87DC /* FaverateBusLineManager.m */; };
 		C4C2DA851709D8B000769EB2 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C4C2DA841709D8B000769EB2 /* libicucore.dylib */; };
@@ -254,6 +255,8 @@
 		C48BA5EA17141A8E0033393D /* FaverateStationBusManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FaverateStationBusManager.m; path = Classes/FaverateStationBusManager.m; sourceTree = "<group>"; };
 		C48BABDF1709D46300D1DC61 /* RegexKitLite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegexKitLite.h; path = Libraries/RegexKitLite/RegexKitLite.h; sourceTree = "<group>"; };
 		C48BABE01709D46300D1DC61 /* RegexKitLite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RegexKitLite.m; path = Libraries/RegexKitLite/RegexKitLite.m; sourceTree = "<group>"; };
+		C4AAC1E617159E2E0090E067 /* ValidateInputUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ValidateInputUtil.h; path = Classes/ValidateInputUtil.h; sourceTree = "<group>"; };
+		C4AAC1E717159E2E0090E067 /* ValidateInputUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ValidateInputUtil.m; path = Classes/ValidateInputUtil.m; sourceTree = "<group>"; };
 		C4BC3F3B1712F663009C87DC /* FileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FileManager.h; path = Classes/FileManager.h; sourceTree = "<group>"; };
 		C4BC3F3C1712F663009C87DC /* FileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FileManager.m; path = Classes/FileManager.m; sourceTree = "<group>"; };
 		C4BC3F4317130454009C87DC /* FaverateBusLineManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FaverateBusLineManager.h; path = Classes/FaverateBusLineManager.h; sourceTree = "<group>"; };
@@ -557,6 +560,8 @@
 		C46886361707C93800564DE9 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				C4AAC1E617159E2E0090E067 /* ValidateInputUtil.h */,
+				C4AAC1E717159E2E0090E067 /* ValidateInputUtil.m */,
 				C4BC3F3B1712F663009C87DC /* FileManager.h */,
 				C4BC3F3C1712F663009C87DC /* FileManager.m */,
 				C4E67DA11709C65A00B3803E /* ServerAddressManager.h */,
@@ -886,6 +891,7 @@
 				C4BC3F3D1712F664009C87DC /* FileManager.m in Sources */,
 				C4BC3F4517130454009C87DC /* FaverateBusLineManager.m in Sources */,
 				C48BA5EB17141A8E0033393D /* FaverateStationBusManager.m in Sources */,
+				C4AAC1E817159E2E0090E067 /* ValidateInputUtil.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

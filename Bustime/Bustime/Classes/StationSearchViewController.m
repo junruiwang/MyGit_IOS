@@ -10,6 +10,7 @@
 #import "StationTableViewCell.h"
 #import "BusStation.h"
 #import "StationBusViewController.h"
+#import "ValidateInputUtil.h"
 
 @interface StationSearchViewController ()
 
@@ -66,12 +67,14 @@
 
 - (IBAction)searchButtonTapped:(id)sender
 {
-    //GA跟踪搜索按钮
-    [[GAI sharedInstance].defaultTracker sendEventWithCategory:@"站点查询" withAction:@"用户点击" withLabel:@"查询按钮" withValue:nil];
-    
     [self.queryField resignFirstResponder];
     [self.touchView removeFromSuperview];
-    [self downloadData];
+    
+    if ([ValidateInputUtil isNotEmpty:self.queryField.text fieldCName:@"查询站点"]) {
+        //GA跟踪搜索按钮
+        [[GAI sharedInstance].defaultTracker sendEventWithCategory:@"站点查询" withAction:@"用户点击" withLabel:@"查询按钮" withValue:nil];
+        [self downloadData];
+    }
 }
 
 - (void)closeTouchView

@@ -12,7 +12,9 @@
 
 + (BusLine *)unarchived:(NSData *) data
 {
-    return (BusLine *)[NSKeyedUnarchiver unarchiveObjectWithData:data];
+    BusLine *tempLine = (BusLine *)[NSKeyedUnarchiver unarchiveObjectWithData:data];
+    tempLine.stationArray = [[NSMutableArray alloc] initWithCapacity:10];
+    return tempLine;
 }
 
 - (id) initWithDictionary : (NSDictionary *) dict

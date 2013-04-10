@@ -12,6 +12,8 @@
 #import "FaverateStationBusManager.h"
 #import "BusLineTableViewCell.h"
 #import "StationTableViewCell.h"
+#import "BusDetailViewController.h"
+#import "StationBusViewController.h"
 
 #define kBusLineTag 100
 #define kStationTag 101
@@ -50,7 +52,7 @@
     self.trackedViewName = @"我的收藏页面";
 	self.navigationItem.title = @"我的收藏";
     [self loadSegmentedButton];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"编辑" style:UIBarButtonItemStyleBordered target:self action:@selector(modifyTable)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"删除" style:UIBarButtonItemStyleBordered target:self action:@selector(toggleEdit:)];
     
 	[self loadCustomBanner];
 }
@@ -114,15 +116,73 @@
     }
 }
 
-- (void)modifyTable
-{
+- (void)toggleEdit:(id)sender {
+    [self.busLineTableView setEditing:!self.busLineTableView.editing animated:YES];
+    [self.stationTableView setEditing:!self.stationTableView.editing animated:YES];
     
+    if (self.busLineTableView.editing)
+        [self.navigationItem.rightBarButtonItem setTitle:@"完成"];
+    else
+        [self.navigationItem.rightBarButtonItem setTitle:@"删除"];
+}
+
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"faverateToBusDetail"])
+    {
+        BusDetailViewController *busDetailViewController = (BusDetailViewController *)segue.destinationViewController;
+        BusLine *busLine = [self.busLineArray objectAtIndex:[[self.busLineTableView indexPathForSelectedRow] row]];
+        
+        NSMutableArray *doubleArray = [[NSMutableArray alloc] initWithCapacity:2];
+        for (BusLine *tmpBusLine in self.busLineTotalArray) {
+            if ([tmpBusLine.lineNumber isEqualToString:busLine.lineNumber]) {
+                NSLog(@"lineCode:%@, lineNumber:%@", tmpBusLine.lineCode, tmpBusLine.lineNumber);
+                [doubleArray addObject:tmpBusLine];
+            }
+        }
+        busDetailViewController.busLineArray = doubleArray;
+    } else if ([segue.identifier isEqualToString:@"faverateToStationBus"]) {
+        StationBusViewController *stationBusViewController = (StationBusViewController *)segue.destinationViewController;
+        
+        BusStation *busStation = [self.stationArray objectAtIndex:[[self.stationTableView indexPathForSelectedRow] row]];
+        NSMutableArray *doubleArray = [[NSMutableArray alloc] initWithCapacity:2];
+        for (BusStation *tmpBusStation in self.stationTotalArray) {
+            if ([tmpBusStation.standName isEqualToString:busStation.standName]) {
+                [doubleArray addObject:tmpBusStation];
+            }
+        }
+        stationBusViewController.stationArray = doubleArray;
+    }
 }
 
 #pragma mark - UITableViewDataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 1;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSUInteger row = [indexPath row];
+    if (tableView.tag == kBusLineTag) {
+        BusLine *busLine = [self.busLineArray objectAtIndex:[indexPath row]];
+        [self.busLineArray removeObjectAtIndex:row];
+        
+        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
+                         withRowAnimation:UITableViewRowAnimationAutomatic];
+        
+        [self.faverateBusLineManager deleteBusLineInFaverate:busLine.lineNumber];
+    } else {
+        BusStation *busStation = [self.stationArray objectAtIndex:[indexPath row]];
+        [self.stationArray removeObjectAtIndex:row];
+        
+        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
+                         withRowAnimation:UITableViewRowAnimationAutomatic];
+        [self.faverateStationBusManager deleteBusStationInFaverate:busStation.standName];
+    }
+    
+    
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

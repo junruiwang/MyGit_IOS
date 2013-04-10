@@ -11,6 +11,7 @@
 #import "BusLine.h"
 #import "BusDetailViewController.h"
 #import "REMenu.h"
+#import "ValidateInputUtil.h"
 
 @interface BusLineViewController ()
 
@@ -63,12 +64,14 @@
 
 - (IBAction)searchButtonTapped:(id)sender
 {
-    //GA跟踪搜索按钮
-    [[GAI sharedInstance].defaultTracker sendEventWithCategory:@"线路查询" withAction:@"用户点击" withLabel:@"查询按钮" withValue:nil];
-    
     [self.queryField resignFirstResponder];
     [self.touchView removeFromSuperview];
-    [self downloadData];
+    
+    if ([ValidateInputUtil isNotEmpty:self.queryField.text fieldCName:@"查询线路"]) {
+        //GA跟踪搜索按钮
+        [[GAI sharedInstance].defaultTracker sendEventWithCategory:@"线路查询" withAction:@"用户点击" withLabel:@"查询按钮" withValue:nil];
+        [self downloadData];
+    }
 }
 
 - (void)closeTouchView
