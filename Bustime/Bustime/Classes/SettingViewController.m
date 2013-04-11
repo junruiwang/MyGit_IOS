@@ -95,7 +95,7 @@
     //下降阴影
     cell.dropsShadow = NO;
     //圆弧
-    cell.cornerRadius = 5;
+    cell.cornerRadius = 10;
     //选中行背景色
     cell.selectionGradientStartColor = RGBCOLOR(231, 231, 231);
     cell.selectionGradientEndColor = RGBCOLOR(231, 231, 231);
@@ -113,7 +113,7 @@
                     //下降阴影
                     segmentedCell.dropsShadow = NO;
                     //圆弧
-                    segmentedCell.cornerRadius = 5;
+                    segmentedCell.cornerRadius = 10;
                     
                     [segmentedCell prepareForTableView:tableView indexPath:indexPath];
                     segmentedCell.titles = [NSArray arrayWithObjects:@"红色主题", @"蓝色主题", nil];
