@@ -92,6 +92,13 @@
         cell = [[PrettyTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         cell.tableViewBackgroundColor = tableView.backgroundColor;
     }
+    //下降阴影
+    cell.dropsShadow = NO;
+    //圆弧
+    cell.cornerRadius = 5;
+    //选中行背景色
+    cell.selectionGradientStartColor = RGBCOLOR(231, 231, 231);
+    cell.selectionGradientEndColor = RGBCOLOR(231, 231, 231);
     
     switch (indexPath.section) {
         case 0:
@@ -103,6 +110,11 @@
                     if (segmentedCell == nil) {
                         segmentedCell = [[PrettySegmentedControlTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:SegmentedCellIdentifier];
                     }
+                    //下降阴影
+                    segmentedCell.dropsShadow = NO;
+                    //圆弧
+                    segmentedCell.cornerRadius = 5;
+                    
                     [segmentedCell prepareForTableView:tableView indexPath:indexPath];
                     segmentedCell.titles = [NSArray arrayWithObjects:@"红色主题", @"蓝色主题", nil];
                     segmentedCell.tableViewBackgroundColor = tableView.backgroundColor;

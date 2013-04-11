@@ -14,7 +14,7 @@
 #define kNavigationBarDefaultColor  @"navigation_default_color"
 #define kNavigationBarRedColor  @"red_color"
 #define kNavigationBarblueColor  @"blue_color"
-
+#define RGBCOLOR(R,G,B) [UIColor colorWithRed:(float)R/255.0 green:(float)G/255.0 blue:(float)B/255.0 alpha:1]
 
 #import "SVProgressHUD.h"
 #import "ServerAddressManager.h"
