@@ -7,6 +7,7 @@
 //
 
 #import "BusSingleLine.h"
+#import "ValidateInputUtil.h"
 
 @implementation BusSingleLine
 
@@ -18,9 +19,9 @@
     }
     
     if (self = [super init]) {
-        self.standCode = [dict objectForKey:@"standCode"];
-        self.standName = [dict objectForKey:@"standName"];
-        self.time = [dict objectForKey:@"time"];
+        self.standCode = [ValidateInputUtil valueOfObjectToString:[dict objectForKey:@"standCode"]];
+        self.standName = [ValidateInputUtil valueOfObjectToString:[dict objectForKey:@"standName"]];
+        self.time = [ValidateInputUtil valueOfObjectToString:[dict objectForKey:@"time"]];
     }
     return self;
 }

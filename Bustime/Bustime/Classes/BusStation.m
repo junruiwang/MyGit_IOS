@@ -7,6 +7,7 @@
 //
 
 #import "BusStation.h"
+#import "ValidateInputUtil.h"
 
 @implementation BusStation
 
@@ -23,12 +24,13 @@
     }
     
     if (self = [super init]) {
-        self.standCode = [dict objectForKey:@"standCode"];
-        self.standName = [dict objectForKey:@"standName"];
-        self.trend = [dict objectForKey:@"trend"];;
-        self.area = [dict objectForKey:@"area"];
-        self.road = [dict objectForKey:@"road"];
-        self.bus = [dict objectForKey:@"bus"];
+        self.standCode = [ValidateInputUtil valueOfObjectToString:[dict objectForKey:@"standCode"]];
+        
+        self.standName = [ValidateInputUtil valueOfObjectToString:[dict objectForKey:@"standName"]];
+        self.trend = [ValidateInputUtil valueOfObjectToString:[dict objectForKey:@"trend"]];
+        self.area = [ValidateInputUtil valueOfObjectToString:[dict objectForKey:@"area"]];
+        self.road = [ValidateInputUtil valueOfObjectToString:[dict objectForKey:@"road"]];
+        self.bus = [ValidateInputUtil valueOfObjectToString:[dict objectForKey:@"bus"]];
     }
     return self;
 }

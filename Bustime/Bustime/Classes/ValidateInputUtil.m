@@ -66,6 +66,18 @@
     {   [self showAlertMessage:@"请输入正确的身份证号"];  return NO;  }
 }
 
++ (NSString *)valueOfObjectToString:(id) obj
+{
+    if ([obj isKindOfClass:[NSString class]]) {
+        NSString *valString = (NSString *)obj;
+        if ([valString isEqualToString:@"null"]) {
+            valString = @"";
+        }
+        return valString;
+    } else {
+        return @"";
+    }
+}
 
 + (void)showAlertMessage:(NSString *)msg
 {

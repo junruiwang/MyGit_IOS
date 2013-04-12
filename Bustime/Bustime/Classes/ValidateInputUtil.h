@@ -17,4 +17,6 @@
 + (BOOL)isPureInt:(NSString *) text;
 + (BOOL)isIdentifyNumber :(NSString *) text;
 
++ (NSString *)valueOfObjectToString:(id) obj;
+
 @end

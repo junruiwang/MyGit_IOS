@@ -7,6 +7,7 @@
 //
 
 #import "BusLine.h"
+#import "ValidateInputUtil.h"
 
 @implementation BusLine
 
@@ -26,12 +27,13 @@
     }
     
     if (self = [super init]) {
-        self.lineNumber = [dict objectForKey:@"lineNumber"];
-        self.lineCode = [dict objectForKey:@"lineGuid"];
+        
+        self.lineNumber = [ValidateInputUtil valueOfObjectToString:[dict objectForKey:@"lineNumber"]];
+        self.lineCode = [ValidateInputUtil valueOfObjectToString:[dict objectForKey:@"lineGuid"]];
         self.totalStation = [[dict objectForKey:@"totalStation"] intValue];
-        self.startStation = [dict objectForKey:@"startStation"];
-        self.endStation = [dict objectForKey:@"endStation"];
-        self.runTime = [dict objectForKey:@"runTime"];
+        self.startStation = [ValidateInputUtil valueOfObjectToString:[dict objectForKey:@"startStation"]];
+        self.endStation = [ValidateInputUtil valueOfObjectToString:[dict objectForKey:@"endStation"]];
+        self.runTime = [ValidateInputUtil valueOfObjectToString:[dict objectForKey:@"runTime"]];
         _stationArray = [[NSMutableArray alloc] initWithCapacity:10];
     }
     return self;

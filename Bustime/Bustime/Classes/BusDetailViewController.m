@@ -187,12 +187,20 @@
         BusSingleLine *singStation = [bline.stationArray objectAtIndex:i];
         
         if (singStation.time != nil && ![singStation.time isEqualToString:@""]) {
+            
+            UIView *startView = [[UIView alloc] initWithFrame:CGRectMake(17, i*79, 10, 51)];
+            startView.backgroundColor = RGBCOLOR(100, 182, 57);
+            
             UIImageView *imageStartView = [[UIImageView alloc] initWithFrame:CGRectMake(15, i*79, 13, 51)];
             imageStartView.image = [UIImage imageNamed:@"start_icon.png"];
-            [graphcisView addSubview:imageStartView];
+            if (i==0) {
+                [graphcisView addSubview:imageStartView];
+            } else {
+                [graphcisView addSubview:startView];
+            }
             
             UIImageView *imageStationView = [[UIImageView alloc] initWithFrame:CGRectMake(6, 51+(i*79), 30, 30)];
-            imageStationView.image = [UIImage imageNamed:@"run_current_station.9.png"];
+            imageStationView.image = [UIImage imageNamed:@"run_current_station.png"];
             [graphcisView addSubview:imageStationView];
             
             UIImageView *imageTopView = [[UIImageView alloc] initWithFrame:CGRectMake(49, 21+(i*79), 221, 39)];
@@ -219,12 +227,19 @@
             totalHeight = 51+(i*79) + 80;
             
         } else {
+            UIView *startView = [[UIView alloc] initWithFrame:CGRectMake(17, i*79, 10, 51)];
+            startView.backgroundColor = RGBCOLOR(100, 182, 57);
+            
             UIImageView *imageStartView = [[UIImageView alloc] initWithFrame:CGRectMake(15, i*79, 13, 51)];
             imageStartView.image = [UIImage imageNamed:@"start_icon.png"];
-            [graphcisView addSubview:imageStartView];
+            if (i==0) {
+                [graphcisView addSubview:imageStartView];
+            } else {
+                [graphcisView addSubview:startView];
+            }
             
             UIImageView *imageStationView = [[UIImageView alloc] initWithFrame:CGRectMake(7, 51+(i*79), 30, 30)];
-            imageStationView.image = [UIImage imageNamed:@"run_station.9.png"];
+            imageStationView.image = [UIImage imageNamed:@"run_station.png"];
             [graphcisView addSubview:imageStationView];
             
             UILabel *stationLabel = [[UILabel alloc] initWithFrame:CGRectMake(49, 51+(i*79)+6, 221, 18)];

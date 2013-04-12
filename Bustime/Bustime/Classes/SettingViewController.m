@@ -165,7 +165,7 @@
                 case 0:
                 {
                     [cell prepareForTableView:tableView indexPath:indexPath];
-                    cell.textLabel.text = @"城市公交查询系统1.0.1版(苏州版)";
+                    cell.textLabel.text = @"实时公交查询系统1.0版(苏州版)";
                     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
                     return cell;
                 }
