@@ -106,6 +106,7 @@
 		C4CCEA78170D92EC003FEECB /* run_station.png in Resources */ = {isa = PBXBuildFile; fileRef = C4CCEA73170D92EC003FEECB /* run_station.png */; };
 		C4CCEA79170D92EC003FEECB /* start_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C4CCEA74170D92EC003FEECB /* start_icon.png */; };
 		C4DBB7BA170A6C3600DEB80B /* ads_close.png in Resources */ = {isa = PBXBuildFile; fileRef = C4DBB7B8170A6C3600DEB80B /* ads_close.png */; };
+		C4E470B1171D2CDC008C2E90 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4E470B0171D2CDC008C2E90 /* AboutViewController.m */; };
 		C4E67D751709BDD400B3803E /* GDataParser.m in Sources */ = {isa = PBXBuildFile; fileRef = C4E67D741709BDD400B3803E /* GDataParser.m */; };
 		C4E67D781709BE9C00B3803E /* NSDataAES.m in Sources */ = {isa = PBXBuildFile; fileRef = C4E67D771709BE9C00B3803E /* NSDataAES.m */; };
 		C4E67D931709C0AC00B3803E /* NSObject+SBJson.m in Sources */ = {isa = PBXBuildFile; fileRef = C4E67D7B1709C0AC00B3803E /* NSObject+SBJson.m */; };
@@ -208,7 +209,7 @@
 		C4617A0C17082B2700783192 /* HistoryInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HistoryInfoViewController.m; path = Classes/HistoryInfoViewController.m; sourceTree = "<group>"; };
 		C4617A0E17082B7B00783192 /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingViewController.h; path = Classes/SettingViewController.h; sourceTree = "<group>"; };
 		C4617A0F17082B7B00783192 /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingViewController.m; path = Classes/SettingViewController.m; sourceTree = "<group>"; };
-		C46886111707C51000564DE9 /* 苏州实时公交.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "苏州实时公交.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C46886111707C51000564DE9 /* 苏州在线公交.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "苏州在线公交.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C46886141707C51000564DE9 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C46886161707C51000564DE9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C46886181707C51000564DE9 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -280,6 +281,8 @@
 		C4CCEA73170D92EC003FEECB /* run_station.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = run_station.png; path = Resources/station/run_station.png; sourceTree = "<group>"; };
 		C4CCEA74170D92EC003FEECB /* start_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = start_icon.png; path = Resources/station/start_icon.png; sourceTree = "<group>"; };
 		C4DBB7B8170A6C3600DEB80B /* ads_close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ads_close.png; path = Resources/ads_close.png; sourceTree = "<group>"; };
+		C4E470AF171D2CDC008C2E90 /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AboutViewController.h; path = Classes/AboutViewController.h; sourceTree = "<group>"; };
+		C4E470B0171D2CDC008C2E90 /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AboutViewController.m; path = Classes/AboutViewController.m; sourceTree = "<group>"; };
 		C4E67D731709BDD400B3803E /* GDataParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GDataParser.h; path = Classes/GDataParser.h; sourceTree = "<group>"; };
 		C4E67D741709BDD400B3803E /* GDataParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GDataParser.m; path = Classes/GDataParser.m; sourceTree = "<group>"; };
 		C4E67D761709BE9C00B3803E /* NSDataAES.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NSDataAES.h; path = Classes/NSDataAES.h; sourceTree = "<group>"; };
@@ -429,6 +432,7 @@
 		C4617A0417082A3200783192 /* Buses */ = {
 			isa = PBXGroup;
 			children = (
+				C4E470AE171D2C4C008C2E90 /* Setting */,
 				C4EBBF37170E5C4A001308A1 /* Model */,
 				C4175D47170AD87F005C3DC4 /* BusDetailViewController.h */,
 				C4175D48170AD87F005C3DC4 /* BusDetailViewController.m */,
@@ -437,8 +441,6 @@
 				C4617A0517082AA200783192 /* BusLineViewController.h */,
 				C4617A0617082AA200783192 /* BusLineViewController.m */,
 				C4E67D721709BCC000B3803E /* Parser */,
-				C4617A0E17082B7B00783192 /* SettingViewController.h */,
-				C4617A0F17082B7B00783192 /* SettingViewController.m */,
 			);
 			name = Buses;
 			sourceTree = "<group>";
@@ -455,7 +457,7 @@
 		C46886121707C51000564DE9 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C46886111707C51000564DE9 /* 苏州实时公交.app */,
+				C46886111707C51000564DE9 /* 苏州在线公交.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -694,6 +696,17 @@
 			name = station;
 			sourceTree = "<group>";
 		};
+		C4E470AE171D2C4C008C2E90 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				C4617A0E17082B7B00783192 /* SettingViewController.h */,
+				C4617A0F17082B7B00783192 /* SettingViewController.m */,
+				C4E470AF171D2CDC008C2E90 /* AboutViewController.h */,
+				C4E470B0171D2CDC008C2E90 /* AboutViewController.m */,
+			);
+			name = Setting;
+			sourceTree = "<group>";
+		};
 		C4E67D721709BCC000B3803E /* Parser */ = {
 			isa = PBXGroup;
 			children = (
@@ -767,7 +780,7 @@
 			);
 			name = Bustime;
 			productName = Bustime;
-			productReference = C46886111707C51000564DE9 /* 苏州实时公交.app */;
+			productReference = C46886111707C51000564DE9 /* 苏州在线公交.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -916,6 +929,7 @@
 				C4BC3F4517130454009C87DC /* FaverateBusLineManager.m in Sources */,
 				C48BA5EB17141A8E0033393D /* FaverateStationBusManager.m in Sources */,
 				C4AAC1E817159E2E0090E067 /* ValidateInputUtil.m in Sources */,
+				C4E470B1171D2CDC008C2E90 /* AboutViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1002,7 +1016,7 @@
 					"\"$(SRCROOT)/Bustime/Libraries/GoogleAnalytics\"",
 				);
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = "苏州实时公交";
+				PRODUCT_NAME = "苏州在线公交";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1020,7 +1034,7 @@
 					"\"$(SRCROOT)/Bustime/Libraries/GoogleAnalytics\"",
 				);
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = "苏州实时公交";
+				PRODUCT_NAME = "苏州在线公交";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

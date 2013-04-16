@@ -16,7 +16,7 @@
 @property(nonatomic, strong) UIScrollView *subScrollView;
 @property(nonatomic, strong) NSMutableArray *busLineArray;
 
-@property(nonatomic, strong) IBOutlet UILabel *busNumber;
+@property(nonatomic, weak) IBOutlet UILabel *busNumber;
 @property(nonatomic, weak) IBOutlet UILabel *timeLabel;
 @property(nonatomic, weak) IBOutlet UILabel *totalStationLabel;
 @property(nonatomic, weak) IBOutlet UILabel *startStationLabel;

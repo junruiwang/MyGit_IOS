@@ -55,7 +55,7 @@
         return @"软件信息";
     }
     if (section == 3) {
-        return @"关于我们";
+        return @"联系我们";
     }
     
     return @"";
@@ -198,7 +198,7 @@
         case 3:
         {
             [cell prepareForTableView:tableView indexPath:indexPath];
-            cell.textLabel.text = @"关于我们";
+            cell.textLabel.text = @"联系我们";
             UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(270, 15, 7, 10)];
             imageView.image = [UIImage imageNamed:@"line-next.png"];
             [cell.contentView addSubview:imageView];
@@ -221,7 +221,11 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    if (indexPath.section == 3) {
+        PrettyTableViewCell *cell = (PrettyTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
+        [cell setSelected:NO animated:YES];
+        [self performSegueWithIdentifier:@"aboutUs" sender:nil];
+    }
 }
 
 @end
