@@ -176,8 +176,8 @@
 
 - (void)showMenu
 {
-    if (_menu.isOpen)
-        return [_menu close];
+//    if (_menu.isOpen)
+//        return [_menu close];
     REMenuItem *homeItem = [[REMenuItem alloc] initWithTitle:@"Home"
                                                     subtitle:@"Return to Home Screen"
                                                        image:[UIImage imageNamed:@"Icon_Home"]
@@ -221,7 +221,7 @@
     _menu.shadowOpacity = 1;
     _menu.imageOffset = CGSizeMake(5, -1);
     
-    [_menu showFromNavigationController:self.navigationController];
+    //[_menu showFromNavigationController:self.navigationController];
 }
 
 @end

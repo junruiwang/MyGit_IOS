@@ -221,6 +221,11 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (indexPath.section == 2) {
+        PrettyTableViewCell *cell = (PrettyTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
+        [cell setSelected:NO animated:YES];
+    }
+    
     if (indexPath.section == 3) {
         PrettyTableViewCell *cell = (PrettyTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
         [cell setSelected:NO animated:YES];
