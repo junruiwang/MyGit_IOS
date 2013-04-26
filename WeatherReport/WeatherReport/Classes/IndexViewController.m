@@ -10,7 +10,7 @@
 
 @interface IndexViewController ()
 
-@property(nonatomic, strong) UIImageView *bgImageView;
+@property(nonatomic, strong) UIImage *bgImage;
 
 @end
 
@@ -28,8 +28,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	
+    //加载背景图片
     [self loadBgImageView];
+    
+    [self initalToolbar];
 }
 
 - (void)didReceiveMemoryWarning
@@ -40,13 +42,35 @@
 
 - (void)loadBgImageView
 {
-    self.bgImageView = [[UIImageView alloc]initWithFrame:self.view.frame];
-    self.bgImageView.contentMode = UIViewContentModeScaleAspectFill;
-    self.bgImageView.autoresizesSubviews=YES;
-    self.bgImageView.opaque=YES;
-    self.bgImageView.clearsContextBeforeDrawing=YES;
-    self.bgImageView.image = [UIImage imageNamed:@"bg_wtx.jpg"];
-    [self.view addSubview:self.bgImageView];
+    if (self.bgImage == nil) {
+        if ([[NSUserDefaults standardUserDefaults] boolForKey:USER_DEVICE_5]) {
+            self.bgImage = [UIImage imageNamed:@"cloud-568h.jpg"];
+        } else {
+            self.bgImage = [UIImage imageNamed:@"cloud.jpg"];
+        }
+    }
+    
+    self.view.backgroundColor = [UIColor colorWithPatternImage:self.bgImage];
+}
+
+//初始化工具条
+- (void)initalToolbar
+{
+    UIToolbar* tools = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 110, 45)];
+    [tools setBarStyle:UIBarStyleBlack];
+    
+    NSMutableArray* buttons = [[NSMutableArray alloc] initWithCapacity:2];
+    
+    UIBarButtonItem *btnRefresh = [[UIBarButtonItem alloc] initWithTitle:@"更新" style:UIBarButtonItemStyleBordered target:self action:@selector(refreshCityBtnClicked:)];
+	UIBarButtonItem *btndelete = [[UIBarButtonItem alloc]
+                                  initWithTitle:@"管理" style:UIBarButtonItemStyleBordered target:self action:@selector(removeCityBtnClicked:)];
+    [buttons addObject:btnRefresh];
+	[buttons addObject:btndelete];
+	[tools setItems:buttons animated:NO];
+
+    self.navigationItem.leftBarButtonItem=[[UIBarButtonItem alloc]
+										   initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addCityBtnClicked:)];
+    self.navigationItem.rightBarButtonItem=[[UIBarButtonItem alloc] initWithCustomView:tools];
 }
 
 @end

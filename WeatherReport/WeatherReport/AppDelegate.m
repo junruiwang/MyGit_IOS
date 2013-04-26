@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "Constants.h"
 
 @implementation AppDelegate
 
@@ -14,6 +15,16 @@
 {
     //设置顶部状态栏背景色
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleBlackOpaque;
+    
+    CGRect screenRect = [[UIScreen mainScreen] applicationFrame];
+    
+    NSLog(@"width:%f, height:%f", screenRect.size.width, screenRect.size.height);
+    
+    if (screenRect.size.height > 500){
+        [[NSUserDefaults standardUserDefaults] setBool:YES  forKey:USER_DEVICE_5];
+    } else {
+        [[NSUserDefaults standardUserDefaults] setBool:NO   forKey:USER_DEVICE_5];
+    }
     
     return YES;
 }

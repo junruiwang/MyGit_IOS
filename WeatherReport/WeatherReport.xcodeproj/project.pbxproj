@@ -57,6 +57,9 @@
 		C4D3A8A61727DB8C004E2891 /* 31.png in Resources */ = {isa = PBXBuildFile; fileRef = C4D3A8861727DB8C004E2891 /* 31.png */; };
 		C4D3A8A91727DBAD004E2891 /* IndexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4D3A8A81727DBAD004E2891 /* IndexViewController.m */; };
 		C4D3A8AC1727E0D1004E2891 /* BannerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4D3A8AB1727E0D1004E2891 /* BannerViewController.m */; };
+		C4EA27EE17281F49000B5CA6 /* cloud-568h@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C4EA27EB17281F49000B5CA6 /* cloud-568h@2x.jpg */; };
+		C4EA27EF17281F49000B5CA6 /* cloud.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C4EA27EC17281F49000B5CA6 /* cloud.jpg */; };
+		C4EA27F017281F49000B5CA6 /* cloud@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C4EA27ED17281F49000B5CA6 /* cloud@2x.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -116,6 +119,10 @@
 		C4D3A8A81727DBAD004E2891 /* IndexViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IndexViewController.m; path = Classes/IndexViewController.m; sourceTree = "<group>"; };
 		C4D3A8AA1727E0D1004E2891 /* BannerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BannerViewController.h; path = Classes/BannerViewController.h; sourceTree = "<group>"; };
 		C4D3A8AB1727E0D1004E2891 /* BannerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BannerViewController.m; path = Classes/BannerViewController.m; sourceTree = "<group>"; };
+		C4EA27EB17281F49000B5CA6 /* cloud-568h@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "cloud-568h@2x.jpg"; path = "Resources/cloud-568h@2x.jpg"; sourceTree = "<group>"; };
+		C4EA27EC17281F49000B5CA6 /* cloud.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = cloud.jpg; path = Resources/cloud.jpg; sourceTree = "<group>"; };
+		C4EA27ED17281F49000B5CA6 /* cloud@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "cloud@2x.jpg"; path = "Resources/cloud@2x.jpg"; sourceTree = "<group>"; };
+		C4EA27F217282068000B5CA6 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -219,6 +226,7 @@
 			children = (
 				C4D3A8AA1727E0D1004E2891 /* BannerViewController.h */,
 				C4D3A8AB1727E0D1004E2891 /* BannerViewController.m */,
+				C4EA27F217282068000B5CA6 /* Constants.h */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -233,6 +241,9 @@
 		C4D3A8591727DB29004E2891 /* Index */ = {
 			isa = PBXGroup;
 			children = (
+				C4EA27EB17281F49000B5CA6 /* cloud-568h@2x.jpg */,
+				C4EA27EC17281F49000B5CA6 /* cloud.jpg */,
+				C4EA27ED17281F49000B5CA6 /* cloud@2x.jpg */,
 				C4D3A85B1727DB77004E2891 /* bg_wtx.jpg */,
 				C4D3A85C1727DB77004E2891 /* bj-01.jpg */,
 				C4D3A85D1727DB77004E2891 /* mianban.png */,
@@ -376,6 +387,9 @@
 				C4D3A8A41727DB8C004E2891 /* 29.png in Resources */,
 				C4D3A8A51727DB8C004E2891 /* 30.png in Resources */,
 				C4D3A8A61727DB8C004E2891 /* 31.png in Resources */,
+				C4EA27EE17281F49000B5CA6 /* cloud-568h@2x.jpg in Resources */,
+				C4EA27EF17281F49000B5CA6 /* cloud.jpg in Resources */,
+				C4EA27F017281F49000B5CA6 /* cloud@2x.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -506,6 +520,7 @@
 				C4D3A8511727DA49004E2891 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
