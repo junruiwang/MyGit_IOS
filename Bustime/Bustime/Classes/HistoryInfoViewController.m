@@ -117,8 +117,9 @@
 }
 
 - (void)toggleEdit:(id)sender {
-    [self.busLineTableView setEditing:!self.busLineTableView.editing animated:YES];
-    [self.stationTableView setEditing:!self.stationTableView.editing animated:YES];
+    BOOL editingFlag = self.busLineTableView.editing;
+    [self.busLineTableView setEditing:!editingFlag animated:YES];
+    [self.stationTableView setEditing:!editingFlag animated:YES];
     
     if (self.busLineTableView.editing)
         [self.navigationItem.rightBarButtonItem setTitle:@"完成"];
