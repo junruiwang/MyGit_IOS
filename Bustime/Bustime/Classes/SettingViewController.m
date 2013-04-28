@@ -172,10 +172,10 @@
                 case 1:
                 {
                     [cell prepareForTableView:tableView indexPath:indexPath];
-                    cell.textLabel.text = @"给我好评";
-                    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(270, 15, 7, 10)];
-                    imageView.image = [UIImage imageNamed:@"line-next.png"];
-                    [cell.contentView addSubview:imageView];
+                    cell.textLabel.text = @"评价应用";
+//                    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(270, 15, 7, 10)];
+//                    imageView.image = [UIImage imageNamed:@"line-next.png"];
+//                    [cell.contentView addSubview:imageView];
                     [cell setSelectionStyle:UITableViewCellSelectionStyleGray];
                     return cell;
                 }
@@ -183,9 +183,9 @@
                 {
                     [cell prepareForTableView:tableView indexPath:indexPath];
                     cell.textLabel.text = @"分享我们";
-                    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(270, 15, 7, 10)];
-                    imageView.image = [UIImage imageNamed:@"line-next.png"];
-                    [cell.contentView addSubview:imageView];
+//                    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(270, 15, 7, 10)];
+//                    imageView.image = [UIImage imageNamed:@"line-next.png"];
+//                    [cell.contentView addSubview:imageView];
                     [cell setSelectionStyle:UITableViewCellSelectionStyleGray];
                     return cell;
                 }
