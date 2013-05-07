@@ -15,6 +15,8 @@
 #define kNavigationBarRedColor  @"red_color"
 #define kNavigationBarblueColor  @"blue_color"
 #define RGBCOLOR(R,G,B) [UIColor colorWithRed:(float)R/255.0 green:(float)G/255.0 blue:(float)B/255.0 alpha:1]
+#define kAppStoreUrl @"https://itunes.apple.com/us/app/su-zhou-zai-xian-gong-jiao/id639107014?ls=1&mt=8"
+#define kCommentUrl @"itms-apps://ax.itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=639107014"
 
 #import "SVProgressHUD.h"
 #import "ServerAddressManager.h"

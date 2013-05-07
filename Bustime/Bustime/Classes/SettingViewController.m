@@ -172,10 +172,10 @@
                 case 1:
                 {
                     [cell prepareForTableView:tableView indexPath:indexPath];
-                    cell.textLabel.text = @"评价应用";
-//                    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(270, 15, 7, 10)];
-//                    imageView.image = [UIImage imageNamed:@"line-next.png"];
-//                    [cell.contentView addSubview:imageView];
+                    cell.textLabel.text = @"给我们评分吧";
+                    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(270, 15, 7, 10)];
+                    imageView.image = [UIImage imageNamed:@"line-next.png"];
+                    [cell.contentView addSubview:imageView];
                     [cell setSelectionStyle:UITableViewCellSelectionStyleGray];
                     return cell;
                 }
@@ -183,9 +183,9 @@
                 {
                     [cell prepareForTableView:tableView indexPath:indexPath];
                     cell.textLabel.text = @"分享我们";
-//                    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(270, 15, 7, 10)];
-//                    imageView.image = [UIImage imageNamed:@"line-next.png"];
-//                    [cell.contentView addSubview:imageView];
+                    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(270, 15, 7, 10)];
+                    imageView.image = [UIImage imageNamed:@"line-next.png"];
+                    [cell.contentView addSubview:imageView];
                     [cell setSelectionStyle:UITableViewCellSelectionStyleGray];
                     return cell;
                 }
@@ -219,11 +219,30 @@
     return tableView.rowHeight + [PrettyTableViewCell tableView:tableView neededHeightForIndexPath:indexPath];
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return 20;
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 2) {
+        
         PrettyTableViewCell *cell = (PrettyTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
         [cell setSelected:NO animated:YES];
+        
+        switch (indexPath.row) {
+            case 1:
+            {
+                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:kCommentUrl]];
+                break;
+            }
+            case 2:
+            {
+                break;
+            }
+            default:
+                break;
+        }
     }
     
     if (indexPath.section == 3) {
