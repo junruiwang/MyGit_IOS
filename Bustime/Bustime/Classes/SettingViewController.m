@@ -8,6 +8,7 @@
 
 #import "SettingViewController.h"
 #import "PrettyKit.h"
+#import "SHSShareViewController.h"
 
 @interface SettingViewController ()
 
@@ -238,6 +239,23 @@
             }
             case 2:
             {
+                SHSShareViewController *shareController= [SHSShareViewController shareViewController:self];
+                
+                [shareController setShareInfo:ShareTypeTextAndImage
+                                   shareTitle:@"向您推荐苏州在线公交"
+                                    shareText:@"我发现了个好应用，苏州在线公交,快来看看吧"
+                                     shareUrl:@"https://itunes.apple.com/us/app/su-zhou-zai-xian-gong-jiao/id639107014?ls=1&mt=8"
+                                   shareImage:[UIImage imageNamed:@"share_icon.png"]];
+                //    shareController.shareType=ShareTypeTextAndImage;
+                //    shareController.sharedtitle=@"这个一个测试分享的Demo";
+                //    shareController.sharedText=@"大家要努力奋斗";
+                //    shareController.sharedURL=@"http://www.baidu.com";
+                //    shareController.sharedImageURL=@"http://a4.att.hudong.com/74/08/01300000831741129317080840244.jpg";
+                //    shareController.sharedImage=imageView.image;
+                
+                shareController.shareType=ShareTypeTextAndImage;
+                [shareController showShareView];
+                //if(UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone)
                 break;
             }
             default:

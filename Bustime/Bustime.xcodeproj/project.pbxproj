@@ -99,6 +99,11 @@
 		C48BA5E81713BBAB0033393D /* heart_icon_red@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C48BA5E61713BBAB0033393D /* heart_icon_red@2x.png */; };
 		C48BA5EB17141A8E0033393D /* FaverateStationBusManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C48BA5EA17141A8E0033393D /* FaverateStationBusManager.m */; };
 		C48BABE11709D46300D1DC61 /* RegexKitLite.m in Sources */ = {isa = PBXBuildFile; fileRef = C48BABE01709D46300D1DC61 /* RegexKitLite.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		C48C98FA173A8DFD00ACE667 /* share_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C48C98F9173A8DFD00ACE667 /* share_icon.png */; };
+		C48C9905173A900300ACE667 /* ServiceConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = C48C9900173A900300ACE667 /* ServiceConfig.plist */; };
+		C48C9909173A941B00ACE667 /* libWeChatSDK_armv7_armv7s.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C48C9908173A941B00ACE667 /* libWeChatSDK_armv7_armv7s.a */; };
+		C48C990B173A949F00ACE667 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C48C990A173A949F00ACE667 /* Security.framework */; };
+		C48C990F173AA0E900ACE667 /* bshare_sdk_v1.1.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C48C990E173AA0E900ACE667 /* bshare_sdk_v1.1.a */; };
 		C4AAC1E817159E2E0090E067 /* ValidateInputUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = C4AAC1E717159E2E0090E067 /* ValidateInputUtil.m */; };
 		C4BC3F3D1712F664009C87DC /* FileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C4BC3F3C1712F663009C87DC /* FileManager.m */; };
 		C4BC3F4517130454009C87DC /* FaverateBusLineManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C4BC3F4417130454009C87DC /* FaverateBusLineManager.m */; };
@@ -274,6 +279,15 @@
 		C48BA5EA17141A8E0033393D /* FaverateStationBusManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FaverateStationBusManager.m; path = Classes/FaverateStationBusManager.m; sourceTree = "<group>"; };
 		C48BABDF1709D46300D1DC61 /* RegexKitLite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegexKitLite.h; path = Libraries/RegexKitLite/RegexKitLite.h; sourceTree = "<group>"; };
 		C48BABE01709D46300D1DC61 /* RegexKitLite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RegexKitLite.m; path = Libraries/RegexKitLite/RegexKitLite.m; sourceTree = "<group>"; };
+		C48C98F9173A8DFD00ACE667 /* share_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = share_icon.png; path = Resources/share_icon.png; sourceTree = "<group>"; };
+		C48C98FF173A900300ACE667 /* OAuthInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAuthInfo.h; sourceTree = "<group>"; };
+		C48C9900173A900300ACE667 /* ServiceConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ServiceConfig.plist; sourceTree = "<group>"; };
+		C48C9901173A900300ACE667 /* SHSendView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHSendView.h; sourceTree = "<group>"; };
+		C48C9902173A900300ACE667 /* SHSOAuthSharer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHSOAuthSharer.h; sourceTree = "<group>"; };
+		C48C9903173A900300ACE667 /* SHSShareViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHSShareViewController.h; sourceTree = "<group>"; };
+		C48C9908173A941B00ACE667 /* libWeChatSDK_armv7_armv7s.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK_armv7_armv7s.a; sourceTree = "<group>"; };
+		C48C990A173A949F00ACE667 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		C48C990E173AA0E900ACE667 /* bshare_sdk_v1.1.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = bshare_sdk_v1.1.a; sourceTree = "<group>"; };
 		C4AAC1E617159E2E0090E067 /* ValidateInputUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ValidateInputUtil.h; path = Classes/ValidateInputUtil.h; sourceTree = "<group>"; };
 		C4AAC1E717159E2E0090E067 /* ValidateInputUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ValidateInputUtil.m; path = Classes/ValidateInputUtil.m; sourceTree = "<group>"; };
 		C4BC3F3B1712F663009C87DC /* FileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FileManager.h; path = Classes/FileManager.h; sourceTree = "<group>"; };
@@ -339,6 +353,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C48C990B173A949F00ACE667 /* Security.framework in Frameworks */,
 				C4C2DA851709D8B000769EB2 /* libicucore.dylib in Frameworks */,
 				C468864A1707CAB200564DE9 /* MobileCoreServices.framework in Frameworks */,
 				C46886481707CA9E00564DE9 /* QuartzCore.framework in Frameworks */,
@@ -354,6 +369,8 @@
 				C46886191707C51000564DE9 /* CoreGraphics.framework in Frameworks */,
 				C46886561707CB5700564DE9 /* libGoogleAdMobAds.a in Frameworks */,
 				C468865E1707CB8100564DE9 /* libGoogleAnalytics.a in Frameworks */,
+				C48C9909173A941B00ACE667 /* libWeChatSDK_armv7_armv7s.a in Frameworks */,
+				C48C990F173AA0E900ACE667 /* bshare_sdk_v1.1.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -473,18 +490,19 @@
 			isa = PBXGroup;
 			children = (
 				C4C2DA841709D8B000769EB2 /* libicucore.dylib */,
+				C468863D1707CA4900564DE9 /* AdSupport.framework */,
+				C46886411707CA5F00564DE9 /* AudioToolbox.framework */,
+				C46886431707CA6E00564DE9 /* CFNetwork.framework */,
+				C46886371707C98E00564DE9 /* CoreData.framework */,
+				C46886181707C51000564DE9 /* CoreGraphics.framework */,
+				C46886161707C51000564DE9 /* Foundation.framework */,
+				C468863F1707CA5400564DE9 /* MessageUI.framework */,
 				C46886491707CAB200564DE9 /* MobileCoreServices.framework */,
 				C46886471707CA9E00564DE9 /* QuartzCore.framework */,
-				C46886451707CA8700564DE9 /* SystemConfiguration.framework */,
-				C46886431707CA6E00564DE9 /* CFNetwork.framework */,
-				C46886411707CA5F00564DE9 /* AudioToolbox.framework */,
-				C468863F1707CA5400564DE9 /* MessageUI.framework */,
-				C468863D1707CA4900564DE9 /* AdSupport.framework */,
+				C48C990A173A949F00ACE667 /* Security.framework */,
 				C46886391707C99E00564DE9 /* StoreKit.framework */,
-				C46886371707C98E00564DE9 /* CoreData.framework */,
+				C46886451707CA8700564DE9 /* SystemConfiguration.framework */,
 				C46886141707C51000564DE9 /* UIKit.framework */,
-				C46886161707C51000564DE9 /* Foundation.framework */,
-				C46886181707C51000564DE9 /* CoreGraphics.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -534,6 +552,7 @@
 		C46886321707C6A400564DE9 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				C48C98FD173A900300ACE667 /* BShareSdk */,
 				C43EB0B2170D1B0600A2C266 /* REMenu */,
 				C43EB094170D125D00A2C266 /* PrettyKit */,
 				C48BABDE1709D44C00D1DC61 /* RegexKitLite */,
@@ -548,6 +567,7 @@
 		C46886331707C6BB00564DE9 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				C48C98F9173A8DFD00ACE667 /* share_icon.png */,
 				C406B8DE173A26FA0069CA85 /* about_logo.png */,
 				C406B8DF173A26FA0069CA85 /* about_logo@2x.png */,
 				C452517417183559004345F2 /* start_icon@2x.png */,
@@ -676,6 +696,21 @@
 				C48BABE01709D46300D1DC61 /* RegexKitLite.m */,
 			);
 			name = RegexKitLite;
+			sourceTree = "<group>";
+		};
+		C48C98FD173A900300ACE667 /* BShareSdk */ = {
+			isa = PBXGroup;
+			children = (
+				C48C990E173AA0E900ACE667 /* bshare_sdk_v1.1.a */,
+				C48C9908173A941B00ACE667 /* libWeChatSDK_armv7_armv7s.a */,
+				C48C98FF173A900300ACE667 /* OAuthInfo.h */,
+				C48C9900173A900300ACE667 /* ServiceConfig.plist */,
+				C48C9901173A900300ACE667 /* SHSendView.h */,
+				C48C9902173A900300ACE667 /* SHSOAuthSharer.h */,
+				C48C9903173A900300ACE667 /* SHSShareViewController.h */,
+			);
+			name = BShareSdk;
+			path = Libraries/BShareSdk;
 			sourceTree = "<group>";
 		};
 		C4BC3F3E17130383009C87DC /* Favourite */ = {
@@ -879,6 +914,8 @@
 				C452517F1718388E004345F2 /* current_top@2x.png in Resources */,
 				C406B8E0173A26FA0069CA85 /* about_logo.png in Resources */,
 				C406B8E1173A26FA0069CA85 /* about_logo@2x.png in Resources */,
+				C48C98FA173A8DFD00ACE667 /* share_icon.png in Resources */,
+				C48C9905173A900300ACE667 /* ServiceConfig.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1036,6 +1073,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/Bustime/Libraries/GoogleAdMob\"",
 					"\"$(SRCROOT)/Bustime/Libraries/GoogleAnalytics\"",
+					"\"$(SRCROOT)/Bustime/Libraries/BShareSdk\"",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "苏州在线公交";
@@ -1056,6 +1094,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/Bustime/Libraries/GoogleAdMob\"",
 					"\"$(SRCROOT)/Bustime/Libraries/GoogleAnalytics\"",
+					"\"$(SRCROOT)/Bustime/Libraries/BShareSdk\"",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "苏州在线公交";
@@ -1104,6 +1143,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/Bustime/Libraries/GoogleAdMob\"",
 					"\"$(SRCROOT)/Bustime/Libraries/GoogleAnalytics\"",
+					"\"$(SRCROOT)/Bustime/Libraries/BShareSdk\"",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "苏州在线公交";
