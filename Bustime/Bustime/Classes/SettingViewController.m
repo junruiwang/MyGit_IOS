@@ -55,7 +55,7 @@
         return @"软件信息";
     }
     if (section == 3) {
-        return @"联系我们";
+        return @"关于";
     }
     
     return @"";
@@ -198,7 +198,7 @@
         case 3:
         {
             [cell prepareForTableView:tableView indexPath:indexPath];
-            cell.textLabel.text = @"联系我们";
+            cell.textLabel.text = @"关于软件";
             UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(270, 15, 7, 10)];
             imageView.image = [UIImage imageNamed:@"line-next.png"];
             [cell.contentView addSubview:imageView];

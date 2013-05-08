@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C406B8E0173A26FA0069CA85 /* about_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = C406B8DE173A26FA0069CA85 /* about_logo.png */; };
+		C406B8E1173A26FA0069CA85 /* about_logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C406B8DF173A26FA0069CA85 /* about_logo@2x.png */; };
 		C4086CF91708039C007A4EC8 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C4086CF71708039C007A4EC8 /* Icon@2x.png */; };
 		C4086CFB170803B8007A4EC8 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C4086CFA170803B8007A4EC8 /* Icon.png */; };
 		C4175D49170AD87F005C3DC4 /* BusDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4175D48170AD87F005C3DC4 /* BusDetailViewController.m */; };
@@ -131,6 +133,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C406B8DE173A26FA0069CA85 /* about_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = about_logo.png; path = Resources/about_logo.png; sourceTree = "<group>"; };
+		C406B8DF173A26FA0069CA85 /* about_logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "about_logo@2x.png"; path = "Resources/about_logo@2x.png"; sourceTree = "<group>"; };
 		C4086CF71708039C007A4EC8 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon@2x.png"; path = "Resources/Icon@2x.png"; sourceTree = "<group>"; };
 		C4086CFA170803B8007A4EC8 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = Resources/Icon.png; sourceTree = "<group>"; };
 		C4175D47170AD87F005C3DC4 /* BusDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BusDetailViewController.h; path = Classes/BusDetailViewController.h; sourceTree = "<group>"; };
@@ -541,6 +545,8 @@
 		C46886331707C6BB00564DE9 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				C406B8DE173A26FA0069CA85 /* about_logo.png */,
+				C406B8DF173A26FA0069CA85 /* about_logo@2x.png */,
 				C452517417183559004345F2 /* start_icon@2x.png */,
 				C4DBB7B8170A6C3600DEB80B /* ads_close.png */,
 				C445A718170AA8A300DEC528 /* adsmogo_btnbg.png */,
@@ -866,6 +872,8 @@
 				C452517B171836D1004345F2 /* run_station@2x.png in Resources */,
 				C452517E1718388E004345F2 /* current_bottom@2x.png in Resources */,
 				C452517F1718388E004345F2 /* current_top@2x.png in Resources */,
+				C406B8E0173A26FA0069CA85 /* about_logo.png in Resources */,
+				C406B8E1173A26FA0069CA85 /* about_logo@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
