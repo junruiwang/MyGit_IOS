@@ -515,7 +515,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="PM5-We-dwK" customClass="JJUnderlineButton">
-                                <rect key="frame" x="109" y="269" width="191" height="16"/>
+                                <rect key="frame" x="103" y="269" width="204" height="16"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
                                 <state key="normal" title="http://weibo.com/u/2248196321">
