@@ -10,6 +10,6 @@
 
 @interface AboutViewController : BannerViewController
 
-@property(nonatomic, weak) IBOutlet UIView *infoView;
+- (IBAction)showWeibo:(id)sender;
 
 @end

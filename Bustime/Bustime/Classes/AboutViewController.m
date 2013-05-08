@@ -44,4 +44,9 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)showWeibo:(id)sender
+{
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://weibo.com/u/2248196321"]];
+}
+
 @end

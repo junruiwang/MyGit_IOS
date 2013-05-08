@@ -500,8 +500,8 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="官方微博：http://weibo.com/u/2248196321" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="WBR-ht-1Lb">
-                                <rect key="frame" x="44" y="269" width="263" height="18"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="官方微博：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="WBR-ht-1Lb">
+                                <rect key="frame" x="44" y="269" width="65" height="16"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -514,6 +514,21 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="PM5-We-dwK" customClass="JJUnderlineButton">
+                                <rect key="frame" x="109" y="269" width="191" height="16"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
+                                <state key="normal" title="http://weibo.com/u/2248196321">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="showWeibo:" destination="GFa-Vm-Vrg" eventType="touchUpInside" id="haF-wK-FeC"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.52156865600000002" blue="0.77254909279999995" alpha="1" colorSpace="deviceRGB"/>
                     </view>
@@ -686,7 +701,7 @@
         <class className="AboutViewController" superclassName="BannerViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/AboutViewController.h"/>
             <relationships>
-                <relationship kind="outlet" name="infoView" candidateClass="UIView"/>
+                <relationship kind="action" name="showWeibo:"/>
             </relationships>
         </class>
         <class className="BannerViewController" superclassName="GAITrackedViewController">
@@ -728,6 +743,9 @@
                 <relationship kind="outlet" name="busLineTableView" candidateClass="UITableView"/>
                 <relationship kind="outlet" name="stationTableView" candidateClass="UITableView"/>
             </relationships>
+        </class>
+        <class className="JJUnderlineButton" superclassName="UIButton">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/JJUnderlineButton.h"/>
         </class>
         <class className="PrettyNavigationBar" superclassName="UINavigationBar">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/PrettyNavigationBar.h"/>

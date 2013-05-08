@@ -130,6 +130,7 @@
 		C4EBBF36170E5C14001308A1 /* BusSingleLineParser.m in Sources */ = {isa = PBXBuildFile; fileRef = C4EBBF35170E5C14001308A1 /* BusSingleLineParser.m */; };
 		C4EBBF3A170E5C78001308A1 /* BusSingleLine.m in Sources */ = {isa = PBXBuildFile; fileRef = C4EBBF39170E5C78001308A1 /* BusSingleLine.m */; };
 		C4EBBF3D170E6860001308A1 /* SingleLineTimeParser.m in Sources */ = {isa = PBXBuildFile; fileRef = C4EBBF3C170E6860001308A1 /* SingleLineTimeParser.m */; };
+		C4EF4C13173A372900E40A7B /* JJUnderlineButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C4EF4C12173A372900E40A7B /* JJUnderlineButton.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -329,6 +330,8 @@
 		C4EBBF39170E5C78001308A1 /* BusSingleLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BusSingleLine.m; path = Classes/BusSingleLine.m; sourceTree = "<group>"; };
 		C4EBBF3B170E6860001308A1 /* SingleLineTimeParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SingleLineTimeParser.h; path = Classes/SingleLineTimeParser.h; sourceTree = "<group>"; };
 		C4EBBF3C170E6860001308A1 /* SingleLineTimeParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SingleLineTimeParser.m; path = Classes/SingleLineTimeParser.m; sourceTree = "<group>"; };
+		C4EF4C11173A372900E40A7B /* JJUnderlineButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JJUnderlineButton.h; path = Classes/JJUnderlineButton.h; sourceTree = "<group>"; };
+		C4EF4C12173A372900E40A7B /* JJUnderlineButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JJUnderlineButton.m; path = Classes/JJUnderlineButton.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -582,6 +585,8 @@
 		C46886361707C93800564DE9 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				C4EF4C11173A372900E40A7B /* JJUnderlineButton.h */,
+				C4EF4C12173A372900E40A7B /* JJUnderlineButton.m */,
 				C4AAC1E617159E2E0090E067 /* ValidateInputUtil.h */,
 				C4AAC1E717159E2E0090E067 /* ValidateInputUtil.m */,
 				C4BC3F3B1712F663009C87DC /* FileManager.h */,
@@ -938,6 +943,7 @@
 				C48BA5EB17141A8E0033393D /* FaverateStationBusManager.m in Sources */,
 				C4AAC1E817159E2E0090E067 /* ValidateInputUtil.m in Sources */,
 				C4E470B1171D2CDC008C2E90 /* AboutViewController.m in Sources */,
+				C4EF4C13173A372900E40A7B /* JJUnderlineButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
