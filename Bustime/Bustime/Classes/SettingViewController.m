@@ -27,6 +27,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
     self.trackedViewName = @"系统设置页面";
 	self.navigationItem.title = @"设置";
 }
@@ -239,8 +240,9 @@
             }
             case 2:
             {
-                SHSShareViewController *shareController= [SHSShareViewController shareViewController:self];
+                SHSShareViewController *shareController= [SHSShareViewController shareViewController:self.tabBarController];
                 
+                //我开发的一个APP应用-苏州在线公交，欢迎试用
                 [shareController setShareInfo:ShareTypeTextAndImage
                                    shareTitle:@"向您推荐苏州在线公交"
                                     shareText:@"我发现了个好应用，苏州在线公交,快来看看吧"
