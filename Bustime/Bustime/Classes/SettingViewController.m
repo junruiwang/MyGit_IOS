@@ -257,7 +257,6 @@
                 
                 shareController.shareType=ShareTypeTextAndImage;
                 [shareController showShareView];
-                //if(UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone)
                 break;
             }
             default:
