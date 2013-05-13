@@ -18,8 +18,6 @@
     
     CGRect screenRect = [[UIScreen mainScreen] applicationFrame];
     
-    NSLog(@"width:%f, height:%f", screenRect.size.width, screenRect.size.height);
-    
     if (screenRect.size.height > 500){
         [[NSUserDefaults standardUserDefaults] setBool:YES  forKey:USER_DEVICE_5];
     } else {
