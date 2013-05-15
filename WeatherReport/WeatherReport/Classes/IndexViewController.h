@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "BannerViewController.h"
+#import "BaseParser.h"
 
-@interface IndexViewController : BannerViewController
+@interface IndexViewController : BannerViewController<BaseParserDelegate>
 
 @end

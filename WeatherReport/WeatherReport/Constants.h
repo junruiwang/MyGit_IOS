@@ -11,3 +11,5 @@
 #endif
 
 #define USER_DEVICE_5 @"USER_DEVICE_5_WEATHER_REPORT"
+
+#import "ServerAddressManager.h"

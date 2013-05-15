@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "ASIHTTPRequest.h"
+#import "SBJson.h"
 
 @class BaseParser;
 @protocol BaseParserDelegate <NSObject>

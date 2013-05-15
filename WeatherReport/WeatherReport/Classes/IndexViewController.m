@@ -8,10 +8,12 @@
 
 #import "IndexViewController.h"
 #import "ChineseToPinyin.h"
+#import "WeatherWeekDayParser.h"
 
 @interface IndexViewController ()
 
 @property(nonatomic, strong) UIImage *bgImage;
+@property(nonatomic, strong) WeatherWeekDayParser *weatherWeekDayParser;
 
 @end
 
@@ -37,6 +39,8 @@
     NSString *city = [ChineseToPinyin pinyinFromChiniseString:@"长沙"];
     
     NSLog(@"上海：%@", city);
+    
+    [NSThread detachNewThreadSelector:@selector(downloadData) toTarget:self withObject:nil];
 }
 
 - (void)didReceiveMemoryWarning
@@ -76,6 +80,35 @@
     self.navigationItem.leftBarButtonItem=[[UIBarButtonItem alloc]
 										   initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addCityBtnClicked:)];
     self.navigationItem.rightBarButtonItem=[[UIBarButtonItem alloc] initWithCustomView:tools];
+}
+
+- (void)downloadData
+{
+    if (self.weatherWeekDayParser != nil) {
+        [self.weatherWeekDayParser cancel];
+        self.weatherWeekDayParser = nil;
+    }
+    self.weatherWeekDayParser = [[WeatherWeekDayParser alloc] init];
+    
+    NSString *resourceAddress = [ServerAddressManager serverAddress:@"query_weather_week_day"];
+    resourceAddress = [resourceAddress stringByAppendingFormat:@"%@.html", @"101201107"];
+    
+    self.weatherWeekDayParser.serverAddress = resourceAddress;
+    self.weatherWeekDayParser.delegate = self;
+    [self.weatherWeekDayParser start];
+    
+}
+
+#pragma mark -
+#pragma mark BaseJSONParserDelegate
+- (void)parser:(BaseParser*)parser DidFailedParseWithMsg:(NSString*)msg errCode:(NSInteger)code
+{
+    NSLog(@"查询一周天气信息发生异常：%@，错误代码：%d", msg, code);
+}
+
+- (void)parser:(BaseParser*)parser DidParsedData:(NSDictionary *)data
+{
+    
 }
 
 @end
