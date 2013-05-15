@@ -14,6 +14,7 @@
 
 @property(nonatomic, strong) UIImage *bgImage;
 @property(nonatomic, strong) WeatherWeekDayParser *weatherWeekDayParser;
+@property(nonatomic, strong) CityTableListViewController *cityTableListViewController;
 
 @end
 
@@ -28,6 +29,16 @@
     return self;
 }
 
+- (CityTableListViewController *)cityTableListViewController
+{
+    if (!_cityTableListViewController)
+    {
+        _cityTableListViewController = [[CityTableListViewController alloc] init];
+        _cityTableListViewController.delegate = self;
+    }
+    return _cityTableListViewController;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -39,7 +50,7 @@
     NSString *city = [ChineseToPinyin pinyinFromChiniseString:@"长沙"];
     
     NSLog(@"上海：%@", city);
-    
+    //新线程下载一周天气
     [NSThread detachNewThreadSelector:@selector(downloadData) toTarget:self withObject:nil];
 }
 
@@ -96,7 +107,22 @@
     self.weatherWeekDayParser.serverAddress = resourceAddress;
     self.weatherWeekDayParser.delegate = self;
     [self.weatherWeekDayParser start];
-    
+}
+
+//添加城市
+- (void)addCityBtnClicked:(id)sender
+{
+    UINavigationController *nav = [[UINavigationController alloc]
+                                   initWithRootViewController:self.cityTableListViewController];
+    nav.navigationBar.barStyle = UIBarStyleBlack;
+    [self presentModalViewController:nav animated:YES];
+}
+
+
+//选中 所要添加的城市 scorllerview 重绘
+- (void)citySelected:(NSString *)cityName;
+{
+    NSLog(@"城市：%@", cityName);
 }
 
 #pragma mark -

@@ -9,7 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "BannerViewController.h"
 #import "BaseParser.h"
+#import "CityTableListViewController.h"
 
-@interface IndexViewController : BannerViewController<BaseParserDelegate>
+@interface IndexViewController : BannerViewController<BaseParserDelegate, CityTableListViewDelegate>
 
 @end
