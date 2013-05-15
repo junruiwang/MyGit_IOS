@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C4401753174223ED00781920 /* ChineseToPinyin.m in Sources */ = {isa = PBXBuildFile; fileRef = C4401752174223EC00781920 /* ChineseToPinyin.m */; };
 		C4D3A8361727DA49004E2891 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4D3A8351727DA49004E2891 /* UIKit.framework */; };
 		C4D3A8381727DA49004E2891 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4D3A8371727DA49004E2891 /* Foundation.framework */; };
 		C4D3A83A1727DA49004E2891 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4D3A8391727DA49004E2891 /* CoreGraphics.framework */; };
@@ -63,6 +64,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C4401751174223EC00781920 /* ChineseToPinyin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChineseToPinyin.h; path = Classes/ChineseToPinyin.h; sourceTree = "<group>"; };
+		C4401752174223EC00781920 /* ChineseToPinyin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChineseToPinyin.m; path = Classes/ChineseToPinyin.m; sourceTree = "<group>"; };
 		C4D3A8321727DA49004E2891 /* WeatherReport.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherReport.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4D3A8351727DA49004E2891 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C4D3A8371727DA49004E2891 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -224,6 +227,8 @@
 		C4D3A8571727DB18004E2891 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				C4401751174223EC00781920 /* ChineseToPinyin.h */,
+				C4401752174223EC00781920 /* ChineseToPinyin.m */,
 				C4D3A8AA1727E0D1004E2891 /* BannerViewController.h */,
 				C4D3A8AB1727E0D1004E2891 /* BannerViewController.m */,
 				C4EA27F217282068000B5CA6 /* Constants.h */,
@@ -404,6 +409,7 @@
 				C4D3A8461727DA49004E2891 /* AppDelegate.m in Sources */,
 				C4D3A8A91727DBAD004E2891 /* IndexViewController.m in Sources */,
 				C4D3A8AC1727E0D1004E2891 /* BannerViewController.m in Sources */,
+				C4401753174223ED00781920 /* ChineseToPinyin.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

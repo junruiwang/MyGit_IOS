@@ -7,6 +7,7 @@
 //
 
 #import "IndexViewController.h"
+#import "ChineseToPinyin.h"
 
 @interface IndexViewController ()
 
@@ -32,6 +33,10 @@
     [self loadBgImageView];
     
     [self initalToolbar];
+    
+    NSString *city = [ChineseToPinyin pinyinFromChiniseString:@"长沙"];
+    
+    NSLog(@"上海：%@", city);
 }
 
 - (void)didReceiveMemoryWarning
