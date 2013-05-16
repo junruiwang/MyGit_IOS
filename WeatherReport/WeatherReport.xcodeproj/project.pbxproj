@@ -43,6 +43,11 @@
 		C459D33817433BC0004F6079 /* ServerAddressManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C459D33717433BC0004F6079 /* ServerAddressManager.m */; };
 		C459D33A17433C41004F6079 /* provinceCity.plist in Resources */ = {isa = PBXBuildFile; fileRef = C459D33917433C41004F6079 /* provinceCity.plist */; };
 		C459D33C17435283004F6079 /* server.plist in Resources */ = {isa = PBXBuildFile; fileRef = C459D33B17435283004F6079 /* server.plist */; };
+		C46265EA1745177100C5127E /* country-field.png in Resources */ = {isa = PBXBuildFile; fileRef = C46265E91745177100C5127E /* country-field.png */; };
+		C46265F517451E2600C5127E /* barbutton-refresh.png in Resources */ = {isa = PBXBuildFile; fileRef = C46265F117451E2600C5127E /* barbutton-refresh.png */; };
+		C46265F617451E2600C5127E /* chooseforard_division_shu.png in Resources */ = {isa = PBXBuildFile; fileRef = C46265F217451E2600C5127E /* chooseforard_division_shu.png */; };
+		C46265F717451E2600C5127E /* chooseforard_division_shu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C46265F317451E2600C5127E /* chooseforard_division_shu@2x.png */; };
+		C46265F817451E2600C5127E /* forecast-forward-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = C46265F417451E2600C5127E /* forecast-forward-btn.png */; };
 		C47E322C1743C5340067BA38 /* CityTableListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C47E322B1743C5340067BA38 /* CityTableListViewController.m */; };
 		C4A796E417438B2200415D20 /* WeatherWeekDayParser.m in Sources */ = {isa = PBXBuildFile; fileRef = C4A796E317438B2200415D20 /* WeatherWeekDayParser.m */; };
 		C4AD9DE8174494AA002D916D /* DSLoadingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4AD9DE7174494AA002D916D /* DSLoadingViewController.m */; };
@@ -188,6 +193,11 @@
 		C459D33717433BC0004F6079 /* ServerAddressManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ServerAddressManager.m; path = Classes/ServerAddressManager.m; sourceTree = "<group>"; };
 		C459D33917433C41004F6079 /* provinceCity.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = provinceCity.plist; path = Classes/provinceCity.plist; sourceTree = "<group>"; };
 		C459D33B17435283004F6079 /* server.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = server.plist; sourceTree = "<group>"; };
+		C46265E91745177100C5127E /* country-field.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "country-field.png"; path = "Resources/country-field.png"; sourceTree = "<group>"; };
+		C46265F117451E2600C5127E /* barbutton-refresh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "barbutton-refresh.png"; path = "Resources/barbutton-refresh.png"; sourceTree = "<group>"; };
+		C46265F217451E2600C5127E /* chooseforard_division_shu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = chooseforard_division_shu.png; path = Resources/chooseforard_division_shu.png; sourceTree = "<group>"; };
+		C46265F317451E2600C5127E /* chooseforard_division_shu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "chooseforard_division_shu@2x.png"; path = "Resources/chooseforard_division_shu@2x.png"; sourceTree = "<group>"; };
+		C46265F417451E2600C5127E /* forecast-forward-btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "forecast-forward-btn.png"; path = "Resources/forecast-forward-btn.png"; sourceTree = "<group>"; };
 		C47E322A1743C5340067BA38 /* CityTableListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CityTableListViewController.h; path = Classes/CityTableListViewController.h; sourceTree = "<group>"; };
 		C47E322B1743C5340067BA38 /* CityTableListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CityTableListViewController.m; path = Classes/CityTableListViewController.m; sourceTree = "<group>"; };
 		C4A796E217438B2200415D20 /* WeatherWeekDayParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WeatherWeekDayParser.h; path = Classes/WeatherWeekDayParser.h; sourceTree = "<group>"; };
@@ -565,6 +575,11 @@
 		C4D3A8591727DB29004E2891 /* Index */ = {
 			isa = PBXGroup;
 			children = (
+				C46265F117451E2600C5127E /* barbutton-refresh.png */,
+				C46265F217451E2600C5127E /* chooseforard_division_shu.png */,
+				C46265F317451E2600C5127E /* chooseforard_division_shu@2x.png */,
+				C46265F417451E2600C5127E /* forecast-forward-btn.png */,
+				C46265E91745177100C5127E /* country-field.png */,
 				C4EA27EB17281F49000B5CA6 /* cloud-568h@2x.jpg */,
 				C4EA27EC17281F49000B5CA6 /* cloud.jpg */,
 				C4EA27ED17281F49000B5CA6 /* cloud@2x.jpg */,
@@ -733,6 +748,11 @@
 				C4AD9E2E174497AB002D916D /* load_bg4.png in Resources */,
 				C4AD9E2F174497AB002D916D /* load_bg5.png in Resources */,
 				C4AD9E31174497AB002D916D /* loading.png in Resources */,
+				C46265EA1745177100C5127E /* country-field.png in Resources */,
+				C46265F517451E2600C5127E /* barbutton-refresh.png in Resources */,
+				C46265F617451E2600C5127E /* chooseforard_division_shu.png in Resources */,
+				C46265F717451E2600C5127E /* chooseforard_division_shu@2x.png in Resources */,
+				C46265F817451E2600C5127E /* forecast-forward-btn.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
