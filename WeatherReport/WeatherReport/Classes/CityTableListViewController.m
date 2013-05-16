@@ -49,7 +49,15 @@
         return self.cityNames.count;
     } else {
         NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF contains[cd] %@", self.searchBar.text];
-        self.FilterArray=[self.fileArray.allKeys filteredArrayUsingPredicate:predicate];
+        
+        NSArray *tempFilterArray = [self.fileArray.allKeys filteredArrayUsingPredicate:predicate];
+        NSMutableArray *resultFilterArray = [[NSMutableArray alloc] initWithCapacity:50];
+        for (int i=0; i < [tempFilterArray count]; i++) {
+            NSString *cityName = [tempFilterArray objectAtIndex:i];
+            [resultFilterArray addObject:[cityName substringToIndex:[cityName rangeOfString:@" "].location]];
+        }
+        self.FilterArray = [resultFilterArray mutableCopy];
+        
         return [self.FilterArray count];
     }
 }
@@ -77,7 +85,7 @@
         [self.delegate citySelected:cityName];
     } else {
         NSString *cityName = [self.FilterArray objectAtIndex:indexPath.row];
-        [self.delegate citySelected:[cityName substringToIndex:[cityName rangeOfString:@" "].location]];
+        [self.delegate citySelected:[cityName substringFromIndex:([cityName rangeOfString:@"."].location + 1)]];
     }
 }
 
@@ -103,17 +111,29 @@
     [super viewDidLoad];
     self.navigationItem.title = @"添加城市";
     
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"cityList" ofType:@"plist"];
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"provinceCity" ofType:@"plist"];
     NSDictionary *dict = [NSDictionary dictionaryWithContentsOfFile:path];
     
-    self.allCitys = [[dict allKeys] mutableCopy];
+    NSArray *provinces = [[dict allKeys] mutableCopy];
+    
+    for (int i=0; i < [provinces count]; i++) {
+        NSString *province = [provinces objectAtIndex:i];
+        NSArray *cityAry = [dict valueForKey:province];
+        
+        for (int m=0; m < [cityAry count]; m++) {
+            NSString *city=[NSString stringWithFormat:@"%@.%@ %@", province, cityAry[m], [ChineseToPinyin pinyinFromChiniseString:cityAry[m]]];
+            [self.fileArray setObject:city forKey:city];
+        }
+    }
+    
+    //self.allCitys = [[dict allKeys] mutableCopy];
     //[self.allCitys addObjectsFromArray:[dict allKeys]];
     
-    for (int i=0; i<[self.allCitys count]; i++) {
-        NSString *cityName = [self.allCitys objectAtIndex:i];
-        NSString *city=[NSString stringWithFormat:@"%@ %@", cityName, [ChineseToPinyin pinyinFromChiniseString:cityName]];
-        [self.fileArray setObject:city forKey:city];
-    }
+//    for (int i=0; i<[self.allCitys count]; i++) {
+//        NSString *cityName = [self.allCitys objectAtIndex:i];
+//        NSString *city=[NSString stringWithFormat:@"%@ %@", cityName, [ChineseToPinyin pinyinFromChiniseString:cityName]];
+//        [self.fileArray setObject:city forKey:city];
+//    }
     
     [self.tableView reloadData];
 }
