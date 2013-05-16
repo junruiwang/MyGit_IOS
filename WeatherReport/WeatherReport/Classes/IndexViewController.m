@@ -20,13 +20,18 @@
 
 @implementation IndexViewController
 
-- (id)initWithCoder:(NSCoder *)aDecoder
+- (id)init
 {
-    self = [super initWithCoder:aDecoder];
+    self = [super init];
     if (self) {
-        // Custom initialization
+        
     }
     return self;
+}
+
+- (void)loadView
+{
+    [super loadView];
 }
 
 - (CityTableListViewController *)cityTableListViewController
@@ -44,12 +49,7 @@
     [super viewDidLoad];
     //加载背景图片
     [self loadBgImageView];
-    
     [self initalToolbar];
-    
-    NSString *city = [ChineseToPinyin pinyinFromChiniseString:@"长沙"];
-    
-    NSLog(@"上海：%@", city);
     //新线程下载一周天气
     [NSThread detachNewThreadSelector:@selector(downloadData) toTarget:self withObject:nil];
 }
@@ -62,15 +62,14 @@
 
 - (void)loadBgImageView
 {
-    if (self.bgImage == nil) {
-        if ([[NSUserDefaults standardUserDefaults] boolForKey:USER_DEVICE_5]) {
-            self.bgImage = [UIImage imageNamed:@"cloud-568h.jpg"];
-        } else {
-            self.bgImage = [UIImage imageNamed:@"cloud.jpg"];
-        }
+    float imageHeight = 367;
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:USER_DEVICE_5]) {
+        imageHeight += 88;
     }
-    
-    self.view.backgroundColor = [UIColor colorWithPatternImage:self.bgImage];
+    UIImageView *bgImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, imageHeight)];
+    bgImageView.backgroundColor = [UIColor clearColor];
+    bgImageView.image = [UIImage imageNamed:@"load_bg1.png"];
+    [self.view addSubview:bgImageView];
 }
 
 //初始化工具条

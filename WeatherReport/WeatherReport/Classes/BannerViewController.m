@@ -14,19 +14,24 @@
 
 @implementation BannerViewController
 
-- (id)initWithCoder:(NSCoder *)aDecoder
+- (id)init
 {
-    self = [super initWithCoder:aDecoder];
+    self = [super init];
     if (self) {
-        // Custom initialization
+        
     }
     return self;
+}
+
+- (void)loadView
+{
+    [super loadView];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
+    //self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
 	// Do any additional setup after loading the view.
 }
 
