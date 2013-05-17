@@ -26,7 +26,19 @@
     if (cityArray == nil) {
         cityArray = [[NSMutableArray alloc] initWithCapacity:20];
     }
-    [cityArray addObject:[city archived]];
+    BOOL hasCity = NO;
+    for (NSInteger i=0; i < [cityArray count]; i++) {
+        NSData *data = [cityArray objectAtIndex:i];
+        City *currentCity = [City unarchived:data];
+        if ([city.cityName caseInsensitiveCompare:currentCity.cityName] == NSOrderedSame) {
+            hasCity = YES;
+            break;
+        }
+    }
+    
+    if (!hasCity) {
+        [cityArray addObject:[city archived]];
+    }
     
     return [cityArray writeToFile: path atomically:YES];
 }

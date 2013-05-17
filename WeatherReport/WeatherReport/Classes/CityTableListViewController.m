@@ -85,7 +85,7 @@
         [self.delegate citySelected:cityName];
     } else {
         NSString *cityName = [self.FilterArray objectAtIndex:indexPath.row];
-        [self.delegate citySelected:[cityName substringFromIndex:([cityName rangeOfString:@"."].location + 1)]];
+        [self.delegate citySelected:cityName];
     }
 }
 

@@ -27,31 +27,9 @@
     if (self) {
         _localCityListManager = [[LocalCityListManager alloc] init];
         _cityArray = [[NSMutableArray alloc] initWithCapacity:10];
-        [self mockLocalCity];
         [self.localCityListManager buildLocalFileToArray:self.cityArray];
     }
     return self;
-}
-
-- (void)mockLocalCity
-{
-    City *city_1 = [[City alloc] init];
-    city_1.province = @"湖北";
-    city_1.cityName = @"武汉";
-    city_1.searchCode = @"5264512545";
-    [self.localCityListManager insertIntoFaverateWithCity:city_1];
-    
-    City *city_2 = [[City alloc] init];
-    city_2.province = @"湖北";
-    city_2.cityName = @"黄石";
-    city_2.searchCode = @"5264512545";
-    [self.localCityListManager insertIntoFaverateWithCity:city_2];
-    
-    City *city_3 = [[City alloc] init];
-    city_3.province = @"湖北";
-    city_3.cityName = @"襄阳";
-    city_3.searchCode = @"5264512545";
-    [self.localCityListManager insertIntoFaverateWithCity:city_3];
 }
 
 - (CityTableListViewController *)cityTableListViewController
@@ -67,9 +45,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.navigationItem.title = @"城市管理";
+    [self.tableView setEditing:YES animated:YES];
     self.navigationItem.leftBarButtonItem=[[UIBarButtonItem alloc]
 										   initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addCityBtnClicked:)];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"编辑" style:UIBarButtonItemStyleBordered target:self action:@selector(toggleEdit:)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"完成" style:UIBarButtonItemStyleBordered target:self action:@selector(finishCitys:)];
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -91,6 +71,11 @@
 - (void)addCityBtnClicked:(id)sender
 {
     [self.navigationController pushViewController:self.cityTableListViewController animated:YES];
+}
+
+- (void)finishCitys:(id)sender
+{
+    [self dismissModalViewControllerAnimated:YES];
 }
 
 #pragma mark - UITableViewDataSource
@@ -134,10 +119,10 @@
         case 0:
         {
             [cell prepareForTableView:tableView indexPath:indexPath];
-            cell.textLabel.text = @"当前城市";
-            UILabel *cityLabel = [[UILabel alloc] initWithFrame:CGRectMake(140, 10, 60, 20)];
+            cell.textLabel.text = @"当前所在城市";
+            UILabel *cityLabel = [[UILabel alloc] initWithFrame:CGRectMake(140, 8, 60, 20)];
             cityLabel.textColor = [UIColor blueColor];
-            cityLabel.font = [UIFont systemFontOfSize:18];
+            cityLabel.font = [UIFont boldSystemFontOfSize:18];
             cityLabel.text = @"上海";
             cityLabel.backgroundColor = [UIColor clearColor];
             [cell.contentView addSubview:cityLabel];
@@ -166,6 +151,27 @@
     return cell;
 }
 
+//打开编辑模式后，默认情况下每行左边会出现红的删除按钮，这个方法就是关闭这些按钮的
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView
+           editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section == 0) {
+        return UITableViewCellEditingStyleNone;
+    }
+    return UITableViewCellEditingStyleDelete;
+}
+
+//group状态下怎么修改左边delete icon的位置
+- (BOOL)tableView:(UITableView *)tableView shouldIndentWhileEditingRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return NO;
+}
+
+//修改右边删除文字
+- (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return @"删除";
+}
+
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 1) {
@@ -176,13 +182,43 @@
         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
         
         [self.localCityListManager deleteCityInFaverate:city.cityName];
+        [self.tableView reloadData];
     }
+}
+
+//开启行移动
+- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section == 0) {
+        return NO;
+    }
+    return YES;
+}
+
+//这个方法就是执行移动操作的
+- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath
+{
+    NSUInteger fromRow = [sourceIndexPath row];
+    NSUInteger toRow = [destinationIndexPath row];
+    
+    City *city = [self.cityArray objectAtIndex:fromRow];
+    [self.cityArray removeObjectAtIndex:fromRow];
+    [self.cityArray insertObject:city atIndex:toRow];
+    [self.tableView reloadData];
 }
 
 #pragma mark - CityTableListViewDelegate
 - (void)citySelected:(NSString *)cityName;
 {
     NSLog(@"城市：%@", cityName);
+    City *city = [[City alloc] init];
+    city.province = [cityName substringToIndex:[cityName rangeOfString:@"."].location];
+    city.cityName = [cityName substringFromIndex:([cityName rangeOfString:@"."].location + 1)];
+    city.searchCode = @"5264512545";
+    [self.localCityListManager insertIntoFaverateWithCity:city];
+    [self.localCityListManager buildLocalFileToArray:self.cityArray];
+    
+    [self.navigationController popToViewController:self animated:YES];
+    [self.tableView reloadData];
 }
 
 @end

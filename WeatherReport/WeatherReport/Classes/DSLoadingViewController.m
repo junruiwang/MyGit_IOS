@@ -32,7 +32,7 @@
     [_activityIndicatorView startAnimating];
     [self.view addSubview:_activityIndicatorView];
     
-    [self performSelector:@selector(loadingDone) withObject:nil afterDelay:3];    // 假设加载3秒中
+    [self performSelector:@selector(loadingDone) withObject:nil afterDelay:1];    // 假设加载3秒中
 }
 
 - (void)viewDidUnload
