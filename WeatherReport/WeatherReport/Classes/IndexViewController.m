@@ -9,12 +9,13 @@
 #import "IndexViewController.h"
 #import "ChineseToPinyin.h"
 #import "WeatherWeekDayParser.h"
+#import "CityManagerViewController.h"
 
 @interface IndexViewController ()
 
 @property(nonatomic, strong) UIImage *bgImage;
 @property(nonatomic, strong) WeatherWeekDayParser *weatherWeekDayParser;
-@property(nonatomic, strong) CityTableListViewController *cityTableListViewController;
+@property(nonatomic, strong) CityManagerViewController *cityManagerViewController;
 
 @end
 
@@ -29,19 +30,18 @@
     return self;
 }
 
+- (CityManagerViewController *)cityManagerViewController
+{
+    if (!_cityManagerViewController)
+    {
+        _cityManagerViewController = [[CityManagerViewController alloc] initWithNibName:@"CityManagerViewController" bundle:nil];
+    }
+    return _cityManagerViewController;
+}
+
 - (void)loadView
 {
     [super loadView];
-}
-
-- (CityTableListViewController *)cityTableListViewController
-{
-    if (!_cityTableListViewController)
-    {
-        _cityTableListViewController = [[CityTableListViewController alloc] init];
-        _cityTableListViewController.delegate = self;
-    }
-    return _cityTableListViewController;
 }
 
 - (void)viewDidLoad
@@ -84,6 +84,7 @@
     UIButton *cityButton = [UIButton buttonWithType:UIButtonTypeCustom];
     cityButton.frame = CGRectMake(10, 10, 25, 22);
     [cityButton setImage:[UIImage imageNamed:@"country-field.png"] forState:UIControlStateNormal];
+    [cityButton addTarget:self action:@selector(addCityBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
     [navigationBarView addSubview:cityButton];
     
     UIImageView *pixImageView = [[UIImageView alloc] initWithFrame:CGRectMake(45, 10, 1, 24)];
@@ -157,7 +158,7 @@
 - (void)addCityBtnClicked:(id)sender
 {
     UINavigationController *nav = [[UINavigationController alloc]
-                                   initWithRootViewController:self.cityTableListViewController];
+                                   initWithRootViewController:self.cityManagerViewController];
     nav.navigationBar.barStyle = UIBarStyleBlack;
     [self presentModalViewController:nav animated:YES];
 }
