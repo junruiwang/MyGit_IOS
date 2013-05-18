@@ -136,6 +136,10 @@
 		C4EA27EE17281F49000B5CA6 /* cloud-568h@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C4EA27EB17281F49000B5CA6 /* cloud-568h@2x.jpg */; };
 		C4EA27EF17281F49000B5CA6 /* cloud.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C4EA27EC17281F49000B5CA6 /* cloud.jpg */; };
 		C4EA27F017281F49000B5CA6 /* cloud@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C4EA27ED17281F49000B5CA6 /* cloud@2x.jpg */; };
+		C4F2A107174774A8005A2D84 /* LocationInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = C4F2A106174774A8005A2D84 /* LocationInfo.m */; };
+		C4F2A109174774DB005A2D84 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4F2A108174774DB005A2D84 /* CoreLocation.framework */; };
+		C4F2A10C17477546005A2D84 /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C4F2A10B17477546005A2D84 /* LocationManager.m */; };
+		C4F2A10F174775BE005A2D84 /* LocationParser.m in Sources */ = {isa = PBXBuildFile; fileRef = C4F2A10E174775BE005A2D84 /* LocationParser.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -321,6 +325,13 @@
 		C4EA27EC17281F49000B5CA6 /* cloud.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = cloud.jpg; path = Resources/cloud.jpg; sourceTree = "<group>"; };
 		C4EA27ED17281F49000B5CA6 /* cloud@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "cloud@2x.jpg"; path = "Resources/cloud@2x.jpg"; sourceTree = "<group>"; };
 		C4EA27F217282068000B5CA6 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		C4F2A105174774A8005A2D84 /* LocationInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LocationInfo.h; path = Classes/LocationInfo.h; sourceTree = "<group>"; };
+		C4F2A106174774A8005A2D84 /* LocationInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LocationInfo.m; path = Classes/LocationInfo.m; sourceTree = "<group>"; };
+		C4F2A108174774DB005A2D84 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		C4F2A10A17477546005A2D84 /* LocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LocationManager.h; path = Classes/LocationManager.h; sourceTree = "<group>"; };
+		C4F2A10B17477546005A2D84 /* LocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LocationManager.m; path = Classes/LocationManager.m; sourceTree = "<group>"; };
+		C4F2A10D174775BE005A2D84 /* LocationParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LocationParser.h; path = Classes/LocationParser.h; sourceTree = "<group>"; };
+		C4F2A10E174775BE005A2D84 /* LocationParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LocationParser.m; path = Classes/LocationParser.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -330,6 +341,7 @@
 			files = (
 				C44448A2174327FD00DF320B /* libicucore.dylib in Frameworks */,
 				C44448A0174326A200DF320B /* libz.1.2.5.dylib in Frameworks */,
+				C4F2A109174774DB005A2D84 /* CoreLocation.framework in Frameworks */,
 				C42CFB111745D9B700C85794 /* QuartzCore.framework in Frameworks */,
 				C444489E1743268400DF320B /* MobileCoreServices.framework in Frameworks */,
 				C444489C174325AE00DF320B /* SystemConfiguration.framework in Frameworks */,
@@ -510,6 +522,7 @@
 			children = (
 				C44448A1174327FD00DF320B /* libicucore.dylib */,
 				C444489F174326A200DF320B /* libz.1.2.5.dylib */,
+				C4F2A108174774DB005A2D84 /* CoreLocation.framework */,
 				C44448951743248D00DF320B /* CFNetwork.framework */,
 				C44448971743250400DF320B /* CoreData.framework */,
 				C4D3A8391727DA49004E2891 /* CoreGraphics.framework */,
@@ -593,6 +606,12 @@
 		C4D3A8571727DB18004E2891 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				C4F2A10D174775BE005A2D84 /* LocationParser.h */,
+				C4F2A10E174775BE005A2D84 /* LocationParser.m */,
+				C4F2A10A17477546005A2D84 /* LocationManager.h */,
+				C4F2A10B17477546005A2D84 /* LocationManager.m */,
+				C4F2A105174774A8005A2D84 /* LocationInfo.h */,
+				C4F2A106174774A8005A2D84 /* LocationInfo.m */,
 				C42CFB1B1745F13B00C85794 /* FileManager.h */,
 				C42CFB1C1745F13B00C85794 /* FileManager.m */,
 				C42CFB0A1745D90100C85794 /* PrettyDrawing.h */,
@@ -876,6 +895,9 @@
 				C42CFB1D1745F13B00C85794 /* FileManager.m in Sources */,
 				C42CFB201745F28B00C85794 /* LocalCityListManager.m in Sources */,
 				C4535A8617472AD10054E472 /* CityDetailListViewController.m in Sources */,
+				C4F2A107174774A8005A2D84 /* LocationInfo.m in Sources */,
+				C4F2A10C17477546005A2D84 /* LocationManager.m in Sources */,
+				C4F2A10F174775BE005A2D84 /* LocationParser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

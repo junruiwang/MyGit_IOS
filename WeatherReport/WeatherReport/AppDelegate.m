@@ -33,6 +33,11 @@
     //设置启动画面
     [self loadLoadingView];
     
+    //启动定位
+    self.locationManager = [[LocationManager alloc] init];
+    //init base data
+    self.locationInfo = [[LocationInfo alloc] init];
+    
     [self.window makeKeyAndVisible];
     
     return YES;
@@ -57,13 +62,16 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
-    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    //Locating again
+    self.locationManager.isLocationOver = NO;
+    [self.locationManager startLocation];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+
 
 #pragma mark - Custom methods
 

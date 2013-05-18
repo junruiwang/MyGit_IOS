@@ -8,12 +8,17 @@
 
 #import <UIKit/UIKit.h>
 #import "DSLoadingViewController.h"
+#import "LocationInfo.h"
+#import "LocationManager.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-@property (nonatomic, retain) DSLoadingViewController *loadingViewController;
-@property (nonatomic, retain) UITabBarController *mainTabBarController;
+@property (nonatomic, strong) DSLoadingViewController *loadingViewController;
+@property (nonatomic, strong) UITabBarController *mainTabBarController;
+
+@property (nonatomic, strong) LocationInfo *locationInfo;
+@property (nonatomic, strong) LocationManager *locationManager;
 
 - (void)loadLoadingView;
 - (void)loadMainView;

@@ -164,12 +164,6 @@
 }
 
 
-//选中 所要添加的城市 scorllerview 重绘
-- (void)citySelected:(NSString *)cityName;
-{
-    NSLog(@"城市：%@", cityName);
-}
-
 #pragma mark -
 #pragma mark BaseJSONParserDelegate
 - (void)parser:(BaseParser*)parser DidFailedParseWithMsg:(NSString*)msg errCode:(NSInteger)code

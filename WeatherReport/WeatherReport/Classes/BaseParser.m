@@ -50,13 +50,6 @@
             [self.delegate parser:self DidFailedParseWithMsg:@"response data is not NSDictionary" errCode:-1];
         return NO;
     }
-//    NSString *code = [dictionary valueForKey:@"code"];
-//    NSString *errorMessage = [dictionary valueForKey:@"errorMessage"];
-//    if(![code isEqualToString:@"200"]){
-//        if(self.delegate != nil && [self.delegate respondsToSelector:@selector(parser:DidFailedParseWithMsg:errCode:)])
-//            [self.delegate parser:self DidFailedParseWithMsg:errorMessage errCode:[code intValue]];
-//        return NO;
-//    }
     
     return YES;
 }
