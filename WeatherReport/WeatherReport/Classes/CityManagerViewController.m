@@ -37,7 +37,6 @@
     if (!_cityTableListViewController)
     {
         _cityTableListViewController = [[CityTableListViewController alloc] init];
-        _cityTableListViewController.delegate = self;
     }
     return _cityTableListViewController;
 }
@@ -53,19 +52,20 @@
     // Do any additional setup after loading the view from its nib.
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    [self.localCityListManager buildLocalFileToArray:self.cityArray];
+    [self.tableView reloadData];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-- (void)toggleEdit:(id)sender {
-    [self.tableView setEditing:!self.tableView.editing animated:YES];
-    if (self.tableView.editing)
-        [self.navigationItem.rightBarButtonItem setTitle:@"完成"];
-    else
-        [self.navigationItem.rightBarButtonItem setTitle:@"编辑"];
-}
 
 //添加城市
 - (void)addCityBtnClicked:(id)sender
@@ -101,10 +101,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CityTableViewCellIdentifier = @"CityTableViewCell";
-    CityTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CityTableViewCellIdentifier];
-    if (cell == nil) {
-        cell = [[CityTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CityTableViewCellIdentifier];
-    }
+    CityTableViewCell *cell = cell = [[CityTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CityTableViewCellIdentifier];
     //cell背景色
     cell.backgroundColor = [UIColor whiteColor];
     //下降阴影
@@ -141,7 +138,7 @@
             [cell prepareForTableView:tableView indexPath:indexPath];
             
             City *city = [self.cityArray objectAtIndex:[indexPath row]];
-            cell.textLabel.text = [NSString stringWithFormat:@"%@.%@", city.province, city.cityName];
+            cell.textLabel.text = city.cityName;
             [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
 
             return cell;
@@ -203,21 +200,6 @@
     City *city = [self.cityArray objectAtIndex:fromRow];
     [self.cityArray removeObjectAtIndex:fromRow];
     [self.cityArray insertObject:city atIndex:toRow];
-    [self.tableView reloadData];
-}
-
-#pragma mark - CityTableListViewDelegate
-- (void)citySelected:(NSString *)cityName;
-{
-    NSLog(@"城市：%@", cityName);
-    City *city = [[City alloc] init];
-    city.province = [cityName substringToIndex:[cityName rangeOfString:@"."].location];
-    city.cityName = [cityName substringFromIndex:([cityName rangeOfString:@"."].location + 1)];
-    city.searchCode = @"5264512545";
-    [self.localCityListManager insertIntoFaverateWithCity:city];
-    [self.localCityListManager buildLocalFileToArray:self.cityArray];
-    
-    [self.navigationController popToViewController:self animated:YES];
     [self.tableView reloadData];
 }
 

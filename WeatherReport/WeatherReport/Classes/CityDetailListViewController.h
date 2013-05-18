@@ -1,20 +1,21 @@
 //
-//  CityTableListViewController.h
-//  WeatherInfo
+//  CityDetailListViewController.h
+//  WeatherReport
 //
-//  Created by Wu Jing on 11-5-12.
-//  Copyright 2011 cfmetinfo. All rights reserved.
+//  Created by 汪君瑞 on 13-5-18.
+//  Copyright (c) 2013年 jerry. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 #import "Reachability.h"
 #import "City.h"
 
-@interface CityTableListViewController : UITableViewController
+@interface CityDetailListViewController : UITableViewController
 
 @property (nonatomic, strong) UISearchBar *searchBar;
 @property (nonatomic, strong) UISearchDisplayController *searchDC;
-@property (nonatomic, strong) NSMutableArray *provinceArray;
+@property (nonatomic, copy) NSString *currentProvince;
+@property (nonatomic, strong) NSMutableArray *cityArray;
 @property (nonatomic, strong) NSMutableDictionary *fileArray;
 @property (nonatomic, strong) NSMutableArray *FilterArray;
 

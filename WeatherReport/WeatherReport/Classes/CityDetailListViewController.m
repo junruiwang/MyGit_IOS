@@ -1,53 +1,57 @@
-    //
-//  CityTableListViewController.m
-//  WeatherInfo
 //
-//  Created by Wu Jing on 11-5-12.
-//  Copyright 2011 cfmetinfo. All rights reserved.
+//  CityDetailListViewController.m
+//  WeatherReport
+//
+//  Created by 汪君瑞 on 13-5-18.
+//  Copyright (c) 2013年 jerry. All rights reserved.
 //
 
-#import "CityTableListViewController.h"
+#import "CityDetailListViewController.h"
 #import "ChineseToPinyin.h"
 #import "LocalCityListManager.h"
-#import "CityDetailListViewController.h"
 
-@interface CityTableListViewController ()
+@interface CityDetailListViewController ()
 
 @property (nonatomic, strong) LocalCityListManager *localCityListManager;
 
 @end
 
-@implementation CityTableListViewController
+@implementation CityDetailListViewController
 
 - (id)init
 {
     self = [super init];
     if (self) {
-        _provinceArray=[[NSMutableArray alloc] init];
+        _cityArray=[[NSMutableArray alloc] initWithCapacity:10];
         _fileArray=[[NSMutableDictionary alloc] init];
-        _FilterArray=[[NSMutableArray alloc] initWithCapacity:50];
+        _FilterArray=[[NSMutableArray alloc] initWithCapacity:10];
         _localCityListManager = [[LocalCityListManager alloc] init];
-        
-        NSString *path = [[NSBundle mainBundle] pathForResource:@"provinceCity" ofType:@"plist"];
-        NSDictionary *dict = [NSDictionary dictionaryWithContentsOfFile:path];
-        
-        self.provinceArray = [[dict allKeys] mutableCopy];
-        
-        for (int i=0; i < [self.provinceArray count]; i++) {
-            NSString *province = [self.provinceArray objectAtIndex:i];
-            
-            NSArray *cityAry = [dict valueForKey:province];
-            for (int m=0; m < [cityAry count]; m++) {
-                NSString *city=[NSString stringWithFormat:@"%@.%@ %@", province, cityAry[m], [ChineseToPinyin pinyinFromChiniseString:cityAry[m]]];
-                [self.fileArray setObject:city forKey:city];
-            }
-        }
     }
     return self;
 }
 
 - (void)loadView {
     [super loadView];
+    [self.cityArray removeAllObjects];
+    [self.fileArray removeAllObjects];
+    
+    NSString *pathCode = [[NSBundle mainBundle] pathForResource:@"cityList" ofType:@"plist"];
+    NSDictionary *dictCode = [NSDictionary dictionaryWithContentsOfFile:pathCode];
+    
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"provinceCity" ofType:@"plist"];
+    NSDictionary *dict = [NSDictionary dictionaryWithContentsOfFile:path];
+    
+    NSArray *cityAry = [dict valueForKey:self.currentProvince];
+    for (int m=0; m < [cityAry count]; m++) {
+        NSString *cityString=[NSString stringWithFormat:@"%@ %@", cityAry[m], [ChineseToPinyin pinyinFromChiniseString:cityAry[m]]];
+        City *city = [[City alloc] init];
+        city.province = self.currentProvince;
+        city.cityName = cityAry[m];
+        city.searchCode = [dictCode valueForKey:cityAry[m]];
+        [self.cityArray addObject:city];
+        [self.fileArray setObject:cityString forKey:cityString];
+    }
+    
     self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 44.0f)];
 	self.searchBar.tintColor = [UIColor blackColor];
     self.searchBar.placeholder = @"查找";
@@ -66,7 +70,7 @@
 -(void)viewDidLoad
 {
     [super viewDidLoad];
-    self.navigationItem.title = @"省份";
+    self.navigationItem.title = self.currentProvince;
     self.tableView.separatorColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"dashed_detail.png"]];
     
     [self.tableView reloadData];
@@ -87,16 +91,16 @@
 }
 
 #pragma mark - UITableViewDataSource
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)aTableView 
-{ 
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)aTableView
+{
 	
-	return 1; 
+	return 1;
 }
 
-- (NSInteger)tableView:(UITableView *)aTableView numberOfRowsInSection:(NSInteger)section 
+- (NSInteger)tableView:(UITableView *)aTableView numberOfRowsInSection:(NSInteger)section
 {
 	if(aTableView==self.tableView){
-        return self.provinceArray.count;
+        return self.cityArray.count;
     } else {
         NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF contains[cd] %@", self.searchBar.text];
         NSArray *tempFilterArray = [self.fileArray.allKeys filteredArrayUsingPredicate:predicate];
@@ -108,9 +112,9 @@
             NSString *cityName = [tempFilterArray objectAtIndex:i];
             cityName = [cityName substringToIndex:[cityName rangeOfString:@" "].location];
             City *city = [[City alloc] init];
-            city.province = [cityName substringToIndex:[cityName rangeOfString:@"."].location];
-            city.cityName = [cityName substringFromIndex:([cityName rangeOfString:@"."].location + 1)];
-            city.searchCode = [dict valueForKey:city.cityName];
+            city.province = self.currentProvince;
+            city.cityName = cityName;
+            city.searchCode = [dict valueForKey:cityName];
             [self.FilterArray addObject:city];
         }
         
@@ -122,36 +126,34 @@
 {
 	UITableViewCellStyle style =  UITableViewCellStyleDefault;
 	UITableViewCell *cell = [tView dequeueReusableCellWithIdentifier:@"BaseCell"];
-	if (!cell) 
+	if (!cell)
 		cell = [[UITableViewCell alloc] initWithStyle:style reuseIdentifier:@"BaseCell"];
     
     if (tView==self.tableView) {
-        cell.textLabel.text = [self.provinceArray objectAtIndex:indexPath.row];
-        cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
+        City *city = [self.cityArray objectAtIndex:indexPath.row];
+        cell.textLabel.text = city.cityName;
         [cell setSelectionStyle:UITableViewCellSelectionStyleGray];
         return cell;
     } else {
         City *city = [self.FilterArray objectAtIndex:indexPath.row];
-        cell.textLabel.text = [NSString stringWithFormat:@"%@.%@", city.province, city.cityName];
+        cell.textLabel.text = city.cityName;
         return  cell;
     }
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    City *city;
     if (tableView==self.tableView) {
-        NSString *provinceName = [self.provinceArray objectAtIndex:indexPath.row];
-        CityDetailListViewController *cityDetailListViewController = [[CityDetailListViewController alloc] init];
-        cityDetailListViewController.currentProvince = provinceName;
-        [self.navigationController pushViewController:cityDetailListViewController animated:YES];
+        city = [self.cityArray objectAtIndex:indexPath.row];
     } else {
-        City *city = [self.FilterArray objectAtIndex:indexPath.row];
-        [self.localCityListManager insertIntoFaverateWithCity:city];
-        [self.navigationController popViewControllerAnimated:YES];
+        city = [self.FilterArray objectAtIndex:indexPath.row];
     }
     
-    UITableViewCell *cell = (UITableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
-    [cell setSelected:NO animated:YES];
+    [self.localCityListManager insertIntoFaverateWithCity:city];
+    
+    [self.navigationController popToRootViewControllerAnimated:YES];
+    
 }
 
 @end

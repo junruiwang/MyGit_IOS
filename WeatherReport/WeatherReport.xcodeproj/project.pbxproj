@@ -52,6 +52,7 @@
 		C44448A2174327FD00DF320B /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C44448A1174327FD00DF320B /* libicucore.dylib */; };
 		C44448A517432B0300DF320B /* cityList.plist in Resources */ = {isa = PBXBuildFile; fileRef = C44448A317432B0300DF320B /* cityList.plist */; };
 		C44448A917432D6500DF320B /* BaseParser.m in Sources */ = {isa = PBXBuildFile; fileRef = C44448A817432D6500DF320B /* BaseParser.m */; };
+		C4535A8617472AD10054E472 /* CityDetailListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4535A8517472AD10054E472 /* CityDetailListViewController.m */; };
 		C459D33817433BC0004F6079 /* ServerAddressManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C459D33717433BC0004F6079 /* ServerAddressManager.m */; };
 		C459D33A17433C41004F6079 /* provinceCity.plist in Resources */ = {isa = PBXBuildFile; fileRef = C459D33917433C41004F6079 /* provinceCity.plist */; };
 		C459D33C17435283004F6079 /* server.plist in Resources */ = {isa = PBXBuildFile; fileRef = C459D33B17435283004F6079 /* server.plist */; };
@@ -220,6 +221,8 @@
 		C44448A317432B0300DF320B /* cityList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = cityList.plist; path = Classes/cityList.plist; sourceTree = "<group>"; };
 		C44448A717432D6500DF320B /* BaseParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BaseParser.h; path = Classes/BaseParser.h; sourceTree = "<group>"; };
 		C44448A817432D6500DF320B /* BaseParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BaseParser.m; path = Classes/BaseParser.m; sourceTree = "<group>"; };
+		C4535A8417472AD10054E472 /* CityDetailListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CityDetailListViewController.h; path = Classes/CityDetailListViewController.h; sourceTree = "<group>"; };
+		C4535A8517472AD10054E472 /* CityDetailListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CityDetailListViewController.m; path = Classes/CityDetailListViewController.m; sourceTree = "<group>"; };
 		C459D33617433BC0004F6079 /* ServerAddressManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ServerAddressManager.h; path = Classes/ServerAddressManager.h; sourceTree = "<group>"; };
 		C459D33717433BC0004F6079 /* ServerAddressManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ServerAddressManager.m; path = Classes/ServerAddressManager.m; sourceTree = "<group>"; };
 		C459D33917433C41004F6079 /* provinceCity.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = provinceCity.plist; path = Classes/provinceCity.plist; sourceTree = "<group>"; };
@@ -624,6 +627,8 @@
 				C42CFB131745DA5700C85794 /* CityTableViewCell.m */,
 				C42CFB1E1745F28A00C85794 /* LocalCityListManager.h */,
 				C42CFB1F1745F28B00C85794 /* LocalCityListManager.m */,
+				C4535A8417472AD10054E472 /* CityDetailListViewController.h */,
+				C4535A8517472AD10054E472 /* CityDetailListViewController.m */,
 			);
 			name = City;
 			sourceTree = "<group>";
@@ -870,6 +875,7 @@
 				C42CFB1A1745DCD900C85794 /* City.m in Sources */,
 				C42CFB1D1745F13B00C85794 /* FileManager.m in Sources */,
 				C42CFB201745F28B00C85794 /* LocalCityListManager.m in Sources */,
+				C4535A8617472AD10054E472 /* CityDetailListViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

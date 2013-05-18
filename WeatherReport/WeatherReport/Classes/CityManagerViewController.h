@@ -10,7 +10,7 @@
 #import "LocalCityListManager.h"
 #import "CityTableListViewController.h"
 
-@interface CityManagerViewController : BannerViewController<UITableViewDataSource, UITableViewDelegate, CityTableListViewDelegate>
+@interface CityManagerViewController : BannerViewController<UITableViewDataSource, UITableViewDelegate>
 
 @property(nonatomic, weak) IBOutlet UITableView *tableView;
 
