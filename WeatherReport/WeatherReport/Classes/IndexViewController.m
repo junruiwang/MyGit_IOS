@@ -342,6 +342,76 @@
     UIView *uv=[[UIView alloc]initWithFrame:CGRectMake(width*position, 0, width, height)];
     uv.tag=1000+position;
     
+    
+    
+    //今天天气的图片资源
+    UIImageView *toImgView=[[UIImageView alloc] initWithFrame:CGRectMake(0, 40, 100, 100)];
+    toImgView.image=[UIImage imageNamed:[NSString stringWithFormat:@"%@.png",model._22img1]];
+    [uv addSubview:toImgView];
+    
+    
+    //今天的天气状况
+    UILabel *ToweatherState=[[UILabel alloc] initWithFrame:CGRectMake(173, 61, 127, 32)];
+    ToweatherState.font=[UIFont fontWithName:@"Helvetica" size:30];
+    ToweatherState.text=model._16weather1;
+    ToweatherState.backgroundColor=[UIColor clearColor];
+    ToweatherState.textColor=[UIColor whiteColor];
+    ToweatherState.textAlignment = NSTextAlignmentRight;
+    [uv addSubview:ToweatherState];
+    
+    //今天温度
+    UILabel *ToTemp=[[UILabel alloc] initWithFrame:CGRectMake(200, 95, 100, 65)];
+    ToTemp.font=[UIFont fontWithName:@"Helvetica" size:50];
+    ToTemp.text=[NSString stringWithFormat:@"%@°",model._4temp];
+    ToTemp.backgroundColor=[UIColor clearColor];
+    ToTemp.textColor=[UIColor whiteColor];
+    ToTemp.textAlignment = NSTextAlignmentRight;
+    [uv addSubview:ToTemp];
+    
+    UIImageView *seplitImageView = [[UIImageView alloc] initWithFrame:CGRectMake(131, 160, 179, 2)];
+    [uv addSubview:seplitImageView];
+
+//
+//    //今天实况风向风速
+//    UILabel *ToWind=[[UILabel alloc] initWithFrame:CGRectMake(20, 170, 175, 30)];
+//    ToWind.font=[UIFont fontWithName:@"Helvetica" size:25];
+//    ToWind.text=[NSString stringWithFormat:@"风向/风力:%@",NowWind];
+//    ToWind.backgroundColor=[UIColor clearColor];
+//    ToWind.textColor=[UIColor whiteColor];
+//    [ToWind setAdjustsFontSizeToFitWidth:YES];
+//    [uv addSubview:ToWind];
+//    [ToWind release];
+//    
+//    //今天湿度
+//    UILabel *ToHumidity=[[UILabel alloc] initWithFrame:CGRectMake( 20, 208, 139, 21)];
+//    ToHumidity.font=[UIFont fontWithName:@"Helvetica" size:18];
+//    ToHumidity.text=[NSString stringWithFormat:@"湿度:%@",NowHumidity];
+//    ToHumidity.backgroundColor=[UIColor clearColor];
+//    ToHumidity.textColor=[UIColor whiteColor];
+//    [ToHumidity setAdjustsFontSizeToFitWidth:YES];
+//    [uv addSubview:ToHumidity];
+//    [ToHumidity release];
+//    
+//    //目前的温度实况
+//    UILabel *Temp=[[UILabel alloc] initWithFrame:CGRectMake( 510, 360, 92, 43)];
+//    Temp.font=[UIFont fontWithName:@"Helvetica" size:40];
+//    Temp.text=[NSString stringWithFormat:@"%@",NowTemp];
+//    Temp.backgroundColor=[UIColor clearColor];
+//    Temp.textColor=[UIColor colorWithRed:246.0f/255.0f green:131.0f/255.0f blue:22.0f/255.0f alpha:1.0f];
+//    [Temp setAdjustsFontSizeToFitWidth:YES];
+//    [uv addSubview:Temp];
+//    [Temp release];
+//    
+//    //天气更新时间
+//    UILabel *updateTime=[[UILabel alloc] initWithFrame:CGRectMake(216, 72, 250, 28)];
+//    updateTime.font=[UIFont fontWithName:@"Helvetica" size:17];
+//    updateTime.text=[NSString stringWithFormat:@"更新时间：%@",model._3UpdateTime];
+//    updateTime.backgroundColor=[UIColor clearColor];
+//    updateTime.textColor=[UIColor whiteColor];
+//    [updateTime setAdjustsFontSizeToFitWidth:YES];
+//    [uv addSubview:updateTime];
+//    [updateTime release];
+    
     return uv;
 }
 

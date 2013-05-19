@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C416A66A1748FCCB0037B4E5 /* ReportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C416A6681748FCCB0037B4E5 /* ReportViewController.m */; };
+		C416A66B1748FCCB0037B4E5 /* ReportViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C416A6691748FCCB0037B4E5 /* ReportViewController.xib */; };
 		C42CFB081745D58C00C85794 /* CityManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C42CFB061745D58B00C85794 /* CityManagerViewController.m */; };
 		C42CFB091745D58C00C85794 /* CityManagerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C42CFB071745D58B00C85794 /* CityManagerViewController.xib */; };
 		C42CFB0E1745D90100C85794 /* PrettyDrawing.m in Sources */ = {isa = PBXBuildFile; fileRef = C42CFB0B1745D90100C85794 /* PrettyDrawing.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -146,6 +148,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C416A6671748FCCB0037B4E5 /* ReportViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ReportViewController.h; path = Classes/ReportViewController.h; sourceTree = "<group>"; };
+		C416A6681748FCCB0037B4E5 /* ReportViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ReportViewController.m; path = Classes/ReportViewController.m; sourceTree = "<group>"; };
+		C416A6691748FCCB0037B4E5 /* ReportViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ReportViewController.xib; path = Classes/ReportViewController.xib; sourceTree = "<group>"; };
 		C42CFB051745D58B00C85794 /* CityManagerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CityManagerViewController.h; path = Classes/CityManagerViewController.h; sourceTree = "<group>"; };
 		C42CFB061745D58B00C85794 /* CityManagerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CityManagerViewController.m; path = Classes/CityManagerViewController.m; sourceTree = "<group>"; };
 		C42CFB071745D58B00C85794 /* CityManagerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CityManagerViewController.xib; path = Classes/CityManagerViewController.xib; sourceTree = "<group>"; };
@@ -733,6 +738,9 @@
 			children = (
 				C47081E8174885DB008B0847 /* ModelWeather.h */,
 				C47081E9174885DB008B0847 /* ModelWeather.m */,
+				C416A6671748FCCB0037B4E5 /* ReportViewController.h */,
+				C416A6681748FCCB0037B4E5 /* ReportViewController.m */,
+				C416A6691748FCCB0037B4E5 /* ReportViewController.xib */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -862,6 +870,7 @@
 				C42CFB161745DBAB00C85794 /* dashed_detail.png in Resources */,
 				C42CFB2417460D8400C85794 /* line-next.png in Resources */,
 				C42CFB2517460D8400C85794 /* line-next@2x.png in Resources */,
+				C416A66B1748FCCB0037B4E5 /* ReportViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -922,6 +931,7 @@
 				C4F2A10F174775BE005A2D84 /* LocationParser.m in Sources */,
 				C47081EA174885DB008B0847 /* ModelWeather.m in Sources */,
 				C47081EF1748979A008B0847 /* SqliteService.m in Sources */,
+				C416A66A1748FCCB0037B4E5 /* ReportViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
