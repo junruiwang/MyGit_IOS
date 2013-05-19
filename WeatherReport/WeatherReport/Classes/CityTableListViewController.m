@@ -35,7 +35,6 @@
         
         for (int i=0; i < [self.provinceArray count]; i++) {
             NSString *province = [self.provinceArray objectAtIndex:i];
-            
             NSArray *cityAry = [dict valueForKey:province];
             for (int m=0; m < [cityAry count]; m++) {
                 NSString *city=[NSString stringWithFormat:@"%@.%@ %@", province, cityAry[m], [ChineseToPinyin pinyinFromChiniseString:cityAry[m]]];

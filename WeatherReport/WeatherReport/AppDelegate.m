@@ -31,7 +31,9 @@
         [[NSUserDefaults standardUserDefaults] setBool:NO   forKey:USER_DEVICE_5];
     }
     //设置启动画面
-    [self loadLoadingView];
+    //[self loadLoadingView];
+    //加载主页面
+    [self loadMainView];
     
     //启动定位
     self.locationManager = [[LocationManager alloc] init];
@@ -122,13 +124,13 @@
                                                  fiveNavigationController, nil];
     
     [self.window addSubview:self.mainTabBarController.view];
-    [self.window bringSubviewToFront:self.loadingViewController.view];
-    [UIView beginAnimations:nil context:nil];
-    [UIView setAnimationDelegate:self];
-    [UIView setAnimationDidStopSelector:@selector(loadingViewAnimationDone)];
-    [UIView setAnimationDuration:2];
-    self.loadingViewController.view.alpha = 0;
-    [UIView commitAnimations];
+//    [self.window bringSubviewToFront:self.loadingViewController.view];
+//    [UIView beginAnimations:nil context:nil];
+//    [UIView setAnimationDelegate:self];
+//    [UIView setAnimationDidStopSelector:@selector(loadingViewAnimationDone)];
+//    [UIView setAnimationDuration:2];
+//    self.loadingViewController.view.alpha = 0;
+//    [UIView commitAnimations];
 }
 
 - (void)loadingViewAnimationDone

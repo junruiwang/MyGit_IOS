@@ -61,6 +61,9 @@
 		C46265F617451E2600C5127E /* chooseforard_division_shu.png in Resources */ = {isa = PBXBuildFile; fileRef = C46265F217451E2600C5127E /* chooseforard_division_shu.png */; };
 		C46265F717451E2600C5127E /* chooseforard_division_shu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C46265F317451E2600C5127E /* chooseforard_division_shu@2x.png */; };
 		C46265F817451E2600C5127E /* forecast-forward-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = C46265F417451E2600C5127E /* forecast-forward-btn.png */; };
+		C47081EA174885DB008B0847 /* ModelWeather.m in Sources */ = {isa = PBXBuildFile; fileRef = C47081E9174885DB008B0847 /* ModelWeather.m */; };
+		C47081EF1748979A008B0847 /* SqliteService.m in Sources */ = {isa = PBXBuildFile; fileRef = C47081EE1748979A008B0847 /* SqliteService.m */; };
+		C47081F1174897E1008B0847 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C47081F0174897E1008B0847 /* libsqlite3.dylib */; };
 		C47E322C1743C5340067BA38 /* CityTableListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C47E322B1743C5340067BA38 /* CityTableListViewController.m */; };
 		C4A796E417438B2200415D20 /* WeatherWeekDayParser.m in Sources */ = {isa = PBXBuildFile; fileRef = C4A796E317438B2200415D20 /* WeatherWeekDayParser.m */; };
 		C4AD9DE8174494AA002D916D /* DSLoadingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4AD9DE7174494AA002D916D /* DSLoadingViewController.m */; };
@@ -236,6 +239,11 @@
 		C46265F217451E2600C5127E /* chooseforard_division_shu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = chooseforard_division_shu.png; path = Resources/chooseforard_division_shu.png; sourceTree = "<group>"; };
 		C46265F317451E2600C5127E /* chooseforard_division_shu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "chooseforard_division_shu@2x.png"; path = "Resources/chooseforard_division_shu@2x.png"; sourceTree = "<group>"; };
 		C46265F417451E2600C5127E /* forecast-forward-btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "forecast-forward-btn.png"; path = "Resources/forecast-forward-btn.png"; sourceTree = "<group>"; };
+		C47081E8174885DB008B0847 /* ModelWeather.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ModelWeather.h; path = Classes/ModelWeather.h; sourceTree = "<group>"; };
+		C47081E9174885DB008B0847 /* ModelWeather.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ModelWeather.m; path = Classes/ModelWeather.m; sourceTree = "<group>"; };
+		C47081ED1748979A008B0847 /* SqliteService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SqliteService.h; path = Classes/SqliteService.h; sourceTree = "<group>"; };
+		C47081EE1748979A008B0847 /* SqliteService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SqliteService.m; path = Classes/SqliteService.m; sourceTree = "<group>"; };
+		C47081F0174897E1008B0847 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		C47E322A1743C5340067BA38 /* CityTableListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CityTableListViewController.h; path = Classes/CityTableListViewController.h; sourceTree = "<group>"; };
 		C47E322B1743C5340067BA38 /* CityTableListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CityTableListViewController.m; path = Classes/CityTableListViewController.m; sourceTree = "<group>"; };
 		C4A796E217438B2200415D20 /* WeatherWeekDayParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WeatherWeekDayParser.h; path = Classes/WeatherWeekDayParser.h; sourceTree = "<group>"; };
@@ -339,6 +347,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C47081F1174897E1008B0847 /* libsqlite3.dylib in Frameworks */,
 				C44448A2174327FD00DF320B /* libicucore.dylib in Frameworks */,
 				C44448A0174326A200DF320B /* libz.1.2.5.dylib in Frameworks */,
 				C4F2A109174774DB005A2D84 /* CoreLocation.framework in Frameworks */,
@@ -522,6 +531,7 @@
 			children = (
 				C44448A1174327FD00DF320B /* libicucore.dylib */,
 				C444489F174326A200DF320B /* libz.1.2.5.dylib */,
+				C47081F0174897E1008B0847 /* libsqlite3.dylib */,
 				C4F2A108174774DB005A2D84 /* CoreLocation.framework */,
 				C44448951743248D00DF320B /* CFNetwork.framework */,
 				C44448971743250400DF320B /* CoreData.framework */,
@@ -598,6 +608,7 @@
 				C4AD9E3A174499F8002D916D /* DSTwoViewController.m */,
 				C4D3A8A71727DBAD004E2891 /* IndexViewController.h */,
 				C4D3A8A81727DBAD004E2891 /* IndexViewController.m */,
+				C4FAE1EB1747857F007C1B1C /* Model */,
 				C4A796DE17438A4800415D20 /* Parser */,
 			);
 			name = Index;
@@ -627,6 +638,8 @@
 				C4EA27F217282068000B5CA6 /* Constants.h */,
 				C459D33617433BC0004F6079 /* ServerAddressManager.h */,
 				C459D33717433BC0004F6079 /* ServerAddressManager.m */,
+				C47081ED1748979A008B0847 /* SqliteService.h */,
+				C47081EE1748979A008B0847 /* SqliteService.m */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -713,6 +726,15 @@
 				C4D3A8861727DB8C004E2891 /* 31.png */,
 			);
 			name = Icn;
+			sourceTree = "<group>";
+		};
+		C4FAE1EB1747857F007C1B1C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C47081E8174885DB008B0847 /* ModelWeather.h */,
+				C47081E9174885DB008B0847 /* ModelWeather.m */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -898,6 +920,8 @@
 				C4F2A107174774A8005A2D84 /* LocationInfo.m in Sources */,
 				C4F2A10C17477546005A2D84 /* LocationManager.m in Sources */,
 				C4F2A10F174775BE005A2D84 /* LocationParser.m in Sources */,
+				C47081EA174885DB008B0847 /* ModelWeather.m in Sources */,
+				C47081EF1748979A008B0847 /* SqliteService.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

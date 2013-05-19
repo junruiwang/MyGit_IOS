@@ -26,7 +26,9 @@
 @property (nonatomic, strong) ASIHTTPRequest *httpRequest;
 
 - (void)start;
+- (void)startSynchronous:(id) object;
 - (void)cancel;
 - (BOOL)parserJSONString:(NSString *)responseData;
+- (BOOL)parserJSONString:(NSString *)responseData withObject:(id) object;
 
 @end
