@@ -67,6 +67,9 @@
 		C47081EF1748979A008B0847 /* SqliteService.m in Sources */ = {isa = PBXBuildFile; fileRef = C47081EE1748979A008B0847 /* SqliteService.m */; };
 		C47081F1174897E1008B0847 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C47081F0174897E1008B0847 /* libsqlite3.dylib */; };
 		C47E322C1743C5340067BA38 /* CityTableListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C47E322B1743C5340067BA38 /* CityTableListViewController.m */; };
+		C48ED7FF174A132E00B6F00F /* barometer@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C48ED7FA174A132E00B6F00F /* barometer@2x.png */; };
+		C48ED800174A132E00B6F00F /* transparent.png in Resources */ = {isa = PBXBuildFile; fileRef = C48ED7FB174A132E00B6F00F /* transparent.png */; };
+		C48ED802174A158B00B6F00F /* dotted_line@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C48ED801174A158B00B6F00F /* dotted_line@2x.png */; };
 		C4A796E417438B2200415D20 /* WeatherWeekDayParser.m in Sources */ = {isa = PBXBuildFile; fileRef = C4A796E317438B2200415D20 /* WeatherWeekDayParser.m */; };
 		C4AD9DE8174494AA002D916D /* DSLoadingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4AD9DE7174494AA002D916D /* DSLoadingViewController.m */; };
 		C4AD9E20174497AB002D916D /* load_4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C4AD9E0E174497AB002D916D /* load_4@2x.png */; };
@@ -251,6 +254,9 @@
 		C47081F0174897E1008B0847 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		C47E322A1743C5340067BA38 /* CityTableListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CityTableListViewController.h; path = Classes/CityTableListViewController.h; sourceTree = "<group>"; };
 		C47E322B1743C5340067BA38 /* CityTableListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CityTableListViewController.m; path = Classes/CityTableListViewController.m; sourceTree = "<group>"; };
+		C48ED7FA174A132E00B6F00F /* barometer@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "barometer@2x.png"; path = "Resources/barometer@2x.png"; sourceTree = "<group>"; };
+		C48ED7FB174A132E00B6F00F /* transparent.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = transparent.png; path = Resources/transparent.png; sourceTree = "<group>"; };
+		C48ED801174A158B00B6F00F /* dotted_line@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "dotted_line@2x.png"; path = "Resources/dotted_line@2x.png"; sourceTree = "<group>"; };
 		C4A796E217438B2200415D20 /* WeatherWeekDayParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WeatherWeekDayParser.h; path = Classes/WeatherWeekDayParser.h; sourceTree = "<group>"; };
 		C4A796E317438B2200415D20 /* WeatherWeekDayParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WeatherWeekDayParser.m; path = Classes/WeatherWeekDayParser.m; sourceTree = "<group>"; };
 		C4AD9DE6174494AA002D916D /* DSLoadingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DSLoadingViewController.h; path = Classes/DSLoadingViewController.h; sourceTree = "<group>"; };
@@ -673,6 +679,9 @@
 		C4D3A8591727DB29004E2891 /* Index */ = {
 			isa = PBXGroup;
 			children = (
+				C48ED801174A158B00B6F00F /* dotted_line@2x.png */,
+				C48ED7FA174A132E00B6F00F /* barometer@2x.png */,
+				C48ED7FB174A132E00B6F00F /* transparent.png */,
 				C42CFB2217460D8400C85794 /* line-next.png */,
 				C42CFB2317460D8400C85794 /* line-next@2x.png */,
 				C42CFB151745DBAB00C85794 /* dashed_detail.png */,
@@ -871,6 +880,9 @@
 				C42CFB2417460D8400C85794 /* line-next.png in Resources */,
 				C42CFB2517460D8400C85794 /* line-next@2x.png in Resources */,
 				C416A66B1748FCCB0037B4E5 /* ReportViewController.xib in Resources */,
+				C48ED7FF174A132E00B6F00F /* barometer@2x.png in Resources */,
+				C48ED800174A132E00B6F00F /* transparent.png in Resources */,
+				C48ED802174A158B00B6F00F /* dotted_line@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
