@@ -9,6 +9,7 @@
 #import "CityManagerViewController.h"
 #import "CityTableViewCell.h"
 #import "City.h"
+#import "WeatherWeekDayParser.h"
 
 
 @interface CityManagerViewController ()
@@ -16,6 +17,7 @@
 @property (nonatomic, strong) NSMutableArray *cityArray;
 @property (nonatomic, strong) LocalCityListManager *localCityListManager;
 @property(nonatomic, strong) CityTableListViewController *cityTableListViewController;
+@property(nonatomic, strong) WeatherWeekDayParser *weatherWeekDayParser;
 
 @end
 

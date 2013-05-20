@@ -9,10 +9,14 @@
 #import "CityDetailListViewController.h"
 #import "ChineseToPinyin.h"
 #import "LocalCityListManager.h"
+#import "WeatherWeekDayParser.h"
+#import "SqliteService.h"
+#import "ServerAddressManager.h"
 
 @interface CityDetailListViewController ()
 
 @property (nonatomic, strong) LocalCityListManager *localCityListManager;
+@property(nonatomic, strong) WeatherWeekDayParser *weatherWeekDayParser;
 
 @end
 
@@ -151,9 +155,31 @@
     }
     
     [self.localCityListManager insertIntoFaverateWithCity:city];
+    [NSThread detachNewThreadSelector:@selector(startTheBackgroundJob:) toTarget:self withObject:city.searchCode];
     
     [self.navigationController popToRootViewControllerAnimated:YES];
     
+}
+
+//后台下载城市天气
+- (void)startTheBackgroundJob:(NSString *)searchCode
+{
+    if (self.weatherWeekDayParser!= nil) {
+        [self.weatherWeekDayParser cancel];
+        self.weatherWeekDayParser = nil;
+    }
+    self.weatherWeekDayParser = [[WeatherWeekDayParser alloc] init];
+    
+    ModelWeather *weather = [[ModelWeather alloc] init];
+    NSString *resourceAddress = [ServerAddressManager serverAddress:@"query_weather_current_time"];
+    self.weatherWeekDayParser.serverAddress = [resourceAddress stringByAppendingFormat:@"%@.html", searchCode];
+    [self.weatherWeekDayParser startSynchronous:weather];
+    resourceAddress = [ServerAddressManager serverAddress:@"query_weather_week_day"];
+    self.weatherWeekDayParser.serverAddress = [resourceAddress stringByAppendingFormat:@"%@.html", searchCode];
+    [self.weatherWeekDayParser startSynchronous:weather];
+    
+    SqliteService *sqlservice=[[SqliteService alloc]init];
+    [sqlservice insertModel:weather];
 }
 
 @end

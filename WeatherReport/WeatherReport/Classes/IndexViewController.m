@@ -124,7 +124,7 @@
     }
     UIImageView *bgImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, imageHeight)];
     bgImageView.backgroundColor = [UIColor clearColor];
-    bgImageView.image = [UIImage imageNamed:@"load_bg1.png"];
+    bgImageView.image = [UIImage imageNamed:@"1-cloudy-night-bg.jpg"];
     [self.view addSubview:bgImageView];
     
     UIView *navigationBarView = [[UIView alloc] initWithFrame:CGRectMake(0, 20, 320, 44)];
@@ -140,7 +140,7 @@
     pixImageView.image = [UIImage imageNamed:@"chooseforard_division_shu.png"];
     [navigationBarView addSubview:pixImageView];
     
-    self.cityLabel = [[UILabel alloc] initWithFrame:CGRectMake(140, 10, 40, 20)];
+    self.cityLabel = [[UILabel alloc] initWithFrame:CGRectMake(120, 10, 80, 20)];
     self.cityLabel.backgroundColor = [UIColor clearColor];
     self.cityLabel.font = [UIFont boldSystemFontOfSize:20];
     self.cityLabel.textColor = [UIColor whiteColor];
@@ -315,11 +315,14 @@
 //初始化ScrollerView
 -(void)initScrollerView
 {
+    [self.scrollView removeFromSuperview];
     SqliteService *sql=[[SqliteService alloc]init];
     self.remainCityModel = [sql getWeatherModelArray];
     
     self.scrollView=[[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, self.screenWidth, self.screenHeight)];
 	self.scrollView.pagingEnabled = YES;
+    self.scrollView.showsHorizontalScrollIndicator = NO;
+    self.scrollView.showsVerticalScrollIndicator = NO;
 	self.scrollView.delegate =self;
     self.scrollView.backgroundColor=[UIColor clearColor];
     [self.view addSubview:self.scrollView];
@@ -349,7 +352,12 @@
     
     //今天的天气状况
     UILabel *ToweatherState=[[UILabel alloc] initWithFrame:CGRectMake(131, 124, 169, 36)];
-    ToweatherState.font=[UIFont fontWithName:@"Helvetica" size:26];
+    if (model._16weather1.length > 5) {
+        ToweatherState.font=[UIFont fontWithName:@"Helvetica" size:18];
+    } else {
+        ToweatherState.font=[UIFont fontWithName:@"Helvetica" size:26];
+    }
+    
     ToweatherState.text=model._16weather1;
     ToweatherState.backgroundColor=[UIColor clearColor];
     ToweatherState.textColor=[UIColor whiteColor];
@@ -382,7 +390,7 @@
     //今天湿度
     UILabel *ToHumidity=[[UILabel alloc] initWithFrame:CGRectMake(142, 188, 70, 19)];
     ToHumidity.font=[UIFont fontWithName:@"Helvetica" size:15];
-    ToHumidity.text=[NSString stringWithFormat:@"湿度%@°",model._7SD];
+    ToHumidity.text=[NSString stringWithFormat:@"湿度%@",model._7SD];
     ToHumidity.backgroundColor=[UIColor clearColor];
     ToHumidity.textColor=[UIColor whiteColor];
     ToHumidity.textAlignment = NSTextAlignmentLeft;
@@ -430,10 +438,26 @@
 - (void)setCurrentNavigationBarTitle
 {
     int location=((int)self.scrollView.contentOffset.x)/((int)self.screenWidth);
-    if (location > 0) {
-        ModelWeather *weather=((ModelWeather *)[self.remainCityModel objectAtIndex:location]);
-        self.cityLabel.text = weather._1city;
+    ModelWeather *weather=((ModelWeather *)[self.remainCityModel objectAtIndex:location]);
+    self.cityLabel.text = weather._1city;
+}
+
+#pragma mark - UIScrollViewDelegate
+- (void)scrollViewDidScroll:(UIScrollView *)sender
+{
+    if (sender.contentOffset.x <= 0) {
+        [sender setContentOffset:CGPointMake(0, sender.contentOffset.y) animated:NO];
     }
+}
+
+//- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+//{
+//    [self setCurrentNavigationBarTitle];
+//}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView;
+{
+    [self setCurrentNavigationBarTitle];
 }
 
 @end

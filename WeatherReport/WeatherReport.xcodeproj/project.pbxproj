@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		C416A66A1748FCCB0037B4E5 /* ReportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C416A6681748FCCB0037B4E5 /* ReportViewController.m */; };
 		C416A66B1748FCCB0037B4E5 /* ReportViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C416A6691748FCCB0037B4E5 /* ReportViewController.xib */; };
+		C41DF856174A560900403E91 /* 1-cloudy-night-bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C41DF855174A560900403E91 /* 1-cloudy-night-bg.jpg */; };
+		C41DF858174A599C00403E91 /* moon-16.png in Resources */ = {isa = PBXBuildFile; fileRef = C41DF857174A599C00403E91 /* moon-16.png */; };
 		C42CFB081745D58C00C85794 /* CityManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C42CFB061745D58B00C85794 /* CityManagerViewController.m */; };
 		C42CFB091745D58C00C85794 /* CityManagerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C42CFB071745D58B00C85794 /* CityManagerViewController.xib */; };
 		C42CFB0E1745D90100C85794 /* PrettyDrawing.m in Sources */ = {isa = PBXBuildFile; fileRef = C42CFB0B1745D90100C85794 /* PrettyDrawing.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -154,6 +156,8 @@
 		C416A6671748FCCB0037B4E5 /* ReportViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ReportViewController.h; path = Classes/ReportViewController.h; sourceTree = "<group>"; };
 		C416A6681748FCCB0037B4E5 /* ReportViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ReportViewController.m; path = Classes/ReportViewController.m; sourceTree = "<group>"; };
 		C416A6691748FCCB0037B4E5 /* ReportViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ReportViewController.xib; path = Classes/ReportViewController.xib; sourceTree = "<group>"; };
+		C41DF855174A560900403E91 /* 1-cloudy-night-bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "1-cloudy-night-bg.jpg"; path = "Resources/1-cloudy-night-bg.jpg"; sourceTree = "<group>"; };
+		C41DF857174A599C00403E91 /* moon-16.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "moon-16.png"; path = "Resources/moon-16.png"; sourceTree = "<group>"; };
 		C42CFB051745D58B00C85794 /* CityManagerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CityManagerViewController.h; path = Classes/CityManagerViewController.h; sourceTree = "<group>"; };
 		C42CFB061745D58B00C85794 /* CityManagerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CityManagerViewController.m; path = Classes/CityManagerViewController.m; sourceTree = "<group>"; };
 		C42CFB071745D58B00C85794 /* CityManagerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CityManagerViewController.xib; path = Classes/CityManagerViewController.xib; sourceTree = "<group>"; };
@@ -500,6 +504,8 @@
 		C4AD9DE917449511002D916D /* loading */ = {
 			isa = PBXGroup;
 			children = (
+				C41DF857174A599C00403E91 /* moon-16.png */,
+				C41DF855174A560900403E91 /* 1-cloudy-night-bg.jpg */,
 				C4AD9E0E174497AB002D916D /* load_4@2x.png */,
 				C4AD9E0F174497AB002D916D /* load_3@2x.png */,
 				C4AD9E10174497AB002D916D /* load_2@2x.png */,
@@ -883,6 +889,8 @@
 				C48ED7FF174A132E00B6F00F /* barometer@2x.png in Resources */,
 				C48ED800174A132E00B6F00F /* transparent.png in Resources */,
 				C48ED802174A158B00B6F00F /* dotted_line@2x.png in Resources */,
+				C41DF856174A560900403E91 /* 1-cloudy-night-bg.jpg in Resources */,
+				C41DF858174A599C00403E91 /* moon-16.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
