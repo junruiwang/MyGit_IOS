@@ -348,8 +348,8 @@
     [uv addSubview:toImgView];
     
     //今天的天气状况
-    UILabel *ToweatherState=[[UILabel alloc] initWithFrame:CGRectMake(173, 61, 127, 32)];
-    ToweatherState.font=[UIFont fontWithName:@"Helvetica" size:30];
+    UILabel *ToweatherState=[[UILabel alloc] initWithFrame:CGRectMake(131, 124, 169, 36)];
+    ToweatherState.font=[UIFont fontWithName:@"Helvetica" size:26];
     ToweatherState.text=model._16weather1;
     ToweatherState.backgroundColor=[UIColor clearColor];
     ToweatherState.textColor=[UIColor whiteColor];
@@ -357,7 +357,7 @@
     [uv addSubview:ToweatherState];
     
     //今天温度
-    UILabel *ToTemp=[[UILabel alloc] initWithFrame:CGRectMake(200, 95, 100, 65)];
+    UILabel *ToTemp=[[UILabel alloc] initWithFrame:CGRectMake(200, 57, 100, 65)];
     ToTemp.font=[UIFont fontWithName:@"Helvetica" size:50];
     ToTemp.text=[NSString stringWithFormat:@"%@°",model._4temp];
     ToTemp.backgroundColor=[UIColor clearColor];
@@ -366,7 +366,7 @@
     [uv addSubview:ToTemp];
     
     //今天温度范围
-    UILabel *ToDistinceTemp=[[UILabel alloc] initWithFrame:CGRectMake(142, 134, 93, 25)];
+    UILabel *ToDistinceTemp=[[UILabel alloc] initWithFrame:CGRectMake(142, 163, 93, 25)];
     ToDistinceTemp.font=[UIFont fontWithName:@"Helvetica" size:15];
     ToDistinceTemp.text=[NSString stringWithFormat:@"%@°",model._10temp1];
     ToDistinceTemp.backgroundColor=[UIColor clearColor];
@@ -380,7 +380,7 @@
     [uv addSubview:seplitImageView];
     
     //今天湿度
-    UILabel *ToHumidity=[[UILabel alloc] initWithFrame:CGRectMake(142, 170, 70, 19)];
+    UILabel *ToHumidity=[[UILabel alloc] initWithFrame:CGRectMake(142, 188, 70, 19)];
     ToHumidity.font=[UIFont fontWithName:@"Helvetica" size:15];
     ToHumidity.text=[NSString stringWithFormat:@"湿度%@°",model._7SD];
     ToHumidity.backgroundColor=[UIColor clearColor];
@@ -389,7 +389,7 @@
     [uv addSubview:ToHumidity];
 
     //今天实况风向风速
-    UILabel *ToWind=[[UILabel alloc] initWithFrame:CGRectMake(209, 169, 97, 21)];
+    UILabel *ToWind=[[UILabel alloc] initWithFrame:CGRectMake(209, 187, 97, 21)];
     ToWind.font=[UIFont fontWithName:@"Helvetica" size:15];
     ToWind.text=[NSString stringWithFormat:@"%@%@",model._5WD,model._6WS];
     ToWind.backgroundColor=[UIColor clearColor];
@@ -398,7 +398,7 @@
     [uv addSubview:ToWind];
     
     //显示日期
-    UILabel *Today=[[UILabel alloc] initWithFrame:CGRectMake(142, 191, 104, 25)];
+    UILabel *Today=[[UILabel alloc] initWithFrame:CGRectMake(142, 209, 104, 25)];
     Today.font=[UIFont fontWithName:@"Helvetica" size:15];
     Today.text=[NSString stringWithFormat:@"%@",model._8date_y];
     Today.backgroundColor=[UIColor clearColor];
@@ -407,7 +407,7 @@
     [uv addSubview:Today];
     
     //显示星期几
-    UILabel *ToWeekDay=[[UILabel alloc] initWithFrame:CGRectMake(252, 194, 46, 19)];
+    UILabel *ToWeekDay=[[UILabel alloc] initWithFrame:CGRectMake(252, 212, 46, 19)];
     ToWeekDay.font=[UIFont fontWithName:@"Helvetica" size:15];
     ToWeekDay.text=[NSString stringWithFormat:@"%@",model._9week];
     ToWeekDay.backgroundColor=[UIColor clearColor];
@@ -416,7 +416,7 @@
     [uv addSubview:ToWeekDay];
       
     //天气更新时间
-    UILabel *updateTime=[[UILabel alloc] initWithFrame:CGRectMake(142, 217, 115, 19)];
+    UILabel *updateTime=[[UILabel alloc] initWithFrame:CGRectMake(142, 235, 115, 19)];
     updateTime.font=[UIFont fontWithName:@"Helvetica" size:13];
     updateTime.text=[NSString stringWithFormat:@"[今天 %@ 发布]",model._3time];
     updateTime.backgroundColor=[UIColor clearColor];
