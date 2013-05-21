@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "BannerViewController.h"
 #import "BaseParser.h"
+#import "CityManagerViewController.h"
 
-@interface IndexViewController : BannerViewController<BaseParserDelegate, UIScrollViewDelegate>
+@interface IndexViewController : BannerViewController<BaseParserDelegate, UIScrollViewDelegate, CityManagerControllerDelegate>
 
 @property (nonatomic, assign) float screenWidth;
 @property (nonatomic, assign) float screenHeight;

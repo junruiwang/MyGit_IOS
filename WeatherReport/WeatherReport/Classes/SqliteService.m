@@ -8,6 +8,7 @@
 
 #import "SqliteService.h"
 #import "FileManager.h"
+#import "City.h"
 
 @implementation SqliteService
 
@@ -362,6 +363,47 @@
 		sqlite3_close(_database);
 	}
 	return [array mutableCopy];
+}
+
+- (void)sortWeatherModelArray:(NSMutableArray *)cityArray
+{
+    NSMutableArray *modelWeatherArray = [self getWeatherModelArray];
+    
+    if ([self openDB]) {
+		sqlite3_stmt *statement;
+		//组织SQL语句
+		static char *sql = "delete from weatherTable";
+		//将SQL语句放入sqlite3_stmt中
+		int success = sqlite3_prepare_v2(_database, sql, -1, &statement, NULL);
+		if (success != SQLITE_OK) {
+			NSLog(@"Error: failed to delete:weatherTable");
+			sqlite3_close(_database);
+		}
+		//执行SQL语句。这里是更新数据库
+		success = sqlite3_step(statement);
+		//释放statement
+		sqlite3_finalize(statement);
+		//如果执行失败
+		if (success == SQLITE_ERROR) {
+			NSLog(@"Error: failed to delete the database with message.");
+			//关闭数据库
+			sqlite3_close(_database);
+		}
+		//执行成功后依然要关闭数据库
+		sqlite3_close(_database);
+	}
+    
+    for (int i=0; i<[cityArray count]; i++) {
+        City *city = [cityArray objectAtIndex:i];
+        for (int j=0; j<[modelWeatherArray count]; j++) {
+            ModelWeather *weather=((ModelWeather *)[modelWeatherArray objectAtIndex:j]);
+            if ([city.cityName caseInsensitiveCompare:weather._1city] == NSOrderedSame) {
+                [self insertModel:weather];
+                break;
+            }
+        }
+    }
+    
 }
 
 @end

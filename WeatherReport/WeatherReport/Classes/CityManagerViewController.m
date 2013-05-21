@@ -10,7 +10,9 @@
 #import "CityTableViewCell.h"
 #import "City.h"
 #import "WeatherWeekDayParser.h"
-
+#import "SqliteService.h"
+#import "Constants.h"
+#import "AppDelegate.h"
 
 @interface CityManagerViewController ()
 
@@ -29,7 +31,7 @@
     if (self) {
         _localCityListManager = [[LocalCityListManager alloc] init];
         _cityArray = [[NSMutableArray alloc] initWithCapacity:10];
-        [self.localCityListManager buildLocalFileToArray:self.cityArray];
+        //[self.localCityListManager buildLocalFileToArray:self.cityArray];
     }
     return self;
 }
@@ -78,6 +80,9 @@
 - (void)finishCitys:(id)sender
 {
     [self dismissModalViewControllerAnimated:YES];
+    
+    if(self.delegate != nil && [self.delegate respondsToSelector:@selector(citySelected)])
+        [self.delegate citySelected];
 }
 
 #pragma mark - UITableViewDataSource
@@ -122,7 +127,7 @@
             UILabel *cityLabel = [[UILabel alloc] initWithFrame:CGRectMake(140, 8, 60, 20)];
             cityLabel.textColor = [UIColor blueColor];
             cityLabel.font = [UIFont boldSystemFontOfSize:18];
-            cityLabel.text = @"上海";
+            cityLabel.text = TheAppDelegate.locationInfo.cityName;
             cityLabel.backgroundColor = [UIColor clearColor];
             [cell.contentView addSubview:cityLabel];
             [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
@@ -179,8 +184,11 @@
         [self.cityArray removeObjectAtIndex:row];
         
         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-        
+
         [self.localCityListManager deleteCityInFaverate:city.cityName];
+        SqliteService *sqlservice=[[SqliteService alloc]init];
+        [sqlservice deleteWeatherModel:city.cityName];
+        
         [self.tableView reloadData];
     }
 }
@@ -198,10 +206,13 @@
 {
     NSUInteger fromRow = [sourceIndexPath row];
     NSUInteger toRow = [destinationIndexPath row];
-    
     City *city = [self.cityArray objectAtIndex:fromRow];
     [self.cityArray removeObjectAtIndex:fromRow];
     [self.cityArray insertObject:city atIndex:toRow];
+    
+    SqliteService *sqlservice=[[SqliteService alloc]init];
+    [sqlservice sortWeatherModelArray:self.cityArray];
+    
     [self.tableView reloadData];
 }
 

@@ -16,10 +16,13 @@
 
 @interface IndexViewController ()
 
+@property(nonatomic, strong) NSString *currentCity;
 @property(nonatomic, strong) UIImage *bgImage;
 @property(nonatomic, strong) WeatherWeekDayParser *weatherWeekDayParser;
 @property(nonatomic, strong) CityManagerViewController *cityManagerViewController;
 @property(nonatomic, strong) UIActivityIndicatorView *activityIndicatorView;
+@property(nonatomic, strong) SqliteService *sqliteService;
+
 @end
 
 @implementation IndexViewController
@@ -28,6 +31,7 @@
 {
     self = [super init];
     if (self) {
+        _sqliteService=[[SqliteService alloc]init];
         //注册通知
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateLocationWhenCityNull) name:@"locationCurrentFinished" object:nil];
     }
@@ -39,6 +43,7 @@
     if (!_cityManagerViewController)
     {
         _cityManagerViewController = [[CityManagerViewController alloc] initWithNibName:@"CityManagerViewController" bundle:nil];
+        _cityManagerViewController.delegate = self;
     }
     return _cityManagerViewController;
 }
@@ -46,13 +51,6 @@
 - (void)loadView
 {
     [super loadView];
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    [self initScrollerView];
-    [self setCurrentNavigationBarTitle];
 }
 
 - (void)viewDidLoad
@@ -67,8 +65,15 @@
     
     //加载背景图片
     [self loadBgImageView];
+    //初始化 ScrollView
+    [self loadScrollView];
+    //初始化天气数据
+    [self initScrollerView];
     
-    //初始化
+}
+
+- (void)loadScrollView
+{
     self.screenWidth=self.view.frame.size.width;
     float scrollHeight = 412;
     if ([[NSUserDefaults standardUserDefaults] boolForKey:USER_DEVICE_5]) {
@@ -76,8 +81,22 @@
     }
     self.screenHeight=scrollHeight;
     
-    //新线程下载一周天气
-    [NSThread detachNewThreadSelector:@selector(downloadData) toTarget:self withObject:nil];
+    self.scrollView=[[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, self.screenWidth, self.screenHeight)];
+	self.scrollView.pagingEnabled = YES;
+    self.scrollView.showsHorizontalScrollIndicator = NO;
+    self.scrollView.showsVerticalScrollIndicator = NO;
+	self.scrollView.delegate =self;
+    self.scrollView.backgroundColor=[UIColor clearColor];
+    [self.view addSubview:self.scrollView];
+}
+
+//初始化ScrollerView
+-(void)initScrollerView
+{
+    [self reDrawModelWeatherView];
+    //[self.scrollView setContentOffset:CGPointMake(self.screenWidth*([self.remainCityModel count]-1), 0)];
+    [self.scrollView setContentOffset:CGPointMake(0, 0)];
+    [self setCurrentNavigationBarTitle];
 }
 
 - (void)didReceiveMemoryWarning
@@ -90,8 +109,9 @@
 - (void)updateLocationWhenCityNull
 {
     self.cityLabel.text = TheAppDelegate.locationInfo.cityName;
-    SqliteService *sql=[[SqliteService alloc]init];
-    NSMutableArray *tempdata=[sql getWeatherModelArray];
+    self.currentCity = TheAppDelegate.locationInfo.cityName;
+    
+    NSMutableArray *tempdata=[self.sqliteService getWeatherModelArray];
     
     NSMutableArray *hisvalue=[[NSMutableArray alloc]init];
     for (int i=0; i<[tempdata count]; i++) {
@@ -100,6 +120,13 @@
     
     if (![hisvalue containsObject:TheAppDelegate.locationInfo.cityName]) {
         [self loading];
+        //放入缓存
+        LocalCityListManager *localCityListManager = [[LocalCityListManager alloc] init];
+        City *city = [[City alloc] init];
+        city.cityName = TheAppDelegate.locationInfo.cityName;
+        city.searchCode = TheAppDelegate.locationInfo.searchCode;
+        [localCityListManager insertIntoFaverateWithCity:city];
+        
         [NSThread detachNewThreadSelector:@selector(startTheBackgroundJob:) toTarget:self withObject:TheAppDelegate.locationInfo.searchCode];
     }
 }
@@ -109,10 +136,10 @@
 {
     [self loading];
     int location=((int)self.scrollView.contentOffset.x)/((int)self.screenWidth);
-    SqliteService *sqlservice=[[SqliteService alloc]init];
-    self.remainCityModel=[sqlservice getWeatherModelArray];
+    self.remainCityModel=[self.sqliteService getWeatherModelArray];
     ModelWeather *weather=((ModelWeather *)[self.remainCityModel objectAtIndex:location]);
-    
+    self.cityLabel.text = weather._1city;
+    self.currentCity = weather._1city;
     [NSThread detachNewThreadSelector:@selector(startUPTheBackgroudJob:) toTarget:self withObject:weather._2cityid];
 }
 
@@ -151,6 +178,7 @@
     UIButton *refreshButton = [UIButton buttonWithType:UIButtonTypeCustom];
     refreshButton.frame = CGRectMake(235, 4, 38, 36);
     [refreshButton setImage:[UIImage imageNamed:@"barbutton-refresh.png"] forState:UIControlStateNormal];
+    [refreshButton addTarget:self action:@selector(refreshCityBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
     [navigationBarView addSubview:refreshButton];
     
     UIImageView *pixImageView2 = [[UIImageView alloc] initWithFrame:CGRectMake(276, 10, 1, 24)];
@@ -166,33 +194,44 @@
 }
 
 //初始化工具条
-- (void)initalToolbar
-{
-    UIToolbar* tools = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 110, 45)];
-    [tools setBarStyle:UIBarStyleBlack];
-    
-    NSMutableArray* buttons = [[NSMutableArray alloc] initWithCapacity:2];
-    
-    UIBarButtonItem *btnRefresh = [[UIBarButtonItem alloc] initWithTitle:@"更新" style:UIBarButtonItemStyleBordered target:self action:@selector(refreshCityBtnClicked:)];
-	UIBarButtonItem *btndelete = [[UIBarButtonItem alloc]
-                                  initWithTitle:@"管理" style:UIBarButtonItemStyleBordered target:self action:@selector(removeCityBtnClicked:)];
-    [buttons addObject:btnRefresh];
-	[buttons addObject:btndelete];
-	[tools setItems:buttons animated:NO];
+//- (void)initalToolbar
+//{
+//    UIToolbar* tools = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 110, 45)];
+//    [tools setBarStyle:UIBarStyleBlack];
+//    
+//    NSMutableArray* buttons = [[NSMutableArray alloc] initWithCapacity:2];
+//    
+//    UIBarButtonItem *btnRefresh = [[UIBarButtonItem alloc] initWithTitle:@"更新" style:UIBarButtonItemStyleBordered target:self action:@selector(refreshCityBtnClicked:)];
+//	UIBarButtonItem *btndelete = [[UIBarButtonItem alloc]
+//                                  initWithTitle:@"管理" style:UIBarButtonItemStyleBordered target:self action:@selector(removeCityBtnClicked:)];
+//    [buttons addObject:btnRefresh];
+//	[buttons addObject:btndelete];
+//	[tools setItems:buttons animated:NO];
+//
+//    self.navigationItem.leftBarButtonItem=[[UIBarButtonItem alloc]
+//										   initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addCityBtnClicked:)];
+//    self.navigationItem.rightBarButtonItem=[[UIBarButtonItem alloc] initWithCustomView:tools];
+//}
 
-    self.navigationItem.leftBarButtonItem=[[UIBarButtonItem alloc]
-										   initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addCityBtnClicked:)];
-    self.navigationItem.rightBarButtonItem=[[UIBarButtonItem alloc] initWithCustomView:tools];
-}
-
-- (void)downloadData
+- (ModelWeather *)downloadData:(NSString *)searchCode
 {
-    NSString *resourceAddress = [ServerAddressManager serverAddress:@"query_weather_week_day"];
-    resourceAddress = [resourceAddress stringByAppendingFormat:@"%@.html", @"101201107"];
+    ModelWeather *weather = [[ModelWeather alloc] init];
     
-    self.weatherWeekDayParser.serverAddress = resourceAddress;
+    if (self.weatherWeekDayParser!= nil) {
+        [self.weatherWeekDayParser cancel];
+        self.weatherWeekDayParser = nil;
+    }
+    self.weatherWeekDayParser = [[WeatherWeekDayParser alloc] init];
     self.weatherWeekDayParser.delegate = self;
-    [self.weatherWeekDayParser start];
+    
+    NSString *resourceAddress = [ServerAddressManager serverAddress:@"query_weather_current_time"];
+    self.weatherWeekDayParser.serverAddress = [resourceAddress stringByAppendingFormat:@"%@.html", searchCode];
+    [self.weatherWeekDayParser startSynchronous:weather];
+    resourceAddress = [ServerAddressManager serverAddress:@"query_weather_week_day"];
+    self.weatherWeekDayParser.serverAddress = [resourceAddress stringByAppendingFormat:@"%@.html", searchCode];
+    [self.weatherWeekDayParser startSynchronous:weather];
+    
+    return weather;
 }
 
 //添加城市
@@ -207,41 +246,16 @@
 //后台下载城市天气
 - (void)startTheBackgroundJob:(NSString *)searchCode
 {
-    if (self.weatherWeekDayParser!= nil) {
-        [self.weatherWeekDayParser cancel];
-        self.weatherWeekDayParser = nil;
-    }
-    self.weatherWeekDayParser = [[WeatherWeekDayParser alloc] init];
-    self.weatherWeekDayParser.delegate = self;
-    
-    ModelWeather *weather = [[ModelWeather alloc] init];
-    NSString *resourceAddress = [ServerAddressManager serverAddress:@"query_weather_current_time"];
-    self.weatherWeekDayParser.serverAddress = [resourceAddress stringByAppendingFormat:@"%@.html", searchCode];
-    [self.weatherWeekDayParser startSynchronous:weather];
-    resourceAddress = [ServerAddressManager serverAddress:@"query_weather_week_day"];
-    self.weatherWeekDayParser.serverAddress = [resourceAddress stringByAppendingFormat:@"%@.html", searchCode];
-    [self.weatherWeekDayParser startSynchronous:weather];
+    ModelWeather *weather = [self downloadData:searchCode];
+    [self.sqliteService insertModel:weather];
     [self addWeatherResoure:weather];
 }
 
 //后台更新城市天气
 -(void)startUPTheBackgroudJob:(NSString *)searchCode
 {
-    if (self.weatherWeekDayParser!= nil) {
-        [self.weatherWeekDayParser cancel];
-        self.weatherWeekDayParser = nil;
-    }
-    self.weatherWeekDayParser = [[WeatherWeekDayParser alloc] init];
-    self.weatherWeekDayParser.delegate = self;
-    
-    ModelWeather *weather = [[ModelWeather alloc] init];
-    NSString *resourceAddress = [ServerAddressManager serverAddress:@"query_weather_current_time"];
-    self.weatherWeekDayParser.serverAddress = [resourceAddress stringByAppendingFormat:@"%@.html", searchCode];
-    [self.weatherWeekDayParser startSynchronous:weather];
-    resourceAddress = [ServerAddressManager serverAddress:@"query_weather_week_day"];
-    self.weatherWeekDayParser.serverAddress = [resourceAddress stringByAppendingFormat:@"%@.html", searchCode];
-    [self.weatherWeekDayParser startSynchronous:weather];
-    
+    ModelWeather *weather = [self downloadData:searchCode];
+    [self.sqliteService updateWeatherModel:weather];
     [self upWeatherResource:weather];
 }
 
@@ -249,20 +263,7 @@
 //增加一个城市的天气模型
 - (void)addWeatherResoure:(ModelWeather *)model
 {
-    SqliteService *sqlservice=[[SqliteService alloc]init];
-    [sqlservice insertModel:model];
-    
-    self.remainCityModel=[sqlservice getWeatherModelArray];
-    for (int i=0; i<[self.remainCityModel count]-1; i++) {
-        [(UIView *)[self.scrollView viewWithTag:1000+i] removeFromSuperview];
-    }
-    
-    self.scrollView.contentSize=CGSizeMake(self.screenWidth*[self.remainCityModel count],self.screenHeight);
-    
-    for (int j=0; j<[self.remainCityModel count]; j++) {
-        UIView *uv=[self DrawScrollerViews:self.screenWidth WithLength:self.screenHeight WithPosition:j];
-        [self.scrollView addSubview:uv];
-    }
+    [self reDrawModelWeatherView];
     [self.scrollView setContentOffset:CGPointMake(self.screenWidth*([self.remainCityModel count]-1), 0)];
     [self loadingDismiss];
 }
@@ -271,18 +272,9 @@
 //更新一个城市的天气
 - (void)upWeatherResource:(ModelWeather *)model
 {
-    SqliteService *sqlservice=[[SqliteService alloc]init];
-    [sqlservice updateWeatherModel:model];
-
-    self.remainCityModel=[sqlservice getWeatherModelArray];
-    for (int i=0; i<[self.remainCityModel count]; i++) {
-        [(UIView *)[self.scrollView viewWithTag:1000+i] removeFromSuperview];
-    }
-    self.scrollView.contentSize=CGSizeMake(self.screenWidth*[self.remainCityModel count],self.screenHeight);
-    for (int j=0; j<[self.remainCityModel count]; j++) {
-        UIView *uv=[self DrawScrollerViews:self.screenWidth WithLength:self.screenHeight WithPosition:j];
-        [self.scrollView addSubview:uv];
-    }
+    int location=((int)self.scrollView.contentOffset.x)/((int)self.screenWidth);
+    [self reDrawModelWeatherView];
+    [self.scrollView setContentOffset:CGPointMake(self.screenWidth*location, 0)];
     [self loadingDismiss];
 }
 
@@ -306,35 +298,14 @@
     [self.view addSubview:_activityIndicatorView];
     
 }
+
 //隐藏加载动画窗口
 - (void) loadingDismiss
 {
 	[_activityIndicatorView stopAnimating];
 }
 
-//初始化ScrollerView
--(void)initScrollerView
-{
-    [self.scrollView removeFromSuperview];
-    SqliteService *sql=[[SqliteService alloc]init];
-    self.remainCityModel = [sql getWeatherModelArray];
-    
-    self.scrollView=[[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, self.screenWidth, self.screenHeight)];
-	self.scrollView.pagingEnabled = YES;
-    self.scrollView.showsHorizontalScrollIndicator = NO;
-    self.scrollView.showsVerticalScrollIndicator = NO;
-	self.scrollView.delegate =self;
-    self.scrollView.backgroundColor=[UIColor clearColor];
-    [self.view addSubview:self.scrollView];
-    
-    self.scrollView.contentSize=CGSizeMake(self.screenWidth*[self.remainCityModel count],self.screenHeight);
-    for (int i=0; i<[self.remainCityModel count]; i++) {
-        UIView *uv=[self DrawScrollerViews:self.screenWidth WithLength:self.screenHeight WithPosition:i];
-        [self.scrollView addSubview:uv];
-    }
-    [self.scrollView setContentOffset:CGPointMake(0, 0)];
-}
-
+//绘制天气视图
 -(UIView *)DrawScrollerViews:(float)width WithLength :(float)height WithPosition :(NSInteger)position
 {
     //天气模型
@@ -437,9 +408,25 @@
 
 - (void)setCurrentNavigationBarTitle
 {
-    int location=((int)self.scrollView.contentOffset.x)/((int)self.screenWidth);
-    ModelWeather *weather=((ModelWeather *)[self.remainCityModel objectAtIndex:location]);
-    self.cityLabel.text = weather._1city;
+    if (self.remainCityModel != nil && [self.remainCityModel count] > 0) {
+        int location=((int)self.scrollView.contentOffset.x)/((int)self.screenWidth);
+        ModelWeather *weather=((ModelWeather *)[self.remainCityModel objectAtIndex:location]);
+        self.cityLabel.text = weather._1city;
+        self.currentCity = weather._1city;
+    }
+}
+
+- (void)reDrawModelWeatherView
+{
+    self.remainCityModel=[self.sqliteService getWeatherModelArray];
+    for (int i=0; i<[self.remainCityModel count]; i++) {
+        [(UIView *)[self.scrollView viewWithTag:1000+i] removeFromSuperview];
+    }
+    self.scrollView.contentSize=CGSizeMake(self.screenWidth*[self.remainCityModel count],self.screenHeight);
+    for (int j=0; j<[self.remainCityModel count]; j++) {
+        UIView *uv=[self DrawScrollerViews:self.screenWidth WithLength:self.screenHeight WithPosition:j];
+        [self.scrollView addSubview:uv];
+    }
 }
 
 #pragma mark - UIScrollViewDelegate
@@ -450,14 +437,29 @@
     }
 }
 
-//- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
-//{
-//    [self setCurrentNavigationBarTitle];
-//}
-
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView;
 {
     [self setCurrentNavigationBarTitle];
+}
+
+#pragma mark - CityManagerControllerDelegate
+- (void)citySelected
+{
+    [self reDrawModelWeatherView];
+    BOOL isExit = NO;
+    for (int i=0; i<[self.remainCityModel count]; i++) {
+        ModelWeather *weather=[self.remainCityModel objectAtIndex:i];
+        if ([self.currentCity caseInsensitiveCompare:weather._1city] == NSOrderedSame) {
+            [self.scrollView setContentOffset:CGPointMake(self.screenWidth*i, 0)];
+            isExit = YES;
+            break;
+        }
+    }
+    if (!isExit) {
+        [self.scrollView setContentOffset:CGPointMake(0, 0)];
+        [self setCurrentNavigationBarTitle];
+    }
+    
 }
 
 @end

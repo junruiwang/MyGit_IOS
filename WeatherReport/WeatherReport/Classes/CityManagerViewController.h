@@ -10,8 +10,15 @@
 #import "LocalCityListManager.h"
 #import "CityTableListViewController.h"
 
+@protocol CityManagerControllerDelegate <NSObject>
+
+@optional
+- (void)citySelected;
+@end
+
 @interface CityManagerViewController : BannerViewController<UITableViewDataSource, UITableViewDelegate>
 
-@property(nonatomic, weak) IBOutlet UITableView *tableView;
+@property (nonatomic, weak) IBOutlet UITableView *tableView;
+@property (nonatomic, weak) id<CityManagerControllerDelegate> delegate;
 
 @end

@@ -27,5 +27,7 @@
 - (BOOL)updateWeatherModel:(ModelWeather *)modelWeather;
 //获取全部数据
 - (NSMutableArray *)getWeatherModelArray;
+//排序
+- (void)sortWeatherModelArray:(NSMutableArray *)cityArray;
 
 @end
