@@ -212,6 +212,7 @@
     
     SqliteService *sqlservice=[[SqliteService alloc]init];
     [sqlservice sortWeatherModelArray:self.cityArray];
+    [self.localCityListManager sortCityArray:self.cityArray];
     
     [self.tableView reloadData];
 }

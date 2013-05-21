@@ -80,4 +80,16 @@
     return [[NSMutableArray alloc] initWithContentsOfFile:path];
 }
 
+- (void)sortCityArray:(NSMutableArray *)cityArray
+{
+    NSString *path = [FileManager fileCachesPath:@"FaverateCity.plist"];
+    NSMutableArray *localCityArray = [[NSMutableArray alloc] initWithCapacity:5];
+    
+    for (int i=0; i<[cityArray count]; i++) {
+        City *city = (City *)[cityArray objectAtIndex:i];
+        [localCityArray addObject:[city archived]];
+    }
+    [localCityArray writeToFile: path atomically:YES];
+}
+
 @end

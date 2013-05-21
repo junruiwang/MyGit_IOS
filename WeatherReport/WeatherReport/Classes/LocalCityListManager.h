@@ -15,5 +15,6 @@
 - (BOOL)deleteCityInFaverate:(NSString *) cityName;
 
 - (void)buildLocalFileToArray:(NSMutableArray *) cityArray;
+- (void)sortCityArray:(NSMutableArray *)cityArray;
 
 @end
