@@ -30,7 +30,7 @@
     for (NSInteger i=0; i < [cityArray count]; i++) {
         NSData *data = [cityArray objectAtIndex:i];
         City *currentCity = [City unarchived:data];
-        if ([city.cityName caseInsensitiveCompare:currentCity.cityName] == NSOrderedSame) {
+        if ([city.cityName isEqualToString:currentCity.cityName]) {
             hasCity = YES;
             break;
         }
@@ -50,7 +50,7 @@
         for (NSInteger i=0; i < [cityArray count]; i++) {
             NSData *data = [cityArray objectAtIndex:i];
             City *city = [City unarchived:data];
-            if ([cityName caseInsensitiveCompare:city.cityName] == NSOrderedSame) {
+            if ([cityName isEqualToString:city.cityName]) {
                 [cityArray removeObjectAtIndex:i];
                 break;
             }

@@ -51,6 +51,11 @@
 
 - (void)loadView {
     [super loadView];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
     self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 44.0f)];
 	self.searchBar.tintColor = [UIColor blackColor];
     self.searchBar.placeholder = @"查找";
@@ -62,6 +67,7 @@
 	
 	// Create the search display controller
 	self.searchDC = [[UISearchDisplayController alloc] initWithSearchBar:self.searchBar contentsController:self];
+    self.searchDC.delegate = self;
 	self.searchDC.searchResultsDataSource = self;
 	self.searchDC.searchResultsDelegate = self;
 }
@@ -149,6 +155,7 @@
         [self.navigationController pushViewController:cityDetailListViewController animated:YES];
     } else {
         City *city = [self.FilterArray objectAtIndex:indexPath.row];
+        
         [self.localCityListManager insertIntoFaverateWithCity:city];
         
         [NSThread detachNewThreadSelector:@selector(startTheBackgroundJob:) toTarget:self withObject:city.searchCode];
@@ -158,6 +165,19 @@
     
     UITableViewCell *cell = (UITableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
     [cell setSelected:NO animated:YES];
+}
+
+#pragma mark - UISearchDisplayDelegate
+- (void) searchDisplayControllerWillBeginSearch:(UISearchDisplayController *)controller
+{
+    UISearchBar *searchBar = self.searchDisplayController.searchBar;
+    [searchBar setShowsCancelButton:YES animated:YES];
+    
+    for(UIView *subView in searchBar.subviews){
+        if([subView isKindOfClass:UIButton.class]){
+            [(UIButton*)subView setTitle:@"取消" forState:UIControlStateNormal];
+        }
+    }
 }
 
 //后台下载城市天气

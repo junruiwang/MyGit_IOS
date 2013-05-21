@@ -193,25 +193,6 @@
     [self.navigationController.view addSubview:navigationBarView];
 }
 
-//初始化工具条
-//- (void)initalToolbar
-//{
-//    UIToolbar* tools = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 110, 45)];
-//    [tools setBarStyle:UIBarStyleBlack];
-//    
-//    NSMutableArray* buttons = [[NSMutableArray alloc] initWithCapacity:2];
-//    
-//    UIBarButtonItem *btnRefresh = [[UIBarButtonItem alloc] initWithTitle:@"更新" style:UIBarButtonItemStyleBordered target:self action:@selector(refreshCityBtnClicked:)];
-//	UIBarButtonItem *btndelete = [[UIBarButtonItem alloc]
-//                                  initWithTitle:@"管理" style:UIBarButtonItemStyleBordered target:self action:@selector(removeCityBtnClicked:)];
-//    [buttons addObject:btnRefresh];
-//	[buttons addObject:btndelete];
-//	[tools setItems:buttons animated:NO];
-//
-//    self.navigationItem.leftBarButtonItem=[[UIBarButtonItem alloc]
-//										   initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addCityBtnClicked:)];
-//    self.navigationItem.rightBarButtonItem=[[UIBarButtonItem alloc] initWithCustomView:tools];
-//}
 
 - (ModelWeather *)downloadData:(NSString *)searchCode
 {
@@ -419,9 +400,12 @@
 - (void)reDrawModelWeatherView
 {
     self.remainCityModel=[self.sqliteService getWeatherModelArray];
-    for (int i=0; i<[self.remainCityModel count]; i++) {
-        [(UIView *)[self.scrollView viewWithTag:1000+i] removeFromSuperview];
+        
+    NSArray *scrollSubViews = [self.scrollView subviews];
+    for (UIView *view in scrollSubViews) {
+        [view removeFromSuperview];
     }
+    
     self.scrollView.contentSize=CGSizeMake(self.screenWidth*[self.remainCityModel count],self.screenHeight);
     for (int j=0; j<[self.remainCityModel count]; j++) {
         UIView *uv=[self DrawScrollerViews:self.screenWidth WithLength:self.screenHeight WithPosition:j];
@@ -449,7 +433,7 @@
     BOOL isExit = NO;
     for (int i=0; i<[self.remainCityModel count]; i++) {
         ModelWeather *weather=[self.remainCityModel objectAtIndex:i];
-        if ([self.currentCity caseInsensitiveCompare:weather._1city] == NSOrderedSame) {
+        if ([self.currentCity isEqualToString:weather._1city]) {
             [self.scrollView setContentOffset:CGPointMake(self.screenWidth*i, 0)];
             isExit = YES;
             break;

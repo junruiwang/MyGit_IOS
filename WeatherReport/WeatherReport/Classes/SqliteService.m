@@ -397,7 +397,7 @@
         City *city = [cityArray objectAtIndex:i];
         for (int j=0; j<[modelWeatherArray count]; j++) {
             ModelWeather *weather=((ModelWeather *)[modelWeatherArray objectAtIndex:j]);
-            if ([city.cityName caseInsensitiveCompare:weather._1city] == NSOrderedSame) {
+            if ([city.cityName isEqualToString:weather._1city]) {
                 [self insertModel:weather];
                 break;
             }

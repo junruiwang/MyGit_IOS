@@ -10,7 +10,7 @@
 #import "Reachability.h"
 #import "City.h"
 
-@interface CityTableListViewController : UITableViewController
+@interface CityTableListViewController : UITableViewController<UISearchDisplayDelegate>
 
 @property (nonatomic, strong) UISearchBar *searchBar;
 @property (nonatomic, strong) UISearchDisplayController *searchDC;

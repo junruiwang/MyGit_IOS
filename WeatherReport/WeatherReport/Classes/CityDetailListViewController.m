@@ -67,6 +67,7 @@
 	
 	// Create the search display controller
 	self.searchDC = [[UISearchDisplayController alloc] initWithSearchBar:self.searchBar contentsController:self];
+    self.searchDC.delegate = self;
 	self.searchDC.searchResultsDataSource = self;
 	self.searchDC.searchResultsDelegate = self;
 }
@@ -152,6 +153,7 @@
         city = [self.cityArray objectAtIndex:indexPath.row];
     } else {
         city = [self.FilterArray objectAtIndex:indexPath.row];
+        [self.searchBar resignFirstResponder];
     }
     
     [self.localCityListManager insertIntoFaverateWithCity:city];
@@ -159,6 +161,19 @@
     
     [self.navigationController popToRootViewControllerAnimated:YES];
     
+}
+
+#pragma mark - UISearchDisplayDelegate
+- (void) searchDisplayControllerWillBeginSearch:(UISearchDisplayController *)controller
+{
+    UISearchBar *searchBar = self.searchDisplayController.searchBar;
+    [searchBar setShowsCancelButton:YES animated:YES];
+    
+    for(UIView *subView in searchBar.subviews){
+        if([subView isKindOfClass:UIButton.class]){
+            [(UIButton*)subView setTitle:@"取消" forState:UIControlStateNormal];
+        }
+    }
 }
 
 //后台下载城市天气
