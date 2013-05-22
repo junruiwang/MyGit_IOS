@@ -143,6 +143,26 @@
     [NSThread detachNewThreadSelector:@selector(startUPTheBackgroudJob:) toTarget:self withObject:weather._2cityid];
 }
 
+//临界时间为18:00，设置场景展示
+- (BOOL)timeNowIsNight
+{
+    NSDateFormatter *tempformatter = [[NSDateFormatter alloc]init];
+    [tempformatter setDateFormat:@"yyyy-MM-dd"];
+
+    NSDate *timeNow = [NSDate date];
+    NSString *tempString = [tempformatter stringFromDate:timeNow];
+    
+    [tempformatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    tempString = [NSString stringWithFormat:@"%@ %@", tempString, @"18:00:00"];
+    NSDate *tempDate = [tempformatter dateFromString:tempString];
+    
+    if ([timeNow compare:tempDate] == NSOrderedAscending) {
+        return NO;
+    }
+    
+    return YES;
+}
+
 - (void)loadBgImageView
 {
     float imageHeight = 412;
@@ -151,7 +171,13 @@
     }
     UIImageView *bgImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, imageHeight)];
     bgImageView.backgroundColor = [UIColor clearColor];
-    bgImageView.image = [UIImage imageNamed:@"1-cloudy-night-bg.jpg"];
+    
+    UIImage *backgroundView = [UIImage imageNamed:@"load_bg1.png"];
+    if ([self timeNowIsNight]) {
+        backgroundView = [UIImage imageNamed:@"1-cloudy-night-bg.jpg"];
+    }
+    bgImageView.image = backgroundView;
+    
     [self.view addSubview:bgImageView];
     
     UIView *navigationBarView = [[UIView alloc] initWithFrame:CGRectMake(0, 20, 320, 44)];
@@ -299,7 +325,12 @@
     
     //今天天气的图片资源
     UIImageView *toImgView=[[UIImageView alloc] initWithFrame:CGRectMake(0, 40, 100, 100)];
-    toImgView.image=[UIImage imageNamed:[NSString stringWithFormat:@"%@.png",model._22img1]];
+    if ([self timeNowIsNight]) {
+        toImgView.image=[UIImage imageNamed:@"moon-16.png"];
+    } else {
+        toImgView.image=[UIImage imageNamed:[NSString stringWithFormat:@"%@.png",model._22img1]];
+    }
+    
     [uv addSubview:toImgView];
     
     //今天的天气状况

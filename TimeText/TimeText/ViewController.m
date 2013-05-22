@@ -81,6 +81,8 @@
     [tempformatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
     
     NSDate *now = [NSDate date];
+    //NSLog(@"now:%@",now);
+    
     NSString *tempString = [tempformatter stringFromDate:now];
     
     NSLog(@"tempString:%@",tempString);
