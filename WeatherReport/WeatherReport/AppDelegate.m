@@ -88,37 +88,36 @@
     IndexViewController *indexViewController = [[IndexViewController alloc] init];
     UINavigationController *indexNavigationController = [[UINavigationController alloc] initWithRootViewController:indexViewController];
     indexNavigationController.navigationBar.barStyle = UIBarStyleBlack;
-    indexNavigationController.tabBarItem.title = @"one";
+    indexNavigationController.tabBarItem.title = @"预报";
     indexNavigationController.tabBarItem.image = [UIImage imageNamed:@"load_1.png"];
     
-    DSTwoViewController *twoViewController = [[DSTwoViewController alloc] init];
-    UINavigationController *twoNavigationController = [[UINavigationController alloc] initWithRootViewController:twoViewController];
-    twoNavigationController.navigationBar.barStyle = UIBarStyleBlack;
-    twoNavigationController.tabBarItem.title = @"two";
-    twoNavigationController.tabBarItem.image = [UIImage imageNamed:@"load_2.png"];
+//    DSTwoViewController *twoViewController = [[DSTwoViewController alloc] init];
+//    UINavigationController *twoNavigationController = [[UINavigationController alloc] initWithRootViewController:twoViewController];
+//    twoNavigationController.navigationBar.barStyle = UIBarStyleBlack;
+//    twoNavigationController.tabBarItem.title = @"two";
+//    twoNavigationController.tabBarItem.image = [UIImage imageNamed:@"load_2.png"];
     
     DSThreeViewController *threeViewController = [[DSThreeViewController alloc] init];
     UINavigationController *threeNavigationController = [[UINavigationController alloc] initWithRootViewController:threeViewController];
     threeNavigationController.navigationBar.barStyle = UIBarStyleBlack;
-    threeNavigationController.tabBarItem.title = @"three";
+    threeNavigationController.tabBarItem.title = @"趋势";
     threeNavigationController.tabBarItem.image = [UIImage imageNamed:@"load_3.png"];
     
     DSFourViewController *fourViewController = [[DSFourViewController alloc] init];
     UINavigationController *fourNavigationController = [[UINavigationController alloc] initWithRootViewController:fourViewController];
     fourNavigationController.navigationBar.barStyle = UIBarStyleBlack;
-    fourNavigationController.tabBarItem.title = @"four";
+    fourNavigationController.tabBarItem.title = @"指数";
     fourNavigationController.tabBarItem.image = [UIImage imageNamed:@"load_4.png"];
     
     DSFiveViewController *fiveViewController = [[DSFiveViewController alloc] init];
     UINavigationController *fiveNavigationController = [[UINavigationController alloc] initWithRootViewController:fiveViewController];
     fiveNavigationController.navigationBar.barStyle = UIBarStyleBlack;
-    fiveNavigationController.tabBarItem.title = @"five";
+    fiveNavigationController.tabBarItem.title = @"更多";
     fiveNavigationController.tabBarItem.image = [UIImage imageNamed:@"load_5.png"];
     
     self.mainTabBarController = [[UITabBarController alloc] init];
     self.mainTabBarController.viewControllers = [NSArray arrayWithObjects:
                                                  indexNavigationController,
-                                                 twoNavigationController,
                                                  threeNavigationController,
                                                  fourNavigationController,
                                                  fiveNavigationController, nil];
