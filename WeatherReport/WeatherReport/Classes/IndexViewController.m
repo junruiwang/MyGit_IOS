@@ -443,6 +443,12 @@
 {
     self.cityLabel.text = TheAppDelegate.modelWeather._1city;
     self.currentCity = TheAppDelegate.modelWeather._1city;
+    if ([self timeNowIsNight]) {
+        self.bgImageView.image = [UIImage imageNamed:@"1-cloudy-night-bg.jpg"];
+    } else {
+        self.bgImageView.image = [UIImage imageNamed:@"rain-bg.jpg"];
+    }
+    
     //初始化一周天气
     [self loadBottomScrollView];
 }
