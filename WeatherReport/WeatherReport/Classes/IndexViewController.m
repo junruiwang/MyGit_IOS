@@ -13,6 +13,12 @@
 #import "SqliteService.h"
 #import "Constants.h"
 #import "AppDelegate.h"
+#import <QuartzCore/QuartzCore.h>
+
+#define top_scroll_view_tag 100
+#define bottom_scroll_view_tag 101
+#define bottom_bg_view_tag 102
+
 
 @interface IndexViewController ()
 
@@ -82,6 +88,7 @@
     self.screenHeight=scrollHeight;
     
     self.scrollView=[[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, self.screenWidth, self.screenHeight)];
+    self.scrollView.tag = top_scroll_view_tag;
 	self.scrollView.pagingEnabled = YES;
     self.scrollView.showsHorizontalScrollIndicator = NO;
     self.scrollView.showsVerticalScrollIndicator = NO;
@@ -92,25 +99,30 @@
 
 - (void)loadBottomScrollView
 {
-    float bottomViewHeight = 120;
+    float bottomViewHeight = 82;
     
-    UIView *bottomView = [[UIView alloc] initWithFrame:CGRectMake(0, self.screenHeight - bottomViewHeight, self.screenWidth, bottomViewHeight)];
-    bottomView.backgroundColor=[UIColor clearColor];
-   
-    UIImageView *bottonBgImage = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.screenWidth, bottomViewHeight)];
-    bottonBgImage.image = [UIImage imageNamed:@"todayview_bg.png"];
-    [bottomView addSubview:bottonBgImage];
-    bottomView.alpha = 0.8;
+    if (![self.view viewWithTag:bottom_bg_view_tag]) {
+        UIView *bottomView = [[UIView alloc] initWithFrame:CGRectMake(0, self.screenHeight - bottomViewHeight, self.screenWidth, bottomViewHeight)];
+        bottomView.tag = bottom_bg_view_tag;
+        bottomView.backgroundColor=[UIColor clearColor];
+        
+        UIImageView *bottonBgImage = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.screenWidth, bottomViewHeight)];
+        bottonBgImage.image = [UIImage imageNamed:@"todayview_bg.png"];
+        [bottomView addSubview:bottonBgImage];
+        
+        [self.view addSubview:bottomView];
+    }
     
-    [self.view addSubview:bottomView];
-    
-    self.bottomScrollView=[[UIScrollView alloc] initWithFrame:CGRectMake(0, self.screenHeight - bottomViewHeight, self.screenWidth, bottomViewHeight)];
-	self.bottomScrollView.pagingEnabled = YES;
-    self.bottomScrollView.showsHorizontalScrollIndicator = NO;
-    self.bottomScrollView.showsVerticalScrollIndicator = NO;
-	self.bottomScrollView.delegate =self;
-    self.bottomScrollView.backgroundColor=[UIColor clearColor];
-    [self.view addSubview:self.bottomScrollView];
+    if (![self.view viewWithTag:bottom_scroll_view_tag]) {
+        self.bottomScrollView=[[UIScrollView alloc] initWithFrame:CGRectMake(0, self.screenHeight - bottomViewHeight, self.screenWidth, bottomViewHeight)];
+        self.bottomScrollView.tag = bottom_scroll_view_tag;
+        self.bottomScrollView.pagingEnabled = YES;
+        self.bottomScrollView.showsHorizontalScrollIndicator = NO;
+        self.bottomScrollView.showsVerticalScrollIndicator = NO;
+        self.bottomScrollView.delegate =self;
+        self.bottomScrollView.backgroundColor=[UIColor clearColor];
+        [self.view addSubview:self.bottomScrollView];
+    }
 }
 
 //初始化ScrollerView
@@ -451,6 +463,8 @@
     
     //初始化一周天气
     [self loadBottomScrollView];
+    //绘制底部天气
+    [self drawBottomWeekView];
 }
 
 - (void)reDrawModelWeatherView
@@ -476,26 +490,354 @@
         [view removeFromSuperview];
     }
     int viewCount = 2;
+    ModelWeather *model=TheAppDelegate.modelWeather;
+    self.bottomScrollView.contentSize = CGSizeMake(self.screenWidth*viewCount,82);
+    NSDate *rightNow = [NSDate date];
+    UIView *page_1=[[UIView alloc]initWithFrame:CGRectMake(0, 0, self.screenWidth, 82)];
     
-    self.scrollView.contentSize = CGSizeMake(self.screenWidth*viewCount,120);
+    UIImageView *imageView_1 = [[UIImageView alloc] initWithFrame:CGRectMake(1, 4, 50, 50)];
+    imageView_1.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.png",model._22img1]];
+    [page_1 addSubview:imageView_1];
     
+    UILabel *dayByWeek_1 = [[UILabel alloc] initWithFrame:CGRectMake(53, 12, 31, 19)];
+    dayByWeek_1.backgroundColor = [UIColor clearColor];
+    dayByWeek_1.textColor = [UIColor whiteColor];
+    dayByWeek_1.textAlignment = NSTextAlignmentLeft;
+    dayByWeek_1.font = [UIFont systemFontOfSize:15];
+    dayByWeek_1.text = @"今天";
+    [page_1 addSubview:dayByWeek_1];
+    
+    UILabel *temp_1 = [[UILabel alloc] initWithFrame:CGRectMake(49, 33, 50, 19)];
+    temp_1.backgroundColor = [UIColor clearColor];
+    temp_1.textColor = [UIColor whiteColor];
+    temp_1.textAlignment = NSTextAlignmentLeft;
+    temp_1.font = [UIFont systemFontOfSize:15];
+    temp_1.text = [self convertTemp:model._10temp1];
+    [page_1 addSubview:temp_1];
+    
+    UIView *weatherView1 = [[UIView alloc] initWithFrame:CGRectMake(5, 57, 93, 21)];
+    weatherView1.backgroundColor = [UIColor clearColor];
+    weatherView1.clipsToBounds = YES;
+    
+    UILabel *weather1 = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 93, 21)];
+    weather1.backgroundColor = [UIColor clearColor];
+    weather1.textColor = [UIColor whiteColor];
+    weather1.textAlignment = NSTextAlignmentCenter;
+    weather1.font = [UIFont systemFontOfSize:15];
+    weather1.text = model._16weather1;
+    [self scrollAnimationLabel:weather1];
+    
+    [weatherView1 addSubview:weather1];
+    [page_1 addSubview:weatherView1];
+    
+    UIImageView *sepImageView1 = [[UIImageView alloc] initWithFrame:CGRectMake(102, 0, 2, 82)];
+    sepImageView1.image = [UIImage imageNamed:@"periphery_bottom_separateline.png"];
+    [page_1 addSubview:sepImageView1];
+    
+    //-------------------------------
+    
+    UIImageView *imageView_2 = [[UIImageView alloc] initWithFrame:CGRectMake(108, 4, 50, 50)];
+    imageView_2.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.png",model._23img3]];
+    [page_1 addSubview:imageView_2];
+    
+    UILabel *dayByWeek_2 = [[UILabel alloc] initWithFrame:CGRectMake(163, 12, 31, 19)];
+    dayByWeek_2.backgroundColor = [UIColor clearColor];
+    dayByWeek_2.textColor = [UIColor whiteColor];
+    dayByWeek_2.textAlignment = NSTextAlignmentLeft;
+    dayByWeek_2.font = [UIFont systemFontOfSize:15];
+    dayByWeek_2.text = [self getCNWeek:[rightNow dateByAddingTimeInterval:1*24*60*60]];
+    [page_1 addSubview:dayByWeek_2];
+    
+    UILabel *temp_2 = [[UILabel alloc] initWithFrame:CGRectMake(159, 33, 50, 19)];
+    temp_2.backgroundColor = [UIColor clearColor];
+    temp_2.textColor = [UIColor whiteColor];
+    temp_2.textAlignment = NSTextAlignmentLeft;
+    temp_2.font = [UIFont systemFontOfSize:15];
+    temp_2.text = [self convertTemp:model._11temp2];
+    [page_1 addSubview:temp_2];
+    
+    UIView *weatherView2 = [[UIView alloc] initWithFrame:CGRectMake(5+109, 57, 93, 21)];
+    weatherView2.backgroundColor = [UIColor clearColor];
+    weatherView2.clipsToBounds = YES;
+    
+    UILabel *weather2 = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 93, 21)];
+    weather2.backgroundColor = [UIColor clearColor];
+    weather2.textColor = [UIColor whiteColor];
+    weather2.textAlignment = NSTextAlignmentCenter;
+    weather2.font = [UIFont systemFontOfSize:15];
+    weather2.text = model._17weather2;
+    [self scrollAnimationLabel:weather2];
+    [weatherView2 addSubview:weather2];
+    [page_1 addSubview:weatherView2];
+    
+    UIImageView *sepImageView2 = [[UIImageView alloc] initWithFrame:CGRectMake(212, 0, 2, 82)];
+    sepImageView2.image = [UIImage imageNamed:@"periphery_bottom_separateline.png"];
+    [page_1 addSubview:sepImageView2];
+    
+    //-------------------------------
+    
+    UIImageView *imageView_3 = [[UIImageView alloc] initWithFrame:CGRectMake(216, 4, 50, 50)];
+    imageView_3.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.png",model._24img5]];
+    [page_1 addSubview:imageView_3];
+    
+    UILabel *dayByWeek_3 = [[UILabel alloc] initWithFrame:CGRectMake(272, 12, 31, 19)];
+    dayByWeek_3.backgroundColor = [UIColor clearColor];
+    dayByWeek_3.textColor = [UIColor whiteColor];
+    dayByWeek_3.textAlignment = NSTextAlignmentLeft;
+    dayByWeek_3.font = [UIFont systemFontOfSize:15];
+    dayByWeek_3.text = [self getCNWeek:[rightNow dateByAddingTimeInterval:2*24*60*60]];
+    [page_1 addSubview:dayByWeek_3];
+    
+    UILabel *temp_3 = [[UILabel alloc] initWithFrame:CGRectMake(268, 33, 50, 19)];
+    temp_3.backgroundColor = [UIColor clearColor];
+    temp_3.textColor = [UIColor whiteColor];
+    temp_3.textAlignment = NSTextAlignmentLeft;
+    temp_3.font = [UIFont systemFontOfSize:15];
+    temp_3.text = [self convertTemp:model._12temp3];
+    [page_1 addSubview:temp_3];
+    
+    UIView *weatherView3 = [[UIView alloc] initWithFrame:CGRectMake(5+221, 57, 93, 21)];
+    weatherView3.backgroundColor = [UIColor clearColor];
+    weatherView3.clipsToBounds = YES;
+    
+    UILabel *weather3 = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 93, 21)];
+    weather3.backgroundColor = [UIColor clearColor];
+    weather3.textColor = [UIColor whiteColor];
+    weather3.textAlignment = NSTextAlignmentCenter;
+    weather3.font = [UIFont systemFontOfSize:15];
+    weather3.text = model._18weather3;
+    [self scrollAnimationLabel:weather3];
+    [weatherView3 addSubview:weather3];
+    [page_1 addSubview:weatherView3];
+    
+    UIImageView *sepImageView3 = [[UIImageView alloc] initWithFrame:CGRectMake(319, 0, 2, 82)];
+    sepImageView3.image = [UIImage imageNamed:@"periphery_bottom_separateline.png"];
+    [page_1 addSubview:sepImageView3];
+
+    
+    UIView *page_2=[[UIView alloc]initWithFrame:CGRectMake(self.screenWidth, 0, self.screenWidth, 82)];
+    
+    UIImageView *imageView_4 = [[UIImageView alloc] initWithFrame:CGRectMake(1, 4, 50, 50)];
+    imageView_4.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.png",model._25img7]];
+    [page_2 addSubview:imageView_4];
+    
+    UILabel *dayByWeek_4 = [[UILabel alloc] initWithFrame:CGRectMake(53, 12, 31, 19)];
+    dayByWeek_4.backgroundColor = [UIColor clearColor];
+    dayByWeek_4.textColor = [UIColor whiteColor];
+    dayByWeek_4.textAlignment = NSTextAlignmentLeft;
+    dayByWeek_4.font = [UIFont systemFontOfSize:15];
+    dayByWeek_4.text = [self getCNWeek:[rightNow dateByAddingTimeInterval:3*24*60*60]];
+    [page_2 addSubview:dayByWeek_4];
+    
+    UILabel *temp_4 = [[UILabel alloc] initWithFrame:CGRectMake(49, 33, 50, 19)];
+    temp_4.backgroundColor = [UIColor clearColor];
+    temp_4.textColor = [UIColor whiteColor];
+    temp_4.textAlignment = NSTextAlignmentLeft;
+    temp_4.font = [UIFont systemFontOfSize:15];
+    temp_4.text = [self convertTemp:model._13temp4];
+    [page_2 addSubview:temp_4];
+    
+    UIView *weatherView4 = [[UIView alloc] initWithFrame:CGRectMake(5, 57, 93, 21)];
+    weatherView4.backgroundColor = [UIColor clearColor];
+    weatherView4.clipsToBounds = YES;
+    
+    UILabel *weather4 = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 93, 21)];
+    weather4.backgroundColor = [UIColor clearColor];
+    weather4.textColor = [UIColor whiteColor];
+    weather4.textAlignment = NSTextAlignmentCenter;
+    weather4.font = [UIFont systemFontOfSize:15];
+    weather4.text = model._19weather4;
+    [self scrollAnimationLabel:weather4];
+    
+    [weatherView4 addSubview:weather4];
+    [page_2 addSubview:weatherView4];
+    
+    UIImageView *sepImageView4 = [[UIImageView alloc] initWithFrame:CGRectMake(102, 0, 2, 82)];
+    sepImageView4.image = [UIImage imageNamed:@"periphery_bottom_separateline.png"];
+    [page_2 addSubview:sepImageView4];
+    
+    //-------------------------------
+    
+    UIImageView *imageView_5 = [[UIImageView alloc] initWithFrame:CGRectMake(108, 4, 50, 50)];
+    imageView_5.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.png",model._26img9]];
+    [page_2 addSubview:imageView_5];
+    
+    UILabel *dayByWeek_5 = [[UILabel alloc] initWithFrame:CGRectMake(163, 12, 31, 19)];
+    dayByWeek_5.backgroundColor = [UIColor clearColor];
+    dayByWeek_5.textColor = [UIColor whiteColor];
+    dayByWeek_5.textAlignment = NSTextAlignmentLeft;
+    dayByWeek_5.font = [UIFont systemFontOfSize:15];
+    dayByWeek_5.text = [self getCNWeek:[rightNow dateByAddingTimeInterval:4*24*60*60]];
+    [page_2 addSubview:dayByWeek_5];
+    
+    UILabel *temp_5 = [[UILabel alloc] initWithFrame:CGRectMake(159, 33, 50, 19)];
+    temp_5.backgroundColor = [UIColor clearColor];
+    temp_5.textColor = [UIColor whiteColor];
+    temp_5.textAlignment = NSTextAlignmentLeft;
+    temp_5.font = [UIFont systemFontOfSize:15];
+    temp_5.text = [self convertTemp:model._14temp5];
+    [page_2 addSubview:temp_5];
+    
+    UIView *weatherView5 = [[UIView alloc] initWithFrame:CGRectMake(5+109, 57, 93, 21)];
+    weatherView5.backgroundColor = [UIColor clearColor];
+    weatherView5.clipsToBounds = YES;
+    
+    UILabel *weather5 = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 93, 21)];
+    weather5.backgroundColor = [UIColor clearColor];
+    weather5.textColor = [UIColor whiteColor];
+    weather5.textAlignment = NSTextAlignmentCenter;
+    weather5.font = [UIFont systemFontOfSize:15];
+    weather5.text = model._20weather5;
+    [self scrollAnimationLabel:weather5];
+    [weatherView5 addSubview:weather5];
+    [page_2 addSubview:weatherView5];
+    
+    UIImageView *sepImageView5 = [[UIImageView alloc] initWithFrame:CGRectMake(212, 0, 2, 82)];
+    sepImageView5.image = [UIImage imageNamed:@"periphery_bottom_separateline.png"];
+    [page_2 addSubview:sepImageView5];
+    
+    //-------------------------------
+    
+    UIImageView *imageView_6 = [[UIImageView alloc] initWithFrame:CGRectMake(216, 4, 50, 50)];
+    imageView_6.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.png",model._27img11]];
+    [page_2 addSubview:imageView_6];
+    
+    UILabel *dayByWeek_6 = [[UILabel alloc] initWithFrame:CGRectMake(272, 12, 31, 19)];
+    dayByWeek_6.backgroundColor = [UIColor clearColor];
+    dayByWeek_6.textColor = [UIColor whiteColor];
+    dayByWeek_6.textAlignment = NSTextAlignmentLeft;
+    dayByWeek_6.font = [UIFont systemFontOfSize:15];
+    dayByWeek_6.text = [self getCNWeek:[rightNow dateByAddingTimeInterval:5*24*60*60]];
+    [page_2 addSubview:dayByWeek_6];
+    
+    UILabel *temp_6 = [[UILabel alloc] initWithFrame:CGRectMake(268, 33, 50, 19)];
+    temp_6.backgroundColor = [UIColor clearColor];
+    temp_6.textColor = [UIColor whiteColor];
+    temp_6.textAlignment = NSTextAlignmentLeft;
+    temp_6.font = [UIFont systemFontOfSize:15];
+    temp_6.text = [self convertTemp:model._15temp6];
+    [page_2 addSubview:temp_6];
+    
+    UIView *weatherView6 = [[UIView alloc] initWithFrame:CGRectMake(5+221, 57, 93, 21)];
+    weatherView6.backgroundColor = [UIColor clearColor];
+    weatherView6.clipsToBounds = YES;
+    
+    UILabel *weather6 = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 93, 21)];
+    weather6.backgroundColor = [UIColor clearColor];
+    weather6.textColor = [UIColor whiteColor];
+    weather6.textAlignment = NSTextAlignmentCenter;
+    weather6.font = [UIFont systemFontOfSize:15];
+    weather6.text = model._21weather6;
+    [self scrollAnimationLabel:weather6];
+    [weatherView6 addSubview:weather6];
+    [page_2 addSubview:weatherView6];
+    
+    [self.bottomScrollView addSubview:page_1];
+    [self.bottomScrollView addSubview:page_2];
+}
+
+- (NSString *)convertTemp:(NSString *) temp
+{
+    if (temp != nil && ![temp isEqualToString:@""]) {
+        NSArray *tempArray = [temp componentsSeparatedByString:@"~"];
+        NSString *temp1 = tempArray[0];
+        NSString *temp2 = tempArray[1];
+        NSRange range1 = [temp1 rangeOfString:@"℃"];
+        NSRange range2 = [temp2 rangeOfString:@"℃"];
+        
+        return [NSString stringWithFormat:@"%@°/%@°",[temp1 substringToIndex:(range1.location)],[temp2 substringToIndex:(range2.location)]];
+    }
+     return @"";
+}
+
+- (NSString *)getCNWeek:(NSDate *)nsDate
+{
+    const unsigned int weekday = [[NSCalendar currentCalendar] ordinalityOfUnit:NSDayCalendarUnit inUnit:NSWeekCalendarUnit forDate:nsDate];
+    NSString *cnWeek = @"";
+    switch (weekday)
+    {
+        case 1:
+        {   cnWeek = @"周日"; break;  }
+        case 2:
+        {   cnWeek = @"周一"; break;  }
+        case 3:
+        {   cnWeek = @"周二"; break;  }
+        case 4:
+        {   cnWeek = @"周三"; break;  }
+        case 5:
+        {   cnWeek = @"周四"; break;  }
+        case 6:
+        {   cnWeek = @"周五"; break;  }
+        case 7:
+        {   cnWeek = @"周六"; break;  }
+    }
+    
+    return cnWeek;
+}
+
+- (void)scrollAnimationLabel:(UILabel *)weatherLabel
+{
+    if (weatherLabel.text.length > 6) {
+        [weatherLabel sizeToFit];
+    }
+    
+    CGFloat width = weatherLabel.frame.size.width;
+    CGFloat actualWidth = 93;
+    if (width > actualWidth)
+    {
+        CAKeyframeAnimation* animation = [CAKeyframeAnimation animationWithKeyPath:@"position.x"];
+        CGFloat totalTime = (width - actualWidth)/25 + 3;
+        animation.duration = totalTime;
+        animation.fillMode = kCAFillModeForwards;
+        animation.values = [NSArray arrayWithObjects:[NSNumber numberWithFloat:width / 2],
+                            [NSNumber numberWithFloat:width / 2],
+                            [NSNumber numberWithFloat:actualWidth - width / 2],
+                            [NSNumber numberWithFloat:actualWidth - width / 2],
+                            [NSNumber numberWithFloat:width / 2], nil];
+        animation.keyTimes = [NSArray arrayWithObjects:[NSNumber numberWithFloat:0],
+                              [NSNumber numberWithFloat:1/totalTime],
+                              [NSNumber numberWithFloat:1/totalTime + ((totalTime - 2) / (totalTime * 2))],
+                              [NSNumber numberWithFloat:2/totalTime + ((totalTime - 2) / (totalTime * 2))],
+                              [NSNumber numberWithFloat:1.0], nil];
+        animation.removedOnCompletion = NO;
+        animation.repeatCount = HUGE_VALF;  //forever
+        [weatherLabel.layer addAnimation:animation forKey:nil];
+    }
 }
 
 #pragma mark - UIScrollViewDelegate
 - (void)scrollViewDidScroll:(UIScrollView *)sender
 {
-    if (sender.contentOffset.x <= 0) {
-        [sender setContentOffset:CGPointMake(0, sender.contentOffset.y) animated:NO];
+    if (sender.tag == top_scroll_view_tag) {
+        if (sender.contentOffset.x <= 0) {
+            [sender setContentOffset:CGPointMake(0, sender.contentOffset.y) animated:NO];
+        }
+    } else if (sender.tag == bottom_scroll_view_tag) {
+        
+        
+        int location=((int)sender.contentOffset.x)/((int)self.screenWidth);
+        if (location == 0) {
+            if (sender.contentOffset.x <= 0) {
+                [sender setContentOffset:CGPointMake(0, sender.contentOffset.y) animated:NO];
+            }
+        } else if (location == 1) {
+            if (sender.contentOffset.x > 320) {
+                [sender setContentOffset:CGPointMake(320, sender.contentOffset.y) animated:NO];
+            }
+        }
     }
+    
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView;
 {
-    if (self.remainCityModel != nil && [self.remainCityModel count] > 0) {
-        int location=((int)self.scrollView.contentOffset.x)/((int)self.screenWidth);
-        ModelWeather *weather=((ModelWeather *)[self.remainCityModel objectAtIndex:location]);
-        TheAppDelegate.modelWeather = weather;
-        [self setCurrentNavigationBarTitle];
+    if (scrollView.tag == top_scroll_view_tag) {
+        if (self.remainCityModel != nil && [self.remainCityModel count] > 0) {
+            int location=((int)self.scrollView.contentOffset.x)/((int)self.screenWidth);
+            ModelWeather *weather=((ModelWeather *)[self.remainCityModel objectAtIndex:location]);
+            TheAppDelegate.modelWeather = weather;
+            [self setCurrentNavigationBarTitle];
+        }
     }
 }
 
@@ -504,7 +846,14 @@
 {
     [self reDrawModelWeatherView];
     if ([self.remainCityModel count] == 0) {
+        [self.scrollView removeFromSuperview];
+        [self.bottomScrollView removeFromSuperview];
+        [[self.view viewWithTag:bottom_bg_view_tag] removeFromSuperview];
+        self.bgImageView.image = [UIImage imageNamed:@"index-default-bg.jpg"];
         
+        TheAppDelegate.modelWeather = nil;
+        self.cityLabel.text = nil;
+        self.currentCity = nil;
     } else {
         BOOL isExit = NO;
         for (int i=0; i<[self.remainCityModel count]; i++) {
@@ -523,9 +872,6 @@
             [self setCurrentNavigationBarTitle];
         }
     }
-    
-    
-    
 }
 
 @end
