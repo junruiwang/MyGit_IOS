@@ -16,7 +16,9 @@
 @property (nonatomic, assign) float screenWidth;
 @property (nonatomic, assign) float screenHeight;
 @property (nonatomic, strong) NSMutableArray *remainCityModel;
+@property (nonatomic, strong) UIImageView *bgImageView;
 @property (nonatomic, strong) UIScrollView *scrollView;
+@property (nonatomic, strong) UIScrollView *bottomScrollView;
 @property (nonatomic, strong) UILabel *cityLabel;
 
 @end

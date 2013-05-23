@@ -90,13 +90,40 @@
     [self.view addSubview:self.scrollView];
 }
 
+- (void)loadBottomScrollView
+{
+    float bottomViewHeight = 120;
+    
+    UIView *bottomView = [[UIView alloc] initWithFrame:CGRectMake(0, self.screenHeight - bottomViewHeight, self.screenWidth, bottomViewHeight)];
+    bottomView.backgroundColor=[UIColor clearColor];
+   
+    UIImageView *bottonBgImage = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.screenWidth, bottomViewHeight)];
+    bottonBgImage.image = [UIImage imageNamed:@"todayview_bg.png"];
+    [bottomView addSubview:bottonBgImage];
+    bottomView.alpha = 0.8;
+    
+    [self.view addSubview:bottomView];
+    
+    self.bottomScrollView=[[UIScrollView alloc] initWithFrame:CGRectMake(0, self.screenHeight - bottomViewHeight, self.screenWidth, bottomViewHeight)];
+	self.bottomScrollView.pagingEnabled = YES;
+    self.bottomScrollView.showsHorizontalScrollIndicator = NO;
+    self.bottomScrollView.showsVerticalScrollIndicator = NO;
+	self.bottomScrollView.delegate =self;
+    self.bottomScrollView.backgroundColor=[UIColor clearColor];
+    [self.view addSubview:self.bottomScrollView];
+}
+
 //初始化ScrollerView
 -(void)initScrollerView
 {
     [self reDrawModelWeatherView];
-    //[self.scrollView setContentOffset:CGPointMake(self.screenWidth*([self.remainCityModel count]-1), 0)];
-    [self.scrollView setContentOffset:CGPointMake(0, 0)];
-    [self setCurrentNavigationBarTitle];
+    
+    if (self.remainCityModel != nil && [self.remainCityModel count] > 0) {
+        ModelWeather *weather=((ModelWeather *)[self.remainCityModel objectAtIndex:0]);
+        [self.scrollView setContentOffset:CGPointMake(0, 0)];
+        TheAppDelegate.modelWeather = weather;
+        [self setCurrentNavigationBarTitle];
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -108,9 +135,6 @@
 //定位后如果没有当前城市，下载数据，重新绘制视图
 - (void)updateLocationWhenCityNull
 {
-    self.cityLabel.text = TheAppDelegate.locationInfo.cityName;
-    self.currentCity = TheAppDelegate.locationInfo.cityName;
-    
     NSMutableArray *tempdata=[self.sqliteService getWeatherModelArray];
     
     NSMutableArray *hisvalue=[[NSMutableArray alloc]init];
@@ -138,8 +162,6 @@
     int location=((int)self.scrollView.contentOffset.x)/((int)self.screenWidth);
     self.remainCityModel=[self.sqliteService getWeatherModelArray];
     ModelWeather *weather=((ModelWeather *)[self.remainCityModel objectAtIndex:location]);
-    self.cityLabel.text = weather._1city;
-    self.currentCity = weather._1city;
     [NSThread detachNewThreadSelector:@selector(startUPTheBackgroudJob:) toTarget:self withObject:weather._2cityid];
 }
 
@@ -169,16 +191,11 @@
     if ([[NSUserDefaults standardUserDefaults] boolForKey:USER_DEVICE_5]) {
         imageHeight += 88;
     }
-    UIImageView *bgImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, imageHeight)];
-    bgImageView.backgroundColor = [UIColor clearColor];
+    self.bgImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, imageHeight)];
+    self.bgImageView.backgroundColor = [UIColor clearColor];
+    self.bgImageView.image = [UIImage imageNamed:@"index-default-bg.jpg"];
     
-    UIImage *backgroundView = [UIImage imageNamed:@"load_bg1.png"];
-    if ([self timeNowIsNight]) {
-        backgroundView = [UIImage imageNamed:@"1-cloudy-night-bg.jpg"];
-    }
-    bgImageView.image = backgroundView;
-    
-    [self.view addSubview:bgImageView];
+    [self.view addSubview:self.bgImageView];
     
     UIView *navigationBarView = [[UIView alloc] initWithFrame:CGRectMake(0, 20, 320, 44)];
     navigationBarView.backgroundColor = [UIColor clearColor];
@@ -256,6 +273,8 @@
     ModelWeather *weather = [self downloadData:searchCode];
     [self.sqliteService insertModel:weather];
     [self addWeatherResoure:weather];
+    TheAppDelegate.modelWeather = weather;
+    [self setCurrentNavigationBarTitle];
 }
 
 //后台更新城市天气
@@ -264,6 +283,8 @@
     ModelWeather *weather = [self downloadData:searchCode];
     [self.sqliteService updateWeatherModel:weather];
     [self upWeatherResource:weather];
+    TheAppDelegate.modelWeather = weather;
+    [self setCurrentNavigationBarTitle];
 }
 
 
@@ -420,12 +441,10 @@
 
 - (void)setCurrentNavigationBarTitle
 {
-    if (self.remainCityModel != nil && [self.remainCityModel count] > 0) {
-        int location=((int)self.scrollView.contentOffset.x)/((int)self.screenWidth);
-        ModelWeather *weather=((ModelWeather *)[self.remainCityModel objectAtIndex:location]);
-        self.cityLabel.text = weather._1city;
-        self.currentCity = weather._1city;
-    }
+    self.cityLabel.text = TheAppDelegate.modelWeather._1city;
+    self.currentCity = TheAppDelegate.modelWeather._1city;
+    //初始化一周天气
+    [self loadBottomScrollView];
 }
 
 - (void)reDrawModelWeatherView
@@ -444,6 +463,18 @@
     }
 }
 
+- (void)drawBottomWeekView
+{
+    NSArray *scrollSubViews = [self.bottomScrollView subviews];
+    for (UIView *view in scrollSubViews) {
+        [view removeFromSuperview];
+    }
+    int viewCount = 2;
+    
+    self.scrollView.contentSize = CGSizeMake(self.screenWidth*viewCount,120);
+    
+}
+
 #pragma mark - UIScrollViewDelegate
 - (void)scrollViewDidScroll:(UIScrollView *)sender
 {
@@ -454,26 +485,40 @@
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView;
 {
-    [self setCurrentNavigationBarTitle];
+    if (self.remainCityModel != nil && [self.remainCityModel count] > 0) {
+        int location=((int)self.scrollView.contentOffset.x)/((int)self.screenWidth);
+        ModelWeather *weather=((ModelWeather *)[self.remainCityModel objectAtIndex:location]);
+        TheAppDelegate.modelWeather = weather;
+        [self setCurrentNavigationBarTitle];
+    }
 }
 
 #pragma mark - CityManagerControllerDelegate
 - (void)citySelected
 {
     [self reDrawModelWeatherView];
-    BOOL isExit = NO;
-    for (int i=0; i<[self.remainCityModel count]; i++) {
-        ModelWeather *weather=[self.remainCityModel objectAtIndex:i];
-        if ([self.currentCity isEqualToString:weather._1city]) {
-            [self.scrollView setContentOffset:CGPointMake(self.screenWidth*i, 0)];
-            isExit = YES;
-            break;
+    if ([self.remainCityModel count] == 0) {
+        
+    } else {
+        BOOL isExit = NO;
+        for (int i=0; i<[self.remainCityModel count]; i++) {
+            ModelWeather *weather=[self.remainCityModel objectAtIndex:i];
+            if ([self.currentCity isEqualToString:weather._1city]) {
+                TheAppDelegate.modelWeather = weather;
+                [self.scrollView setContentOffset:CGPointMake(self.screenWidth*i, 0)];
+                [self setCurrentNavigationBarTitle];
+                isExit = YES;
+                break;
+            }
+        }
+        if (!isExit) {
+            TheAppDelegate.modelWeather = [self.remainCityModel objectAtIndex:0];
+            [self.scrollView setContentOffset:CGPointMake(0, 0)];
+            [self setCurrentNavigationBarTitle];
         }
     }
-    if (!isExit) {
-        [self.scrollView setContentOffset:CGPointMake(0, 0)];
-        [self setCurrentNavigationBarTitle];
-    }
+    
+    
     
 }
 

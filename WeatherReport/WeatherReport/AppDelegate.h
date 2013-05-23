@@ -10,6 +10,7 @@
 #import "DSLoadingViewController.h"
 #import "LocationInfo.h"
 #import "LocationManager.h"
+#import "ModelWeather.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
@@ -19,6 +20,7 @@
 
 @property (nonatomic, strong) LocationInfo *locationInfo;
 @property (nonatomic, strong) LocationManager *locationManager;
+@property (nonatomic, strong) ModelWeather *modelWeather;
 
 - (void)loadLoadingView;
 - (void)loadMainView;
