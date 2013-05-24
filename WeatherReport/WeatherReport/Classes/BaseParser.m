@@ -33,6 +33,7 @@
 
 - (void)startSynchronous:(id) object
 {
+    NSLog(@"%@",self.serverAddress);
     self.httpRequest= [ASIHTTPRequest requestWithURL:[NSURL URLWithString:self.serverAddress]];
     [self.httpRequest setDefaultResponseEncoding:NSUTF8StringEncoding];
     [self.httpRequest startSynchronous];

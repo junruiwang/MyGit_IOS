@@ -11,4 +11,6 @@
 
 @interface BannerViewController : UIViewController
 
+- (void)showAlertMessage:(NSString *)msg;
+
 @end

@@ -41,4 +41,15 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)showAlertMessage:(NSString *)msg
+{
+    UIAlertView *alertView = [[UIAlertView alloc]
+                              initWithTitle:NSLocalizedString(@"信息提示", nil)
+                              message:msg
+                              delegate:nil
+                              cancelButtonTitle:@"确定"
+                              otherButtonTitles:nil];
+    [alertView show];
+}
+
 @end

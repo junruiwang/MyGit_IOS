@@ -170,11 +170,17 @@
 //刷新数据
 - (void)refreshCityBtnClicked :(id)sender
 {
-    [self loading];
-    int location=((int)self.scrollView.contentOffset.x)/((int)self.screenWidth);
     self.remainCityModel=[self.sqliteService getWeatherModelArray];
-    ModelWeather *weather=((ModelWeather *)[self.remainCityModel objectAtIndex:location]);
-    [NSThread detachNewThreadSelector:@selector(startUPTheBackgroudJob:) toTarget:self withObject:weather._2cityid];
+    if ([self.remainCityModel count] > 0) {
+        [self loading];
+        int location=((int)self.scrollView.contentOffset.x)/((int)self.screenWidth);
+        
+        ModelWeather *weather=((ModelWeather *)[self.remainCityModel objectAtIndex:location]);
+        [NSThread detachNewThreadSelector:@selector(startUPTheBackgroudJob:) toTarget:self withObject:weather._2cityid];
+    } else {
+        [self showAlertMessage:@"无可供更新的城市数据！"];
+    }
+    
 }
 
 //临界时间为18:00，设置场景展示
@@ -357,9 +363,20 @@
     uv.tag=1000+position;
     
     //今天天气的图片资源
+    
     UIImageView *toImgView=[[UIImageView alloc] initWithFrame:CGRectMake(0, 40, 100, 100)];
+    int imageNumber = [model._22img1 intValue];
+    
     if ([self timeNowIsNight]) {
-        toImgView.image=[UIImage imageNamed:@"moon-16.png"];
+        if (imageNumber < 2) {
+            toImgView.image=[UIImage imageNamed:@"moon-16.png"];
+        } else if (imageNumber==3||imageNumber==13||imageNumber==18){
+            
+        } else if (imageNumber>=29){
+            
+        } else {
+            toImgView.image=[UIImage imageNamed:[NSString stringWithFormat:@"%@.png",model._22img1]];
+        }
     } else {
         toImgView.image=[UIImage imageNamed:[NSString stringWithFormat:@"%@.png",model._22img1]];
     }
@@ -453,12 +470,39 @@
 
 - (void)setCurrentNavigationBarTitle
 {
-    self.cityLabel.text = TheAppDelegate.modelWeather._1city;
-    self.currentCity = TheAppDelegate.modelWeather._1city;
+    ModelWeather *modelWeather = TheAppDelegate.modelWeather;
+    self.cityLabel.text = modelWeather._1city;
+    self.currentCity = modelWeather._1city;
+    int imageNumber = [modelWeather._22img1 intValue];
+    
     if ([self timeNowIsNight]) {
-        self.bgImageView.image = [UIImage imageNamed:@"1-cloudy-night-bg.jpg"];
+        if (imageNumber < 2) {
+            self.bgImageView.image = [UIImage imageNamed:@"30-fine-night-bg.jpg"];
+        } else if (imageNumber>=2 && imageNumber<=12) {
+            self.bgImageView.image = [UIImage imageNamed:@"rain-bg.jpg"];
+        } else if (imageNumber>=13 && imageNumber<=20) {
+            self.bgImageView.image = [UIImage imageNamed:@"index-default-bg.jpg"];
+        } else if (imageNumber>=21 && imageNumber<=25) {
+            self.bgImageView.image = [UIImage imageNamed:@"rain-bg.jpg"];
+        } else if (imageNumber>=26 && imageNumber<=28) {
+            self.bgImageView.image = [UIImage imageNamed:@"index-default-bg.jpg"];
+        } else if (imageNumber>=29 && imageNumber<=31) {
+            self.bgImageView.image = [UIImage imageNamed:@"index-default-bg.jpg"];
+        }
     } else {
-        self.bgImageView.image = [UIImage imageNamed:@"rain-bg.jpg"];
+        if (imageNumber < 2) {
+            self.bgImageView.image = [UIImage imageNamed:@"0-fine-day-bg.jpg"];
+        } else if (imageNumber>=2 && imageNumber<=12) {
+            self.bgImageView.image = [UIImage imageNamed:@"2-shade-bg.jpg"];
+        } else if (imageNumber>=13 && imageNumber<=20) {
+            self.bgImageView.image = [UIImage imageNamed:@"index-default-bg.jpg"];
+        } else if (imageNumber>=21 && imageNumber<=25) {
+            self.bgImageView.image = [UIImage imageNamed:@"2-shade-bg.jpg"];
+        } else if (imageNumber>=26 && imageNumber<=28) {
+            self.bgImageView.image = [UIImage imageNamed:@"index-default-bg.jpg"];
+        } else if (imageNumber>=29 && imageNumber<=31) {
+            self.bgImageView.image = [UIImage imageNamed:@"index-default-bg.jpg"];
+        }
     }
     
     //初始化一周天气
