@@ -28,6 +28,7 @@
 @property(nonatomic, strong) CityManagerViewController *cityManagerViewController;
 @property(nonatomic, strong) UIActivityIndicatorView *activityIndicatorView;
 @property(nonatomic, strong) SqliteService *sqliteService;
+@property(nonatomic, strong) NSDate *locationTime;
 
 @end
 
@@ -147,24 +148,31 @@
 //定位后如果没有当前城市，下载数据，重新绘制视图
 - (void)updateLocationWhenCityNull
 {
-    NSMutableArray *tempdata=[self.sqliteService getWeatherModelArray];
+    NSDate *currentTime = [NSDate date];
+    NSTimeInterval intCurrentTime = [currentTime timeIntervalSince1970];
     
-    NSMutableArray *hisvalue=[[NSMutableArray alloc]init];
-    for (int i=0; i<[tempdata count]; i++) {
-        [hisvalue addObject:((ModelWeather *)[tempdata objectAtIndex:i])._1city];
-    }
-    
-    if (![hisvalue containsObject:TheAppDelegate.locationInfo.cityName]) {
-        [self loading];
-        //放入缓存
-        LocalCityListManager *localCityListManager = [[LocalCityListManager alloc] init];
-        City *city = [[City alloc] init];
-        city.cityName = TheAppDelegate.locationInfo.cityName;
-        city.searchCode = TheAppDelegate.locationInfo.searchCode;
-        [localCityListManager insertIntoFaverateWithCity:city];
+    if (self.locationTime == nil || (intCurrentTime - [self.locationTime timeIntervalSince1970]) > 1800) {
+        self.locationTime = [NSDate date];
+        NSMutableArray *tempdata=[self.sqliteService getWeatherModelArray];
         
-        [NSThread detachNewThreadSelector:@selector(startTheBackgroundJob:) toTarget:self withObject:TheAppDelegate.locationInfo.searchCode];
+        NSMutableArray *hisvalue=[[NSMutableArray alloc]init];
+        for (int i=0; i<[tempdata count]; i++) {
+            [hisvalue addObject:((ModelWeather *)[tempdata objectAtIndex:i])._1city];
+        }
+        
+        if (![hisvalue containsObject:TheAppDelegate.locationInfo.cityName]) {
+            [self loading];
+            //放入缓存
+            LocalCityListManager *localCityListManager = [[LocalCityListManager alloc] init];
+            City *city = [[City alloc] init];
+            city.cityName = TheAppDelegate.locationInfo.cityName;
+            city.searchCode = TheAppDelegate.locationInfo.searchCode;
+            [localCityListManager insertIntoFaverateWithCity:city];
+            
+            [NSThread detachNewThreadSelector:@selector(startTheBackgroundJob:) toTarget:self withObject:TheAppDelegate.locationInfo.searchCode];
+        }
     }
+    
 }
 
 //刷新数据
@@ -551,7 +559,7 @@
     dayByWeek_1.text = @"今天";
     [page_1 addSubview:dayByWeek_1];
     
-    UILabel *temp_1 = [[UILabel alloc] initWithFrame:CGRectMake(49, 33, 50, 19)];
+    UILabel *temp_1 = [[UILabel alloc] initWithFrame:CGRectMake(49, 33, 54, 19)];
     temp_1.backgroundColor = [UIColor clearColor];
     temp_1.textColor = [UIColor whiteColor];
     temp_1.textAlignment = NSTextAlignmentLeft;
@@ -592,7 +600,7 @@
     dayByWeek_2.text = [self getCNWeek:[rightNow dateByAddingTimeInterval:1*24*60*60]];
     [page_1 addSubview:dayByWeek_2];
     
-    UILabel *temp_2 = [[UILabel alloc] initWithFrame:CGRectMake(159, 33, 50, 19)];
+    UILabel *temp_2 = [[UILabel alloc] initWithFrame:CGRectMake(159, 33, 54, 19)];
     temp_2.backgroundColor = [UIColor clearColor];
     temp_2.textColor = [UIColor whiteColor];
     temp_2.textAlignment = NSTextAlignmentLeft;
@@ -632,7 +640,7 @@
     dayByWeek_3.text = [self getCNWeek:[rightNow dateByAddingTimeInterval:2*24*60*60]];
     [page_1 addSubview:dayByWeek_3];
     
-    UILabel *temp_3 = [[UILabel alloc] initWithFrame:CGRectMake(268, 33, 50, 19)];
+    UILabel *temp_3 = [[UILabel alloc] initWithFrame:CGRectMake(268, 33, 54, 19)];
     temp_3.backgroundColor = [UIColor clearColor];
     temp_3.textColor = [UIColor whiteColor];
     temp_3.textAlignment = NSTextAlignmentLeft;
@@ -673,7 +681,7 @@
     dayByWeek_4.text = [self getCNWeek:[rightNow dateByAddingTimeInterval:3*24*60*60]];
     [page_2 addSubview:dayByWeek_4];
     
-    UILabel *temp_4 = [[UILabel alloc] initWithFrame:CGRectMake(49, 33, 50, 19)];
+    UILabel *temp_4 = [[UILabel alloc] initWithFrame:CGRectMake(49, 33, 54, 19)];
     temp_4.backgroundColor = [UIColor clearColor];
     temp_4.textColor = [UIColor whiteColor];
     temp_4.textAlignment = NSTextAlignmentLeft;
@@ -714,7 +722,7 @@
     dayByWeek_5.text = [self getCNWeek:[rightNow dateByAddingTimeInterval:4*24*60*60]];
     [page_2 addSubview:dayByWeek_5];
     
-    UILabel *temp_5 = [[UILabel alloc] initWithFrame:CGRectMake(159, 33, 50, 19)];
+    UILabel *temp_5 = [[UILabel alloc] initWithFrame:CGRectMake(159, 33, 54, 19)];
     temp_5.backgroundColor = [UIColor clearColor];
     temp_5.textColor = [UIColor whiteColor];
     temp_5.textAlignment = NSTextAlignmentLeft;
@@ -754,7 +762,7 @@
     dayByWeek_6.text = [self getCNWeek:[rightNow dateByAddingTimeInterval:5*24*60*60]];
     [page_2 addSubview:dayByWeek_6];
     
-    UILabel *temp_6 = [[UILabel alloc] initWithFrame:CGRectMake(268, 33, 50, 19)];
+    UILabel *temp_6 = [[UILabel alloc] initWithFrame:CGRectMake(268, 33, 54, 19)];
     temp_6.backgroundColor = [UIColor clearColor];
     temp_6.textColor = [UIColor whiteColor];
     temp_6.textAlignment = NSTextAlignmentLeft;

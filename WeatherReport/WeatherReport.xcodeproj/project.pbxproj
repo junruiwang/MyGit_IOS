@@ -67,6 +67,8 @@
 		C46265F617451E2600C5127E /* chooseforard_division_shu.png in Resources */ = {isa = PBXBuildFile; fileRef = C46265F217451E2600C5127E /* chooseforard_division_shu.png */; };
 		C46265F717451E2600C5127E /* chooseforard_division_shu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C46265F317451E2600C5127E /* chooseforard_division_shu@2x.png */; };
 		C46265F817451E2600C5127E /* forecast-forward-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = C46265F417451E2600C5127E /* forecast-forward-btn.png */; };
+		C464113A174FBF5900913E2E /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C4641138174FBF5900913E2E /* icon.png */; };
+		C464113B174FBF5900913E2E /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C4641139174FBF5900913E2E /* icon@2x.png */; };
 		C47081EA174885DB008B0847 /* ModelWeather.m in Sources */ = {isa = PBXBuildFile; fileRef = C47081E9174885DB008B0847 /* ModelWeather.m */; };
 		C47081EF1748979A008B0847 /* SqliteService.m in Sources */ = {isa = PBXBuildFile; fileRef = C47081EE1748979A008B0847 /* SqliteService.m */; };
 		C47081F1174897E1008B0847 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C47081F0174897E1008B0847 /* libsqlite3.dylib */; };
@@ -264,6 +266,8 @@
 		C46265F217451E2600C5127E /* chooseforard_division_shu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = chooseforard_division_shu.png; path = Resources/chooseforard_division_shu.png; sourceTree = "<group>"; };
 		C46265F317451E2600C5127E /* chooseforard_division_shu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "chooseforard_division_shu@2x.png"; path = "Resources/chooseforard_division_shu@2x.png"; sourceTree = "<group>"; };
 		C46265F417451E2600C5127E /* forecast-forward-btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "forecast-forward-btn.png"; path = "Resources/forecast-forward-btn.png"; sourceTree = "<group>"; };
+		C4641138174FBF5900913E2E /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
+		C4641139174FBF5900913E2E /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
 		C47081E8174885DB008B0847 /* ModelWeather.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ModelWeather.h; path = Classes/ModelWeather.h; sourceTree = "<group>"; };
 		C47081E9174885DB008B0847 /* ModelWeather.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ModelWeather.m; path = Classes/ModelWeather.m; sourceTree = "<group>"; };
 		C47081ED1748979A008B0847 /* SqliteService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SqliteService.h; path = Classes/SqliteService.h; sourceTree = "<group>"; };
@@ -304,7 +308,7 @@
 		C4AD9E3D174499F9002D916D /* DSFiveViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DSFiveViewController.m; path = Classes/DSFiveViewController.m; sourceTree = "<group>"; };
 		C4BDE61C174E3C6D0068BFF6 /* todayview_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = todayview_bg.png; path = Resources/todayview_bg.png; sourceTree = "<group>"; };
 		C4BDE61D174E3C6D0068BFF6 /* todayview_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "todayview_bg@2x.png"; path = "Resources/todayview_bg@2x.png"; sourceTree = "<group>"; };
-		C4D3A8321727DA49004E2891 /* WeatherReport.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherReport.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C4D3A8321727DA49004E2891 /* 酷旅天气.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "酷旅天气.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4D3A8351727DA49004E2891 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C4D3A8371727DA49004E2891 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C4D3A8391727DA49004E2891 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -575,7 +579,7 @@
 		C4D3A8331727DA49004E2891 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C4D3A8321727DA49004E2891 /* WeatherReport.app */,
+				C4D3A8321727DA49004E2891 /* 酷旅天气.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -613,6 +617,8 @@
 		C4D3A83C1727DA49004E2891 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				C4641138174FBF5900913E2E /* icon.png */,
+				C4641139174FBF5900913E2E /* icon@2x.png */,
 				C4D3A83D1727DA49004E2891 /* WeatherReport-Info.plist */,
 				C4D3A83E1727DA49004E2891 /* InfoPlist.strings */,
 				C4D3A8411727DA49004E2891 /* main.m */,
@@ -813,7 +819,7 @@
 			);
 			name = WeatherReport;
 			productName = WeatherReport;
-			productReference = C4D3A8321727DA49004E2891 /* WeatherReport.app */;
+			productReference = C4D3A8321727DA49004E2891 /* 酷旅天气.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -940,6 +946,8 @@
 				C41DF220174E22DB00047BB1 /* periphery_bottom_separateline@2x.png in Resources */,
 				C4BDE61E174E3C6D0068BFF6 /* todayview_bg.png in Resources */,
 				C4BDE61F174E3C6D0068BFF6 /* todayview_bg@2x.png in Resources */,
+				C464113A174FBF5900913E2E /* icon.png in Resources */,
+				C464113B174FBF5900913E2E /* icon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1029,7 +1037,8 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: junrui wang (B8YB42X63H)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: junrui wang (B8YB42X63H)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -1044,6 +1053,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "939D6979-B8B2-4F3E-9F2C-357787342BD9";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "939D6979-B8B2-4F3E-9F2C-357787342BD9";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1060,7 +1071,8 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: junrui wang (W6229L3R9L)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: junrui wang (W6229L3R9L)";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -1068,6 +1080,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PROVISIONING_PROFILE = "79CB5F35-70FB-47CE-B778-09A794F66353";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "79CB5F35-70FB-47CE-B778-09A794F66353";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1081,7 +1095,7 @@
 				INFOPLIST_FILE = "WeatherReport/WeatherReport-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "酷旅天气";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1094,7 +1108,7 @@
 				INFOPLIST_FILE = "WeatherReport/WeatherReport-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "酷旅天气";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
