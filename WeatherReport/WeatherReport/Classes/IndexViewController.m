@@ -202,6 +202,9 @@
             [self loading];
             
             [NSThread detachNewThreadSelector:@selector(startTheBackgroundJob:) toTarget:self withObject:TheAppDelegate.locationInfo.searchCode];
+        } else {
+            ModelWeather *modelWeather = TheAppDelegate.modelWeather;
+            [self upCurrentWeatherAfterTwoHour:modelWeather];
         }
     }
     
@@ -975,7 +978,7 @@
 {
     [self reDrawModelWeatherView];
     if ([self.remainCityModel count] == 0) {
-        [self.scrollView removeFromSuperview];
+        //[self.scrollView removeFromSuperview];
         [self.bottomScrollView removeFromSuperview];
         [[self.view viewWithTag:bottom_bg_view_tag] removeFromSuperview];
         self.bgImageView.image = [UIImage imageNamed:@"index-default-bg.jpg"];
