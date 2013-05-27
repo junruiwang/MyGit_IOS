@@ -13,6 +13,7 @@
 #import "WeatherWeekDayParser.h"
 #import "SqliteService.h"
 #import "ServerAddressManager.h"
+#import "SVProgressHUD.h"
 
 @interface CityTableListViewController ()
 
@@ -154,13 +155,9 @@
         cityDetailListViewController.currentProvince = provinceName;
         [self.navigationController pushViewController:cityDetailListViewController animated:YES];
     } else {
+        [SVProgressHUD showWithStatus:@"正在获取所选城市天气" maskType:SVProgressHUDMaskTypeGradient];
         City *city = [self.FilterArray objectAtIndex:indexPath.row];
-        
-        [self.localCityListManager insertIntoFaverateWithCity:city];
-        
-        [NSThread detachNewThreadSelector:@selector(startTheBackgroundJob:) toTarget:self withObject:city.searchCode];
-        
-        [self.navigationController popViewControllerAnimated:YES];
+        [self performSelector:@selector(startTheBackgroundJob:) withObject:city afterDelay:0.5];
     }
     
     UITableViewCell *cell = (UITableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
@@ -181,7 +178,7 @@
 }
 
 //后台下载城市天气
-- (void)startTheBackgroundJob:(NSString *)searchCode
+- (void)startTheBackgroundJob:(City *)city
 {
     if (self.weatherWeekDayParser!= nil) {
         [self.weatherWeekDayParser cancel];
@@ -191,14 +188,19 @@
     
     ModelWeather *weather = [[ModelWeather alloc] init];
     NSString *resourceAddress = [ServerAddressManager serverAddress:@"query_weather_current_time"];
-    self.weatherWeekDayParser.serverAddress = [resourceAddress stringByAppendingFormat:@"%@.html", searchCode];
+    self.weatherWeekDayParser.serverAddress = [resourceAddress stringByAppendingFormat:@"%@.html", city.searchCode];
     [self.weatherWeekDayParser startSynchronous:weather];
     resourceAddress = [ServerAddressManager serverAddress:@"query_weather_week_day"];
-    self.weatherWeekDayParser.serverAddress = [resourceAddress stringByAppendingFormat:@"%@.html", searchCode];
+    self.weatherWeekDayParser.serverAddress = [resourceAddress stringByAppendingFormat:@"%@.html", city.searchCode];
     [self.weatherWeekDayParser startSynchronous:weather];
-    
+    //插入城市信息
+    [self.localCityListManager insertIntoFaverateWithCity:city];
+    //插入天气信息
     SqliteService *sqlservice=[[SqliteService alloc]init];
     [sqlservice insertModel:weather];
+    [SVProgressHUD dismiss];
+    
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 @end

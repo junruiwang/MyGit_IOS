@@ -84,11 +84,19 @@
 {
     NSDictionary *placemark = [data valueForKey:@"result"];
     NSString *cityName = [placemark valueForKeyPath:@"addressComponent.city"];
+    NSString *provinceName = [placemark valueForKeyPath:@"addressComponent.province"];
     
     cityName = [cityName stringByReplacingOccurrencesOfString:@"市" withString:@""];
+    
+    if ([provinceName rangeOfString:@"黑龙江"].length > 0 || [provinceName rangeOfString:@"内蒙古"].length > 0) {
+        provinceName = [provinceName substringToIndex:3];
+    } else {
+        provinceName = [provinceName substringToIndex:2];
+    }
 
-    NSLog(@"城市名称：%@",cityName);
+    NSLog(@"省份：%@, 城市名称：%@",provinceName,cityName);
     TheAppDelegate.locationInfo.cityName = cityName;
+    TheAppDelegate.locationInfo.province = provinceName;
     
     NSString *path = [[NSBundle mainBundle] pathForResource:@"cityList" ofType:@"plist"];
     NSDictionary *dict = [NSDictionary dictionaryWithContentsOfFile:path];

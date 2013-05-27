@@ -9,6 +9,7 @@
 #import "SqliteService.h"
 #import "FileManager.h"
 #import "City.h"
+#import "LocalCityListManager.h"
 
 @implementation SqliteService
 
@@ -97,79 +98,90 @@
     if (![hisvalue containsObject:modelWeather._1city]) {
         //先判断数据库是否打开
         if ([self openDB]) {
-            sqlite3_stmt *statement;
-            //这个 sql 语句特别之处在于 values 里面有个? 号。在sqlite3_prepare函数里，?号表示一个未定的值，它的值等下才插入。
-            static char *sql = "INSERT INTO weatherTable(_1city, _2cityid, _3time, _4temp, _5WD, _6WS, _7SD, _8date_y,_9week, _10temp1, _11temp2, _12temp3, _13temp4, _14temp5, _15temp6, _16weather1, _17weather2, _18weather3, _19weather4, _20weather5, _21weather6, _22img1, _23img3, _24img5, _25img7, _26img9, _27img11, _28wind1, _29wind2, _30wind3, _31wind4, _32wind5, _33wind6, _34fl1, _35fl2, _36fl3, _37fl4, _38fl5, _39fl6, _40index_d, _41index_uv, _42index_xc, _43index_tr, _44index_co, _45index_cl, _46index_ls, _47index_ag) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-            
-            int success2 = sqlite3_prepare_v2(_database, sql, -1, &statement, NULL);
-            if (success2 != SQLITE_OK) {
-                NSLog(@"Error: failed to insert:weatherTable");
-                sqlite3_close(_database);
-                return NO;
-            }
-            //这里的数字1，2，3代表第几个问号，这里将两个值绑定到两个绑定变量
-            sqlite3_bind_text(statement, 1, [modelWeather._1city UTF8String], -1, SQLITE_TRANSIENT);
-            sqlite3_bind_text(statement, 2, [modelWeather._2cityid UTF8String], -1, SQLITE_TRANSIENT);
-            sqlite3_bind_text(statement, 3, [modelWeather._3time UTF8String], -1, SQLITE_TRANSIENT);
-            sqlite3_bind_text(statement, 4, [modelWeather._4temp UTF8String], -1, SQLITE_TRANSIENT);
-            sqlite3_bind_text(statement, 5, [modelWeather._5WD UTF8String], -1, SQLITE_TRANSIENT);
-            sqlite3_bind_text(statement, 6, [modelWeather._6WS UTF8String], -1, SQLITE_TRANSIENT);
-            sqlite3_bind_text(statement, 7, [modelWeather._7SD UTF8String], -1, SQLITE_TRANSIENT);
-            sqlite3_bind_text(statement, 8, [modelWeather._8date_y UTF8String], -1, SQLITE_TRANSIENT);
-            sqlite3_bind_text(statement, 9, [modelWeather._9week UTF8String], -1, SQLITE_TRANSIENT);
-            sqlite3_bind_text(statement, 10, [modelWeather._10temp1 UTF8String], -1, SQLITE_TRANSIENT);
-            sqlite3_bind_text(statement, 11, [modelWeather._11temp2 UTF8String], -1, SQLITE_TRANSIENT);
-            sqlite3_bind_text(statement, 12, [modelWeather._12temp3 UTF8String], -1, SQLITE_TRANSIENT);
-            sqlite3_bind_text(statement, 13, [modelWeather._13temp4 UTF8String], -1, SQLITE_TRANSIENT);
-            sqlite3_bind_text(statement, 14, [modelWeather._14temp5 UTF8String], -1, SQLITE_TRANSIENT);
-            sqlite3_bind_text(statement, 15, [modelWeather._15temp6 UTF8String], -1, SQLITE_TRANSIENT);
-            sqlite3_bind_text(statement, 16, [modelWeather._16weather1 UTF8String], -1, SQLITE_TRANSIENT);
-            sqlite3_bind_text(statement, 17, [modelWeather._17weather2 UTF8String], -1, SQLITE_TRANSIENT);
-            sqlite3_bind_text(statement, 18, [modelWeather._18weather3 UTF8String], -1, SQLITE_TRANSIENT);
-            sqlite3_bind_text(statement, 19, [modelWeather._19weather4 UTF8String], -1, SQLITE_TRANSIENT);
-            sqlite3_bind_text(statement, 20, [modelWeather._20weather5 UTF8String], -1, SQLITE_TRANSIENT);
-            sqlite3_bind_text(statement, 21, [modelWeather._21weather6 UTF8String], -1, SQLITE_TRANSIENT);
-            sqlite3_bind_text(statement, 22, [modelWeather._22img1 UTF8String], -1, SQLITE_TRANSIENT);
-            sqlite3_bind_text(statement, 23, [modelWeather._23img3 UTF8String], -1, SQLITE_TRANSIENT);
-            sqlite3_bind_text(statement, 24, [modelWeather._24img5 UTF8String], -1, SQLITE_TRANSIENT);
-            sqlite3_bind_text(statement, 25, [modelWeather._25img7 UTF8String], -1, SQLITE_TRANSIENT);
-            sqlite3_bind_text(statement, 26, [modelWeather._26img9 UTF8String], -1, SQLITE_TRANSIENT);
-            sqlite3_bind_text(statement, 27, [modelWeather._27img11 UTF8String], -1, SQLITE_TRANSIENT);
-            sqlite3_bind_text(statement, 28, [modelWeather._28wind1 UTF8String], -1, SQLITE_TRANSIENT);
-            sqlite3_bind_text(statement, 29, [modelWeather._29wind2 UTF8String], -1, SQLITE_TRANSIENT);
-            sqlite3_bind_text(statement, 30, [modelWeather._30wind3 UTF8String], -1, SQLITE_TRANSIENT);
-            sqlite3_bind_text(statement, 31, [modelWeather._31wind4 UTF8String], -1, SQLITE_TRANSIENT);
-            sqlite3_bind_text(statement, 32, [modelWeather._32wind5 UTF8String], -1, SQLITE_TRANSIENT);
-            sqlite3_bind_text(statement, 33, [modelWeather._33wind6 UTF8String], -1, SQLITE_TRANSIENT);
-            sqlite3_bind_text(statement, 34, [modelWeather._34fl1 UTF8String], -1, SQLITE_TRANSIENT);
-            sqlite3_bind_text(statement, 35, [modelWeather._35fl2 UTF8String], -1, SQLITE_TRANSIENT);
-            sqlite3_bind_text(statement, 36, [modelWeather._36fl3 UTF8String], -1, SQLITE_TRANSIENT);
-            sqlite3_bind_text(statement, 37, [modelWeather._37fl4 UTF8String], -1, SQLITE_TRANSIENT);
-            sqlite3_bind_text(statement, 38, [modelWeather._38fl5 UTF8String], -1, SQLITE_TRANSIENT);
-            sqlite3_bind_text(statement, 39, [modelWeather._39fl6 UTF8String], -1, SQLITE_TRANSIENT);
-            sqlite3_bind_text(statement, 40, [modelWeather._40index_d UTF8String], -1, SQLITE_TRANSIENT);
-            sqlite3_bind_text(statement, 41, [modelWeather._41index_uv UTF8String], -1, SQLITE_TRANSIENT);
-            sqlite3_bind_text(statement, 42, [modelWeather._42index_xc UTF8String], -1, SQLITE_TRANSIENT);
-            sqlite3_bind_text(statement, 43, [modelWeather._43index_tr UTF8String], -1, SQLITE_TRANSIENT);
-            sqlite3_bind_text(statement, 44, [modelWeather._44index_co UTF8String], -1, SQLITE_TRANSIENT);
-            sqlite3_bind_text(statement, 45, [modelWeather._45index_cl UTF8String], -1, SQLITE_TRANSIENT);
-            sqlite3_bind_text(statement, 46, [modelWeather._46index_ls UTF8String], -1, SQLITE_TRANSIENT);
-            sqlite3_bind_text(statement, 47, [modelWeather._47index_ag UTF8String], -1, SQLITE_TRANSIENT);
-            //执行插入语句
-            success2 = sqlite3_step(statement);
-            //释放statement
-            sqlite3_finalize(statement);
-            
-            //如果插入失败
-            if (success2 == SQLITE_ERROR) {
-                NSLog(@"Error: failed to insert into the database with message.");
+            @try {
+                sqlite3_stmt *statement;
+                //这个 sql 语句特别之处在于 values 里面有个? 号。在sqlite3_prepare函数里，?号表示一个未定的值，它的值等下才插入。
+                static char *sql = "INSERT INTO weatherTable(_1city, _2cityid, _3time, _4temp, _5WD, _6WS, _7SD, _8date_y,_9week, _10temp1, _11temp2, _12temp3, _13temp4, _14temp5, _15temp6, _16weather1, _17weather2, _18weather3, _19weather4, _20weather5, _21weather6, _22img1, _23img3, _24img5, _25img7, _26img9, _27img11, _28wind1, _29wind2, _30wind3, _31wind4, _32wind5, _33wind6, _34fl1, _35fl2, _36fl3, _37fl4, _38fl5, _39fl6, _40index_d, _41index_uv, _42index_xc, _43index_tr, _44index_co, _45index_cl, _46index_ls, _47index_ag) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+                
+                int success2 = sqlite3_prepare_v2(_database, sql, -1, &statement, NULL);
+                if (success2 != SQLITE_OK) {
+                    NSLog(@"Error: failed to insert:weatherTable");
+                    sqlite3_close(_database);
+                    return NO;
+                }
+                //这里的数字1，2，3代表第几个问号，这里将两个值绑定到两个绑定变量
+                sqlite3_bind_text(statement, 1, [modelWeather._1city UTF8String], -1, SQLITE_TRANSIENT);
+                sqlite3_bind_text(statement, 2, [modelWeather._2cityid UTF8String], -1, SQLITE_TRANSIENT);
+                sqlite3_bind_text(statement, 3, [modelWeather._3time UTF8String], -1, SQLITE_TRANSIENT);
+                sqlite3_bind_text(statement, 4, [modelWeather._4temp UTF8String], -1, SQLITE_TRANSIENT);
+                sqlite3_bind_text(statement, 5, [modelWeather._5WD UTF8String], -1, SQLITE_TRANSIENT);
+                sqlite3_bind_text(statement, 6, [modelWeather._6WS UTF8String], -1, SQLITE_TRANSIENT);
+                sqlite3_bind_text(statement, 7, [modelWeather._7SD UTF8String], -1, SQLITE_TRANSIENT);
+                sqlite3_bind_text(statement, 8, [modelWeather._8date_y UTF8String], -1, SQLITE_TRANSIENT);
+                sqlite3_bind_text(statement, 9, [modelWeather._9week UTF8String], -1, SQLITE_TRANSIENT);
+                sqlite3_bind_text(statement, 10, [modelWeather._10temp1 UTF8String], -1, SQLITE_TRANSIENT);
+                sqlite3_bind_text(statement, 11, [modelWeather._11temp2 UTF8String], -1, SQLITE_TRANSIENT);
+                sqlite3_bind_text(statement, 12, [modelWeather._12temp3 UTF8String], -1, SQLITE_TRANSIENT);
+                sqlite3_bind_text(statement, 13, [modelWeather._13temp4 UTF8String], -1, SQLITE_TRANSIENT);
+                sqlite3_bind_text(statement, 14, [modelWeather._14temp5 UTF8String], -1, SQLITE_TRANSIENT);
+                sqlite3_bind_text(statement, 15, [modelWeather._15temp6 UTF8String], -1, SQLITE_TRANSIENT);
+                sqlite3_bind_text(statement, 16, [modelWeather._16weather1 UTF8String], -1, SQLITE_TRANSIENT);
+                sqlite3_bind_text(statement, 17, [modelWeather._17weather2 UTF8String], -1, SQLITE_TRANSIENT);
+                sqlite3_bind_text(statement, 18, [modelWeather._18weather3 UTF8String], -1, SQLITE_TRANSIENT);
+                sqlite3_bind_text(statement, 19, [modelWeather._19weather4 UTF8String], -1, SQLITE_TRANSIENT);
+                sqlite3_bind_text(statement, 20, [modelWeather._20weather5 UTF8String], -1, SQLITE_TRANSIENT);
+                sqlite3_bind_text(statement, 21, [modelWeather._21weather6 UTF8String], -1, SQLITE_TRANSIENT);
+                sqlite3_bind_text(statement, 22, [modelWeather._22img1 UTF8String], -1, SQLITE_TRANSIENT);
+                sqlite3_bind_text(statement, 23, [modelWeather._23img3 UTF8String], -1, SQLITE_TRANSIENT);
+                sqlite3_bind_text(statement, 24, [modelWeather._24img5 UTF8String], -1, SQLITE_TRANSIENT);
+                sqlite3_bind_text(statement, 25, [modelWeather._25img7 UTF8String], -1, SQLITE_TRANSIENT);
+                sqlite3_bind_text(statement, 26, [modelWeather._26img9 UTF8String], -1, SQLITE_TRANSIENT);
+                sqlite3_bind_text(statement, 27, [modelWeather._27img11 UTF8String], -1, SQLITE_TRANSIENT);
+                sqlite3_bind_text(statement, 28, [modelWeather._28wind1 UTF8String], -1, SQLITE_TRANSIENT);
+                sqlite3_bind_text(statement, 29, [modelWeather._29wind2 UTF8String], -1, SQLITE_TRANSIENT);
+                sqlite3_bind_text(statement, 30, [modelWeather._30wind3 UTF8String], -1, SQLITE_TRANSIENT);
+                sqlite3_bind_text(statement, 31, [modelWeather._31wind4 UTF8String], -1, SQLITE_TRANSIENT);
+                sqlite3_bind_text(statement, 32, [modelWeather._32wind5 UTF8String], -1, SQLITE_TRANSIENT);
+                sqlite3_bind_text(statement, 33, [modelWeather._33wind6 UTF8String], -1, SQLITE_TRANSIENT);
+                sqlite3_bind_text(statement, 34, [modelWeather._34fl1 UTF8String], -1, SQLITE_TRANSIENT);
+                sqlite3_bind_text(statement, 35, [modelWeather._35fl2 UTF8String], -1, SQLITE_TRANSIENT);
+                sqlite3_bind_text(statement, 36, [modelWeather._36fl3 UTF8String], -1, SQLITE_TRANSIENT);
+                sqlite3_bind_text(statement, 37, [modelWeather._37fl4 UTF8String], -1, SQLITE_TRANSIENT);
+                sqlite3_bind_text(statement, 38, [modelWeather._38fl5 UTF8String], -1, SQLITE_TRANSIENT);
+                sqlite3_bind_text(statement, 39, [modelWeather._39fl6 UTF8String], -1, SQLITE_TRANSIENT);
+                sqlite3_bind_text(statement, 40, [modelWeather._40index_d UTF8String], -1, SQLITE_TRANSIENT);
+                sqlite3_bind_text(statement, 41, [modelWeather._41index_uv UTF8String], -1, SQLITE_TRANSIENT);
+                sqlite3_bind_text(statement, 42, [modelWeather._42index_xc UTF8String], -1, SQLITE_TRANSIENT);
+                sqlite3_bind_text(statement, 43, [modelWeather._43index_tr UTF8String], -1, SQLITE_TRANSIENT);
+                sqlite3_bind_text(statement, 44, [modelWeather._44index_co UTF8String], -1, SQLITE_TRANSIENT);
+                sqlite3_bind_text(statement, 45, [modelWeather._45index_cl UTF8String], -1, SQLITE_TRANSIENT);
+                sqlite3_bind_text(statement, 46, [modelWeather._46index_ls UTF8String], -1, SQLITE_TRANSIENT);
+                sqlite3_bind_text(statement, 47, [modelWeather._47index_ag UTF8String], -1, SQLITE_TRANSIENT);
+                //执行插入语句
+                success2 = sqlite3_step(statement);
+                //释放statement
+                sqlite3_finalize(statement);
+                
+                //如果插入失败
+                if (success2 == SQLITE_ERROR) {
+                    NSLog(@"Error: failed to insert into the database with message.");
+                    //关闭数据库
+                    sqlite3_close(_database);
+                    return NO;
+                }
                 //关闭数据库
                 sqlite3_close(_database);
+                return YES;
+            }
+            @catch (NSException *exception) {
+                sqlite3_close(_database);
+                LocalCityListManager *localCityListManager = [[LocalCityListManager alloc] init];
+                [localCityListManager deleteCityInFaverate:modelWeather._1city];
                 return NO;
             }
-            //关闭数据库
-            sqlite3_close(_database);
-            return YES;
+            @finally {
+                
+            }
         }
     }
 	return NO;
@@ -214,78 +226,89 @@
 - (BOOL)updateWeatherModel:(ModelWeather *)modelWeather
 {
 	if ([self openDB]) {
-		sqlite3_stmt *statement;
-		//组织SQL语句
-        char *sql = "update weatherTable set _2cityid=?,_3time=?,_4temp=?,_5WD=?,_6WS=?,_7SD=?,_8date_y,_9week=?,_10temp1=?,_11temp2=?,_12temp3=?,_13temp4=?,_14temp5=?,_15temp6=?,_16weather1=?,_17weather2=?,_18weather3=?,_19weather4=?,_20weather5=?,_21weather6=?,_22img1=?,_23img3=?,_24img5=?,_25img7=?,_26img9=?,_27img11=?,_28wind1=?,_29wind2=?,_30wind3=?,_31wind4=?,_32wind5=?,_33wind6=?,_34fl1=?,_35fl2=?,_36fl3=?,_37fl4=?,_38fl5=?,_39fl6=?,_40index_d=?,_41index_uv=?,_42index_xc=?,_43index_tr=?,_44index_co=?,_45index_cl=?,_46index_ls=?,_47index_ag=? where _1city=? ";
+        
+        @try {
+            sqlite3_stmt *statement;
+            //组织SQL语句
+            char *sql = "update weatherTable set _2cityid=?,_3time=?,_4temp=?,_5WD=?,_6WS=?,_7SD=?,_8date_y,_9week=?,_10temp1=?,_11temp2=?,_12temp3=?,_13temp4=?,_14temp5=?,_15temp6=?,_16weather1=?,_17weather2=?,_18weather3=?,_19weather4=?,_20weather5=?,_21weather6=?,_22img1=?,_23img3=?,_24img5=?,_25img7=?,_26img9=?,_27img11=?,_28wind1=?,_29wind2=?,_30wind3=?,_31wind4=?,_32wind5=?,_33wind6=?,_34fl1=?,_35fl2=?,_36fl3=?,_37fl4=?,_38fl5=?,_39fl6=?,_40index_d=?,_41index_uv=?,_42index_xc=?,_43index_tr=?,_44index_co=?,_45index_cl=?,_46index_ls=?,_47index_ag=? where _1city=? ";
+            
+            //将SQL语句放入sqlite3_stmt中
+            int success = sqlite3_prepare_v2(_database, sql, -1, &statement, NULL);
+            if (success != SQLITE_OK) {
+                NSLog(@"Error: failed to update:testTable");
+                sqlite3_close(_database);
+                return NO;
+            }
+            sqlite3_bind_text(statement, 1, [modelWeather._2cityid UTF8String], -1, SQLITE_TRANSIENT);
+            sqlite3_bind_text(statement, 2, [modelWeather._3time UTF8String], -1, SQLITE_TRANSIENT);
+            sqlite3_bind_text(statement, 3, [modelWeather._4temp UTF8String], -1, SQLITE_TRANSIENT);
+            sqlite3_bind_text(statement, 4, [modelWeather._5WD UTF8String], -1, SQLITE_TRANSIENT);
+            sqlite3_bind_text(statement, 5, [modelWeather._6WS UTF8String], -1, SQLITE_TRANSIENT);
+            sqlite3_bind_text(statement, 6, [modelWeather._7SD UTF8String], -1, SQLITE_TRANSIENT);
+            sqlite3_bind_text(statement, 7, [modelWeather._8date_y UTF8String], -1, SQLITE_TRANSIENT);
+            sqlite3_bind_text(statement, 8, [modelWeather._9week UTF8String], -1, SQLITE_TRANSIENT);
+            sqlite3_bind_text(statement, 9, [modelWeather._10temp1 UTF8String], -1, SQLITE_TRANSIENT);
+            sqlite3_bind_text(statement, 10, [modelWeather._11temp2 UTF8String], -1, SQLITE_TRANSIENT);
+            sqlite3_bind_text(statement, 11, [modelWeather._12temp3 UTF8String], -1, SQLITE_TRANSIENT);
+            sqlite3_bind_text(statement, 12, [modelWeather._13temp4 UTF8String], -1, SQLITE_TRANSIENT);
+            sqlite3_bind_text(statement, 13, [modelWeather._14temp5 UTF8String], -1, SQLITE_TRANSIENT);
+            sqlite3_bind_text(statement, 14, [modelWeather._15temp6 UTF8String], -1, SQLITE_TRANSIENT);
+            sqlite3_bind_text(statement, 15, [modelWeather._16weather1 UTF8String], -1, SQLITE_TRANSIENT);
+            sqlite3_bind_text(statement, 16, [modelWeather._17weather2 UTF8String], -1, SQLITE_TRANSIENT);
+            sqlite3_bind_text(statement, 17, [modelWeather._18weather3 UTF8String], -1, SQLITE_TRANSIENT);
+            sqlite3_bind_text(statement, 18, [modelWeather._19weather4 UTF8String], -1, SQLITE_TRANSIENT);
+            sqlite3_bind_text(statement, 19, [modelWeather._20weather5 UTF8String], -1, SQLITE_TRANSIENT);
+            sqlite3_bind_text(statement, 20, [modelWeather._21weather6 UTF8String], -1, SQLITE_TRANSIENT);
+            sqlite3_bind_text(statement, 21, [modelWeather._22img1 UTF8String], -1, SQLITE_TRANSIENT);
+            sqlite3_bind_text(statement, 22, [modelWeather._23img3 UTF8String], -1, SQLITE_TRANSIENT);
+            sqlite3_bind_text(statement, 23, [modelWeather._24img5 UTF8String], -1, SQLITE_TRANSIENT);
+            sqlite3_bind_text(statement, 24, [modelWeather._25img7 UTF8String], -1, SQLITE_TRANSIENT);
+            sqlite3_bind_text(statement, 25, [modelWeather._26img9 UTF8String], -1, SQLITE_TRANSIENT);
+            sqlite3_bind_text(statement, 26, [modelWeather._27img11 UTF8String], -1, SQLITE_TRANSIENT);
+            sqlite3_bind_text(statement, 27, [modelWeather._28wind1 UTF8String], -1, SQLITE_TRANSIENT);
+            sqlite3_bind_text(statement, 28, [modelWeather._29wind2 UTF8String], -1, SQLITE_TRANSIENT);
+            sqlite3_bind_text(statement, 29, [modelWeather._30wind3 UTF8String], -1, SQLITE_TRANSIENT);
+            sqlite3_bind_text(statement, 30, [modelWeather._31wind4 UTF8String], -1, SQLITE_TRANSIENT);
+            sqlite3_bind_text(statement, 31, [modelWeather._32wind5 UTF8String], -1, SQLITE_TRANSIENT);
+            sqlite3_bind_text(statement, 32, [modelWeather._33wind6 UTF8String], -1, SQLITE_TRANSIENT);
+            sqlite3_bind_text(statement, 33, [modelWeather._34fl1 UTF8String], -1, SQLITE_TRANSIENT);
+            sqlite3_bind_text(statement, 34, [modelWeather._35fl2 UTF8String], -1, SQLITE_TRANSIENT);
+            sqlite3_bind_text(statement, 35, [modelWeather._36fl3 UTF8String], -1, SQLITE_TRANSIENT);
+            sqlite3_bind_text(statement, 36, [modelWeather._37fl4 UTF8String], -1, SQLITE_TRANSIENT);
+            sqlite3_bind_text(statement, 37, [modelWeather._38fl5 UTF8String], -1, SQLITE_TRANSIENT);
+            sqlite3_bind_text(statement, 38, [modelWeather._39fl6 UTF8String], -1, SQLITE_TRANSIENT);
+            sqlite3_bind_text(statement, 39, [modelWeather._40index_d UTF8String], -1, SQLITE_TRANSIENT);
+            sqlite3_bind_text(statement, 40, [modelWeather._41index_uv UTF8String], -1, SQLITE_TRANSIENT);
+            sqlite3_bind_text(statement, 41, [modelWeather._42index_xc UTF8String], -1, SQLITE_TRANSIENT);
+            sqlite3_bind_text(statement, 42, [modelWeather._43index_tr UTF8String], -1, SQLITE_TRANSIENT);
+            sqlite3_bind_text(statement, 43, [modelWeather._44index_co UTF8String], -1, SQLITE_TRANSIENT);
+            sqlite3_bind_text(statement, 44, [modelWeather._45index_cl UTF8String], -1, SQLITE_TRANSIENT);
+            sqlite3_bind_text(statement, 45, [modelWeather._46index_ls UTF8String], -1, SQLITE_TRANSIENT);
+            sqlite3_bind_text(statement, 46, [modelWeather._47index_ag UTF8String], -1, SQLITE_TRANSIENT);
+            sqlite3_bind_text(statement, 47, [modelWeather._1city UTF8String], -1, SQLITE_TRANSIENT);
+            //执行SQL语句。这里是更新数据库
+            success = sqlite3_step(statement);
+            //释放statement
+            sqlite3_finalize(statement);
+            //如果执行失败
+            if (success == SQLITE_ERROR) {
+                NSLog(@"Error: failed to update the database with message.");
+                //关闭数据库
+                sqlite3_close(_database);
+                return NO;
+            }
+            //执行成功后依然要关闭数据库
+            sqlite3_close(_database);
+            return YES;
+        }
+        @catch (NSException *exception) {
+            sqlite3_close(_database);
+            return NO;
+        }
+        @finally {
+            
+        }
 		
-		//将SQL语句放入sqlite3_stmt中
-		int success = sqlite3_prepare_v2(_database, sql, -1, &statement, NULL);
-		if (success != SQLITE_OK) {
-			NSLog(@"Error: failed to update:testTable");
-			sqlite3_close(_database);
-			return NO;
-		}
-		sqlite3_bind_text(statement, 1, [modelWeather._2cityid UTF8String], -1, SQLITE_TRANSIENT);
-        sqlite3_bind_text(statement, 2, [modelWeather._3time UTF8String], -1, SQLITE_TRANSIENT);
-        sqlite3_bind_text(statement, 3, [modelWeather._4temp UTF8String], -1, SQLITE_TRANSIENT);
-        sqlite3_bind_text(statement, 4, [modelWeather._5WD UTF8String], -1, SQLITE_TRANSIENT);
-        sqlite3_bind_text(statement, 5, [modelWeather._6WS UTF8String], -1, SQLITE_TRANSIENT);
-        sqlite3_bind_text(statement, 6, [modelWeather._7SD UTF8String], -1, SQLITE_TRANSIENT);
-        sqlite3_bind_text(statement, 7, [modelWeather._8date_y UTF8String], -1, SQLITE_TRANSIENT);
-        sqlite3_bind_text(statement, 8, [modelWeather._9week UTF8String], -1, SQLITE_TRANSIENT);
-        sqlite3_bind_text(statement, 9, [modelWeather._10temp1 UTF8String], -1, SQLITE_TRANSIENT);
-        sqlite3_bind_text(statement, 10, [modelWeather._11temp2 UTF8String], -1, SQLITE_TRANSIENT);
-        sqlite3_bind_text(statement, 11, [modelWeather._12temp3 UTF8String], -1, SQLITE_TRANSIENT);
-        sqlite3_bind_text(statement, 12, [modelWeather._13temp4 UTF8String], -1, SQLITE_TRANSIENT);
-        sqlite3_bind_text(statement, 13, [modelWeather._14temp5 UTF8String], -1, SQLITE_TRANSIENT);
-        sqlite3_bind_text(statement, 14, [modelWeather._15temp6 UTF8String], -1, SQLITE_TRANSIENT);
-        sqlite3_bind_text(statement, 15, [modelWeather._16weather1 UTF8String], -1, SQLITE_TRANSIENT);
-        sqlite3_bind_text(statement, 16, [modelWeather._17weather2 UTF8String], -1, SQLITE_TRANSIENT);
-        sqlite3_bind_text(statement, 17, [modelWeather._18weather3 UTF8String], -1, SQLITE_TRANSIENT);
-        sqlite3_bind_text(statement, 18, [modelWeather._19weather4 UTF8String], -1, SQLITE_TRANSIENT);
-        sqlite3_bind_text(statement, 19, [modelWeather._20weather5 UTF8String], -1, SQLITE_TRANSIENT);
-        sqlite3_bind_text(statement, 20, [modelWeather._21weather6 UTF8String], -1, SQLITE_TRANSIENT);
-        sqlite3_bind_text(statement, 21, [modelWeather._22img1 UTF8String], -1, SQLITE_TRANSIENT);
-        sqlite3_bind_text(statement, 22, [modelWeather._23img3 UTF8String], -1, SQLITE_TRANSIENT);
-        sqlite3_bind_text(statement, 23, [modelWeather._24img5 UTF8String], -1, SQLITE_TRANSIENT);
-        sqlite3_bind_text(statement, 24, [modelWeather._25img7 UTF8String], -1, SQLITE_TRANSIENT);
-        sqlite3_bind_text(statement, 25, [modelWeather._26img9 UTF8String], -1, SQLITE_TRANSIENT);
-        sqlite3_bind_text(statement, 26, [modelWeather._27img11 UTF8String], -1, SQLITE_TRANSIENT);
-        sqlite3_bind_text(statement, 27, [modelWeather._28wind1 UTF8String], -1, SQLITE_TRANSIENT);
-        sqlite3_bind_text(statement, 28, [modelWeather._29wind2 UTF8String], -1, SQLITE_TRANSIENT);
-        sqlite3_bind_text(statement, 29, [modelWeather._30wind3 UTF8String], -1, SQLITE_TRANSIENT);
-        sqlite3_bind_text(statement, 30, [modelWeather._31wind4 UTF8String], -1, SQLITE_TRANSIENT);
-        sqlite3_bind_text(statement, 31, [modelWeather._32wind5 UTF8String], -1, SQLITE_TRANSIENT);
-        sqlite3_bind_text(statement, 32, [modelWeather._33wind6 UTF8String], -1, SQLITE_TRANSIENT);
-        sqlite3_bind_text(statement, 33, [modelWeather._34fl1 UTF8String], -1, SQLITE_TRANSIENT);
-        sqlite3_bind_text(statement, 34, [modelWeather._35fl2 UTF8String], -1, SQLITE_TRANSIENT);
-        sqlite3_bind_text(statement, 35, [modelWeather._36fl3 UTF8String], -1, SQLITE_TRANSIENT);
-        sqlite3_bind_text(statement, 36, [modelWeather._37fl4 UTF8String], -1, SQLITE_TRANSIENT);
-        sqlite3_bind_text(statement, 37, [modelWeather._38fl5 UTF8String], -1, SQLITE_TRANSIENT);
-        sqlite3_bind_text(statement, 38, [modelWeather._39fl6 UTF8String], -1, SQLITE_TRANSIENT);
-        sqlite3_bind_text(statement, 39, [modelWeather._40index_d UTF8String], -1, SQLITE_TRANSIENT);
-        sqlite3_bind_text(statement, 40, [modelWeather._41index_uv UTF8String], -1, SQLITE_TRANSIENT);
-        sqlite3_bind_text(statement, 41, [modelWeather._42index_xc UTF8String], -1, SQLITE_TRANSIENT);
-        sqlite3_bind_text(statement, 42, [modelWeather._43index_tr UTF8String], -1, SQLITE_TRANSIENT);
-        sqlite3_bind_text(statement, 43, [modelWeather._44index_co UTF8String], -1, SQLITE_TRANSIENT);
-        sqlite3_bind_text(statement, 44, [modelWeather._45index_cl UTF8String], -1, SQLITE_TRANSIENT);
-        sqlite3_bind_text(statement, 45, [modelWeather._46index_ls UTF8String], -1, SQLITE_TRANSIENT);
-        sqlite3_bind_text(statement, 46, [modelWeather._47index_ag UTF8String], -1, SQLITE_TRANSIENT);
-        sqlite3_bind_text(statement, 47, [modelWeather._1city UTF8String], -1, SQLITE_TRANSIENT);
-		//执行SQL语句。这里是更新数据库
-		success = sqlite3_step(statement);
-		//释放statement
-		sqlite3_finalize(statement);
-		//如果执行失败
-		if (success == SQLITE_ERROR) {
-			NSLog(@"Error: failed to update the database with message.");
-			//关闭数据库
-			sqlite3_close(_database);
-			return NO;
-		}
-		//执行成功后依然要关闭数据库
-		sqlite3_close(_database);
-		return YES;
 	}
 	return NO;
 }
@@ -307,56 +330,65 @@
 		else {
 			//查询结果集中一条一条的遍历所有的记录，这里的数字对应的是列值。
 			while (sqlite3_step(statement) == SQLITE_ROW) {
-				ModelWeather* sqlList = [[ModelWeather alloc] init];
-				sqlList._1city = [NSString stringWithUTF8String:(char*)sqlite3_column_text(statement, 1)];
-                sqlList._2cityid = [NSString stringWithUTF8String:(char*)sqlite3_column_text(statement, 2)];
-                sqlList._3time = [NSString stringWithUTF8String:(char*)sqlite3_column_text(statement, 3)];
-                sqlList._4temp = [NSString stringWithUTF8String:(char*)sqlite3_column_text(statement, 4)];
-                sqlList._5WD = [NSString stringWithUTF8String:(char*)sqlite3_column_text(statement, 5)];
-                sqlList._6WS = [NSString stringWithUTF8String:(char*)sqlite3_column_text(statement, 6)];
-                sqlList._7SD = [NSString stringWithUTF8String:(char*)sqlite3_column_text(statement, 7)];
-                sqlList._8date_y = [NSString stringWithUTF8String:(char*)sqlite3_column_text(statement, 8)];
-                sqlList._9week = [NSString stringWithUTF8String:(char*)sqlite3_column_text(statement, 9)];
-                sqlList._10temp1 = [NSString stringWithUTF8String:(char*)sqlite3_column_text(statement, 10)];
-                sqlList._11temp2 = [NSString stringWithUTF8String:(char*)sqlite3_column_text(statement, 11)];
-                sqlList._12temp3 = [NSString stringWithUTF8String:(char*)sqlite3_column_text(statement, 12)];
-                sqlList._13temp4 = [NSString stringWithUTF8String:(char*)sqlite3_column_text(statement, 13)];
-                sqlList._14temp5 = [NSString stringWithUTF8String:(char*)sqlite3_column_text(statement, 14)];
-                sqlList._15temp6 = [NSString stringWithUTF8String:(char*)sqlite3_column_text(statement, 15)];
-                sqlList._16weather1 = [NSString stringWithUTF8String:(char*)sqlite3_column_text(statement, 16)];
-                sqlList._17weather2 = [NSString stringWithUTF8String:(char*)sqlite3_column_text(statement, 17)];
-                sqlList._18weather3 = [NSString stringWithUTF8String:(char*)sqlite3_column_text(statement, 18)];
-                sqlList._19weather4 = [NSString stringWithUTF8String:(char*)sqlite3_column_text(statement, 19)];
-                sqlList._20weather5 = [NSString stringWithUTF8String:(char*)sqlite3_column_text(statement, 20)];
-                sqlList._21weather6 = [NSString stringWithUTF8String:(char*)sqlite3_column_text(statement, 21)];
-                sqlList._22img1 = [NSString stringWithUTF8String:(char*)sqlite3_column_text(statement, 22)];
-                sqlList._23img3 = [NSString stringWithUTF8String:(char*)sqlite3_column_text(statement, 23)];
-                sqlList._24img5 = [NSString stringWithUTF8String:(char*)sqlite3_column_text(statement, 24)];
-                sqlList._25img7 = [NSString stringWithUTF8String:(char*)sqlite3_column_text(statement, 25)];
-                sqlList._26img9 = [NSString stringWithUTF8String:(char*)sqlite3_column_text(statement, 26)];
-                sqlList._27img11 = [NSString stringWithUTF8String:(char*)sqlite3_column_text(statement, 27)];
-                sqlList._28wind1 = [NSString stringWithUTF8String:(char*)sqlite3_column_text(statement, 28)];
-                sqlList._29wind2 = [NSString stringWithUTF8String:(char*)sqlite3_column_text(statement, 29)];
-                sqlList._30wind3 = [NSString stringWithUTF8String:(char*)sqlite3_column_text(statement, 30)];
-                sqlList._31wind4 = [NSString stringWithUTF8String:(char*)sqlite3_column_text(statement, 31)];
-                sqlList._32wind5 = [NSString stringWithUTF8String:(char*)sqlite3_column_text(statement, 32)];
-                sqlList._33wind6 = [NSString stringWithUTF8String:(char*)sqlite3_column_text(statement, 33)];
-                sqlList._34fl1 = [NSString stringWithUTF8String:(char*)sqlite3_column_text(statement, 34)];
-                sqlList._35fl2 = [NSString stringWithUTF8String:(char*)sqlite3_column_text(statement, 35)];
-                sqlList._36fl3 = [NSString stringWithUTF8String:(char*)sqlite3_column_text(statement, 36)];
-                sqlList._37fl4 = [NSString stringWithUTF8String:(char*)sqlite3_column_text(statement, 37)];
-                sqlList._38fl5 = [NSString stringWithUTF8String:(char*)sqlite3_column_text(statement, 38)];
-                sqlList._39fl6 = [NSString stringWithUTF8String:(char*)sqlite3_column_text(statement, 39)];
-                sqlList._40index_d = [NSString stringWithUTF8String:(char*)sqlite3_column_text(statement, 40)];
-                sqlList._41index_uv = [NSString stringWithUTF8String:(char*)sqlite3_column_text(statement, 41)];
-                sqlList._42index_xc = [NSString stringWithUTF8String:(char*)sqlite3_column_text(statement, 42)];
-                sqlList._43index_tr = [NSString stringWithUTF8String:(char*)sqlite3_column_text(statement, 43)];
-                sqlList._44index_co = [NSString stringWithUTF8String:(char*)sqlite3_column_text(statement, 44)];
-                sqlList._45index_cl = [NSString stringWithUTF8String:(char*)sqlite3_column_text(statement, 45)];
-                sqlList._46index_ls = [NSString stringWithUTF8String:(char*)sqlite3_column_text(statement, 46)];
-                sqlList._47index_ag = [NSString stringWithUTF8String:(char*)sqlite3_column_text(statement, 47)];
-                
-                [array addObject:sqlList];
+                ModelWeather* sqlList = [[ModelWeather alloc] init];
+                @try {
+                    sqlList._1city = [NSString stringWithUTF8String:(char*)sqlite3_column_text(statement, 1)];
+                    sqlList._2cityid = [NSString stringWithUTF8String:(char*)sqlite3_column_text(statement, 2)];
+                    sqlList._3time = [NSString stringWithUTF8String:(char*)sqlite3_column_text(statement, 3)];
+                    sqlList._4temp = [NSString stringWithUTF8String:(char*)sqlite3_column_text(statement, 4)];
+                    sqlList._5WD = [NSString stringWithUTF8String:(char*)sqlite3_column_text(statement, 5)];
+                    sqlList._6WS = [NSString stringWithUTF8String:(char*)sqlite3_column_text(statement, 6)];
+                    sqlList._7SD = [NSString stringWithUTF8String:(char*)sqlite3_column_text(statement, 7)];
+                    sqlList._8date_y = [NSString stringWithUTF8String:(char*)sqlite3_column_text(statement, 8)];
+                    sqlList._9week = [NSString stringWithUTF8String:(char*)sqlite3_column_text(statement, 9)];
+                    sqlList._10temp1 = [NSString stringWithUTF8String:(char*)sqlite3_column_text(statement, 10)];
+                    sqlList._11temp2 = [NSString stringWithUTF8String:(char*)sqlite3_column_text(statement, 11)];
+                    sqlList._12temp3 = [NSString stringWithUTF8String:(char*)sqlite3_column_text(statement, 12)];
+                    sqlList._13temp4 = [NSString stringWithUTF8String:(char*)sqlite3_column_text(statement, 13)];
+                    sqlList._14temp5 = [NSString stringWithUTF8String:(char*)sqlite3_column_text(statement, 14)];
+                    sqlList._15temp6 = [NSString stringWithUTF8String:(char*)sqlite3_column_text(statement, 15)];
+                    sqlList._16weather1 = [NSString stringWithUTF8String:(char*)sqlite3_column_text(statement, 16)];
+                    sqlList._17weather2 = [NSString stringWithUTF8String:(char*)sqlite3_column_text(statement, 17)];
+                    sqlList._18weather3 = [NSString stringWithUTF8String:(char*)sqlite3_column_text(statement, 18)];
+                    sqlList._19weather4 = [NSString stringWithUTF8String:(char*)sqlite3_column_text(statement, 19)];
+                    sqlList._20weather5 = [NSString stringWithUTF8String:(char*)sqlite3_column_text(statement, 20)];
+                    sqlList._21weather6 = [NSString stringWithUTF8String:(char*)sqlite3_column_text(statement, 21)];
+                    sqlList._22img1 = [NSString stringWithUTF8String:(char*)sqlite3_column_text(statement, 22)];
+                    sqlList._23img3 = [NSString stringWithUTF8String:(char*)sqlite3_column_text(statement, 23)];
+                    sqlList._24img5 = [NSString stringWithUTF8String:(char*)sqlite3_column_text(statement, 24)];
+                    sqlList._25img7 = [NSString stringWithUTF8String:(char*)sqlite3_column_text(statement, 25)];
+                    sqlList._26img9 = [NSString stringWithUTF8String:(char*)sqlite3_column_text(statement, 26)];
+                    sqlList._27img11 = [NSString stringWithUTF8String:(char*)sqlite3_column_text(statement, 27)];
+                    sqlList._28wind1 = [NSString stringWithUTF8String:(char*)sqlite3_column_text(statement, 28)];
+                    sqlList._29wind2 = [NSString stringWithUTF8String:(char*)sqlite3_column_text(statement, 29)];
+                    sqlList._30wind3 = [NSString stringWithUTF8String:(char*)sqlite3_column_text(statement, 30)];
+                    sqlList._31wind4 = [NSString stringWithUTF8String:(char*)sqlite3_column_text(statement, 31)];
+                    sqlList._32wind5 = [NSString stringWithUTF8String:(char*)sqlite3_column_text(statement, 32)];
+                    sqlList._33wind6 = [NSString stringWithUTF8String:(char*)sqlite3_column_text(statement, 33)];
+                    sqlList._34fl1 = [NSString stringWithUTF8String:(char*)sqlite3_column_text(statement, 34)];
+                    sqlList._35fl2 = [NSString stringWithUTF8String:(char*)sqlite3_column_text(statement, 35)];
+                    sqlList._36fl3 = [NSString stringWithUTF8String:(char*)sqlite3_column_text(statement, 36)];
+                    sqlList._37fl4 = [NSString stringWithUTF8String:(char*)sqlite3_column_text(statement, 37)];
+                    sqlList._38fl5 = [NSString stringWithUTF8String:(char*)sqlite3_column_text(statement, 38)];
+                    sqlList._39fl6 = [NSString stringWithUTF8String:(char*)sqlite3_column_text(statement, 39)];
+                    sqlList._40index_d = [NSString stringWithUTF8String:(char*)sqlite3_column_text(statement, 40)];
+                    sqlList._41index_uv = [NSString stringWithUTF8String:(char*)sqlite3_column_text(statement, 41)];
+                    sqlList._42index_xc = [NSString stringWithUTF8String:(char*)sqlite3_column_text(statement, 42)];
+                    sqlList._43index_tr = [NSString stringWithUTF8String:(char*)sqlite3_column_text(statement, 43)];
+                    sqlList._44index_co = [NSString stringWithUTF8String:(char*)sqlite3_column_text(statement, 44)];
+                    sqlList._45index_cl = [NSString stringWithUTF8String:(char*)sqlite3_column_text(statement, 45)];
+                    sqlList._46index_ls = [NSString stringWithUTF8String:(char*)sqlite3_column_text(statement, 46)];
+                    sqlList._47index_ag = [NSString stringWithUTF8String:(char*)sqlite3_column_text(statement, 47)];
+                    
+                    [array addObject:sqlList];
+                }
+                @catch (NSException *exception) {
+                    LocalCityListManager *localCityListManager = [[LocalCityListManager alloc] init];
+                    [localCityListManager deleteCityInFaverate:sqlList._1city];
+                    [self deleteWeatherModel:sqlList._1city];
+                }
+                @finally {
+                }
 			}
 		}
 		sqlite3_finalize(statement);

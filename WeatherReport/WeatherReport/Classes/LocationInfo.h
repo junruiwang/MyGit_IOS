@@ -11,6 +11,7 @@
 
 @interface LocationInfo : NSObject
 
+@property(nonatomic, copy) NSString *province;
 @property(nonatomic, copy) NSString *cityName;
 @property(nonatomic, copy) NSString *searchCode;
 @property(nonatomic, assign) CLLocationCoordinate2D currentPoint;

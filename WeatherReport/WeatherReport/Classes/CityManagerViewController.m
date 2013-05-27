@@ -38,10 +38,7 @@
 
 - (CityTableListViewController *)cityTableListViewController
 {
-    if (!_cityTableListViewController)
-    {
-        _cityTableListViewController = [[CityTableListViewController alloc] init];
-    }
+    _cityTableListViewController = [[CityTableListViewController alloc] init];
     return _cityTableListViewController;
 }
 

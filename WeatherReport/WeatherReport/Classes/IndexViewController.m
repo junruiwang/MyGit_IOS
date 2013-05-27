@@ -162,12 +162,6 @@
         
         if (![hisvalue containsObject:TheAppDelegate.locationInfo.cityName]) {
             [self loading];
-            //放入缓存
-            LocalCityListManager *localCityListManager = [[LocalCityListManager alloc] init];
-            City *city = [[City alloc] init];
-            city.cityName = TheAppDelegate.locationInfo.cityName;
-            city.searchCode = TheAppDelegate.locationInfo.searchCode;
-            [localCityListManager insertIntoFaverateWithCity:city];
             
             [NSThread detachNewThreadSelector:@selector(startTheBackgroundJob:) toTarget:self withObject:TheAppDelegate.locationInfo.searchCode];
         }
@@ -297,8 +291,17 @@
 - (void)startTheBackgroundJob:(NSString *)searchCode
 {
     ModelWeather *weather = [self downloadData:searchCode];
+    //天气信息放入缓存
     [self.sqliteService insertModel:weather];
     [self addWeatherResoure:weather];
+    //城市信息放入缓存
+    LocalCityListManager *localCityListManager = [[LocalCityListManager alloc] init];
+    City *city = [[City alloc] init];
+    city.province = TheAppDelegate.locationInfo.province;
+    city.cityName = TheAppDelegate.locationInfo.cityName;
+    city.searchCode = TheAppDelegate.locationInfo.searchCode;
+    [localCityListManager insertIntoFaverateWithCity:city];
+    
     TheAppDelegate.modelWeather = weather;
     [self setCurrentNavigationBarTitle];
 }
@@ -861,12 +864,21 @@
 - (void)scrollViewDidScroll:(UIScrollView *)sender
 {
     if (sender.tag == top_scroll_view_tag) {
-        if (sender.contentOffset.x <= 0) {
-            [sender setContentOffset:CGPointMake(0, sender.contentOffset.y) animated:NO];
+        int location=((int)sender.contentOffset.x)/((int)self.screenWidth);
+        
+        if (location == 0) {
+            if (sender.contentOffset.x <= 0) {
+                [sender setContentOffset:CGPointMake(0, sender.contentOffset.y) animated:NO];
+            }
         }
+        
+        if ((location + 1) == self.remainCityModel.count) {
+            if (sender.contentOffset.x > 320*location) {
+                [sender setContentOffset:CGPointMake(320*location, sender.contentOffset.y) animated:NO];
+            }
+        }
+        
     } else if (sender.tag == bottom_scroll_view_tag) {
-        
-        
         int location=((int)sender.contentOffset.x)/((int)self.screenWidth);
         if (location == 0) {
             if (sender.contentOffset.x <= 0) {
