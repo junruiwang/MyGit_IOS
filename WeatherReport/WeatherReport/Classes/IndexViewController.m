@@ -60,6 +60,44 @@
     [super loadView];
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    ModelWeather *modelWeather = TheAppDelegate.modelWeather;
+    [self upCurrentWeatherAfterTwoHour:modelWeather];
+}
+
+- (void)upCurrentWeatherAfterTwoHour:(ModelWeather *) modelWeather
+{
+    if (modelWeather) {
+        NSString *upTime = modelWeather._3time;
+        upTime = [upTime substringToIndex:[upTime rangeOfString:@":"].location];
+        if ([[upTime substringToIndex:1] isEqualToString:@"0"]) {
+            upTime = [upTime substringFromIndex:1];
+        }
+        int upTimeInt = upTime.intValue;
+        
+        NSDateFormatter *tempformatter = [[NSDateFormatter alloc]init];
+        [tempformatter setDateFormat:@"HH:mm"];
+        NSDate *timeNow = [NSDate date];
+        NSString *currentTime = [tempformatter stringFromDate:timeNow];
+        currentTime = [currentTime substringToIndex:[currentTime rangeOfString:@":"].location];
+        if ([[currentTime substringToIndex:1] isEqualToString:@"0"]) {
+            currentTime = [currentTime substringFromIndex:1];
+        }
+        int currentTimeInt = currentTime.intValue;
+        
+        if ((currentTimeInt-upTimeInt) > 1 || (currentTimeInt-upTimeInt) < -1) {
+            [self loading];
+            int location=((int)self.scrollView.contentOffset.x)/((int)self.screenWidth);
+            
+            ModelWeather *weather=((ModelWeather *)[self.remainCityModel objectAtIndex:location]);
+            [NSThread detachNewThreadSelector:@selector(startUPTheBackgroudJob:) toTarget:self withObject:weather._2cityid];
+        }
+    }
+}
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -899,8 +937,35 @@
         if (self.remainCityModel != nil && [self.remainCityModel count] > 0) {
             int location=((int)self.scrollView.contentOffset.x)/((int)self.screenWidth);
             ModelWeather *weather=((ModelWeather *)[self.remainCityModel objectAtIndex:location]);
-            TheAppDelegate.modelWeather = weather;
-            [self setCurrentNavigationBarTitle];
+            
+            //判定是否需要更新
+            NSString *upTime = weather._3time;
+            upTime = [upTime substringToIndex:[upTime rangeOfString:@":"].location];
+            if ([[upTime substringToIndex:1] isEqualToString:@"0"]) {
+                upTime = [upTime substringFromIndex:1];
+            }
+            int upTimeInt = upTime.intValue;
+            
+            NSDateFormatter *tempformatter = [[NSDateFormatter alloc]init];
+            [tempformatter setDateFormat:@"HH:mm"];
+            NSDate *timeNow = [NSDate date];
+            NSString *currentTime = [tempformatter stringFromDate:timeNow];
+            currentTime = [currentTime substringToIndex:[currentTime rangeOfString:@":"].location];
+            if ([[currentTime substringToIndex:1] isEqualToString:@"0"]) {
+                currentTime = [currentTime substringFromIndex:1];
+            }
+            int currentTimeInt = currentTime.intValue;
+            
+            if ((currentTimeInt-upTimeInt) > 1 || (currentTimeInt-upTimeInt) < -1) {
+                [self loading];
+                int location=((int)self.scrollView.contentOffset.x)/((int)self.screenWidth);
+                
+                ModelWeather *weather=((ModelWeather *)[self.remainCityModel objectAtIndex:location]);
+                [NSThread detachNewThreadSelector:@selector(startUPTheBackgroudJob:) toTarget:self withObject:weather._2cityid];
+            } else {
+                TheAppDelegate.modelWeather = weather;
+                [self setCurrentNavigationBarTitle];
+            }
         }
     }
 }

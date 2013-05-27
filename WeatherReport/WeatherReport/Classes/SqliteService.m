@@ -230,12 +230,12 @@
         @try {
             sqlite3_stmt *statement;
             //组织SQL语句
-            char *sql = "update weatherTable set _2cityid=?,_3time=?,_4temp=?,_5WD=?,_6WS=?,_7SD=?,_8date_y,_9week=?,_10temp1=?,_11temp2=?,_12temp3=?,_13temp4=?,_14temp5=?,_15temp6=?,_16weather1=?,_17weather2=?,_18weather3=?,_19weather4=?,_20weather5=?,_21weather6=?,_22img1=?,_23img3=?,_24img5=?,_25img7=?,_26img9=?,_27img11=?,_28wind1=?,_29wind2=?,_30wind3=?,_31wind4=?,_32wind5=?,_33wind6=?,_34fl1=?,_35fl2=?,_36fl3=?,_37fl4=?,_38fl5=?,_39fl6=?,_40index_d=?,_41index_uv=?,_42index_xc=?,_43index_tr=?,_44index_co=?,_45index_cl=?,_46index_ls=?,_47index_ag=? where _1city=? ";
+            char *sql = "update weatherTable set _2cityid=?,_3time=?,_4temp=?,_5WD=?,_6WS=?,_7SD=?,_8date_y=?,_9week=?,_10temp1=?,_11temp2=?,_12temp3=?,_13temp4=?,_14temp5=?,_15temp6=?,_16weather1=?,_17weather2=?,_18weather3=?,_19weather4=?,_20weather5=?,_21weather6=?,_22img1=?,_23img3=?,_24img5=?,_25img7=?,_26img9=?,_27img11=?,_28wind1=?,_29wind2=?,_30wind3=?,_31wind4=?,_32wind5=?,_33wind6=?,_34fl1=?,_35fl2=?,_36fl3=?,_37fl4=?,_38fl5=?,_39fl6=?,_40index_d=?,_41index_uv=?,_42index_xc=?,_43index_tr=?,_44index_co=?,_45index_cl=?,_46index_ls=?,_47index_ag=? where _1city=? ";
             
             //将SQL语句放入sqlite3_stmt中
             int success = sqlite3_prepare_v2(_database, sql, -1, &statement, NULL);
             if (success != SQLITE_OK) {
-                NSLog(@"Error: failed to update:testTable");
+                NSLog(@"Error: failed to update:weatherTable");
                 sqlite3_close(_database);
                 return NO;
             }
