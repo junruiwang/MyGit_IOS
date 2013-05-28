@@ -9,8 +9,7 @@
 #import "AppDelegate.h"
 #import "Constants.h"
 #import "IndexViewController.h"
-#import "DSTwoViewController.h"
-#import "DSThreeViewController.h"
+#import "TrendViewController.h"
 #import "DSFourViewController.h"
 #import "DSFiveViewController.h"
 
@@ -91,14 +90,8 @@
     indexNavigationController.tabBarItem.title = @"预报";
     indexNavigationController.tabBarItem.image = [UIImage imageNamed:@"load_1.png"];
     
-//    DSTwoViewController *twoViewController = [[DSTwoViewController alloc] init];
-//    UINavigationController *twoNavigationController = [[UINavigationController alloc] initWithRootViewController:twoViewController];
-//    twoNavigationController.navigationBar.barStyle = UIBarStyleBlack;
-//    twoNavigationController.tabBarItem.title = @"two";
-//    twoNavigationController.tabBarItem.image = [UIImage imageNamed:@"load_2.png"];
-    
-    DSThreeViewController *threeViewController = [[DSThreeViewController alloc] init];
-    UINavigationController *threeNavigationController = [[UINavigationController alloc] initWithRootViewController:threeViewController];
+    TrendViewController *trendViewController = [[TrendViewController alloc] init];
+    UINavigationController *threeNavigationController = [[UINavigationController alloc] initWithRootViewController:trendViewController];
     threeNavigationController.navigationBar.barStyle = UIBarStyleBlack;
     threeNavigationController.tabBarItem.title = @"趋势";
     threeNavigationController.tabBarItem.image = [UIImage imageNamed:@"load_3.png"];

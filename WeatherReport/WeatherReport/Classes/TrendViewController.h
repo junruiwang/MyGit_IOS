@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "BannerViewController.h"
 
-@interface DSThreeViewController : BannerViewController
+@interface TrendViewController : BannerViewController
 
 @end
