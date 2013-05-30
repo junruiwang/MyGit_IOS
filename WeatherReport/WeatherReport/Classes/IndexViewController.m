@@ -22,7 +22,6 @@
 
 @interface IndexViewController ()
 
-@property(nonatomic, strong) NSString *currentCity;
 @property(nonatomic, strong) UIImage *bgImage;
 @property(nonatomic, strong) WeatherWeekDayParser *weatherWeekDayParser;
 @property(nonatomic, strong) CityManagerViewController *cityManagerViewController;
@@ -89,10 +88,7 @@
         
         if ((currentTimeInt-upTimeInt) > 1 || (currentTimeInt-upTimeInt) < -1) {
             [self loading];
-            int location=((int)self.scrollView.contentOffset.x)/((int)self.screenWidth);
-            
-            ModelWeather *weather=((ModelWeather *)[self.remainCityModel objectAtIndex:location]);
-            [NSThread detachNewThreadSelector:@selector(startUPTheBackgroudJob:) toTarget:self withObject:weather._2cityid];
+            [NSThread detachNewThreadSelector:@selector(startUPTheBackgroudJob:) toTarget:self withObject:modelWeather._2cityid];
         }
     }
 }
@@ -191,16 +187,17 @@
     
     if (self.locationTime == nil || (intCurrentTime - [self.locationTime timeIntervalSince1970]) > 1800) {
         self.locationTime = [NSDate date];
-        NSMutableArray *tempdata=[self.sqliteService getWeatherModelArray];
+        
         
         NSMutableArray *hisvalue=[[NSMutableArray alloc]init];
-        for (int i=0; i<[tempdata count]; i++) {
-            [hisvalue addObject:((ModelWeather *)[tempdata objectAtIndex:i])._1city];
+        if (self.remainCityModel != nil && [self.remainCityModel count] > 0) {
+            for (int i=0; i<[self.remainCityModel count]; i++) {
+                [hisvalue addObject:((ModelWeather *)[self.remainCityModel objectAtIndex:i])._1city];
+            }
         }
         
         if (![hisvalue containsObject:TheAppDelegate.locationInfo.cityName]) {
             [self loading];
-            
             [NSThread detachNewThreadSelector:@selector(startTheBackgroundJob:) toTarget:self withObject:TheAppDelegate.locationInfo.searchCode];
         } else {
             ModelWeather *modelWeather = TheAppDelegate.modelWeather;
@@ -215,11 +212,10 @@
 {
     self.remainCityModel=[self.sqliteService getWeatherModelArray];
     if ([self.remainCityModel count] > 0) {
-        [self loading];
         int location=((int)self.scrollView.contentOffset.x)/((int)self.screenWidth);
         
         ModelWeather *weather=((ModelWeather *)[self.remainCityModel objectAtIndex:location]);
-        [NSThread detachNewThreadSelector:@selector(startUPTheBackgroudJob:) toTarget:self withObject:weather._2cityid];
+        [self upCurrentWeatherAfterTwoHour:weather];
     } else {
         [self showAlertMessage:@"无可供更新的城市数据！"];
     }
@@ -334,7 +330,6 @@
     ModelWeather *weather = [self downloadData:searchCode];
     //天气信息放入缓存
     [self.sqliteService insertModel:weather];
-    [self addWeatherResoure:weather];
     //城市信息放入缓存
     LocalCityListManager *localCityListManager = [[LocalCityListManager alloc] init];
     City *city = [[City alloc] init];
@@ -343,8 +338,17 @@
     city.searchCode = TheAppDelegate.locationInfo.searchCode;
     [localCityListManager insertIntoFaverateWithCity:city];
     
-    TheAppDelegate.modelWeather = weather;
-    [self setCurrentNavigationBarTitle];
+    [self reDrawModelWeatherView];
+    for (int j=0; j<[self.remainCityModel count]; j++) {
+        ModelWeather *tempWeather = [self.remainCityModel objectAtIndex:j];
+        if ([weather._1city isEqualToString:tempWeather._1city]) {
+            TheAppDelegate.modelWeather = weather;
+            [self.scrollView setContentOffset:CGPointMake(self.screenWidth*j, 0)];
+            [self setCurrentNavigationBarTitle];
+            break;
+        }
+    }
+    [self loadingDismiss];
 }
 
 //后台更新城市天气
@@ -352,17 +356,11 @@
 {
     ModelWeather *weather = [self downloadData:searchCode];
     [self.sqliteService updateWeatherModel:weather];
-    [self upWeatherResource:weather];
     TheAppDelegate.modelWeather = weather;
+    
+    [self upWeatherResource:weather];
     [self setCurrentNavigationBarTitle];
-}
-
-
-//增加一个城市的天气模型
-- (void)addWeatherResoure:(ModelWeather *)model
-{
-    [self reDrawModelWeatherView];
-    [self.scrollView setContentOffset:CGPointMake(self.screenWidth*([self.remainCityModel count]-1), 0)];
+    
     [self loadingDismiss];
 }
 
@@ -373,7 +371,6 @@
     int location=((int)self.scrollView.contentOffset.x)/((int)self.screenWidth);
     [self reDrawModelWeatherView];
     [self.scrollView setContentOffset:CGPointMake(self.screenWidth*location, 0)];
-    [self loadingDismiss];
 }
 
 #pragma mark - BaseJSONParserDelegate
@@ -524,7 +521,6 @@
 {
     ModelWeather *modelWeather = TheAppDelegate.modelWeather;
     self.cityLabel.text = modelWeather._1city;
-    self.currentCity = modelWeather._1city;
     int imageNumber = [modelWeather._22img1 intValue];
     
     if ([self timeNowIsNight]) {
@@ -985,13 +981,11 @@
         
         TheAppDelegate.modelWeather = nil;
         self.cityLabel.text = nil;
-        self.currentCity = nil;
     } else {
         BOOL isExit = NO;
         for (int i=0; i<[self.remainCityModel count]; i++) {
             ModelWeather *weather=[self.remainCityModel objectAtIndex:i];
-            if ([self.currentCity isEqualToString:weather._1city]) {
-                TheAppDelegate.modelWeather = weather;
+            if ([TheAppDelegate.modelWeather._1city isEqualToString:weather._1city]) {
                 [self.scrollView setContentOffset:CGPointMake(self.screenWidth*i, 0)];
                 [self setCurrentNavigationBarTitle];
                 isExit = YES;
