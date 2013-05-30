@@ -9,6 +9,8 @@
 #import "TrendViewController.h"
 #import "LineChartView.h"
 
+#define TREND_TEMP_LINE_TAG 101
+
 @implementation TrendViewController
 
 - (id)init
@@ -36,13 +38,13 @@
     }
     UIImageView *bgImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, imageHeight)];
     bgImageView.backgroundColor = [UIColor clearColor];
-    bgImageView.image = [UIImage imageNamed:@"load_bg3.png"];
+    bgImageView.image = [UIImage imageNamed:@"index-default-bg.jpg"];
     [self.view addSubview:bgImageView];
 
     
     UIView *alphaBgView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, imageHeight)];
     alphaBgView.backgroundColor = [UIColor blackColor];
-    alphaBgView.alpha = 0.8;
+    alphaBgView.alpha = 0.4;
     [self.view addSubview:alphaBgView];
     
 }
@@ -55,7 +57,13 @@
     if ([[NSUserDefaults standardUserDefaults] boolForKey:USER_DEVICE_5]) {
         imageHeight += 88;
     }
+    
+    if ([self.view viewWithTag:TREND_TEMP_LINE_TAG]) {
+        [[self.view viewWithTag:TREND_TEMP_LINE_TAG] removeFromSuperview];
+    }
+    
     LineChartView *lineChartView = [[LineChartView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, imageHeight)];
+    lineChartView.tag = TREND_TEMP_LINE_TAG;
     
     NSMutableArray *pointArr = [[NSMutableArray alloc]init];
     //生成随机点
@@ -98,12 +106,24 @@
 	[segmentedControl addTarget:self action:@selector(segmentAction:) forControlEvents:UIControlEventValueChanged];
     
 	self.navigationItem.titleView = segmentedControl;
-    //self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:segmentedControl];
 }
 
 - (void)viewDidUnload
 {
     [super viewDidUnload];
+}
+
+- (void)segmentAction:(id)sender
+{
+	// The segmented control was clicked, handle it here
+	UISegmentedControl *segmentedControl = (UISegmentedControl *)sender;
+    
+    if (segmentedControl.selectedSegmentIndex == 0) {
+        
+    } else {
+        
+    }
+    
 }
 
 @end

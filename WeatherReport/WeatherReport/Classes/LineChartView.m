@@ -30,29 +30,8 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        
         hInterval = 10;
         vInterval = 55;
-        
-        linesLayer = [[CALayer alloc] init];
-        linesLayer.masksToBounds = YES;
-        linesLayer.contentsGravity = kCAGravityLeft;
-        linesLayer.backgroundColor = [[UIColor whiteColor] CGColor];
-        
-        [self.layer addSublayer:linesLayer];
-        
-        self.backgroundColor = [UIColor clearColor];
-        
-        //PopView
-//        popView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 60, 30)];
-//        [popView setBackgroundColor:[UIColor blackColor]];
-//        [popView setAlpha:0.0f];
-        
-//        disLabel = [[UILabel alloc]initWithFrame:popView.frame];
-//        [disLabel setTextAlignment:UITextAlignmentCenter];
-//        
-//        [popView addSubview:disLabel];
-//        [self addSubview:popView];
     }
     return self;
 }
@@ -67,23 +46,11 @@
     
     //画背景线条------------------
 //    CGColorRef backColorRef = [UIColor blackColor].CGColor;
-    CGFloat backLineWidth = 0.5f;
-    CGFloat backMiterLimit = 0;
+    CGFloat backLineWidth = 1.0f;
     
     CGContextSetLineWidth(context, backLineWidth);//主线宽度
-    CGContextSetMiterLimit(context, backMiterLimit);//投影角度  
-    
-//    CGContextSetShadowWithColor(context, CGSizeMake(3, 5), 8, backColorRef);//设置双条线 
-    
-    CGContextSetLineJoin(context, kCGLineJoinRound);
-    
-    CGContextSetLineCap(context, kCGLineCapRound );
-    
-    CGContextSetBlendMode(context, kCGBlendModeNormal);
     
     CGContextSetStrokeColorWithColor(context, [UIColor lightTextColor].CGColor);
-    
-
     
     int x = self.frame.size.width ;
     int y = self.frame.size.height ;
@@ -124,23 +91,10 @@
     }
     
     
-//    //画点线条------------------
-    CGColorRef pointColorRef = [UIColor colorWithRed:24.0f/255.0f green:116.0f/255.0f blue:205.0f/255.0f alpha:1.0].CGColor;
+    //画点线条------------------
     CGFloat pointLineWidth = 1.5f;
-    CGFloat pointMiterLimit = 5.0f;
     
     CGContextSetLineWidth(context, pointLineWidth);//主线宽度
-    CGContextSetMiterLimit(context, pointMiterLimit);//投影角度  
-    
-    
-    CGContextSetShadowWithColor(context, CGSizeMake(3, 5), 8, pointColorRef);//设置双条线 
-    
-    CGContextSetLineJoin(context, kCGLineJoinRound);
-    
-    CGContextSetLineCap(context, kCGLineCapRound );
-    
-    CGContextSetBlendMode(context, kCGBlendModeNormal);
-    
     CGContextSetStrokeColorWithColor(context, [UIColor whiteColor].CGColor);
 
 	//绘图

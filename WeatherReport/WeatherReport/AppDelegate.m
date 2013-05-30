@@ -91,10 +91,10 @@
     indexNavigationController.tabBarItem.image = [UIImage imageNamed:@"load_1.png"];
     
     TrendViewController *trendViewController = [[TrendViewController alloc] init];
-    UINavigationController *threeNavigationController = [[UINavigationController alloc] initWithRootViewController:trendViewController];
-    threeNavigationController.navigationBar.barStyle = UIBarStyleBlack;
-    threeNavigationController.tabBarItem.title = @"趋势";
-    threeNavigationController.tabBarItem.image = [UIImage imageNamed:@"load_3.png"];
+    UINavigationController *trendNavigationController = [[UINavigationController alloc] initWithRootViewController:trendViewController];
+    trendNavigationController.navigationBar.barStyle = UIBarStyleBlack;
+    trendNavigationController.tabBarItem.title = @"趋势";
+    trendNavigationController.tabBarItem.image = [UIImage imageNamed:@"load_3.png"];
     
     DSFourViewController *fourViewController = [[DSFourViewController alloc] init];
     UINavigationController *fourNavigationController = [[UINavigationController alloc] initWithRootViewController:fourViewController];
@@ -111,7 +111,7 @@
     self.mainTabBarController = [[UITabBarController alloc] init];
     self.mainTabBarController.viewControllers = [NSArray arrayWithObjects:
                                                  indexNavigationController,
-                                                 threeNavigationController,
+                                                 trendNavigationController,
                                                  fourNavigationController,
                                                  fiveNavigationController, nil];
     

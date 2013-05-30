@@ -31,7 +31,6 @@
     if (self) {
         _localCityListManager = [[LocalCityListManager alloc] init];
         _cityArray = [[NSMutableArray alloc] initWithCapacity:10];
-        //[self.localCityListManager buildLocalFileToArray:self.cityArray];
     }
     return self;
 }
@@ -58,6 +57,23 @@
     [super viewDidAppear:animated];
     
     [self.localCityListManager buildLocalFileToArray:self.cityArray];
+    SqliteService *sqlservice=[[SqliteService alloc]init];
+    NSMutableArray *remainCityModel=[sqlservice getWeatherModelArray];
+    
+    for (int i=0; i<[remainCityModel count]; i++) {
+        ModelWeather *weather=[remainCityModel objectAtIndex:i];
+        BOOL isShouldDelete = YES;
+        for (int m=0; m<[self.cityArray count]; m++) {
+            City *city = [self.cityArray objectAtIndex:m];
+            if ([city.searchCode isEqualToString:weather._2cityid]) {
+                isShouldDelete = NO;
+            }
+        }
+        if (isShouldDelete) {
+            [sqlservice deleteWeatherModel:weather._1city];
+            break;
+        }
+    }
     [self.tableView reloadData];
 }
 
