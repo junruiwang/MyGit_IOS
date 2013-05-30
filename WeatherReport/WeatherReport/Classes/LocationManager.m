@@ -56,12 +56,14 @@
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
 {
-    self.isLocationOver = YES;
-    self.userPosition = newLocation.coordinate;
-    NSString *coordinateString = [NSString stringWithFormat: @"%lf,%lf", self.userPosition.latitude, self.userPosition.longitude];
-    TheAppDelegate.locationInfo.currentPoint = self.userPosition;
-    
-    [self.locationParser reverseGeocodingPosition:coordinateString];
+    if (!self.isLocationOver) {
+        self.isLocationOver = YES;
+        self.userPosition = newLocation.coordinate;
+        NSString *coordinateString = [NSString stringWithFormat: @"%lf,%lf", self.userPosition.latitude, self.userPosition.longitude];
+        TheAppDelegate.locationInfo.currentPoint = self.userPosition;
+        
+        [self.locationParser reverseGeocodingPosition:coordinateString];
+    }
 }
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error

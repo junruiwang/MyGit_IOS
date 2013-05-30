@@ -187,8 +187,6 @@
     
     if (self.locationTime == nil || (intCurrentTime - [self.locationTime timeIntervalSince1970]) > 1800) {
         self.locationTime = [NSDate date];
-        
-        
         NSMutableArray *hisvalue=[[NSMutableArray alloc]init];
         if (self.remainCityModel != nil && [self.remainCityModel count] > 0) {
             for (int i=0; i<[self.remainCityModel count]; i++) {
@@ -328,8 +326,6 @@
 - (void)startTheBackgroundJob:(NSString *)searchCode
 {
     ModelWeather *weather = [self downloadData:searchCode];
-    //天气信息放入缓存
-    [self.sqliteService insertModel:weather];
     //城市信息放入缓存
     LocalCityListManager *localCityListManager = [[LocalCityListManager alloc] init];
     City *city = [[City alloc] init];
@@ -337,6 +333,8 @@
     city.cityName = TheAppDelegate.locationInfo.cityName;
     city.searchCode = TheAppDelegate.locationInfo.searchCode;
     [localCityListManager insertIntoFaverateWithCity:city];
+    //天气信息放入缓存
+    [self.sqliteService insertModel:weather];
     
     [self reDrawModelWeatherView];
     for (int j=0; j<[self.remainCityModel count]; j++) {
@@ -974,7 +972,6 @@
 {
     [self reDrawModelWeatherView];
     if ([self.remainCityModel count] == 0) {
-        //[self.scrollView removeFromSuperview];
         [self.bottomScrollView removeFromSuperview];
         [[self.view viewWithTag:bottom_bg_view_tag] removeFromSuperview];
         self.bgImageView.image = [UIImage imageNamed:@"index-default-bg.jpg"];
