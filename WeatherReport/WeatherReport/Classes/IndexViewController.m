@@ -87,7 +87,6 @@
         int currentTimeInt = currentTime.intValue;
         
         if ((currentTimeInt-upTimeInt) > 1 || (currentTimeInt-upTimeInt) < -1) {
-            [self loading];
             [NSThread detachNewThreadSelector:@selector(startUPTheBackgroudJob:) toTarget:self withObject:modelWeather._2cityid];
         }
     }
@@ -195,7 +194,6 @@
         }
         
         if (![hisvalue containsObject:TheAppDelegate.locationInfo.cityName]) {
-            [self loading];
             [NSThread detachNewThreadSelector:@selector(startTheBackgroundJob:) toTarget:self withObject:TheAppDelegate.locationInfo.searchCode];
         } else {
             ModelWeather *modelWeather = TheAppDelegate.modelWeather;
@@ -325,6 +323,7 @@
 //后台下载城市天气
 - (void)startTheBackgroundJob:(NSString *)searchCode
 {
+    [self loading];
     ModelWeather *weather = [self downloadData:searchCode];
     //城市信息放入缓存
     LocalCityListManager *localCityListManager = [[LocalCityListManager alloc] init];
@@ -352,6 +351,7 @@
 //后台更新城市天气
 -(void)startUPTheBackgroudJob:(NSString *)searchCode
 {
+    [self loading];
     ModelWeather *weather = [self downloadData:searchCode];
     [self.sqliteService updateWeatherModel:weather];
     TheAppDelegate.modelWeather = weather;
@@ -954,9 +954,7 @@
             int currentTimeInt = currentTime.intValue;
             
             if ((currentTimeInt-upTimeInt) > 1 || (currentTimeInt-upTimeInt) < -1) {
-                [self loading];
                 int location=((int)self.scrollView.contentOffset.x)/((int)self.screenWidth);
-                
                 ModelWeather *weather=((ModelWeather *)[self.remainCityModel objectAtIndex:location]);
                 [NSThread detachNewThreadSelector:@selector(startUPTheBackgroudJob:) toTarget:self withObject:weather._2cityid];
             } else {
