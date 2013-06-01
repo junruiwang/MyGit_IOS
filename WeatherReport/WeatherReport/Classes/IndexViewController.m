@@ -219,7 +219,9 @@
         ModelWeather *weather=((ModelWeather *)[self.remainCityModel objectAtIndex:location]);
         [self upCurrentWeatherAfterTwoHour:weather];
     } else {
-        [self showAlertMessage:@"无可供更新的城市数据！"];
+        if (TheAppDelegate.locationInfo.searchCode) {
+            [self downloadDataForDay:TheAppDelegate.locationInfo.searchCode];
+        }
     }
     
 }
@@ -260,7 +262,7 @@
     navigationBarView.backgroundColor = [UIColor clearColor];
     
     UIButton *cityButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    cityButton.frame = CGRectMake(10, 10, 25, 22);
+    cityButton.frame = CGRectMake(10, 10, 29, 25);
     [cityButton setImage:[UIImage imageNamed:@"country-field.png"] forState:UIControlStateNormal];
     [cityButton addTarget:self action:@selector(addCityBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
     [navigationBarView addSubview:cityButton];
@@ -278,7 +280,7 @@
     
     
     UIButton *refreshButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    refreshButton.frame = CGRectMake(235, 4, 38, 36);
+    refreshButton.frame = CGRectMake(235, 4, 40, 38);
     [refreshButton setImage:[UIImage imageNamed:@"barbutton-refresh.png"] forState:UIControlStateNormal];
     [refreshButton addTarget:self action:@selector(refreshCityBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
     [navigationBarView addSubview:refreshButton];
@@ -341,6 +343,7 @@
 - (void)parser:(BaseParser*)parser DidFailedParseWithMsg:(NSString*)msg errCode:(NSInteger)code
 {
     NSLog(@"查询一周天气信息发生异常：%@，错误代码：%d", msg, code);
+    [self loadingDismiss];
 }
 
 - (void)parser:(BaseParser*)parser DidParsedData:(NSDictionary *)data
