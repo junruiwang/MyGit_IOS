@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
+#import "ModelWeather.h"
 
 @interface LineChartView : UIView
 
@@ -15,9 +16,16 @@
 @property (assign) NSInteger hInterval;
 @property (assign) NSInteger vInterval;
 
-//横竖轴显示标签
-@property (nonatomic, strong) NSArray *hDesc;
 @property (nonatomic, strong) NSArray *vDesc;
+
+@property(nonatomic, strong) ModelWeather *weather;
+@property(nonatomic, strong) NSMutableArray *dateAryDesc;
+@property(nonatomic, strong) NSMutableArray *weekAryDesc;
+
+@property(nonatomic, strong) NSMutableArray *lowTempAry;
+@property(nonatomic, strong) NSMutableArray *highTempAry;
+
+
 
 //点信息
 @property (nonatomic, strong) NSArray *array;

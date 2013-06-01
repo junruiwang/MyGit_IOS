@@ -64,6 +64,7 @@
 		C459D33817433BC0004F6079 /* ServerAddressManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C459D33717433BC0004F6079 /* ServerAddressManager.m */; };
 		C459D33A17433C41004F6079 /* provinceCity.plist in Resources */ = {isa = PBXBuildFile; fileRef = C459D33917433C41004F6079 /* provinceCity.plist */; };
 		C459D33C17435283004F6079 /* server.plist in Resources */ = {isa = PBXBuildFile; fileRef = C459D33B17435283004F6079 /* server.plist */; };
+		C45F71761759F9540067F05D /* trendViewBg.png in Resources */ = {isa = PBXBuildFile; fileRef = C45F71751759F9540067F05D /* trendViewBg.png */; };
 		C46265EA1745177100C5127E /* country-field.png in Resources */ = {isa = PBXBuildFile; fileRef = C46265E91745177100C5127E /* country-field.png */; };
 		C46265F517451E2600C5127E /* barbutton-refresh.png in Resources */ = {isa = PBXBuildFile; fileRef = C46265F117451E2600C5127E /* barbutton-refresh.png */; };
 		C46265F617451E2600C5127E /* chooseforard_division_shu.png in Resources */ = {isa = PBXBuildFile; fileRef = C46265F217451E2600C5127E /* chooseforard_division_shu.png */; };
@@ -266,6 +267,7 @@
 		C459D33717433BC0004F6079 /* ServerAddressManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ServerAddressManager.m; path = Classes/ServerAddressManager.m; sourceTree = "<group>"; };
 		C459D33917433C41004F6079 /* provinceCity.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = provinceCity.plist; path = Classes/provinceCity.plist; sourceTree = "<group>"; };
 		C459D33B17435283004F6079 /* server.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = server.plist; sourceTree = "<group>"; };
+		C45F71751759F9540067F05D /* trendViewBg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = trendViewBg.png; path = Resources/trendViewBg.png; sourceTree = "<group>"; };
 		C46265E91745177100C5127E /* country-field.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "country-field.png"; path = "Resources/country-field.png"; sourceTree = "<group>"; };
 		C46265F117451E2600C5127E /* barbutton-refresh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "barbutton-refresh.png"; path = "Resources/barbutton-refresh.png"; sourceTree = "<group>"; };
 		C46265F217451E2600C5127E /* chooseforard_division_shu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = chooseforard_division_shu.png; path = Resources/chooseforard_division_shu.png; sourceTree = "<group>"; };
@@ -537,6 +539,7 @@
 		C4AD9DE917449511002D916D /* loading */ = {
 			isa = PBXGroup;
 			children = (
+				C45F71751759F9540067F05D /* trendViewBg.png */,
 				C4BDE61C174E3C6D0068BFF6 /* todayview_bg.png */,
 				C4BDE61D174E3C6D0068BFF6 /* todayview_bg@2x.png */,
 				C41DF21D174E22DB00047BB1 /* periphery_bottom_separateline.png */,
@@ -952,6 +955,7 @@
 				C4BDE61F174E3C6D0068BFF6 /* todayview_bg@2x.png in Resources */,
 				C464113A174FBF5900913E2E /* icon.png in Resources */,
 				C464113B174FBF5900913E2E /* icon@2x.png in Resources */,
+				C45F71761759F9540067F05D /* trendViewBg.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

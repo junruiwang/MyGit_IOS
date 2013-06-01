@@ -22,6 +22,7 @@
 
 - (void)start
 {
+    NSLog(@"%@",self.serverAddress);
     self.httpRequest= [ASIHTTPRequest requestWithURL:[NSURL URLWithString:self.serverAddress]];
 //    [self.httpRequest setPostBody:[NSMutableData dataWithData:[self.requestString dataUsingEncoding:NSUTF8StringEncoding]]];
 //    [self.httpRequest setRequestMethod:@"POST"];

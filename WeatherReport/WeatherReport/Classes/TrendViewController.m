@@ -30,21 +30,27 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    [self loadSegmentedButton];
+    self.navigationItem.title = @"趋势";
+    //[self loadSegmentedButton];
     float imageHeight = 367;
     if ([[NSUserDefaults standardUserDefaults] boolForKey:USER_DEVICE_5]) {
         imageHeight += 88;
     }
     UIImageView *bgImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, imageHeight)];
     bgImageView.backgroundColor = [UIColor clearColor];
-    bgImageView.image = [UIImage imageNamed:@"index-default-bg.jpg"];
+    bgImageView.image = [UIImage imageNamed:@"30-fine-night-bg.jpg"];
     [self.view addSubview:bgImageView];
 
     
     UIView *alphaBgView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, imageHeight)];
-    alphaBgView.backgroundColor = [UIColor blackColor];
-    alphaBgView.alpha = 0.4;
+    alphaBgView.backgroundColor = [UIColor clearColor];
+    
+    UIImageView *trendImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 80, self.view.frame.size.width, 220)];
+    trendImageView.backgroundColor = [UIColor clearColor];
+    trendImageView.image = [UIImage imageNamed:@"trendViewBg.png"];
+    [alphaBgView addSubview:trendImageView];
+    
+    
     [self.view addSubview:alphaBgView];
     
 }
@@ -63,6 +69,7 @@
     }
     
     LineChartView *lineChartView = [[LineChartView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, imageHeight)];
+    lineChartView.backgroundColor = [UIColor clearColor];
     lineChartView.tag = TREND_TEMP_LINE_TAG;
     
     NSMutableArray *pointArr = [[NSMutableArray alloc]init];
@@ -79,15 +86,6 @@
         [vArr addObject:[NSString stringWithFormat:@"%d",i*2]];
     }
     //横轴
-    NSMutableArray *hArr = [[NSMutableArray alloc]initWithCapacity:pointArr.count-1];
-    [hArr addObject:@"05/26"];
-    [hArr addObject:@"05/27"];
-    [hArr addObject:@"05/28"];
-    [hArr addObject:@"05/29"];
-    [hArr addObject:@"05/30"];
-    [hArr addObject:@"05/31"];
-    
-    [lineChartView setHDesc:hArr];
     [lineChartView setVDesc:vArr];
     [lineChartView setArray:pointArr];
     
@@ -113,17 +111,5 @@
     [super viewDidUnload];
 }
 
-- (void)segmentAction:(id)sender
-{
-	// The segmented control was clicked, handle it here
-	UISegmentedControl *segmentedControl = (UISegmentedControl *)sender;
-    
-    if (segmentedControl.selectedSegmentIndex == 0) {
-        
-    } else {
-        
-    }
-    
-}
 
 @end
