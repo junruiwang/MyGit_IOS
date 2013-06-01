@@ -1,13 +1,13 @@
 //
-//  WeatherWeekDayParser.h
+//  WeatherDayParser.h
 //  WeatherReport
 //
-//  Created by jerry on 13-5-15.
+//  Created by 汪君瑞 on 13-6-1.
 //  Copyright (c) 2013年 jerry. All rights reserved.
 //
 
 #import "BaseParser.h"
 
-@interface WeatherWeekDayParser : BaseParser
+@interface WeatherDayParser : BaseParser
 
 @end
