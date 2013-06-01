@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C40B371B17598F6E0062B20E /* WeatherDayParser.m in Sources */ = {isa = PBXBuildFile; fileRef = C40B371A17598F6E0062B20E /* WeatherDayParser.m */; };
+		C40B371E17598FB70062B20E /* WeatherAWeekParser.m in Sources */ = {isa = PBXBuildFile; fileRef = C40B371D17598FB70062B20E /* WeatherAWeekParser.m */; };
 		C41DF216174E1CC600047BB1 /* weatherlive_details_top.png in Resources */ = {isa = PBXBuildFile; fileRef = C41DF214174E1CC600047BB1 /* weatherlive_details_top.png */; };
 		C41DF217174E1CC600047BB1 /* weatherlive_details_top@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C41DF215174E1CC600047BB1 /* weatherlive_details_top@2x.png */; };
 		C41DF21F174E22DB00047BB1 /* periphery_bottom_separateline.png in Resources */ = {isa = PBXBuildFile; fileRef = C41DF21D174E22DB00047BB1 /* periphery_bottom_separateline.png */; };
@@ -76,7 +78,6 @@
 		C48ED7FF174A132E00B6F00F /* barometer@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C48ED7FA174A132E00B6F00F /* barometer@2x.png */; };
 		C48ED800174A132E00B6F00F /* transparent.png in Resources */ = {isa = PBXBuildFile; fileRef = C48ED7FB174A132E00B6F00F /* transparent.png */; };
 		C48ED802174A158B00B6F00F /* dotted_line@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C48ED801174A158B00B6F00F /* dotted_line@2x.png */; };
-		C4A796E417438B2200415D20 /* WeatherWeekDayParser.m in Sources */ = {isa = PBXBuildFile; fileRef = C4A796E317438B2200415D20 /* WeatherWeekDayParser.m */; };
 		C4ACF2B41754EF0F00ECB241 /* LineChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = C4ACF2B31754EF0F00ECB241 /* LineChartView.m */; };
 		C4AD9DE8174494AA002D916D /* DSLoadingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4AD9DE7174494AA002D916D /* DSLoadingViewController.m */; };
 		C4AD9E20174497AB002D916D /* load_4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C4AD9E0E174497AB002D916D /* load_4@2x.png */; };
@@ -167,6 +168,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C40B371917598F6E0062B20E /* WeatherDayParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WeatherDayParser.h; path = Classes/WeatherDayParser.h; sourceTree = "<group>"; };
+		C40B371A17598F6E0062B20E /* WeatherDayParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WeatherDayParser.m; path = Classes/WeatherDayParser.m; sourceTree = "<group>"; };
+		C40B371C17598FB70062B20E /* WeatherAWeekParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WeatherAWeekParser.h; path = Classes/WeatherAWeekParser.h; sourceTree = "<group>"; };
+		C40B371D17598FB70062B20E /* WeatherAWeekParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WeatherAWeekParser.m; path = Classes/WeatherAWeekParser.m; sourceTree = "<group>"; };
 		C41DF214174E1CC600047BB1 /* weatherlive_details_top.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = weatherlive_details_top.png; path = Resources/weatherlive_details_top.png; sourceTree = "<group>"; };
 		C41DF215174E1CC600047BB1 /* weatherlive_details_top@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "weatherlive_details_top@2x.png"; path = "Resources/weatherlive_details_top@2x.png"; sourceTree = "<group>"; };
 		C41DF21D174E22DB00047BB1 /* periphery_bottom_separateline.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = periphery_bottom_separateline.png; path = Resources/periphery_bottom_separateline.png; sourceTree = "<group>"; };
@@ -278,8 +283,6 @@
 		C48ED7FA174A132E00B6F00F /* barometer@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "barometer@2x.png"; path = "Resources/barometer@2x.png"; sourceTree = "<group>"; };
 		C48ED7FB174A132E00B6F00F /* transparent.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = transparent.png; path = Resources/transparent.png; sourceTree = "<group>"; };
 		C48ED801174A158B00B6F00F /* dotted_line@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "dotted_line@2x.png"; path = "Resources/dotted_line@2x.png"; sourceTree = "<group>"; };
-		C4A796E217438B2200415D20 /* WeatherWeekDayParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WeatherWeekDayParser.h; path = Classes/WeatherWeekDayParser.h; sourceTree = "<group>"; };
-		C4A796E317438B2200415D20 /* WeatherWeekDayParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WeatherWeekDayParser.m; path = Classes/WeatherWeekDayParser.m; sourceTree = "<group>"; };
 		C4ACF2B21754EF0F00ECB241 /* LineChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LineChartView.h; path = Classes/LineChartView.h; sourceTree = "<group>"; };
 		C4ACF2B31754EF0F00ECB241 /* LineChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LineChartView.m; path = Classes/LineChartView.m; sourceTree = "<group>"; };
 		C4AD9DE6174494AA002D916D /* DSLoadingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DSLoadingViewController.h; path = Classes/DSLoadingViewController.h; sourceTree = "<group>"; };
@@ -523,8 +526,10 @@
 		C4A796DE17438A4800415D20 /* Parser */ = {
 			isa = PBXGroup;
 			children = (
-				C4A796E217438B2200415D20 /* WeatherWeekDayParser.h */,
-				C4A796E317438B2200415D20 /* WeatherWeekDayParser.m */,
+				C40B371917598F6E0062B20E /* WeatherDayParser.h */,
+				C40B371A17598F6E0062B20E /* WeatherDayParser.m */,
+				C40B371C17598FB70062B20E /* WeatherAWeekParser.h */,
+				C40B371D17598FB70062B20E /* WeatherAWeekParser.m */,
 			);
 			name = Parser;
 			sourceTree = "<group>";
@@ -987,7 +992,6 @@
 				C44448941743235300DF320B /* SVProgressHUD.m in Sources */,
 				C44448A917432D6500DF320B /* BaseParser.m in Sources */,
 				C459D33817433BC0004F6079 /* ServerAddressManager.m in Sources */,
-				C4A796E417438B2200415D20 /* WeatherWeekDayParser.m in Sources */,
 				C47E322C1743C5340067BA38 /* CityTableListViewController.m in Sources */,
 				C4AD9DE8174494AA002D916D /* DSLoadingViewController.m in Sources */,
 				C4AD9E3F174499F9002D916D /* DSTwoViewController.m in Sources */,
@@ -1008,6 +1012,8 @@
 				C47081EA174885DB008B0847 /* ModelWeather.m in Sources */,
 				C47081EF1748979A008B0847 /* SqliteService.m in Sources */,
 				C4ACF2B41754EF0F00ECB241 /* LineChartView.m in Sources */,
+				C40B371B17598F6E0062B20E /* WeatherDayParser.m in Sources */,
+				C40B371E17598FB70062B20E /* WeatherAWeekParser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

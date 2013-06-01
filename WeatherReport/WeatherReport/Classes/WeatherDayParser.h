@@ -7,6 +7,7 @@
 //
 
 #import "BaseParser.h"
+#import "ModelWeather.h"
 
 @interface WeatherDayParser : BaseParser
 

@@ -10,7 +10,6 @@
 #import "ChineseToPinyin.h"
 #import "LocalCityListManager.h"
 #import "CityDetailListViewController.h"
-#import "WeatherWeekDayParser.h"
 #import "SqliteService.h"
 #import "ServerAddressManager.h"
 #import "SVProgressHUD.h"
@@ -18,7 +17,9 @@
 @interface CityTableListViewController ()
 
 @property (nonatomic, strong) LocalCityListManager *localCityListManager;
-@property(nonatomic, strong) WeatherWeekDayParser *weatherWeekDayParser;
+@property(nonatomic, strong) WeatherDayParser *weatherDayParser;
+@property(nonatomic, strong) WeatherAWeekParser *weatherAWeekParser;
+@property(nonatomic, strong) ModelWeather *weather;
 
 @end
 
@@ -177,30 +178,80 @@
     }
 }
 
+- (void)downloadDataForDay:(NSString *)searchCode
+{
+    if (self.weatherDayParser!= nil) {
+        [self.weatherDayParser cancel];
+        self.weatherDayParser = nil;
+    }
+    self.weatherDayParser = [[WeatherDayParser alloc] init];
+    self.weatherDayParser.delegate = self;
+    
+    NSString *resourceAddress = [ServerAddressManager serverAddress:@"query_weather_current_time"];
+    self.weatherDayParser.serverAddress = [resourceAddress stringByAppendingFormat:@"%@.html", searchCode];
+    
+    [self.weatherDayParser start];
+}
+
+- (void)downloadDataForWeek:(NSString *)searchCode
+{
+    if (self.weatherAWeekParser!= nil) {
+        [self.weatherAWeekParser cancel];
+        self.weatherAWeekParser = nil;
+    }
+    self.weatherAWeekParser = [[WeatherAWeekParser alloc] init];
+    self.weatherAWeekParser.delegate = self;
+    
+    NSString *resourceAddress = [ServerAddressManager serverAddress:@"query_weather_week_day"];
+    self.weatherAWeekParser.serverAddress = [resourceAddress stringByAppendingFormat:@"%@.html", searchCode];
+    
+    [self.weatherAWeekParser start];
+}
+
 //后台下载城市天气
 - (void)startTheBackgroundJob:(City *)city
 {
-    if (self.weatherWeekDayParser!= nil) {
-        [self.weatherWeekDayParser cancel];
-        self.weatherWeekDayParser = nil;
-    }
-    self.weatherWeekDayParser = [[WeatherWeekDayParser alloc] init];
-    
-    ModelWeather *weather = [[ModelWeather alloc] init];
-    NSString *resourceAddress = [ServerAddressManager serverAddress:@"query_weather_current_time"];
-    self.weatherWeekDayParser.serverAddress = [resourceAddress stringByAppendingFormat:@"%@.html", city.searchCode];
-    [self.weatherWeekDayParser startSynchronous:weather];
-    resourceAddress = [ServerAddressManager serverAddress:@"query_weather_week_day"];
-    self.weatherWeekDayParser.serverAddress = [resourceAddress stringByAppendingFormat:@"%@.html", city.searchCode];
-    [self.weatherWeekDayParser startSynchronous:weather];
     //插入城市信息
     [self.localCityListManager insertIntoFaverateWithCity:city];
-    //插入天气信息
-    SqliteService *sqlservice=[[SqliteService alloc]init];
-    [sqlservice insertModel:weather];
-    [SVProgressHUD dismiss];
     
+    [self downloadDataForDay:city.searchCode];
+}
+
+#pragma mark - BaseParserDelegate
+- (void)parser:(BaseParser*)parser DidFailedParseWithMsg:(NSString*)msg errCode:(NSInteger)code
+{
+    NSLog(@"查询一周天气信息发生异常：%@，错误代码：%d", msg, code);
+    [SVProgressHUD dismiss];
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)parser:(BaseParser*)parser DidParsedData:(NSDictionary *)data
+{
+    if ([parser isKindOfClass:[WeatherDayParser class]])
+    {
+        self.weather = [data valueForKey:@"data"];
+        [self downloadDataForWeek:self.weather._2cityid];
+        
+    } else if ([parser isKindOfClass:[WeatherAWeekParser class]]) {
+        ModelWeather *modelWeather = self.weather;
+        self.weather = [data valueForKey:@"data"];
+        self.weather._1city = modelWeather._1city;
+        self.weather._2cityid = modelWeather._2cityid;
+        self.weather._3time = modelWeather._3time;
+        self.weather._4temp = modelWeather._4temp;
+        self.weather._5WD = modelWeather._5WD;
+        self.weather._6WS = modelWeather._6WS;
+        self.weather._7SD = modelWeather._7SD;
+        
+        //插入天气信息
+        SqliteService *sqlservice=[[SqliteService alloc]init];
+        if (![sqlservice insertModel:self.weather]) {
+            [self.localCityListManager deleteCityInFaverate:self.weather._2cityid];
+        }
+        
+        [SVProgressHUD dismiss];
+        [self.navigationController popViewControllerAnimated:YES];
+    }
 }
 
 @end

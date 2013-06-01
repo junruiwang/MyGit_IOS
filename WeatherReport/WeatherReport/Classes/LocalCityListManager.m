@@ -30,7 +30,7 @@
     for (NSInteger i=0; i < [cityArray count]; i++) {
         NSData *data = [cityArray objectAtIndex:i];
         City *currentCity = [City unarchived:data];
-        if ([city.cityName isEqualToString:currentCity.cityName]) {
+        if ([city.searchCode isEqualToString:currentCity.searchCode]) {
             hasCity = YES;
             break;
         }
@@ -43,14 +43,14 @@
     return [cityArray writeToFile: path atomically:YES];
 }
 
-- (BOOL)deleteCityInFaverate:(NSString *) cityName
+- (BOOL)deleteCityInFaverate:(NSString *) searchCode
 {
     NSMutableArray *cityArray = [self readFaverateCityFromLocalFile];
     if (cityArray) {
         for (NSInteger i=0; i < [cityArray count]; i++) {
             NSData *data = [cityArray objectAtIndex:i];
             City *city = [City unarchived:data];
-            if ([cityName isEqualToString:city.cityName]) {
+            if ([searchCode isEqualToString:city.searchCode]) {
                 [cityArray removeObjectAtIndex:i];
                 break;
             }

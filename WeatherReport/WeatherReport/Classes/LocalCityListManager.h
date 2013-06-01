@@ -12,7 +12,7 @@
 @interface LocalCityListManager : NSObject
 
 - (BOOL)insertIntoFaverateWithCity:(City *) city;
-- (BOOL)deleteCityInFaverate:(NSString *) cityName;
+- (BOOL)deleteCityInFaverate:(NSString *) searchCode;
 
 - (void)buildLocalFileToArray:(NSMutableArray *) cityArray;
 - (void)sortCityArray:(NSMutableArray *)cityArray;

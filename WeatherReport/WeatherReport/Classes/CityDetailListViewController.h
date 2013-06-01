@@ -9,8 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "Reachability.h"
 #import "City.h"
+#import "WeatherDayParser.h"
+#import "WeatherAWeekParser.h"
 
-@interface CityDetailListViewController : UITableViewController<UISearchDisplayDelegate>
+@interface CityDetailListViewController : UITableViewController<UISearchDisplayDelegate, BaseParserDelegate>
 
 @property (nonatomic, strong) UISearchBar *searchBar;
 @property (nonatomic, strong) UISearchDisplayController *searchDC;

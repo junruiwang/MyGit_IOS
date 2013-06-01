@@ -22,7 +22,7 @@
 //插入数据
 - (BOOL) insertModel:(ModelWeather *)modelWeather;
 //删除数据
-- (BOOL)deleteWeatherModel:(NSString *)cityName;
+- (BOOL)deleteWeatherModel:(NSString *)searchCode;
 //更新数据
 - (BOOL)updateWeatherModel:(ModelWeather *)modelWeather;
 //获取全部数据

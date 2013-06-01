@@ -9,7 +9,6 @@
 #import "CityManagerViewController.h"
 #import "CityTableViewCell.h"
 #import "City.h"
-#import "WeatherWeekDayParser.h"
 #import "SqliteService.h"
 #import "Constants.h"
 #import "AppDelegate.h"
@@ -19,7 +18,6 @@
 @property (nonatomic, strong) NSMutableArray *cityArray;
 @property (nonatomic, strong) LocalCityListManager *localCityListManager;
 @property(nonatomic, strong) CityTableListViewController *cityTableListViewController;
-@property(nonatomic, strong) WeatherWeekDayParser *weatherWeekDayParser;
 
 @end
 
@@ -70,7 +68,7 @@
             }
         }
         if (isShouldDelete) {
-            [sqlservice deleteWeatherModel:weather._1city];
+            [sqlservice deleteWeatherModel:weather._2cityid];
             break;
         }
     }
@@ -198,9 +196,9 @@
         
         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
 
-        [self.localCityListManager deleteCityInFaverate:city.cityName];
         SqliteService *sqlservice=[[SqliteService alloc]init];
-        [sqlservice deleteWeatherModel:city.cityName];
+        [sqlservice deleteWeatherModel:city.searchCode];
+        [self.localCityListManager deleteCityInFaverate:city.searchCode];
         
         [self.tableView reloadData];
     }

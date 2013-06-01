@@ -24,8 +24,8 @@
 {
     self.httpRequest= [ASIHTTPRequest requestWithURL:[NSURL URLWithString:self.serverAddress]];
 //    [self.httpRequest setPostBody:[NSMutableData dataWithData:[self.requestString dataUsingEncoding:NSUTF8StringEncoding]]];
-//    [self.httpRequest setTimeOutSeconds:10];
 //    [self.httpRequest setRequestMethod:@"POST"];
+    [self.httpRequest setTimeOutSeconds:10];
     [self.httpRequest setDefaultResponseEncoding:NSUTF8StringEncoding];
     [self.httpRequest setDelegate:self];
     [self.httpRequest startAsynchronous];
