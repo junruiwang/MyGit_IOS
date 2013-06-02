@@ -613,7 +613,7 @@
     NSDate *rightNow = [NSDate date];
     UIView *page_1=[[UIView alloc]initWithFrame:CGRectMake(0, 0, self.screenWidth, 82)];
     
-    UIImageView *imageView_1 = [[UIImageView alloc] initWithFrame:CGRectMake(1, 4, 50, 50)];
+    UIImageView *imageView_1 = [[UIImageView alloc] initWithFrame:CGRectMake(5, 8, 40, 40)];
     imageView_1.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.png",model._22img1]];
     [page_1 addSubview:imageView_1];
     
@@ -654,7 +654,7 @@
     
     //-------------------------------
     
-    UIImageView *imageView_2 = [[UIImageView alloc] initWithFrame:CGRectMake(108, 4, 50, 50)];
+    UIImageView *imageView_2 = [[UIImageView alloc] initWithFrame:CGRectMake(112, 8, 40, 40)];
     imageView_2.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.png",model._24img3]];
     [page_1 addSubview:imageView_2];
     
@@ -694,7 +694,7 @@
     
     //-------------------------------
     
-    UIImageView *imageView_3 = [[UIImageView alloc] initWithFrame:CGRectMake(216, 4, 50, 50)];
+    UIImageView *imageView_3 = [[UIImageView alloc] initWithFrame:CGRectMake(220, 8, 40, 40)];
     imageView_3.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.png",model._26img5]];
     [page_1 addSubview:imageView_3];
     
@@ -735,7 +735,7 @@
     
     UIView *page_2=[[UIView alloc]initWithFrame:CGRectMake(self.screenWidth, 0, self.screenWidth, 82)];
     
-    UIImageView *imageView_4 = [[UIImageView alloc] initWithFrame:CGRectMake(1, 4, 50, 50)];
+    UIImageView *imageView_4 = [[UIImageView alloc] initWithFrame:CGRectMake(5, 8, 40, 40)];
     imageView_4.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.png",model._28img7]];
     [page_2 addSubview:imageView_4];
     
@@ -776,7 +776,7 @@
     
     //-------------------------------
     
-    UIImageView *imageView_5 = [[UIImageView alloc] initWithFrame:CGRectMake(108, 4, 50, 50)];
+    UIImageView *imageView_5 = [[UIImageView alloc] initWithFrame:CGRectMake(112, 8, 40, 40)];
     imageView_5.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.png",model._30img9]];
     [page_2 addSubview:imageView_5];
     
@@ -816,7 +816,7 @@
     
     //-------------------------------
     
-    UIImageView *imageView_6 = [[UIImageView alloc] initWithFrame:CGRectMake(216, 4, 50, 50)];
+    UIImageView *imageView_6 = [[UIImageView alloc] initWithFrame:CGRectMake(220, 8, 40, 40)];
     imageView_6.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.png",model._32img11]];
     [page_2 addSubview:imageView_6];
     
