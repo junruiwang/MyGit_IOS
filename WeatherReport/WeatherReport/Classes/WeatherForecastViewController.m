@@ -219,6 +219,7 @@
         [self upCurrentWeatherAfterTwoHour:weather];
     } else {
         if (TheAppDelegate.locationInfo.searchCode) {
+            [self loading];
             [self downloadDataForDay:TheAppDelegate.locationInfo.searchCode];
         }
     }
@@ -299,7 +300,6 @@
 
 - (void)downloadDataForDay:(NSString *)searchCode
 {
-    [self loading];
     if (self.weatherDayParser!= nil) {
         [self.weatherDayParser cancel];
         self.weatherDayParser = nil;
