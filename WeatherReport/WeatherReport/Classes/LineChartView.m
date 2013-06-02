@@ -40,10 +40,6 @@
         self.lowTempAry = [[NSMutableArray alloc] initWithCapacity:6];
         self.highTempAry = [[NSMutableArray alloc] initWithCapacity:6];
         self.weather = TheAppDelegate.modelWeather;
-        //初始化日期模型
-        NSDate *rightNow = [NSDate date];
-        [self initDayArray:rightNow];
-        [self initWeekArray:rightNow];
         
         //初始化天气模型
         [self convertTempToArray:self.weather._10temp1];
@@ -52,6 +48,12 @@
         [self convertTempToArray:self.weather._13temp4];
         [self convertTempToArray:self.weather._14temp5];
         [self convertTempToArray:self.weather._15temp6];
+        //初始化日期模型
+        NSDate *rightNow = [NSDate date];
+        [self initDayArray:rightNow];
+        [self initWeekArray:rightNow];
+        //交换集合
+        [self exchangeArray];
         
     }
     return self;
@@ -529,6 +531,23 @@
         [self.lowTempAry addObject:[temp1 substringToIndex:(range1.location)]];
         [self.highTempAry addObject:[temp2 substringToIndex:(range2.location)]];
     }
+}
+
+- (void)exchangeArray
+{
+    int lowTempTotal = 0;
+    int highTempTotal = 0;
+    for (int i=0; i<self.lowTempAry.count; i++) {
+        lowTempTotal += ((NSString *)[self.lowTempAry objectAtIndex:i]).intValue;
+        highTempTotal += ((NSString *)[self.highTempAry objectAtIndex:i]).intValue;
+    }
+    
+    if (lowTempTotal > highTempTotal) {
+        NSMutableArray *tempArray = [self.lowTempAry mutableCopy];
+        self.lowTempAry = [self.highTempAry mutableCopy];
+        self.highTempAry = tempArray;
+    }
+    
 }
 
 - (float)compYPoint:(int) temp
