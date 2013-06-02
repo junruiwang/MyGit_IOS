@@ -111,7 +111,8 @@
     [self loadScrollView];
     //初始化天气数据
     [self initScrollerView];
-    
+    //初始化loading控件
+    [self initLoadingActivityIndicator];
 }
 
 - (void)loadScrollView
@@ -175,6 +176,15 @@
     }
 }
 
+//初始化加载loading效果
+- (void)initLoadingActivityIndicator
+{
+    self.activityIndicatorView = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(self.view.center.x-20, self.view.center.y, 50, 50)];
+    self.activityIndicatorView.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhite;
+    self.activityIndicatorView.hidesWhenStopped = YES;
+    [self.view addSubview:_activityIndicatorView];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -186,6 +196,10 @@
 {
     NSDate *currentTime = [NSDate date];
     NSTimeInterval intCurrentTime = [currentTime timeIntervalSince1970];
+    
+    if ([self.activityIndicatorView isAnimating]) {
+        [self.activityIndicatorView stopAnimating];
+    }
     
     if (self.locationTime == nil || (intCurrentTime - [self.locationTime timeIntervalSince1970]) > 1800) {
         self.locationTime = [NSDate date];
@@ -211,6 +225,9 @@
 //刷新数据
 - (void)refreshCityBtnClicked :(id)sender
 {
+    if ([self.activityIndicatorView isAnimating]) {
+        [self.activityIndicatorView stopAnimating];
+    }
     self.remainCityModel=[self.sqliteService getWeatherModelArray];
     if ([self.remainCityModel count] > 0) {
         int location=((int)self.scrollView.contentOffset.x)/((int)self.screenWidth);
@@ -219,7 +236,6 @@
         [self upCurrentWeatherAfterTwoHour:weather];
     } else {
         if (TheAppDelegate.locationInfo.searchCode) {
-            [self loading];
             [self downloadDataForDay:TheAppDelegate.locationInfo.searchCode];
         }
     }
@@ -300,6 +316,7 @@
 
 - (void)downloadDataForDay:(NSString *)searchCode
 {
+    [self loading];
     if (self.weatherDayParser!= nil) {
         [self.weatherDayParser cancel];
         self.weatherDayParser = nil;
@@ -397,18 +414,16 @@
 
 #pragma mark - loadingView
 -(void)loading{
-    _activityIndicatorView = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(self.view.center.x-20, self.view.center.y, 50, 50)];
-    _activityIndicatorView.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhite;
-    _activityIndicatorView.hidesWhenStopped = YES;
-    [_activityIndicatorView startAnimating];
-    [self.view addSubview:_activityIndicatorView];
-    
+    if ([self.activityIndicatorView isAnimating]) {
+        [self.activityIndicatorView stopAnimating];
+    }
+    [self.activityIndicatorView startAnimating];
 }
 
 //隐藏加载动画窗口
 - (void) loadingDismiss
 {
-	[_activityIndicatorView stopAnimating];
+	[self.activityIndicatorView stopAnimating];
 }
 
 //绘制天气视图

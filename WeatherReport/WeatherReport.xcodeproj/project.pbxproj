@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		C40B371B17598F6E0062B20E /* WeatherDayParser.m in Sources */ = {isa = PBXBuildFile; fileRef = C40B371A17598F6E0062B20E /* WeatherDayParser.m */; };
 		C40B371E17598FB70062B20E /* WeatherAWeekParser.m in Sources */ = {isa = PBXBuildFile; fileRef = C40B371D17598FB70062B20E /* WeatherAWeekParser.m */; };
+		C41757A0175B6424006C7290 /* 53.png in Resources */ = {isa = PBXBuildFile; fileRef = C417579F175B6424006C7290 /* 53.png */; };
 		C41DF216174E1CC600047BB1 /* weatherlive_details_top.png in Resources */ = {isa = PBXBuildFile; fileRef = C41DF214174E1CC600047BB1 /* weatherlive_details_top.png */; };
 		C41DF217174E1CC600047BB1 /* weatherlive_details_top@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C41DF215174E1CC600047BB1 /* weatherlive_details_top@2x.png */; };
 		C41DF21F174E22DB00047BB1 /* periphery_bottom_separateline.png in Resources */ = {isa = PBXBuildFile; fileRef = C41DF21D174E22DB00047BB1 /* periphery_bottom_separateline.png */; };
@@ -178,6 +179,7 @@
 		C40B371A17598F6E0062B20E /* WeatherDayParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WeatherDayParser.m; path = Classes/WeatherDayParser.m; sourceTree = "<group>"; };
 		C40B371C17598FB70062B20E /* WeatherAWeekParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WeatherAWeekParser.h; path = Classes/WeatherAWeekParser.h; sourceTree = "<group>"; };
 		C40B371D17598FB70062B20E /* WeatherAWeekParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WeatherAWeekParser.m; path = Classes/WeatherAWeekParser.m; sourceTree = "<group>"; };
+		C417579F175B6424006C7290 /* 53.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 53.png; path = Resources/53.png; sourceTree = "<group>"; };
 		C41DF214174E1CC600047BB1 /* weatherlive_details_top.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = weatherlive_details_top.png; path = Resources/weatherlive_details_top.png; sourceTree = "<group>"; };
 		C41DF215174E1CC600047BB1 /* weatherlive_details_top@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "weatherlive_details_top@2x.png"; path = "Resources/weatherlive_details_top@2x.png"; sourceTree = "<group>"; };
 		C41DF21D174E22DB00047BB1 /* periphery_bottom_separateline.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = periphery_bottom_separateline.png; path = Resources/periphery_bottom_separateline.png; sourceTree = "<group>"; };
@@ -812,6 +814,7 @@
 				C4D3A8841727DB8C004E2891 /* 29.png */,
 				C4D3A8851727DB8C004E2891 /* 30.png */,
 				C4D3A8861727DB8C004E2891 /* 31.png */,
+				C417579F175B6424006C7290 /* 53.png */,
 			);
 			name = Icn;
 			sourceTree = "<group>";
@@ -976,6 +979,7 @@
 				C4AC3DF8175B139C007A4E8D /* 洗车指数.png in Resources */,
 				C4AC3DF9175B139C007A4E8D /* 运动指数.png in Resources */,
 				C4AC3DFA175B139C007A4E8D /* 紫外线指数.png in Resources */,
+				C41757A0175B6424006C7290 /* 53.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
