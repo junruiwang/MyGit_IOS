@@ -8,9 +8,9 @@
 
 #import "AppDelegate.h"
 #import "Constants.h"
-#import "IndexViewController.h"
+#import "WeatherForecastViewController.h"
 #import "TrendViewController.h"
-#import "DSFourViewController.h"
+#import "WeatherIndexViewController.h"
 #import "DSFiveViewController.h"
 
 @implementation AppDelegate
@@ -84,11 +84,11 @@
 
 - (void)loadMainView
 {
-    IndexViewController *indexViewController = [[IndexViewController alloc] init];
-    UINavigationController *indexNavigationController = [[UINavigationController alloc] initWithRootViewController:indexViewController];
-    indexNavigationController.navigationBar.barStyle = UIBarStyleBlack;
-    indexNavigationController.tabBarItem.title = @"预报";
-    indexNavigationController.tabBarItem.image = [UIImage imageNamed:@"load_1.png"];
+    WeatherForecastViewController *forecastViewController = [[WeatherForecastViewController alloc] init];
+    UINavigationController *forecastNavigationController = [[UINavigationController alloc] initWithRootViewController:forecastViewController];
+    forecastNavigationController.navigationBar.barStyle = UIBarStyleBlack;
+    forecastNavigationController.tabBarItem.title = @"预报";
+    forecastNavigationController.tabBarItem.image = [UIImage imageNamed:@"load_1.png"];
     
     TrendViewController *trendViewController = [[TrendViewController alloc] init];
     UINavigationController *trendNavigationController = [[UINavigationController alloc] initWithRootViewController:trendViewController];
@@ -96,11 +96,11 @@
     trendNavigationController.tabBarItem.title = @"趋势";
     trendNavigationController.tabBarItem.image = [UIImage imageNamed:@"load_3.png"];
     
-    DSFourViewController *fourViewController = [[DSFourViewController alloc] init];
-    UINavigationController *fourNavigationController = [[UINavigationController alloc] initWithRootViewController:fourViewController];
-    fourNavigationController.navigationBar.barStyle = UIBarStyleBlack;
-    fourNavigationController.tabBarItem.title = @"指数";
-    fourNavigationController.tabBarItem.image = [UIImage imageNamed:@"load_4.png"];
+    WeatherIndexViewController *weatherIndexViewController = [[WeatherIndexViewController alloc] init];
+    UINavigationController *weatherNavigationController = [[UINavigationController alloc] initWithRootViewController:weatherIndexViewController];
+    weatherNavigationController.navigationBar.barStyle = UIBarStyleBlack;
+    weatherNavigationController.tabBarItem.title = @"指数";
+    weatherNavigationController.tabBarItem.image = [UIImage imageNamed:@"load_4.png"];
     
     DSFiveViewController *fiveViewController = [[DSFiveViewController alloc] init];
     UINavigationController *fiveNavigationController = [[UINavigationController alloc] initWithRootViewController:fiveViewController];
@@ -110,9 +110,9 @@
     
     self.mainTabBarController = [[UITabBarController alloc] init];
     self.mainTabBarController.viewControllers = [NSArray arrayWithObjects:
-                                                 indexNavigationController,
+                                                 forecastNavigationController,
                                                  trendNavigationController,
-                                                 fourNavigationController,
+                                                 weatherNavigationController,
                                                  fiveNavigationController, nil];
     
     [self.window addSubview:self.mainTabBarController.view];

@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "BannerViewController.h"
 
-@interface DSFourViewController : BannerViewController
+@interface WeatherIndexViewController : BannerViewController
+
+@property (nonatomic, strong) UIScrollView *scrollView;
 
 @end

@@ -1,5 +1,5 @@
 //
-//  IndexViewController.h
+//  WeatherForecastViewController.h
 //  WeatherReport
 //
 //  Created by jerry on 13-4-24.
@@ -11,7 +11,7 @@
 #import "BaseParser.h"
 #import "CityManagerViewController.h"
 
-@interface IndexViewController : BannerViewController<BaseParserDelegate, UIScrollViewDelegate, CityManagerControllerDelegate>
+@interface WeatherForecastViewController : BannerViewController<BaseParserDelegate, UIScrollViewDelegate, CityManagerControllerDelegate>
 
 @property (nonatomic, assign) float screenWidth;
 @property (nonatomic, assign) float screenHeight;

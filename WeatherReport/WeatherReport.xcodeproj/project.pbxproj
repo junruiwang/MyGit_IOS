@@ -79,6 +79,11 @@
 		C48ED7FF174A132E00B6F00F /* barometer@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C48ED7FA174A132E00B6F00F /* barometer@2x.png */; };
 		C48ED800174A132E00B6F00F /* transparent.png in Resources */ = {isa = PBXBuildFile; fileRef = C48ED7FB174A132E00B6F00F /* transparent.png */; };
 		C48ED802174A158B00B6F00F /* dotted_line@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C48ED801174A158B00B6F00F /* dotted_line@2x.png */; };
+		C4AC3DF1175B0A34007A4E8D /* itemTitle.png in Resources */ = {isa = PBXBuildFile; fileRef = C4AC3DF0175B0A34007A4E8D /* itemTitle.png */; };
+		C4AC3DF3175B0C45007A4E8D /* 穿衣指数.png in Resources */ = {isa = PBXBuildFile; fileRef = C4AC3DF2175B0C45007A4E8D /* 穿衣指数.png */; };
+		C4AC3DF8175B139C007A4E8D /* 洗车指数.png in Resources */ = {isa = PBXBuildFile; fileRef = C4AC3DF5175B139C007A4E8D /* 洗车指数.png */; };
+		C4AC3DF9175B139C007A4E8D /* 运动指数.png in Resources */ = {isa = PBXBuildFile; fileRef = C4AC3DF6175B139C007A4E8D /* 运动指数.png */; };
+		C4AC3DFA175B139C007A4E8D /* 紫外线指数.png in Resources */ = {isa = PBXBuildFile; fileRef = C4AC3DF7175B139C007A4E8D /* 紫外线指数.png */; };
 		C4ACF2B41754EF0F00ECB241 /* LineChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = C4ACF2B31754EF0F00ECB241 /* LineChartView.m */; };
 		C4AD9DE8174494AA002D916D /* DSLoadingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4AD9DE7174494AA002D916D /* DSLoadingViewController.m */; };
 		C4AD9E20174497AB002D916D /* load_4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C4AD9E0E174497AB002D916D /* load_4@2x.png */; };
@@ -99,7 +104,7 @@
 		C4AD9E31174497AB002D916D /* loading.png in Resources */ = {isa = PBXBuildFile; fileRef = C4AD9E1F174497AB002D916D /* loading.png */; };
 		C4AD9E3F174499F9002D916D /* DSTwoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4AD9E3A174499F8002D916D /* DSTwoViewController.m */; };
 		C4AD9E40174499F9002D916D /* TrendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4AD9E3B174499F8002D916D /* TrendViewController.m */; };
-		C4AD9E41174499F9002D916D /* DSFourViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4AD9E3C174499F9002D916D /* DSFourViewController.m */; };
+		C4AD9E41174499F9002D916D /* WeatherIndexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4AD9E3C174499F9002D916D /* WeatherIndexViewController.m */; };
 		C4AD9E42174499F9002D916D /* DSFiveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4AD9E3D174499F9002D916D /* DSFiveViewController.m */; };
 		C4BDE61E174E3C6D0068BFF6 /* todayview_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = C4BDE61C174E3C6D0068BFF6 /* todayview_bg.png */; };
 		C4BDE61F174E3C6D0068BFF6 /* todayview_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C4BDE61D174E3C6D0068BFF6 /* todayview_bg@2x.png */; };
@@ -150,7 +155,7 @@
 		C4D3A8A41727DB8C004E2891 /* 29.png in Resources */ = {isa = PBXBuildFile; fileRef = C4D3A8841727DB8C004E2891 /* 29.png */; };
 		C4D3A8A51727DB8C004E2891 /* 30.png in Resources */ = {isa = PBXBuildFile; fileRef = C4D3A8851727DB8C004E2891 /* 30.png */; };
 		C4D3A8A61727DB8C004E2891 /* 31.png in Resources */ = {isa = PBXBuildFile; fileRef = C4D3A8861727DB8C004E2891 /* 31.png */; };
-		C4D3A8A91727DBAD004E2891 /* IndexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4D3A8A81727DBAD004E2891 /* IndexViewController.m */; };
+		C4D3A8A91727DBAD004E2891 /* WeatherForecastViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4D3A8A81727DBAD004E2891 /* WeatherForecastViewController.m */; };
 		C4D3A8AC1727E0D1004E2891 /* BannerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4D3A8AB1727E0D1004E2891 /* BannerViewController.m */; };
 		C4EA27EE17281F49000B5CA6 /* cloud-568h@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C4EA27EB17281F49000B5CA6 /* cloud-568h@2x.jpg */; };
 		C4EA27EF17281F49000B5CA6 /* cloud.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C4EA27EC17281F49000B5CA6 /* cloud.jpg */; };
@@ -285,6 +290,11 @@
 		C48ED7FA174A132E00B6F00F /* barometer@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "barometer@2x.png"; path = "Resources/barometer@2x.png"; sourceTree = "<group>"; };
 		C48ED7FB174A132E00B6F00F /* transparent.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = transparent.png; path = Resources/transparent.png; sourceTree = "<group>"; };
 		C48ED801174A158B00B6F00F /* dotted_line@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "dotted_line@2x.png"; path = "Resources/dotted_line@2x.png"; sourceTree = "<group>"; };
+		C4AC3DF0175B0A34007A4E8D /* itemTitle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = itemTitle.png; path = Resources/itemTitle.png; sourceTree = "<group>"; };
+		C4AC3DF2175B0C45007A4E8D /* 穿衣指数.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "穿衣指数.png"; path = "Resources/穿衣指数.png"; sourceTree = "<group>"; };
+		C4AC3DF5175B139C007A4E8D /* 洗车指数.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "洗车指数.png"; path = "Resources/洗车指数.png"; sourceTree = "<group>"; };
+		C4AC3DF6175B139C007A4E8D /* 运动指数.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "运动指数.png"; path = "Resources/运动指数.png"; sourceTree = "<group>"; };
+		C4AC3DF7175B139C007A4E8D /* 紫外线指数.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "紫外线指数.png"; path = "Resources/紫外线指数.png"; sourceTree = "<group>"; };
 		C4ACF2B21754EF0F00ECB241 /* LineChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LineChartView.h; path = Classes/LineChartView.h; sourceTree = "<group>"; };
 		C4ACF2B31754EF0F00ECB241 /* LineChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LineChartView.m; path = Classes/LineChartView.m; sourceTree = "<group>"; };
 		C4AD9DE6174494AA002D916D /* DSLoadingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DSLoadingViewController.h; path = Classes/DSLoadingViewController.h; sourceTree = "<group>"; };
@@ -307,11 +317,11 @@
 		C4AD9E1F174497AB002D916D /* loading.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = loading.png; path = Resources/loading.png; sourceTree = "<group>"; };
 		C4AD9E35174499F8002D916D /* DSTwoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DSTwoViewController.h; path = Classes/DSTwoViewController.h; sourceTree = "<group>"; };
 		C4AD9E36174499F8002D916D /* TrendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TrendViewController.h; path = Classes/TrendViewController.h; sourceTree = "<group>"; };
-		C4AD9E37174499F8002D916D /* DSFourViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DSFourViewController.h; path = Classes/DSFourViewController.h; sourceTree = "<group>"; };
+		C4AD9E37174499F8002D916D /* WeatherIndexViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WeatherIndexViewController.h; path = Classes/WeatherIndexViewController.h; sourceTree = "<group>"; };
 		C4AD9E38174499F8002D916D /* DSFiveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DSFiveViewController.h; path = Classes/DSFiveViewController.h; sourceTree = "<group>"; };
 		C4AD9E3A174499F8002D916D /* DSTwoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DSTwoViewController.m; path = Classes/DSTwoViewController.m; sourceTree = "<group>"; };
 		C4AD9E3B174499F8002D916D /* TrendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TrendViewController.m; path = Classes/TrendViewController.m; sourceTree = "<group>"; };
-		C4AD9E3C174499F9002D916D /* DSFourViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DSFourViewController.m; path = Classes/DSFourViewController.m; sourceTree = "<group>"; };
+		C4AD9E3C174499F9002D916D /* WeatherIndexViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WeatherIndexViewController.m; path = Classes/WeatherIndexViewController.m; sourceTree = "<group>"; };
 		C4AD9E3D174499F9002D916D /* DSFiveViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DSFiveViewController.m; path = Classes/DSFiveViewController.m; sourceTree = "<group>"; };
 		C4BDE61C174E3C6D0068BFF6 /* todayview_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = todayview_bg.png; path = Resources/todayview_bg.png; sourceTree = "<group>"; };
 		C4BDE61D174E3C6D0068BFF6 /* todayview_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "todayview_bg@2x.png"; path = "Resources/todayview_bg@2x.png"; sourceTree = "<group>"; };
@@ -366,8 +376,8 @@
 		C4D3A8841727DB8C004E2891 /* 29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 29.png; path = Resources/29.png; sourceTree = "<group>"; };
 		C4D3A8851727DB8C004E2891 /* 30.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 30.png; path = Resources/30.png; sourceTree = "<group>"; };
 		C4D3A8861727DB8C004E2891 /* 31.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 31.png; path = Resources/31.png; sourceTree = "<group>"; };
-		C4D3A8A71727DBAD004E2891 /* IndexViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IndexViewController.h; path = Classes/IndexViewController.h; sourceTree = "<group>"; };
-		C4D3A8A81727DBAD004E2891 /* IndexViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IndexViewController.m; path = Classes/IndexViewController.m; sourceTree = "<group>"; };
+		C4D3A8A71727DBAD004E2891 /* WeatherForecastViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WeatherForecastViewController.h; path = Classes/WeatherForecastViewController.h; sourceTree = "<group>"; };
+		C4D3A8A81727DBAD004E2891 /* WeatherForecastViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WeatherForecastViewController.m; path = Classes/WeatherForecastViewController.m; sourceTree = "<group>"; };
 		C4D3A8AA1727E0D1004E2891 /* BannerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BannerViewController.h; path = Classes/BannerViewController.h; sourceTree = "<group>"; };
 		C4D3A8AB1727E0D1004E2891 /* BannerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BannerViewController.m; path = Classes/BannerViewController.m; sourceTree = "<group>"; };
 		C4EA27EB17281F49000B5CA6 /* cloud-568h@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "cloud-568h@2x.jpg"; path = "Resources/cloud-568h@2x.jpg"; sourceTree = "<group>"; };
@@ -539,6 +549,11 @@
 		C4AD9DE917449511002D916D /* loading */ = {
 			isa = PBXGroup;
 			children = (
+				C4AC3DF5175B139C007A4E8D /* 洗车指数.png */,
+				C4AC3DF6175B139C007A4E8D /* 运动指数.png */,
+				C4AC3DF7175B139C007A4E8D /* 紫外线指数.png */,
+				C4AC3DF2175B0C45007A4E8D /* 穿衣指数.png */,
+				C4AC3DF0175B0A34007A4E8D /* itemTitle.png */,
 				C45F71751759F9540067F05D /* trendViewBg.png */,
 				C4BDE61C174E3C6D0068BFF6 /* todayview_bg.png */,
 				C4BDE61D174E3C6D0068BFF6 /* todayview_bg@2x.png */,
@@ -668,16 +683,16 @@
 				C4ACF2B31754EF0F00ECB241 /* LineChartView.m */,
 				C4AD9E38174499F8002D916D /* DSFiveViewController.h */,
 				C4AD9E3D174499F9002D916D /* DSFiveViewController.m */,
-				C4AD9E37174499F8002D916D /* DSFourViewController.h */,
-				C4AD9E3C174499F9002D916D /* DSFourViewController.m */,
+				C4AD9E37174499F8002D916D /* WeatherIndexViewController.h */,
+				C4AD9E3C174499F9002D916D /* WeatherIndexViewController.m */,
 				C4AD9DE6174494AA002D916D /* DSLoadingViewController.h */,
 				C4AD9DE7174494AA002D916D /* DSLoadingViewController.m */,
 				C4AD9E36174499F8002D916D /* TrendViewController.h */,
 				C4AD9E3B174499F8002D916D /* TrendViewController.m */,
 				C4AD9E35174499F8002D916D /* DSTwoViewController.h */,
 				C4AD9E3A174499F8002D916D /* DSTwoViewController.m */,
-				C4D3A8A71727DBAD004E2891 /* IndexViewController.h */,
-				C4D3A8A81727DBAD004E2891 /* IndexViewController.m */,
+				C4D3A8A71727DBAD004E2891 /* WeatherForecastViewController.h */,
+				C4D3A8A81727DBAD004E2891 /* WeatherForecastViewController.m */,
 				C4FAE1EB1747857F007C1B1C /* Model */,
 				C4A796DE17438A4800415D20 /* Parser */,
 			);
@@ -956,6 +971,11 @@
 				C464113A174FBF5900913E2E /* icon.png in Resources */,
 				C464113B174FBF5900913E2E /* icon@2x.png in Resources */,
 				C45F71761759F9540067F05D /* trendViewBg.png in Resources */,
+				C4AC3DF1175B0A34007A4E8D /* itemTitle.png in Resources */,
+				C4AC3DF3175B0C45007A4E8D /* 穿衣指数.png in Resources */,
+				C4AC3DF8175B139C007A4E8D /* 洗车指数.png in Resources */,
+				C4AC3DF9175B139C007A4E8D /* 运动指数.png in Resources */,
+				C4AC3DFA175B139C007A4E8D /* 紫外线指数.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -968,7 +988,7 @@
 			files = (
 				C4D3A8421727DA49004E2891 /* main.m in Sources */,
 				C4D3A8461727DA49004E2891 /* AppDelegate.m in Sources */,
-				C4D3A8A91727DBAD004E2891 /* IndexViewController.m in Sources */,
+				C4D3A8A91727DBAD004E2891 /* WeatherForecastViewController.m in Sources */,
 				C4D3A8AC1727E0D1004E2891 /* BannerViewController.m in Sources */,
 				C4401753174223ED00781920 /* ChineseToPinyin.m in Sources */,
 				C444485C1743232900DF320B /* ASIAuthenticationDialog.m in Sources */,
@@ -1000,7 +1020,7 @@
 				C4AD9DE8174494AA002D916D /* DSLoadingViewController.m in Sources */,
 				C4AD9E3F174499F9002D916D /* DSTwoViewController.m in Sources */,
 				C4AD9E40174499F9002D916D /* TrendViewController.m in Sources */,
-				C4AD9E41174499F9002D916D /* DSFourViewController.m in Sources */,
+				C4AD9E41174499F9002D916D /* WeatherIndexViewController.m in Sources */,
 				C4AD9E42174499F9002D916D /* DSFiveViewController.m in Sources */,
 				C42CFB081745D58C00C85794 /* CityManagerViewController.m in Sources */,
 				C42CFB0E1745D90100C85794 /* PrettyDrawing.m in Sources */,

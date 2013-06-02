@@ -1,12 +1,12 @@
 //
-//  IndexViewController.m
+//  WeatherForecastViewController.m
 //  WeatherReport
 //
 //  Created by jerry on 13-4-24.
 //  Copyright (c) 2013年 jerry. All rights reserved.
 //
 
-#import "IndexViewController.h"
+#import "WeatherForecastViewController.h"
 #import "ChineseToPinyin.h"
 #import "WeatherDayParser.h"
 #import "WeatherAWeekParser.h"
@@ -15,13 +15,12 @@
 #import "Constants.h"
 #import "AppDelegate.h"
 #import <QuartzCore/QuartzCore.h>
-
 #define top_scroll_view_tag 100
 #define bottom_scroll_view_tag 101
 #define bottom_bg_view_tag 102
 
 
-@interface IndexViewController ()
+@interface WeatherForecastViewController ()
 
 @property(nonatomic, strong) UIImage *bgImage;
 @property(nonatomic, strong) WeatherDayParser *weatherDayParser;
@@ -34,7 +33,7 @@
 
 @end
 
-@implementation IndexViewController
+@implementation WeatherForecastViewController
 
 - (id)init
 {
