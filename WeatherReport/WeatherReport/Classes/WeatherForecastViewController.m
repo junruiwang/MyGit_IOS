@@ -15,6 +15,8 @@
 #import "Constants.h"
 #import "AppDelegate.h"
 #import <QuartzCore/QuartzCore.h>
+#import "LocalCalendarUtil.h"
+
 #define top_scroll_view_tag 100
 #define bottom_scroll_view_tag 101
 #define bottom_bg_view_tag 102
@@ -530,9 +532,18 @@
     ToWeekDay.textColor=[UIColor whiteColor];
     ToWeekDay.textAlignment = NSTextAlignmentLeft;
     [uv addSubview:ToWeekDay];
-      
+    
+    //显示农历
+    UILabel *localCalender=[[UILabel alloc] initWithFrame:CGRectMake(142, 232, 140, 25)];
+    localCalender.font=[UIFont fontWithName:@"Helvetica" size:14];
+    localCalender.text=[LocalCalendarUtil getChineseCalendarWithDate:[NSDate date]];
+    localCalender.backgroundColor=[UIColor clearColor];
+    localCalender.textColor=[UIColor whiteColor];
+    localCalender.textAlignment = NSTextAlignmentLeft;
+    [uv addSubview:localCalender];
+    
     //天气更新时间
-    UILabel *updateTime=[[UILabel alloc] initWithFrame:CGRectMake(142, 235, 115, 19)];
+    UILabel *updateTime=[[UILabel alloc] initWithFrame:CGRectMake(142, 258, 115, 19)];
     updateTime.font=[UIFont fontWithName:@"Helvetica" size:13];
     updateTime.text=[NSString stringWithFormat:@"[今天 %@ 发布]",model._3time];
     updateTime.backgroundColor=[UIColor clearColor];
