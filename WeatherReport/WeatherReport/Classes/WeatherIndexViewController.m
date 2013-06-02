@@ -34,7 +34,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.navigationItem.title = @"four";
+    self.navigationItem.title = @"今日指数";
     float imageHeight = 367;
     if ([[NSUserDefaults standardUserDefaults] boolForKey:USER_DEVICE_5]) {
         imageHeight += 88;
@@ -73,7 +73,7 @@
     self.scrollView.showsHorizontalScrollIndicator = NO;
     self.scrollView.showsVerticalScrollIndicator = NO;
     self.scrollView.backgroundColor=[UIColor clearColor];
-    self.scrollView.contentSize=CGSizeMake(self.view.frame.size.width,800);
+    self.scrollView.contentSize=CGSizeMake(self.view.frame.size.width,460);
     [self.view addSubview:self.scrollView];
 }
 
@@ -84,7 +84,7 @@
         [view removeFromSuperview];
     }
     //穿衣指数
-    UIImageView *dressImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width,46)];
+    UIImageView *dressImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, -1, self.view.frame.size.width,46)];
     dressImageView.image = [UIImage imageNamed:@"itemTitle.png"];
     [self.scrollView addSubview:dressImageView];
     
@@ -108,7 +108,7 @@
     dressDesc.text = self.weather._58index;
     [dressImageView addSubview:dressDesc];
     
-    UILabel *dressDetail = [[UILabel alloc] initWithFrame:CGRectMake(10, 50, 300,45)];
+    UILabel *dressDetail = [[UILabel alloc] initWithFrame:CGRectMake(10, 48, 300,45)];
     dressDetail.backgroundColor = [UIColor clearColor];
     dressDetail.lineBreakMode = UILineBreakModeWordWrap;
     dressDetail.numberOfLines = 0;
@@ -116,10 +116,10 @@
     dressDetail.textAlignment = NSTextAlignmentLeft;
     dressDetail.font = [UIFont systemFontOfSize:14];
     dressDetail.text = self.weather._59index_d;
-    [dressImageView addSubview:dressDetail];
+    [self.scrollView addSubview:dressDetail];
     
     //紫外线指数
-    UIImageView *uvImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 92, self.view.frame.size.width,46)];
+    UIImageView *uvImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 94, self.view.frame.size.width,46)];
     uvImageView.image = [UIImage imageNamed:@"itemTitle.png"];
     [self.scrollView addSubview:uvImageView];
     
@@ -143,12 +143,119 @@
     uvDesc.text = self.weather._62index_uv;
     [uvImageView addSubview:uvDesc];
     
+    UILabel *uvDetail = [[UILabel alloc] initWithFrame:CGRectMake(10, 145, 300,45)];
+    uvDetail.backgroundColor = [UIColor clearColor];
+    uvDetail.lineBreakMode = UILineBreakModeWordWrap;
+    uvDetail.numberOfLines = 0;
+    uvDetail.textColor = [UIColor whiteColor];
+    uvDetail.textAlignment = NSTextAlignmentLeft;
+    uvDetail.font = [UIFont systemFontOfSize:14];
+    uvDetail.text = [self getUvDetailMessage:self.weather._62index_uv];
+    [self.scrollView addSubview:uvDetail];
     
+    //洗车指数
+    UIImageView *xcImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 190, self.view.frame.size.width,46)];
+    xcImageView.image = [UIImage imageNamed:@"itemTitle.png"];
+    [self.scrollView addSubview:xcImageView];
+    
+    UIImageView *xcIcon = [[UIImageView alloc] initWithFrame:CGRectMake(0, 4, 40,40)];
+    xcIcon.image = [UIImage imageNamed:@"洗车指数.png"];
+    [xcImageView addSubview:xcIcon];
+    
+    UILabel *xcTitle = [[UILabel alloc] initWithFrame:CGRectMake(45, 15, 80,15)];
+    xcTitle.backgroundColor = [UIColor clearColor];
+    xcTitle.textColor = [UIColor whiteColor];
+    xcTitle.textAlignment = NSTextAlignmentLeft;
+    xcTitle.font = [UIFont boldSystemFontOfSize:16];
+    xcTitle.text = @"洗车指数";
+    [xcImageView addSubview:xcTitle];
+    
+    UILabel *xcDesc = [[UILabel alloc] initWithFrame:CGRectMake(240, 15, 80,15)];
+    xcDesc.backgroundColor = [UIColor clearColor];
+    xcDesc.textColor = [UIColor whiteColor];
+    xcDesc.textAlignment = NSTextAlignmentLeft;
+    xcDesc.font = [UIFont boldSystemFontOfSize:16];
+    xcDesc.text = self.weather._64index_xc;
+    [xcImageView addSubview:xcDesc];
+    
+    UILabel *xcDetail = [[UILabel alloc] initWithFrame:CGRectMake(10, 240, 300, 45)];
+    xcDetail.backgroundColor = [UIColor clearColor];
+    xcDetail.lineBreakMode = UILineBreakModeWordWrap;
+    xcDetail.numberOfLines = 0;
+    xcDetail.textColor = [UIColor whiteColor];
+    xcDetail.textAlignment = NSTextAlignmentLeft;
+    xcDetail.font = [UIFont systemFontOfSize:14];
+    xcDetail.text = [self getXcDetailMessage:self.weather._64index_xc];
+    [self.scrollView addSubview:xcDetail];
+    
+    //运动指数
+    UIImageView *clImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 290, self.view.frame.size.width,46)];
+    clImageView.image = [UIImage imageNamed:@"itemTitle.png"];
+    [self.scrollView addSubview:clImageView];
+    
+    UIImageView *clIcon = [[UIImageView alloc] initWithFrame:CGRectMake(0, 4, 40,40)];
+    clIcon.image = [UIImage imageNamed:@"运动指数.png"];
+    [clImageView addSubview:clIcon];
+    
+    UILabel *clTitle = [[UILabel alloc] initWithFrame:CGRectMake(45, 15, 80,15)];
+    clTitle.backgroundColor = [UIColor clearColor];
+    clTitle.textColor = [UIColor whiteColor];
+    clTitle.textAlignment = NSTextAlignmentLeft;
+    clTitle.font = [UIFont boldSystemFontOfSize:16];
+    clTitle.text = @"运动指数";
+    [clImageView addSubview:clTitle];
+    
+    UILabel *clDesc = [[UILabel alloc] initWithFrame:CGRectMake(240, 15, 80,15)];
+    clDesc.backgroundColor = [UIColor clearColor];
+    clDesc.textColor = [UIColor whiteColor];
+    clDesc.textAlignment = NSTextAlignmentLeft;
+    clDesc.font = [UIFont boldSystemFontOfSize:16];
+    clDesc.text = self.weather._67index_cl;
+    [clImageView addSubview:clDesc];
 }
 
 - (void)viewDidUnload
 {
     [super viewDidUnload];
 }
+
+- (NSString *)getUvDetailMessage:(NSString *) uvtext
+{
+    if ([uvtext rangeOfString:@"最弱"].location != NSNotFound) {
+        return [NSString stringWithFormat:@"紫外线太弱了，可以自由的户外活动，无须防护。"];
+    } else if ([uvtext rangeOfString:@"很弱"].location != NSNotFound) {
+        return [NSString stringWithFormat:@"紫外线%@，可以适当的晒晒太阳，带上遮阳帽吧。", uvtext];
+    } else if ([uvtext rangeOfString:@"较弱"].location != NSNotFound) {
+        return [NSString stringWithFormat:@"紫外线%@，户外运动可以少量涂擦护肤品，戴上遮阳帽噢。", uvtext];
+    } else if ([uvtext rangeOfString:@"弱"].location != NSNotFound) {
+        return [NSString stringWithFormat:@"紫外线%@，户外运动可以少量涂擦护肤品，戴上遮阳帽噢。", uvtext];
+    }
+    
+    if ([uvtext rangeOfString:@"最强"].location != NSNotFound) {
+        return [NSString stringWithFormat:@"紫外线太强了，户外运动的注意涂擦护肤品，戴上遮阳帽。"];
+    } else if ([uvtext rangeOfString:@"很强"].location != NSNotFound) {
+        return [NSString stringWithFormat:@"紫外线%@，户外运动的注意涂擦护肤品，戴上遮阳帽。", uvtext];
+    } else if ([uvtext rangeOfString:@"较强"].location != NSNotFound) {
+        return [NSString stringWithFormat:@"紫外线%@，出门注意涂擦防晒霜噢，不要长时间户外运动。", uvtext];
+    }else if ([uvtext rangeOfString:@"强"].location != NSNotFound) {
+        return [NSString stringWithFormat:@"紫外线%@，出门注意涂擦防晒霜噢，不要长时间户外运动。", uvtext];
+    }
+    
+    return @"";
+}
+
+- (NSString *)getXcDetailMessage:(NSString *) xctext
+{
+    if ([xctext rangeOfString:@"不适宜"].location != NSNotFound) {
+        return [NSString stringWithFormat:@"建议大家别洗车了，天气不好，洗了之后可能很快会变脏的噢。"];
+    } else if ([xctext rangeOfString:@"适宜"].location != NSNotFound) {
+        return [NSString stringWithFormat:@"适合洗车的日子噢，开上您的爱车去旅行吧，享受生活吧。"];
+    } else if ([xctext rangeOfString:@"不宜"].location != NSNotFound) {
+        return [NSString stringWithFormat:@"建议大家别洗车了，天气不好，洗了之后可能很快会变脏的噢。"];
+    }
+    
+    return @"";
+}
+
 
 @end
