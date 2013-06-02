@@ -20,6 +20,7 @@
 @property(nonatomic, strong) WeatherDayParser *weatherDayParser;
 @property(nonatomic, strong) WeatherAWeekParser *weatherAWeekParser;
 @property(nonatomic, strong) ModelWeather *weather;
+@property(nonatomic, strong) City *selectedCity;
 
 @end
 
@@ -212,17 +213,24 @@
 - (void)startTheBackgroundJob:(City *)city
 {
     //插入城市信息
-    [self.localCityListManager insertIntoFaverateWithCity:city];
-    
-    [self downloadDataForDay:city.searchCode];
+    if ([self.localCityListManager insertIntoFaverateWithCity:city]) {
+        self.selectedCity = city;
+        [self downloadDataForDay:city.searchCode];
+    } else {
+        [SVProgressHUD dismiss];
+        [self.navigationController popToRootViewControllerAnimated:YES];
+    }
 }
 
 #pragma mark - BaseParserDelegate
 - (void)parser:(BaseParser*)parser DidFailedParseWithMsg:(NSString*)msg errCode:(NSInteger)code
 {
-    NSLog(@"查询一周天气信息发生异常：%@，错误代码：%d", msg, code);
     [SVProgressHUD dismiss];
-    [self.navigationController popViewControllerAnimated:YES];
+    [self.localCityListManager deleteCityInFaverate:self.selectedCity.searchCode];
+    
+    NSLog(@"查询一周天气信息发生异常：%@，错误代码：%d", msg, code);
+    
+    [self showAlertMessage:@"网络连接异常，请重新选择城市！"];
 }
 
 - (void)parser:(BaseParser*)parser DidParsedData:(NSDictionary *)data
@@ -252,6 +260,17 @@
         [SVProgressHUD dismiss];
         [self.navigationController popViewControllerAnimated:YES];
     }
+}
+
+- (void)showAlertMessage:(NSString *)msg
+{
+    UIAlertView *alertView = [[UIAlertView alloc]
+                              initWithTitle:NSLocalizedString(@"信息提示", nil)
+                              message:msg
+                              delegate:nil
+                              cancelButtonTitle:NSLocalizedString(@"确定", nil)
+                              otherButtonTitles:nil];
+    [alertView show];
 }
 
 @end

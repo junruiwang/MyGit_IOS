@@ -38,9 +38,10 @@
     
     if (!hasCity) {
         [cityArray addObject:[city archived]];
+        return [cityArray writeToFile: path atomically:YES];
     }
     
-    return [cityArray writeToFile: path atomically:YES];
+    return NO;
 }
 
 - (BOOL)deleteCityInFaverate:(NSString *) searchCode
