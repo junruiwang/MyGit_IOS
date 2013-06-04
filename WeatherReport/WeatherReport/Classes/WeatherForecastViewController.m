@@ -16,6 +16,7 @@
 #import "AppDelegate.h"
 #import <QuartzCore/QuartzCore.h>
 #import "LocalCalendarUtil.h"
+#import "ShareToSNSManager.h"
 
 #define top_scroll_view_tag 100
 #define bottom_scroll_view_tag 101
@@ -32,6 +33,7 @@
 @property(nonatomic, strong) SqliteService *sqliteService;
 @property(nonatomic, strong) NSDate *locationTime;
 @property(nonatomic, strong) ModelWeather *weather;
+@property(nonatomic, strong) ShareToSNSManager *shareToSNSManager;
 
 @end
 
@@ -42,6 +44,7 @@
     self = [super init];
     if (self) {
         _sqliteService=[[SqliteService alloc]init];
+        _shareToSNSManager = [[ShareToSNSManager alloc] init];
         //注册通知
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateLocationWhenCityNull) name:@"locationCurrentFinished" object:nil];
     }
@@ -244,6 +247,19 @@
     
 }
 
+- (void)shareBtnClicked:(id)sender
+{
+    [self.shareToSNSManager shareWithActionSheet:self shareImage:[UIImage imageNamed:@"icon.png"] shareText:[self buildCurrentCityWeatherString]];
+}
+
+- (NSString *)buildCurrentCityWeatherString
+{
+    ModelWeather *tempWeather = TheAppDelegate.modelWeather;
+    NSString *weatherString = [NSString stringWithFormat:@"%@ %@ %@ %@%@。（来自酷旅天气 免费下载%@）", tempWeather._1city,tempWeather._16weather1,tempWeather._10temp1,tempWeather._5WD,tempWeather._6WS,kAppStoreUrl];
+    
+    return weatherString;
+}
+
 //临界时间为18:00，设置场景展示
 - (BOOL)timeNowIsNight
 {
@@ -310,6 +326,7 @@
     UIButton *shareButton = [UIButton buttonWithType:UIButtonTypeCustom];
     shareButton.frame = CGRectMake(280, 4, 36, 36);
     [shareButton setImage:[UIImage imageNamed:@"forecast-forward-btn.png"] forState:UIControlStateNormal];
+    [shareButton addTarget:self action:@selector(shareBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
     [navigationBarView addSubview:shareButton];
     
     [self.navigationController.view addSubview:navigationBarView];

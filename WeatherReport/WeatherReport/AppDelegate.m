@@ -39,6 +39,14 @@
     //init base data
     self.locationInfo = [[LocationInfo alloc] init];
     
+    
+    //友盟社会化分享初始化
+    [UMSocialData setAppKey:kUMengShareKey];
+    [UMSocialData openLog:kLogEnable];
+    //向微信注册
+    [WXApi registerApp:kWXShareKey];
+    
+    
     [self.window makeKeyAndVisible];
     
     return YES;
@@ -66,6 +74,8 @@
     //Locating again
     self.locationManager.isLocationOver = NO;
     [self.locationManager startLocation];
+    //友盟新浪微博支持SSO方式授权
+    [UMSocialSnsService  applicationDidBecomeActive];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
@@ -73,6 +83,11 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
+//微信分享完成后，跳回你原来应用
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
+{
+    return [UMSocialSnsService handleOpenURL:url wxApiDelegate:nil];
+}
 
 #pragma mark - Custom methods
 

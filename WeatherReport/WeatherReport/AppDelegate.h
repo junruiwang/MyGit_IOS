@@ -11,6 +11,9 @@
 #import "LocationInfo.h"
 #import "LocationManager.h"
 #import "ModelWeather.h"
+#import "UMSocialData.h"
+#import "UMSocialSnsService.h"
+#import "WXApi.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
