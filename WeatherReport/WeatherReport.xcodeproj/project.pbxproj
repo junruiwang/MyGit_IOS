@@ -73,6 +73,7 @@
 		C46265F817451E2600C5127E /* forecast-forward-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = C46265F417451E2600C5127E /* forecast-forward-btn.png */; };
 		C464113A174FBF5900913E2E /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C4641138174FBF5900913E2E /* icon.png */; };
 		C464113B174FBF5900913E2E /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C4641139174FBF5900913E2E /* icon@2x.png */; };
+		C46F66F3175DB483000D5F50 /* ls_weather_index.png in Resources */ = {isa = PBXBuildFile; fileRef = C46F66F2175DB483000D5F50 /* ls_weather_index.png */; };
 		C47081EA174885DB008B0847 /* ModelWeather.m in Sources */ = {isa = PBXBuildFile; fileRef = C47081E9174885DB008B0847 /* ModelWeather.m */; };
 		C47081EF1748979A008B0847 /* SqliteService.m in Sources */ = {isa = PBXBuildFile; fileRef = C47081EE1748979A008B0847 /* SqliteService.m */; };
 		C47081F1174897E1008B0847 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C47081F0174897E1008B0847 /* libsqlite3.dylib */; };
@@ -283,6 +284,7 @@
 		C46265F417451E2600C5127E /* forecast-forward-btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "forecast-forward-btn.png"; path = "Resources/forecast-forward-btn.png"; sourceTree = "<group>"; };
 		C4641138174FBF5900913E2E /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		C4641139174FBF5900913E2E /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
+		C46F66F2175DB483000D5F50 /* ls_weather_index.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ls_weather_index.png; path = Resources/ls_weather_index.png; sourceTree = "<group>"; };
 		C47081E8174885DB008B0847 /* ModelWeather.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ModelWeather.h; path = Classes/ModelWeather.h; sourceTree = "<group>"; };
 		C47081E9174885DB008B0847 /* ModelWeather.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ModelWeather.m; path = Classes/ModelWeather.m; sourceTree = "<group>"; };
 		C47081ED1748979A008B0847 /* SqliteService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SqliteService.h; path = Classes/SqliteService.h; sourceTree = "<group>"; };
@@ -554,6 +556,7 @@
 		C4AD9DE917449511002D916D /* loading */ = {
 			isa = PBXGroup;
 			children = (
+				C46F66F2175DB483000D5F50 /* ls_weather_index.png */,
 				C4AC3DF5175B139C007A4E8D /* 洗车指数.png */,
 				C4AC3DF6175B139C007A4E8D /* 运动指数.png */,
 				C4AC3DF7175B139C007A4E8D /* 紫外线指数.png */,
@@ -985,6 +988,7 @@
 				C4AC3DF9175B139C007A4E8D /* 运动指数.png in Resources */,
 				C4AC3DFA175B139C007A4E8D /* 紫外线指数.png in Resources */,
 				C41757A0175B6424006C7290 /* 53.png in Resources */,
+				C46F66F3175DB483000D5F50 /* ls_weather_index.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

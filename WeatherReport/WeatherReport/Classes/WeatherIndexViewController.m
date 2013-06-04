@@ -73,7 +73,7 @@
     self.scrollView.showsHorizontalScrollIndicator = NO;
     self.scrollView.showsVerticalScrollIndicator = NO;
     self.scrollView.backgroundColor=[UIColor clearColor];
-    self.scrollView.contentSize=CGSizeMake(self.view.frame.size.width,460);
+    self.scrollView.contentSize=CGSizeMake(self.view.frame.size.width,500);
     [self.view addSubview:self.scrollView];
 }
 
@@ -188,7 +188,7 @@
     xcDetail.text = [self getXcDetailMessage:self.weather._64index_xc];
     [self.scrollView addSubview:xcDetail];
     
-    //运动指数
+    //晨练指数
     UIImageView *clImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 290, self.view.frame.size.width,46)];
     clImageView.image = [UIImage imageNamed:@"itemTitle.png"];
     [self.scrollView addSubview:clImageView];
@@ -202,7 +202,7 @@
     clTitle.textColor = [UIColor whiteColor];
     clTitle.textAlignment = NSTextAlignmentLeft;
     clTitle.font = [UIFont boldSystemFontOfSize:16];
-    clTitle.text = @"运动指数";
+    clTitle.text = @"晨练指数";
     [clImageView addSubview:clTitle];
     
     UILabel *clDesc = [[UILabel alloc] initWithFrame:CGRectMake(240, 15, 80,15)];
@@ -212,6 +212,51 @@
     clDesc.font = [UIFont boldSystemFontOfSize:16];
     clDesc.text = self.weather._67index_cl;
     [clImageView addSubview:clDesc];
+    
+    UILabel *clDetail = [[UILabel alloc] initWithFrame:CGRectMake(10, 338, 300, 30)];
+    clDetail.backgroundColor = [UIColor clearColor];
+    clDetail.lineBreakMode = UILineBreakModeWordWrap;
+    clDetail.numberOfLines = 0;
+    clDetail.textColor = [UIColor whiteColor];
+    clDetail.textAlignment = NSTextAlignmentLeft;
+    clDetail.font = [UIFont systemFontOfSize:14];
+    clDetail.text = [self getClDetailMessage:self.weather._67index_cl];
+    [self.scrollView addSubview:clDetail];
+    
+    //晾晒指数
+    UIImageView *lsImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 370, self.view.frame.size.width,46)];
+    lsImageView.image = [UIImage imageNamed:@"itemTitle.png"];
+    [self.scrollView addSubview:lsImageView];
+    
+    UIImageView *lsIcon = [[UIImageView alloc] initWithFrame:CGRectMake(0, 4, 40,40)];
+    lsIcon.image = [UIImage imageNamed:@"ls_weather_index.png"];
+    [lsImageView addSubview:lsIcon];
+    
+    UILabel *lsTitle = [[UILabel alloc] initWithFrame:CGRectMake(45, 15, 80,15)];
+    lsTitle.backgroundColor = [UIColor clearColor];
+    lsTitle.textColor = [UIColor whiteColor];
+    lsTitle.textAlignment = NSTextAlignmentLeft;
+    lsTitle.font = [UIFont boldSystemFontOfSize:16];
+    lsTitle.text = @"晾晒指数";
+    [lsImageView addSubview:lsTitle];
+    
+    UILabel *lsDesc = [[UILabel alloc] initWithFrame:CGRectMake(240, 15, 80,15)];
+    lsDesc.backgroundColor = [UIColor clearColor];
+    lsDesc.textColor = [UIColor whiteColor];
+    lsDesc.textAlignment = NSTextAlignmentLeft;
+    lsDesc.font = [UIFont boldSystemFontOfSize:16];
+    lsDesc.text = self.weather._68index_ls;
+    [lsImageView addSubview:lsDesc];
+    
+    UILabel *lsDetail = [[UILabel alloc] initWithFrame:CGRectMake(10, 415, 300, 30)];
+    lsDetail.backgroundColor = [UIColor clearColor];
+    lsDetail.lineBreakMode = UILineBreakModeWordWrap;
+    lsDetail.numberOfLines = 0;
+    lsDetail.textColor = [UIColor whiteColor];
+    lsDetail.textAlignment = NSTextAlignmentLeft;
+    lsDetail.font = [UIFont systemFontOfSize:14];
+    lsDetail.text = [self getlsDetailMessage:self.weather._68index_ls];
+    [self.scrollView addSubview:lsDetail];
 }
 
 - (void)viewDidUnload
@@ -253,6 +298,34 @@
     } else if ([xctext rangeOfString:@"不宜"].location != NSNotFound) {
         return [NSString stringWithFormat:@"建议大家别洗车了，天气不好，洗了之后可能很快会变脏的噢。"];
     }
+    
+    return @"";
+}
+
+- (NSString *)getClDetailMessage:(NSString *) cltext
+{
+    if ([cltext rangeOfString:@"不适宜"].location != NSNotFound) {
+        return [NSString stringWithFormat:@"不太适宜，推荐您在室内进行晨练活动。"];
+    } else if ([cltext rangeOfString:@"适宜"].location != NSNotFound) {
+        return [NSString stringWithFormat:@"天气较好，去户外活动活动筋骨吧。"];
+    } else if ([cltext rangeOfString:@"不宜"].location != NSNotFound) {
+        return [NSString stringWithFormat:@"较不宜，推荐您在室内进行晨练活动。"];
+    }
+    
+    return @"";
+}
+
+- (NSString *)getlsDetailMessage:(NSString *) lstext
+{
+    if ([lstext rangeOfString:@"不适宜"].location != NSNotFound) {
+        return [NSString stringWithFormat:@"不适宜晾晒，天气不好。"];
+    } else if ([lstext rangeOfString:@"不太适宜"].location != NSNotFound) {
+        return [NSString stringWithFormat:@"较不宜，推荐您在室内晾衣服。"];
+    } else if ([lstext rangeOfString:@"适宜"].location != NSNotFound) {
+        return [NSString stringWithFormat:@"天气较好，适宜晾晒。"];
+    } else if ([lstext rangeOfString:@"不宜"].location != NSNotFound) {
+        return [NSString stringWithFormat:@"不适宜晾晒，天气不好。"];
+    } 
     
     return @"";
 }
