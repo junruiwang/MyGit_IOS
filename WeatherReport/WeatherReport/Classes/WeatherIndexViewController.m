@@ -274,6 +274,8 @@
         return [NSString stringWithFormat:@"紫外线%@，户外运动可以少量涂擦护肤品，戴上遮阳帽噢。", uvtext];
     } else if ([uvtext rangeOfString:@"弱"].location != NSNotFound) {
         return [NSString stringWithFormat:@"紫外线%@，户外运动可以少量涂擦护肤品，戴上遮阳帽噢。", uvtext];
+    } else if ([uvtext rangeOfString:@"中等"].location != NSNotFound) {
+        return [NSString stringWithFormat:@"紫外线%@，户外运动可以少量涂擦护肤品，戴上遮阳帽噢。", uvtext];
     }
     
     if ([uvtext rangeOfString:@"最强"].location != NSNotFound) {
