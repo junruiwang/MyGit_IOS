@@ -28,6 +28,11 @@
 		C42CFB201745F28B00C85794 /* LocalCityListManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C42CFB1F1745F28B00C85794 /* LocalCityListManager.m */; };
 		C42CFB2417460D8400C85794 /* line-next.png in Resources */ = {isa = PBXBuildFile; fileRef = C42CFB2217460D8400C85794 /* line-next.png */; };
 		C42CFB2517460D8400C85794 /* line-next@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C42CFB2317460D8400C85794 /* line-next@2x.png */; };
+		C43F5C5B1761B438003122A0 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C43F5C591761B437003122A0 /* AboutViewController.m */; };
+		C43F5C5C1761B438003122A0 /* AboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C43F5C5A1761B437003122A0 /* AboutViewController.xib */; };
+		C43F5C5F1761B4E2003122A0 /* about_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = C43F5C5D1761B4E2003122A0 /* about_logo.png */; };
+		C43F5C601761B4E2003122A0 /* about_logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C43F5C5E1761B4E2003122A0 /* about_logo@2x.png */; };
+		C43F5C631761B56E003122A0 /* JJUnderlineButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C43F5C621761B56D003122A0 /* JJUnderlineButton.m */; };
 		C4401753174223ED00781920 /* ChineseToPinyin.m in Sources */ = {isa = PBXBuildFile; fileRef = C4401752174223EC00781920 /* ChineseToPinyin.m */; };
 		C444485C1743232900DF320B /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = C44448461743232900DF320B /* ASIAuthenticationDialog.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		C444485D1743232900DF320B /* ASIDataCompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = C44448491743232900DF320B /* ASIDataCompressor.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -108,7 +113,7 @@
 		C4AD9E3F174499F9002D916D /* DSTwoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4AD9E3A174499F8002D916D /* DSTwoViewController.m */; };
 		C4AD9E40174499F9002D916D /* TrendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4AD9E3B174499F8002D916D /* TrendViewController.m */; };
 		C4AD9E41174499F9002D916D /* WeatherIndexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4AD9E3C174499F9002D916D /* WeatherIndexViewController.m */; };
-		C4AD9E42174499F9002D916D /* DSFiveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4AD9E3D174499F9002D916D /* DSFiveViewController.m */; };
+		C4AD9E42174499F9002D916D /* MoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4AD9E3D174499F9002D916D /* MoreViewController.m */; };
 		C4BDE61E174E3C6D0068BFF6 /* todayview_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = C4BDE61C174E3C6D0068BFF6 /* todayview_bg.png */; };
 		C4BDE61F174E3C6D0068BFF6 /* todayview_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C4BDE61D174E3C6D0068BFF6 /* todayview_bg@2x.png */; };
 		C4D3A8361727DA49004E2891 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4D3A8351727DA49004E2891 /* UIKit.framework */; };
@@ -218,6 +223,13 @@
 		C42CFB1F1745F28B00C85794 /* LocalCityListManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LocalCityListManager.m; path = Classes/LocalCityListManager.m; sourceTree = "<group>"; };
 		C42CFB2217460D8400C85794 /* line-next.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "line-next.png"; path = "Resources/line-next.png"; sourceTree = "<group>"; };
 		C42CFB2317460D8400C85794 /* line-next@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "line-next@2x.png"; path = "Resources/line-next@2x.png"; sourceTree = "<group>"; };
+		C43F5C581761B437003122A0 /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AboutViewController.h; path = Classes/AboutViewController.h; sourceTree = "<group>"; };
+		C43F5C591761B437003122A0 /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AboutViewController.m; path = Classes/AboutViewController.m; sourceTree = "<group>"; };
+		C43F5C5A1761B437003122A0 /* AboutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AboutViewController.xib; path = Classes/AboutViewController.xib; sourceTree = "<group>"; };
+		C43F5C5D1761B4E2003122A0 /* about_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = about_logo.png; path = Resources/about_logo.png; sourceTree = "<group>"; };
+		C43F5C5E1761B4E2003122A0 /* about_logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "about_logo@2x.png"; path = "Resources/about_logo@2x.png"; sourceTree = "<group>"; };
+		C43F5C611761B56D003122A0 /* JJUnderlineButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JJUnderlineButton.h; path = Classes/JJUnderlineButton.h; sourceTree = "<group>"; };
+		C43F5C621761B56D003122A0 /* JJUnderlineButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JJUnderlineButton.m; path = Classes/JJUnderlineButton.m; sourceTree = "<group>"; };
 		C4401751174223EC00781920 /* ChineseToPinyin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChineseToPinyin.h; path = Classes/ChineseToPinyin.h; sourceTree = "<group>"; };
 		C4401752174223EC00781920 /* ChineseToPinyin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChineseToPinyin.m; path = Classes/ChineseToPinyin.m; sourceTree = "<group>"; };
 		C44448451743232900DF320B /* ASIAuthenticationDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIAuthenticationDialog.h; sourceTree = "<group>"; };
@@ -336,11 +348,11 @@
 		C4AD9E35174499F8002D916D /* DSTwoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DSTwoViewController.h; path = Classes/DSTwoViewController.h; sourceTree = "<group>"; };
 		C4AD9E36174499F8002D916D /* TrendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TrendViewController.h; path = Classes/TrendViewController.h; sourceTree = "<group>"; };
 		C4AD9E37174499F8002D916D /* WeatherIndexViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WeatherIndexViewController.h; path = Classes/WeatherIndexViewController.h; sourceTree = "<group>"; };
-		C4AD9E38174499F8002D916D /* DSFiveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DSFiveViewController.h; path = Classes/DSFiveViewController.h; sourceTree = "<group>"; };
+		C4AD9E38174499F8002D916D /* MoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MoreViewController.h; path = Classes/MoreViewController.h; sourceTree = "<group>"; };
 		C4AD9E3A174499F8002D916D /* DSTwoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DSTwoViewController.m; path = Classes/DSTwoViewController.m; sourceTree = "<group>"; };
 		C4AD9E3B174499F8002D916D /* TrendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TrendViewController.m; path = Classes/TrendViewController.m; sourceTree = "<group>"; };
 		C4AD9E3C174499F9002D916D /* WeatherIndexViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WeatherIndexViewController.m; path = Classes/WeatherIndexViewController.m; sourceTree = "<group>"; };
-		C4AD9E3D174499F9002D916D /* DSFiveViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DSFiveViewController.m; path = Classes/DSFiveViewController.m; sourceTree = "<group>"; };
+		C4AD9E3D174499F9002D916D /* MoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MoreViewController.m; path = Classes/MoreViewController.m; sourceTree = "<group>"; };
 		C4BDE61C174E3C6D0068BFF6 /* todayview_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = todayview_bg.png; path = Resources/todayview_bg.png; sourceTree = "<group>"; };
 		C4BDE61D174E3C6D0068BFF6 /* todayview_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "todayview_bg@2x.png"; path = "Resources/todayview_bg@2x.png"; sourceTree = "<group>"; };
 		C4D3A8321727DA49004E2891 /* 酷旅天气.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "酷旅天气.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -727,8 +739,8 @@
 			children = (
 				C4ACF2B21754EF0F00ECB241 /* LineChartView.h */,
 				C4ACF2B31754EF0F00ECB241 /* LineChartView.m */,
-				C4AD9E38174499F8002D916D /* DSFiveViewController.h */,
-				C4AD9E3D174499F9002D916D /* DSFiveViewController.m */,
+				C4AD9E38174499F8002D916D /* MoreViewController.h */,
+				C4AD9E3D174499F9002D916D /* MoreViewController.m */,
 				C4AD9E37174499F8002D916D /* WeatherIndexViewController.h */,
 				C4AD9E3C174499F9002D916D /* WeatherIndexViewController.m */,
 				C4AD9DE6174494AA002D916D /* DSLoadingViewController.h */,
@@ -741,6 +753,9 @@
 				C4D3A8A81727DBAD004E2891 /* WeatherForecastViewController.m */,
 				C4FAE1EB1747857F007C1B1C /* Model */,
 				C4A796DE17438A4800415D20 /* Parser */,
+				C43F5C581761B437003122A0 /* AboutViewController.h */,
+				C43F5C591761B437003122A0 /* AboutViewController.m */,
+				C43F5C5A1761B437003122A0 /* AboutViewController.xib */,
 			);
 			name = Index;
 			sourceTree = "<group>";
@@ -748,6 +763,8 @@
 		C4D3A8571727DB18004E2891 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				C43F5C611761B56D003122A0 /* JJUnderlineButton.h */,
+				C43F5C621761B56D003122A0 /* JJUnderlineButton.m */,
 				C4EEE895175E232900FD8489 /* ShareToSNSManager.h */,
 				C4EEE896175E232900FD8489 /* ShareToSNSManager.m */,
 				C4F2A10D174775BE005A2D84 /* LocationParser.h */,
@@ -803,6 +820,8 @@
 		C4D3A8591727DB29004E2891 /* Index */ = {
 			isa = PBXGroup;
 			children = (
+				C43F5C5D1761B4E2003122A0 /* about_logo.png */,
+				C43F5C5E1761B4E2003122A0 /* about_logo@2x.png */,
 				C48ED801174A158B00B6F00F /* dotted_line@2x.png */,
 				C48ED7FA174A132E00B6F00F /* barometer@2x.png */,
 				C48ED7FB174A132E00B6F00F /* transparent.png */,
@@ -1099,6 +1118,9 @@
 				C4EEE892175E1F6900FD8489 /* UMSnsAccountViewController.xib in Resources */,
 				C4EEE893175E1F6900FD8489 /* UMSShareListController.xib in Resources */,
 				C4EEE894175E1F6900FD8489 /* UMSocialSDKResources.bundle in Resources */,
+				C43F5C5C1761B438003122A0 /* AboutViewController.xib in Resources */,
+				C43F5C5F1761B4E2003122A0 /* about_logo.png in Resources */,
+				C43F5C601761B4E2003122A0 /* about_logo@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1144,7 +1166,7 @@
 				C4AD9E3F174499F9002D916D /* DSTwoViewController.m in Sources */,
 				C4AD9E40174499F9002D916D /* TrendViewController.m in Sources */,
 				C4AD9E41174499F9002D916D /* WeatherIndexViewController.m in Sources */,
-				C4AD9E42174499F9002D916D /* DSFiveViewController.m in Sources */,
+				C4AD9E42174499F9002D916D /* MoreViewController.m in Sources */,
 				C42CFB081745D58C00C85794 /* CityManagerViewController.m in Sources */,
 				C42CFB0E1745D90100C85794 /* PrettyDrawing.m in Sources */,
 				C42CFB0F1745D90100C85794 /* PrettyTableViewCell.m in Sources */,
@@ -1163,6 +1185,8 @@
 				C40B371E17598FB70062B20E /* WeatherAWeekParser.m in Sources */,
 				C48BACB0175B6C2300315628 /* LocalCalendarUtil.m in Sources */,
 				C4EEE897175E232900FD8489 /* ShareToSNSManager.m in Sources */,
+				C43F5C5B1761B438003122A0 /* AboutViewController.m in Sources */,
+				C43F5C631761B56E003122A0 /* JJUnderlineButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

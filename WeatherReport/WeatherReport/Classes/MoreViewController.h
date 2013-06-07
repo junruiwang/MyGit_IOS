@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "BannerViewController.h"
 
-@interface DSFiveViewController : BannerViewController
+@interface MoreViewController : BannerViewController<UITableViewDataSource, UITableViewDelegate>
+
+@property(nonatomic, strong) UITableView *tableView;
 
 @end

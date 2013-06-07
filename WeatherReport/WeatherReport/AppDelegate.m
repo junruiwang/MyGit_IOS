@@ -11,7 +11,7 @@
 #import "WeatherForecastViewController.h"
 #import "TrendViewController.h"
 #import "WeatherIndexViewController.h"
-#import "DSFiveViewController.h"
+#import "MoreViewController.h"
 
 @implementation AppDelegate
 
@@ -117,18 +117,18 @@
     weatherNavigationController.tabBarItem.title = @"指数";
     weatherNavigationController.tabBarItem.image = [UIImage imageNamed:@"load_4.png"];
     
-    DSFiveViewController *fiveViewController = [[DSFiveViewController alloc] init];
-    UINavigationController *fiveNavigationController = [[UINavigationController alloc] initWithRootViewController:fiveViewController];
-    fiveNavigationController.navigationBar.barStyle = UIBarStyleBlack;
-    fiveNavigationController.tabBarItem.title = @"更多";
-    fiveNavigationController.tabBarItem.image = [UIImage imageNamed:@"load_5.png"];
+    MoreViewController *moreViewController = [[MoreViewController alloc] init];
+    UINavigationController *moreNavigationController = [[UINavigationController alloc] initWithRootViewController:moreViewController];
+    moreNavigationController.navigationBar.barStyle = UIBarStyleBlack;
+    moreNavigationController.tabBarItem.title = @"更多";
+    moreNavigationController.tabBarItem.image = [UIImage imageNamed:@"load_5.png"];
     
     self.mainTabBarController = [[UITabBarController alloc] init];
     self.mainTabBarController.viewControllers = [NSArray arrayWithObjects:
                                                  forecastNavigationController,
                                                  trendNavigationController,
                                                  weatherNavigationController,
-                                                 fiveNavigationController, nil];
+                                                 moreNavigationController, nil];
     
     [self.window addSubview:self.mainTabBarController.view];
 //    [self.window bringSubviewToFront:self.loadingViewController.view];

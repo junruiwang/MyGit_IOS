@@ -20,11 +20,7 @@
 #define kAppStoreUrl @"https://itunes.apple.com/us/app/jin-jiang-lu-xing+pro-jin/id595304265?ls=1&mt=8"
 #define kCommentUrl @"itms-apps://ax.itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=595304265"
 
-#ifdef DEBUG
-#define kLogEnable YES
-#else
 #define kLogEnable NO
-#endif
 
 #define RGBCOLOR(R,G,B) [UIColor colorWithRed:(float)R/255.0 green:(float)G/255.0 blue:(float)B/255.0 alpha:1]
 
