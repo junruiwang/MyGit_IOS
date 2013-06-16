@@ -76,24 +76,10 @@
 - (void)upCurrentWeatherAfterTwoHour:(ModelWeather *) modelWeather
 {
     if (modelWeather) {
-        NSString *upTime = modelWeather._3time;
-        upTime = [upTime substringToIndex:[upTime rangeOfString:@":"].location];
-        if ([[upTime substringToIndex:1] isEqualToString:@"0"]) {
-            upTime = [upTime substringFromIndex:1];
-        }
-        int upTimeInt = upTime.intValue;
+        NSTimeInterval intCurrentTime = [[NSDate date] timeIntervalSince1970];
+        NSDate *lastUpDate = [self getStringDate:modelWeather];
         
-        NSDateFormatter *tempformatter = [[NSDateFormatter alloc]init];
-        [tempformatter setDateFormat:@"HH:mm"];
-        NSDate *timeNow = [NSDate date];
-        NSString *currentTime = [tempformatter stringFromDate:timeNow];
-        currentTime = [currentTime substringToIndex:[currentTime rangeOfString:@":"].location];
-        if ([[currentTime substringToIndex:1] isEqualToString:@"0"]) {
-            currentTime = [currentTime substringFromIndex:1];
-        }
-        int currentTimeInt = currentTime.intValue;
-        
-        if ((currentTimeInt-upTimeInt) > 1 || (currentTimeInt-upTimeInt) < -1) {
+        if ((intCurrentTime - [lastUpDate timeIntervalSince1970]) > 3600) {
             [self downloadDataForDay:modelWeather._2cityid];
         }
     }
@@ -560,12 +546,12 @@
     [uv addSubview:localCalender];
     
     //天气更新时间
-    UILabel *updateTime=[[UILabel alloc] initWithFrame:CGRectMake(215, 305, 105, 19)];
+    UILabel *updateTime=[[UILabel alloc] initWithFrame:CGRectMake(230, 305, 85, 19)];
     updateTime.font=[UIFont fontWithName:@"Helvetica" size:13];
-    updateTime.text=[NSString stringWithFormat:@"[今天 %@ 发布]",model._3time];
+    updateTime.text=[NSString stringWithFormat:@"[%@ 发布]",model._3time];
     updateTime.backgroundColor=[UIColor clearColor];
     updateTime.textColor=[UIColor whiteColor];
-    updateTime.textAlignment = NSTextAlignmentLeft;
+    updateTime.textAlignment = NSTextAlignmentRight;
     [uv addSubview:updateTime];
     
     return uv;
@@ -925,6 +911,36 @@
     return cnWeek;
 }
 
+- (NSDate *)getStringDate:(ModelWeather *) modelWeather
+{
+    NSString *cnDate = modelWeather._8date_y;
+    
+    if (cnDate && ![cnDate isEqualToString:@""]) {
+        NSString *enDate = @"";
+        NSString *n_year = [cnDate substringToIndex:[cnDate rangeOfString:@"年"].location];
+        NSString *n_month = [cnDate substringToIndex:[cnDate rangeOfString:@"月"].location];
+        n_month = [n_month substringFromIndex:5];
+        if (n_month.length==1) {
+            n_month = [NSString stringWithFormat:@"0%@",n_month];
+        }
+        NSString *n_day = [cnDate substringToIndex:[cnDate rangeOfString:@"日"].location];
+        n_day = [n_day substringFromIndex:[n_day rangeOfString:@"月"].location];
+        n_day = [n_day substringFromIndex:1];
+        if (n_day.length==1) {
+            n_day = [NSString stringWithFormat:@"0%@",n_day];
+        }
+        enDate = [NSString stringWithFormat:@"%@-%@-%@",n_year,n_month,n_day];
+        
+        NSDateFormatter *tempformatter = [[NSDateFormatter alloc]init];
+        [tempformatter setDateFormat:@"yyyy-MM-dd HH:mm"];
+        NSString *tempString = [NSString stringWithFormat:@"%@ %@", enDate, modelWeather._3time];
+        return [tempformatter dateFromString:tempString];
+    }
+    
+    
+    return [NSDate date];
+}
+
 - (void)scrollAnimationLabel:(UILabel *)weatherLabel
 {
     if (weatherLabel.text.length > 6) {
@@ -996,24 +1012,10 @@
             ModelWeather *weather=((ModelWeather *)[self.remainCityModel objectAtIndex:location]);
             
             //判定是否需要更新
-            NSString *upTime = weather._3time;
-            upTime = [upTime substringToIndex:[upTime rangeOfString:@":"].location];
-            if ([[upTime substringToIndex:1] isEqualToString:@"0"]) {
-                upTime = [upTime substringFromIndex:1];
-            }
-            int upTimeInt = upTime.intValue;
+            NSTimeInterval intCurrentTime = [[NSDate date] timeIntervalSince1970];
+            NSDate *lastUpDate = [self getStringDate:weather];
             
-            NSDateFormatter *tempformatter = [[NSDateFormatter alloc]init];
-            [tempformatter setDateFormat:@"HH:mm"];
-            NSDate *timeNow = [NSDate date];
-            NSString *currentTime = [tempformatter stringFromDate:timeNow];
-            currentTime = [currentTime substringToIndex:[currentTime rangeOfString:@":"].location];
-            if ([[currentTime substringToIndex:1] isEqualToString:@"0"]) {
-                currentTime = [currentTime substringFromIndex:1];
-            }
-            int currentTimeInt = currentTime.intValue;
-            
-            if ((currentTimeInt-upTimeInt) > 1 || (currentTimeInt-upTimeInt) < -1) {
+            if ((intCurrentTime - [lastUpDate timeIntervalSince1970]) > 3600) {
                 int location=((int)self.scrollView.contentOffset.x)/((int)self.screenWidth);
                 ModelWeather *weather=((ModelWeather *)[self.remainCityModel objectAtIndex:location]);
                 [self downloadDataForDay:weather._2cityid];
