@@ -66,13 +66,6 @@
     [super loadView];
 }
 
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-    ModelWeather *modelWeather = TheAppDelegate.modelWeather;
-    [self upCurrentWeatherAfterTwoHour:modelWeather];
-}
-
 - (void)upCurrentWeatherAfterTwoHour:(ModelWeather *) modelWeather
 {
     if (modelWeather) {
@@ -224,7 +217,7 @@
         int location=((int)self.scrollView.contentOffset.x)/((int)self.screenWidth);
         
         ModelWeather *weather=((ModelWeather *)[self.remainCityModel objectAtIndex:location]);
-        [self upCurrentWeatherAfterTwoHour:weather];
+        [self downloadDataForDay:weather._2cityid];
     } else {
         if (TheAppDelegate.locationInfo.searchCode) {
             [self downloadDataForDay:TheAppDelegate.locationInfo.searchCode];
@@ -443,7 +436,6 @@
     uv.tag=1000+position;
     
     //今天天气的图片资源
-    
     UIImageView *toImgView=[[UIImageView alloc] initWithFrame:CGRectMake(0, 40, 100, 100)];
     int imageNumber = [model._22img1 intValue];
     
@@ -518,10 +510,11 @@
     ToWind.textAlignment = NSTextAlignmentLeft;
     [uv addSubview:ToWind];
     
+    NSDate *timeNow = [NSDate date];
     //显示日期
     UILabel *Today=[[UILabel alloc] initWithFrame:CGRectMake(142, 209, 104, 25)];
     Today.font=[UIFont fontWithName:@"Helvetica" size:15];
-    Today.text=[NSString stringWithFormat:@"%@",model._8date_y];
+    Today.text=[LocalCalendarUtil getCurrentChineseDay:timeNow];
     Today.backgroundColor=[UIColor clearColor];
     Today.textColor=[UIColor whiteColor];
     Today.textAlignment = NSTextAlignmentLeft;
@@ -530,7 +523,7 @@
     //显示星期几
     UILabel *ToWeekDay=[[UILabel alloc] initWithFrame:CGRectMake(252, 212, 46, 19)];
     ToWeekDay.font=[UIFont fontWithName:@"Helvetica" size:15];
-    ToWeekDay.text=[NSString stringWithFormat:@"%@",model._9week];
+    ToWeekDay.text=[LocalCalendarUtil getCurrentChineseWeekDay:timeNow];
     ToWeekDay.backgroundColor=[UIColor clearColor];
     ToWeekDay.textColor=[UIColor whiteColor];
     ToWeekDay.textAlignment = NSTextAlignmentLeft;
@@ -539,7 +532,7 @@
     //显示农历
     UILabel *localCalender=[[UILabel alloc] initWithFrame:CGRectMake(142, 232, 140, 25)];
     localCalender.font=[UIFont fontWithName:@"Helvetica" size:14];
-    localCalender.text=[LocalCalendarUtil getChineseCalendarWithDate:[NSDate date]];
+    localCalender.text=[LocalCalendarUtil getChineseCalendarWithDate:timeNow];
     localCalender.backgroundColor=[UIColor clearColor];
     localCalender.textColor=[UIColor whiteColor];
     localCalender.textAlignment = NSTextAlignmentLeft;
@@ -1010,20 +1003,25 @@
         if (self.remainCityModel != nil && [self.remainCityModel count] > 0) {
             int location=((int)self.scrollView.contentOffset.x)/((int)self.screenWidth);
             ModelWeather *weather=((ModelWeather *)[self.remainCityModel objectAtIndex:location]);
-            
-            //判定是否需要更新
-            NSTimeInterval intCurrentTime = [[NSDate date] timeIntervalSince1970];
-            NSDate *lastUpDate = [self getStringDate:weather];
-            
-            if ((intCurrentTime - [lastUpDate timeIntervalSince1970]) > 3600) {
-                int location=((int)self.scrollView.contentOffset.x)/((int)self.screenWidth);
-                ModelWeather *weather=((ModelWeather *)[self.remainCityModel objectAtIndex:location]);
-                [self downloadDataForDay:weather._2cityid];
-            } else {
-                TheAppDelegate.modelWeather = weather;
-                [self setCurrentNavigationBarTitle];
-            }
+            //设置当前显示城市天气
+            TheAppDelegate.modelWeather = weather;
+            [self setCurrentNavigationBarTitle];
+            //0.8秒后判断是否需要立即更新滑动后显示的城市数据
+            [self performSelector:@selector(updatePageAfterScroll) withObject:nil afterDelay:0.8];
         }
+    }
+}
+
+- (void)updatePageAfterScroll
+{
+    //判定是否需要更新
+    NSTimeInterval intCurrentTime = [[NSDate date] timeIntervalSince1970];
+    NSDate *lastUpDate = [self getStringDate:TheAppDelegate.modelWeather];
+    
+    if ((intCurrentTime - [lastUpDate timeIntervalSince1970]) > 3600) {
+        int location=((int)self.scrollView.contentOffset.x)/((int)self.screenWidth);
+        ModelWeather *weather=((ModelWeather *)[self.remainCityModel objectAtIndex:location]);
+        [self downloadDataForDay:weather._2cityid];
     }
 }
 

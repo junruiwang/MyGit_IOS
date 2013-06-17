@@ -38,4 +38,36 @@
     return [NSString stringWithFormat: @"%@年%@%@",y_str,m_str,d_str];
 }
 
++ (NSString *)getCurrentChineseWeekDay:(NSDate *)date
+{
+    const unsigned int weekday = [[NSCalendar currentCalendar] ordinalityOfUnit:NSDayCalendarUnit inUnit:NSWeekCalendarUnit forDate:date];
+    NSString *cnWeek = @"";
+    switch (weekday)
+    {
+        case 1:
+        {   cnWeek = @"星期日"; break;  }
+        case 2:
+        {   cnWeek = @"星期一"; break;  }
+        case 3:
+        {   cnWeek = @"星期二"; break;  }
+        case 4:
+        {   cnWeek = @"星期三"; break;  }
+        case 5:
+        {   cnWeek = @"星期四"; break;  }
+        case 6:
+        {   cnWeek = @"星期五"; break;  }
+        case 7:
+        {   cnWeek = @"星期六"; break;  }
+    }
+    
+    return cnWeek;
+}
+
++ (NSString *)getCurrentChineseDay:(NSDate *)date
+{
+    NSCalendar *localeCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSDateComponents *dayComponents = [localeCalendar components:(NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit) fromDate:date];
+    return [NSString stringWithFormat:@"%d年%d月%d日",[dayComponents year],[dayComponents month],[dayComponents day]];
+}
+
 @end

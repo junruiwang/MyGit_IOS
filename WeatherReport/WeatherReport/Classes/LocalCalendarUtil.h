@@ -11,5 +11,8 @@
 @interface LocalCalendarUtil : NSObject
 
 + (NSString *)getChineseCalendarWithDate:(NSDate *)date;
++ (NSString *)getCurrentChineseWeekDay:(NSDate *)date;
++ (NSString *)getCurrentChineseDay:(NSDate *)date;
+
 
 @end

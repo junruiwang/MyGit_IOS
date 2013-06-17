@@ -103,25 +103,25 @@
     UINavigationController *forecastNavigationController = [[UINavigationController alloc] initWithRootViewController:forecastViewController];
     forecastNavigationController.navigationBar.barStyle = UIBarStyleBlack;
     forecastNavigationController.tabBarItem.title = @"预报";
-    forecastNavigationController.tabBarItem.image = [UIImage imageNamed:@"load_1.png"];
+    forecastNavigationController.tabBarItem.image = [UIImage imageNamed:@"yubao.png"];
     
     TrendViewController *trendViewController = [[TrendViewController alloc] init];
     UINavigationController *trendNavigationController = [[UINavigationController alloc] initWithRootViewController:trendViewController];
     trendNavigationController.navigationBar.barStyle = UIBarStyleBlack;
     trendNavigationController.tabBarItem.title = @"趋势";
-    trendNavigationController.tabBarItem.image = [UIImage imageNamed:@"load_3.png"];
+    trendNavigationController.tabBarItem.image = [UIImage imageNamed:@"qushi.png"];
     
     WeatherIndexViewController *weatherIndexViewController = [[WeatherIndexViewController alloc] init];
     UINavigationController *weatherNavigationController = [[UINavigationController alloc] initWithRootViewController:weatherIndexViewController];
     weatherNavigationController.navigationBar.barStyle = UIBarStyleBlack;
     weatherNavigationController.tabBarItem.title = @"指数";
-    weatherNavigationController.tabBarItem.image = [UIImage imageNamed:@"load_4.png"];
+    weatherNavigationController.tabBarItem.image = [UIImage imageNamed:@"zhishu.png"];
     
     MoreViewController *moreViewController = [[MoreViewController alloc] init];
     UINavigationController *moreNavigationController = [[UINavigationController alloc] initWithRootViewController:moreViewController];
     moreNavigationController.navigationBar.barStyle = UIBarStyleBlack;
     moreNavigationController.tabBarItem.title = @"更多";
-    moreNavigationController.tabBarItem.image = [UIImage imageNamed:@"load_5.png"];
+    moreNavigationController.tabBarItem.image = [UIImage imageNamed:@"gengduo.png"];
     
     self.mainTabBarController = [[UITabBarController alloc] init];
     self.mainTabBarController.viewControllers = [NSArray arrayWithObjects:
