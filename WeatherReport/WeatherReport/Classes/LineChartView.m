@@ -272,6 +272,10 @@
     CGContextAddLines(context, graphPoints, count);
 	CGContextStrokePath(context);
     // DISEGNO I CERCHI NEL GRANO
+    NSString *nightFlag = @"";
+    if ([self timeNowIsNight]) {
+        nightFlag = @"n";
+    }
     for (int i = 0; i < [self.lowTempAry count]; ++i) {
         CGRect ellipseRect = CGRectMake(graphPoints[i].x-3, graphPoints[i].y-3, 6, 6);
         CGContextAddEllipseInRect(context, ellipseRect);
@@ -291,7 +295,7 @@
         tempLabel.font = [UIFont systemFontOfSize:14];
         tempLabel.text = [NSString stringWithFormat:@"%@°",[self.lowTempAry objectAtIndex:i]];
         [self addSubview:tempLabel];
-        
+
         switch (i) {
             case 0:
             {
@@ -301,7 +305,7 @@
                     imageNumber = self.weather._22img1;
                 }
                 weatherImageView.backgroundColor = [UIColor clearColor];
-                weatherImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.png",imageNumber]];
+                weatherImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@%@.png",nightFlag,imageNumber]];
                 [self addSubview:weatherImageView];
                 break;
             }
@@ -313,7 +317,7 @@
                     imageNumber = self.weather._24img3;
                 }
                 weatherImageView.backgroundColor = [UIColor clearColor];
-                weatherImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.png",imageNumber]];
+                weatherImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@%@.png",nightFlag,imageNumber]];
                 [self addSubview:weatherImageView];
                 break;
             }
@@ -325,7 +329,7 @@
                     imageNumber = self.weather._26img5;
                 }
                 weatherImageView.backgroundColor = [UIColor clearColor];
-                weatherImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.png",imageNumber]];
+                weatherImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@%@.png",nightFlag,imageNumber]];
                 [self addSubview:weatherImageView];
                 break;
             }
@@ -337,7 +341,7 @@
                     imageNumber = self.weather._28img7;
                 }
                 weatherImageView.backgroundColor = [UIColor clearColor];
-                weatherImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.png",imageNumber]];
+                weatherImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@%@.png",nightFlag,imageNumber]];
                 [self addSubview:weatherImageView];
                 break;
             }
@@ -349,7 +353,7 @@
                     imageNumber = self.weather._30img9;
                 }
                 weatherImageView.backgroundColor = [UIColor clearColor];
-                weatherImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.png",imageNumber]];
+                weatherImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@%@.png",nightFlag,imageNumber]];
                 [self addSubview:weatherImageView];
                 break;
             }
@@ -361,7 +365,7 @@
                     imageNumber = self.weather._32img11;
                 }
                 weatherImageView.backgroundColor = [UIColor clearColor];
-                weatherImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.png",imageNumber]];
+                weatherImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@%@.png",nightFlag,imageNumber]];
                 [self addSubview:weatherImageView];
                 break;
             }
@@ -564,6 +568,26 @@
     int pointY = (centerY -(temp-averageTemp)*8);
     
     return pointY;
+}
+
+//临界时间为18:00，设置场景展示
+- (BOOL)timeNowIsNight
+{
+    NSDateFormatter *tempformatter = [[NSDateFormatter alloc]init];
+    [tempformatter setDateFormat:@"yyyy-MM-dd"];
+    
+    NSDate *timeNow = [NSDate date];
+    NSString *tempString = [tempformatter stringFromDate:timeNow];
+    
+    [tempformatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    tempString = [NSString stringWithFormat:@"%@ %@", tempString, @"18:00:00"];
+    NSDate *tempDate = [tempformatter dateFromString:tempString];
+    
+    if ([timeNow compare:tempDate] == NSOrderedAscending) {
+        return NO;
+    }
+    
+    return YES;
 }
 
 @end
