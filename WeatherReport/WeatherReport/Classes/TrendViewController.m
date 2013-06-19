@@ -38,7 +38,7 @@
     }
     UIImageView *bgImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, imageHeight)];
     bgImageView.backgroundColor = [UIColor clearColor];
-    bgImageView.image = [UIImage imageNamed:@"30-fine-night-bg.jpg"];
+    bgImageView.image = [UIImage imageNamed:@"trend-tab-bg.jpg"];
     [self.view addSubview:bgImageView];
 
     

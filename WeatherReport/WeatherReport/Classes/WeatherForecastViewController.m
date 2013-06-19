@@ -557,35 +557,67 @@
     int imageNumber = [modelWeather._22img1 intValue];
     
     if ([self timeNowIsNight]) {
-        if (imageNumber < 2) {
-            self.bgImageView.image = [UIImage imageNamed:@"30-fine-night-bg.jpg"];
-        } else if (imageNumber>=2 && imageNumber<=12) {
-            self.bgImageView.image = [UIImage imageNamed:@"rain-bg.jpg"];
-        } else if (imageNumber>=13 && imageNumber<=17) {
-            self.bgImageView.image = [UIImage imageNamed:@"index-default-bg.jpg"];
-        } else if (imageNumber>=18 && imageNumber<=20) {
-            self.bgImageView.image = [UIImage imageNamed:@"fog-day-bg.jpg"];
+        if (imageNumber == 0) {
+            self.bgImageView.image = [UIImage imageNamed:@"0_night_bg.jpg"];
+        } else if (imageNumber == 1) {
+            self.bgImageView.image = [UIImage imageNamed:@"1_night_bg.jpg"];
+        } else if (imageNumber == 2) {
+            self.bgImageView.image = [UIImage imageNamed:@"2_29-31_night_bg.jpg"];
+        } else if (imageNumber >=3 && imageNumber<=12) {
+            self.bgImageView.image = [UIImage imageNamed:@"3-12_21-25_night_bg.jpg"];
+        } else if (imageNumber >=13 && imageNumber<=17) {
+            self.bgImageView.image = [UIImage imageNamed:@"13-17_night_bg.jpg"];
+        } else if (imageNumber >=18 && imageNumber<=20) {
+            self.bgImageView.image = [UIImage imageNamed:@"18-20_night_bg.jpg"];
         } else if (imageNumber>=21 && imageNumber<=25) {
-            self.bgImageView.image = [UIImage imageNamed:@"rain-bg.jpg"];
+            self.bgImageView.image = [UIImage imageNamed:@"3-12_21-25_night_bg.jpg"];
         } else if (imageNumber>=26 && imageNumber<=28) {
-            self.bgImageView.image = [UIImage imageNamed:@"index-default-bg.jpg"];
+            self.bgImageView.image = [UIImage imageNamed:@"26-28_night_bg.jpg"];
         } else if (imageNumber>=29 && imageNumber<=31) {
+            self.bgImageView.image = [UIImage imageNamed:@"2_29-31_night_bg.jpg"];
+        } else {
             self.bgImageView.image = [UIImage imageNamed:@"index-default-bg.jpg"];
         }
+        
+//        if (imageNumber < 2) {
+//            self.bgImageView.image = [UIImage imageNamed:@"30-fine-night-bg.jpg"];
+//        } else if (imageNumber>=2 && imageNumber<=12) {
+//            self.bgImageView.image = [UIImage imageNamed:@"rain-bg.jpg"];
+//        } else if (imageNumber>=13 && imageNumber<=17) {
+//            self.bgImageView.image = [UIImage imageNamed:@"index-default-bg.jpg"];
+//        } else if (imageNumber>=18 && imageNumber<=20) {
+//            self.bgImageView.image = [UIImage imageNamed:@"fog-day-bg.jpg"];
+//        } else if (imageNumber>=21 && imageNumber<=25) {
+//            self.bgImageView.image = [UIImage imageNamed:@"rain-bg.jpg"];
+//        } else if (imageNumber>=26 && imageNumber<=28) {
+//            self.bgImageView.image = [UIImage imageNamed:@"index-default-bg.jpg"];
+//        } else if (imageNumber>=29 && imageNumber<=31) {
+//            self.bgImageView.image = [UIImage imageNamed:@"index-default-bg.jpg"];
+//        }
     } else {
-        if (imageNumber < 2) {
-            self.bgImageView.image = [UIImage imageNamed:@"0-fine-day-bg.jpg"];
-        } else if (imageNumber>=2 && imageNumber<=12) {
-            self.bgImageView.image = [UIImage imageNamed:@"2-shade-bg.jpg"];
-        } else if (imageNumber>=13 && imageNumber<=17) {
-            self.bgImageView.image = [UIImage imageNamed:@"index-default-bg.jpg"];
-        } else if (imageNumber>=18 && imageNumber<=20) {
-            self.bgImageView.image = [UIImage imageNamed:@"fog-night-bg.jpg"];
+        if (imageNumber == 0) {
+            self.bgImageView.image = [UIImage imageNamed:@"0_day_bg.jpg"];
+        } else if (imageNumber == 1) {
+            self.bgImageView.image = [UIImage imageNamed:@"1_day_bg.jpg"];
+        } else if (imageNumber == 2) {
+            self.bgImageView.image = [UIImage imageNamed:@"2_day_bg.jpg"];
+        } else if (imageNumber == 3) {
+            self.bgImageView.image = [UIImage imageNamed:@"3_6-12_21-25_day_bg.jpg"];
+        } else if (imageNumber == 4 || imageNumber == 5) {
+            self.bgImageView.image = [UIImage imageNamed:@"4-5_day_bg.jpg"];
+        } else if (imageNumber >= 6 && imageNumber<=12) {
+            self.bgImageView.image = [UIImage imageNamed:@"3_6-12_21-25_day_bg.jpg"];
+        } else if (imageNumber >=13 && imageNumber<=17) {
+            self.bgImageView.image = [UIImage imageNamed:@"13-17_26-28_day_bg.jpg"];
+        } else if (imageNumber >=18 && imageNumber<=20) {
+            self.bgImageView.image = [UIImage imageNamed:@"18-20_day_bg.jpg"];
         } else if (imageNumber>=21 && imageNumber<=25) {
-            self.bgImageView.image = [UIImage imageNamed:@"2-shade-bg.jpg"];
+            self.bgImageView.image = [UIImage imageNamed:@"3_6-12_21-25_day_bg.jpg"];
         } else if (imageNumber>=26 && imageNumber<=28) {
-            self.bgImageView.image = [UIImage imageNamed:@"index-default-bg.jpg"];
+            self.bgImageView.image = [UIImage imageNamed:@"13-17_26-28_day_bg.jpg"];
         } else if (imageNumber>=29 && imageNumber<=31) {
+            self.bgImageView.image = [UIImage imageNamed:@"29-31_day_bg.jpg"];
+        } else {
             self.bgImageView.image = [UIImage imageNamed:@"index-default-bg.jpg"];
         }
     }
