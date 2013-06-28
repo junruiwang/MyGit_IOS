@@ -142,10 +142,10 @@
 		C48ED800174A132E00B6F00F /* transparent.png in Resources */ = {isa = PBXBuildFile; fileRef = C48ED7FB174A132E00B6F00F /* transparent.png */; };
 		C48ED802174A158B00B6F00F /* dotted_line@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C48ED801174A158B00B6F00F /* dotted_line@2x.png */; };
 		C4AC3DF1175B0A34007A4E8D /* itemTitle.png in Resources */ = {isa = PBXBuildFile; fileRef = C4AC3DF0175B0A34007A4E8D /* itemTitle.png */; };
-		C4AC3DF3175B0C45007A4E8D /* 穿衣指数.png in Resources */ = {isa = PBXBuildFile; fileRef = C4AC3DF2175B0C45007A4E8D /* 穿衣指数.png */; };
-		C4AC3DF8175B139C007A4E8D /* 洗车指数.png in Resources */ = {isa = PBXBuildFile; fileRef = C4AC3DF5175B139C007A4E8D /* 洗车指数.png */; };
-		C4AC3DF9175B139C007A4E8D /* 运动指数.png in Resources */ = {isa = PBXBuildFile; fileRef = C4AC3DF6175B139C007A4E8D /* 运动指数.png */; };
-		C4AC3DFA175B139C007A4E8D /* 紫外线指数.png in Resources */ = {isa = PBXBuildFile; fileRef = C4AC3DF7175B139C007A4E8D /* 紫外线指数.png */; };
+		C4AC3DF3175B0C45007A4E8D /* chuanyizhishu.png in Resources */ = {isa = PBXBuildFile; fileRef = C4AC3DF2175B0C45007A4E8D /* chuanyizhishu.png */; };
+		C4AC3DF8175B139C007A4E8D /* xichezhishu.png in Resources */ = {isa = PBXBuildFile; fileRef = C4AC3DF5175B139C007A4E8D /* xichezhishu.png */; };
+		C4AC3DF9175B139C007A4E8D /* yundongzhishu.png in Resources */ = {isa = PBXBuildFile; fileRef = C4AC3DF6175B139C007A4E8D /* yundongzhishu.png */; };
+		C4AC3DFA175B139C007A4E8D /* zhiwaixianzhishu.png in Resources */ = {isa = PBXBuildFile; fileRef = C4AC3DF7175B139C007A4E8D /* zhiwaixianzhishu.png */; };
 		C4ACF2B41754EF0F00ECB241 /* LineChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = C4ACF2B31754EF0F00ECB241 /* LineChartView.m */; };
 		C4AD9DE8174494AA002D916D /* DSLoadingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4AD9DE7174494AA002D916D /* DSLoadingViewController.m */; };
 		C4AD9E31174497AB002D916D /* loading.png in Resources */ = {isa = PBXBuildFile; fileRef = C4AD9E1F174497AB002D916D /* loading.png */; };
@@ -404,10 +404,10 @@
 		C48ED7FB174A132E00B6F00F /* transparent.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = transparent.png; path = Resources/transparent.png; sourceTree = "<group>"; };
 		C48ED801174A158B00B6F00F /* dotted_line@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "dotted_line@2x.png"; path = "Resources/dotted_line@2x.png"; sourceTree = "<group>"; };
 		C4AC3DF0175B0A34007A4E8D /* itemTitle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = itemTitle.png; path = Resources/itemTitle.png; sourceTree = "<group>"; };
-		C4AC3DF2175B0C45007A4E8D /* 穿衣指数.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "穿衣指数.png"; path = "Resources/穿衣指数.png"; sourceTree = "<group>"; };
-		C4AC3DF5175B139C007A4E8D /* 洗车指数.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "洗车指数.png"; path = "Resources/洗车指数.png"; sourceTree = "<group>"; };
-		C4AC3DF6175B139C007A4E8D /* 运动指数.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "运动指数.png"; path = "Resources/运动指数.png"; sourceTree = "<group>"; };
-		C4AC3DF7175B139C007A4E8D /* 紫外线指数.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "紫外线指数.png"; path = "Resources/紫外线指数.png"; sourceTree = "<group>"; };
+		C4AC3DF2175B0C45007A4E8D /* chuanyizhishu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = chuanyizhishu.png; path = Resources/chuanyizhishu.png; sourceTree = "<group>"; };
+		C4AC3DF5175B139C007A4E8D /* xichezhishu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = xichezhishu.png; path = Resources/xichezhishu.png; sourceTree = "<group>"; };
+		C4AC3DF6175B139C007A4E8D /* yundongzhishu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = yundongzhishu.png; path = Resources/yundongzhishu.png; sourceTree = "<group>"; };
+		C4AC3DF7175B139C007A4E8D /* zhiwaixianzhishu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = zhiwaixianzhishu.png; path = Resources/zhiwaixianzhishu.png; sourceTree = "<group>"; };
 		C4ACF2B21754EF0F00ECB241 /* LineChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LineChartView.h; path = Classes/LineChartView.h; sourceTree = "<group>"; };
 		C4ACF2B31754EF0F00ECB241 /* LineChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LineChartView.m; path = Classes/LineChartView.m; sourceTree = "<group>"; };
 		C4AD9DE6174494AA002D916D /* DSLoadingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DSLoadingViewController.h; path = Classes/DSLoadingViewController.h; sourceTree = "<group>"; };
@@ -730,10 +730,10 @@
 			children = (
 				C47D86D517717041004BEEB7 /* trend-tab-bg.jpg */,
 				C46F66F2175DB483000D5F50 /* ls_weather_index.png */,
-				C4AC3DF5175B139C007A4E8D /* 洗车指数.png */,
-				C4AC3DF6175B139C007A4E8D /* 运动指数.png */,
-				C4AC3DF7175B139C007A4E8D /* 紫外线指数.png */,
-				C4AC3DF2175B0C45007A4E8D /* 穿衣指数.png */,
+				C4AC3DF5175B139C007A4E8D /* xichezhishu.png */,
+				C4AC3DF6175B139C007A4E8D /* yundongzhishu.png */,
+				C4AC3DF7175B139C007A4E8D /* zhiwaixianzhishu.png */,
+				C4AC3DF2175B0C45007A4E8D /* chuanyizhishu.png */,
 				C4AC3DF0175B0A34007A4E8D /* itemTitle.png */,
 				C45F71751759F9540067F05D /* trendViewBg.png */,
 				C4BDE61C174E3C6D0068BFF6 /* todayview_bg.png */,
@@ -1150,10 +1150,10 @@
 				C464113B174FBF5900913E2E /* icon@2x.png in Resources */,
 				C45F71761759F9540067F05D /* trendViewBg.png in Resources */,
 				C4AC3DF1175B0A34007A4E8D /* itemTitle.png in Resources */,
-				C4AC3DF3175B0C45007A4E8D /* 穿衣指数.png in Resources */,
-				C4AC3DF8175B139C007A4E8D /* 洗车指数.png in Resources */,
-				C4AC3DF9175B139C007A4E8D /* 运动指数.png in Resources */,
-				C4AC3DFA175B139C007A4E8D /* 紫外线指数.png in Resources */,
+				C4AC3DF3175B0C45007A4E8D /* chuanyizhishu.png in Resources */,
+				C4AC3DF8175B139C007A4E8D /* xichezhishu.png in Resources */,
+				C4AC3DF9175B139C007A4E8D /* yundongzhishu.png in Resources */,
+				C4AC3DFA175B139C007A4E8D /* zhiwaixianzhishu.png in Resources */,
 				C46F66F3175DB483000D5F50 /* ls_weather_index.png in Resources */,
 				C4EEE88D175E1F6900FD8489 /* UMSCommentDetailController.xib in Resources */,
 				C4EEE88E175E1F6900FD8489 /* UMSCommentInputController.xib in Resources */,

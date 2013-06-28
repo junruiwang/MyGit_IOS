@@ -89,7 +89,7 @@
     [self.scrollView addSubview:dressImageView];
     
     UIImageView *dressIcon = [[UIImageView alloc] initWithFrame:CGRectMake(0, 4, 40,40)];
-    dressIcon.image = [UIImage imageNamed:@"穿衣指数.png"];
+    dressIcon.image = [UIImage imageNamed:@"chuanyizhishu.png"];
     [dressImageView addSubview:dressIcon];
     
     UILabel *dressTitle = [[UILabel alloc] initWithFrame:CGRectMake(45, 15, 80,15)];
@@ -124,7 +124,7 @@
     [self.scrollView addSubview:uvImageView];
     
     UIImageView *uvIcon = [[UIImageView alloc] initWithFrame:CGRectMake(0, 4, 40,40)];
-    uvIcon.image = [UIImage imageNamed:@"紫外线指数.png"];
+    uvIcon.image = [UIImage imageNamed:@"zhiwaixianzhishu.png"];
     [uvImageView addSubview:uvIcon];
     
     UILabel *uvTitle = [[UILabel alloc] initWithFrame:CGRectMake(45, 15, 80,15)];
@@ -159,7 +159,7 @@
     [self.scrollView addSubview:xcImageView];
     
     UIImageView *xcIcon = [[UIImageView alloc] initWithFrame:CGRectMake(0, 4, 40,40)];
-    xcIcon.image = [UIImage imageNamed:@"洗车指数.png"];
+    xcIcon.image = [UIImage imageNamed:@"xichezhishu.png"];
     [xcImageView addSubview:xcIcon];
     
     UILabel *xcTitle = [[UILabel alloc] initWithFrame:CGRectMake(45, 15, 80,15)];
@@ -194,7 +194,7 @@
     [self.scrollView addSubview:clImageView];
     
     UIImageView *clIcon = [[UIImageView alloc] initWithFrame:CGRectMake(0, 4, 40,40)];
-    clIcon.image = [UIImage imageNamed:@"运动指数.png"];
+    clIcon.image = [UIImage imageNamed:@"yundongzhishu.png"];
     [clImageView addSubview:clIcon];
     
     UILabel *clTitle = [[UILabel alloc] initWithFrame:CGRectMake(45, 15, 80,15)];

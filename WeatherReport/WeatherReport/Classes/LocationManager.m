@@ -102,10 +102,13 @@
     
     NSString *path = [[NSBundle mainBundle] pathForResource:@"cityList" ofType:@"plist"];
     NSDictionary *dict = [NSDictionary dictionaryWithContentsOfFile:path];
-    TheAppDelegate.locationInfo.searchCode = [dict valueForKey:cityName];
-    
-    //推送通知
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"locationCurrentFinished" object:self userInfo:nil];
+    NSString *searchCode = [dict valueForKey:cityName];
+    if (searchCode && ![searchCode isEqualToString:@""]) {
+        TheAppDelegate.locationInfo.searchCode = [dict valueForKey:cityName];
+        
+        //推送通知
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"locationCurrentFinished" object:self userInfo:nil];
+    }
 }
 
 @end
