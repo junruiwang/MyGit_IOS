@@ -42,7 +42,7 @@
 			<string>sinaweibo</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>sina.518a09fe56240b42b703acbb</string>
+				<string>sina.51cd879656240ba37d063d74</string>
 			</array>
 		</dict>
 		<dict>
@@ -52,7 +52,7 @@
 			<string>weixin</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>wx29af9cb8693bcd02</string>
+				<string>wx35479f4cd823954f</string>
 			</array>
 		</dict>
 	</array>

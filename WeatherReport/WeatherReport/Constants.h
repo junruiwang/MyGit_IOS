@@ -14,11 +14,11 @@
 //baidu map key
 #define kBaiduKey  @"F1d3f34adb86e328411c49a03147ae1a"
 //UMeng Share Key
-#define kUMengShareKey @"518a09fe56240b42b703acbb"
-#define kWXShareKey @"wx29af9cb8693bcd02"
+#define kUMengShareKey @"51cd879656240ba37d063d74"
+#define kWXShareKey @"wx35479f4cd823954f"
 //appstore info
-#define kAppStoreUrl @"https://itunes.apple.com/us/app/jin-jiang-lu-xing+pro-jin/id595304265?ls=1&mt=8"
-#define kCommentUrl @"itms-apps://ax.itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=595304265"
+#define kAppStoreUrl @"https://itunes.apple.com/us/app/ku-lu-tian-qi-tian-qi-yu-bao/id667928959?ls=1&mt=8"
+#define kCommentUrl @"itms-apps://ax.itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=667928959"
 
 #define kLogEnable NO
 
