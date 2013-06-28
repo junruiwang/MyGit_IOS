@@ -539,7 +539,11 @@
     [uv addSubview:localCalender];
     
     //天气更新时间
-    UILabel *updateTime=[[UILabel alloc] initWithFrame:CGRectMake(230, 305, 85, 19)];
+    float updateY = 305;
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:USER_DEVICE_5]) {
+        updateY += 88;
+    }
+    UILabel *updateTime=[[UILabel alloc] initWithFrame:CGRectMake(230, updateY, 85, 19)];
     updateTime.font=[UIFont fontWithName:@"Helvetica" size:13];
     updateTime.text=[NSString stringWithFormat:@"[%@ 发布]",model._3time];
     updateTime.backgroundColor=[UIColor clearColor];
