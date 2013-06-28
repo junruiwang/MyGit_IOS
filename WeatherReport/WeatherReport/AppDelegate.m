@@ -46,6 +46,12 @@
     //向微信注册
     [WXApi registerApp:kWXShareKey];
     
+    // Initialize Google Analytics with a 120-second dispatch interval.
+    [GAI sharedInstance].debug = NO;
+    [GAI sharedInstance].dispatchInterval = 120;
+    [GAI sharedInstance].trackUncaughtExceptions = YES;
+    self.tracker = [[GAI sharedInstance] trackerWithTrackingId:kTrackingId];
+    
     
     [self.window makeKeyAndVisible];
     

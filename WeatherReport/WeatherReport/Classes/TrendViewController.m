@@ -31,7 +31,8 @@
 {
     [super viewDidLoad];
     self.navigationItem.title = @"趋势";
-    //[self loadSegmentedButton];
+    self.trackedViewName = @"温度天气趋势页面";
+    
     float imageHeight = 367;
     if ([[NSUserDefaults standardUserDefaults] boolForKey:USER_DEVICE_5]) {
         imageHeight += 88;

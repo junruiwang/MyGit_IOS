@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "Constants.h"
+#import "GAI.h"
 
-@interface BannerViewController : UIViewController
+@interface BannerViewController : GAITrackedViewController
 
 - (void)showAlertMessage:(NSString *)msg;
 

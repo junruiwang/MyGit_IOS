@@ -13,6 +13,7 @@
 		C41DF217174E1CC600047BB1 /* weatherlive_details_top@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C41DF215174E1CC600047BB1 /* weatherlive_details_top@2x.png */; };
 		C41DF21F174E22DB00047BB1 /* periphery_bottom_separateline.png in Resources */ = {isa = PBXBuildFile; fileRef = C41DF21D174E22DB00047BB1 /* periphery_bottom_separateline.png */; };
 		C41DF220174E22DB00047BB1 /* periphery_bottom_separateline@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C41DF21E174E22DB00047BB1 /* periphery_bottom_separateline@2x.png */; };
+		C426DEEC177DCD2600238599 /* libGoogleAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C426DEEB177DCD2600238599 /* libGoogleAnalytics.a */; };
 		C42CFB081745D58C00C85794 /* CityManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C42CFB061745D58B00C85794 /* CityManagerViewController.m */; };
 		C42CFB091745D58C00C85794 /* CityManagerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C42CFB071745D58B00C85794 /* CityManagerViewController.xib */; };
 		C42CFB0E1745D90100C85794 /* PrettyDrawing.m in Sources */ = {isa = PBXBuildFile; fileRef = C42CFB0B1745D90100C85794 /* PrettyDrawing.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -149,7 +150,6 @@
 		C4ACF2B41754EF0F00ECB241 /* LineChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = C4ACF2B31754EF0F00ECB241 /* LineChartView.m */; };
 		C4AD9DE8174494AA002D916D /* DSLoadingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4AD9DE7174494AA002D916D /* DSLoadingViewController.m */; };
 		C4AD9E31174497AB002D916D /* loading.png in Resources */ = {isa = PBXBuildFile; fileRef = C4AD9E1F174497AB002D916D /* loading.png */; };
-		C4AD9E3F174499F9002D916D /* DSTwoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4AD9E3A174499F8002D916D /* DSTwoViewController.m */; };
 		C4AD9E40174499F9002D916D /* TrendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4AD9E3B174499F8002D916D /* TrendViewController.m */; };
 		C4AD9E41174499F9002D916D /* WeatherIndexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4AD9E3C174499F9002D916D /* WeatherIndexViewController.m */; };
 		C4AD9E42174499F9002D916D /* MoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4AD9E3D174499F9002D916D /* MoreViewController.m */; };
@@ -230,6 +230,12 @@
 		C41DF215174E1CC600047BB1 /* weatherlive_details_top@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "weatherlive_details_top@2x.png"; path = "Resources/weatherlive_details_top@2x.png"; sourceTree = "<group>"; };
 		C41DF21D174E22DB00047BB1 /* periphery_bottom_separateline.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = periphery_bottom_separateline.png; path = Resources/periphery_bottom_separateline.png; sourceTree = "<group>"; };
 		C41DF21E174E22DB00047BB1 /* periphery_bottom_separateline@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "periphery_bottom_separateline@2x.png"; path = "Resources/periphery_bottom_separateline@2x.png"; sourceTree = "<group>"; };
+		C426DEE6177DCD2600238599 /* GAI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAI.h; sourceTree = "<group>"; };
+		C426DEE7177DCD2600238599 /* GAITrackedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITrackedViewController.h; sourceTree = "<group>"; };
+		C426DEE8177DCD2600238599 /* GAITracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITracker.h; sourceTree = "<group>"; };
+		C426DEE9177DCD2600238599 /* GAITransaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITransaction.h; sourceTree = "<group>"; };
+		C426DEEA177DCD2600238599 /* GAITransactionItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITransactionItem.h; sourceTree = "<group>"; };
+		C426DEEB177DCD2600238599 /* libGoogleAnalytics.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAnalytics.a; sourceTree = "<group>"; };
 		C42CFB051745D58B00C85794 /* CityManagerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CityManagerViewController.h; path = Classes/CityManagerViewController.h; sourceTree = "<group>"; };
 		C42CFB061745D58B00C85794 /* CityManagerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CityManagerViewController.m; path = Classes/CityManagerViewController.m; sourceTree = "<group>"; };
 		C42CFB071745D58B00C85794 /* CityManagerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CityManagerViewController.xib; path = Classes/CityManagerViewController.xib; sourceTree = "<group>"; };
@@ -413,11 +419,9 @@
 		C4AD9DE6174494AA002D916D /* DSLoadingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DSLoadingViewController.h; path = Classes/DSLoadingViewController.h; sourceTree = "<group>"; };
 		C4AD9DE7174494AA002D916D /* DSLoadingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DSLoadingViewController.m; path = Classes/DSLoadingViewController.m; sourceTree = "<group>"; };
 		C4AD9E1F174497AB002D916D /* loading.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = loading.png; path = Resources/loading.png; sourceTree = "<group>"; };
-		C4AD9E35174499F8002D916D /* DSTwoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DSTwoViewController.h; path = Classes/DSTwoViewController.h; sourceTree = "<group>"; };
 		C4AD9E36174499F8002D916D /* TrendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TrendViewController.h; path = Classes/TrendViewController.h; sourceTree = "<group>"; };
 		C4AD9E37174499F8002D916D /* WeatherIndexViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WeatherIndexViewController.h; path = Classes/WeatherIndexViewController.h; sourceTree = "<group>"; };
 		C4AD9E38174499F8002D916D /* MoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MoreViewController.h; path = Classes/MoreViewController.h; sourceTree = "<group>"; };
-		C4AD9E3A174499F8002D916D /* DSTwoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DSTwoViewController.m; path = Classes/DSTwoViewController.m; sourceTree = "<group>"; };
 		C4AD9E3B174499F8002D916D /* TrendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TrendViewController.m; path = Classes/TrendViewController.m; sourceTree = "<group>"; };
 		C4AD9E3C174499F9002D916D /* WeatherIndexViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WeatherIndexViewController.m; path = Classes/WeatherIndexViewController.m; sourceTree = "<group>"; };
 		C4AD9E3D174499F9002D916D /* MoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MoreViewController.m; path = Classes/MoreViewController.m; sourceTree = "<group>"; };
@@ -531,12 +535,27 @@
 				C4D3A83A1727DA49004E2891 /* CoreGraphics.framework in Frameworks */,
 				C4EEE88B175E1F6900FD8489 /* libWeChatSDK_armv7_armv7s.a in Frameworks */,
 				C4EEE88C175E1F6900FD8489 /* libUMSocial_Sdk_2.1.3.a in Frameworks */,
+				C426DEEC177DCD2600238599 /* libGoogleAnalytics.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C426DEE5177DCD2600238599 /* GoogleAnalytics */ = {
+			isa = PBXGroup;
+			children = (
+				C426DEE6177DCD2600238599 /* GAI.h */,
+				C426DEE7177DCD2600238599 /* GAITrackedViewController.h */,
+				C426DEE8177DCD2600238599 /* GAITracker.h */,
+				C426DEE9177DCD2600238599 /* GAITransaction.h */,
+				C426DEEA177DCD2600238599 /* GAITransactionItem.h */,
+				C426DEEB177DCD2600238599 /* libGoogleAnalytics.a */,
+			);
+			name = GoogleAnalytics;
+			path = Libraries/GoogleAnalytics;
+			sourceTree = "<group>";
+		};
 		C42CFB171745DC8C00C85794 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -549,6 +568,7 @@
 		C44448431743230E00DF320B /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				C426DEE5177DCD2600238599 /* GoogleAnalytics */,
 				C4EEE870175E1F6900FD8489 /* UMSNSService */,
 				C44448441743232900DF320B /* ASIHTTPRequest */,
 				C44448651743234300DF320B /* RegexKitLite */,
@@ -890,8 +910,6 @@
 				C4AD9DE7174494AA002D916D /* DSLoadingViewController.m */,
 				C4AD9E36174499F8002D916D /* TrendViewController.h */,
 				C4AD9E3B174499F8002D916D /* TrendViewController.m */,
-				C4AD9E35174499F8002D916D /* DSTwoViewController.h */,
-				C4AD9E3A174499F8002D916D /* DSTwoViewController.m */,
 				C4D3A8A71727DBAD004E2891 /* WeatherForecastViewController.h */,
 				C4D3A8A81727DBAD004E2891 /* WeatherForecastViewController.m */,
 				C4FAE1EB1747857F007C1B1C /* Model */,
@@ -1298,7 +1316,6 @@
 				C459D33817433BC0004F6079 /* ServerAddressManager.m in Sources */,
 				C47E322C1743C5340067BA38 /* CityTableListViewController.m in Sources */,
 				C4AD9DE8174494AA002D916D /* DSLoadingViewController.m in Sources */,
-				C4AD9E3F174499F9002D916D /* DSTwoViewController.m in Sources */,
 				C4AD9E40174499F9002D916D /* TrendViewController.m in Sources */,
 				C4AD9E41174499F9002D916D /* WeatherIndexViewController.m in Sources */,
 				C4AD9E42174499F9002D916D /* MoreViewController.m in Sources */,
@@ -1412,6 +1429,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/WeatherReport/Libraries/UMSNSService/frameworks/Wechat\"",
 					"\"$(SRCROOT)/WeatherReport/Libraries/UMSNSService\"",
+					"\"$(SRCROOT)/WeatherReport/Libraries/GoogleAnalytics\"",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "酷旅天气";
@@ -1430,6 +1448,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/WeatherReport/Libraries/UMSNSService/frameworks/Wechat\"",
 					"\"$(SRCROOT)/WeatherReport/Libraries/UMSNSService\"",
+					"\"$(SRCROOT)/WeatherReport/Libraries/GoogleAnalytics\"",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "酷旅天气";

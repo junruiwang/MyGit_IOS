@@ -14,10 +14,12 @@
 #import "UMSocialData.h"
 #import "UMSocialSnsService.h"
 #import "WXApi.h"
+#import "GAI.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+@property (nonatomic, strong) id<GAITracker> tracker;
 @property (nonatomic, strong) DSLoadingViewController *loadingViewController;
 @property (nonatomic, strong) UITabBarController *mainTabBarController;
 

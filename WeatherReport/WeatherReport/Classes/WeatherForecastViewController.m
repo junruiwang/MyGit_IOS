@@ -82,6 +82,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.trackedViewName = @"天气查询首页";
     // 背景设置为黑色
     self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:0.000 green:0.000 blue:0.000 alpha:1.000];
     // 透明度设置为0.3
@@ -197,6 +198,9 @@
         }
         
         if (![hisvalue containsObject:TheAppDelegate.locationInfo.searchCode]) {
+            //GA跟踪搜索按钮
+            [[GAI sharedInstance].defaultTracker sendEventWithCategory:@"定位城市" withAction:@"用户所在城市" withLabel:[NSString stringWithFormat:@"%@-%@",TheAppDelegate.locationInfo.province,TheAppDelegate.locationInfo.cityName] withValue:nil];
+            
             [self downloadDataForDay:TheAppDelegate.locationInfo.searchCode];
         } else {
             ModelWeather *modelWeather = TheAppDelegate.modelWeather;
@@ -209,6 +213,9 @@
 //刷新数据
 - (void)refreshCityBtnClicked :(id)sender
 {
+    //GA跟踪搜索按钮
+    [[GAI sharedInstance].defaultTracker sendEventWithCategory:@"用户点击" withAction:@"click-to-button" withLabel:@"更新天气按钮" withValue:nil];
+    
     if ([self.activityIndicatorView isAnimating]) {
         [self.activityIndicatorView stopAnimating];
     }
@@ -228,6 +235,9 @@
 
 - (void)shareBtnClicked:(id)sender
 {
+    //GA跟踪搜索按钮
+    [[GAI sharedInstance].defaultTracker sendEventWithCategory:@"用户点击" withAction:@"click-to-button" withLabel:@"首页分享按钮" withValue:nil];
+    
     [self.shareToSNSManager shareWithActionSheet:self shareImage:[UIImage imageNamed:@"icon.png"] shareText:[self buildCurrentCityWeatherString]];
 }
 
@@ -346,6 +356,9 @@
 //添加城市
 - (void)addCityBtnClicked:(id)sender
 {
+    //GA跟踪搜索按钮
+    [[GAI sharedInstance].defaultTracker sendEventWithCategory:@"用户点击" withAction:@"click-to-button" withLabel:@"添加城市" withValue:nil];
+    
     UINavigationController *nav = [[UINavigationController alloc]
                                    initWithRootViewController:self.cityManagerViewController];
     nav.navigationBar.barStyle = UIBarStyleBlack;

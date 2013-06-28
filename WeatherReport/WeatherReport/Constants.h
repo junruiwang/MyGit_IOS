@@ -16,6 +16,7 @@
 //UMeng Share Key
 #define kUMengShareKey @"51cd879656240ba37d063d74"
 #define kWXShareKey @"wx35479f4cd823954f"
+#define kTrackingId  @"UA-39510485-4"
 //appstore info
 #define kAppStoreUrl @"https://itunes.apple.com/us/app/ku-lu-tian-qi-tian-qi-yu-bao/id667928959?ls=1&mt=8"
 #define kCommentUrl @"itms-apps://ax.itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=667928959"

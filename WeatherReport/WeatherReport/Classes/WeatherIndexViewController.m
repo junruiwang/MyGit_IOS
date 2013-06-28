@@ -35,6 +35,7 @@
 {
     [super viewDidLoad];
     self.navigationItem.title = @"今日指数";
+    self.trackedViewName = @"今日指数页面";
     float imageHeight = 367;
     if ([[NSUserDefaults standardUserDefaults] boolForKey:USER_DEVICE_5]) {
         imageHeight += 88;

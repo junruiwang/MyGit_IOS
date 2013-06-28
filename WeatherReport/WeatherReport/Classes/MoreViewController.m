@@ -38,6 +38,7 @@
 {
     [super viewDidLoad];
     self.navigationItem.title = @"更多";
+    self.trackedViewName = @"更多信息页面";
     float imageHeight = 367;
     if ([[NSUserDefaults standardUserDefaults] boolForKey:USER_DEVICE_5]) {
         imageHeight += 88;
