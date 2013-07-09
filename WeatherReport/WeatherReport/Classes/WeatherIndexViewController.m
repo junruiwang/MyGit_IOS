@@ -267,6 +267,10 @@
 
 - (NSString *)getUvDetailMessage:(NSString *) uvtext
 {
+    if (uvtext == nil || [uvtext isEqualToString:@""]) {
+        return @"";
+    }
+    
     if ([uvtext rangeOfString:@"最弱"].location != NSNotFound) {
         return [NSString stringWithFormat:@"紫外线太弱了，可以自由的户外活动，无须防护。"];
     } else if ([uvtext rangeOfString:@"很弱"].location != NSNotFound) {
@@ -294,6 +298,10 @@
 
 - (NSString *)getXcDetailMessage:(NSString *) xctext
 {
+    if (xctext == nil || [xctext isEqualToString:@""]) {
+        return @"";
+    }
+    
     if ([xctext rangeOfString:@"不适宜"].location != NSNotFound) {
         return [NSString stringWithFormat:@"建议大家别洗车了，天气不好，洗了之后可能很快会变脏的噢。"];
     } else if ([xctext rangeOfString:@"适宜"].location != NSNotFound) {
@@ -307,6 +315,9 @@
 
 - (NSString *)getClDetailMessage:(NSString *) cltext
 {
+    if (cltext == nil || [cltext isEqualToString:@""]) {
+        return @"";
+    }
     if ([cltext rangeOfString:@"不适宜"].location != NSNotFound) {
         return [NSString stringWithFormat:@"不太适宜，推荐您在室内进行晨练活动。"];
     } else if ([cltext rangeOfString:@"适宜"].location != NSNotFound) {
@@ -320,6 +331,9 @@
 
 - (NSString *)getlsDetailMessage:(NSString *) lstext
 {
+    if (lstext == nil || [lstext isEqualToString:@""]) {
+        return @"";
+    }
     if ([lstext rangeOfString:@"不适宜"].location != NSNotFound) {
         return [NSString stringWithFormat:@"不适宜晾晒，天气不好。"];
     } else if ([lstext rangeOfString:@"不太适宜"].location != NSNotFound) {

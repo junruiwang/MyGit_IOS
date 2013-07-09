@@ -88,6 +88,14 @@
     NSString *cityName = [placemark valueForKeyPath:@"addressComponent.city"];
     NSString *provinceName = [placemark valueForKeyPath:@"addressComponent.province"];
     
+    if (cityName == nil || [cityName isEqualToString:@""]) {
+        return;
+    }
+    
+    if (provinceName == nil || provinceName.length < 2) {
+        return;
+    }
+    
     cityName = [cityName stringByReplacingOccurrencesOfString:@"市" withString:@""];
     
     if ([provinceName rangeOfString:@"黑龙江"].length > 0 || [provinceName rangeOfString:@"内蒙古"].length > 0) {
