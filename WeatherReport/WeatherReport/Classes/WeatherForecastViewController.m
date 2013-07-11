@@ -257,14 +257,20 @@
 
     NSDate *timeNow = [NSDate date];
     NSString *tempString = [tempformatter stringFromDate:timeNow];
-    
     [tempformatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-    tempString = [NSString stringWithFormat:@"%@ %@", tempString, @"18:00:00"];
-    NSDate *tempDate = [tempformatter dateFromString:tempString];
     
-    if ([timeNow compare:tempDate] == NSOrderedAscending) {
+    NSString *nightString = [NSString stringWithFormat:@"%@ %@", tempString, @"18:00:00"];
+    NSDate *nightDate = [tempformatter dateFromString:nightString];
+    if ([timeNow compare:nightDate] == NSOrderedAscending) {
         return NO;
     }
+    
+    NSString *morningString = [NSString stringWithFormat:@"%@ %@", tempString, @"06:00:00"];
+    NSDate *morningDate = [tempformatter dateFromString:morningString];
+    if ([timeNow compare:morningDate] == NSOrderedDescending) {
+        return NO;
+    }
+    
     
     return YES;
 }
