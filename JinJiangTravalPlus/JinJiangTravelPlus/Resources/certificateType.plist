@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>code</key>
+		<string>ID</string>
+		<key>name</key>
+		<string>身份证</string>
+	</dict>
+	<dict>
+		<key>code</key>
+		<string>Passport</string>
+		<key>name</key>
+		<string>护照</string>
+	</dict>
+	<dict>
+		<key>code</key>
+		<string>Work</string>
+		<key>name</key>
+		<string>工作证</string>
+	</dict>
+	<dict>
+		<key>code</key>
+		<string>Soldier</string>
+		<key>name</key>
+		<string>军人证</string>
+	</dict>
+	<dict>
+		<key>code</key>
+		<string>Driving License</string>
+		<key>name</key>
+		<string>驾照</string>
+	</dict>
+	<dict>
+		<key>code</key>
+		<string>Foreigner</string>
+		<key>name</key>
+		<string>外国人居留证</string>
+	</dict>
+	<dict>
+		<key>code</key>
+		<string>Taiwan</string>
+		<key>name</key>
+		<string>台胞证</string>
+	</dict>
+	<dict>
+		<key>code</key>
+		<string>Return</string>
+		<key>name</key>
+		<string>回乡证</string>
+	</dict>
+	<dict>
+		<key>code</key>
+		<string>Pass</string>
+		<key>name</key>
+		<string>通行证</string>
+	</dict>
+	<dict>
+		<key>code</key>
+		<string>Others</string>
+		<key>name</key>
+		<string>其他</string>
+	</dict>
+</array>
+</plist>

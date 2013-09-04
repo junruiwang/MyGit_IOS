@@ -1,0 +1,25 @@
+/* 
+  SearchHotel.strings
+  JinJiangHotel
+
+  Created by Rong Hao on 13-8-15.
+  Copyright (c) 2013年 jinjiang. All rights reserved.
+*/
+
+"hotel search" = "酒店查询";
+"current position" = "当前位置";
+"pick city" = "选择城市";
+"pick date" = "选择日期";
+"live" = "入住";
+"night" = "晚";
+"slide to select" = "滑动选择日期";
+"please select city" = "请选择城市";
+"not more than 14 days" = "请滑动选择日期，最多只能选择14天";
+
+"Sun" = "周日";
+"Mon" = "周一";
+"Tue" = "周二";
+"Wed" = "周三";
+"Thu" = "周四";
+"Fri" = "周五";
+"Sat" = "周六";

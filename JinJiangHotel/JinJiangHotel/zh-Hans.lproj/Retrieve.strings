@@ -1,0 +1,11 @@
+/* 
+  Retrieve.strings
+  JinJiangHotel
+
+  Created by Rong Hao on 13-8-18.
+  Copyright (c) 2013年 jinjiang. All rights reserved.
+*/
+
+"retrieve" = "获取密码";
+"getpw" = "  发送动态密码  ";
+"retrieve count down" = "%d秒后重新发送";

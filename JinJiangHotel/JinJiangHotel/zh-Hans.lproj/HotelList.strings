@@ -1,0 +1,12 @@
+/* 
+  HotelList.strings
+  JinJiangHotel
+
+  Created by 胡 桂祁 on 8/19/13.
+  Copyright (c) 2013 jinjiang. All rights reserved.
+*/
+
+"hotel list" = "酒店列表";
+"checkIn" = "入住";
+"checkOut" = "离店";
+"language" = "ZH";

@@ -1,0 +1,11 @@
+/* 
+  HotelBooking.strings
+  JinJiangHotel
+
+  Created by jerry on 13-8-21.
+  Copyright (c) 2013年 jinjiang. All rights reserved.
+*/
+
+"hotel booking" = "预订";
+"check person two" = "入住人2";
+"check person three" = "入住人3";

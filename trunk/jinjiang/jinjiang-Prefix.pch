@@ -1,0 +1,49 @@
+//
+// Prefix header for all source files of the 'jinjiang' target in the 'jinjiang' project
+//
+
+#import <Availability.h>
+
+#ifndef __IPHONE_3_0
+#warning "This project uses features only available in iPhone SDK 3.0 and later."
+#endif
+
+#ifdef __OBJC__
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#endif
+
+#define Int2Str(i) [NSString stringWithFormat:@"%d",i]
+
+#define Release2Nil(__POINTER) if (nil != (__POINTER))[__POINTER release];__POINTER = nil;
+
+#define Remove2Nil(__POINTER) if (__POINTER.superview!=nil)[__POINTER removeFromSuperview];__POINTER = nil;
+
+#define RemoveRelease(__POINTER) if (nil != (__POINTER)){if(__POINTER.superview!=nil){[__POINTER removeFromSuperview];}[__POINTER release];__POINTER = nil;}else{}
+
+#ifndef __OPTIMIZE__
+#    define NSLog(...) NSLog(__VA_ARGS__)
+#else
+#    define NSLog(...) {}
+#endif
+
+#define FULLRECT CGRectMake(0, 0, 1024, 768)
+
+#define VIPURL @"http://www.jinjiang.com/"
+
+#define SITEURL @"http://www.jinjiang.com/"
+
+#define EMAIL_ADDRESS @"marketing@jinjiang.com"
+
+#define OmnitureEnabled
+
+#define MAX_RETRY_TIME 5
+
+#define JJ360_PATH [NSHomeDirectory() stringByAppendingPathComponent:@"Library/Caches/f360"]
+#define MAGZINE_PATH [NSHomeDirectory() stringByAppendingPathComponent:@"Library/Caches/Magzine"]
+#define MOVIE_PATH [NSHomeDirectory() stringByAppendingPathComponent:@"Library/Caches/Movie"]
+
+#define PROMOTION_URL @"http://192.168.1.48:8008/promotion/forIPadJJPlusApp?userId=jjplus&sign=0894BCBF95D2540764BC5C3E23EB3673"
+#define JJ360_URL @"http://gateway.jinjiang.com/gateway/jj360/list?userId=test&sign=EE4AB5BBAC5852FA2057CB476CF1C679"
+#define MAGZINE_URL @"http://gateway.jinjiang.com/gateway/magazine/list?userId=test&sign=EE4AB5BBAC5852FA2057CB476CF1C679"
+#define MOVIE_URL @"http://gateway.jinjiang.com/gateway/mov/list?userId=test&sign=EE4AB5BBAC5852FA2057CB476CF1C679"

@@ -1,0 +1,12 @@
+/* 
+  HotelDetail.strings
+  JinJiangHotel
+
+  Created by Rong Hao on 13-8-20.
+  Copyright (c) 2013年 jinjiang. All rights reserved.
+*/
+
+"no breakfast" = "no breakfast";
+"single breakfast" = "single breakfast";
+"double breakfast" = "double breakfast";
+"dolor symble" = "$";

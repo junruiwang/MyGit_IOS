@@ -1,0 +1,24 @@
+/* 
+  OrderList.strings
+  JinJiangHotel
+
+  Created by Rong Hao on 13-8-29.
+  Copyright (c) 2013年 jinjiang. All rights reserved.
+*/
+
+"myOrder" = "我的订单";
+
+"arrive" = "入住：";
+"leave" = "退房：";
+"address" = "地址：";
+"contactperson" = "入住人：";
+
+"confirm" = "已确认";
+"cancel" = "已取消";
+"fail" = "下单失败";
+"unpay" = "未支付";
+"paysuccess" = "支付成功";
+"payfailure" = "支付失败";
+"refundalready" = "退款中";
+"refundsuccess" = "已退款";
+"onlyThreeMonths" = "仅显示最近三个月内的订单";

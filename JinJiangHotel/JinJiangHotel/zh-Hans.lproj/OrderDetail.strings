@@ -1,0 +1,37 @@
+/* 
+  OrderDetail.strings
+  JinJiangHotel
+
+  Created by Rong Hao on 13-8-30.
+  Copyright (c) 2013年 jinjiang. All rights reserved.
+*/
+
+"orderdetail" = "订单详情";
+
+"orderno" = "订单号：";
+
+"confirm" = "已确认";
+"cancel" = "已取消";
+"fail" = "下单失败";
+"unpay" = "未支付";
+"paysuccess" = "支付成功";
+"payfailure" = "支付失败";
+"refundalready" = "退款中";
+"refundsuccess" = "已退款";
+
+"ordertime" = "预定时间：";
+"orderamount" = "订单金额：";
+"payedamount" = "已付金额：";
+"livingcity" = "入住城市：";
+"hotelname" = "酒店名称：";
+"roomstyle" = "房       型：";
+"arrivetime" = "入住时间：";
+"arrive" = "到店";
+"leavetime" = "离店时间：";
+
+"guestname" = "客户姓名：";
+"contactname" = "联  系  人：";
+"mobilenum" = "手  机  号：";
+
+"cancelpolicy" = "取消政策:";
+"cancelOrder" = "取消订单";
