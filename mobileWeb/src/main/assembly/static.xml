@@ -1,0 +1,13 @@
+<assembly>
+    <id>static</id>
+    <formats>
+        <format>zip</format>
+    </formats>
+    <includeBaseDirectory>false</includeBaseDirectory>
+    <fileSets>
+        <fileSet>
+            <directory>src/main/webapp/resource</directory>
+            <outputDirectory>/resource</outputDirectory>
+        </fileSet>
+    </fileSets>
+</assembly>
