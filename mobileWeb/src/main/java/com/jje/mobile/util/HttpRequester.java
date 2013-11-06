@@ -22,7 +22,7 @@ public class HttpRequester {
     private String defaultContentEncoding;
 
     public HttpRequester() {
-        this.defaultContentEncoding = Charset.defaultCharset().name();
+        this.defaultContentEncoding = "UTF-8";
     }
 
     /**
@@ -178,11 +178,9 @@ public class HttpRequester {
     private HttpResponser makeContent(String urlString,HttpURLConnection urlConnection) throws IOException {
         HttpResponser httpResponser = new HttpResponser();
         try {
-            InputStream in = urlConnection.getInputStream();
-            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(in));
             httpResponser.setContentCollection(new Vector<String>());
 
-            StringBuffer temp = new StringBuffer();
+            /*StringBuffer temp = new StringBuffer();
             String line = bufferedReader.readLine();
             while (line != null) {
                 httpResponser.getContentCollection().add(line);
@@ -192,7 +190,7 @@ public class HttpRequester {
             bufferedReader.close();
             String ecod = urlConnection.getContentEncoding();
             if (ecod == null)
-                ecod = this.defaultContentEncoding;
+                ecod = this.defaultContentEncoding;*/
 
             httpResponser.setUrlString(urlString);
             httpResponser.setDefaultPort(urlConnection.getURL().getDefaultPort());
@@ -204,8 +202,8 @@ public class HttpRequester {
             httpResponser.setQuery(urlConnection.getURL().getQuery());
             httpResponser.setRef(urlConnection.getURL().getRef());
             httpResponser.setUserInfo(urlConnection.getURL().getUserInfo());
-            httpResponser.setContent(new String(temp.toString().getBytes(), ecod));
-            httpResponser.setContentEncoding(ecod);
+            httpResponser.setContent(this.convertStreamToString(urlConnection.getInputStream()));
+            httpResponser.setContentEncoding(defaultContentEncoding);
             httpResponser.setCode(urlConnection.getResponseCode());
             httpResponser.setMessage(urlConnection.getResponseMessage());
             httpResponser.setContentType(urlConnection.getContentType());
@@ -218,6 +216,27 @@ public class HttpRequester {
         } finally {
             if (urlConnection != null)
                 urlConnection.disconnect();
+        }
+    }
+
+    private String convertStreamToString(InputStream inputStream) throws IOException {
+        if (inputStream != null) {
+            String line;
+            StringBuffer sb = new StringBuffer();
+            try {
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream,defaultContentEncoding));
+                while ((line=bufferedReader.readLine()) != null) {
+                    sb.append(line).append("\n");
+                }
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            } finally {
+                inputStream.close();
+            }
+
+            return sb.toString();
+        } else {
+            return "";
         }
     }
 
