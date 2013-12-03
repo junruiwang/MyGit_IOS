@@ -31,7 +31,7 @@
 {
     self = [super initWithCoder:aDecoder];
     if (self) {
-        self.port = 63201;
+        self.port = 5224;
     }
     return self;
 }
@@ -87,7 +87,7 @@
 	
 	NSError *error = nil;
 	//绑定端口
-	if (![self.udpSocket bindToPort:self.port error:&error])
+	if (![self.udpSocket bindToPort:58129 error:&error])
 	{
         NSLog(@"Error binding: %@", error);
 		return;
@@ -112,7 +112,7 @@
 {
     NSString *msg = @"Hello,Catch me call!";
     NSData *data = [msg dataUsingEncoding:NSUTF8StringEncoding];
-	[self.udpSocket sendData:data toHost:@"255.255.255.255" port:self.port withTimeout:-1 tag:self.tag];
+	[self.udpSocket sendData:data toHost:@"224.0.0.1" port:self.port withTimeout:-1 tag:self.tag];
 }
 
 #pragma mark - GCDAsyncUdpSocketDelegate
@@ -152,7 +152,6 @@
 {
     InitAddresses();
     GetIPAddresses();
-    GetHWAddresses();
     
 //    CloNetworkUtil *cloNetworkUtil = [[CloNetworkUtil alloc] init];
 //    NetworkStatus workStatus = [cloNetworkUtil getNetWorkType];

@@ -30,5 +30,4 @@ extern unsigned long ip_addrs[MAXADDRS];
 
 void InitAddresses();  
 void FreeAddresses();  
-void GetIPAddresses();  
-void GetHWAddresses();  
+void GetIPAddresses();
