@@ -690,8 +690,8 @@
 				INFOPLIST_FILE = "OnlineBus/OnlineBus-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					/Users/jerry/development/MyGit_IOS/OnlineBus/OnlineBus/Libraries/GoogleAnalytics,
-					/Users/jerry/development/MyGit_IOS/OnlineBus/OnlineBus/Libraries/GoogleAdMob,
+					"\"$(SRCROOT)/OnlineBus/Libraries/GoogleAnalytics\"",
+					"\"$(SRCROOT)/OnlineBus/Libraries/GoogleAdMob\"",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "苏州在线公交";
@@ -708,8 +708,8 @@
 				INFOPLIST_FILE = "OnlineBus/OnlineBus-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					/Users/jerry/development/MyGit_IOS/OnlineBus/OnlineBus/Libraries/GoogleAnalytics,
-					/Users/jerry/development/MyGit_IOS/OnlineBus/OnlineBus/Libraries/GoogleAdMob,
+					"\"$(SRCROOT)/OnlineBus/Libraries/GoogleAnalytics\"",
+					"\"$(SRCROOT)/OnlineBus/Libraries/GoogleAdMob\"",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "苏州在线公交";
@@ -760,8 +760,8 @@
 				INFOPLIST_FILE = "OnlineBus/OnlineBus-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					/Users/jerry/development/MyGit_IOS/OnlineBus/OnlineBus/Libraries/GoogleAnalytics,
-					/Users/jerry/development/MyGit_IOS/OnlineBus/OnlineBus/Libraries/GoogleAdMob,
+					"\"$(SRCROOT)/OnlineBus/Libraries/GoogleAnalytics\"",
+					"\"$(SRCROOT)/OnlineBus/Libraries/GoogleAdMob\"",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "苏州在线公交";
@@ -790,6 +790,7 @@
 				C43FE8B8184F580400436A14 /* Distribution */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
