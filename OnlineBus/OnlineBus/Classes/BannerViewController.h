@@ -16,6 +16,7 @@
 @interface BannerViewController : GAITrackedViewController<GADBannerViewDelegate>
 
 @property(nonatomic, strong) GADBannerView *adBanner;
+@property(nonatomic, strong) UIButton *admobCloseBtn;
 
 - (void)loadCustomBanner;
 - (GADRequest *)createRequest;

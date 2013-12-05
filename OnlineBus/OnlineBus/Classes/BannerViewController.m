@@ -9,6 +9,8 @@
 #import "BannerViewController.h"
 #import "GAIDictionaryBuilder.h"
 
+#define ADMOB_BUTTON_CLOSE_TAG 180
+
 @interface BannerViewController ()
 
 @end
@@ -47,16 +49,26 @@
 - (void)loadCustomBanner
 {
     //Initialize the banner off the screen so that it animates up when displaying
-    self.adBanner = [[GADBannerView alloc] initWithFrame:CGRectMake(0.0,
-                                                                    self.view.frame.size.height,
-                                                                    GAD_SIZE_320x50.width,
-                                                                    GAD_SIZE_320x50.height)];
-    self.adBanner.adUnitID = kSampleAdUnitID;
-    self.adBanner.delegate = self;
-    self.adBanner.rootViewController = self;
-    [self.view addSubview:self.adBanner];
+    if (!self.adBanner) {
+        //self.adBanner = [[GADBannerView alloc] initWithAdSize:kGADAdSizeBanner];
+        self.adBanner = [[GADBannerView alloc] initWithFrame:CGRectMake(0.0,
+                                                                        self.view.frame.size.height,
+                                                                        GAD_SIZE_320x50.width,
+                                                                        GAD_SIZE_320x50.height)];
+        self.adBanner.adUnitID = kSampleAdUnitID;
+        self.adBanner.delegate = self;
+        self.adBanner.rootViewController = self;
+        [self.view addSubview:self.adBanner];
+        
+        
+        self.admobCloseBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        self.admobCloseBtn.tag = ADMOB_BUTTON_CLOSE_TAG;
+        self.admobCloseBtn.frame = CGRectMake(269, 0, 50, 50);
+        [self.admobCloseBtn addTarget:self action:@selector(closeBannerView) forControlEvents:UIControlEventTouchUpInside];
+        [self.admobCloseBtn setImage:[UIImage imageNamed:@"adsmogo_close.png"] forState:UIControlStateNormal];
+    }
+    
     [self.adBanner loadRequest:[self createRequest]];
-    //self.adBanner = [[GADBannerView alloc] initWithAdSize:kGADAdSizeBanner];
 }
 
 - (GADRequest *)createRequest
@@ -114,7 +126,7 @@
 
 #pragma mark GADBannerViewDelegate impl
 - (void)adViewDidReceiveAd:(GADBannerView *)adView {
-    [UIView animateWithDuration:1.0 animations:^ {
+    [UIView animateWithDuration:0.5 animations:^ {
         adView.frame = CGRectMake(0.0,
                                   self.view.frame.size.height -
                                   adView.frame.size.height - 49,
@@ -122,11 +134,9 @@
                                   adView.frame.size.height);
         
     } completion:^(BOOL finished) {
-        UIButton *closeButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        closeButton.frame = CGRectMake(280, 10, 40, 30);
-        [closeButton addTarget:self action:@selector(closeBannerView) forControlEvents:UIControlEventTouchUpInside];
-        [closeButton setImage:[UIImage imageNamed:@"ads_close.png"] forState:UIControlStateNormal];
-        [adView addSubview:closeButton];
+        if (![adView viewWithTag:ADMOB_BUTTON_CLOSE_TAG]) {
+            [adView addSubview:self.admobCloseBtn];
+        }
     }];
 }
 
