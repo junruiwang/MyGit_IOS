@@ -27,7 +27,7 @@
 {
     [super viewDidLoad];
 	self.screenName = @"线路查询页面测试";
-    self.navigationItem.title = @"线路查询";
+    self.parentViewController.navigationItem.title = @"线路查询";
 }
 
 - (void)didReceiveMemoryWarning
