@@ -13,6 +13,14 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     //self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    
+    NSLog(@"systemVersion:%@",[[UIDevice currentDevice] systemVersion]);
+    
+    if (SYSTEM_VERSION <7.0f) {
+        //设置顶部状态栏背景色
+        [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleBlackOpaque;
+    }
+    
     // Initialize Google Analytics with a 120-second dispatch interval.
     [GAI sharedInstance].dispatchInterval = 60;
     [GAI sharedInstance].trackUncaughtExceptions = YES;

@@ -31,6 +31,9 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor colorWithWhite:0.962 alpha:1.000];
     self.navigationItem.hidesBackButton = YES;
+    if (SYSTEM_VERSION <7.0f) {
+        self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
+    }
     
 //    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"返回" style:UIBarButtonItemStyleBordered target:self action:@selector(backHome:)];
 }
@@ -126,10 +129,15 @@
 
 #pragma mark GADBannerViewDelegate impl
 - (void)adViewDidReceiveAd:(GADBannerView *)adView {
+    
+    CGFloat positionY = self.view.frame.size.height - adView.frame.size.height;
+    if (SYSTEM_VERSION >=7.0f) {
+        positionY = positionY - 49;
+    }
+    
     [UIView animateWithDuration:0.5 animations:^ {
         adView.frame = CGRectMake(0.0,
-                                  self.view.frame.size.height -
-                                  adView.frame.size.height - 49,
+                                  positionY,
                                   adView.frame.size.width,
                                   adView.frame.size.height);
         

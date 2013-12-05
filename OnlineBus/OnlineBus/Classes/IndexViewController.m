@@ -8,6 +8,7 @@
 
 #import "IndexViewController.h"
 #import "DSLoadingViewController.h"
+#import "Constants.h"
 
 @interface IndexViewController ()
 
@@ -27,6 +28,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    if (SYSTEM_VERSION <7.0f) {
+        self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
+    }
     
 	// Do any additional setup after loading the view.
 }

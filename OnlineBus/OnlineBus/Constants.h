@@ -23,5 +23,5 @@
 
 #import "AppDelegate.h"
 #define TheAppDelegate  ((AppDelegate *)[UIApplication sharedApplication].delegate)
-#define IS_IOS7 [[[UIDevice currentDevice] systemVersion] floatValue] >= 7
+#define SYSTEM_VERSION [[UIDevice currentDevice].systemVersion doubleValue]
 #define RGBCOLOR(R,G,B) [UIColor colorWithRed:(float)R/255.0 green:(float)G/255.0 blue:(float)B/255.0 alpha:1]
