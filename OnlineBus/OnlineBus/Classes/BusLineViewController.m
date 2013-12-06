@@ -12,6 +12,7 @@
 #import "BusLineTableViewCell.h"
 #import "BusLine.h"
 #import "RegexKitLite.h"
+#import "BusDetailViewController.h"
 
 @interface BusLineViewController ()
 
@@ -113,7 +114,7 @@
             lineTypeString = @"双向线路";
             break;
         case 3:
-            lineTypeString = @"双向线路 + 区间线路";
+            lineTypeString = @"双向线路 + 短程线路";
             break;
         default:
             lineTypeString = @"";
@@ -121,6 +122,28 @@
     }
     
     return lineTypeString;
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.destinationViewController isKindOfClass:[BusDetailViewController class]]) {
+        BusDetailViewController *busDetailViewController = (BusDetailViewController *)segue.destinationViewController;
+        
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        BusLine *busLine = [self.busLineArray objectAtIndex:[indexPath row]];
+        
+        NSMutableArray *doubleArray = [[NSMutableArray alloc] initWithCapacity:2];
+        for (BusLine *tmpBusLine in self.busLineTotalArray) {
+            if ([tmpBusLine.lineNumber isEqualToString:busLine.lineNumber]) {
+                [doubleArray addObject:tmpBusLine];
+            }
+        }
+        busDetailViewController.busLineArray = doubleArray;
+        
+        BusLineTableViewCell *cell = (BusLineTableViewCell *)[self.tableView cellForRowAtIndexPath:indexPath];
+        [cell setSelected:NO animated:YES];
+    }
+    
 }
 
 #pragma mark - UITableViewDataSource
@@ -167,8 +190,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    BusLineTableViewCell *cell = (BusLineTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
-    [cell setSelected:NO animated:YES];
+    [self performSegueWithIdentifier:FROM_BUSLIST_TO_BUSDETAIL sender:self];
 }
 
 #pragma mark JsonParserDelegate

@@ -25,9 +25,8 @@
 - (void)loadCustomBanner;
 - (GADRequest *)createRequest;
 - (UIButton *)generateNavButton:(NSString *) imageName action:(SEL) actionName;
-
-- (void)addLeftBarButton:(NSString *) imageName;
-- (void)backHome: (id) sender;
+- (void)backButtonClicked:(id)sender;
+- (void)showAlertMessage:(NSString *)msg;
 - (void)addRightBarButton:(UIButton *) button;
 
 @end

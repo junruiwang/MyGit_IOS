@@ -164,11 +164,11 @@
             <objects>
                 <viewController storyboardIdentifier="BusDetailViewController" id="gqp-Ki-Z1a" customClass="BusDetailViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ZED-d4-WvC">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" id="QGO-ck-UQA">
-                                <rect key="frame" x="0.0" y="5" width="314" height="203"/>
+                                <rect key="frame" x="0.0" y="5" width="314" height="139"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text=" 首末班时间：06:30-22:10" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8Tc-BO-qMV">
@@ -540,7 +540,7 @@
             <objects>
                 <navigationController definesPresentationContext="YES" id="uEE-fb-J06" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="线路查询" image="line.png" id="sRH-Ms-fFO"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="2DQ-3a-412" customClass="PrettyNavigationBar">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="2DQ-3a-412" customClass="PrettyNavigationBar">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -556,7 +556,7 @@
             <objects>
                 <viewController storyboardIdentifier="BusLineViewController" id="tOO-xk-rAS" customClass="BusLineViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="PmO-Ix-dSt">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" id="5de-Ii-NgM">
@@ -596,7 +596,7 @@
                                 <color key="backgroundColor" red="0.51764708757400513" green="0.60784316062927246" blue="0.70588237047195435" alpha="1" colorSpace="deviceRGB"/>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="54" sectionHeaderHeight="22" sectionFooterHeight="22" id="pBR-CK-G5b">
-                                <rect key="frame" x="0.0" y="53" width="320" height="520"/>
+                                <rect key="frame" x="0.0" y="53" width="320" height="456"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>

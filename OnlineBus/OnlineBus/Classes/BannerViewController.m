@@ -30,10 +30,10 @@
     [super viewDidLoad];
 //    self.view.backgroundColor = [UIColor colorWithWhite:0.962 alpha:1.000];
     self.view.backgroundColor = RGBCOLOR(230, 230, 230);
-    self.navigationItem.hidesBackButton = YES;
     if (SYSTEM_VERSION <7.0f) {
         self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
     }
+    [self generateBarButton];
     
 //    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"返回" style:UIBarButtonItemStyleBordered target:self action:@selector(backHome:)];
 }
@@ -83,24 +83,30 @@
     return request;
 }
 
-- (void)backHome:(id)sender
+
+- (void)generateBarButton
+{
+    //add left button
+    UIButton* leftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    if (SYSTEM_VERSION <7.0f) {
+        [leftBtn setImage:[UIImage imageNamed:@"hotel-topbar-back.png"] forState:UIControlStateNormal];
+    } else {
+        [leftBtn setImage:[UIImage imageNamed:@"navigationbar_back_os7"] forState:UIControlStateNormal];
+        [leftBtn setImage:[UIImage imageNamed:@"navigationbar_back_highlighted_os7"] forState:UIControlStateHighlighted];
+    }
+    [leftBtn addTarget:self action:@selector(backButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+    leftBtn.frame = CGRectMake(10, 5, 30, 30);
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:leftBtn];
+}
+
+- (void)backButtonClicked:(id)sender
 {
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (void)addLeftBarButton:(NSString *) imageName
-{
-    //add left back button
-    UIButton *backButton = [self generateNavButton:imageName action:@selector(backHome:)];
-    backButton.frame = CGRectMake(0, 0, 48, 44);
-    
-    UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
-    self.navigationItem.leftBarButtonItem = barButtonItem;
-}
-
 - (void)addRightBarButton:(UIButton *) button
 {
-    button.frame = CGRectMake(0, 0, 40, 44);
+    button.frame = CGRectMake(0, 0, 30, 30);
     
     UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
     self.navigationItem.rightBarButtonItem = barButtonItem;
@@ -157,6 +163,17 @@
 - (void)parser:(JsonParser*)parser DidFailedParseWithMsg:(NSString*)msg errCode:(NSInteger)code
 {
     NSLog(@"系统发生错误，错误原因：%@，错误代码：%d",msg,code);
+}
+
+- (void)showAlertMessage:(NSString *)msg
+{
+    UIAlertView *alertView = [[UIAlertView alloc]
+                              initWithTitle:@"信息提示"
+                              message:msg
+                              delegate:nil
+                              cancelButtonTitle:@"确定"
+                              otherButtonTitles:nil];
+    [alertView show];
 }
 
 @end
