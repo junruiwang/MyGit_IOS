@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C4345B5B1851989A00CCEF97 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C4345B5A1851989A00CCEF97 /* libicucore.dylib */; };
 		C43FE889184F542800436A14 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C43FE888184F542800436A14 /* Foundation.framework */; };
 		C43FE88B184F542800436A14 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C43FE88A184F542800436A14 /* CoreGraphics.framework */; };
 		C43FE88D184F542800436A14 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C43FE88C184F542800436A14 /* UIKit.framework */; };
@@ -88,9 +89,29 @@
 		C43FE991184F8B6800436A14 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C43FE990184F8B6800436A14 /* AVFoundation.framework */; };
 		C46201E81850777C00EA98CC /* DSLoadingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C46201E71850777C00EA98CC /* DSLoadingViewController.m */; };
 		C46201EC18507CAB00EA98CC /* IndexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C46201EB18507CAB00EA98CC /* IndexViewController.m */; };
+		C468AAEB18517092004EA128 /* search_discover.png in Resources */ = {isa = PBXBuildFile; fileRef = C468AAE818517092004EA128 /* search_discover.png */; };
+		C468AAF4185173BF004EA128 /* booking_btn_press.png in Resources */ = {isa = PBXBuildFile; fileRef = C468AAEC185173BF004EA128 /* booking_btn_press.png */; };
+		C468AAF5185173BF004EA128 /* book@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C468AAED185173BF004EA128 /* book@2x.png */; };
+		C468AAF6185173BF004EA128 /* booking_btn_n.png in Resources */ = {isa = PBXBuildFile; fileRef = C468AAEE185173BF004EA128 /* booking_btn_n.png */; };
+		C468AAF7185173BF004EA128 /* book.png in Resources */ = {isa = PBXBuildFile; fileRef = C468AAEF185173BF004EA128 /* book.png */; };
+		C468AAF8185173BF004EA128 /* book-1.png in Resources */ = {isa = PBXBuildFile; fileRef = C468AAF0185173BF004EA128 /* book-1.png */; };
+		C468AAF9185173BF004EA128 /* book-1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C468AAF1185173BF004EA128 /* book-1@2x.png */; };
+		C468AAFA185173BF004EA128 /* booking_btn_press@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C468AAF2185173BF004EA128 /* booking_btn_press@2x.png */; };
+		C468AAFB185173BF004EA128 /* booking_btn_n@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C468AAF3185173BF004EA128 /* booking_btn_n@2x.png */; };
+		C468AB021851810B004EA128 /* dashed_detail.png in Resources */ = {isa = PBXBuildFile; fileRef = C468AB011851810B004EA128 /* dashed_detail.png */; };
+		C468AB051851819B004EA128 /* BusLineTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C468AB041851819B004EA128 /* BusLineTableViewCell.m */; };
+		C4EA47101851894900018B27 /* BusLine.m in Sources */ = {isa = PBXBuildFile; fileRef = C4EA470D1851894900018B27 /* BusLine.m */; };
+		C4EA47111851894900018B27 /* BusSingleLine.m in Sources */ = {isa = PBXBuildFile; fileRef = C4EA470F1851894900018B27 /* BusSingleLine.m */; };
+		C4EA4719185189EA00018B27 /* BusLineParser.m in Sources */ = {isa = PBXBuildFile; fileRef = C4EA4714185189EA00018B27 /* BusLineParser.m */; };
+		C4EA471A185189EA00018B27 /* BusSingleLineParser.m in Sources */ = {isa = PBXBuildFile; fileRef = C4EA4716185189EA00018B27 /* BusSingleLineParser.m */; };
+		C4EA471B185189EA00018B27 /* SingleLineTimeParser.m in Sources */ = {isa = PBXBuildFile; fileRef = C4EA4718185189EA00018B27 /* SingleLineTimeParser.m */; };
+		C4EA4720185190D200018B27 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C4EA471D185190D200018B27 /* SVProgressHUD.bundle */; };
+		C4EA4721185190D200018B27 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = C4EA471F185190D200018B27 /* SVProgressHUD.m */; };
+		C4EA4725185195BD00018B27 /* RegexKitLite.m in Sources */ = {isa = PBXBuildFile; fileRef = C4EA4724185195BD00018B27 /* RegexKitLite.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C4345B5A1851989A00CCEF97 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
 		C43FE885184F542800436A14 /* 苏州在线公交.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "苏州在线公交.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C43FE888184F542800436A14 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C43FE88A184F542800436A14 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -101,7 +122,6 @@
 		C43FE896184F542800436A14 /* OnlineBus-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OnlineBus-Prefix.pch"; sourceTree = "<group>"; };
 		C43FE897184F542800436A14 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C43FE898184F542800436A14 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		C43FE8A1184F542800436A14 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		C43FE8BD184F62B900436A14 /* about_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = about_logo.png; path = Resources/about_logo.png; sourceTree = "<group>"; };
 		C43FE8BE184F62B900436A14 /* about_logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "about_logo@2x.png"; path = "Resources/about_logo@2x.png"; sourceTree = "<group>"; };
 		C43FE8BF184F62B900436A14 /* ads_close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ads_close.png; path = Resources/ads_close.png; sourceTree = "<group>"; };
@@ -214,6 +234,33 @@
 		C46201E71850777C00EA98CC /* DSLoadingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DSLoadingViewController.m; path = Classes/DSLoadingViewController.m; sourceTree = "<group>"; };
 		C46201EA18507CAB00EA98CC /* IndexViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IndexViewController.h; path = Classes/IndexViewController.h; sourceTree = "<group>"; };
 		C46201EB18507CAB00EA98CC /* IndexViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IndexViewController.m; path = Classes/IndexViewController.m; sourceTree = "<group>"; };
+		C468AAE818517092004EA128 /* search_discover.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = search_discover.png; path = Resources/search_discover.png; sourceTree = "<group>"; };
+		C468AAEC185173BF004EA128 /* booking_btn_press.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = booking_btn_press.png; path = Resources/booking_btn_press.png; sourceTree = "<group>"; };
+		C468AAED185173BF004EA128 /* book@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "book@2x.png"; path = "Resources/book@2x.png"; sourceTree = "<group>"; };
+		C468AAEE185173BF004EA128 /* booking_btn_n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = booking_btn_n.png; path = Resources/booking_btn_n.png; sourceTree = "<group>"; };
+		C468AAEF185173BF004EA128 /* book.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = book.png; path = Resources/book.png; sourceTree = "<group>"; };
+		C468AAF0185173BF004EA128 /* book-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "book-1.png"; path = "Resources/book-1.png"; sourceTree = "<group>"; };
+		C468AAF1185173BF004EA128 /* book-1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "book-1@2x.png"; path = "Resources/book-1@2x.png"; sourceTree = "<group>"; };
+		C468AAF2185173BF004EA128 /* booking_btn_press@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "booking_btn_press@2x.png"; path = "Resources/booking_btn_press@2x.png"; sourceTree = "<group>"; };
+		C468AAF3185173BF004EA128 /* booking_btn_n@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "booking_btn_n@2x.png"; path = "Resources/booking_btn_n@2x.png"; sourceTree = "<group>"; };
+		C468AB011851810B004EA128 /* dashed_detail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = dashed_detail.png; path = Resources/dashed_detail.png; sourceTree = "<group>"; };
+		C468AB031851819B004EA128 /* BusLineTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BusLineTableViewCell.h; path = Classes/BusLineTableViewCell.h; sourceTree = "<group>"; };
+		C468AB041851819B004EA128 /* BusLineTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BusLineTableViewCell.m; path = Classes/BusLineTableViewCell.m; sourceTree = "<group>"; };
+		C4EA470C1851894900018B27 /* BusLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BusLine.h; path = Classes/BusLine.h; sourceTree = "<group>"; };
+		C4EA470D1851894900018B27 /* BusLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BusLine.m; path = Classes/BusLine.m; sourceTree = "<group>"; };
+		C4EA470E1851894900018B27 /* BusSingleLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BusSingleLine.h; path = Classes/BusSingleLine.h; sourceTree = "<group>"; };
+		C4EA470F1851894900018B27 /* BusSingleLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BusSingleLine.m; path = Classes/BusSingleLine.m; sourceTree = "<group>"; };
+		C4EA4713185189EA00018B27 /* BusLineParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BusLineParser.h; path = Classes/BusLineParser.h; sourceTree = "<group>"; };
+		C4EA4714185189EA00018B27 /* BusLineParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BusLineParser.m; path = Classes/BusLineParser.m; sourceTree = "<group>"; };
+		C4EA4715185189EA00018B27 /* BusSingleLineParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BusSingleLineParser.h; path = Classes/BusSingleLineParser.h; sourceTree = "<group>"; };
+		C4EA4716185189EA00018B27 /* BusSingleLineParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BusSingleLineParser.m; path = Classes/BusSingleLineParser.m; sourceTree = "<group>"; };
+		C4EA4717185189EA00018B27 /* SingleLineTimeParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SingleLineTimeParser.h; path = Classes/SingleLineTimeParser.h; sourceTree = "<group>"; };
+		C4EA4718185189EA00018B27 /* SingleLineTimeParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SingleLineTimeParser.m; path = Classes/SingleLineTimeParser.m; sourceTree = "<group>"; };
+		C4EA471D185190D200018B27 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
+		C4EA471E185190D200018B27 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
+		C4EA471F185190D200018B27 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
+		C4EA4723185195BD00018B27 /* RegexKitLite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegexKitLite.h; sourceTree = "<group>"; };
+		C4EA4724185195BD00018B27 /* RegexKitLite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegexKitLite.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -221,6 +268,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C4345B5B1851989A00CCEF97 /* libicucore.dylib in Frameworks */,
 				C43FE991184F8B6800436A14 /* AVFoundation.framework in Frameworks */,
 				C43FE982184F85A400436A14 /* StoreKit.framework in Frameworks */,
 				C43FE980184F859500436A14 /* MessageUI.framework in Frameworks */,
@@ -260,6 +308,7 @@
 		C43FE887184F542800436A14 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C4345B5A1851989A00CCEF97 /* libicucore.dylib */,
 				C43FE935184F73A200436A14 /* libz.dylib */,
 				C43FE97B184F856700436A14 /* AdSupport.framework */,
 				C43FE97D184F858200436A14 /* AudioToolbox.framework */,
@@ -271,7 +320,6 @@
 				C43FE981184F85A400436A14 /* StoreKit.framework */,
 				C43FE933184F739100436A14 /* SystemConfiguration.framework */,
 				C43FE88C184F542800436A14 /* UIKit.framework */,
-				C43FE8A1184F542800436A14 /* XCTest.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -304,6 +352,15 @@
 		C43FE8B9184F5C0300436A14 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				C468AAEC185173BF004EA128 /* booking_btn_press.png */,
+				C468AAED185173BF004EA128 /* book@2x.png */,
+				C468AAEE185173BF004EA128 /* booking_btn_n.png */,
+				C468AAEF185173BF004EA128 /* book.png */,
+				C468AAF0185173BF004EA128 /* book-1.png */,
+				C468AAF1185173BF004EA128 /* book-1@2x.png */,
+				C468AAF2185173BF004EA128 /* booking_btn_press@2x.png */,
+				C468AAF3185173BF004EA128 /* booking_btn_n@2x.png */,
+				C468AAE818517092004EA128 /* search_discover.png */,
 				C43FE8BD184F62B900436A14 /* about_logo.png */,
 				C43FE8BE184F62B900436A14 /* about_logo@2x.png */,
 				C43FE8BF184F62B900436A14 /* ads_close.png */,
@@ -328,6 +385,7 @@
 				C43FE8CE184F62B900436A14 /* icon_120.png */,
 				C43FE8CF184F62B900436A14 /* keyboard_btn_hide.png */,
 				C43FE8D0184F62B900436A14 /* keyboard_btn_hide@2x.png */,
+				C468AB011851810B004EA128 /* dashed_detail.png */,
 				C43FE8D1184F62B900436A14 /* line-next.png */,
 				C43FE8D2184F62B900436A14 /* line-next@2x.png */,
 				C43FE8D3184F62B900436A14 /* line.png */,
@@ -367,8 +425,10 @@
 			isa = PBXGroup;
 			children = (
 				C43FE96F184F850600436A14 /* GoogleAdMob */,
-				C43FE949184F7BEF00436A14 /* SBJson */,
 				C43FE911184F732B00436A14 /* GoogleAnalytics */,
+				C4EA4722185195BD00018B27 /* RegexKitLite */,
+				C43FE949184F7BEF00436A14 /* SBJson */,
+				C4EA471C185190D200018B27 /* SVProgressHUD */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -459,8 +519,12 @@
 		C43FE98C184F88F100436A14 /* Buses */ = {
 			isa = PBXGroup;
 			children = (
+				C4EA47121851899C00018B27 /* Parser */,
+				C4EA470B185188EF00018B27 /* Model */,
 				C43FE98D184F896200436A14 /* BusLineViewController.h */,
 				C43FE98E184F896200436A14 /* BusLineViewController.m */,
+				C468AB031851819B004EA128 /* BusLineTableViewCell.h */,
+				C468AB041851819B004EA128 /* BusLineTableViewCell.m */,
 			);
 			name = Buses;
 			sourceTree = "<group>";
@@ -474,6 +538,51 @@
 				C46201EB18507CAB00EA98CC /* IndexViewController.m */,
 			);
 			name = Index;
+			sourceTree = "<group>";
+		};
+		C4EA470B185188EF00018B27 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C4EA470C1851894900018B27 /* BusLine.h */,
+				C4EA470D1851894900018B27 /* BusLine.m */,
+				C4EA470E1851894900018B27 /* BusSingleLine.h */,
+				C4EA470F1851894900018B27 /* BusSingleLine.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		C4EA47121851899C00018B27 /* Parser */ = {
+			isa = PBXGroup;
+			children = (
+				C4EA4713185189EA00018B27 /* BusLineParser.h */,
+				C4EA4714185189EA00018B27 /* BusLineParser.m */,
+				C4EA4715185189EA00018B27 /* BusSingleLineParser.h */,
+				C4EA4716185189EA00018B27 /* BusSingleLineParser.m */,
+				C4EA4717185189EA00018B27 /* SingleLineTimeParser.h */,
+				C4EA4718185189EA00018B27 /* SingleLineTimeParser.m */,
+			);
+			name = Parser;
+			sourceTree = "<group>";
+		};
+		C4EA471C185190D200018B27 /* SVProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				C4EA471D185190D200018B27 /* SVProgressHUD.bundle */,
+				C4EA471E185190D200018B27 /* SVProgressHUD.h */,
+				C4EA471F185190D200018B27 /* SVProgressHUD.m */,
+			);
+			name = SVProgressHUD;
+			path = Libraries/SVProgressHUD;
+			sourceTree = "<group>";
+		};
+		C4EA4722185195BD00018B27 /* RegexKitLite */ = {
+			isa = PBXGroup;
+			children = (
+				C4EA4723185195BD00018B27 /* RegexKitLite.h */,
+				C4EA4724185195BD00018B27 /* RegexKitLite.m */,
+			);
+			name = RegexKitLite;
+			path = Libraries/RegexKitLite;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -532,10 +641,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C468AAF4185173BF004EA128 /* booking_btn_press.png in Resources */,
+				C468AAF6185173BF004EA128 /* booking_btn_n.png in Resources */,
 				C43FE8EC184F62B900436A14 /* datamanage@2x.png in Resources */,
 				C43FE8F4184F62B900436A14 /* keyboard_btn_hide.png in Resources */,
 				C43FE8ED184F62B900436A14 /* heart_icon_red.png in Resources */,
+				C468AAF7185173BF004EA128 /* book.png in Resources */,
 				C43FE8EB184F62B900436A14 /* datamanage.png in Resources */,
+				C468AB021851810B004EA128 /* dashed_detail.png in Resources */,
 				C43FE902184F62B900436A14 /* share_icon.png in Resources */,
 				C43FE8F5184F62B900436A14 /* keyboard_btn_hide@2x.png in Resources */,
 				C43FE8FE184F62B900436A14 /* search_bar_edit_normal.png in Resources */,
@@ -546,10 +659,12 @@
 				C43FE8FA184F62B900436A14 /* run_current_station.png in Resources */,
 				C43FE90D184F635D00436A14 /* Default@2x.png in Resources */,
 				C43FE90C184F635D00436A14 /* Default.png in Resources */,
+				C468AAF5185173BF004EA128 /* book@2x.png in Resources */,
 				C43FE8EA184F62B900436A14 /* current_top@2x.png in Resources */,
 				C43FE90B184F635D00436A14 /* Default-568h@2x.png in Resources */,
 				C43FE8F3184F62B900436A14 /* icon_120.png in Resources */,
 				C43FE8E9184F62B900436A14 /* current_top.png in Resources */,
+				C468AAF8185173BF004EA128 /* book-1.png in Resources */,
 				C43FE8E3184F62B900436A14 /* about_logo@2x.png in Resources */,
 				C43FE8E6184F62B900436A14 /* bus_favorites@2x.png in Resources */,
 				C43FE98B184F88A300436A14 /* adsmogo_close@2x.png in Resources */,
@@ -564,13 +679,18 @@
 				C43FE8F9184F62B900436A14 /* line@2x.png in Resources */,
 				C43FE8F7184F62B900436A14 /* line-next@2x.png in Resources */,
 				C43FE986184F884100436A14 /* adsmogo_adclose.png in Resources */,
+				C468AAFA185173BF004EA128 /* booking_btn_press@2x.png in Resources */,
 				C43FE987184F884100436A14 /* adsmogo_adclose@2x.png in Resources */,
+				C468AAEB18517092004EA128 /* search_discover.png in Resources */,
 				C43FE8E4184F62B900436A14 /* ads_close.png in Resources */,
 				C43FE98A184F88A300436A14 /* adsmogo_close.png in Resources */,
 				C43FE901184F62B900436A14 /* search_btn.png in Resources */,
+				C468AAFB185173BF004EA128 /* booking_btn_n@2x.png in Resources */,
 				C43FE8FC184F62B900436A14 /* run_station.png in Resources */,
 				C43FE8EF184F62B900436A14 /* heart_icon.png in Resources */,
 				C43FE8FB184F62B900436A14 /* run_current_station@2x.png in Resources */,
+				C468AAF9185173BF004EA128 /* book-1@2x.png in Resources */,
+				C4EA4720185190D200018B27 /* SVProgressHUD.bundle in Resources */,
 				C43FE905184F62B900436A14 /* stop.png in Resources */,
 				C43FE8F6184F62B900436A14 /* line-next.png in Resources */,
 				C43FE8F2184F62B900436A14 /* icon_114.png in Resources */,
@@ -593,19 +713,27 @@
 				C43FE944184F795700436A14 /* BannerViewController.m in Sources */,
 				C43FE968184F7BEF00436A14 /* SBJsonStreamParserState.m in Sources */,
 				C43FE947184F795700436A14 /* NSDataAES.m in Sources */,
+				C468AB051851819B004EA128 /* BusLineTableViewCell.m in Sources */,
+				C4EA47101851894900018B27 /* BusLine.m in Sources */,
 				C43FE945184F795700436A14 /* FileManager.m in Sources */,
 				C43FE899184F542800436A14 /* AppDelegate.m in Sources */,
+				C4EA4721185190D200018B27 /* SVProgressHUD.m in Sources */,
 				C43FE96E184F7BEF00436A14 /* SBJsonWriter.m in Sources */,
 				C43FE895184F542800436A14 /* main.m in Sources */,
+				C4EA471B185189EA00018B27 /* SingleLineTimeParser.m in Sources */,
 				C43FE966184F7BEF00436A14 /* SBJsonStreamParserAccumulator.m in Sources */,
 				C43FE964184F7BEF00436A14 /* SBJsonParser.m in Sources */,
 				C43FE963184F7BEF00436A14 /* NSObject+SBJson.m in Sources */,
 				C43FE96D184F7BEF00436A14 /* SBJsonUTF8Stream.m in Sources */,
+				C4EA4719185189EA00018B27 /* BusLineParser.m in Sources */,
+				C4EA4725185195BD00018B27 /* RegexKitLite.m in Sources */,
 				C43FE946184F795700436A14 /* JsonParser.m in Sources */,
+				C4EA471A185189EA00018B27 /* BusSingleLineParser.m in Sources */,
 				C43FE96A184F7BEF00436A14 /* SBJsonStreamWriterAccumulator.m in Sources */,
 				C43FE969184F7BEF00436A14 /* SBJsonStreamWriter.m in Sources */,
 				C43FE96B184F7BEF00436A14 /* SBJsonStreamWriterState.m in Sources */,
 				C46201EC18507CAB00EA98CC /* IndexViewController.m in Sources */,
+				C4EA47111851894900018B27 /* BusSingleLine.m in Sources */,
 				C43FE965184F7BEF00436A14 /* SBJsonStreamParser.m in Sources */,
 				C43FE967184F7BEF00436A14 /* SBJsonStreamParserAdapter.m in Sources */,
 				C46201E81850777C00EA98CC /* DSLoadingViewController.m in Sources */,

@@ -12,8 +12,12 @@
 #import "GADBannerView.h"
 #import "GADRequest.h"
 #import "GAI.h"
+#import "GAIDictionaryBuilder.h"
+#import "JsonParser.h"
+#import "SVProgressHUD.h"
+#import "ValidateInputUtil.h"
 
-@interface BannerViewController : GAITrackedViewController<GADBannerViewDelegate>
+@interface BannerViewController : GAITrackedViewController<GADBannerViewDelegate, JsonParserDelegate>
 
 @property(nonatomic, strong) GADBannerView *adBanner;
 @property(nonatomic, strong) UIButton *admobCloseBtn;

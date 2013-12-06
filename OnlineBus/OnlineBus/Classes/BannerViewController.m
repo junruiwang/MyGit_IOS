@@ -7,7 +7,6 @@
 //
 
 #import "BannerViewController.h"
-#import "GAIDictionaryBuilder.h"
 
 #define ADMOB_BUTTON_CLOSE_TAG 180
 
@@ -29,7 +28,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor colorWithWhite:0.962 alpha:1.000];
+//    self.view.backgroundColor = [UIColor colorWithWhite:0.962 alpha:1.000];
+    self.view.backgroundColor = RGBCOLOR(230, 230, 230);
     self.navigationItem.hidesBackButton = YES;
     if (SYSTEM_VERSION <7.0f) {
         self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
@@ -131,10 +131,6 @@
 - (void)adViewDidReceiveAd:(GADBannerView *)adView {
     
     CGFloat positionY = self.view.frame.size.height - adView.frame.size.height;
-    if (SYSTEM_VERSION >=7.0f) {
-        positionY = positionY - 49;
-    }
-    
     [UIView animateWithDuration:0.5 animations:^ {
         adView.frame = CGRectMake(0.0,
                                   positionY,
@@ -155,6 +151,12 @@
 - (void)adViewWillLeaveApplication:(GADBannerView *)adView {
     //GA跟踪搜索按钮
     [[[GAI sharedInstance] defaultTracker] send:[[GAIDictionaryBuilder createEventWithCategory:@"用户触摸" action:@"Click-to-App-Store" label:@"横幅广告条" value:nil] build]];
+}
+
+#pragma mark JsonParserDelegate
+- (void)parser:(JsonParser*)parser DidFailedParseWithMsg:(NSString*)msg errCode:(NSInteger)code
+{
+    NSLog(@"系统发生错误，错误原因：%@，错误代码：%d",msg,code);
 }
 
 @end

@@ -8,6 +8,13 @@
 
 #import "BannerViewController.h"
 
-@interface BusLineViewController : BannerViewController
+
+@interface BusLineViewController : BannerViewController <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate>
+
+@property(nonatomic, weak) IBOutlet UIView *topSearchView;
+@property(nonatomic, weak) IBOutlet UITableView *tableView;
+@property(nonatomic, weak) IBOutlet UITextField *queryField;
+
+- (IBAction)searchButtonTapped:(id)sender;
 
 @end
