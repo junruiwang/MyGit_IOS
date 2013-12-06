@@ -121,6 +121,10 @@
 		C4EA4720185190D200018B27 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C4EA471D185190D200018B27 /* SVProgressHUD.bundle */; };
 		C4EA4721185190D200018B27 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = C4EA471F185190D200018B27 /* SVProgressHUD.m */; };
 		C4EA4725185195BD00018B27 /* RegexKitLite.m in Sources */ = {isa = PBXBuildFile; fileRef = C4EA4724185195BD00018B27 /* RegexKitLite.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		C4F703E3185211CC00D4CB4C /* BusStation.m in Sources */ = {isa = PBXBuildFile; fileRef = C4F703E2185211CC00D4CB4C /* BusStation.m */; };
+		C4F703E61852124600D4CB4C /* BusStationParser.m in Sources */ = {isa = PBXBuildFile; fileRef = C4F703E51852124600D4CB4C /* BusStationParser.m */; };
+		C4F703EB1852135100D4CB4C /* StationSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4F703E81852135100D4CB4C /* StationSearchViewController.m */; };
+		C4F703EC1852135100D4CB4C /* StationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C4F703EA1852135100D4CB4C /* StationTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -290,6 +294,14 @@
 		C4EA471F185190D200018B27 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
 		C4EA4723185195BD00018B27 /* RegexKitLite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegexKitLite.h; sourceTree = "<group>"; };
 		C4EA4724185195BD00018B27 /* RegexKitLite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegexKitLite.m; sourceTree = "<group>"; };
+		C4F703E1185211CC00D4CB4C /* BusStation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BusStation.h; path = Classes/BusStation.h; sourceTree = "<group>"; };
+		C4F703E2185211CC00D4CB4C /* BusStation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BusStation.m; path = Classes/BusStation.m; sourceTree = "<group>"; };
+		C4F703E41852124600D4CB4C /* BusStationParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BusStationParser.h; path = Classes/BusStationParser.h; sourceTree = "<group>"; };
+		C4F703E51852124600D4CB4C /* BusStationParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BusStationParser.m; path = Classes/BusStationParser.m; sourceTree = "<group>"; };
+		C4F703E71852135100D4CB4C /* StationSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StationSearchViewController.h; path = Classes/StationSearchViewController.h; sourceTree = "<group>"; };
+		C4F703E81852135100D4CB4C /* StationSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StationSearchViewController.m; path = Classes/StationSearchViewController.m; sourceTree = "<group>"; };
+		C4F703E91852135100D4CB4C /* StationTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StationTableViewCell.h; path = Classes/StationTableViewCell.h; sourceTree = "<group>"; };
+		C4F703EA1852135100D4CB4C /* StationTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StationTableViewCell.m; path = Classes/StationTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -449,6 +461,7 @@
 		C43FE8BA184F5C5000436A14 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				C4F703DE1852116E00D4CB4C /* Station */,
 				C4A6CDB61851AC95000CCAD4 /* Favourite */,
 				C46201E5185076E900EA98CC /* Index */,
 				C43FE98C184F88F100436A14 /* Buses */,
@@ -638,6 +651,37 @@
 			path = Libraries/RegexKitLite;
 			sourceTree = "<group>";
 		};
+		C4F703DE1852116E00D4CB4C /* Station */ = {
+			isa = PBXGroup;
+			children = (
+				C4F703E71852135100D4CB4C /* StationSearchViewController.h */,
+				C4F703E81852135100D4CB4C /* StationSearchViewController.m */,
+				C4F703E91852135100D4CB4C /* StationTableViewCell.h */,
+				C4F703EA1852135100D4CB4C /* StationTableViewCell.m */,
+				C4F703E01852118A00D4CB4C /* Model */,
+				C4F703DF1852117C00D4CB4C /* Parser */,
+			);
+			name = Station;
+			sourceTree = "<group>";
+		};
+		C4F703DF1852117C00D4CB4C /* Parser */ = {
+			isa = PBXGroup;
+			children = (
+				C4F703E41852124600D4CB4C /* BusStationParser.h */,
+				C4F703E51852124600D4CB4C /* BusStationParser.m */,
+			);
+			name = Parser;
+			sourceTree = "<group>";
+		};
+		C4F703E01852118A00D4CB4C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C4F703E1185211CC00D4CB4C /* BusStation.h */,
+				C4F703E2185211CC00D4CB4C /* BusStation.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -790,12 +834,16 @@
 				C43FE964184F7BEF00436A14 /* SBJsonParser.m in Sources */,
 				C43FE963184F7BEF00436A14 /* NSObject+SBJson.m in Sources */,
 				C43FE96D184F7BEF00436A14 /* SBJsonUTF8Stream.m in Sources */,
+				C4F703E3185211CC00D4CB4C /* BusStation.m in Sources */,
 				C4EA4719185189EA00018B27 /* BusLineParser.m in Sources */,
 				C4EA4725185195BD00018B27 /* RegexKitLite.m in Sources */,
 				C43FE946184F795700436A14 /* JsonParser.m in Sources */,
 				C4EA471A185189EA00018B27 /* BusSingleLineParser.m in Sources */,
 				C43FE96A184F7BEF00436A14 /* SBJsonStreamWriterAccumulator.m in Sources */,
+				C4F703E61852124600D4CB4C /* BusStationParser.m in Sources */,
 				C43FE969184F7BEF00436A14 /* SBJsonStreamWriter.m in Sources */,
+				C4F703EB1852135100D4CB4C /* StationSearchViewController.m in Sources */,
+				C4F703EC1852135100D4CB4C /* StationTableViewCell.m in Sources */,
 				C4A6CDBC1851B4B8000CCAD4 /* LineIndex.m in Sources */,
 				C43FE96B184F7BEF00436A14 /* SBJsonStreamWriterState.m in Sources */,
 				C46201EC18507CAB00EA98CC /* IndexViewController.m in Sources */,
