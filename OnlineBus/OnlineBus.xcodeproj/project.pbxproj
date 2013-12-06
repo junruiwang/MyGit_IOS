@@ -80,10 +80,6 @@
 		C43FE97E184F858200436A14 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C43FE97D184F858200436A14 /* AudioToolbox.framework */; };
 		C43FE980184F859500436A14 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C43FE97F184F859500436A14 /* MessageUI.framework */; };
 		C43FE982184F85A400436A14 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C43FE981184F85A400436A14 /* StoreKit.framework */; };
-		C43FE986184F884100436A14 /* adsmogo_adclose.png in Resources */ = {isa = PBXBuildFile; fileRef = C43FE984184F884100436A14 /* adsmogo_adclose.png */; };
-		C43FE987184F884100436A14 /* adsmogo_adclose@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C43FE985184F884100436A14 /* adsmogo_adclose@2x.png */; };
-		C43FE98A184F88A300436A14 /* adsmogo_close.png in Resources */ = {isa = PBXBuildFile; fileRef = C43FE988184F88A200436A14 /* adsmogo_close.png */; };
-		C43FE98B184F88A300436A14 /* adsmogo_close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C43FE989184F88A200436A14 /* adsmogo_close@2x.png */; };
 		C43FE98F184F896200436A14 /* BusLineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C43FE98E184F896200436A14 /* BusLineViewController.m */; };
 		C43FE991184F8B6800436A14 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C43FE990184F8B6800436A14 /* AVFoundation.framework */; };
 		C46201E81850777C00EA98CC /* DSLoadingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C46201E71850777C00EA98CC /* DSLoadingViewController.m */; };
@@ -240,10 +236,6 @@
 		C43FE97D184F858200436A14 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		C43FE97F184F859500436A14 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		C43FE981184F85A400436A14 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
-		C43FE984184F884100436A14 /* adsmogo_adclose.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = adsmogo_adclose.png; path = Resources/adsmogo_adclose.png; sourceTree = "<group>"; };
-		C43FE985184F884100436A14 /* adsmogo_adclose@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "adsmogo_adclose@2x.png"; path = "Resources/adsmogo_adclose@2x.png"; sourceTree = "<group>"; };
-		C43FE988184F88A200436A14 /* adsmogo_close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = adsmogo_close.png; path = Resources/adsmogo_close.png; sourceTree = "<group>"; };
-		C43FE989184F88A200436A14 /* adsmogo_close@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "adsmogo_close@2x.png"; path = "Resources/adsmogo_close@2x.png"; sourceTree = "<group>"; };
 		C43FE98D184F896200436A14 /* BusLineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BusLineViewController.h; path = Classes/BusLineViewController.h; sourceTree = "<group>"; };
 		C43FE98E184F896200436A14 /* BusLineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BusLineViewController.m; path = Classes/BusLineViewController.m; sourceTree = "<group>"; };
 		C43FE990184F8B6800436A14 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -400,10 +392,6 @@
 				C43FE8BD184F62B900436A14 /* about_logo.png */,
 				C43FE8BE184F62B900436A14 /* about_logo@2x.png */,
 				C43FE8BF184F62B900436A14 /* ads_close.png */,
-				C43FE984184F884100436A14 /* adsmogo_adclose.png */,
-				C43FE985184F884100436A14 /* adsmogo_adclose@2x.png */,
-				C43FE988184F88A200436A14 /* adsmogo_close.png */,
-				C43FE989184F88A200436A14 /* adsmogo_close@2x.png */,
 				C468AAF0185173BF004EA128 /* book-1.png */,
 				C468AAF1185173BF004EA128 /* book-1@2x.png */,
 				C468AAEF185173BF004EA128 /* book.png */,
@@ -770,7 +758,6 @@
 				C468AAF8185173BF004EA128 /* book-1.png in Resources */,
 				C43FE8E3184F62B900436A14 /* about_logo@2x.png in Resources */,
 				C43FE8E6184F62B900436A14 /* bus_favorites@2x.png in Resources */,
-				C43FE98B184F88A300436A14 /* adsmogo_close@2x.png in Resources */,
 				C43FE893184F542800436A14 /* InfoPlist.strings in Resources */,
 				C43FE8E8184F62B900436A14 /* current_bottom@2x.png in Resources */,
 				C43FE8FF184F62B900436A14 /* search_bar_edit_normal@2x.png in Resources */,
@@ -779,15 +766,12 @@
 				C43FE8E7184F62B900436A14 /* current_bottom.png in Resources */,
 				C43FE8F9184F62B900436A14 /* line@2x.png in Resources */,
 				C43FE8F7184F62B900436A14 /* line-next@2x.png in Resources */,
-				C43FE986184F884100436A14 /* adsmogo_adclose.png in Resources */,
 				C4A6CDCB1851FD02000CCAD4 /* heart_icon_red@2x.png in Resources */,
 				C468AAFA185173BF004EA128 /* booking_btn_press@2x.png in Resources */,
 				C4A6CDCC1851FD02000CCAD4 /* heart_icon@2x.png in Resources */,
-				C43FE987184F884100436A14 /* adsmogo_adclose@2x.png in Resources */,
 				C468AAEB18517092004EA128 /* search_discover.png in Resources */,
 				C43FE8E4184F62B900436A14 /* ads_close.png in Resources */,
 				C4A6CDCE1851FD02000CCAD4 /* hotel-topbar-back@2x.png in Resources */,
-				C43FE98A184F88A300436A14 /* adsmogo_close.png in Resources */,
 				C43FE901184F62B900436A14 /* search_btn.png in Resources */,
 				C468AAFB185173BF004EA128 /* booking_btn_n@2x.png in Resources */,
 				C4A6CDD418520246000CCAD4 /* like_icon_press@2x.png in Resources */,

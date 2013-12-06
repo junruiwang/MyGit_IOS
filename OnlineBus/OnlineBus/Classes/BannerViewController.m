@@ -66,9 +66,9 @@
         
         self.admobCloseBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         self.admobCloseBtn.tag = ADMOB_BUTTON_CLOSE_TAG;
-        self.admobCloseBtn.frame = CGRectMake(269, 10, 50, 50);
+        self.admobCloseBtn.frame = CGRectMake(280, 10, 27, 27);
         [self.admobCloseBtn addTarget:self action:@selector(closeBannerView) forControlEvents:UIControlEventTouchUpInside];
-        [self.admobCloseBtn setImage:[UIImage imageNamed:@"adsmogo_close.png"] forState:UIControlStateNormal];
+        [self.admobCloseBtn setImage:[UIImage imageNamed:@"ads_close"] forState:UIControlStateNormal];
     }
     
     [self.adBanner loadRequest:[self createRequest]];

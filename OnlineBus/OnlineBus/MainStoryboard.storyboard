@@ -44,7 +44,7 @@
                                                 <rect key="frame" x="35" y="0.0" width="186" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" keyboardAppearance="alert" returnKeyType="search"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" returnKeyType="search"/>
                                                 <connections>
                                                     <action selector="searchButtonTapped:" destination="pRS-yn-EVl" eventType="editingDidEndOnExit" id="CW2-8O-HLa"/>
                                                     <outlet property="delegate" destination="pRS-yn-EVl" id="Ysv-fa-h98"/>
@@ -210,7 +210,7 @@
                                                 <rect key="frame" x="35" y="0.0" width="186" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" keyboardAppearance="alert" returnKeyType="search"/>
+                                                <textInputTraits key="textInputTraits" returnKeyType="search"/>
                                                 <connections>
                                                     <action selector="searchButtonTapped:" destination="NkU-bJ-Q1I" eventType="editingDidEndOnExit" id="Yft-qF-Ktf"/>
                                                     <outlet property="delegate" destination="NkU-bJ-Q1I" id="FIF-jB-RBF"/>
