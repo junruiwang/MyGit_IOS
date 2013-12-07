@@ -74,6 +74,22 @@
     self.toolView.frame = CGRectMake(0, self.view.frame.size.height - 50, self.view.frame.size.width, 50);
 }
 
+- (void)viewDidUnload
+{
+    self.topTitleView = nil;
+    self.bottomView = nil;
+    self.toolView = nil;
+    self.noDataView = nil;
+    self.subScrollView = nil;
+    self.timeLabel = nil;
+    self.totalStationLabel = nil;
+    self.startStationLabel = nil;
+    self.endStationLabel = nil;
+    self.faverateButton = nil;
+    
+    [super viewDidUnload];
+}
+
 - (void)noDataViewShow
 {
     self.noDataView = [[UIView alloc] initWithFrame:CGRectMake(60, self.view.frame.size.height - 300, 200, 60)];

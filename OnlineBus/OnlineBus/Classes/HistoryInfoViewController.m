@@ -107,6 +107,16 @@
     [self.topView addSubview:segmentedControl];
 }
 
+- (void)viewDidUnload
+{
+    self.busLineTableView = nil;
+    self.stationTableView = nil;
+    self.topView = nil;
+    self.rightBtn = nil;
+    
+    [super viewDidUnload];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

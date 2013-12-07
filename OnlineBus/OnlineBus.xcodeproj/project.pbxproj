@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		C40D29CD1851A93E00AB5CE0 /* BusDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C40D29CC1851A93E00AB5CE0 /* BusDetailViewController.m */; };
+		C42E2A50185376760007055C /* MoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C42E2A4F185376760007055C /* MoreViewController.m */; };
+		C42E2A531853831A0007055C /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C42E2A521853831A0007055C /* AboutViewController.m */; };
 		C4345B5B1851989A00CCEF97 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C4345B5A1851989A00CCEF97 /* libicucore.dylib */; };
 		C43FE889184F542800436A14 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C43FE888184F542800436A14 /* Foundation.framework */; };
 		C43FE88B184F542800436A14 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C43FE88A184F542800436A14 /* CoreGraphics.framework */; };
@@ -123,11 +125,16 @@
 		C4F703E61852124600D4CB4C /* BusStationParser.m in Sources */ = {isa = PBXBuildFile; fileRef = C4F703E51852124600D4CB4C /* BusStationParser.m */; };
 		C4F703EB1852135100D4CB4C /* StationSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4F703E81852135100D4CB4C /* StationSearchViewController.m */; };
 		C4F703EC1852135100D4CB4C /* StationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C4F703EA1852135100D4CB4C /* StationTableViewCell.m */; };
+		C4F8B80F1853856800EB0709 /* JJUnderlineButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C4F8B80E1853856800EB0709 /* JJUnderlineButton.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		C40D29CB1851A93E00AB5CE0 /* BusDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BusDetailViewController.h; path = Classes/BusDetailViewController.h; sourceTree = "<group>"; };
 		C40D29CC1851A93E00AB5CE0 /* BusDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BusDetailViewController.m; path = Classes/BusDetailViewController.m; sourceTree = "<group>"; };
+		C42E2A4E185376760007055C /* MoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MoreViewController.h; path = Classes/MoreViewController.h; sourceTree = "<group>"; };
+		C42E2A4F185376760007055C /* MoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MoreViewController.m; path = Classes/MoreViewController.m; sourceTree = "<group>"; };
+		C42E2A511853831A0007055C /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AboutViewController.h; path = Classes/AboutViewController.h; sourceTree = "<group>"; };
+		C42E2A521853831A0007055C /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AboutViewController.m; path = Classes/AboutViewController.m; sourceTree = "<group>"; };
 		C4345B5A1851989A00CCEF97 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
 		C43FE885184F542800436A14 /* 苏州在线公交.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "苏州在线公交.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C43FE888184F542800436A14 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -301,6 +308,8 @@
 		C4F703E81852135100D4CB4C /* StationSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StationSearchViewController.m; path = Classes/StationSearchViewController.m; sourceTree = "<group>"; };
 		C4F703E91852135100D4CB4C /* StationTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StationTableViewCell.h; path = Classes/StationTableViewCell.h; sourceTree = "<group>"; };
 		C4F703EA1852135100D4CB4C /* StationTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StationTableViewCell.m; path = Classes/StationTableViewCell.m; sourceTree = "<group>"; };
+		C4F8B80D1853856800EB0709 /* JJUnderlineButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JJUnderlineButton.h; path = Classes/JJUnderlineButton.h; sourceTree = "<group>"; };
+		C4F8B80E1853856800EB0709 /* JJUnderlineButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JJUnderlineButton.m; path = Classes/JJUnderlineButton.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -328,6 +337,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C42E2A4D185376310007055C /* About */ = {
+			isa = PBXGroup;
+			children = (
+				C42E2A511853831A0007055C /* AboutViewController.h */,
+				C42E2A521853831A0007055C /* AboutViewController.m */,
+				C42E2A4E185376760007055C /* MoreViewController.h */,
+				C42E2A4F185376760007055C /* MoreViewController.m */,
+			);
+			name = About;
+			sourceTree = "<group>";
+		};
 		C43FE87C184F542800436A14 = {
 			isa = PBXGroup;
 			children = (
@@ -455,6 +475,7 @@
 		C43FE8BA184F5C5000436A14 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				C42E2A4D185376310007055C /* About */,
 				C4F703DE1852116E00D4CB4C /* Station */,
 				C4A6CDB61851AC95000CCAD4 /* Favourite */,
 				C46201E5185076E900EA98CC /* Index */,
@@ -504,6 +525,8 @@
 				C43FE93D184F795700436A14 /* FileManager.m */,
 				C43FE93E184F795700436A14 /* JsonParser.h */,
 				C43FE93F184F795700436A14 /* JsonParser.m */,
+				C4F8B80D1853856800EB0709 /* JJUnderlineButton.h */,
+				C4F8B80E1853856800EB0709 /* JJUnderlineButton.m */,
 				C43FE940184F795700436A14 /* NSDataAES.h */,
 				C43FE941184F795700436A14 /* NSDataAES.m */,
 				C43FE942184F795700436A14 /* ValidateInputUtil.h */,
@@ -832,7 +855,9 @@
 				C4728FA2185314B200E6438D /* HistoryInfoViewController.m in Sources */,
 				C48379BA1852D496003491D4 /* FaverateStationBusManager.m in Sources */,
 				C4F703E3185211CC00D4CB4C /* BusStation.m in Sources */,
+				C42E2A50185376760007055C /* MoreViewController.m in Sources */,
 				C4EA4719185189EA00018B27 /* BusLineParser.m in Sources */,
+				C42E2A531853831A0007055C /* AboutViewController.m in Sources */,
 				C4EA4725185195BD00018B27 /* RegexKitLite.m in Sources */,
 				C48379B71852D432003491D4 /* StationBusViewController.m in Sources */,
 				C43FE946184F795700436A14 /* JsonParser.m in Sources */,
@@ -850,6 +875,7 @@
 				C43FE967184F7BEF00436A14 /* SBJsonStreamParserAdapter.m in Sources */,
 				C46201E81850777C00EA98CC /* DSLoadingViewController.m in Sources */,
 				C43FE98F184F896200436A14 /* BusLineViewController.m in Sources */,
+				C4F8B80F1853856800EB0709 /* JJUnderlineButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

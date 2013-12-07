@@ -26,6 +26,7 @@
 #define FROM_BUSSTATION_TO_BUSDETAIL    @"fromBusStationToBusDetail"
 #define FROM_FAVERATE_TO_BUSDETAIL      @"fromFaverateToBusDetail"
 #define FROM_FAVERATE_TO_STATIONBUS     @"fromFaverateToStationBus"
+#define FROM_MORE_TO_ABOUTUS            @"fromMoreToAboutUs"
 
 #import "AppDelegate.h"
 #define TheAppDelegate  ((AppDelegate *)[UIApplication sharedApplication].delegate)

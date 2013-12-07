@@ -63,6 +63,16 @@
     [self loadCustomBanner];
 }
 
+- (void)viewDidUnload
+{
+    self.topSearchView = nil;
+    self.tableView = nil;
+    self.queryField = nil;
+    self.touchView = nil;
+    
+    [super viewDidUnload];
+}
+
 - (IBAction)searchButtonTapped:(id)sender
 {
     [self.queryField resignFirstResponder];

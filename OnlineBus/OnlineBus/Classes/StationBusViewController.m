@@ -84,6 +84,15 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)viewDidUnload
+{
+    self.tableView = nil;
+    self.faverateButton = nil;
+    self.noDataView = nil;
+    
+    [super viewDidUnload];
+}
+
 - (void)noDataViewShow
 {
     self.noDataView = [[UIView alloc] initWithFrame:CGRectMake(60, self.view.frame.size.height - 300, 200, 60)];

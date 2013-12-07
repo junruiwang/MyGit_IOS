@@ -85,6 +85,16 @@
     [self.touchView removeFromSuperview];
 }
 
+- (void)viewDidUnload
+{
+    self.topSearchView = nil;
+    self.tableView = nil;
+    self.queryField = nil;
+    self.touchView = nil;
+    
+    [super viewDidUnload];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
