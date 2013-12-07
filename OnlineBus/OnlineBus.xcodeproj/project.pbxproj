@@ -53,6 +53,7 @@
 		C43FE90D184F635D00436A14 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C43FE90A184F635D00436A14 /* Default@2x.png */; };
 		C43FE910184F699700436A14 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C43FE90F184F699700436A14 /* MainStoryboard.storyboard */; };
 		C43FE919184F732B00436A14 /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C43FE918184F732B00436A14 /* libGoogleAnalyticsServices.a */; };
+		C43FE923185322380062BBFC /* list_delete.png in Resources */ = {isa = PBXBuildFile; fileRef = C43FE922185322380062BBFC /* list_delete.png */; };
 		C43FE932184F737900436A14 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C43FE931184F737900436A14 /* CoreData.framework */; };
 		C43FE934184F739100436A14 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C43FE933184F739100436A14 /* SystemConfiguration.framework */; };
 		C43FE936184F73A200436A14 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C43FE935184F73A200436A14 /* libz.dylib */; };
@@ -93,6 +94,7 @@
 		C468AAFB185173BF004EA128 /* booking_btn_n@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C468AAF3185173BF004EA128 /* booking_btn_n@2x.png */; };
 		C468AB021851810B004EA128 /* dashed_detail.png in Resources */ = {isa = PBXBuildFile; fileRef = C468AB011851810B004EA128 /* dashed_detail.png */; };
 		C468AB051851819B004EA128 /* BusLineTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C468AB041851819B004EA128 /* BusLineTableViewCell.m */; };
+		C4728FA2185314B200E6438D /* HistoryInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4728FA1185314B200E6438D /* HistoryInfoViewController.m */; };
 		C47A44E41852D1EA00567AD8 /* navigationbar_back_common.png in Resources */ = {isa = PBXBuildFile; fileRef = C47A44E31852D1EA00567AD8 /* navigationbar_back_common.png */; };
 		C48379B71852D432003491D4 /* StationBusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C48379B61852D432003491D4 /* StationBusViewController.m */; };
 		C48379BA1852D496003491D4 /* FaverateStationBusManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C48379B91852D496003491D4 /* FaverateStationBusManager.m */; };
@@ -181,6 +183,7 @@
 		C43FE916184F732B00436A14 /* GAITrackedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITrackedViewController.h; sourceTree = "<group>"; };
 		C43FE917184F732B00436A14 /* GAITracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITracker.h; sourceTree = "<group>"; };
 		C43FE918184F732B00436A14 /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
+		C43FE922185322380062BBFC /* list_delete.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = list_delete.png; path = Resources/list_delete.png; sourceTree = "<group>"; };
 		C43FE931184F737900436A14 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		C43FE933184F739100436A14 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		C43FE935184F73A200436A14 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
@@ -253,6 +256,8 @@
 		C468AB011851810B004EA128 /* dashed_detail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = dashed_detail.png; path = Resources/dashed_detail.png; sourceTree = "<group>"; };
 		C468AB031851819B004EA128 /* BusLineTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BusLineTableViewCell.h; path = Classes/BusLineTableViewCell.h; sourceTree = "<group>"; };
 		C468AB041851819B004EA128 /* BusLineTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BusLineTableViewCell.m; path = Classes/BusLineTableViewCell.m; sourceTree = "<group>"; };
+		C4728FA0185314B200E6438D /* HistoryInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HistoryInfoViewController.h; path = Classes/HistoryInfoViewController.h; sourceTree = "<group>"; };
+		C4728FA1185314B200E6438D /* HistoryInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HistoryInfoViewController.m; path = Classes/HistoryInfoViewController.m; sourceTree = "<group>"; };
 		C47A44E31852D1EA00567AD8 /* navigationbar_back_common.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = navigationbar_back_common.png; path = Resources/navigationbar_back_common.png; sourceTree = "<group>"; };
 		C48379B51852D432003491D4 /* StationBusViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StationBusViewController.h; path = Classes/StationBusViewController.h; sourceTree = "<group>"; };
 		C48379B61852D432003491D4 /* StationBusViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StationBusViewController.m; path = Classes/StationBusViewController.m; sourceTree = "<group>"; };
@@ -387,6 +392,7 @@
 		C43FE8B9184F5C0300436A14 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				C43FE922185322380062BBFC /* list_delete.png */,
 				C4E0BA501852C51300FADB93 /* favorite_add.png */,
 				C4E0BA511852C51300FADB93 /* favorite_delete.png */,
 				C43FE8BD184F62B900436A14 /* about_logo.png */,
@@ -590,6 +596,8 @@
 				C4A6CDB81851ACBB000CCAD4 /* FaverateBusLineManager.m */,
 				C48379B81852D496003491D4 /* FaverateStationBusManager.h */,
 				C48379B91852D496003491D4 /* FaverateStationBusManager.m */,
+				C4728FA0185314B200E6438D /* HistoryInfoViewController.h */,
+				C4728FA1185314B200E6438D /* HistoryInfoViewController.m */,
 			);
 			name = Favourite;
 			sourceTree = "<group>";
@@ -736,6 +744,7 @@
 				C43FE8F4184F62B900436A14 /* keyboard_btn_hide.png in Resources */,
 				C43FE8ED184F62B900436A14 /* heart_icon_red.png in Resources */,
 				C468AAF7185173BF004EA128 /* book.png in Resources */,
+				C43FE923185322380062BBFC /* list_delete.png in Resources */,
 				C43FE8EB184F62B900436A14 /* datamanage.png in Resources */,
 				C468AB021851810B004EA128 /* dashed_detail.png in Resources */,
 				C43FE902184F62B900436A14 /* share_icon.png in Resources */,
@@ -820,6 +829,7 @@
 				C43FE964184F7BEF00436A14 /* SBJsonParser.m in Sources */,
 				C43FE963184F7BEF00436A14 /* NSObject+SBJson.m in Sources */,
 				C43FE96D184F7BEF00436A14 /* SBJsonUTF8Stream.m in Sources */,
+				C4728FA2185314B200E6438D /* HistoryInfoViewController.m in Sources */,
 				C48379BA1852D496003491D4 /* FaverateStationBusManager.m in Sources */,
 				C4F703E3185211CC00D4CB4C /* BusStation.m in Sources */,
 				C4EA4719185189EA00018B27 /* BusLineParser.m in Sources */,

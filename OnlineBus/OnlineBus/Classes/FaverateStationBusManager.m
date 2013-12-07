@@ -73,6 +73,14 @@
     return [stationArray writeToFile: path atomically:YES];
 }
 
+- (BOOL)deleteAllBusStationInFaverate
+{
+    NSMutableArray *stationArray = [self readFaverateBusStationFromLocalFile];
+    [stationArray removeAllObjects];
+    NSString *path = [FileManager fileCachesPath:@"FaverateBusStation.plist"];
+    return [stationArray writeToFile: path atomically:YES];
+}
+
 - (NSMutableArray *) readFaverateBusStationFromLocalFile
 {
     NSString *path = [FileManager fileCachesPath:@"FaverateBusStation.plist"];

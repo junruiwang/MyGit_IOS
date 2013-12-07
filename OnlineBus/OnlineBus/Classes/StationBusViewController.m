@@ -47,7 +47,11 @@
     [super viewDidLoad];
     self.screenName = @"站点关联线路查询页面";
     self.navigationItem.title = @"线路查询";
-    [self loadDefaultPageView];
+    
+    if ([self.stationArray count] >0) {
+        BusStation *busStation = [self.stationArray objectAtIndex:0];
+        [self downloadData:busStation.standCode];
+    }
 }
 
 - (void)loadDefaultPageView
@@ -72,10 +76,6 @@
         }
     }
     [self addRightBarButton:self.faverateButton];
-    if ([self.stationArray count] >0) {
-        BusStation *busStation = [self.stationArray objectAtIndex:0];
-        [self downloadData:busStation.standCode];
-    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -129,7 +129,7 @@
         } else {
             [self.faverateButton setImage:[UIImage imageNamed:@"favorite_add.png"] forState:UIControlStateNormal];
         }
-        [self showAlertMessage:@"您已经成功删除收藏的站台！" dismissAfterDelay:1.2];
+        [self showAlertMessage:@"您已经成功删除收藏的站点！" dismissAfterDelay:1.2];
     } else {
         [self.faverateStationBusManager insertIntoFaverateWithStation:busStation];
         if ([self.stationArray count] > 1) {
@@ -140,7 +140,7 @@
         } else {
             [self.faverateButton setImage:[UIImage imageNamed:@"favorite_delete.png"] forState:UIControlStateNormal];
         }
-        [self showAlertMessage:@"您已经成功收藏本线路！" dismissAfterDelay:1.2];
+        [self showAlertMessage:@"您已经成功收藏本站点！" dismissAfterDelay:1.2];
     }
     self.isFaverate = !self.isFaverate;
 }
@@ -239,6 +239,8 @@
         
         if (self.busLineArray.count >0) {
             [self.noDataView removeFromSuperview];
+            [self loadDefaultPageView];
+            
             [self.tableView reloadData];
             if ([self.stationArray count] > 1) {
                 BusStation *busStation = [self.stationArray objectAtIndex:1];

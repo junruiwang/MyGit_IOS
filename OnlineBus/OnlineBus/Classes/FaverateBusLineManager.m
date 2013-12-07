@@ -76,7 +76,15 @@
     return [busArray writeToFile: path atomically:YES];
 }
 
-- (NSMutableArray *) readFaverateBusListFromLocalFile
+- (BOOL)deleteAllBusLineInFaverate
+{
+    NSMutableArray *busArray = [self readFaverateBusListFromLocalFile];
+    [busArray removeAllObjects];
+    NSString *path = [FileManager fileCachesPath:@"FaverateBusList.plist"];
+    return [busArray writeToFile: path atomically:YES];
+}
+
+- (NSMutableArray *)readFaverateBusListFromLocalFile
 {
     NSString *path = [FileManager fileCachesPath:@"FaverateBusList.plist"];
     return [[NSMutableArray alloc] initWithContentsOfFile:path];

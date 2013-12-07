@@ -13,6 +13,7 @@
 
 - (BOOL)insertIntoFaverateWithStation:(BusStation *) busStation;
 - (BOOL)isBusStationInFaverate:(NSString *) standName;
+- (BOOL)deleteAllBusStationInFaverate;
 - (BOOL)deleteBusStationInFaverate:(NSString *) standName;
 
 - (void)buildLocalFileToArray:(NSMutableArray *) stationArray total:(NSMutableArray *) stationTotalArray;

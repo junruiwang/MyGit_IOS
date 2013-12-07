@@ -27,6 +27,7 @@
 - (UIButton *)generateNavButton:(NSString *) imageName action:(SEL) actionName;
 - (void)backButtonClicked:(id)sender;
 - (void)showAlertMessage:(NSString *)msg;
+- (void)showAlertMessageWithOkCancelButton:(NSString *)msg tag:(NSInteger)tag delegate:(id)delegate;
 - (void)showAlertMessage:(NSString *)msg dismissAfterDelay:(NSTimeInterval)delay;
 - (void)addRightBarButton:(UIButton *) button;
 

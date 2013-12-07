@@ -7,7 +7,7 @@
 //
 //  wangjinxin.cn mapping 42.121.117.61
 // URL
-#define kBaseURL                          @"http://wangjinxin.cn:6068/bustime/api"
+#define kBaseURL                       @"http://42.121.117.61:6068/bustime/api"
 
 #define query_bus_line                 [kBaseURL stringByAppendingPathComponent:@"/queryLine"]
 #define query_bus_single_line          [kBaseURL stringByAppendingPathComponent:@"/querySingleLine"]
@@ -24,6 +24,8 @@
 #define FROM_BUSLIST_TO_BUSDETAIL       @"fromBusListToBusDetail"
 #define FROM_BUSSTATION_TO_BUSLINE      @"fromBusStationToBusLine"
 #define FROM_BUSSTATION_TO_BUSDETAIL    @"fromBusStationToBusDetail"
+#define FROM_FAVERATE_TO_BUSDETAIL      @"fromFaverateToBusDetail"
+#define FROM_FAVERATE_TO_STATIONBUS     @"fromFaverateToStationBus"
 
 #import "AppDelegate.h"
 #define TheAppDelegate  ((AppDelegate *)[UIApplication sharedApplication].delegate)

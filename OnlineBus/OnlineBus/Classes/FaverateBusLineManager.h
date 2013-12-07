@@ -13,6 +13,7 @@
 
 - (BOOL)insertIntoFaverateWithBusLine:(BusLine *) busLine;
 - (BOOL)isBusLineInFaverate:(NSString *) lineNumber;
+- (BOOL)deleteAllBusLineInFaverate;
 - (BOOL)deleteBusLineInFaverate:(NSString *) lineNumber;
 
 - (void)buildLocalFileToArray:(NSMutableArray *) busLineArray total:(NSMutableArray *) busLineTotalArray;

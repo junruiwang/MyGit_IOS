@@ -179,6 +179,18 @@
     [alertView show];
 }
 
+- (void)showAlertMessageWithOkCancelButton:(NSString *)msg tag:(NSInteger)tag delegate:(id)delegate
+{
+    UIAlertView *alertView = [[UIAlertView alloc]
+                              initWithTitle:@"信息提示"
+                              message:msg
+                              delegate:delegate
+                              cancelButtonTitle:@"取消"
+                              otherButtonTitles:@"确定", nil];
+    alertView.tag = tag;
+    [alertView show];
+}
+
 - (void)dimissAlert:(UIView *)alertView
 {
     if (alertView) {
