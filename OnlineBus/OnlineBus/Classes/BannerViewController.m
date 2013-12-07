@@ -199,6 +199,7 @@
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 220.0f, 60.0f)];
     label.numberOfLines = 0; // if the text too long, the alert view should not be dismissed automatic.
     label.lineBreakMode = NSLineBreakByWordWrapping;
+    label.font = [UIFont systemFontOfSize:14];
     label.text = msg;
     label.textAlignment = UITextAlignmentCenter;
     label.backgroundColor = [UIColor clearColor];

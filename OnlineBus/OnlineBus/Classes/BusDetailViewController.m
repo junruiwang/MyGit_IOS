@@ -86,7 +86,7 @@
     messageBox.backgroundColor = [UIColor clearColor];
     messageBox.textColor = [UIColor darkTextColor];
     messageBox.font = [UIFont systemFontOfSize:15];
-    messageBox.text = @"sorry，无法获取最新线路实况，请稍后再试";
+    messageBox.text = @"很抱歉，无法获取最新线路实况，请稍后再试";
     [self.noDataView addSubview:messageBox];
     [self.view addSubview:self.noDataView];
 }
@@ -425,9 +425,12 @@
 {    
     if (self.isFirst) {
         BusLine *bline = self.busLineArray[0];
-        self.currentBusLine = bline;
         [bline.stationArray removeAllObjects];
         [bline.stationArray addObjectsFromArray:self.busSingleStationArry];
+        //设置共计站台数量
+        self.totalStationLabel.text = [NSString stringWithFormat:@"全程%d站", [self.busSingleStationArry count]];
+        bline.totalStation = [self.busSingleStationArry count];
+        self.currentBusLine = bline;
         self.isFirst = NO;
         [self loadBottomView:0];
         //如果是双向线路
@@ -452,6 +455,9 @@
             self.isLoadOver = NO;
             self.currentBusLine = self.busLineArray[0];
         }
+        
+        //设置共计站台数量
+        self.totalStationLabel.text = [NSString stringWithFormat:@"全程%d站", [self.currentBusLine.stationArray count]];
     }
     
 }
@@ -472,10 +478,11 @@
 }
 
 #pragma mark - BaseJSONParserDelegate
+
 - (void)parser:(JsonParser*)parser DidFailedParseWithMsg:(NSString*)msg errCode:(NSInteger)code
 {
-    NSLog(@"查询运行车辆发生异常：%@，错误代码：%d", msg, code);
     [SVProgressHUD dismiss];
+    [self showAlertMessage:@"很抱歉，可能是网络原因，无法帮助到您，请稍后再试！" dismissAfterDelay:1.2];
 }
 
 - (void)parser:(JsonParser*)parser DidParsedData:(NSDictionary *)data

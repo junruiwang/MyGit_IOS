@@ -145,12 +145,12 @@
     [self performSegueWithIdentifier:@"" sender:self];
 }
 
-#pragma mark -
-#pragma mark JsonParserDelegate
+#pragma mark - JsonParserDelegate
+
 - (void)parser:(JsonParser*)parser DidFailedParseWithMsg:(NSString*)msg errCode:(NSInteger)code
 {
-    NSLog(@"查询站点信息发生异常：%@，错误代码：%d", msg, code);
     [SVProgressHUD dismiss];
+    [self showAlertMessage:@"很抱歉，可能是网络原因，无法帮助到您，请稍后再试！" dismissAfterDelay:1.2];
 }
 
 - (void)parser:(JsonParser*)parser DidParsedData:(NSDictionary *)data

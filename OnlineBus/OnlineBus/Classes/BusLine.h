@@ -15,6 +15,7 @@
 @property(nonatomic, copy) NSString *lineCode;
 @property(nonatomic, assign) NSInteger totalStation;
 @property(nonatomic, copy) NSString *startStation;
+@property(nonatomic, copy) NSString *standNum;
 @property(nonatomic, copy) NSString *endStation;
 @property(nonatomic, copy) NSString *runTime;
 

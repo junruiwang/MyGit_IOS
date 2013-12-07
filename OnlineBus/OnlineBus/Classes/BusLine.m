@@ -27,12 +27,12 @@
     }
     
     if (self = [super init]) {
-        
         self.lineNumber = [ValidateInputUtil valueOfObjectToString:[dict objectForKey:@"lineNumber"]];
         self.lineCode = [ValidateInputUtil valueOfObjectToString:[dict objectForKey:@"lineGuid"]];
         self.totalStation = [[dict objectForKey:@"totalStation"] intValue];
         self.startStation = [ValidateInputUtil valueOfObjectToString:[dict objectForKey:@"startStation"]];
         self.endStation = [ValidateInputUtil valueOfObjectToString:[dict objectForKey:@"endStation"]];
+        self.standNum = [ValidateInputUtil valueOfObjectToString:[dict objectForKey:@"standNum"]];
         self.runTime = [ValidateInputUtil valueOfObjectToString:[dict objectForKey:@"runTime"]];
         _stationArray = [[NSMutableArray alloc] initWithCapacity:10];
     }
@@ -55,6 +55,7 @@
         self.totalStation = [aDecoder decodeIntegerForKey:@"totalStation"];
         self.startStation = [aDecoder decodeObjectForKey:@"startStation"];
         self.endStation = [aDecoder decodeObjectForKey:@"endStation"];
+        self.standNum = [aDecoder decodeObjectForKey:@"standNum"];
         self.runTime = [aDecoder decodeObjectForKey:@"runTime"];
     }
     
@@ -68,6 +69,7 @@
     [aCoder encodeInteger:self.totalStation forKey:@"totalStation"];
     [aCoder encodeObject:self.startStation forKey:@"startStation"];
     [aCoder encodeObject:self.endStation forKey:@"endStation"];
+    [aCoder encodeObject:self.standNum forKey:@"standNum"];
     [aCoder encodeObject:self.runTime forKey:@"runTime"];
 }
 
@@ -81,6 +83,7 @@
     self.totalStation = self.totalStation;
     self.startStation = [self.startStation copyWithZone:zone];
     self.endStation = [self.endStation copyWithZone:zone];
+    self.standNum = [self.standNum copyWithZone:zone];
     self.runTime = [self.runTime copyWithZone:zone];
     return busLine;
 }

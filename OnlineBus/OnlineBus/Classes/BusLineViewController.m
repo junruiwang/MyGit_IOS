@@ -194,6 +194,13 @@
 }
 
 #pragma mark JsonParserDelegate
+
+- (void)parser:(JsonParser*)parser DidFailedParseWithMsg:(NSString*)msg errCode:(NSInteger)code
+{
+    [SVProgressHUD dismiss];
+    [self showAlertMessage:@"很抱歉，可能是网络原因，无法帮助到您，请稍后再试！" dismissAfterDelay:1.2];
+}
+
 - (void)parser:(JsonParser*)parser DidParsedData:(NSDictionary *)data
 {
     self.busLineArray = [data valueForKey:@"data"];

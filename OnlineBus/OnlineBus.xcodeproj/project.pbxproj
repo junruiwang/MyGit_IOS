@@ -94,6 +94,8 @@
 		C468AB021851810B004EA128 /* dashed_detail.png in Resources */ = {isa = PBXBuildFile; fileRef = C468AB011851810B004EA128 /* dashed_detail.png */; };
 		C468AB051851819B004EA128 /* BusLineTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C468AB041851819B004EA128 /* BusLineTableViewCell.m */; };
 		C47A44E41852D1EA00567AD8 /* navigationbar_back_common.png in Resources */ = {isa = PBXBuildFile; fileRef = C47A44E31852D1EA00567AD8 /* navigationbar_back_common.png */; };
+		C48379B71852D432003491D4 /* StationBusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C48379B61852D432003491D4 /* StationBusViewController.m */; };
+		C48379BA1852D496003491D4 /* FaverateStationBusManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C48379B91852D496003491D4 /* FaverateStationBusManager.m */; };
 		C4A6CDB91851ACBB000CCAD4 /* FaverateBusLineManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C4A6CDB81851ACBB000CCAD4 /* FaverateBusLineManager.m */; };
 		C4A6CDBC1851B4B8000CCAD4 /* LineIndex.m in Sources */ = {isa = PBXBuildFile; fileRef = C4A6CDBB1851B4B8000CCAD4 /* LineIndex.m */; };
 		C4A6CDBF1851D791000CCAD4 /* navigationbar_back_highlighted_os7@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C4A6CDBD1851D791000CCAD4 /* navigationbar_back_highlighted_os7@2x.png */; };
@@ -252,6 +254,10 @@
 		C468AB031851819B004EA128 /* BusLineTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BusLineTableViewCell.h; path = Classes/BusLineTableViewCell.h; sourceTree = "<group>"; };
 		C468AB041851819B004EA128 /* BusLineTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BusLineTableViewCell.m; path = Classes/BusLineTableViewCell.m; sourceTree = "<group>"; };
 		C47A44E31852D1EA00567AD8 /* navigationbar_back_common.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = navigationbar_back_common.png; path = Resources/navigationbar_back_common.png; sourceTree = "<group>"; };
+		C48379B51852D432003491D4 /* StationBusViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StationBusViewController.h; path = Classes/StationBusViewController.h; sourceTree = "<group>"; };
+		C48379B61852D432003491D4 /* StationBusViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StationBusViewController.m; path = Classes/StationBusViewController.m; sourceTree = "<group>"; };
+		C48379B81852D496003491D4 /* FaverateStationBusManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FaverateStationBusManager.h; path = Classes/FaverateStationBusManager.h; sourceTree = "<group>"; };
+		C48379B91852D496003491D4 /* FaverateStationBusManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FaverateStationBusManager.m; path = Classes/FaverateStationBusManager.m; sourceTree = "<group>"; };
 		C4A6CDB71851ACBB000CCAD4 /* FaverateBusLineManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FaverateBusLineManager.h; path = Classes/FaverateBusLineManager.h; sourceTree = "<group>"; };
 		C4A6CDB81851ACBB000CCAD4 /* FaverateBusLineManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FaverateBusLineManager.m; path = Classes/FaverateBusLineManager.m; sourceTree = "<group>"; };
 		C4A6CDBA1851B4B8000CCAD4 /* LineIndex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LineIndex.h; path = Classes/LineIndex.h; sourceTree = "<group>"; };
@@ -582,6 +588,8 @@
 			children = (
 				C4A6CDB71851ACBB000CCAD4 /* FaverateBusLineManager.h */,
 				C4A6CDB81851ACBB000CCAD4 /* FaverateBusLineManager.m */,
+				C48379B81852D496003491D4 /* FaverateStationBusManager.h */,
+				C48379B91852D496003491D4 /* FaverateStationBusManager.m */,
 			);
 			name = Favourite;
 			sourceTree = "<group>";
@@ -638,6 +646,8 @@
 			children = (
 				C4F703E71852135100D4CB4C /* StationSearchViewController.h */,
 				C4F703E81852135100D4CB4C /* StationSearchViewController.m */,
+				C48379B51852D432003491D4 /* StationBusViewController.h */,
+				C48379B61852D432003491D4 /* StationBusViewController.m */,
 				C4F703E91852135100D4CB4C /* StationTableViewCell.h */,
 				C4F703EA1852135100D4CB4C /* StationTableViewCell.m */,
 				C4F703E01852118A00D4CB4C /* Model */,
@@ -810,9 +820,11 @@
 				C43FE964184F7BEF00436A14 /* SBJsonParser.m in Sources */,
 				C43FE963184F7BEF00436A14 /* NSObject+SBJson.m in Sources */,
 				C43FE96D184F7BEF00436A14 /* SBJsonUTF8Stream.m in Sources */,
+				C48379BA1852D496003491D4 /* FaverateStationBusManager.m in Sources */,
 				C4F703E3185211CC00D4CB4C /* BusStation.m in Sources */,
 				C4EA4719185189EA00018B27 /* BusLineParser.m in Sources */,
 				C4EA4725185195BD00018B27 /* RegexKitLite.m in Sources */,
+				C48379B71852D432003491D4 /* StationBusViewController.m in Sources */,
 				C43FE946184F795700436A14 /* JsonParser.m in Sources */,
 				C4EA471A185189EA00018B27 /* BusSingleLineParser.m in Sources */,
 				C43FE96A184F7BEF00436A14 /* SBJsonStreamWriterAccumulator.m in Sources */,
