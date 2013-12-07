@@ -7,10 +7,13 @@
 //
 
 #import "BannerViewController.h"
+#import <QuartzCore/QuartzCore.h>
 
 #define ADMOB_BUTTON_CLOSE_TAG 180
 
 @interface BannerViewController ()
+
+- (void)dimissAlert:(UIView *)alertView;
 
 @end
 
@@ -174,6 +177,37 @@
                               cancelButtonTitle:@"确定"
                               otherButtonTitles:nil];
     [alertView show];
+}
+
+- (void)dimissAlert:(UIView *)alertView
+{
+    if (alertView) {
+        [alertView removeFromSuperview];
+    }
+}
+
+// never show more than one auto dismiss alert at same time, it will cause crash
+- (void)showAlertMessage:(NSString *)msg dismissAfterDelay:(NSTimeInterval)delay
+{
+    UIView *messageBoxView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 220.0f, 60.0f)];
+    messageBoxView.backgroundColor = [UIColor blackColor];
+    messageBoxView.alpha = 0.8;
+    messageBoxView.layer.cornerRadius = 5;
+    messageBoxView.layer.borderColor = [UIColor colorWithRed:215.0/255.0 green:215.0/255.0 blue:215.0/255.0 alpha:1.0].CGColor;
+    messageBoxView.layer.borderWidth = 2.0;
+    
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 220.0f, 60.0f)];
+    label.numberOfLines = 0; // if the text too long, the alert view should not be dismissed automatic.
+    label.lineBreakMode = NSLineBreakByWordWrapping;
+    label.text = msg;
+    label.textAlignment = UITextAlignmentCenter;
+    label.backgroundColor = [UIColor clearColor];
+    label.textColor = [UIColor whiteColor];
+    [messageBoxView addSubview:label];
+    [self.view addSubview:messageBoxView];
+    messageBoxView.center = CGPointMake(self.view.center.x, 240);
+    
+    [self performSelector:@selector(dimissAlert:) withObject:messageBoxView afterDelay:delay];
 }
 
 @end

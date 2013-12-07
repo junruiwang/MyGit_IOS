@@ -131,7 +131,7 @@
         if (SYSTEM_VERSION <7.0f) {
             self.faverateButton = [self generateNavButton:@"heart_icon_red.png"  action:@selector(faverateButtonClicked:)];
         } else {
-            self.faverateButton = [self generateNavButton:@"like_icon_press.png"  action:@selector(faverateButtonClicked:)];
+            self.faverateButton = [self generateNavButton:@"favorite_delete.png"  action:@selector(faverateButtonClicked:)];
         }
         
     }
@@ -140,7 +140,7 @@
         if (SYSTEM_VERSION <7.0f) {
             self.faverateButton = [self generateNavButton:@"heart_icon.png"  action:@selector(faverateButtonClicked:)];
         } else {
-            self.faverateButton = [self generateNavButton:@"like_icon.png"  action:@selector(faverateButtonClicked:)];
+            self.faverateButton = [self generateNavButton:@"favorite_add.png"  action:@selector(faverateButtonClicked:)];
         }
     }
     [self addRightBarButton:self.faverateButton];
@@ -248,16 +248,9 @@
 - (void)loadReFlushButton
 {
     UIButton *flushBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    flushBtn.frame = CGRectMake(230, 10, 60, 30);
-    [flushBtn setTitle:@"刷新" forState:UIControlStateNormal];
-    [flushBtn setTitle:@"刷新" forState:UIControlStateHighlighted];
+    flushBtn.frame = CGRectMake(260, 6, 40, 40);
     [flushBtn addTarget:self action:@selector(refreshBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
-
-    flushBtn.titleLabel.font = [UIFont systemFontOfSize:14];
-    [flushBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [flushBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
-    [flushBtn setBackgroundImage:[UIImage imageNamed:@"booking_btn_n.png"] forState:UIControlStateNormal];
-    [flushBtn setBackgroundImage:[UIImage imageNamed:@"booking_btn_press.png"] forState:UIControlStateHighlighted];
+    [flushBtn setBackgroundImage:[UIImage imageNamed:@"synchronized.png"] forState:UIControlStateNormal];
     
     [self.toolView addSubview:flushBtn];
 }
@@ -408,9 +401,9 @@
         if (SYSTEM_VERSION <7.0f) {
             [self.faverateButton setImage:[UIImage imageNamed:@"heart_icon.png"] forState:UIControlStateNormal];
         } else {
-            [self.faverateButton setImage:[UIImage imageNamed:@"like_icon.png"] forState:UIControlStateNormal];
+            [self.faverateButton setImage:[UIImage imageNamed:@"favorite_add.png"] forState:UIControlStateNormal];
         }
-        
+        [self showAlertMessage:@"您已经成功删除收藏的线路！" dismissAfterDelay:1.2];
     } else {
         [self.faverateBusLineManager insertIntoFaverateWithBusLine:busLine];
         if ([self.busLineArray count] > 1) {
@@ -420,8 +413,10 @@
         if (SYSTEM_VERSION <7.0f) {
             [self.faverateButton setImage:[UIImage imageNamed:@"heart_icon_red.png"] forState:UIControlStateNormal];
         } else {
-            [self.faverateButton setImage:[UIImage imageNamed:@"like_icon_press.png"] forState:UIControlStateNormal];
+            [self.faverateButton setImage:[UIImage imageNamed:@"favorite_delete.png"] forState:UIControlStateNormal];
         }
+        
+        [self showAlertMessage:@"您已经成功收藏本线路！" dismissAfterDelay:1.2];
     }
     self.isFaverate = !self.isFaverate;
 }

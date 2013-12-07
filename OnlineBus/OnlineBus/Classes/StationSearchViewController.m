@@ -34,8 +34,7 @@
 {
     [super viewDidLoad];
     self.screenName = @"站点搜索页面";
-	[self loadCustomBanner];
-    
+	
     //设置顶部查询栏视图背景色
     self.topSearchView.layer.borderColor = [UIColor colorWithRed:215.0/255.0 green:215.0/255.0 blue:215.0/255.0 alpha:1.0].CGColor;
     self.topSearchView.layer.borderWidth = 1.0;
@@ -50,6 +49,7 @@
 {
     [super viewDidAppear:animated];
     self.parentViewController.navigationItem.title = @"站点查询";
+    [self loadCustomBanner];
 }
 
 - (void)downloadData
