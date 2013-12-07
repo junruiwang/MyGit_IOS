@@ -10,6 +10,7 @@
 #import "StationTableViewCell.h"
 #import "BusStation.h"
 #import "ValidateInputUtil.h"
+#import "StationBusViewController.h"
 
 @interface StationSearchViewController ()
 
@@ -92,19 +93,22 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-//    if ([segue.destinationViewController isKindOfClass:[StationBusViewController class]]) {
-//        StationBusViewController *stationBusViewController = (StationBusViewController *)segue.destinationViewController;
-//        
-//        BusStation *busStation = [self.stationArray objectAtIndex:[[self.tableView indexPathForSelectedRow] row]];
-//        
-//        NSMutableArray *doubleArray = [[NSMutableArray alloc] initWithCapacity:2];
-//        for (BusStation *tmpBusStation in self.stationTotalArray) {
-//            if ([tmpBusStation.standName isEqualToString:busStation.standName]) {
-//                [doubleArray addObject:tmpBusStation];
-//            }
-//        }
-//        stationBusViewController.stationArray = doubleArray;
-//    }
+    if ([segue.destinationViewController isKindOfClass:[StationBusViewController class]]) {
+        StationBusViewController *stationBusViewController = (StationBusViewController *)segue.destinationViewController;
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        BusStation *busStation = [self.stationTotalArray objectAtIndex:[indexPath row]];
+        
+        NSMutableArray *doubleArray = [[NSMutableArray alloc] initWithCapacity:2];
+        for (BusStation *tmpBusStation in self.stationTotalArray) {
+            if ([tmpBusStation.standName isEqualToString:busStation.standName]) {
+                [doubleArray addObject:tmpBusStation];
+            }
+        }
+        stationBusViewController.stationArray = doubleArray;
+        
+        StationTableViewCell *cell = (StationTableViewCell *)[self.tableView cellForRowAtIndexPath:indexPath];
+        [cell setSelected:NO animated:YES];
+    }
     
 }
 
@@ -142,7 +146,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self performSegueWithIdentifier:@"" sender:self];
+    [self performSegueWithIdentifier:FROM_BUSSTATION_TO_BUSLINE sender:self];
 }
 
 #pragma mark - JsonParserDelegate

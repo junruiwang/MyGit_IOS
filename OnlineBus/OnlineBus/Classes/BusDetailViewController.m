@@ -133,7 +133,6 @@
         } else {
             self.faverateButton = [self generateNavButton:@"favorite_delete.png"  action:@selector(faverateButtonClicked:)];
         }
-        
     }
     else
     {
@@ -409,13 +408,11 @@
         if ([self.busLineArray count] > 1) {
             [self.faverateBusLineManager insertIntoFaverateWithBusLine:self.busLineArray[1]];
         }
-        
         if (SYSTEM_VERSION <7.0f) {
             [self.faverateButton setImage:[UIImage imageNamed:@"heart_icon_red.png"] forState:UIControlStateNormal];
         } else {
             [self.faverateButton setImage:[UIImage imageNamed:@"favorite_delete.png"] forState:UIControlStateNormal];
         }
-        
         [self showAlertMessage:@"您已经成功收藏本线路！" dismissAfterDelay:1.2];
     }
     self.isFaverate = !self.isFaverate;
@@ -447,6 +444,7 @@
             if ([bline.lineCode isEqualToString:self.currentBusLine.lineCode]) {
                 [bline.stationArray removeAllObjects];
                 [bline.stationArray addObjectsFromArray:self.busSingleStationArry];
+                bline.totalStation = [self.busSingleStationArry count];
                 break;
             }
         }
@@ -455,9 +453,6 @@
             self.isLoadOver = NO;
             self.currentBusLine = self.busLineArray[0];
         }
-        
-        //设置共计站台数量
-        self.totalStationLabel.text = [NSString stringWithFormat:@"全程%d站", [self.currentBusLine.stationArray count]];
     }
     
 }

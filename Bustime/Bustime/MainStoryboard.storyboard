@@ -164,11 +164,11 @@
             <objects>
                 <viewController storyboardIdentifier="BusDetailViewController" id="gqp-Ki-Z1a" customClass="BusDetailViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ZED-d4-WvC">
-                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" id="QGO-ck-UQA">
-                                <rect key="frame" x="0.0" y="5" width="314" height="139"/>
+                                <rect key="frame" x="0.0" y="5" width="314" height="203"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text=" 首末班时间：06:30-22:10" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8Tc-BO-qMV">
@@ -699,7 +699,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="Eoi-Yn-sMA"/>
         <segue reference="XuQ-Kq-RA4"/>
+        <segue reference="J2Q-0B-HwB"/>
     </inferredMetricsTieBreakers>
 </document>

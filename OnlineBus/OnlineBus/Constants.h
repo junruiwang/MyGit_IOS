@@ -21,7 +21,9 @@
 #define RGB(R,G,B) [UIColor colorWithRed:(float)R/255.0 green:(float)G/255.0 blue:(float)B/255.0 alpha:1]
 #define kAppStoreUrl @"https://itunes.apple.com/us/app/su-zhou-zai-xian-gong-jiao/id639107014?ls=1&mt=8"
 
-#define FROM_BUSLIST_TO_BUSDETAIL   @"fromBusListToBusDetail"
+#define FROM_BUSLIST_TO_BUSDETAIL       @"fromBusListToBusDetail"
+#define FROM_BUSSTATION_TO_BUSLINE      @"fromBusStationToBusLine"
+#define FROM_BUSSTATION_TO_BUSDETAIL    @"fromBusStationToBusDetail"
 
 #import "AppDelegate.h"
 #define TheAppDelegate  ((AppDelegate *)[UIApplication sharedApplication].delegate)
