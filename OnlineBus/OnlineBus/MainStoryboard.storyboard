@@ -727,7 +727,8 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.0" green="0.52156865600000002" blue="0.77254909279999995" alpha="1" colorSpace="deviceRGB"/>
+                        <color key="backgroundColor" red="0.32756029810431864" green="0.6612109775226318" blue="0.97231657608695654" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="tintColor" red="0.32756029809999998" green="0.66121097750000002" blue="0.9723165761" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="wJZ-7h-lJc"/>
                 </viewController>
