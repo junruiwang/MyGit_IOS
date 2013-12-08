@@ -81,6 +81,17 @@
 {
     GADRequest *request = [GADRequest request];
     
+    GADAdMobExtras *extras = [[GADAdMobExtras alloc] init];
+    extras.additionalParameters = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+     @"FFFFFF", @"color_bg",
+     @"FFFFFF", @"color_bg_top",
+     @"DDDDDD", @"color_border",
+     @"808080", @"color_link",
+     @"808080", @"color_text",
+     @"008000", @"color_url",
+     nil];
+    
+    [request registerAdNetworkExtras:extras];
     //Make the request for a test ad
 //    request.testDevices = [NSArray arrayWithObjects: GAD_SIMULATOR_ID, nil];
     return request;

@@ -13,6 +13,7 @@
 #import "GADRequest.h"
 #import "GAI.h"
 #import "GAIDictionaryBuilder.h"
+#import "GADAdMobExtras.h"
 #import "JsonParser.h"
 #import "SVProgressHUD.h"
 #import "ValidateInputUtil.h"
