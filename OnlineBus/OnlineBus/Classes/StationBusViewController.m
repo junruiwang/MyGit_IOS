@@ -46,7 +46,7 @@
 {
     [super viewDidLoad];
     self.screenName = @"站点关联线路查询页面";
-    self.navigationItem.title = @"线路查询";
+    self.navigationItem.title = self.stationName;
     
     if ([self.stationArray count] >0) {
         BusStation *busStation = [self.stationArray objectAtIndex:0];

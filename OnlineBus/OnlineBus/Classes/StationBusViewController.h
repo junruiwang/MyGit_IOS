@@ -12,6 +12,7 @@
 
 @interface StationBusViewController : BannerViewController<UITableViewDataSource, UITableViewDelegate>
 
+@property(nonatomic, copy) NSString *stationName;
 @property(nonatomic, strong) NSMutableArray *stationArray;
 @property(nonatomic, weak) IBOutlet UITableView *tableView;
 

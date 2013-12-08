@@ -114,6 +114,7 @@
                 [doubleArray addObject:tmpBusStation];
             }
         }
+        stationBusViewController.stationName = [NSString stringWithFormat:@"%@(%@)",busStation.standName, busStation.trend];
         stationBusViewController.stationArray = doubleArray;
         
         StationTableViewCell *cell = (StationTableViewCell *)[self.tableView cellForRowAtIndexPath:indexPath];
