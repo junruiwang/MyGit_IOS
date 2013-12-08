@@ -149,7 +149,7 @@
             </objects>
             <point key="canvasLocation" x="1133" y="-512"/>
         </scene>
-        <!--More View Controller - 设置-->
+        <!--More View Controller - 更多-->
         <scene sceneID="vZk-1u-jf2">
             <objects>
                 <viewController id="efW-Ue-7h0" customClass="MoreViewController" sceneMemberID="viewController">
@@ -169,7 +169,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" tag="4" title="设置" image="datamanage.png" id="5Zg-1b-9mq"/>
+                    <tabBarItem key="tabBarItem" tag="4" title="更多" image="tabbar_more.png" id="5Zg-1b-9mq"/>
                     <connections>
                         <outlet property="tableView" destination="nnz-Dh-9Ib" id="MzA-PF-Ob2"/>
                         <segue destination="CpN-fi-8U2" kind="push" identifier="fromMoreToAboutUs" id="9BE-dr-OZv"/>
@@ -740,11 +740,11 @@
         <image name="book-1.png" width="56" height="30"/>
         <image name="book.png" width="56" height="30"/>
         <image name="bus_favorites.png" width="24" height="24"/>
-        <image name="datamanage.png" width="26" height="26"/>
         <image name="line-next.png" width="6" height="9"/>
         <image name="line.png" width="26" height="26"/>
         <image name="search_discover.png" width="60" height="60"/>
         <image name="stop.png" width="26" height="26"/>
+        <image name="tabbar_more.png" width="30" height="30"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

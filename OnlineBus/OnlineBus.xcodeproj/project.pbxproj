@@ -97,6 +97,7 @@
 		C468AB021851810B004EA128 /* dashed_detail.png in Resources */ = {isa = PBXBuildFile; fileRef = C468AB011851810B004EA128 /* dashed_detail.png */; };
 		C468AB051851819B004EA128 /* BusLineTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C468AB041851819B004EA128 /* BusLineTableViewCell.m */; };
 		C4728FA2185314B200E6438D /* HistoryInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4728FA1185314B200E6438D /* HistoryInfoViewController.m */; };
+		C476380D1854173300FAFB10 /* tabbar_more@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C476380C1854173300FAFB10 /* tabbar_more@2x.png */; };
 		C47A44E41852D1EA00567AD8 /* navigationbar_back_common.png in Resources */ = {isa = PBXBuildFile; fileRef = C47A44E31852D1EA00567AD8 /* navigationbar_back_common.png */; };
 		C48379B71852D432003491D4 /* StationBusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C48379B61852D432003491D4 /* StationBusViewController.m */; };
 		C48379BA1852D496003491D4 /* FaverateStationBusManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C48379B91852D496003491D4 /* FaverateStationBusManager.m */; };
@@ -265,6 +266,7 @@
 		C468AB041851819B004EA128 /* BusLineTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BusLineTableViewCell.m; path = Classes/BusLineTableViewCell.m; sourceTree = "<group>"; };
 		C4728FA0185314B200E6438D /* HistoryInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HistoryInfoViewController.h; path = Classes/HistoryInfoViewController.h; sourceTree = "<group>"; };
 		C4728FA1185314B200E6438D /* HistoryInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HistoryInfoViewController.m; path = Classes/HistoryInfoViewController.m; sourceTree = "<group>"; };
+		C476380C1854173300FAFB10 /* tabbar_more@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "tabbar_more@2x.png"; path = "Resources/tabbar_more@2x.png"; sourceTree = "<group>"; };
 		C47A44E31852D1EA00567AD8 /* navigationbar_back_common.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = navigationbar_back_common.png; path = Resources/navigationbar_back_common.png; sourceTree = "<group>"; };
 		C48379B51852D432003491D4 /* StationBusViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StationBusViewController.h; path = Classes/StationBusViewController.h; sourceTree = "<group>"; };
 		C48379B61852D432003491D4 /* StationBusViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StationBusViewController.m; path = Classes/StationBusViewController.m; sourceTree = "<group>"; };
@@ -437,6 +439,7 @@
 				C468AB011851810B004EA128 /* dashed_detail.png */,
 				C43FE8C6184F62B900436A14 /* datamanage.png */,
 				C43FE8C7184F62B900436A14 /* datamanage@2x.png */,
+				C476380C1854173300FAFB10 /* tabbar_more@2x.png */,
 				C43FE8CA184F62B900436A14 /* heart_icon.png */,
 				C4A6CDC81851FD02000CCAD4 /* heart_icon@2x.png */,
 				C43FE8C8184F62B900436A14 /* heart_icon_red.png */,
@@ -774,6 +777,7 @@
 				C43FE8F5184F62B900436A14 /* keyboard_btn_hide@2x.png in Resources */,
 				C43FE8FD184F62B900436A14 /* run_station@2x.png in Resources */,
 				C43FE8E2184F62B900436A14 /* about_logo.png in Resources */,
+				C476380D1854173300FAFB10 /* tabbar_more@2x.png in Resources */,
 				C4A6CDBF1851D791000CCAD4 /* navigationbar_back_highlighted_os7@2x.png in Resources */,
 				C43FE8F1184F62B900436A14 /* icon_57.png in Resources */,
 				C4A6CDCD1851FD02000CCAD4 /* hotel-topbar-back.png in Resources */,
