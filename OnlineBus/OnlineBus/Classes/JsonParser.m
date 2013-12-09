@@ -49,14 +49,16 @@
         NSLog(@"%@",url);
     }
     NSURL *nsURL = [NSURL URLWithString:[url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
-    NSURLRequest *request = [NSURLRequest requestWithURL:nsURL cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval: 5];
+    NSURLRequest *request = [NSURLRequest requestWithURL:nsURL cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval: 10];
     _connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
     [_connection start];
 }
 
 - (void)cancel
 {
     [_connection cancel];
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
     _connection = nil;
 }
 
@@ -85,10 +87,11 @@
     return YES;
 }
 
-#pragma mark NSURLConnectionDelegate
+#pragma mark - NSURLConnectionDelegate
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
 {
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
     if(self.delegate != nil && [self.delegate respondsToSelector:@selector(parser:DidFailedParseWithMsg:errCode:)])
     {   [self.delegate parser:self DidFailedParseWithMsg:@"connection error" errCode:-1];   }
     [self cancel];
@@ -99,11 +102,13 @@
     [_requestData appendData:data];
 }
 
+#pragma mark - NSURLConnectionDataDelegate
+
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
     NSString* jsonString = [[NSString alloc] initWithData:_requestData encoding:NSUTF8StringEncoding];
-    [self parserJSONString:jsonString];
     [self cancel];
+    [self parserJSONString:jsonString];
 }
 
 @end
