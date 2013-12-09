@@ -5,9 +5,9 @@
 //  Created by jerry on 13-12-4.
 //  Copyright (c) 2013年 jerry.wang. All rights reserved.
 //
-//  wangjinxin.cn mapping 42.121.117.61
+//  api.shareby.us mapping 42.121.117.61:6068
 // URL
-#define kBaseURL                       @"http://42.121.117.61:6068/bustime/api"
+#define kBaseURL                       @"http://api.shareby.us/bustime/api"
 
 #define query_bus_line                 [kBaseURL stringByAppendingPathComponent:@"/queryLine"]
 #define query_bus_single_line          [kBaseURL stringByAppendingPathComponent:@"/querySingleLine"]
