@@ -28,6 +28,12 @@
 #define FROM_FAVERATE_TO_STATIONBUS     @"fromFaverateToStationBus"
 #define FROM_MORE_TO_ABOUTUS            @"fromMoreToAboutUs"
 
+#ifdef DEBUG
+#define kLogEnable  YES
+#else
+#define kLogEnable  NO
+#endif
+
 #import "AppDelegate.h"
 #define TheAppDelegate  ((AppDelegate *)[UIApplication sharedApplication].delegate)
 #define SYSTEM_VERSION [[UIDevice currentDevice].systemVersion doubleValue]
