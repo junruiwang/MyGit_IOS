@@ -48,7 +48,7 @@
     self.title = @"世强智能家居";
     [self deviceIPAdress];
     
-//    TheAppDelegate.serverBaseUrl = @"http://www.163.com";
+//    TheAppDelegate.serverBaseUrl = kBaseURL;
 //    self.isWifiServerAds = YES;
     
     if (self.udpSocket == nil)
@@ -212,7 +212,7 @@
     if ([msg isEqualToString:@"you_find_me"]) {
 //        NSString *receiveMessage = [NSString stringWithFormat:@"message from: %@:%hu,%@",host, port,msg];
         self.isWifiServerAds = YES;
-        TheAppDelegate.serverBaseUrl = [NSString stringWithFormat:@"http://%@",host];
+        TheAppDelegate.serverBaseUrl = kBaseURL; //[NSString stringWithFormat:@"http://%@",host];
         [self afterFindAdress];
     }
 }
