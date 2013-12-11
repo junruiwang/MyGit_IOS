@@ -7,25 +7,28 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C448216A1858364800588FE4 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C44821691858364800588FE4 /* MainStoryboard.storyboard */; };
+		C48C6EB1185756E80019915F /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = C48C6EB0185756E80019915F /* Reachability.m */; };
 		C4F380031805A37A00B78797 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4F380021805A37A00B78797 /* Foundation.framework */; };
 		C4F380051805A37A00B78797 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4F380041805A37A00B78797 /* CoreGraphics.framework */; };
 		C4F380071805A37A00B78797 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4F380061805A37A00B78797 /* UIKit.framework */; };
 		C4F3800D1805A37A00B78797 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C4F3800B1805A37A00B78797 /* InfoPlist.strings */; };
 		C4F3800F1805A37A00B78797 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C4F3800E1805A37A00B78797 /* main.m */; };
 		C4F380131805A37A00B78797 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C4F380121805A37A00B78797 /* AppDelegate.m */; };
-		C4F380151805A37A00B78797 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C4F380141805A37A00B78797 /* Images.xcassets */; };
-		C4F380321805A60700B78797 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4F380311805A60700B78797 /* MainStoryboard.storyboard */; };
 		C4F380361805AA5A00B78797 /* IndexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4F380351805AA5A00B78797 /* IndexViewController.m */; };
 		C4F4D839180A57AB00476614 /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = C4F4D836180A57AB00476614 /* GCDAsyncSocket.m */; };
 		C4F4D83A180A57AB00476614 /* GCDAsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = C4F4D838180A57AB00476614 /* GCDAsyncUdpSocket.m */; };
 		C4F4D83C180A57CD00476614 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4F4D83B180A57CD00476614 /* CFNetwork.framework */; };
 		C4F4D843180A588200476614 /* IPAdress.c in Sources */ = {isa = PBXBuildFile; fileRef = C4F4D842180A588200476614 /* IPAdress.c */; };
 		C4F4D84F180A5AED00476614 /* CloNetworkUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = C4F4D84C180A5AED00476614 /* CloNetworkUtil.m */; };
-		C4F4D850180A5AED00476614 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = C4F4D84E180A5AED00476614 /* Reachability.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		C4F4D852180A5B9F00476614 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4F4D851180A5B9F00476614 /* SystemConfiguration.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C44821691858364800588FE4 /* MainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard.storyboard; sourceTree = "<group>"; };
+		C48C6EAF185756E80019915F /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Reachability.h; path = Classes/Reachability.h; sourceTree = "<group>"; };
+		C48C6EB0185756E80019915F /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Reachability.m; path = Classes/Reachability.m; sourceTree = "<group>"; };
+		C4C0C4C718574A6400FEE318 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		C4F37FFF1805A37A00B78797 /* IntelligentHome.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IntelligentHome.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4F380021805A37A00B78797 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C4F380041805A37A00B78797 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -36,8 +39,6 @@
 		C4F380101805A37A00B78797 /* IntelligentHome-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "IntelligentHome-Prefix.pch"; sourceTree = "<group>"; };
 		C4F380111805A37A00B78797 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C4F380121805A37A00B78797 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		C4F380141805A37A00B78797 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		C4F380311805A60700B78797 /* MainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard.storyboard; sourceTree = "<group>"; };
 		C4F380341805AA5A00B78797 /* IndexViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IndexViewController.h; path = Classes/IndexViewController.h; sourceTree = "<group>"; };
 		C4F380351805AA5A00B78797 /* IndexViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IndexViewController.m; path = Classes/IndexViewController.m; sourceTree = "<group>"; };
 		C4F4D835180A57AB00476614 /* GCDAsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCDAsyncSocket.h; path = Classes/GCDAsyncSocket.h; sourceTree = "<group>"; };
@@ -49,8 +50,6 @@
 		C4F4D842180A588200476614 /* IPAdress.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = IPAdress.c; path = Classes/IPAdress.c; sourceTree = "<group>"; };
 		C4F4D84B180A5AED00476614 /* CloNetworkUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloNetworkUtil.h; path = Classes/CloNetworkUtil.h; sourceTree = "<group>"; };
 		C4F4D84C180A5AED00476614 /* CloNetworkUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CloNetworkUtil.m; path = Classes/CloNetworkUtil.m; sourceTree = "<group>"; };
-		C4F4D84D180A5AED00476614 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Reachability.h; path = Classes/Reachability.h; sourceTree = "<group>"; };
-		C4F4D84E180A5AED00476614 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Reachability.m; path = Classes/Reachability.m; sourceTree = "<group>"; };
 		C4F4D851180A5B9F00476614 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -107,8 +106,6 @@
 				C4F380331805AA2E00B78797 /* Classes */,
 				C4F380111805A37A00B78797 /* AppDelegate.h */,
 				C4F380121805A37A00B78797 /* AppDelegate.m */,
-				C4F380311805A60700B78797 /* MainStoryboard.storyboard */,
-				C4F380141805A37A00B78797 /* Images.xcassets */,
 				C4F380091805A37A00B78797 /* Supporting Files */,
 			);
 			path = IntelligentHome;
@@ -130,6 +127,8 @@
 			children = (
 				C4F380341805AA5A00B78797 /* IndexViewController.h */,
 				C4F380351805AA5A00B78797 /* IndexViewController.m */,
+				C4C0C4C718574A6400FEE318 /* Constants.h */,
+				C44821691858364800588FE4 /* MainStoryboard.storyboard */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -152,8 +151,8 @@
 				C4F4D842180A588200476614 /* IPAdress.c */,
 				C4F4D84B180A5AED00476614 /* CloNetworkUtil.h */,
 				C4F4D84C180A5AED00476614 /* CloNetworkUtil.m */,
-				C4F4D84D180A5AED00476614 /* Reachability.h */,
-				C4F4D84E180A5AED00476614 /* Reachability.m */,
+				C48C6EAF185756E80019915F /* Reachability.h */,
+				C48C6EB0185756E80019915F /* Reachability.m */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -214,9 +213,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C4F380321805A60700B78797 /* MainStoryboard.storyboard in Resources */,
+				C448216A1858364800588FE4 /* MainStoryboard.storyboard in Resources */,
 				C4F3800D1805A37A00B78797 /* InfoPlist.strings in Resources */,
-				C4F380151805A37A00B78797 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -229,7 +227,7 @@
 			files = (
 				C4F4D843180A588200476614 /* IPAdress.c in Sources */,
 				C4F4D839180A57AB00476614 /* GCDAsyncSocket.m in Sources */,
-				C4F4D850180A5AED00476614 /* Reachability.m in Sources */,
+				C48C6EB1185756E80019915F /* Reachability.m in Sources */,
 				C4F4D84F180A5AED00476614 /* CloNetworkUtil.m in Sources */,
 				C4F4D83A180A57AB00476614 /* GCDAsyncUdpSocket.m in Sources */,
 				C4F380131805A37A00B78797 /* AppDelegate.m in Sources */,
@@ -285,7 +283,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -318,7 +316,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};

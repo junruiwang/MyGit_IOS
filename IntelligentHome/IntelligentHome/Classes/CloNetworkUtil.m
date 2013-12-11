@@ -14,7 +14,7 @@
 {
     if (self = [super init])
     {
-        _reachability = [Reachability reachabilityWithHostName:@"www.baidu.com"];
+        _reachability = [Reachability reachabilityForInternetConnection];
     }
     
     return self;

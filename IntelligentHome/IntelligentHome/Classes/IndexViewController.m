@@ -7,17 +7,22 @@
 //
 
 #import "IndexViewController.h"
+#import "AppDelegate.h"
 #import "IPAddress.h"
 #import "CloNetworkUtil.h"
 #import "Reachability.h"
+#import "Constants.h"
 
 @interface IndexViewController ()
 
-@property (nonatomic, copy) NSString *appServerUrl;
 @property (nonatomic, copy) NSString *currentIP;
 @property (nonatomic, strong) GCDAsyncUdpSocket *udpSocket;
-@property (nonatomic) int port;
+@property (nonatomic) int udpBroadcastPort;
 @property (nonatomic) long tag;
+
+@property (nonatomic, strong) NSTimer *scheduleTimer;
+//轮询次数
+@property (nonatomic, assign) NSInteger pollCount;
 
 - (void)loadRequest;
 - (void)sendUDPMessage;
@@ -31,7 +36,8 @@
 {
     self = [super initWithCoder:aDecoder];
     if (self) {
-        self.port = 5224;
+        self.udpBroadcastPort = kUdpBroadcastPort;
+        self.isWifiServerAds = NO;
     }
     return self;
 }
@@ -41,34 +47,86 @@
     [super viewDidLoad];
     self.title = @"世强智能家居";
     [self deviceIPAdress];
+    TheAppDelegate.serverBaseUrl = @"http://www.163.com";
+    self.isWifiServerAds = YES;
     
     if (self.udpSocket == nil)
 	{
 		[self setupSocket];
 	}
-    
-    self.mainWebView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     self.mainWebView.scrollView.bounces = NO;
     self.mainWebView.scalesPageToFit = YES;
-    self.mainWebView.delegate = self;
-    [self.view addSubview:self.mainWebView];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self sendUDPMessage];
+    NSLog(@"%@", NSStringFromCGRect(self.view.frame));
+    self.mainWebView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+    //先判定当前网络环境是WIFI，还是其他网络
+    CloNetworkUtil *cloNetworkUtil = [[CloNetworkUtil alloc] init];
+    NetworkStatus workStatus = [cloNetworkUtil getNetWorkType];
+    switch (workStatus) {
+        case ReachableViaWiFi:
+        {
+            [self operateForWifi];
+            break;
+        }
+        case ReachableViaWWAN:
+        {
+            [self showAlertMessage:@"您的手机当前接入网络环境为2G/3G网络！"];
+            break;
+        }
+        default:
+        {
+            [self showAlertMessage:@"您尚未接入网络，请检查网络连接！"];
+            break;
+        }
+    }
+    
+}
+
+- (void)operateForWifi
+{
+    if (self.isWifiServerAds) {
+        NSURL *baseUrl = [NSURL URLWithString:TheAppDelegate.serverBaseUrl];
+        if ([[UIApplication sharedApplication] canOpenURL:baseUrl]) {
+            [self loadRequest];
+        } else {
+            [self execScheduleTimer];
+        }
+        
+    } else {
+        [self execScheduleTimer];
+    }
+}
+
+- (void)execScheduleTimer
+{
+    //UDP广播查找局域网主机
+    if (self.scheduleTimer == nil) {
+        self.scheduleTimer = [NSTimer scheduledTimerWithTimeInterval:11.0
+                                                              target:self
+                                                            selector:@selector(sendUDPMessage)
+                                                            userInfo:nil
+                                                             repeats:YES];
+        
+    }
+    [self.scheduleTimer fire];
 }
 
 - (void)afterFindAdress
 {
-    self.appServerUrl = @"http://www.163.com";
+    //停止 Timer
+    [self.scheduleTimer invalidate];
+    
+    [self showAlertMessage:TheAppDelegate.serverBaseUrl];
     [self loadRequest];
 }
 
 - (void)loadRequest
 {
-    NSURL *serverUrl = [NSURL URLWithString:[self.appServerUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+    NSURL *serverUrl = [NSURL URLWithString:[TheAppDelegate.serverBaseUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
     NSURLRequest *request = [NSURLRequest requestWithURL:serverUrl cachePolicy:NSURLCacheStorageAllowedInMemoryOnly timeoutInterval:20];
     [self.mainWebView loadRequest:request];
 }
@@ -87,7 +145,7 @@
 	
 	NSError *error = nil;
 	//绑定端口
-	if (![self.udpSocket bindToPort:58129 error:&error])
+	if (![self.udpSocket bindToPort:kUdpSocketPort error:&error])
 	{
         NSLog(@"Error binding: %@", error);
 		return;
@@ -110,19 +168,31 @@
 
 - (void)sendUDPMessage
 {
-    NSString *msg = @"Hello,Catch me call!";
-    NSData *data = [msg dataUsingEncoding:NSUTF8StringEncoding];
-	[self.udpSocket sendData:data toHost:@"224.0.0.1" port:self.port withTimeout:-1 tag:self.tag];
+    
+    if (self.pollCount < kMaxPollCount) {
+        self.pollCount += 1;
+        NSString *msg = @"Hello,Catch me call!";
+        NSLog(@"%@",msg);
+        NSData *data = [msg dataUsingEncoding:NSUTF8StringEncoding];
+        [self.udpSocket sendData:data toHost:kUdpBroadcastHost port:self.udpBroadcastPort withTimeout:10 tag:self.tag];
+    } else {
+        //停止 Timer
+        [self.scheduleTimer invalidate];
+    }
+    NSLog(@"pollCount --> %d",self.pollCount);
 }
 
 #pragma mark - GCDAsyncUdpSocketDelegate
+
 - (void)udpSocket:(GCDAsyncUdpSocket *)sock didSendDataWithTag:(long)tag
 {
+    NSLog(@"Client didSendData!");
 	// You could add checks here
 }
 
 - (void)udpSocket:(GCDAsyncUdpSocket *)sock didNotSendDataWithTag:(long)tag dueToError:(NSError *)error
 {
+    NSLog(@"Client didSendDataError!");
 	// You could add checks here
 }
 
@@ -140,8 +210,9 @@
     }
     NSString *msg = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     if ([msg isEqualToString:@"you_find_me"]) {
-        NSString *receiveMessage = [NSString stringWithFormat:@"message from: %@:%hu,%@",host, port,msg];
-        [self showAlertMessage:receiveMessage];
+//        NSString *receiveMessage = [NSString stringWithFormat:@"message from: %@:%hu,%@",host, port,msg];
+        self.isWifiServerAds = YES;
+        TheAppDelegate.serverBaseUrl = [NSString stringWithFormat:@"http://%@",host];
         [self afterFindAdress];
     }
 }
@@ -152,20 +223,6 @@
 {
     InitAddresses();
     GetIPAddresses();
-    
-//    CloNetworkUtil *cloNetworkUtil = [[CloNetworkUtil alloc] init];
-//    NetworkStatus workStatus = [cloNetworkUtil getNetWorkType];
-//    switch (workStatus) {
-//        case ReachableViaWiFi:
-//            self.currentIP = [NSString stringWithFormat:@"%s",ip_names[2]];
-//            break;
-//        case ReachableViaWWAN:
-//            [self showAlertMessage:@"您的手机未接入WiFi网络，无法使用遥控功能！"];
-//            break;
-//        default:
-//            [self showAlertMessage:@"您的手机未接入网络，无法使用遥控功能！"];
-//            break;
-//    }
     NSString *ipAdress = [NSString stringWithFormat:@"%s",ip_names[2]];
     if (!ipAdress) {
        ipAdress = [NSString stringWithFormat:@"%s",ip_names[1]];

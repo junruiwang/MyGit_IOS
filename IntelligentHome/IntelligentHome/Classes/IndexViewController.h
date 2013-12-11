@@ -11,6 +11,7 @@
 
 @interface IndexViewController : UIViewController <UIWebViewDelegate, GCDAsyncUdpSocketDelegate>
 
-@property (nonatomic,strong) UIWebView *mainWebView;
+@property (nonatomic,weak) IBOutlet UIWebView *mainWebView;
+@property (nonatomic,assign) BOOL isWifiServerAds;
 
 @end
