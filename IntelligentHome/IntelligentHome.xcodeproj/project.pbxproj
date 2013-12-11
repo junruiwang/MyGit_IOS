@@ -1,0 +1,390 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C4515D21185848860012C597 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C4515D20185848860012C597 /* Images.xcassets */; };
+		C4DBCCB118583D400076D08B /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4DBCCB018583D400076D08B /* MainStoryboard.storyboard */; };
+		C4E48D2F185839AE00374CD2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4E48D2E185839AE00374CD2 /* Foundation.framework */; };
+		C4E48D31185839AE00374CD2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4E48D30185839AE00374CD2 /* CoreGraphics.framework */; };
+		C4E48D33185839AE00374CD2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4E48D32185839AE00374CD2 /* UIKit.framework */; };
+		C4E48D39185839AE00374CD2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C4E48D37185839AE00374CD2 /* InfoPlist.strings */; };
+		C4E48D3B185839AE00374CD2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C4E48D3A185839AE00374CD2 /* main.m */; };
+		C4E48D3F185839AE00374CD2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C4E48D3E185839AE00374CD2 /* AppDelegate.m */; };
+		C4E48D6718583B3F00374CD2 /* CloNetworkUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = C4E48D6218583B3F00374CD2 /* CloNetworkUtil.m */; };
+		C4E48D6818583B3F00374CD2 /* IPAdress.c in Sources */ = {isa = PBXBuildFile; fileRef = C4E48D6418583B3F00374CD2 /* IPAdress.c */; };
+		C4E48D6918583B3F00374CD2 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = C4E48D6618583B3F00374CD2 /* Reachability.m */; };
+		C4E48D6F18583B9700374CD2 /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = C4E48D6C18583B9700374CD2 /* GCDAsyncSocket.m */; };
+		C4E48D7018583B9700374CD2 /* GCDAsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = C4E48D6E18583B9700374CD2 /* GCDAsyncUdpSocket.m */; };
+		C4E48D7418583BEC00374CD2 /* IndexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4E48D7318583BEC00374CD2 /* IndexViewController.m */; };
+		C4F29959185849D600C07513 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C4F29956185849D600C07513 /* Default-568h@2x.png */; };
+		C4F2995A185849D600C07513 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = C4F29957185849D600C07513 /* Default.png */; };
+		C4F2995B185849D600C07513 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C4F29958185849D600C07513 /* Default@2x.png */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		C4515D20185848860012C597 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		C4DBCCB018583D400076D08B /* MainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard.storyboard; sourceTree = "<group>"; };
+		C4E48D2B185839AE00374CD2 /* IntelligentHome.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IntelligentHome.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C4E48D2E185839AE00374CD2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		C4E48D30185839AE00374CD2 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		C4E48D32185839AE00374CD2 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		C4E48D36185839AE00374CD2 /* IntelligentHome-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "IntelligentHome-Info.plist"; sourceTree = "<group>"; };
+		C4E48D38185839AE00374CD2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		C4E48D3A185839AE00374CD2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		C4E48D3C185839AE00374CD2 /* IntelligentHome-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "IntelligentHome-Prefix.pch"; sourceTree = "<group>"; };
+		C4E48D3D185839AE00374CD2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		C4E48D3E185839AE00374CD2 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		C4E48D6118583B3F00374CD2 /* CloNetworkUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloNetworkUtil.h; path = Classes/CloNetworkUtil.h; sourceTree = "<group>"; };
+		C4E48D6218583B3F00374CD2 /* CloNetworkUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CloNetworkUtil.m; path = Classes/CloNetworkUtil.m; sourceTree = "<group>"; };
+		C4E48D6318583B3F00374CD2 /* IPAddress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IPAddress.h; path = Classes/IPAddress.h; sourceTree = "<group>"; };
+		C4E48D6418583B3F00374CD2 /* IPAdress.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = IPAdress.c; path = Classes/IPAdress.c; sourceTree = "<group>"; };
+		C4E48D6518583B3F00374CD2 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Reachability.h; path = Classes/Reachability.h; sourceTree = "<group>"; };
+		C4E48D6618583B3F00374CD2 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Reachability.m; path = Classes/Reachability.m; sourceTree = "<group>"; };
+		C4E48D6B18583B9700374CD2 /* GCDAsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCDAsyncSocket.h; path = Classes/GCDAsyncSocket.h; sourceTree = "<group>"; };
+		C4E48D6C18583B9700374CD2 /* GCDAsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCDAsyncSocket.m; path = Classes/GCDAsyncSocket.m; sourceTree = "<group>"; };
+		C4E48D6D18583B9700374CD2 /* GCDAsyncUdpSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCDAsyncUdpSocket.h; path = Classes/GCDAsyncUdpSocket.h; sourceTree = "<group>"; };
+		C4E48D6E18583B9700374CD2 /* GCDAsyncUdpSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCDAsyncUdpSocket.m; path = Classes/GCDAsyncUdpSocket.m; sourceTree = "<group>"; };
+		C4E48D7218583BEC00374CD2 /* IndexViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IndexViewController.h; path = Classes/IndexViewController.h; sourceTree = "<group>"; };
+		C4E48D7318583BEC00374CD2 /* IndexViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IndexViewController.m; path = Classes/IndexViewController.m; sourceTree = "<group>"; };
+		C4E48D7518583C2900374CD2 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		C4F29956185849D600C07513 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		C4F29957185849D600C07513 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		C4F29958185849D600C07513 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C4E48D28185839AD00374CD2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C4E48D31185839AE00374CD2 /* CoreGraphics.framework in Frameworks */,
+				C4E48D33185839AE00374CD2 /* UIKit.framework in Frameworks */,
+				C4E48D2F185839AE00374CD2 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C4E48D22185839AD00374CD2 = {
+			isa = PBXGroup;
+			children = (
+				C4E48D34185839AE00374CD2 /* IntelligentHome */,
+				C4E48D2D185839AE00374CD2 /* Frameworks */,
+				C4E48D2C185839AE00374CD2 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C4E48D2C185839AE00374CD2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C4E48D2B185839AE00374CD2 /* IntelligentHome.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C4E48D2D185839AE00374CD2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C4E48D2E185839AE00374CD2 /* Foundation.framework */,
+				C4E48D30185839AE00374CD2 /* CoreGraphics.framework */,
+				C4E48D32185839AE00374CD2 /* UIKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C4E48D34185839AE00374CD2 /* IntelligentHome */ = {
+			isa = PBXGroup;
+			children = (
+				C4515D20185848860012C597 /* Images.xcassets */,
+				C4E48D5D18583A8100374CD2 /* Classes */,
+				C4E48D5F18583AC500374CD2 /* Resources */,
+				C4E48D35185839AE00374CD2 /* Supporting Files */,
+			);
+			path = IntelligentHome;
+			sourceTree = "<group>";
+		};
+		C4E48D35185839AE00374CD2 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C4E48D36185839AE00374CD2 /* IntelligentHome-Info.plist */,
+				C4E48D37185839AE00374CD2 /* InfoPlist.strings */,
+				C4E48D3A185839AE00374CD2 /* main.m */,
+				C4E48D3C185839AE00374CD2 /* IntelligentHome-Prefix.pch */,
+				C4F29956185849D600C07513 /* Default-568h@2x.png */,
+				C4F29957185849D600C07513 /* Default.png */,
+				C4F29958185849D600C07513 /* Default@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C4E48D5D18583A8100374CD2 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				C4E48D7118583BD100374CD2 /* Index */,
+				C4E48D6A18583B5E00374CD2 /* Socket */,
+				C4E48D6018583AE000374CD2 /* Utils */,
+				C4E48D7518583C2900374CD2 /* Constants.h */,
+				C4E48D3D185839AE00374CD2 /* AppDelegate.h */,
+				C4E48D3E185839AE00374CD2 /* AppDelegate.m */,
+				C4DBCCB018583D400076D08B /* MainStoryboard.storyboard */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		C4E48D5F18583AC500374CD2 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		C4E48D6018583AE000374CD2 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				C4E48D6118583B3F00374CD2 /* CloNetworkUtil.h */,
+				C4E48D6218583B3F00374CD2 /* CloNetworkUtil.m */,
+				C4E48D6318583B3F00374CD2 /* IPAddress.h */,
+				C4E48D6418583B3F00374CD2 /* IPAdress.c */,
+				C4E48D6518583B3F00374CD2 /* Reachability.h */,
+				C4E48D6618583B3F00374CD2 /* Reachability.m */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
+		C4E48D6A18583B5E00374CD2 /* Socket */ = {
+			isa = PBXGroup;
+			children = (
+				C4E48D6B18583B9700374CD2 /* GCDAsyncSocket.h */,
+				C4E48D6C18583B9700374CD2 /* GCDAsyncSocket.m */,
+				C4E48D6D18583B9700374CD2 /* GCDAsyncUdpSocket.h */,
+				C4E48D6E18583B9700374CD2 /* GCDAsyncUdpSocket.m */,
+			);
+			name = Socket;
+			sourceTree = "<group>";
+		};
+		C4E48D7118583BD100374CD2 /* Index */ = {
+			isa = PBXGroup;
+			children = (
+				C4E48D7218583BEC00374CD2 /* IndexViewController.h */,
+				C4E48D7318583BEC00374CD2 /* IndexViewController.m */,
+			);
+			name = Index;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C4E48D2A185839AD00374CD2 /* IntelligentHome */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C4E48D57185839AE00374CD2 /* Build configuration list for PBXNativeTarget "IntelligentHome" */;
+			buildPhases = (
+				C4E48D27185839AD00374CD2 /* Sources */,
+				C4E48D28185839AD00374CD2 /* Frameworks */,
+				C4E48D29185839AD00374CD2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = IntelligentHome;
+			productName = IntelligentHome;
+			productReference = C4E48D2B185839AE00374CD2 /* IntelligentHome.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C4E48D23185839AD00374CD2 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = jerry.wang;
+			};
+			buildConfigurationList = C4E48D26185839AD00374CD2 /* Build configuration list for PBXProject "IntelligentHome" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = C4E48D22185839AD00374CD2;
+			productRefGroup = C4E48D2C185839AE00374CD2 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C4E48D2A185839AD00374CD2 /* IntelligentHome */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C4E48D29185839AD00374CD2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C4F2995B185849D600C07513 /* Default@2x.png in Resources */,
+				C4515D21185848860012C597 /* Images.xcassets in Resources */,
+				C4F29959185849D600C07513 /* Default-568h@2x.png in Resources */,
+				C4DBCCB118583D400076D08B /* MainStoryboard.storyboard in Resources */,
+				C4E48D39185839AE00374CD2 /* InfoPlist.strings in Resources */,
+				C4F2995A185849D600C07513 /* Default.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C4E48D27185839AD00374CD2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C4E48D6F18583B9700374CD2 /* GCDAsyncSocket.m in Sources */,
+				C4E48D6718583B3F00374CD2 /* CloNetworkUtil.m in Sources */,
+				C4E48D3F185839AE00374CD2 /* AppDelegate.m in Sources */,
+				C4E48D6818583B3F00374CD2 /* IPAdress.c in Sources */,
+				C4E48D7018583B9700374CD2 /* GCDAsyncUdpSocket.m in Sources */,
+				C4E48D3B185839AE00374CD2 /* main.m in Sources */,
+				C4E48D6918583B3F00374CD2 /* Reachability.m in Sources */,
+				C4E48D7418583BEC00374CD2 /* IndexViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		C4E48D37185839AE00374CD2 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C4E48D38185839AE00374CD2 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C4E48D55185839AE00374CD2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		C4E48D56185839AE00374CD2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C4E48D58185839AE00374CD2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "IntelligentHome/IntelligentHome-Prefix.pch";
+				INFOPLIST_FILE = "IntelligentHome/IntelligentHome-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		C4E48D59185839AE00374CD2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "IntelligentHome/IntelligentHome-Prefix.pch";
+				INFOPLIST_FILE = "IntelligentHome/IntelligentHome-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C4E48D26185839AD00374CD2 /* Build configuration list for PBXProject "IntelligentHome" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C4E48D55185839AE00374CD2 /* Debug */,
+				C4E48D56185839AE00374CD2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C4E48D57185839AE00374CD2 /* Build configuration list for PBXNativeTarget "IntelligentHome" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C4E48D58185839AE00374CD2 /* Debug */,
+				C4E48D59185839AE00374CD2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C4E48D23185839AD00374CD2 /* Project object */;
+}
