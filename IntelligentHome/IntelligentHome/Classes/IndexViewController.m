@@ -12,8 +12,11 @@
 #import "CloNetworkUtil.h"
 #import "Reachability.h"
 #import "Constants.h"
+#import "NetworkHelper.h"
 
 @interface IndexViewController ()
+
+@property (nonatomic,strong) UIImageView *backgroundView;
 
 @property (nonatomic, copy) NSString *currentIP;
 @property (nonatomic, strong) GCDAsyncUdpSocket *udpSocket;
@@ -24,6 +27,8 @@
 //轮询次数
 @property (nonatomic, assign) NSInteger pollCount;
 
+- (void)workingForFindServerUrl;
+- (void)firstStoreSSID;
 - (void)loadRequest;
 - (void)sendUDPMessage;
 - (void)afterFindAdress;
@@ -38,6 +43,9 @@
     if (self) {
         self.udpBroadcastPort = kUdpBroadcastPort;
         self.isWifiServerAds = NO;
+        
+        //注册通知
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(workingForFindServerUrl) name:@"applicationDidBecomeActiveNotifi" object:nil];
     }
     return self;
 }
@@ -56,26 +64,37 @@
 		[self setupSocket];
 	}
     self.mainWebView.scrollView.bounces = NO;
-    self.mainWebView.scalesPageToFit = YES;
+    self.mainWebView.scalesPageToFit = NO;
+    self.mainWebView.delegate = self;
+    self.backgroundView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+    self.backgroundView.image = [UIImage imageNamed:@"loading_bg.jpg"];
+    [self.mainWebView addSubview:self.backgroundView];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    NSLog(@"%@", NSStringFromCGRect(self.view.frame));
-    self.mainWebView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+    
+    [self workingForFindServerUrl];
+}
+
+- (void)workingForFindServerUrl
+{
     //先判定当前网络环境是WIFI，还是其他网络
     CloNetworkUtil *cloNetworkUtil = [[CloNetworkUtil alloc] init];
     NetworkStatus workStatus = [cloNetworkUtil getNetWorkType];
     switch (workStatus) {
         case ReachableViaWiFi:
         {
+            //局域网查找
             [self operateForWifi];
             break;
         }
         case ReachableViaWWAN:
         {
             [self showAlertMessage:@"您的手机当前接入网络环境为2G/3G网络！"];
+            //互联网查找
+            [self findHostServerByRemote];
             break;
         }
         default:
@@ -84,10 +103,26 @@
             break;
         }
     }
-    
 }
 
 - (void)operateForWifi
+{
+    NSString *ssid = [[NSUserDefaults standardUserDefaults] valueForKey:kCurrentWifiSSID];
+    NSString *curssid = [NetworkHelper fetchSSIDInfo];
+
+    if (ssid == nil) {
+        //未设置过局域网内主机，执行广播查找
+        [self searchServerUrl];
+    } else if ([curssid isEqualToString:ssid]) {
+        //用户的网络环境为局域网主机环境，执行广播查找
+        [self searchServerUrl];
+    } else {
+        //互联网查找主机
+        [self findHostServerByRemote];
+    }
+}
+
+- (void)searchServerUrl
 {
     if (self.isWifiServerAds) {
         NSURL *baseUrl = [NSURL URLWithString:TheAppDelegate.serverBaseUrl];
@@ -120,6 +155,8 @@
 {
     //停止 Timer
     [self.scheduleTimer invalidate];
+    //如果是首次入网记录网络SSID
+    [self firstStoreSSID];
     
     [self showAlertMessage:TheAppDelegate.serverBaseUrl];
     [self loadRequest];
@@ -128,8 +165,29 @@
 - (void)loadRequest
 {
     NSURL *serverUrl = [NSURL URLWithString:[TheAppDelegate.serverBaseUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
-    NSURLRequest *request = [NSURLRequest requestWithURL:serverUrl cachePolicy:NSURLCacheStorageAllowedInMemoryOnly timeoutInterval:20];
+    NSURLRequest *request = [NSURLRequest requestWithURL:serverUrl cachePolicy:NSURLCacheStorageAllowedInMemoryOnly timeoutInterval:10];
     [self.mainWebView loadRequest:request];
+}
+
+- (void)findHostServerByRemote
+{
+    //通过访问远程云主机，获取服务器访问路径
+    TheAppDelegate.serverBaseUrl = kBaseURL;
+    [self loadRequest];
+}
+
+- (void)firstStoreSSID
+{
+    NSString *alreadyRunKey = kFIRST;
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:alreadyRunKey])
+    {
+        NSString *ssid = [NetworkHelper fetchSSIDInfo];
+        if (ssid && ![ssid isEqualToString:@""]) {
+            [[NSUserDefaults standardUserDefaults] setValue:ssid forKey:kCurrentWifiSSID];
+            [[NSUserDefaults standardUserDefaults] setBool:YES forKey:alreadyRunKey];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+        }
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -179,6 +237,7 @@
     } else {
         //停止 Timer
         [self.scheduleTimer invalidate];
+        [self showAlertMessage:@"无法查找到当前网络内应用主机，请检查您的网络连接是否正常！"];
     }
 }
 
@@ -217,6 +276,12 @@
     }
 }
 
+#pragma mark - UIWebViewDelegate
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView
+{
+    [self.backgroundView removeFromSuperview];
+}
 
 //得到本机IP
 - (void) deviceIPAdress

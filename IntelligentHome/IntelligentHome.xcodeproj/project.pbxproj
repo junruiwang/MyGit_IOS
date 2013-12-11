@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		C4515D21185848860012C597 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C4515D20185848860012C597 /* Images.xcassets */; };
+		C4B6A4FB1858A4D8008A8075 /* NetworkHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C4B6A4FA1858A4D8008A8075 /* NetworkHelper.m */; };
+		C4B6A4FD1858A657008A8075 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4B6A4FC1858A657008A8075 /* SystemConfiguration.framework */; };
+		C4B6A5001858BB6C008A8075 /* loading_bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C4B6A4FF1858BB6C008A8075 /* loading_bg.jpg */; };
 		C4DBCCB118583D400076D08B /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4DBCCB018583D400076D08B /* MainStoryboard.storyboard */; };
 		C4E48D2F185839AE00374CD2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4E48D2E185839AE00374CD2 /* Foundation.framework */; };
 		C4E48D31185839AE00374CD2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4E48D30185839AE00374CD2 /* CoreGraphics.framework */; };
@@ -28,6 +31,10 @@
 
 /* Begin PBXFileReference section */
 		C4515D20185848860012C597 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		C4B6A4F91858A4D8008A8075 /* NetworkHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NetworkHelper.h; path = Classes/NetworkHelper.h; sourceTree = "<group>"; };
+		C4B6A4FA1858A4D8008A8075 /* NetworkHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NetworkHelper.m; path = Classes/NetworkHelper.m; sourceTree = "<group>"; };
+		C4B6A4FC1858A657008A8075 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		C4B6A4FF1858BB6C008A8075 /* loading_bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = loading_bg.jpg; path = Resources/loading_bg.jpg; sourceTree = "<group>"; };
 		C4DBCCB018583D400076D08B /* MainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard.storyboard; sourceTree = "<group>"; };
 		C4E48D2B185839AE00374CD2 /* IntelligentHome.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IntelligentHome.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4E48D2E185839AE00374CD2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -62,6 +69,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C4B6A4FD1858A657008A8075 /* SystemConfiguration.framework in Frameworks */,
 				C4E48D31185839AE00374CD2 /* CoreGraphics.framework in Frameworks */,
 				C4E48D33185839AE00374CD2 /* UIKit.framework in Frameworks */,
 				C4E48D2F185839AE00374CD2 /* Foundation.framework in Frameworks */,
@@ -91,6 +99,7 @@
 		C4E48D2D185839AE00374CD2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C4B6A4FC1858A657008A8075 /* SystemConfiguration.framework */,
 				C4E48D2E185839AE00374CD2 /* Foundation.framework */,
 				C4E48D30185839AE00374CD2 /* CoreGraphics.framework */,
 				C4E48D32185839AE00374CD2 /* UIKit.framework */,
@@ -140,6 +149,7 @@
 		C4E48D5F18583AC500374CD2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				C4B6A4FF1858BB6C008A8075 /* loading_bg.jpg */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -153,6 +163,8 @@
 				C4E48D6418583B3F00374CD2 /* IPAdress.c */,
 				C4E48D6518583B3F00374CD2 /* Reachability.h */,
 				C4E48D6618583B3F00374CD2 /* Reachability.m */,
+				C4B6A4F91858A4D8008A8075 /* NetworkHelper.h */,
+				C4B6A4FA1858A4D8008A8075 /* NetworkHelper.m */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -229,6 +241,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C4F2995B185849D600C07513 /* Default@2x.png in Resources */,
+				C4B6A5001858BB6C008A8075 /* loading_bg.jpg in Resources */,
 				C4515D21185848860012C597 /* Images.xcassets in Resources */,
 				C4F29959185849D600C07513 /* Default-568h@2x.png in Resources */,
 				C4DBCCB118583D400076D08B /* MainStoryboard.storyboard in Resources */,
@@ -252,6 +265,7 @@
 				C4E48D3B185839AE00374CD2 /* main.m in Sources */,
 				C4E48D6918583B3F00374CD2 /* Reachability.m in Sources */,
 				C4E48D7418583BEC00374CD2 /* IndexViewController.m in Sources */,
+				C4B6A4FB1858A4D8008A8075 /* NetworkHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

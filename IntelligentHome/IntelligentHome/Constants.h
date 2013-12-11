@@ -13,5 +13,8 @@
 #define kUdpSocketPort       58129
 #define kMaxPollCount        5
 
+#define kClientVersion @"1.0"
+#define kFIRST @"kClientVersion_FirstSearch_Intelligent"
+#define kCurrentWifiSSID @"currentWifiSSID"
 
 #define TheAppDelegate  ((AppDelegate *)[UIApplication sharedApplication].delegate)
