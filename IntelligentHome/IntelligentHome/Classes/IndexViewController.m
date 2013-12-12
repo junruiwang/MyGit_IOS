@@ -22,10 +22,14 @@
 @property (nonatomic, strong) GCDAsyncUdpSocket *udpSocket;
 @property (nonatomic) int udpBroadcastPort;
 @property (nonatomic) long tag;
-
+@property (nonatomic, assign) BOOL isWifiServerAds;
 @property (nonatomic, strong) NSTimer *scheduleTimer;
 //轮询次数
 @property (nonatomic, assign) NSInteger pollCount;
+//最近一次刷新资源时间
+@property(nonatomic, strong) NSDate *invokeTime;
+
+@property(nonatomic, strong) NSDate *udpDidUnFindTime;
 
 - (void)workingForFindServerUrl;
 - (void)firstStoreSSID;
@@ -80,45 +84,75 @@
 
 - (void)workingForFindServerUrl
 {
-    //先判定当前网络环境是WIFI，还是其他网络
-    CloNetworkUtil *cloNetworkUtil = [[CloNetworkUtil alloc] init];
-    NetworkStatus workStatus = [cloNetworkUtil getNetWorkType];
-    switch (workStatus) {
-        case ReachableViaWiFi:
-        {
-            //局域网查找
-            [self operateForWifi];
-            break;
-        }
-        case ReachableViaWWAN:
-        {
-            [self showAlertMessage:@"您的手机当前接入网络环境为2G/3G网络！"];
-            //互联网查找
-            [self findHostServerByRemote];
-            break;
-        }
-        default:
-        {
-            [self showAlertMessage:@"您尚未接入网络，请检查网络连接！"];
-            break;
+    NSTimeInterval intCurrentTime = [[NSDate date] timeIntervalSince1970];
+    
+    if (self.invokeTime == nil || (intCurrentTime - [self.invokeTime timeIntervalSince1970]) > 5) {
+        self.invokeTime = [NSDate date];
+        //先判定当前网络环境是WIFI，还是其他网络
+        CloNetworkUtil *cloNetworkUtil = [[CloNetworkUtil alloc] init];
+        NetworkStatus workStatus = [cloNetworkUtil getNetWorkType];
+        switch (workStatus) {
+            case ReachableViaWiFi:
+            {
+                //局域网查找
+                [self operateForWifi];
+                break;
+            }
+            case ReachableViaWWAN:
+            {
+                //互联网查找
+                [self operateForWwan];
+                break;
+            }
+            default:
+            {
+                [self showAlertMessage:@"您尚未接入网络，请检查网络连接！"];
+                break;
+            }
         }
     }
 }
 
+//3G(2G)网络操作
+- (void)operateForWwan
+{
+    NSURL *baseUrl = [NSURL URLWithString:TheAppDelegate.serverBaseUrl];
+    if ([[UIApplication sharedApplication] canOpenURL:baseUrl]) {
+        //刷新当前页面
+        [self.mainWebView reload];
+    } else {
+        //互联网查找主机
+        [self findHostServerByRemote];
+    }
+}
+
+//WIFI网络操作
 - (void)operateForWifi
 {
     NSString *ssid = [[NSUserDefaults standardUserDefaults] valueForKey:kCurrentWifiSSID];
     NSString *curssid = [NetworkHelper fetchSSIDInfo];
 
     if (ssid == nil) {
-        //未设置过局域网内主机，执行广播查找
-        [self searchServerUrl];
+        NSURL *baseUrl = [NSURL URLWithString:TheAppDelegate.serverBaseUrl];
+        if ([[UIApplication sharedApplication] canOpenURL:baseUrl]) {
+            //刷新当前页面
+            [self.mainWebView reload];
+        } else {
+            //未设置过局域网内主机，执行广播查找
+            [self execScheduleTimer];
+        }
     } else if ([curssid isEqualToString:ssid]) {
-        //用户的网络环境为局域网主机环境，执行广播查找
+        //用户的网络环境为局域网主机环境，判定是否需要执行广播查找
         [self searchServerUrl];
     } else {
         //互联网查找主机
-        [self findHostServerByRemote];
+        NSURL *baseUrl = [NSURL URLWithString:TheAppDelegate.serverBaseUrl];
+        if ([[UIApplication sharedApplication] canOpenURL:baseUrl]) {
+            //刷新当前页面
+            [self.mainWebView reload];
+        } else {
+            [self findHostServerByRemote];
+        }
     }
 }
 
@@ -127,13 +161,28 @@
     if (self.isWifiServerAds) {
         NSURL *baseUrl = [NSURL URLWithString:TheAppDelegate.serverBaseUrl];
         if ([[UIApplication sharedApplication] canOpenURL:baseUrl]) {
-            [self loadRequest];
+            //刷新当前页面
+            [self.mainWebView reload];
         } else {
+            //服务器IP发生变动，需要重新查找主机地址
             [self execScheduleTimer];
         }
         
     } else {
-        [self execScheduleTimer];
+        NSTimeInterval intCurrentTime = [[NSDate date] timeIntervalSince1970];
+        //外网环境下超过600秒，重新广播一次
+        if (self.udpDidUnFindTime == nil || (intCurrentTime - [self.udpDidUnFindTime timeIntervalSince1970]) > 600) {
+            [self execScheduleTimer];
+        } else {
+            NSURL *baseUrl = [NSURL URLWithString:TheAppDelegate.serverBaseUrl];
+            if ([[UIApplication sharedApplication] canOpenURL:baseUrl]) {
+                //刷新当前页面
+                [self.mainWebView reload];
+            } else {
+                [self findHostServerByRemote];
+            }
+        }
+        
     }
 }
 
@@ -169,10 +218,13 @@
     [self.mainWebView loadRequest:request];
 }
 
+//远程查询，不存在的话，网络不可用
 - (void)findHostServerByRemote
 {
     //通过访问远程云主机，获取服务器访问路径
+    self.isWifiServerAds = NO;
     TheAppDelegate.serverBaseUrl = kBaseURL;
+    [self showAlertMessage:TheAppDelegate.serverBaseUrl];
     [self loadRequest];
 }
 
@@ -237,7 +289,9 @@
     } else {
         //停止 Timer
         [self.scheduleTimer invalidate];
-        [self showAlertMessage:@"无法查找到当前网络内应用主机，请检查您的网络连接是否正常！"];
+        //udp广播未找到主机，通过远程主机获取服务器访问路径
+        self.udpDidUnFindTime = [NSDate date];
+        [self findHostServerByRemote];
     }
 }
 
@@ -281,6 +335,12 @@
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
     [self.backgroundView removeFromSuperview];
+}
+
+- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
+{
+    NSString *failMsg = [NSString stringWithFormat:@"无法打开主机地址：%@",TheAppDelegate.serverBaseUrl];
+    [self showAlertMessage:failMsg];
 }
 
 //得到本机IP
