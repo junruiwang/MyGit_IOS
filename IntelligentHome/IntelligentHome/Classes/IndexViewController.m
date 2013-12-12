@@ -32,6 +32,7 @@
 @property(nonatomic, strong) NSDate *udpDidUnFindTime;
 
 - (void)workingForFindServerUrl;
+- (void)stopTimerTask;
 - (void)firstStoreSSID;
 - (void)loadRequest;
 - (void)sendUDPMessage;
@@ -47,9 +48,11 @@
     if (self) {
         self.udpBroadcastPort = kUdpBroadcastPort;
         self.isWifiServerAds = NO;
-        
+        self.pollCount = 0;
         //注册通知
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(workingForFindServerUrl) name:@"applicationDidBecomeActiveNotifi" object:nil];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(stopTimerTask) name:@"applicationWillResignActiveNotifi" object:nil];
     }
     return self;
 }
@@ -80,6 +83,14 @@
     [super viewWillAppear:animated];
     
     [self workingForFindServerUrl];
+}
+
+- (void)stopTimerTask
+{
+    if (self.scheduleTimer) {
+        [self.scheduleTimer invalidate];
+        self.scheduleTimer = nil;
+    }
 }
 
 - (void)workingForFindServerUrl
@@ -188,6 +199,7 @@
 
 - (void)execScheduleTimer
 {
+    self.pollCount = 0;
     //UDP广播查找局域网主机
     if (self.scheduleTimer == nil) {
         self.scheduleTimer = [NSTimer scheduledTimerWithTimeInterval:11.0
