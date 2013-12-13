@@ -13,10 +13,10 @@
 #import "Reachability.h"
 #import "Constants.h"
 #import "NetworkHelper.h"
+#import "UdpIndicatorViewController.h"
+#import "HZActivityIndicatorView.h"
 
 @interface IndexViewController ()
-
-@property (nonatomic,strong) UIImageView *backgroundView;
 
 @property (nonatomic, copy) NSString *currentIP;
 @property (nonatomic, strong) GCDAsyncUdpSocket *udpSocket;
@@ -30,6 +30,10 @@
 @property(nonatomic, strong) NSDate *invokeTime;
 
 @property(nonatomic, strong) NSDate *udpDidUnFindTime;
+//UDP广播遮罩层效果
+@property(nonatomic, strong) UdpIndicatorViewController *udpIndicatorViewController;
+//webView遮罩层效果
+@property(nonatomic, strong) HZActivityIndicatorView *customIndicator;
 
 - (void)workingForFindServerUrl;
 - (void)stopTimerTask;
@@ -73,9 +77,6 @@
     self.mainWebView.scrollView.bounces = NO;
     self.mainWebView.scalesPageToFit = NO;
     self.mainWebView.delegate = self;
-    self.backgroundView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
-    self.backgroundView.image = [UIImage imageNamed:@"loading_bg.jpg"];
-    [self.mainWebView addSubview:self.backgroundView];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -199,6 +200,7 @@
 
 - (void)execScheduleTimer
 {
+    [self showIndicatorView];
     self.pollCount = 0;
     //UDP广播查找局域网主机
     if (self.scheduleTimer == nil) {
@@ -227,6 +229,7 @@
 {
     NSURL *serverUrl = [NSURL URLWithString:[TheAppDelegate.serverBaseUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
     NSURLRequest *request = [NSURLRequest requestWithURL:serverUrl cachePolicy:NSURLCacheStorageAllowedInMemoryOnly timeoutInterval:10];
+    [self showLoadingView];
     [self.mainWebView loadRequest:request];
 }
 
@@ -299,6 +302,7 @@
         NSData *data = [msg dataUsingEncoding:NSUTF8StringEncoding];
         [self.udpSocket sendData:data toHost:kUdpBroadcastHost port:self.udpBroadcastPort withTimeout:10 tag:self.tag];
     } else {
+        [self hideIndicatorView];
         //停止 Timer
         [self.scheduleTimer invalidate];
         //udp广播未找到主机，通过远程主机获取服务器访问路径
@@ -327,6 +331,8 @@
     uint16_t port = 0;
     [GCDAsyncUdpSocket getHost:&host port:&port fromAddress:address];
     
+    [self hideIndicatorView];
+    
     //收到自己发的广播时不显示出来
     NSMutableString *tempIP = [NSMutableString stringWithFormat:@"::ffff:%@",self.currentIP];
     if ([host isEqualToString:self.currentIP]||[host isEqualToString:tempIP])
@@ -346,11 +352,12 @@
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
-    [self.backgroundView removeFromSuperview];
+    [self hideLoadingView];
 }
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
 {
+    [self hideLoadingView];
     NSString *failMsg = [NSString stringWithFormat:@"无法打开主机地址：%@",TheAppDelegate.serverBaseUrl];
     [self showAlertMessage:failMsg];
 }
@@ -377,6 +384,58 @@
                               cancelButtonTitle:NSLocalizedString(@"确定", nil)
                               otherButtonTitles:nil];
     [alertView show];
+}
+
+#pragma mark - UDP loading view
+
+- (void)showIndicatorView
+{
+    if (self.udpIndicatorViewController == nil)
+    {
+        UIStoryboard *board = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
+        self.udpIndicatorViewController = [board instantiateViewControllerWithIdentifier:@"UdpIndicatorViewController"];
+        CGRect frame = self.udpIndicatorViewController.view.frame;
+        frame.origin = CGPointMake(0, 0);
+        self.udpIndicatorViewController.view.frame = frame;
+        [self.view bringSubviewToFront:self.udpIndicatorViewController.view];
+    }
+//    self.udpIndicatorViewController.view.layer.zPosition = 1000;
+    [self.view addSubview:self.udpIndicatorViewController.view];
+}
+
+- (void)hideIndicatorView
+{
+    [self.udpIndicatorViewController.view removeFromSuperview];
+    self.udpIndicatorViewController = nil;
+}
+
+#pragma mark - webview loading
+
+- (void)showLoadingView
+{
+    if (self.customIndicator == nil)
+    {
+        self.customIndicator = [[HZActivityIndicatorView alloc] initWithFrame:CGRectMake(50, 150, 0, 0)];
+        self.customIndicator.backgroundColor = self.view.backgroundColor;
+        self.customIndicator.opaque = YES;
+        self.customIndicator.steps = 16;
+        self.customIndicator.finSize = CGSizeMake(8, 40);
+        self.customIndicator.indicatorRadius = 20;
+        self.customIndicator.stepDuration = 0.100;
+        self.customIndicator.color = [UIColor colorWithRed:0.0 green:34.0/255.0 blue:85.0/255.0 alpha:1.000];
+        self.customIndicator.roundedCoreners = UIRectCornerTopRight;
+        self.customIndicator.cornerRadii = CGSizeMake(10, 10);
+        [self.customIndicator startAnimating];
+        
+        [self.mainWebView bringSubviewToFront:self.customIndicator];
+        [self.mainWebView addSubview:self.customIndicator];
+    }
+}
+
+- (void)hideLoadingView
+{
+    [self.customIndicator removeFromSuperview];
+    self.customIndicator = nil;
 }
 
 @end

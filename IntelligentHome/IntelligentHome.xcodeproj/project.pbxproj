@@ -7,7 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C44CD01E185AEBC500D72D5A /* base_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = C44CD01D185AEBC500D72D5A /* base_bg.png */; };
+		C44CD024185AF94900D72D5A /* PulsingHaloLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = C44CD023185AF94900D72D5A /* PulsingHaloLayer.m */; };
+		C44CD027185AFA3B00D72D5A /* UdpIndicatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C44CD026185AFA3B00D72D5A /* UdpIndicatorViewController.m */; };
+		C44CD02A185B040B00D72D5A /* logo_phone.png in Resources */ = {isa = PBXBuildFile; fileRef = C44CD028185B040B00D72D5A /* logo_phone.png */; };
+		C44CD02B185B040B00D72D5A /* logo_phone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C44CD029185B040B00D72D5A /* logo_phone@2x.png */; };
 		C4515D21185848860012C597 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C4515D20185848860012C597 /* Images.xcassets */; };
+		C4A65A87185B3CD900EA5D33 /* HZActivityIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = C4A65A86185B3CD900EA5D33 /* HZActivityIndicatorView.m */; };
 		C4B6A4FB1858A4D8008A8075 /* NetworkHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C4B6A4FA1858A4D8008A8075 /* NetworkHelper.m */; };
 		C4B6A4FD1858A657008A8075 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4B6A4FC1858A657008A8075 /* SystemConfiguration.framework */; };
 		C4B6A5001858BB6C008A8075 /* loading_bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C4B6A4FF1858BB6C008A8075 /* loading_bg.jpg */; };
@@ -30,7 +36,16 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C44CD01D185AEBC500D72D5A /* base_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = base_bg.png; path = Resources/base_bg.png; sourceTree = "<group>"; };
+		C44CD022185AF94900D72D5A /* PulsingHaloLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PulsingHaloLayer.h; path = Classes/PulsingHaloLayer.h; sourceTree = "<group>"; };
+		C44CD023185AF94900D72D5A /* PulsingHaloLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PulsingHaloLayer.m; path = Classes/PulsingHaloLayer.m; sourceTree = "<group>"; };
+		C44CD025185AFA3B00D72D5A /* UdpIndicatorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UdpIndicatorViewController.h; path = Classes/UdpIndicatorViewController.h; sourceTree = "<group>"; };
+		C44CD026185AFA3B00D72D5A /* UdpIndicatorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UdpIndicatorViewController.m; path = Classes/UdpIndicatorViewController.m; sourceTree = "<group>"; };
+		C44CD028185B040B00D72D5A /* logo_phone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = logo_phone.png; path = Resources/logo_phone.png; sourceTree = "<group>"; };
+		C44CD029185B040B00D72D5A /* logo_phone@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "logo_phone@2x.png"; path = "Resources/logo_phone@2x.png"; sourceTree = "<group>"; };
 		C4515D20185848860012C597 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		C4A65A85185B3CD900EA5D33 /* HZActivityIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HZActivityIndicatorView.h; path = Classes/HZActivityIndicatorView.h; sourceTree = "<group>"; };
+		C4A65A86185B3CD900EA5D33 /* HZActivityIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HZActivityIndicatorView.m; path = Classes/HZActivityIndicatorView.m; sourceTree = "<group>"; };
 		C4B6A4F91858A4D8008A8075 /* NetworkHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NetworkHelper.h; path = Classes/NetworkHelper.h; sourceTree = "<group>"; };
 		C4B6A4FA1858A4D8008A8075 /* NetworkHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NetworkHelper.m; path = Classes/NetworkHelper.m; sourceTree = "<group>"; };
 		C4B6A4FC1858A657008A8075 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -79,6 +94,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C44CD01F185AEBF300D72D5A /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				C44CD022185AF94900D72D5A /* PulsingHaloLayer.h */,
+				C44CD023185AF94900D72D5A /* PulsingHaloLayer.m */,
+				C44CD025185AFA3B00D72D5A /* UdpIndicatorViewController.h */,
+				C44CD026185AFA3B00D72D5A /* UdpIndicatorViewController.m */,
+				C4A65A85185B3CD900EA5D33 /* HZActivityIndicatorView.h */,
+				C4A65A86185B3CD900EA5D33 /* HZActivityIndicatorView.m */,
+			);
+			name = Common;
+			sourceTree = "<group>";
+		};
 		C4E48D22185839AD00374CD2 = {
 			isa = PBXGroup;
 			children = (
@@ -135,6 +163,7 @@
 		C4E48D5D18583A8100374CD2 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				C44CD01F185AEBF300D72D5A /* Common */,
 				C4E48D7118583BD100374CD2 /* Index */,
 				C4E48D6A18583B5E00374CD2 /* Socket */,
 				C4E48D6018583AE000374CD2 /* Utils */,
@@ -149,7 +178,10 @@
 		C4E48D5F18583AC500374CD2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				C44CD01D185AEBC500D72D5A /* base_bg.png */,
 				C4B6A4FF1858BB6C008A8075 /* loading_bg.jpg */,
+				C44CD028185B040B00D72D5A /* logo_phone.png */,
+				C44CD029185B040B00D72D5A /* logo_phone@2x.png */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -241,12 +273,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				C4F2995B185849D600C07513 /* Default@2x.png in Resources */,
+				C44CD01E185AEBC500D72D5A /* base_bg.png in Resources */,
 				C4B6A5001858BB6C008A8075 /* loading_bg.jpg in Resources */,
 				C4515D21185848860012C597 /* Images.xcassets in Resources */,
 				C4F29959185849D600C07513 /* Default-568h@2x.png in Resources */,
 				C4DBCCB118583D400076D08B /* MainStoryboard.storyboard in Resources */,
+				C44CD02B185B040B00D72D5A /* logo_phone@2x.png in Resources */,
 				C4E48D39185839AE00374CD2 /* InfoPlist.strings in Resources */,
 				C4F2995A185849D600C07513 /* Default.png in Resources */,
+				C44CD02A185B040B00D72D5A /* logo_phone.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -257,11 +292,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C44CD024185AF94900D72D5A /* PulsingHaloLayer.m in Sources */,
 				C4E48D6F18583B9700374CD2 /* GCDAsyncSocket.m in Sources */,
 				C4E48D6718583B3F00374CD2 /* CloNetworkUtil.m in Sources */,
+				C4A65A87185B3CD900EA5D33 /* HZActivityIndicatorView.m in Sources */,
 				C4E48D3F185839AE00374CD2 /* AppDelegate.m in Sources */,
 				C4E48D6818583B3F00374CD2 /* IPAdress.c in Sources */,
 				C4E48D7018583B9700374CD2 /* GCDAsyncUdpSocket.m in Sources */,
+				C44CD027185AFA3B00D72D5A /* UdpIndicatorViewController.m in Sources */,
 				C4E48D3B185839AE00374CD2 /* main.m in Sources */,
 				C4E48D6918583B3F00374CD2 /* Reachability.m in Sources */,
 				C4E48D7418583BEC00374CD2 /* IndexViewController.m in Sources */,
