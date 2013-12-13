@@ -82,6 +82,9 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0) {
+        self.mainWebView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height-20);
+    }
     
     [self workingForFindServerUrl];
 }
@@ -221,7 +224,6 @@
     //如果是首次入网记录网络SSID
     [self firstStoreSSID];
     
-    [self showAlertMessage:TheAppDelegate.serverBaseUrl];
     [self loadRequest];
 }
 
@@ -239,7 +241,6 @@
     //通过访问远程云主机，获取服务器访问路径
     self.isWifiServerAds = NO;
     TheAppDelegate.serverBaseUrl = kBaseURL;
-    [self showAlertMessage:TheAppDelegate.serverBaseUrl];
     [self loadRequest];
 }
 
@@ -298,7 +299,6 @@
     if (self.pollCount < kMaxPollCount) {
         self.pollCount += 1;
         NSString *msg = @"Hello,Catch me call!";
-        NSLog(@"%@",msg);
         NSData *data = [msg dataUsingEncoding:NSUTF8StringEncoding];
         [self.udpSocket sendData:data toHost:kUdpBroadcastHost port:self.udpBroadcastPort withTimeout:10 tag:self.tag];
     } else {
@@ -399,7 +399,6 @@
         self.udpIndicatorViewController.view.frame = frame;
         [self.view bringSubviewToFront:self.udpIndicatorViewController.view];
     }
-//    self.udpIndicatorViewController.view.layer.zPosition = 1000;
     [self.view addSubview:self.udpIndicatorViewController.view];
 }
 
@@ -415,7 +414,7 @@
 {
     if (self.customIndicator == nil)
     {
-        self.customIndicator = [[HZActivityIndicatorView alloc] initWithFrame:CGRectMake(50, 150, 0, 0)];
+        self.customIndicator = [[HZActivityIndicatorView alloc] initWithFrame:CGRectMake(100, 150, 0, 0)];
         self.customIndicator.backgroundColor = self.view.backgroundColor;
         self.customIndicator.opaque = YES;
         self.customIndicator.steps = 16;
