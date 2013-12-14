@@ -92,6 +92,7 @@
 - (void)stopTimerTask
 {
     if (self.scheduleTimer) {
+        [self hideIndicatorView];
         [self.scheduleTimer invalidate];
         self.scheduleTimer = nil;
     }
