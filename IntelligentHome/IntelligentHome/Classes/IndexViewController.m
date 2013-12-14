@@ -35,6 +35,8 @@
 //webView遮罩层效果
 @property(nonatomic, strong) HZActivityIndicatorView *customIndicator;
 
+@property (nonatomic, strong) BaseServerParser *baseServerParser;
+
 - (void)workingForFindServerUrl;
 - (void)stopTimerTask;
 - (void)firstStoreSSID;
@@ -239,10 +241,16 @@
 //远程查询，不存在的话，网络不可用
 - (void)findHostServerByRemote
 {
-    //通过访问远程云主机，获取服务器访问路径
-    self.isWifiServerAds = NO;
-    TheAppDelegate.serverBaseUrl = kBaseURL;
-    [self loadRequest];
+    if (self.baseServerParser != nil) {
+        [self.baseServerParser cancel];
+        self.baseServerParser = nil;
+    }
+    [self showIndicatorView];
+    self.baseServerParser = [[BaseServerParser alloc] init];
+    self.baseServerParser.serverAddress = kAliyunURL;
+    self.baseServerParser.requestString = [NSString stringWithFormat:@"id=%@",@"123456"];
+    self.baseServerParser.delegate = self;
+    [self.baseServerParser start];
 }
 
 - (void)firstStoreSSID
@@ -436,6 +444,25 @@
 {
     [self.customIndicator removeFromSuperview];
     self.customIndicator = nil;
+}
+
+#pragma mark JsonParserDelegate
+
+- (void)parser:(JsonParser*)parser DidFailedParseWithMsg:(NSString*)msg errCode:(NSInteger)code
+{
+    [self showAlertMessage:@"您的网络已经断开！"];
+    [self hideIndicatorView];
+}
+
+- (void)parser:(JsonParser*)parser DidParsedData:(NSDictionary *)data
+{
+    [self hideIndicatorView];
+    NSString *str_ip = [data valueForKey:@"ip"];
+    NSString *str_port = [data valueForKey:@"port"];
+    //通过访问远程云主机，获取服务器访问路径
+    self.isWifiServerAds = NO;
+    TheAppDelegate.serverBaseUrl = [NSString stringWithFormat:@"http://%@:%@",str_ip,str_port];
+    [self loadRequest];
 }
 
 @end

@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "GCDAsyncUdpSocket.h"
+#import "BaseServerParser.h"
 
-@interface IndexViewController : UIViewController <UIWebViewDelegate, GCDAsyncUdpSocketDelegate>
+@interface IndexViewController : UIViewController <UIWebViewDelegate, GCDAsyncUdpSocketDelegate, JsonParserDelegate>
 
 @property (nonatomic,weak) IBOutlet UIWebView *mainWebView;
 

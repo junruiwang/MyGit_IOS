@@ -8,6 +8,8 @@
 
 #define kBaseURL                       @"http://115.29.147.77:8080"
 
+#define kAliyunURL                     @"http://115.29.147.77/queryFamilyServer.dhtml"
+
 #define kUdpBroadcastHost    @"224.0.0.1"
 #define kUdpBroadcastPort    5224
 #define kUdpSocketPort       58129
