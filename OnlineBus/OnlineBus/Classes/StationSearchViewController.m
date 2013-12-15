@@ -105,7 +105,7 @@
 {
     if ([segue.destinationViewController isKindOfClass:[StationBusViewController class]]) {
         StationBusViewController *stationBusViewController = (StationBusViewController *)segue.destinationViewController;
-        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        NSIndexPath *indexPath = (NSIndexPath *)sender;
         BusStation *busStation = [self.stationTotalArray objectAtIndex:[indexPath row]];
         
         NSMutableArray *doubleArray = [[NSMutableArray alloc] initWithCapacity:2];
@@ -116,9 +116,6 @@
         }
         stationBusViewController.stationName = [NSString stringWithFormat:@"%@(%@)",busStation.standName, busStation.trend];
         stationBusViewController.stationArray = doubleArray;
-        
-        StationTableViewCell *cell = (StationTableViewCell *)[self.tableView cellForRowAtIndexPath:indexPath];
-        [cell setSelected:NO animated:YES];
     }
     
 }
@@ -157,7 +154,9 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self performSegueWithIdentifier:FROM_BUSSTATION_TO_BUSLINE sender:self];
+    StationTableViewCell *cell = (StationTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
+    [self performSegueWithIdentifier:FROM_BUSSTATION_TO_BUSLINE sender:indexPath];
+    [cell setSelected:NO animated:YES];
 }
 
 #pragma mark - JsonParserDelegate

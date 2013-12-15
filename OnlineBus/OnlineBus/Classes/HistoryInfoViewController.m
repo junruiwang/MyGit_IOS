@@ -146,7 +146,8 @@
     if ([segue.identifier isEqualToString:FROM_FAVERATE_TO_BUSDETAIL])
     {
         BusDetailViewController *busDetailViewController = (BusDetailViewController *)segue.destinationViewController;
-        BusLine *busLine = [self.busLineArray objectAtIndex:[[self.busLineTableView indexPathForSelectedRow] row]];
+        NSIndexPath *indexPath = (NSIndexPath *)sender;
+        BusLine *busLine = [self.busLineArray objectAtIndex:[indexPath row]];
         
         NSMutableArray *doubleArray = [[NSMutableArray alloc] initWithCapacity:2];
         for (BusLine *tmpBusLine in self.busLineTotalArray) {
@@ -157,8 +158,11 @@
         busDetailViewController.busLineArray = doubleArray;
     } else if ([segue.identifier isEqualToString:FROM_FAVERATE_TO_STATIONBUS]) {
         StationBusViewController *stationBusViewController = (StationBusViewController *)segue.destinationViewController;
+        NSIndexPath *indexPath = (NSIndexPath *)sender;
+        BusStation *busStation = [self.stationTotalArray objectAtIndex:[indexPath row]];
         
-        BusStation *busStation = [self.stationTotalArray objectAtIndex:[[self.stationTableView indexPathForSelectedRow] row]];
+        stationBusViewController.stationName = [NSString stringWithFormat:@"%@(%@)",busStation.standName, busStation.trend];
+        
         NSMutableArray *doubleArray = [[NSMutableArray alloc] initWithCapacity:2];
         for (BusStation *tmpBusStation in self.stationTotalArray) {
             if ([tmpBusStation.standName isEqualToString:busStation.standName]) {
@@ -257,9 +261,9 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (tableView.tag == kBusLineTag) {
-        [self performSegueWithIdentifier:FROM_FAVERATE_TO_BUSDETAIL sender:self];
+        [self performSegueWithIdentifier:FROM_FAVERATE_TO_BUSDETAIL sender:indexPath];
     } else {
-        [self performSegueWithIdentifier:FROM_FAVERATE_TO_STATIONBUS sender:self];
+        [self performSegueWithIdentifier:FROM_FAVERATE_TO_STATIONBUS sender:indexPath];
     }
 }
 

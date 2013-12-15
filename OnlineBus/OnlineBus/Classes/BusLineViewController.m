@@ -139,7 +139,7 @@
     if ([segue.destinationViewController isKindOfClass:[BusDetailViewController class]]) {
         BusDetailViewController *busDetailViewController = (BusDetailViewController *)segue.destinationViewController;
         
-        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        NSIndexPath *indexPath = (NSIndexPath *)sender;
         BusLine *busLine = [self.busLineArray objectAtIndex:[indexPath row]];
         
         NSMutableArray *doubleArray = [[NSMutableArray alloc] initWithCapacity:2];
@@ -149,9 +149,6 @@
             }
         }
         busDetailViewController.busLineArray = doubleArray;
-        
-        BusLineTableViewCell *cell = (BusLineTableViewCell *)[self.tableView cellForRowAtIndexPath:indexPath];
-        [cell setSelected:NO animated:YES];
     }
     
 }
@@ -186,8 +183,6 @@
     cell.lineDescLabel.text = [self getLineTypeDesc:busLine.lineNumber];
     cell.sepView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"dashed_detail.png"]];
     
-    //cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
-    
     return cell;
 }
 
@@ -200,7 +195,9 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self performSegueWithIdentifier:FROM_BUSLIST_TO_BUSDETAIL sender:self];
+    BusLineTableViewCell *cell = (BusLineTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
+    [self performSegueWithIdentifier:FROM_BUSLIST_TO_BUSDETAIL sender:indexPath];
+    [cell setSelected:NO animated:YES];
 }
 
 #pragma mark JsonParserDelegate
