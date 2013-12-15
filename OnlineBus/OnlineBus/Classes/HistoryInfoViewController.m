@@ -64,7 +64,8 @@
     if (self.busLineArray.count >0 || self.stationTotalArray.count >0) {
         //设置清除按钮
         self.rightBtn = [self generateNavButton:@"list_delete.png"  action:@selector(cleanButtonClicked:)];
-        self.rightBtn.frame = CGRectMake(0, 0, 60, 25);
+        [self.rightBtn setImage:[UIImage imageNamed:@"list_delete_press.png"] forState:UIControlStateHighlighted];
+        self.rightBtn.frame = CGRectMake(0, 0, 30, 30);
         
         UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.rightBtn];
         self.parentViewController.navigationItem.rightBarButtonItem = barButtonItem;

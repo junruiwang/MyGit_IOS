@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C40C74B8185DFEA9009C8D4B /* favorite_delete@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C40C74B6185DFEA9009C8D4B /* favorite_delete@2x.png */; };
+		C40C74B9185DFEA9009C8D4B /* favorite_add@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C40C74B7185DFEA9009C8D4B /* favorite_add@2x.png */; };
+		C40C74BC185E00A6009C8D4B /* navigationbar_back_highlighted_os7.png in Resources */ = {isa = PBXBuildFile; fileRef = C40C74BA185E00A6009C8D4B /* navigationbar_back_highlighted_os7.png */; };
+		C40C74BD185E00A6009C8D4B /* navigationbar_back_os7.png in Resources */ = {isa = PBXBuildFile; fileRef = C40C74BB185E00A6009C8D4B /* navigationbar_back_os7.png */; };
+		C40C74C3185E02DC009C8D4B /* synchronized@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C40C74C0185E02DC009C8D4B /* synchronized@2x.png */; };
+		C40C74C6185E05FE009C8D4B /* list_delete_press.png in Resources */ = {isa = PBXBuildFile; fileRef = C40C74C4185E05FE009C8D4B /* list_delete_press.png */; };
+		C40C74C7185E05FE009C8D4B /* list_delete_press@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C40C74C5185E05FE009C8D4B /* list_delete_press@2x.png */; };
 		C40D29CD1851A93E00AB5CE0 /* BusDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C40D29CC1851A93E00AB5CE0 /* BusDetailViewController.m */; };
 		C40DB19D185D60460045B171 /* list_delete@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C40DB19C185D60460045B171 /* list_delete@2x.png */; };
 		C42E2A50185376760007055C /* MoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C42E2A4F185376760007055C /* MoreViewController.m */; };
@@ -131,6 +138,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C40C74B6185DFEA9009C8D4B /* favorite_delete@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "favorite_delete@2x.png"; path = "Resources/favorite_delete@2x.png"; sourceTree = "<group>"; };
+		C40C74B7185DFEA9009C8D4B /* favorite_add@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "favorite_add@2x.png"; path = "Resources/favorite_add@2x.png"; sourceTree = "<group>"; };
+		C40C74BA185E00A6009C8D4B /* navigationbar_back_highlighted_os7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = navigationbar_back_highlighted_os7.png; path = Resources/navigationbar_back_highlighted_os7.png; sourceTree = "<group>"; };
+		C40C74BB185E00A6009C8D4B /* navigationbar_back_os7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = navigationbar_back_os7.png; path = Resources/navigationbar_back_os7.png; sourceTree = "<group>"; };
+		C40C74C0185E02DC009C8D4B /* synchronized@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "synchronized@2x.png"; path = "Resources/synchronized@2x.png"; sourceTree = "<group>"; };
+		C40C74C4185E05FE009C8D4B /* list_delete_press.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = list_delete_press.png; path = Resources/list_delete_press.png; sourceTree = "<group>"; };
+		C40C74C5185E05FE009C8D4B /* list_delete_press@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "list_delete_press@2x.png"; path = "Resources/list_delete_press@2x.png"; sourceTree = "<group>"; };
 		C40D29CB1851A93E00AB5CE0 /* BusDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BusDetailViewController.h; path = Classes/BusDetailViewController.h; sourceTree = "<group>"; };
 		C40D29CC1851A93E00AB5CE0 /* BusDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BusDetailViewController.m; path = Classes/BusDetailViewController.m; sourceTree = "<group>"; };
 		C40DB19C185D60460045B171 /* list_delete@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "list_delete@2x.png"; path = "Resources/list_delete@2x.png"; sourceTree = "<group>"; };
@@ -418,6 +432,10 @@
 			children = (
 				C43FE922185322380062BBFC /* list_delete.png */,
 				C40DB19C185D60460045B171 /* list_delete@2x.png */,
+				C40C74C4185E05FE009C8D4B /* list_delete_press.png */,
+				C40C74C5185E05FE009C8D4B /* list_delete_press@2x.png */,
+				C40C74B6185DFEA9009C8D4B /* favorite_delete@2x.png */,
+				C40C74B7185DFEA9009C8D4B /* favorite_add@2x.png */,
 				C4E0BA501852C51300FADB93 /* favorite_add.png */,
 				C4E0BA511852C51300FADB93 /* favorite_delete.png */,
 				C43FE8BD184F62B900436A14 /* about_logo.png */,
@@ -460,6 +478,8 @@
 				C43FE8D4184F62B900436A14 /* line@2x.png */,
 				C4A6CDBD1851D791000CCAD4 /* navigationbar_back_highlighted_os7@2x.png */,
 				C4A6CDBE1851D791000CCAD4 /* navigationbar_back_os7@2x.png */,
+				C40C74BA185E00A6009C8D4B /* navigationbar_back_highlighted_os7.png */,
+				C40C74BB185E00A6009C8D4B /* navigationbar_back_os7.png */,
 				C43FE8D5184F62B900436A14 /* run_current_station.png */,
 				C43FE8D6184F62B900436A14 /* run_current_station@2x.png */,
 				C43FE8D7184F62B900436A14 /* run_station.png */,
@@ -473,6 +493,7 @@
 				C43FE8E0184F62B900436A14 /* stop.png */,
 				C43FE8E1184F62B900436A14 /* stop@2x.png */,
 				C4E0BA541852C6EF00FADB93 /* synchronized.png */,
+				C40C74C0185E02DC009C8D4B /* synchronized@2x.png */,
 				C47A44E31852D1EA00567AD8 /* navigationbar_back_common.png */,
 			);
 			name = Resources;
@@ -781,12 +802,14 @@
 				C43FE8FD184F62B900436A14 /* run_station@2x.png in Resources */,
 				C43FE8E2184F62B900436A14 /* about_logo.png in Resources */,
 				C476380D1854173300FAFB10 /* tabbar_more@2x.png in Resources */,
+				C40C74BD185E00A6009C8D4B /* navigationbar_back_os7.png in Resources */,
 				C4A6CDBF1851D791000CCAD4 /* navigationbar_back_highlighted_os7@2x.png in Resources */,
 				C43FE8F1184F62B900436A14 /* icon_57.png in Resources */,
 				C4A6CDCD1851FD02000CCAD4 /* hotel-topbar-back.png in Resources */,
 				C43FE900184F62B900436A14 /* search_btn_press.png in Resources */,
 				C4A6CDC31851E431000CCAD4 /* bottom_jielong_bg_ios7.png in Resources */,
 				C43FE8FA184F62B900436A14 /* run_current_station.png in Resources */,
+				C40C74C7185E05FE009C8D4B /* list_delete_press@2x.png in Resources */,
 				C43FE90D184F635D00436A14 /* Default@2x.png in Resources */,
 				C43FE90C184F635D00436A14 /* Default.png in Resources */,
 				C468AAF5185173BF004EA128 /* book@2x.png in Resources */,
@@ -794,6 +817,7 @@
 				C43FE8EA184F62B900436A14 /* current_top@2x.png in Resources */,
 				C43FE90B184F635D00436A14 /* Default-568h@2x.png in Resources */,
 				C4A6CDC41851E431000CCAD4 /* bottom_jielong_bg_ios7@2x.png in Resources */,
+				C40C74B8185DFEA9009C8D4B /* favorite_delete@2x.png in Resources */,
 				C43FE8F3184F62B900436A14 /* icon_120.png in Resources */,
 				C43FE8E9184F62B900436A14 /* current_top.png in Resources */,
 				C468AAF8185173BF004EA128 /* book-1.png in Resources */,
@@ -805,6 +829,7 @@
 				C43FE8F8184F62B900436A14 /* line.png in Resources */,
 				C43FE8E7184F62B900436A14 /* current_bottom.png in Resources */,
 				C43FE8F9184F62B900436A14 /* line@2x.png in Resources */,
+				C40C74BC185E00A6009C8D4B /* navigationbar_back_highlighted_os7.png in Resources */,
 				C43FE8F7184F62B900436A14 /* line-next@2x.png in Resources */,
 				C47A44E41852D1EA00567AD8 /* navigationbar_back_common.png in Resources */,
 				C4A6CDCB1851FD02000CCAD4 /* heart_icon_red@2x.png in Resources */,
@@ -813,6 +838,7 @@
 				C4E0BA551852C6EF00FADB93 /* synchronized.png in Resources */,
 				C4E0BA521852C51300FADB93 /* favorite_add.png in Resources */,
 				C4E0BA531852C51300FADB93 /* favorite_delete.png in Resources */,
+				C40C74C6185E05FE009C8D4B /* list_delete_press.png in Resources */,
 				C468AAEB18517092004EA128 /* search_discover.png in Resources */,
 				C43FE8E4184F62B900436A14 /* ads_close.png in Resources */,
 				C4A6CDCE1851FD02000CCAD4 /* hotel-topbar-back@2x.png in Resources */,
@@ -824,8 +850,10 @@
 				C468AAF9185173BF004EA128 /* book-1@2x.png in Resources */,
 				C4EA4720185190D200018B27 /* SVProgressHUD.bundle in Resources */,
 				C43FE905184F62B900436A14 /* stop.png in Resources */,
+				C40C74B9185DFEA9009C8D4B /* favorite_add@2x.png in Resources */,
 				C43FE8F6184F62B900436A14 /* line-next.png in Resources */,
 				C43FE8F2184F62B900436A14 /* icon_114.png in Resources */,
+				C40C74C3185E02DC009C8D4B /* synchronized@2x.png in Resources */,
 				C43FE8E5184F62B900436A14 /* bus_favorites.png in Resources */,
 				C43FE906184F62B900436A14 /* stop@2x.png in Resources */,
 				C40DB19D185D60460045B171 /* list_delete@2x.png in Resources */,
