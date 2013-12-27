@@ -208,7 +208,7 @@
     self.pollCount = 0;
     //UDP广播查找局域网主机
     if (self.scheduleTimer == nil) {
-        self.scheduleTimer = [NSTimer scheduledTimerWithTimeInterval:11.0
+        self.scheduleTimer = [NSTimer scheduledTimerWithTimeInterval:4.0
                                                               target:self
                                                             selector:@selector(sendUDPMessage)
                                                             userInfo:nil
@@ -310,7 +310,7 @@
         self.pollCount += 1;
         NSString *msg = @"Hello,Catch me call!";
         NSData *data = [msg dataUsingEncoding:NSUTF8StringEncoding];
-        [self.udpSocket sendData:data toHost:kUdpBroadcastHost port:self.udpBroadcastPort withTimeout:10 tag:self.tag];
+        [self.udpSocket sendData:data toHost:kUdpBroadcastHost port:self.udpBroadcastPort withTimeout:3 tag:self.tag];
     } else {
         [self hideIndicatorView];
         //停止 Timer
@@ -353,7 +353,7 @@
     BOOL isReceive = [self parserJSONString:msg];
     if (isReceive) {
         self.isWifiServerAds = YES;
-        TheAppDelegate.serverBaseUrl = [NSString stringWithFormat:@"http://%@:%d",host,self.localServerPort];
+        TheAppDelegate.serverBaseUrl = [NSString stringWithFormat:@"http://%@:%d/",host,self.localServerPort];
         [self afterFindAdress];
     }
 }
@@ -485,7 +485,7 @@
     NSString *str_port = [data valueForKey:@"port"];
     //通过访问远程云主机，获取服务器访问路径
     self.isWifiServerAds = NO;
-    TheAppDelegate.serverBaseUrl = [NSString stringWithFormat:@"http://%@:%@",str_ip,str_port];
+    TheAppDelegate.serverBaseUrl = [NSString stringWithFormat:@"http://%@:%@/",str_ip,str_port];
     [self loadRequest];
 }
 

@@ -13,7 +13,7 @@
 #define kUdpBroadcastHost    @"224.0.0.1"
 #define kUdpBroadcastPort    5225
 #define kUdpSocketPort       58129
-#define kMaxPollCount        5
+#define kMaxPollCount        2
 
 #define kClientVersion @"1.0"
 #define kFIRST @"kClientVersion_FirstSearch_Intelligent"

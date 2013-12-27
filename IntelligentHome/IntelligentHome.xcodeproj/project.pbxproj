@@ -47,6 +47,9 @@
 		C4F29959185849D600C07513 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C4F29956185849D600C07513 /* Default-568h@2x.png */; };
 		C4F2995A185849D600C07513 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = C4F29957185849D600C07513 /* Default.png */; };
 		C4F2995B185849D600C07513 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C4F29958185849D600C07513 /* Default@2x.png */; };
+		C4F46C76186DC279009D087E /* logo_57.png in Resources */ = {isa = PBXBuildFile; fileRef = C4F46C73186DC279009D087E /* logo_57.png */; };
+		C4F46C77186DC279009D087E /* logo_114.png in Resources */ = {isa = PBXBuildFile; fileRef = C4F46C74186DC279009D087E /* logo_114.png */; };
+		C4F46C78186DC279009D087E /* logo_120.png in Resources */ = {isa = PBXBuildFile; fileRef = C4F46C75186DC279009D087E /* logo_120.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -121,6 +124,9 @@
 		C4F29956185849D600C07513 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		C4F29957185849D600C07513 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		C4F29958185849D600C07513 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		C4F46C73186DC279009D087E /* logo_57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = logo_57.png; path = Resources/logo_57.png; sourceTree = "<group>"; };
+		C4F46C74186DC279009D087E /* logo_114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = logo_114.png; path = Resources/logo_114.png; sourceTree = "<group>"; };
+		C4F46C75186DC279009D087E /* logo_120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = logo_120.png; path = Resources/logo_120.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -278,6 +284,9 @@
 				C4B6A4FF1858BB6C008A8075 /* loading_bg.jpg */,
 				C44CD028185B040B00D72D5A /* logo_phone.png */,
 				C44CD029185B040B00D72D5A /* logo_phone@2x.png */,
+				C4F46C73186DC279009D087E /* logo_57.png */,
+				C4F46C74186DC279009D087E /* logo_114.png */,
+				C4F46C75186DC279009D087E /* logo_120.png */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -373,12 +382,15 @@
 			files = (
 				C4F2995B185849D600C07513 /* Default@2x.png in Resources */,
 				C4B6A5001858BB6C008A8075 /* loading_bg.jpg in Resources */,
+				C4F46C78186DC279009D087E /* logo_120.png in Resources */,
 				C4515D21185848860012C597 /* Images.xcassets in Resources */,
 				C4F29959185849D600C07513 /* Default-568h@2x.png in Resources */,
+				C4F46C76186DC279009D087E /* logo_57.png in Resources */,
 				C4DBCCB118583D400076D08B /* MainStoryboard.storyboard in Resources */,
 				C44CD02B185B040B00D72D5A /* logo_phone@2x.png in Resources */,
 				C4E48D39185839AE00374CD2 /* InfoPlist.strings in Resources */,
 				C4F2995A185849D600C07513 /* Default.png in Resources */,
+				C4F46C77186DC279009D087E /* logo_114.png in Resources */,
 				C44CD02A185B040B00D72D5A /* logo_phone.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
