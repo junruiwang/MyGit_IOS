@@ -11,12 +11,13 @@
 #define kAliyunURL                     @"http://115.29.147.77/queryFamilyServer.dhtml"
 
 #define kUdpBroadcastHost    @"224.0.0.1"
-#define kUdpBroadcastPort    5224
+#define kUdpBroadcastPort    5225
 #define kUdpSocketPort       58129
 #define kMaxPollCount        5
 
 #define kClientVersion @"1.0"
 #define kFIRST @"kClientVersion_FirstSearch_Intelligent"
 #define kCurrentWifiSSID @"currentWifiSSID"
+#define kCurrentServerId @"currentServerId"
 
 #define TheAppDelegate  ((AppDelegate *)[UIApplication sharedApplication].delegate)

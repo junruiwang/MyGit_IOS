@@ -15,7 +15,7 @@ public class UDPServer {
 	final int DEFAULT_PORT = 5222;
 	private static LinkedBlockingQueue<UDPSession> msgQueue;
 	private static ThreadPoolExecutor sendExecutor ;
-	private static int port = 5224;
+	private static int port = 5225;
 	private static MulticastSocket multicastServer;
 	final static String multiaddress = "224.0.0.1";
 	final static int RECEIVE_LENGTH = 1024;   

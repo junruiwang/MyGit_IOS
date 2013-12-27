@@ -22,6 +22,7 @@
 @property (nonatomic, strong) GCDAsyncUdpSocket *udpSocket;
 @property (nonatomic) int udpBroadcastPort;
 @property (nonatomic) long tag;
+@property (nonatomic) int localServerPort;
 @property (nonatomic, assign) BOOL isWifiServerAds;
 @property (nonatomic, strong) NSTimer *scheduleTimer;
 //轮询次数
@@ -68,9 +69,6 @@
     [super viewDidLoad];
     self.title = @"世强智能家居";
     [self deviceIPAdress];
-    
-//    TheAppDelegate.serverBaseUrl = kBaseURL;
-//    self.isWifiServerAds = YES;
     
     if (self.udpSocket == nil)
 	{
@@ -241,16 +239,19 @@
 //远程查询，不存在的话，网络不可用
 - (void)findHostServerByRemote
 {
-    if (self.baseServerParser != nil) {
-        [self.baseServerParser cancel];
-        self.baseServerParser = nil;
+    NSString *serverId = [[NSUserDefaults standardUserDefaults] valueForKey:kCurrentServerId];
+    if (serverId != nil && ![serverId isEqualToString:@""]) {
+        if (self.baseServerParser != nil) {
+            [self.baseServerParser cancel];
+            self.baseServerParser = nil;
+        }
+        [self showIndicatorView];
+        self.baseServerParser = [[BaseServerParser alloc] init];
+        self.baseServerParser.serverAddress = kAliyunURL;
+        self.baseServerParser.requestString = [NSString stringWithFormat:@"id=%@",serverId];
+        self.baseServerParser.delegate = self;
+        [self.baseServerParser start];
     }
-    [self showIndicatorView];
-    self.baseServerParser = [[BaseServerParser alloc] init];
-    self.baseServerParser.serverAddress = kAliyunURL;
-    self.baseServerParser.requestString = [NSString stringWithFormat:@"id=%@",@"123456"];
-    self.baseServerParser.delegate = self;
-    [self.baseServerParser start];
 }
 
 - (void)firstStoreSSID
@@ -349,12 +350,35 @@
         return;
     }
     NSString *msg = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-    if ([msg isEqualToString:@"you_find_me"]) {
-//        NSString *receiveMessage = [NSString stringWithFormat:@"message from: %@:%hu,%@",host, port,msg];
+    BOOL isReceive = [self parserJSONString:msg];
+    if (isReceive) {
         self.isWifiServerAds = YES;
-        TheAppDelegate.serverBaseUrl = kBaseURL; //[NSString stringWithFormat:@"http://%@",host];
+        TheAppDelegate.serverBaseUrl = [NSString stringWithFormat:@"http://%@:%d",host,self.localServerPort];
         [self afterFindAdress];
     }
+}
+
+
+- (BOOL)parserJSONString:(NSString *)responseData
+{
+    if(responseData == nil || [responseData length] == 0)
+    {
+        return NO;
+    }
+    NSDictionary *dictionary = [responseData JSONValue];
+    if (dictionary == nil) {
+        return NO;
+    }
+    
+    NSString *serverId = [dictionary valueForKey:@"serverId"];
+    if (serverId == nil) {
+        return NO;
+    }
+    self.localServerPort = [[dictionary valueForKey:@"port"] intValue];
+    [[NSUserDefaults standardUserDefaults] setValue:serverId forKey:kCurrentServerId];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    return YES;
 }
 
 #pragma mark - UIWebViewDelegate
@@ -457,7 +481,7 @@
 - (void)parser:(JsonParser*)parser DidParsedData:(NSDictionary *)data
 {
     [self hideIndicatorView];
-    NSString *str_ip = [data valueForKey:@"ip"];
+    NSString *str_ip = [data valueForKey:@"host"];
     NSString *str_port = [data valueForKey:@"port"];
     //通过访问远程云主机，获取服务器访问路径
     self.isWifiServerAds = NO;
