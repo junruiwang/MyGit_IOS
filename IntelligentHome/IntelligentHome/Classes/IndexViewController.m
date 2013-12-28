@@ -23,7 +23,11 @@
 @property (nonatomic) int udpBroadcastPort;
 @property (nonatomic) long tag;
 @property (nonatomic) int localServerPort;
+//是否wifi标识
 @property (nonatomic, assign) BOOL isWifiServerAds;
+//是否收到回播
+@property (nonatomic, assign) BOOL isReceived;
+
 @property (nonatomic, strong) NSTimer *scheduleTimer;
 //轮询次数
 @property (nonatomic, assign) NSInteger pollCount;
@@ -55,6 +59,7 @@
     if (self) {
         self.udpBroadcastPort = kUdpBroadcastPort;
         self.isWifiServerAds = NO;
+        self.isReceived = NO;
         self.pollCount = 0;
         //注册通知
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(workingForFindServerUrl) name:@"applicationDidBecomeActiveNotifi" object:nil];
@@ -205,10 +210,11 @@
 - (void)execScheduleTimer
 {
     [self showIndicatorView];
+    self.isReceived = NO;
     self.pollCount = 0;
     //UDP广播查找局域网主机
     if (self.scheduleTimer == nil) {
-        self.scheduleTimer = [NSTimer scheduledTimerWithTimeInterval:4.0
+        self.scheduleTimer = [NSTimer scheduledTimerWithTimeInterval:1.0
                                                               target:self
                                                             selector:@selector(sendUDPMessage)
                                                             userInfo:nil
@@ -337,24 +343,28 @@
 
 - (void)udpSocket:(GCDAsyncUdpSocket *)sock didReceiveData:(NSData *)data fromAddress:(NSData *)address withFilterContext:(id)filterContext
 {
-    NSString *host = nil;
-    uint16_t port = 0;
-    [GCDAsyncUdpSocket getHost:&host port:&port fromAddress:address];
-    
-    [self hideIndicatorView];
-    
-    //收到自己发的广播时不显示出来
-    NSMutableString *tempIP = [NSMutableString stringWithFormat:@"::ffff:%@",self.currentIP];
-    if ([host isEqualToString:self.currentIP]||[host isEqualToString:tempIP])
-    {
-        return;
-    }
-    NSString *msg = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-    BOOL isReceive = [self parserJSONString:msg];
-    if (isReceive) {
-        self.isWifiServerAds = YES;
-        TheAppDelegate.serverBaseUrl = [NSString stringWithFormat:@"http://%@:%d/",host,self.localServerPort];
-        [self afterFindAdress];
+    if (!self.isReceived) {
+        NSString *host = nil;
+        uint16_t port = 0;
+        [GCDAsyncUdpSocket getHost:&host port:&port fromAddress:address];
+        
+        //收到自己发的广播时不显示出来
+        NSMutableString *tempIP = [NSMutableString stringWithFormat:@"::ffff:%@",self.currentIP];
+        if ([host isEqualToString:self.currentIP]||[host isEqualToString:tempIP])
+        {
+            return;
+        }
+        
+        self.isReceived = YES;
+        
+        [self hideIndicatorView];
+        NSString *msg = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        BOOL isReceive = [self parserJSONString:msg];
+        if (isReceive) {
+            self.isWifiServerAds = YES;
+            TheAppDelegate.serverBaseUrl = [NSString stringWithFormat:@"http://%@:%d/",host,self.localServerPort];
+            [self afterFindAdress];
+        }
     }
 }
 
