@@ -150,29 +150,48 @@
 //WIFI网络操作
 - (void)operateForWifi
 {
-    NSString *ssid = [[NSUserDefaults standardUserDefaults] valueForKey:kCurrentWifiSSID];
+    NSString *ssid = [[NSUserDefaults standardUserDefaults] valueForKey:kCurrentServerWifiSSID];
     NSString *curssid = [NetworkHelper fetchSSIDInfo];
-
-    if (ssid == nil) {
-        NSURL *baseUrl = [NSURL URLWithString:TheAppDelegate.serverBaseUrl];
-        if ([[UIApplication sharedApplication] canOpenURL:baseUrl]) {
-            //刷新当前页面
-            [self.mainWebView reload];
-        } else {
-            //未设置过局域网内主机，执行广播查找
-            [self execScheduleTimer];
+    
+    NSMutableArray *ssidList = [[NSUserDefaults standardUserDefaults] valueForKey:kLocalWifiSSIDList];
+    //新网络环境走UDP广播
+    if (ssidList == nil) {
+        if (curssid != nil && ![curssid isEqualToString:@""]) {
+            ssidList = [[NSMutableArray alloc] initWithCapacity:1];
+            [ssidList addObject:curssid];
+            [[NSUserDefaults standardUserDefaults] setValue:ssidList forKey:kLocalWifiSSIDList];
+            [[NSUserDefaults standardUserDefaults] synchronize];
         }
-    } else if ([curssid isEqualToString:ssid]) {
-        //用户的网络环境为局域网主机环境，判定是否需要执行广播查找
-        [self searchServerUrl];
+        [self execScheduleTimer];
+    } else if (![ssidList containsObject:curssid]) {
+        if (curssid != nil && ![curssid isEqualToString:@""]) {
+            [ssidList addObject:curssid];
+            [[NSUserDefaults standardUserDefaults] setValue:ssidList forKey:kLocalWifiSSIDList];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+        }
+        [self execScheduleTimer];
     } else {
-        //互联网查找主机
-        NSURL *baseUrl = [NSURL URLWithString:TheAppDelegate.serverBaseUrl];
-        if ([[UIApplication sharedApplication] canOpenURL:baseUrl]) {
-            //刷新当前页面
-            [self.mainWebView reload];
+        if (ssid == nil) {
+            NSURL *baseUrl = [NSURL URLWithString:TheAppDelegate.serverBaseUrl];
+            if ([[UIApplication sharedApplication] canOpenURL:baseUrl]) {
+                //刷新当前页面
+                [self.mainWebView reload];
+            } else {
+                //未设置过局域网内主机，执行广播查找
+                [self execScheduleTimer];
+            }
+        } else if ([curssid isEqualToString:ssid]) {
+            //用户的网络环境为局域网主机环境，判定是否需要执行广播查找
+            [self searchServerUrl];
         } else {
-            [self findHostServerByRemote];
+            //互联网查找主机
+            NSURL *baseUrl = [NSURL URLWithString:TheAppDelegate.serverBaseUrl];
+            if ([[UIApplication sharedApplication] canOpenURL:baseUrl]) {
+                //刷新当前页面
+                [self.mainWebView reload];
+            } else {
+                [self findHostServerByRemote];
+            }
         }
     }
 }
@@ -267,8 +286,11 @@
     {
         NSString *ssid = [NetworkHelper fetchSSIDInfo];
         if (ssid && ![ssid isEqualToString:@""]) {
-            [[NSUserDefaults standardUserDefaults] setValue:ssid forKey:kCurrentWifiSSID];
+            [[NSUserDefaults standardUserDefaults] setValue:ssid forKey:kCurrentServerWifiSSID];
             [[NSUserDefaults standardUserDefaults] setBool:YES forKey:alreadyRunKey];
+            NSMutableArray *ssidList = [[NSMutableArray alloc] initWithCapacity:1];
+            [ssidList addObject:ssid];
+            [[NSUserDefaults standardUserDefaults] setValue:ssidList forKey:kLocalWifiSSIDList];
             [[NSUserDefaults standardUserDefaults] synchronize];
         }
     }
@@ -491,11 +513,10 @@
 - (void)parser:(JsonParser*)parser DidParsedData:(NSDictionary *)data
 {
     [self hideIndicatorView];
-    NSString *str_ip = [data valueForKey:@"host"];
-    NSString *str_port = [data valueForKey:@"port"];
+    NSString *str_url = [data valueForKey:@"url"];
     //通过访问远程云主机，获取服务器访问路径
     self.isWifiServerAds = NO;
-    TheAppDelegate.serverBaseUrl = [NSString stringWithFormat:@"http://%@:%@/",str_ip,str_port];
+    TheAppDelegate.serverBaseUrl = str_url;
     [self loadRequest];
 }
 
