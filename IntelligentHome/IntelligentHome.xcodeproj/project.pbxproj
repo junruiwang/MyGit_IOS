@@ -98,7 +98,7 @@
 		C4CBEE63185C528D00E067DD /* BaseServerParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BaseServerParser.h; path = Classes/BaseServerParser.h; sourceTree = "<group>"; };
 		C4CBEE64185C528D00E067DD /* BaseServerParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BaseServerParser.m; path = Classes/BaseServerParser.m; sourceTree = "<group>"; };
 		C4DBCCB018583D400076D08B /* MainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard.storyboard; sourceTree = "<group>"; };
-		C4E48D2B185839AE00374CD2 /* IntelligentHome.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IntelligentHome.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C4E48D2B185839AE00374CD2 /* SNB智能.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SNB智能.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4E48D2E185839AE00374CD2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C4E48D30185839AE00374CD2 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		C4E48D32185839AE00374CD2 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -221,7 +221,7 @@
 		C4E48D2C185839AE00374CD2 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C4E48D2B185839AE00374CD2 /* IntelligentHome.app */,
+				C4E48D2B185839AE00374CD2 /* SNB智能.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -346,7 +346,7 @@
 			);
 			name = IntelligentHome;
 			productName = IntelligentHome;
-			productReference = C4E48D2B185839AE00374CD2 /* IntelligentHome.app */;
+			productReference = C4E48D2B185839AE00374CD2 /* SNB智能.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -524,7 +524,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "IntelligentHome/IntelligentHome-Prefix.pch";
 				INFOPLIST_FILE = "IntelligentHome/IntelligentHome-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "SNB智能";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -535,7 +535,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "IntelligentHome/IntelligentHome-Prefix.pch";
 				INFOPLIST_FILE = "IntelligentHome/IntelligentHome-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "SNB智能";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
