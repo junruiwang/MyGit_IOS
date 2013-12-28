@@ -122,7 +122,7 @@
             case ReachableViaWWAN:
             {
                 //互联网查找
-                [self operateForWwan];
+                [self findHostServerByRemote];
                 break;
             }
             default:
@@ -131,19 +131,6 @@
                 break;
             }
         }
-    }
-}
-
-//3G(2G)网络操作
-- (void)operateForWwan
-{
-    NSURL *baseUrl = [NSURL URLWithString:TheAppDelegate.serverBaseUrl];
-    if ([[UIApplication sharedApplication] canOpenURL:baseUrl]) {
-        //刷新当前页面
-        [self.mainWebView reload];
-    } else {
-        //互联网查找主机
-        [self findHostServerByRemote];
     }
 }
 
@@ -172,26 +159,14 @@
         [self execScheduleTimer];
     } else {
         if (ssid == nil) {
-            NSURL *baseUrl = [NSURL URLWithString:TheAppDelegate.serverBaseUrl];
-            if ([[UIApplication sharedApplication] canOpenURL:baseUrl]) {
-                //刷新当前页面
-                [self.mainWebView reload];
-            } else {
-                //未设置过局域网内主机，执行广播查找
-                [self execScheduleTimer];
-            }
+            //未设置过局域网内主机，执行广播查找
+            [self execScheduleTimer];
         } else if ([curssid isEqualToString:ssid]) {
             //用户的网络环境为局域网主机环境，判定是否需要执行广播查找
             [self searchServerUrl];
         } else {
             //互联网查找主机
-            NSURL *baseUrl = [NSURL URLWithString:TheAppDelegate.serverBaseUrl];
-            if ([[UIApplication sharedApplication] canOpenURL:baseUrl]) {
-                //刷新当前页面
-                [self.mainWebView reload];
-            } else {
-                [self findHostServerByRemote];
-            }
+            [self findHostServerByRemote];
         }
     }
 }
@@ -199,28 +174,15 @@
 - (void)searchServerUrl
 {
     if (self.isWifiServerAds) {
-        NSURL *baseUrl = [NSURL URLWithString:TheAppDelegate.serverBaseUrl];
-        if ([[UIApplication sharedApplication] canOpenURL:baseUrl]) {
-            //刷新当前页面
-            [self.mainWebView reload];
-        } else {
-            //服务器IP发生变动，需要重新查找主机地址
-            [self execScheduleTimer];
-        }
-        
+        //服务器IP发生变动，需要重新查找主机地址
+        [self execScheduleTimer];
     } else {
         NSTimeInterval intCurrentTime = [[NSDate date] timeIntervalSince1970];
         //外网环境下超过600秒，重新广播一次
         if (self.udpDidUnFindTime == nil || (intCurrentTime - [self.udpDidUnFindTime timeIntervalSince1970]) > 600) {
             [self execScheduleTimer];
         } else {
-            NSURL *baseUrl = [NSURL URLWithString:TheAppDelegate.serverBaseUrl];
-            if ([[UIApplication sharedApplication] canOpenURL:baseUrl]) {
-                //刷新当前页面
-                [self.mainWebView reload];
-            } else {
-                [self findHostServerByRemote];
-            }
+            [self findHostServerByRemote];
         }
         
     }
