@@ -65,6 +65,9 @@
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(workingForFindServerUrl) name:@"applicationDidBecomeActiveNotifi" object:nil];
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(stopTimerTask) name:@"applicationWillResignActiveNotifi" object:nil];
+        //初始化 ServerId
+        [[NSUserDefaults standardUserDefaults] setValue:@"" forKey:kCurrentServerId];
+        [[NSUserDefaults standardUserDefaults] synchronize];
     }
     return self;
 }
@@ -227,7 +230,7 @@
 - (void)findHostServerByRemote
 {
     NSString *serverId = [[NSUserDefaults standardUserDefaults] valueForKey:kCurrentServerId];
-    if (serverId != nil && ![serverId isEqualToString:@""]) {
+    if (serverId != nil) {
         if (self.baseServerParser != nil) {
             [self.baseServerParser cancel];
             self.baseServerParser = nil;
@@ -365,7 +368,7 @@
     }
     
     NSString *serverId = [dictionary valueForKey:@"serverId"];
-    if (serverId == nil) {
+    if (serverId == nil || [serverId isEqualToString:@""]) {
         return NO;
     }
     self.localServerPort = [[dictionary valueForKey:@"port"] intValue];
