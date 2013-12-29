@@ -110,7 +110,7 @@
 {
     NSTimeInterval intCurrentTime = [[NSDate date] timeIntervalSince1970];
     
-    if (self.invokeTime == nil || (intCurrentTime - [self.invokeTime timeIntervalSince1970]) > 5) {
+    if (self.invokeTime == nil || (intCurrentTime - [self.invokeTime timeIntervalSince1970]) > 1800) {
         self.invokeTime = [NSDate date];
         //先判定当前网络环境是WIFI，还是其他网络
         CloNetworkUtil *cloNetworkUtil = [[CloNetworkUtil alloc] init];
@@ -166,7 +166,7 @@
             [self execScheduleTimer];
         } else if ([curssid isEqualToString:ssid]) {
             //用户的网络环境为局域网主机环境，判定是否需要执行广播查找
-            [self searchServerUrl];
+            [self execScheduleTimer];
         } else {
             //互联网查找主机
             [self findHostServerByRemote];
@@ -174,22 +174,6 @@
     }
 }
 
-- (void)searchServerUrl
-{
-    if (self.isWifiServerAds) {
-        //服务器IP发生变动，需要重新查找主机地址
-        [self execScheduleTimer];
-    } else {
-        NSTimeInterval intCurrentTime = [[NSDate date] timeIntervalSince1970];
-        //外网环境下超过600秒，重新广播一次
-        if (self.udpDidUnFindTime == nil || (intCurrentTime - [self.udpDidUnFindTime timeIntervalSince1970]) > 600) {
-            [self execScheduleTimer];
-        } else {
-            [self findHostServerByRemote];
-        }
-        
-    }
-}
 
 - (void)execScheduleTimer
 {
@@ -309,7 +293,6 @@
         //停止 Timer
         [self.scheduleTimer invalidate];
         //udp广播未找到主机，通过远程主机获取服务器访问路径
-        self.udpDidUnFindTime = [NSDate date];
         [self findHostServerByRemote];
     }
 }
