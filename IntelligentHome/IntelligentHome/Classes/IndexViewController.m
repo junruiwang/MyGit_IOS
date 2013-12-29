@@ -33,8 +33,6 @@
 @property (nonatomic, assign) NSInteger pollCount;
 //最近一次刷新资源时间
 @property(nonatomic, strong) NSDate *invokeTime;
-
-@property(nonatomic, strong) NSDate *udpDidUnFindTime;
 //UDP广播遮罩层效果
 @property(nonatomic, strong) UdpIndicatorViewController *udpIndicatorViewController;
 //webView遮罩层效果
