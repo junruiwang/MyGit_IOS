@@ -287,9 +287,16 @@
         NSData *data = [msg dataUsingEncoding:NSUTF8StringEncoding];
         [self.udpSocket sendData:data toHost:kUdpBroadcastHost port:self.udpBroadcastPort withTimeout:3 tag:self.tag];
     } else {
-        [self hideIndicatorView];
         //停止 Timer
         [self.scheduleTimer invalidate];
+        [self performSelector:@selector(estimateSearchByRemote) withObject:nil afterDelay:3];
+    }
+}
+
+- (void)estimateSearchByRemote
+{
+    if (!self.isReceived) {
+        [self hideIndicatorView];
         //udp广播未找到主机，通过远程主机获取服务器访问路径
         [self findHostServerByRemote];
     }
