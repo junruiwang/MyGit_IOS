@@ -285,11 +285,11 @@
         self.pollCount += 1;
         NSString *msg = @"Hello,Catch me call!";
         NSData *data = [msg dataUsingEncoding:NSUTF8StringEncoding];
-        [self.udpSocket sendData:data toHost:kUdpBroadcastHost port:self.udpBroadcastPort withTimeout:3 tag:self.tag];
+        [self.udpSocket sendData:data toHost:kUdpBroadcastHost port:self.udpBroadcastPort withTimeout:3.0 tag:self.tag];
     } else {
         //停止 Timer
         [self.scheduleTimer invalidate];
-        [self performSelector:@selector(estimateSearchByRemote) withObject:nil afterDelay:5];
+        [self performSelector:@selector(estimateSearchByRemote) withObject:nil afterDelay:5.0];
     }
 }
 
