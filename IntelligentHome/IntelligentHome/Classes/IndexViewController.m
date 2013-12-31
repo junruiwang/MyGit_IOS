@@ -289,7 +289,7 @@
     } else {
         //停止 Timer
         [self.scheduleTimer invalidate];
-        [self performSelector:@selector(estimateSearchByRemote) withObject:nil afterDelay:5.0];
+        [self performSelector:@selector(estimateSearchByRemote) withObject:nil afterDelay:8.0];
     }
 }
 
