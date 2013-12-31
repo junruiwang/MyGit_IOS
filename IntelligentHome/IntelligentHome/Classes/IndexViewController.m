@@ -107,7 +107,7 @@
 {
     NSTimeInterval intCurrentTime = [[NSDate date] timeIntervalSince1970];
     
-    if (self.invokeTime == nil || (intCurrentTime - [self.invokeTime timeIntervalSince1970]) > 1800) {
+    if (self.invokeTime == nil || (intCurrentTime - [self.invokeTime timeIntervalSince1970]) > 5.0) {
         self.invokeTime = [NSDate date];
         //先判定当前网络环境是WIFI，还是其他网络
         CloNetworkUtil *cloNetworkUtil = [[CloNetworkUtil alloc] init];
