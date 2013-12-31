@@ -28,9 +28,6 @@
 //是否收到回播
 @property (nonatomic, assign) BOOL isReceived;
 
-@property (nonatomic, strong) NSTimer *scheduleTimer;
-//轮询次数
-@property (nonatomic, assign) NSInteger pollCount;
 //最近一次刷新资源时间
 @property(nonatomic, strong) NSDate *invokeTime;
 //UDP广播遮罩层效果
@@ -41,10 +38,8 @@
 @property (nonatomic, strong) BaseServerParser *baseServerParser;
 
 - (void)workingForFindServerUrl;
-- (void)stopTimerTask;
 - (void)loadRequest;
 - (void)sendUDPMessage;
-- (void)afterFindAdress;
 
 @end
 
@@ -57,11 +52,8 @@
         self.udpBroadcastPort = kUdpBroadcastPort;
         self.isWifiServerAds = NO;
         self.isReceived = NO;
-        self.pollCount = 0;
         //注册通知
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(workingForFindServerUrl) name:@"applicationDidBecomeActiveNotifi" object:nil];
-        
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(stopTimerTask) name:@"applicationWillResignActiveNotifi" object:nil];
         //初始化 ServerId
         [[NSUserDefaults standardUserDefaults] setValue:@"" forKey:kCurrentServerId];
         [[NSUserDefaults standardUserDefaults] synchronize];
@@ -92,15 +84,6 @@
     }
     
     [self workingForFindServerUrl];
-}
-
-- (void)stopTimerTask
-{
-    if (self.scheduleTimer) {
-        [self hideIndicatorView];
-        [self.scheduleTimer invalidate];
-        self.scheduleTimer = nil;
-    }
 }
 
 - (void)workingForFindServerUrl
@@ -139,24 +122,12 @@
 {
     [self showIndicatorView];
     self.isReceived = NO;
-    self.pollCount = 0;
     //UDP广播查找局域网主机
-    if (self.scheduleTimer == nil) {
-        self.scheduleTimer = [NSTimer scheduledTimerWithTimeInterval:1.0
-                                                              target:self
-                                                            selector:@selector(sendUDPMessage)
-                                                            userInfo:nil
-                                                             repeats:YES];
-        
+    for (int i=0; i<5; i++) {
+        [self sendUDPMessage];
     }
-    [self.scheduleTimer fire];
-}
-
-- (void)afterFindAdress
-{
-    //停止 Timer
-    [self.scheduleTimer invalidate];
-    [self loadRequest];
+    
+    [self performSelector:@selector(estimateSearchByRemote) withObject:nil afterDelay:5.0];
 }
 
 - (void)loadRequest
@@ -222,17 +193,9 @@
 
 - (void)sendUDPMessage
 {
-    
-    if (self.pollCount < kMaxPollCount) {
-        self.pollCount += 1;
-        NSString *msg = @"Hello,Catch me call!";
-        NSData *data = [msg dataUsingEncoding:NSUTF8StringEncoding];
-        [self.udpSocket sendData:data toHost:kUdpBroadcastHost port:self.udpBroadcastPort withTimeout:3.0 tag:self.tag];
-    } else {
-        //停止 Timer
-        [self.scheduleTimer invalidate];
-        [self performSelector:@selector(estimateSearchByRemote) withObject:nil afterDelay:6.0];
-    }
+    NSString *msg = @"Hello,Catch me call!";
+    NSData *data = [msg dataUsingEncoding:NSUTF8StringEncoding];
+    [self.udpSocket sendData:data toHost:kUdpBroadcastHost port:self.udpBroadcastPort withTimeout:3.0 tag:self.tag];
 }
 
 - (void)estimateSearchByRemote
@@ -280,7 +243,7 @@
         if (isReceive) {
             self.isWifiServerAds = YES;
             TheAppDelegate.serverBaseUrl = [NSString stringWithFormat:@"http://%@:%d/",host,self.localServerPort];
-            [self afterFindAdress];
+            [self loadRequest];
         }
     }
 }
