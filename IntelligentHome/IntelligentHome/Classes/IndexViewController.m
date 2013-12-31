@@ -42,7 +42,6 @@
 
 - (void)workingForFindServerUrl;
 - (void)stopTimerTask;
-- (void)firstStoreSSID;
 - (void)loadRequest;
 - (void)sendUDPMessage;
 - (void)afterFindAdress;
@@ -117,7 +116,7 @@
             case ReachableViaWiFi:
             {
                 //局域网查找
-                [self operateForWifi];
+                [self execScheduleTimer];
                 break;
             }
             case ReachableViaWWAN:
@@ -131,43 +130,6 @@
                 [self showAlertMessage:@"您尚未接入网络，请检查网络连接！"];
                 break;
             }
-        }
-    }
-}
-
-//WIFI网络操作
-- (void)operateForWifi
-{
-    NSString *ssid = [[NSUserDefaults standardUserDefaults] valueForKey:kCurrentServerWifiSSID];
-    NSString *curssid = [NetworkHelper fetchSSIDInfo];
-    
-    NSMutableArray *ssidList = [[NSUserDefaults standardUserDefaults] valueForKey:kLocalWifiSSIDList];
-    //新网络环境走UDP广播
-    if (ssidList == nil) {
-        if (curssid != nil && ![curssid isEqualToString:@""]) {
-            ssidList = [[NSMutableArray alloc] initWithCapacity:1];
-            [ssidList addObject:curssid];
-            [[NSUserDefaults standardUserDefaults] setValue:ssidList forKey:kLocalWifiSSIDList];
-            [[NSUserDefaults standardUserDefaults] synchronize];
-        }
-        [self execScheduleTimer];
-    } else if (![ssidList containsObject:curssid]) {
-        if (curssid != nil && ![curssid isEqualToString:@""]) {
-            [ssidList addObject:curssid];
-            [[NSUserDefaults standardUserDefaults] setValue:ssidList forKey:kLocalWifiSSIDList];
-            [[NSUserDefaults standardUserDefaults] synchronize];
-        }
-        [self execScheduleTimer];
-    } else {
-        if (ssid == nil) {
-            //未设置过局域网内主机，执行广播查找
-            [self execScheduleTimer];
-        } else if ([curssid isEqualToString:ssid]) {
-            //用户的网络环境为局域网主机环境，判定是否需要执行广播查找
-            [self execScheduleTimer];
-        } else {
-            //互联网查找主机
-            [self findHostServerByRemote];
         }
     }
 }
@@ -194,9 +156,6 @@
 {
     //停止 Timer
     [self.scheduleTimer invalidate];
-    //如果是首次入网记录网络SSID
-    [self firstStoreSSID];
-    
     [self loadRequest];
 }
 
@@ -223,23 +182,6 @@
         self.baseServerParser.requestString = [NSString stringWithFormat:@"id=%@",serverId];
         self.baseServerParser.delegate = self;
         [self.baseServerParser start];
-    }
-}
-
-- (void)firstStoreSSID
-{
-    NSString *alreadyRunKey = kFIRST;
-    if (![[NSUserDefaults standardUserDefaults] boolForKey:alreadyRunKey])
-    {
-        NSString *ssid = [NetworkHelper fetchSSIDInfo];
-        if (ssid && ![ssid isEqualToString:@""]) {
-            [[NSUserDefaults standardUserDefaults] setValue:ssid forKey:kCurrentServerWifiSSID];
-            [[NSUserDefaults standardUserDefaults] setBool:YES forKey:alreadyRunKey];
-            NSMutableArray *ssidList = [[NSMutableArray alloc] initWithCapacity:1];
-            [ssidList addObject:ssid];
-            [[NSUserDefaults standardUserDefaults] setValue:ssidList forKey:kLocalWifiSSIDList];
-            [[NSUserDefaults standardUserDefaults] synchronize];
-        }
     }
 }
 
@@ -289,7 +231,7 @@
     } else {
         //停止 Timer
         [self.scheduleTimer invalidate];
-        [self performSelector:@selector(estimateSearchByRemote) withObject:nil afterDelay:8.0];
+        [self performSelector:@selector(estimateSearchByRemote) withObject:nil afterDelay:6.0];
     }
 }
 

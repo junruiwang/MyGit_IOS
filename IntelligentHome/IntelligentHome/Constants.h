@@ -16,9 +16,6 @@
 #define kMaxPollCount        3
 
 #define kClientVersion @"1.0"
-#define kFIRST @"kClientVersion_FirstSearch_Intelligent"
-#define kCurrentServerWifiSSID  @"currentServerWifiSSID"
 #define kCurrentServerId  @"currentServerId"
-#define kLocalWifiSSIDList   @"localWifiSSIDList"
 
 #define TheAppDelegate  ((AppDelegate *)[UIApplication sharedApplication].delegate)
