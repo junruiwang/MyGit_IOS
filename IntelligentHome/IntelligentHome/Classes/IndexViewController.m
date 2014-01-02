@@ -40,6 +40,8 @@
 - (void)workingForFindServerUrl;
 - (void)loadRequest;
 - (void)sendUDPMessage;
+- (void)killUdpSocketImmediately;
+- (void)didAppBecomeActive;
 
 @end
 
@@ -53,7 +55,9 @@
         self.isWifiServerAds = NO;
         self.isReceived = NO;
         //注册通知
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(workingForFindServerUrl) name:@"applicationDidBecomeActiveNotifi" object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didAppBecomeActive) name:@"applicationDidBecomeActiveNotifi" object:nil];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(killUdpSocketImmediately) name:@"applicationWillResignActiveNotifi" object:nil];
         //初始化 ServerId
         [[NSUserDefaults standardUserDefaults] setValue:@"" forKey:kCurrentServerId];
         [[NSUserDefaults standardUserDefaults] synchronize];
@@ -64,16 +68,16 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.title = @"世强智能家居";
+    self.title = @"SNB SmartHome";
     [self deviceIPAdress];
+    //启动UPD服务
+    [self setupSocket];
     
-    if (self.udpSocket == nil)
-	{
-		[self setupSocket];
-	}
     self.mainWebView.scrollView.bounces = NO;
     self.mainWebView.scalesPageToFit = NO;
     self.mainWebView.delegate = self;
+    //设置调用时间
+    self.invokeTime = [NSDate date];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -86,33 +90,40 @@
     [self workingForFindServerUrl];
 }
 
-- (void)workingForFindServerUrl
+- (void)didAppBecomeActive
 {
     NSTimeInterval intCurrentTime = [[NSDate date] timeIntervalSince1970];
-    
-    if (self.invokeTime == nil || (intCurrentTime - [self.invokeTime timeIntervalSince1970]) > 5.0) {
+    if (self.invokeTime == nil || (intCurrentTime - [self.invokeTime timeIntervalSince1970]) > 10.0) {
         self.invokeTime = [NSDate date];
-        //先判定当前网络环境是WIFI，还是其他网络
-        CloNetworkUtil *cloNetworkUtil = [[CloNetworkUtil alloc] init];
-        NetworkStatus workStatus = [cloNetworkUtil getNetWorkType];
-        switch (workStatus) {
-            case ReachableViaWiFi:
-            {
-                //局域网查找
-                [self execScheduleTimer];
-                break;
-            }
-            case ReachableViaWWAN:
-            {
-                //互联网查找
-                [self findHostServerByRemote];
-                break;
-            }
-            default:
-            {
-                [self showAlertMessage:@"您尚未接入网络，请检查网络连接！"];
-                break;
-            }
+        //启动UPD服务
+        [self setupSocket];
+        //执行查找
+        [self workingForFindServerUrl];
+    }
+}
+
+- (void)workingForFindServerUrl
+{
+    //先判定当前网络环境是WIFI，还是其他网络
+    CloNetworkUtil *cloNetworkUtil = [[CloNetworkUtil alloc] init];
+    NetworkStatus workStatus = [cloNetworkUtil getNetWorkType];
+    switch (workStatus) {
+        case ReachableViaWiFi:
+        {
+            //局域网查找
+            [self execScheduleTimer];
+            break;
+        }
+        case ReachableViaWWAN:
+        {
+            //互联网查找
+            [self findHostServerByRemote];
+            break;
+        }
+        default:
+        {
+            [self showAlertMessage:@"您尚未接入网络，请检查网络连接！"];
+            break;
         }
     }
 }
@@ -136,6 +147,17 @@
     NSURLRequest *request = [NSURLRequest requestWithURL:serverUrl cachePolicy:NSURLCacheStorageAllowedInMemoryOnly timeoutInterval:10];
     [self showLoadingView];
     [self.mainWebView loadRequest:request];
+}
+
+- (void)killUdpSocketImmediately
+{
+    if (self.udpSocket != nil)
+	{
+        [self.udpSocket close];
+        self.udpSocket = nil;
+	}
+    //记录退出时间
+    self.invokeTime = [NSDate date];
 }
 
 //远程查询，不存在的话，网络不可用
@@ -165,6 +187,11 @@
 //建立基于UDP的Socket连接
 - (void)setupSocket
 {
+    if (self.udpSocket != nil)
+	{
+        [self.udpSocket close];
+        self.udpSocket = nil;
+	}
     //初始化udp
 	self.udpSocket = [[GCDAsyncUdpSocket alloc] initWithDelegate:self delegateQueue:dispatch_get_main_queue()];
 	

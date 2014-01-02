@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C42DD8B51875151900553B0D /* TcpSocketHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C42DD8B41875151900553B0D /* TcpSocketHelper.m */; };
+		C42DD8B71875161500553B0D /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C42DD8B61875161500553B0D /* CFNetwork.framework */; };
+		C42DD8B91875162500553B0D /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C42DD8B81875162500553B0D /* Security.framework */; };
 		C44CD024185AF94900D72D5A /* PulsingHaloLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = C44CD023185AF94900D72D5A /* PulsingHaloLayer.m */; };
 		C44CD027185AFA3B00D72D5A /* UdpIndicatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C44CD026185AFA3B00D72D5A /* UdpIndicatorViewController.m */; };
 		C44CD02A185B040B00D72D5A /* logo_phone.png in Resources */ = {isa = PBXBuildFile; fileRef = C44CD028185B040B00D72D5A /* logo_phone.png */; };
@@ -53,6 +56,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C42DD8B31875151900553B0D /* TcpSocketHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TcpSocketHelper.h; path = Classes/TcpSocketHelper.h; sourceTree = "<group>"; };
+		C42DD8B41875151900553B0D /* TcpSocketHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TcpSocketHelper.m; path = Classes/TcpSocketHelper.m; sourceTree = "<group>"; };
+		C42DD8B61875161500553B0D /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		C42DD8B81875162500553B0D /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		C44CD022185AF94900D72D5A /* PulsingHaloLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PulsingHaloLayer.h; path = Classes/PulsingHaloLayer.h; sourceTree = "<group>"; };
 		C44CD023185AF94900D72D5A /* PulsingHaloLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PulsingHaloLayer.m; path = Classes/PulsingHaloLayer.m; sourceTree = "<group>"; };
 		C44CD025185AFA3B00D72D5A /* UdpIndicatorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UdpIndicatorViewController.h; path = Classes/UdpIndicatorViewController.h; sourceTree = "<group>"; };
@@ -134,6 +141,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C42DD8B91875162500553B0D /* Security.framework in Frameworks */,
+				C42DD8B71875161500553B0D /* CFNetwork.framework in Frameworks */,
 				C4B6A4FD1858A657008A8075 /* SystemConfiguration.framework in Frameworks */,
 				C4E48D31185839AE00374CD2 /* CoreGraphics.framework in Frameworks */,
 				C4E48D33185839AE00374CD2 /* UIKit.framework in Frameworks */,
@@ -155,6 +164,8 @@
 				C4A65A86185B3CD900EA5D33 /* HZActivityIndicatorView.m */,
 				C4CBEE5C185C4F9C00E067DD /* JsonParser.h */,
 				C4CBEE5D185C4F9C00E067DD /* JsonParser.m */,
+				C42DD8B31875151900553B0D /* TcpSocketHelper.h */,
+				C42DD8B41875151900553B0D /* TcpSocketHelper.m */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -229,6 +240,8 @@
 		C4E48D2D185839AE00374CD2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C42DD8B81875162500553B0D /* Security.framework */,
+				C42DD8B61875161500553B0D /* CFNetwork.framework */,
 				C4B6A4FC1858A657008A8075 /* SystemConfiguration.framework */,
 				C4E48D2E185839AE00374CD2 /* Foundation.framework */,
 				C4E48D30185839AE00374CD2 /* CoreGraphics.framework */,
@@ -411,6 +424,7 @@
 				C4CBEE56185C4DA800E067DD /* SBJsonStreamWriter.m in Sources */,
 				C44CD024185AF94900D72D5A /* PulsingHaloLayer.m in Sources */,
 				C4E48D6F18583B9700374CD2 /* GCDAsyncSocket.m in Sources */,
+				C42DD8B51875151900553B0D /* TcpSocketHelper.m in Sources */,
 				C4CBEE53185C4DA800E067DD /* SBJsonStreamParserAccumulator.m in Sources */,
 				C4E48D6718583B3F00374CD2 /* CloNetworkUtil.m in Sources */,
 				C4A65A87185B3CD900EA5D33 /* HZActivityIndicatorView.m in Sources */,
