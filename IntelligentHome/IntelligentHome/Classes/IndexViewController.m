@@ -122,7 +122,7 @@
         }
         default:
         {
-            [self showAlertMessage:@"您尚未接入网络，请检查网络连接！"];
+            [self showAlertMessage:@"You are not connected to the network, please check your network connection!"];
             break;
         }
     }
@@ -308,7 +308,7 @@
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
 {
     [self hideLoadingView];
-    NSString *failMsg = [NSString stringWithFormat:@"无法打开主机地址：%@",TheAppDelegate.serverBaseUrl];
+    NSString *failMsg = [NSString stringWithFormat:@"Unable to open the host address : %@",TheAppDelegate.serverBaseUrl];
     [self showAlertMessage:failMsg];
 }
 
@@ -328,10 +328,10 @@
 - (void)showAlertMessage:(NSString *)msg
 {
     UIAlertView *alertView = [[UIAlertView alloc]
-                              initWithTitle:NSLocalizedString(@"信息提示", nil)
+                              initWithTitle:NSLocalizedString(@"Information prompt", nil)
                               message:msg
                               delegate:nil
-                              cancelButtonTitle:NSLocalizedString(@"确定", nil)
+                              cancelButtonTitle:NSLocalizedString(@"OK", nil)
                               otherButtonTitles:nil];
     [alertView show];
 }
@@ -391,7 +391,7 @@
 
 - (void)parser:(JsonParser*)parser DidFailedParseWithMsg:(NSString*)msg errCode:(NSInteger)code
 {
-    [self showAlertMessage:@"您的网络已经断开！"];
+    [self showAlertMessage:@"Your network has been disconnected!"];
     [self hideIndicatorView];
 }
 
