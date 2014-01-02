@@ -15,6 +15,7 @@
 #import "NetworkHelper.h"
 #import "UdpIndicatorViewController.h"
 #import "HZActivityIndicatorView.h"
+#import "TcpSocketHelper.h"
 
 @interface IndexViewController ()
 
@@ -23,19 +24,19 @@
 @property (nonatomic) int udpBroadcastPort;
 @property (nonatomic) long tag;
 @property (nonatomic) int localServerPort;
-//是否wifi标识
-@property (nonatomic, assign) BOOL isWifiServerAds;
 //是否收到回播
 @property (nonatomic, assign) BOOL isReceived;
-
 //最近一次刷新资源时间
 @property(nonatomic, strong) NSDate *invokeTime;
 //UDP广播遮罩层效果
 @property(nonatomic, strong) UdpIndicatorViewController *udpIndicatorViewController;
 //webView遮罩层效果
 @property(nonatomic, strong) HZActivityIndicatorView *customIndicator;
+//tcp通道
+@property(nonatomic, strong) TcpSocketHelper *tcpSocketHelper;
 
 @property (nonatomic, strong) BaseServerParser *baseServerParser;
+
 
 - (void)workingForFindServerUrl;
 - (void)loadRequest;
@@ -52,8 +53,9 @@
     self = [super initWithCoder:aDecoder];
     if (self) {
         self.udpBroadcastPort = kUdpBroadcastPort;
-        self.isWifiServerAds = NO;
         self.isReceived = NO;
+        //初始化TCP通信通道
+        self.tcpSocketHelper = [[TcpSocketHelper alloc] init];
         //注册通知
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didAppBecomeActive) name:@"applicationDidBecomeActiveNotifi" object:nil];
         
@@ -156,6 +158,12 @@
         [self.udpSocket close];
         self.udpSocket = nil;
 	}
+    
+    if (self.tcpSocketHelper.asyncSocket != nil) {
+        [self.tcpSocketHelper.asyncSocket setDelegate:nil];
+        [self.tcpSocketHelper.asyncSocket disconnect];
+        self.tcpSocketHelper.asyncSocket = nil;
+    }
     //记录退出时间
     self.invokeTime = [NSDate date];
 }
@@ -261,16 +269,16 @@
         {
             return;
         }
-        
         self.isReceived = YES;
         
         [self hideIndicatorView];
         NSString *msg = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
         BOOL isReceive = [self parserJSONString:msg];
         if (isReceive) {
-            self.isWifiServerAds = YES;
             TheAppDelegate.serverBaseUrl = [NSString stringWithFormat:@"http://%@:%d/",host,self.localServerPort];
             [self loadRequest];
+            //建立TCP通信通道
+//            [self.tcpSocketHelper setupTcpConnection:host];
         }
     }
 }
@@ -400,9 +408,10 @@
     [self hideIndicatorView];
     NSString *str_url = [data valueForKey:@"url"];
     //通过访问远程云主机，获取服务器访问路径
-    self.isWifiServerAds = NO;
     TheAppDelegate.serverBaseUrl = str_url;
     [self loadRequest];
+    //建立TCP通信通道
+//    [self.tcpSocketHelper setupTcpConnection:@"115.29.147.77"];
 }
 
 @end

@@ -14,6 +14,6 @@
 @property(nonatomic,strong) GCDAsyncSocket *asyncSocket;
 
 - (void)setupTcpConnection:(NSString *)host;
-- (void)isConnected;
+- (BOOL)isConnected;
 
 @end
