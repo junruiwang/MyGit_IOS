@@ -322,6 +322,20 @@
 
 #pragma mark - UIWebViewDelegate
 
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
+{
+    //此url解析规则自己定义
+    NSString *rurl = [[request URL] absoluteString];
+    if ([rurl hasPrefix:@"protocol://"]) {
+        UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"Called by JavaScript"
+                                                     message:@"You've called iPhone provided control from javascript!!" delegate:nil cancelButtonTitle:@"Cancel" otherButtonTitles:nil];
+        [alertView show];
+        return NO;
+    }
+    
+    return YES;
+}
+
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
     [self hideLoadingView];
@@ -438,6 +452,9 @@
     if ([self isRightJsonData:httpResponse]) {
         NSDictionary *dictionary = [httpResponse JSONValue];
         NSLog(@"%@",dictionary);
+        
+        NSString *jsCommand = [NSString stringWithFormat:@"if (typeof %@ != 'undefined' && %@ instanceof Function) {%@();}", @"function_name", @"function_name", @"function_name"];
+        [self.mainWebView stringByEvaluatingJavaScriptFromString:jsCommand];
     }
     
     
