@@ -106,9 +106,9 @@
 {
 	NSLog(@"socket:%p didReadData:withTag:%ld", sock, tag);
 	
-	NSString *httpResponse = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-
-	NSLog(@"HTTP Response:\n%@", httpResponse);
+    if(self.delegate != nil && [self.delegate respondsToSelector:@selector(renewPage:responseData:)]){
+        [self.delegate renewPage:self responseData:data];
+    }
     
 	[self listenData];
 }

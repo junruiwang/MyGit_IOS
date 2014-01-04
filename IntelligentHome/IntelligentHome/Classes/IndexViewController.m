@@ -17,7 +17,7 @@
 #import "HZActivityIndicatorView.h"
 #import "TcpSocketHelper.h"
 
-@interface IndexViewController ()
+@interface IndexViewController () <TcpSocketHelperDelegate>
 
 @property (nonatomic, copy) NSString *currentIP;
 @property (nonatomic, strong) GCDAsyncUdpSocket *udpSocket;
@@ -43,6 +43,7 @@
 - (void)sendUDPMessage;
 - (void)killUdpSocketImmediately;
 - (void)didAppBecomeActive;
+- (BOOL)isRightJsonData:(NSString *)responseData;
 
 @end
 
@@ -56,6 +57,7 @@
         self.isReceived = NO;
         //初始化TCP通信通道
         self.tcpSocketHelper = [[TcpSocketHelper alloc] init];
+        self.tcpSocketHelper.delegate = self;
         //注册通知
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didAppBecomeActive) name:@"applicationDidBecomeActiveNotifi" object:nil];
         
@@ -286,6 +288,26 @@
 
 - (BOOL)parserJSONString:(NSString *)responseData
 {
+    if ([self isRightJsonData:responseData]) {
+        NSDictionary *dictionary = [responseData JSONValue];
+        
+        NSString *serverId = [dictionary valueForKey:@"serverId"];
+        if (serverId == nil || [serverId isEqualToString:@""]) {
+            return NO;
+        }
+        self.localServerPort = [[dictionary valueForKey:@"port"] intValue];
+        [[NSUserDefaults standardUserDefaults] setValue:serverId forKey:kCurrentServerId];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        
+        return YES;
+    } else {
+        return NO;
+    }
+    
+}
+
+- (BOOL)isRightJsonData:(NSString *)responseData
+{
     if(responseData == nil || [responseData length] == 0)
     {
         return NO;
@@ -294,14 +316,6 @@
     if (dictionary == nil) {
         return NO;
     }
-    
-    NSString *serverId = [dictionary valueForKey:@"serverId"];
-    if (serverId == nil || [serverId isEqualToString:@""]) {
-        return NO;
-    }
-    self.localServerPort = [[dictionary valueForKey:@"port"] intValue];
-    [[NSUserDefaults standardUserDefaults] setValue:serverId forKey:kCurrentServerId];
-    [[NSUserDefaults standardUserDefaults] synchronize];
     
     return YES;
 }
@@ -412,6 +426,21 @@
     [self loadRequest];
     //建立TCP通信通道
 //    [self.tcpSocketHelper setupTcpConnection:@"115.29.147.77"];
+}
+
+#pragma mark TcpSocketHelperDelegate
+
+- (void)renewPage:(TcpSocketHelper*)socketHelper responseData:(NSData *)data
+{
+    NSString *httpResponse = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+	NSLog(@"HTTP Response:\n%@", httpResponse);
+    
+    if ([self isRightJsonData:httpResponse]) {
+        NSDictionary *dictionary = [httpResponse JSONValue];
+        NSLog(@"%@",dictionary);
+    }
+    
+    
 }
 
 @end

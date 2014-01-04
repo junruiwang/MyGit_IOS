@@ -9,9 +9,25 @@
 #import <Foundation/Foundation.h>
 #import "GCDAsyncSocket.h"
 
+@class TcpSocketHelper;
+
+#pragma mark - TcpSocketHelperDelegate
+
+@protocol TcpSocketHelperDelegate <NSObject>
+
+@optional
+
+- (void)renewPage:(TcpSocketHelper*)socketHelper responseData:(NSData *)data;
+
+@end
+
+#pragma mark - TcpSocketHelper
+
 @interface TcpSocketHelper : NSObject
 
 @property(nonatomic,strong) GCDAsyncSocket *asyncSocket;
+
+@property (nonatomic, weak) id<TcpSocketHelperDelegate> delegate;
 
 - (void)setupTcpConnection:(NSString *)host;
 - (BOOL)isConnected;
