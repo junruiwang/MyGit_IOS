@@ -16,6 +16,7 @@
 #import "UdpIndicatorViewController.h"
 #import "HZActivityIndicatorView.h"
 #import "TcpSocketHelper.h"
+#import "CodeUtil.h"
 
 @interface IndexViewController () <TcpSocketHelperDelegate>
 
@@ -435,11 +436,12 @@
 {
     [self hideIndicatorView];
     NSString *str_url = [data valueForKey:@"url"];
+    NSString *hostIp = [data valueForKey:@"host"];
     //通过访问远程云主机，获取服务器访问路径
     TheAppDelegate.serverBaseUrl = str_url;
     [self loadRequest];
     //建立TCP通信通道
-//    [self.tcpSocketHelper setupTcpConnection:@"115.29.147.77"];
+//    [self.tcpSocketHelper setupTcpConnection:hostIp];
 }
 
 #pragma mark TcpSocketHelperDelegate
@@ -447,10 +449,11 @@
 - (void)renewPage:(TcpSocketHelper*)socketHelper responseData:(NSData *)data
 {
     NSString *httpResponse = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-	NSLog(@"HTTP Response:\n%@", httpResponse);
+    NSString *notifyMsg = [CodeUtil stringFromHexString:httpResponse];
+    NSLog(@"HTTP Response:\n%@", notifyMsg);
     
-    if ([self isRightJsonData:httpResponse]) {
-        NSDictionary *dictionary = [httpResponse JSONValue];
+    if ([self isRightJsonData:notifyMsg]) {
+        NSDictionary *dictionary = [notifyMsg JSONValue];
         NSLog(@"%@",dictionary);
         
         NSString *jsCommand = [NSString stringWithFormat:@"if (typeof %@ != 'undefined' && %@ instanceof Function) {%@();}", @"function_name", @"function_name", @"function_name"];

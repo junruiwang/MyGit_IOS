@@ -8,12 +8,14 @@
 
 #import "TcpSocketHelper.h"
 #import "Constants.h"
+#import "CodeUtil.h"
 
 @interface TcpSocketHelper ()
 
 @property (nonatomic, strong) NSTimer *scheduleTimer;
 
 - (void)sendTcpMessage;
+- (void)sendAuthSocketMessage;
 
 //心跳程序，每隔60秒轮询一次
 - (void)heartbeatProgram;
@@ -69,7 +71,7 @@
 
 - (void)heartbeatProgram
 {
-    //UDP广播查找局域网主机
+    //心跳程序保持socket通畅，每隔60秒轮询一次
     if (self.scheduleTimer == nil) {
         self.scheduleTimer = [NSTimer scheduledTimerWithTimeInterval:60.0
                                                               target:self
@@ -83,9 +85,22 @@
 
 - (void)sendTcpMessage
 {
-    NSString* cmd = @"1\r\n";
-    NSData *data = [cmd dataUsingEncoding:NSUTF8StringEncoding];
-    [self.asyncSocket writeData:data withTimeout:50.0 tag:0];
+    NSString* cmd = @"1";
+    NSString *authMsg = [NSString stringWithFormat:@"%@\n",[CodeUtil hexStringFromString:cmd]];
+    NSData *data = [authMsg dataUsingEncoding:NSUTF8StringEncoding];
+    [self.asyncSocket writeData:data withTimeout:30.0 tag:0];
+}
+
+- (void)sendAuthSocketMessage
+{
+    NSString *serverId = [[NSUserDefaults standardUserDefaults] valueForKey:kCurrentServerId];
+    NSString *cmd = [NSString stringWithFormat:@"{\"key\":\"\",\"body\":\"{\"serverId\":\"%@\"}\",\"messageType\":\"auth\"}",serverId];
+    //转换为16进制字符串
+    NSString *authMsg = [NSString stringWithFormat:@"%@\n",[CodeUtil hexStringFromString:cmd]];
+    NSData *data = [authMsg dataUsingEncoding:NSUTF8StringEncoding];
+    [self.asyncSocket writeData:data withTimeout:30.0 tag:0];
+    //启动心跳轮询程序
+    [self performSelector:@selector(heartbeatProgram) withObject:nil afterDelay:60.0];
 }
 
 #pragma mark - Socket Delegate
@@ -93,7 +108,7 @@
 - (void)socket:(GCDAsyncSocket *)sock didConnectToHost:(NSString *)host port:(UInt16)port
 {
 	NSLog(@"socket:%p didConnectToHost:%@ port:%hu", sock, host, port);
-    [self heartbeatProgram];
+    [self sendAuthSocketMessage];
     [self listenData];
 }
 

@@ -47,6 +47,7 @@
 		C4E48D6F18583B9700374CD2 /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = C4E48D6C18583B9700374CD2 /* GCDAsyncSocket.m */; };
 		C4E48D7018583B9700374CD2 /* GCDAsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = C4E48D6E18583B9700374CD2 /* GCDAsyncUdpSocket.m */; };
 		C4E48D7418583BEC00374CD2 /* IndexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4E48D7318583BEC00374CD2 /* IndexViewController.m */; };
+		C4E5DE2A1882BF9C00A9C516 /* CodeUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = C4E5DE291882BF9C00A9C516 /* CodeUtil.m */; };
 		C4F29959185849D600C07513 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C4F29956185849D600C07513 /* Default-568h@2x.png */; };
 		C4F2995A185849D600C07513 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = C4F29957185849D600C07513 /* Default.png */; };
 		C4F2995B185849D600C07513 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C4F29958185849D600C07513 /* Default@2x.png */; };
@@ -128,6 +129,8 @@
 		C4E48D7218583BEC00374CD2 /* IndexViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IndexViewController.h; path = Classes/IndexViewController.h; sourceTree = "<group>"; };
 		C4E48D7318583BEC00374CD2 /* IndexViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IndexViewController.m; path = Classes/IndexViewController.m; sourceTree = "<group>"; };
 		C4E48D7518583C2900374CD2 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		C4E5DE281882BF9C00A9C516 /* CodeUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CodeUtil.h; path = Classes/CodeUtil.h; sourceTree = "<group>"; };
+		C4E5DE291882BF9C00A9C516 /* CodeUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CodeUtil.m; path = Classes/CodeUtil.m; sourceTree = "<group>"; };
 		C4F29956185849D600C07513 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		C4F29957185849D600C07513 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		C4F29958185849D600C07513 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
@@ -166,6 +169,8 @@
 				C4CBEE5D185C4F9C00E067DD /* JsonParser.m */,
 				C42DD8B31875151900553B0D /* TcpSocketHelper.h */,
 				C42DD8B41875151900553B0D /* TcpSocketHelper.m */,
+				C4E5DE281882BF9C00A9C516 /* CodeUtil.h */,
+				C4E5DE291882BF9C00A9C516 /* CodeUtil.m */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -433,6 +438,7 @@
 				C4CBEE59185C4DA800E067DD /* SBJsonTokeniser.m in Sources */,
 				C4CBEE50185C4DA800E067DD /* NSObject+SBJson.m in Sources */,
 				C4CBEE54185C4DA800E067DD /* SBJsonStreamParserAdapter.m in Sources */,
+				C4E5DE2A1882BF9C00A9C516 /* CodeUtil.m in Sources */,
 				C4E48D6818583B3F00374CD2 /* IPAdress.c in Sources */,
 				C4CBEE65185C528D00E067DD /* BaseServerParser.m in Sources */,
 				C4CBEE5B185C4DA800E067DD /* SBJsonWriter.m in Sources */,
