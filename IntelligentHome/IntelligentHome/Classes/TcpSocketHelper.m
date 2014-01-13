@@ -66,7 +66,7 @@
 //发起一个读取的请求，当收到数据时后面的didReadData才能被回调
 - (void)listenData
 {
-    [self.asyncSocket readDataToData:[GCDAsyncSocket CRLFData] withTimeout:-1 tag:0];
+    [self.asyncSocket readDataWithTimeout:-1 tag:0];
 }
 
 - (void)heartbeatProgram
@@ -94,7 +94,7 @@
 - (void)sendAuthSocketMessage
 {
     NSString *serverId = [[NSUserDefaults standardUserDefaults] valueForKey:kCurrentServerId];
-    NSString *cmd = [NSString stringWithFormat:@"{\"key\":\"\",\"body\":\"{\"serverId\":\"%@\"}\",\"messageType\":\"auth\"}",serverId];
+    NSString *cmd = [NSString stringWithFormat:@"{\"key\":\"\",\"body\":\"{\\\"serverId\\\":\\\"%@\\\"}\",\"messageType\":\"auth\"}",serverId];
     //转换为16进制字符串
     NSString *authMsg = [NSString stringWithFormat:@"%@\n",[CodeUtil hexStringFromString:cmd]];
     NSData *data = [authMsg dataUsingEncoding:NSUTF8StringEncoding];

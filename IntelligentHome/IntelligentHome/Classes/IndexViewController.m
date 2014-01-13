@@ -281,7 +281,7 @@
             TheAppDelegate.serverBaseUrl = [NSString stringWithFormat:@"http://%@:%d/",host,self.localServerPort];
             [self loadRequest];
             //建立TCP通信通道
-//            [self.tcpSocketHelper setupTcpConnection:host];
+            [self.tcpSocketHelper setupTcpConnection:host];
         }
     }
 }
@@ -441,7 +441,7 @@
     TheAppDelegate.serverBaseUrl = str_url;
     [self loadRequest];
     //建立TCP通信通道
-//    [self.tcpSocketHelper setupTcpConnection:hostIp];
+    [self.tcpSocketHelper setupTcpConnection:hostIp];
 }
 
 #pragma mark TcpSocketHelperDelegate
