@@ -25,6 +25,7 @@
 @property (nonatomic) int udpBroadcastPort;
 @property (nonatomic) long tag;
 @property (nonatomic) int localServerPort;
+@property (nonatomic, copy) NSString *webInvokeMethod;
 //是否收到回播
 @property (nonatomic, assign) BOOL isReceived;
 //最近一次刷新资源时间
@@ -45,6 +46,7 @@
 - (void)killUdpSocketImmediately;
 - (void)didAppBecomeActive;
 - (BOOL)isRightJsonData:(NSString *)responseData;
+- (void)webViewFinishLoadProcess;
 
 @end
 
@@ -321,25 +323,21 @@
     return YES;
 }
 
-#pragma mark - UIWebViewDelegate
-
-- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
+- (void)webViewFinishLoadProcess
 {
-    //此url解析规则自己定义
-    NSString *rurl = [[request URL] absoluteString];
-    if ([rurl hasPrefix:@"protocol://"]) {
-        UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"Called by JavaScript"
-                                                     message:@"You've called iPhone provided control from javascript!!" delegate:nil cancelButtonTitle:@"Cancel" otherButtonTitles:nil];
-        [alertView show];
-        return NO;
+    NSString *jsCommand = [NSString stringWithFormat:@"if (typeof %@ != 'undefined' && %@ instanceof Function) {%@();}", kHtmlFinishLoadFunction, kHtmlFinishLoadFunction, kHtmlFinishLoadFunction];
+    NSString *jsFunctionName = [self.mainWebView stringByEvaluatingJavaScriptFromString:jsCommand];
+    if (jsFunctionName != nil && ![jsFunctionName isEqualToString:@""]) {
+        self.webInvokeMethod = jsFunctionName;
     }
-    
-    return YES;
 }
+
+#pragma mark - UIWebViewDelegate
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
     [self hideLoadingView];
+    [self webViewFinishLoadProcess];
 }
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
@@ -455,9 +453,12 @@
     if ([self isRightJsonData:notifyMsg]) {
         NSDictionary *dictionary = [notifyMsg JSONValue];
         NSLog(@"%@",dictionary);
+        NSString *functionVal = @"100";
         
-        NSString *jsCommand = [NSString stringWithFormat:@"if (typeof %@ != 'undefined' && %@ instanceof Function) {%@();}", @"function_name", @"function_name", @"function_name"];
-        [self.mainWebView stringByEvaluatingJavaScriptFromString:jsCommand];
+        if (self.webInvokeMethod != nil && ![self.webInvokeMethod isEqualToString:@""]) {
+            NSString *jsCommand = [NSString stringWithFormat:@"if (typeof %@ != 'undefined' && %@ instanceof Function) {%@(%@);}", self.webInvokeMethod, self.webInvokeMethod, self.webInvokeMethod, functionVal];
+            [self.mainWebView stringByEvaluatingJavaScriptFromString:jsCommand];
+        }
     }
     
     
