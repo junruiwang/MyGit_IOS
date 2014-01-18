@@ -449,19 +449,13 @@
     NSString *httpResponse = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     NSString *notifyMsg = [CodeUtil stringFromHexString:httpResponse];
     NSLog(@"HTTP Response:\n%@", notifyMsg);
-    
-    if ([self isRightJsonData:notifyMsg]) {
-        NSDictionary *dictionary = [notifyMsg JSONValue];
-        NSLog(@"%@",dictionary);
-        NSString *functionVal = @"100";
-        
+    if (![[notifyMsg uppercaseString] isEqualToString:kUpperOk]) {
+        //执行JS调用
         if (self.webInvokeMethod != nil && ![self.webInvokeMethod isEqualToString:@""]) {
-            NSString *jsCommand = [NSString stringWithFormat:@"if (typeof %@ != 'undefined' && %@ instanceof Function) {%@(%@);}", self.webInvokeMethod, self.webInvokeMethod, self.webInvokeMethod, functionVal];
+            NSString *jsCommand = [NSString stringWithFormat:@"if (typeof %@ != 'undefined' && %@ instanceof Function) {%@(%@);}", self.webInvokeMethod, self.webInvokeMethod, self.webInvokeMethod, notifyMsg];
             [self.mainWebView stringByEvaluatingJavaScriptFromString:jsCommand];
         }
     }
-    
-    
 }
 
 @end
