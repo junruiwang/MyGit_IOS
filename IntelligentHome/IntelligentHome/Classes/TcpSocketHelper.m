@@ -12,13 +12,19 @@
 
 @interface TcpSocketHelper ()
 
+@property (nonatomic, copy) NSString *tcpHost;
 @property (nonatomic, strong) NSTimer *scheduleTimer;
+@property (nonatomic, strong) NSTimer *connectTimer;
 
 - (void)sendTcpMessage;
 - (void)sendAuthSocketMessage;
-
+- (void)retryConnect;
 //心跳程序，每隔60秒轮询一次
 - (void)heartbeatProgram;
+//tcp断掉之后重连程序
+- (void)tcpConnectProgram;
+//tcp重连成功停止轮询
+- (void)stopTimerTask;
 
 //发起一个读取的请求，当收到数据时后面的didReadData才能被回调
 - (void)listenData;
@@ -45,6 +51,7 @@
         [self.asyncSocket disconnect];
         self.asyncSocket = nil;
 	}
+    self.tcpHost = host;
     dispatch_queue_t mainQueue = dispatch_get_main_queue();
     self.asyncSocket = [[GCDAsyncSocket alloc] initWithDelegate:self delegateQueue:mainQueue];
     UInt16 tcpPort = kTcpSocketPort;
@@ -103,11 +110,39 @@
     [self performSelector:@selector(heartbeatProgram) withObject:nil afterDelay:60.0];
 }
 
+- (void)tcpConnectProgram
+{
+    //tcp断掉重连轮询程序，每隔10秒轮询一次
+    if (self.connectTimer == nil) {
+        self.connectTimer = [NSTimer scheduledTimerWithTimeInterval:10.0
+                                                              target:self
+                                                            selector:@selector(retryConnect)
+                                                            userInfo:nil
+                                                             repeats:YES];
+        
+        [self.connectTimer fire];
+    }
+}
+
+- (void)retryConnect
+{
+    [self setupTcpConnection:self.tcpHost];
+}
+
+- (void)stopTimerTask
+{
+    if (self.connectTimer) {
+        [self.connectTimer invalidate];
+        self.connectTimer = nil;
+    }
+}
+
 #pragma mark - Socket Delegate
 
 - (void)socket:(GCDAsyncSocket *)sock didConnectToHost:(NSString *)host port:(UInt16)port
 {
 	NSLog(@"socket:%p didConnectToHost:%@ port:%hu", sock, host, port);
+    [self stopTimerTask];
     [self sendAuthSocketMessage];
     [self listenData];
 }
@@ -131,6 +166,7 @@
 - (void)socketDidDisconnect:(GCDAsyncSocket *)sock withError:(NSError *)err
 {
 	NSLog(@"socketDidDisconnect:%p withError: %@", sock, err);
+    [self tcpConnectProgram];
 }
 
 @end
