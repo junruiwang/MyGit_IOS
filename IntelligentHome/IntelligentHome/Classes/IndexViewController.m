@@ -25,7 +25,6 @@
 @property (nonatomic) int udpBroadcastPort;
 @property (nonatomic) long tag;
 @property (nonatomic) int localServerPort;
-@property (nonatomic, copy) NSString *webInvokeMethod;
 //是否收到回播
 @property (nonatomic, assign) BOOL isReceived;
 //最近一次刷新资源时间
@@ -325,11 +324,9 @@
 
 - (void)webViewFinishLoadProcess
 {
-    NSString *jsCommand = [NSString stringWithFormat:@"if (typeof %@ != 'undefined' && %@ instanceof Function) {%@();}", kHtmlFinishLoadFunction, kHtmlFinishLoadFunction, kHtmlFinishLoadFunction];
-    NSString *jsFunctionName = [self.mainWebView stringByEvaluatingJavaScriptFromString:jsCommand];
-    if (jsFunctionName != nil && ![jsFunctionName isEqualToString:@""]) {
-        self.webInvokeMethod = jsFunctionName;
-    }
+    NSString *appInfo = [NSString stringWithFormat:@"{\"appInfo\":\"iOS\",\"version\":\"%@\"}",kClientVersion];
+    NSString *jsCommand = [NSString stringWithFormat:@"if (typeof %@ != 'undefined' && %@ instanceof Function) {%@(%@);}", kHtmlFinishLoadFunction, kHtmlFinishLoadFunction, kHtmlFinishLoadFunction, appInfo];
+    [self.mainWebView stringByEvaluatingJavaScriptFromString:jsCommand];
 }
 
 #pragma mark - UIWebViewDelegate
@@ -451,10 +448,8 @@
     NSLog(@"HTTP Response:\n%@", notifyMsg);
     if (![[notifyMsg uppercaseString] isEqualToString:kUpperOk]) {
         //执行JS调用
-        if (self.webInvokeMethod != nil && ![self.webInvokeMethod isEqualToString:@""]) {
-            NSString *jsCommand = [NSString stringWithFormat:@"if (typeof %@ != 'undefined' && %@ instanceof Function) {%@(%@);}", self.webInvokeMethod, self.webInvokeMethod, self.webInvokeMethod, notifyMsg];
-            [self.mainWebView stringByEvaluatingJavaScriptFromString:jsCommand];
-        }
+        NSString *jsCommand = [NSString stringWithFormat:@"if (typeof %@ != 'undefined' && %@ instanceof Function) {%@(%@);}", kTcpNotifyFunction, kTcpNotifyFunction, kTcpNotifyFunction, notifyMsg];
+        [self.mainWebView stringByEvaluatingJavaScriptFromString:jsCommand];
     }
 }
 

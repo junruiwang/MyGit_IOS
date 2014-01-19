@@ -17,7 +17,8 @@
 
 #define kClientVersion @"1.0"
 #define kCurrentServerId  @"currentServerId"
-#define kHtmlFinishLoadFunction @"setSocketListener"
+#define kHtmlFinishLoadFunction @"onAppLoad"
+#define kTcpNotifyFunction @"onReceiveMessage"
 #define kUpperOk @"OK"
 
 #define TheAppDelegate  ((AppDelegate *)[UIApplication sharedApplication].delegate)
