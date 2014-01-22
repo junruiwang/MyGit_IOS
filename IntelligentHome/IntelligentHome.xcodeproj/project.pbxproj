@@ -10,6 +10,8 @@
 		C42DD8B51875151900553B0D /* TcpSocketHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C42DD8B41875151900553B0D /* TcpSocketHelper.m */; };
 		C42DD8B71875161500553B0D /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C42DD8B61875161500553B0D /* CFNetwork.framework */; };
 		C42DD8B91875162500553B0D /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C42DD8B81875162500553B0D /* Security.framework */; };
+		C43B4244188FFF0500B4DC79 /* FileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C43B4243188FFF0500B4DC79 /* FileManager.m */; };
+		C43B4247189000D200B4DC79 /* MyServerIdManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C43B4246189000D200B4DC79 /* MyServerIdManager.m */; };
 		C44CD024185AF94900D72D5A /* PulsingHaloLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = C44CD023185AF94900D72D5A /* PulsingHaloLayer.m */; };
 		C44CD027185AFA3B00D72D5A /* UdpIndicatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C44CD026185AFA3B00D72D5A /* UdpIndicatorViewController.m */; };
 		C44CD02A185B040B00D72D5A /* logo_phone.png in Resources */ = {isa = PBXBuildFile; fileRef = C44CD028185B040B00D72D5A /* logo_phone.png */; };
@@ -61,6 +63,10 @@
 		C42DD8B41875151900553B0D /* TcpSocketHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TcpSocketHelper.m; path = Classes/TcpSocketHelper.m; sourceTree = "<group>"; };
 		C42DD8B61875161500553B0D /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		C42DD8B81875162500553B0D /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		C43B4242188FFF0500B4DC79 /* FileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FileManager.h; path = Classes/FileManager.h; sourceTree = "<group>"; };
+		C43B4243188FFF0500B4DC79 /* FileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FileManager.m; path = Classes/FileManager.m; sourceTree = "<group>"; };
+		C43B4245189000D200B4DC79 /* MyServerIdManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyServerIdManager.h; path = Classes/MyServerIdManager.h; sourceTree = "<group>"; };
+		C43B4246189000D200B4DC79 /* MyServerIdManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyServerIdManager.m; path = Classes/MyServerIdManager.m; sourceTree = "<group>"; };
 		C44CD022185AF94900D72D5A /* PulsingHaloLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PulsingHaloLayer.h; path = Classes/PulsingHaloLayer.h; sourceTree = "<group>"; };
 		C44CD023185AF94900D72D5A /* PulsingHaloLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PulsingHaloLayer.m; path = Classes/PulsingHaloLayer.m; sourceTree = "<group>"; };
 		C44CD025185AFA3B00D72D5A /* UdpIndicatorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UdpIndicatorViewController.h; path = Classes/UdpIndicatorViewController.h; sourceTree = "<group>"; };
@@ -159,6 +165,8 @@
 		C44CD01F185AEBF300D72D5A /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				C43B4242188FFF0500B4DC79 /* FileManager.h */,
+				C43B4243188FFF0500B4DC79 /* FileManager.m */,
 				C44CD022185AF94900D72D5A /* PulsingHaloLayer.h */,
 				C44CD023185AF94900D72D5A /* PulsingHaloLayer.m */,
 				C44CD025185AFA3B00D72D5A /* UdpIndicatorViewController.h */,
@@ -171,6 +179,8 @@
 				C42DD8B41875151900553B0D /* TcpSocketHelper.m */,
 				C4E5DE281882BF9C00A9C516 /* CodeUtil.h */,
 				C4E5DE291882BF9C00A9C516 /* CodeUtil.m */,
+				C43B4245189000D200B4DC79 /* MyServerIdManager.h */,
+				C43B4246189000D200B4DC79 /* MyServerIdManager.m */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -427,6 +437,7 @@
 			files = (
 				C4CBEE58185C4DA800E067DD /* SBJsonStreamWriterState.m in Sources */,
 				C4CBEE56185C4DA800E067DD /* SBJsonStreamWriter.m in Sources */,
+				C43B4247189000D200B4DC79 /* MyServerIdManager.m in Sources */,
 				C44CD024185AF94900D72D5A /* PulsingHaloLayer.m in Sources */,
 				C4E48D6F18583B9700374CD2 /* GCDAsyncSocket.m in Sources */,
 				C42DD8B51875151900553B0D /* TcpSocketHelper.m in Sources */,
@@ -448,6 +459,7 @@
 				C4CBEE52185C4DA800E067DD /* SBJsonStreamParser.m in Sources */,
 				C4CBEE61185C500E00E067DD /* NSDataAES.m in Sources */,
 				C44CD027185AFA3B00D72D5A /* UdpIndicatorViewController.m in Sources */,
+				C43B4244188FFF0500B4DC79 /* FileManager.m in Sources */,
 				C4E48D3B185839AE00374CD2 /* main.m in Sources */,
 				C4E48D6918583B3F00374CD2 /* Reachability.m in Sources */,
 				C4CBEE55185C4DA800E067DD /* SBJsonStreamParserState.m in Sources */,

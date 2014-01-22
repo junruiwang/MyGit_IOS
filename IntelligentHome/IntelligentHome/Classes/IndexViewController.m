@@ -17,6 +17,7 @@
 #import "HZActivityIndicatorView.h"
 #import "TcpSocketHelper.h"
 #import "CodeUtil.h"
+#import "MyServerIdManager.h"
 
 @interface IndexViewController () <TcpSocketHelperDelegate>
 
@@ -37,6 +38,8 @@
 @property(nonatomic, strong) TcpSocketHelper *tcpSocketHelper;
 
 @property (nonatomic, strong) BaseServerParser *baseServerParser;
+
+@property(nonatomic, strong) MyServerIdManager *myServerIdManager;
 
 
 - (void)workingForFindServerUrl;
@@ -60,6 +63,8 @@
         //初始化TCP通信通道
         self.tcpSocketHelper = [[TcpSocketHelper alloc] init];
         self.tcpSocketHelper.delegate = self;
+        self.myServerIdManager = [[MyServerIdManager alloc] init];
+        
         //注册通知
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didAppBecomeActive) name:@"applicationDidBecomeActiveNotifi" object:nil];
         
@@ -175,8 +180,7 @@
 //远程查询，不存在的话，网络不可用
 - (void)findHostServerByRemote
 {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSString *serverId = [defaults objectForKey:kCurrentServerId];
+    NSString *serverId = [self.myServerIdManager getCurrentServerId];
     
     if (serverId != nil) {
         if (self.baseServerParser != nil) {
@@ -300,12 +304,8 @@
             return NO;
         }
         self.localServerPort = [[dictionary valueForKey:@"port"] intValue];
-        
-        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        [defaults setObject:serverId forKey:kCurrentServerId];
-        [defaults synchronize];
-        
-        return YES;
+
+        return [self.myServerIdManager addServerIdToFile:serverId];
     } else {
         return NO;
     }
