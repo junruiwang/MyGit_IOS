@@ -175,7 +175,9 @@
 //远程查询，不存在的话，网络不可用
 - (void)findHostServerByRemote
 {
-    NSString *serverId = [[NSUserDefaults standardUserDefaults] valueForKey:kCurrentServerId];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *serverId = [defaults objectForKey:kCurrentServerId];
+    
     if (serverId != nil) {
         if (self.baseServerParser != nil) {
             [self.baseServerParser cancel];
@@ -298,8 +300,10 @@
             return NO;
         }
         self.localServerPort = [[dictionary valueForKey:@"port"] intValue];
-        [[NSUserDefaults standardUserDefaults] setValue:serverId forKey:kCurrentServerId];
-        [[NSUserDefaults standardUserDefaults] synchronize];
+        
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        [defaults setObject:serverId forKey:kCurrentServerId];
+        [defaults synchronize];
         
         return YES;
     } else {
