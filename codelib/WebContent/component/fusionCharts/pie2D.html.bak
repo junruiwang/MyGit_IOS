@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<title>饼状图</title>
+		<script type="text/javascript"
+			src="../../common/Syntax/scripts/shCore.js"></script>
+		<script type="text/javascript"
+			src="../../common/Syntax/scripts/shBrushJScript.js"></script>
+		<script type="text/javascript"
+			src="../../common/Syntax/scripts/shBrushJava.js"></script>
+		<script type="text/javascript"
+			src="../../common/Syntax/scripts/shBrushCss.js"></script>
+		<script type="text/javascript"
+			src="../../common/Syntax/scripts/shBrushXml.js"></script>			
+		<script type="text/javascript" src='../../common/fusionCharts/FusionCharts.js'></script>
+		<script type="text/javascript" src="../../common/jquery/jquery-1.3.2.min.js"></script>
+		<link type="text/css" rel="stylesheet"
+			href="../../common/css/component.css" />
+		<link type="text/css" rel="stylesheet"
+			href="../../common/Syntax/styles/shCoreDefault.css" />
+		<script type="text/javascript">SyntaxHighlighter.all();</script>		
+		<script language="javascript">			$(document).ready(function(){
+				var chart = new FusionCharts("../../common/fusionCharts/flash/Pie2D.swf", "pie2DChartId", "100%", "250", "0", "0");
+				//chart.setDataXML(xmldata);
+			   	chart.setDataURL("../../common/fusionCharts/data/pie2D.xml");	 
+			   	chart.setTransparent(true);   
+			   	chart.render("pie2DDiv");
+			});	</script>	</head>
+	<body>
+		<div id="pie2DDiv"></div>
+
+<pre class="brush:js;">
+使用说明:
+1.确保系统中引入相关js
+<script type="text/javascript" src='../../common/fusionCharts/FusionCharts.js'></script>
+<script type="text/javascript" src="../../common/jquery/jquery-1.3.2.min.js"></script>
+
+2.从服务器端获取xml串(此处模拟的是本地的1个xml文件)
+
+3.调用FusionChart.js提供的方法,将xml串(或文件填充到flash进行展示)
+<script language="javascript">			
+     $(document).ready(function(){
+	var chart = new FusionCharts("../../common/fusionCharts/flash/Pie2D.swf", "pie2DChartId", "100%", "250", "0", "0");
+	//chart.setDataXML(xmldata);
+	chart.setDataURL("../../common/fusionCharts/data/pie2D.xml");
+	chart.setTransparent(true);   
+	chart.render("pie2DDiv");
+     });	
+   </script>
+4.亦可以调用function showFusionChart(chartswf,divname,xmldata,chartid,width,height)来进行展示fusionChart
+</pre>	
+</body>
+</html>

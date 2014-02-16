@@ -1,0 +1,5 @@
+<chart palette='2' caption='WLAN平均流量(M)' xAxisName='苘期' yAxisName='' showValues='0' decimals='0' formatNumberScale='0' useRoundEdges='1'>
+<set label='0-3月' value='900' />
+<set label='3-6月' value='800' />
+<set label='6-9月' value='700' />
+</chart>

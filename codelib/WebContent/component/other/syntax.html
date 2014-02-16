@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+		<title>代码高亮组件的使用</title>
+		<script type="text/javascript"
+			src="../../common/Syntax/scripts/shCore.js"></script>
+		<script type="text/javascript"
+			src="../../common/Syntax/scripts/shBrushJScript.js"></script>
+		<script type="text/javascript"
+			src="../../common/Syntax/scripts/shBrushJava.js"></script>
+		<script type="text/javascript"
+			src="../../common/Syntax/scripts/shBrushCss.js"></script>
+		<script type="text/javascript"
+			src="../../common/Syntax/scripts/shBrushXml.js"></script>
+		<link type="text/css" rel="stylesheet"
+			href="../../common/css/component.css" />
+		<link type="text/css" rel="stylesheet"
+			href="../../common/Syntax/styles/shCoreDefault.css" />
+		<script>
+			SyntaxHighlighter.all();
+		</script>
+	<body>
+		<h1>
+			代码高亮--效果展示
+		</h1>
+		<div class="effect">
+			<pre class="brush:java;">
+		    	public class HelloWorld{
+		    		public static void main(String[] args){
+		    			System.out.println("Hello world!");
+		    		}
+		    	}
+			</pre>
+		</div>
+		<h1>
+			使用解释
+		</h1>
+		<p>
+			引用的JS和CSS
+		</p>
+		<pre class="brush:js;">
+			//shCore.js必须引入
+			&lt;script type="text/javascript"
+				src="../../common/Syntax/scripts/shCore.js"&gt;&lt;/script&gt;
+			//shBrushJScript.js、shBrushJava.js、shBrushCss.js、shBrushXml.js等JS文件可以按需引入
+			&lt;script type="text/javascript"
+					src="../../common/Syntax/scripts/shBrushJScript.js"&gt;&lt;/script&gt;
+			&lt;script type="text/javascript"
+					src="../../common/Syntax/scripts/shBrushJava.js"&gt;&lt;/script&gt;
+			&lt;script type="text/javascript"
+					src="../../common/Syntax/scripts/shBrushCss.js"&gt;&lt;/script&gt;
+			&lt;script type="text/javascript"
+					src="../../common/Syntax/scripts/shBrushXml.js"&gt;&lt;/script&gt;
+			//除了shCoreDefault.css外，还有多种css主题可选，在common/Syntax/styles目录下
+			&lt;link type="text/css" rel="stylesheet"
+					href="../../common/Syntax/styles/shCoreDefault.css" /&gt;
+		</pre>
+		<p>
+			页面&lt;pre/&gt;元素
+		</p>
+		<pre class="brush:java;">
+			//将代码包含于&lt;pre&gt;&lt;/pre&gt;
+			//标签中，标签的class中定义brush属性
+			//该属性的值可以为js\java\xml\css等
+			//还可以为c\c++，不过需要额外的引入一些JS文件
+			//这些JS包含在common/Syntax/scripts目录下
+			&lt;pre class="brush:java;"&gt;
+		    	public class HelloWorld{
+		    		public static void main(String[] args){
+		    			System.out.println("Hello world!");
+		    		}
+		    	}
+			&lt;/pre&gt;
+		</pre>
+		<p>
+			JS调用
+		</p>
+		<pre class="brush:js;">
+			//需要执行以下代码，来让我们的页面产生效果
+			SyntaxHighlighter.all();
+		</pre>
+	</body>
+</html>
