@@ -16,7 +16,6 @@
 #define kTcpSocketPort       8868
 
 #define kClientVersion @"1.0"
-#define kCurrentServerId  @"currentServerId"
 #define kHtmlFinishLoadFunction @"onAppLoad"
 #define kTcpNotifyFunction @"onReceiveMessage"
 #define kUpperOk @"OK"

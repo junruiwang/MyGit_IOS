@@ -9,6 +9,7 @@
 #import "TcpSocketHelper.h"
 #import "Constants.h"
 #import "CodeUtil.h"
+#import "MyServerIdManager.h"
 
 @interface TcpSocketHelper ()
 
@@ -100,7 +101,8 @@
 
 - (void)sendAuthSocketMessage
 {
-    NSString *serverId = [[NSUserDefaults standardUserDefaults] valueForKey:kCurrentServerId];
+    MyServerIdManager *myServerIdManager = [[MyServerIdManager alloc] init];
+    NSString *serverId = [myServerIdManager getCurrentServerId];
     NSString *cmd = [NSString stringWithFormat:@"{\"key\":\"\",\"body\":\"{\\\"serverId\\\":\\\"%@\\\"}\",\"messageType\":\"auth\"}",serverId];
     //转换为16进制字符串
     NSString *authMsg = [NSString stringWithFormat:@"%@\n",[CodeUtil hexStringFromString:cmd]];

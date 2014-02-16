@@ -69,9 +69,6 @@
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didAppBecomeActive) name:@"applicationDidBecomeActiveNotifi" object:nil];
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(killUdpSocketImmediately) name:@"applicationWillResignActiveNotifi" object:nil];
-        //初始化 ServerId
-        [[NSUserDefaults standardUserDefaults] setValue:@"" forKey:kCurrentServerId];
-        [[NSUserDefaults standardUserDefaults] synchronize];
     }
     return self;
 }
