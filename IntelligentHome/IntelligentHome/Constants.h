@@ -20,4 +20,10 @@
 #define kTcpNotifyFunction @"onReceiveMessage"
 #define kUpperOk @"OK"
 
+#ifdef DEBUG
+#define kLogEnable  YES
+#else
+#define kLogEnable  NO
+#endif
+
 #define TheAppDelegate  ((AppDelegate *)[UIApplication sharedApplication].delegate)

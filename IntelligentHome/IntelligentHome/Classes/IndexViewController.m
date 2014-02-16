@@ -228,8 +228,10 @@
         NSLog(@"Error receiving: %@", error);
 		return;
 	}
-	
-    NSLog(@"Client Ready!");
+    
+    if (kLogEnable) {
+        NSLog(@"Client Ready!");
+    }
 }
 
 
@@ -253,7 +255,9 @@
 
 - (void)udpSocket:(GCDAsyncUdpSocket *)sock didSendDataWithTag:(long)tag
 {
-    NSLog(@"Client didSendData!");
+    if (kLogEnable) {
+        NSLog(@"Client didSendData!");
+    }
 	// You could add checks here
 }
 
@@ -446,7 +450,9 @@
 {
     NSString *httpResponse = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     NSString *notifyMsg = [CodeUtil stringFromHexString:httpResponse];
-    NSLog(@"HTTP Response:\n%@", notifyMsg);
+    if (kLogEnable) {
+        NSLog(@"HTTP Response:\n%@", notifyMsg);
+    }
     if (![[notifyMsg uppercaseString] isEqualToString:kUpperOk]) {
         //执行JS调用
         NSString *jsCommand = [NSString stringWithFormat:@"if (typeof %@ != 'undefined' && %@ instanceof Function) {%@(%@);}", kTcpNotifyFunction, kTcpNotifyFunction, kTcpNotifyFunction, notifyMsg];

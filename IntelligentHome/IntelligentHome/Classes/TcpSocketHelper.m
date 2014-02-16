@@ -56,8 +56,9 @@
     dispatch_queue_t mainQueue = dispatch_get_main_queue();
     self.asyncSocket = [[GCDAsyncSocket alloc] initWithDelegate:self delegateQueue:mainQueue];
     UInt16 tcpPort = kTcpSocketPort;
-    NSLog(@"Connecting to %@ on port %hu...", host, tcpPort);
-    
+    if (kLogEnable) {
+        NSLog(@"Connecting to %@ on port %hu...", host, tcpPort);
+    }
     NSError *error = nil;
     if (![self.asyncSocket connectToHost:host onPort:tcpPort error:&error])
     {
@@ -143,7 +144,9 @@
 
 - (void)socket:(GCDAsyncSocket *)sock didConnectToHost:(NSString *)host port:(UInt16)port
 {
-	NSLog(@"socket:%p didConnectToHost:%@ port:%hu", sock, host, port);
+    if (kLogEnable) {
+        NSLog(@"socket:%p didConnectToHost:%@ port:%hu", sock, host, port);
+    }
     [self stopTimerTask];
     [self sendAuthSocketMessage];
     [self listenData];
@@ -151,13 +154,16 @@
 
 - (void)socket:(GCDAsyncSocket *)sock didWriteDataWithTag:(long)tag
 {
-	NSLog(@"socket:%p didWriteDataWithTag:%ld", sock, tag);
+    if (kLogEnable) {
+        NSLog(@"socket:%p didWriteDataWithTag:%ld", sock, tag);
+    }
 }
 
 - (void)socket:(GCDAsyncSocket *)sock didReadData:(NSData *)data withTag:(long)tag
 {
-	NSLog(@"socket:%p didReadData:withTag:%ld", sock, tag);
-	
+    if (kLogEnable) {
+        NSLog(@"socket:%p didReadData:withTag:%ld", sock, tag);
+    }
     if(self.delegate != nil && [self.delegate respondsToSelector:@selector(renewPage:responseData:)]){
         [self.delegate renewPage:self responseData:data];
     }
