@@ -17,30 +17,57 @@
 
 - (BOOL)addServerIdToFile:(NSString *) serverId
 {
-    NSString *tempServerId = [self readServerIdFromLocalFile];
-    if (tempServerId != nil && [tempServerId isEqualToString:serverId]) {
-        return YES;
+    NSString *path = [FileManager fileCachesPath:@"MyServerInfo.plist"];
+    NSMutableArray *serverIdArray = [self readServerIdListFromLocalFile];
+    if (serverIdArray == nil) {
+        serverIdArray = [[NSMutableArray alloc] initWithCapacity:10];
     }
     
-    NSString *path = [FileManager fileCachesPath:@"MyServerInfo.plist"];
-    NSError *error = nil;
-    return [serverId writeToFile:path atomically:YES encoding:NSUTF8StringEncoding error:&error];
+    if ([serverIdArray count] > 0) {
+        BOOL hasExist = NO;
+        NSUInteger existIndex = 0;
+        for (int i=0; i<[serverIdArray count]; i++) {
+            NSString *tempServerId = [serverIdArray objectAtIndex:i];
+            //本地列表存在serverId，进行标记
+            if (tempServerId != nil && [tempServerId isEqualToString:serverId]) {
+                hasExist = YES;
+                existIndex = i;
+                break;
+            }
+        }
+        //调整数组元素的位置
+        if (hasExist) {
+            if (existIndex > 0) {
+                [serverIdArray exchangeObjectAtIndex:0 withObjectAtIndex:existIndex];
+            }
+        } else {
+            [serverIdArray insertObject:serverId atIndex:0];
+        }
+        //数组长度超过10，移除多余的元素
+        if ([serverIdArray count] > 10) {
+            [serverIdArray removeLastObject];
+        }
+    } else {
+        [serverIdArray addObject:serverId];
+    }
+    
+    
+    return [serverIdArray writeToFile: path atomically:YES];
 }
 
 - (NSString *)getCurrentServerId
 {
-    NSString *serverId = [self readServerIdFromLocalFile];
-    if (serverId == nil) {
-        serverId = @"";
+    NSMutableArray *serverIdArray = [self readServerIdListFromLocalFile];
+    if (serverIdArray != nil && [serverIdArray count] > 0) {
+        return [serverIdArray objectAtIndex:0];
     }
-    return serverId;
+    return @"";
 }
 
-- (NSString *)readServerIdFromLocalFile
+- (NSMutableArray *)readServerIdListFromLocalFile
 {
     NSString *path = [FileManager fileCachesPath:@"MyServerInfo.plist"];
-    NSError *error = nil;
-    return [[NSString alloc] initWithContentsOfFile:path encoding:NSUTF8StringEncoding error:&error];
+    return [[NSMutableArray alloc] initWithContentsOfFile:path];
 }
 
 @end
