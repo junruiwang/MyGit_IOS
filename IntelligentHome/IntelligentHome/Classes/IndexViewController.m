@@ -354,6 +354,8 @@
         NSString *targetServerId = [locationUrl substringFromIndex:(range.location+range.length)];
         //切换Server，切换之后一律通过云主机交互
         if (targetServerId != nil && ![targetServerId isEqualToString:[self.myServerIdManager getCurrentServerId]]) {
+            //本地serverId列表排序更新
+            [self.myServerIdManager addServerIdToFile:targetServerId];
             //关闭TCP连接通道
             [self.tcpSocketHelper stopTcpSocket];
             //重新打开服务器连接，建立socket通道
