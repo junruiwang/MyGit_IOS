@@ -357,8 +357,8 @@
             //关闭TCP连接通道
             [self.tcpSocketHelper stopTcpSocket];
             //重新打开服务器连接，建立socket通道
-            NSString *str_url = @"";
-            NSString *hostIp = @"115.29.147.77";
+            NSString *str_url = [NSString stringWithFormat:@"%@/index.html?serverId=%@",kBaseURL,targetServerId];
+            NSString *hostIp = kHostAddress;
             //通过访问远程云主机，获取服务器访问路径
             TheAppDelegate.serverBaseUrl = str_url;
             [self loadRequest];

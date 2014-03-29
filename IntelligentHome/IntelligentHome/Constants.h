@@ -6,8 +6,8 @@
 //  Copyright (c) 2013年 jerry.wang. All rights reserved.
 //
 
+#define kHostAddress                   @"115.29.147.77"
 #define kBaseURL                       @"http://115.29.147.77:8080"
-
 #define kAliyunURL                     @"http://115.29.147.77/queryFamilyServer.dhtml"
 
 #define kUdpBroadcastHost    @"224.0.0.1"

@@ -41,6 +41,7 @@
         myBuffer[i / 2] = (char)anInt;
     }
     NSString *unicodeString = [NSString stringWithCString:myBuffer encoding:NSUTF8StringEncoding];
+    free(myBuffer);
     return unicodeString;
 }
 
