@@ -12,5 +12,6 @@
 
 - (BOOL)addServerIdToFile:(NSString *) serverId;
 - (NSString *)getCurrentServerId;
+- (NSString *)getServerListByJson;
 
 @end

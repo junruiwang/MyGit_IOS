@@ -164,12 +164,8 @@
         [self.udpSocket close];
         self.udpSocket = nil;
 	}
-    
-    if (self.tcpSocketHelper.asyncSocket != nil) {
-        [self.tcpSocketHelper.asyncSocket setDelegate:nil];
-        [self.tcpSocketHelper.asyncSocket disconnect];
-        self.tcpSocketHelper.asyncSocket = nil;
-    }
+    //关闭TCP连接通道
+    [self.tcpSocketHelper stopTcpSocket];
     //记录退出时间
     self.invokeTime = [NSDate date];
 }
@@ -244,6 +240,13 @@
 
 - (void)estimateSearchByRemote
 {
+    //UPD查找完毕关闭UDP服务
+    if (self.udpSocket != nil)
+	{
+        [self.udpSocket close];
+        self.udpSocket = nil;
+	}
+    
     if (!self.isReceived) {
         [self hideIndicatorView];
         //udp广播未找到主机，通过远程主机获取服务器访问路径
@@ -335,6 +338,37 @@
 }
 
 #pragma mark - UIWebViewDelegate
+
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
+{
+    NSString *locationUrl = [[request URL] absoluteString];
+    //获取serverId列表
+    if ([locationUrl hasPrefix:kServerIdList]) {
+        NSRange range = [locationUrl rangeOfString:kSeparateFlag];
+        NSString *callFunction = [locationUrl substringFromIndex:(range.location+range.length)];
+        NSString *jsCommand = [NSString stringWithFormat:@"if (typeof %@ != 'undefined' && %@ instanceof Function) {%@(%@);}", callFunction, callFunction, callFunction, [self.myServerIdManager getServerListByJson]];
+        [self.mainWebView stringByEvaluatingJavaScriptFromString:jsCommand];
+        return NO;
+    } else if ([locationUrl hasPrefix:kChangeServer]) {
+        NSRange range = [locationUrl rangeOfString:kSeparateFlag];
+        NSString *targetServerId = [locationUrl substringFromIndex:(range.location+range.length)];
+        //切换Server，切换之后一律通过云主机交互
+        if (targetServerId != nil && ![targetServerId isEqualToString:[self.myServerIdManager getCurrentServerId]]) {
+            //关闭TCP连接通道
+            [self.tcpSocketHelper stopTcpSocket];
+            //重新打开服务器连接，建立socket通道
+            NSString *str_url = @"";
+            NSString *hostIp = @"115.29.147.77";
+            //通过访问远程云主机，获取服务器访问路径
+            TheAppDelegate.serverBaseUrl = str_url;
+            [self loadRequest];
+            //建立TCP通信通道
+            [self.tcpSocketHelper setupTcpConnection:hostIp];
+        }
+        return NO;
+    }
+    return YES;
+}
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {

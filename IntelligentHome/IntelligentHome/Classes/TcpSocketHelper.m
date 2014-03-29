@@ -46,12 +46,7 @@
 
 - (void)setupTcpConnection:(NSString *)host
 {
-    if (self.asyncSocket != nil)
-	{
-        [self.asyncSocket setDelegate:nil];
-        [self.asyncSocket disconnect];
-        self.asyncSocket = nil;
-	}
+    [self stopTcpSocket];
     self.tcpHost = host;
     dispatch_queue_t mainQueue = dispatch_get_main_queue();
     self.asyncSocket = [[GCDAsyncSocket alloc] initWithDelegate:self delegateQueue:mainQueue];
@@ -70,6 +65,17 @@
 - (BOOL)isConnected
 {
     return self.asyncSocket.isConnected;
+}
+
+- (void)stopTcpSocket
+{
+    if (self.asyncSocket != nil)
+	{
+        [self.asyncSocket setDelegate:nil];
+        [self.asyncSocket disconnect];
+        self.asyncSocket = nil;
+	}
+    [self stopTimerTask];
 }
 
 //发起一个读取的请求，当收到数据时后面的didReadData才能被回调

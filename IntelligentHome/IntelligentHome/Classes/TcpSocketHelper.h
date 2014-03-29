@@ -31,5 +31,6 @@
 
 - (void)setupTcpConnection:(NSString *)host;
 - (BOOL)isConnected;
+- (void)stopTcpSocket;
 
 @end

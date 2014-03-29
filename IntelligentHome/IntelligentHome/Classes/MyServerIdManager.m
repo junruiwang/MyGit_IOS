@@ -64,6 +64,32 @@
     return @"";
 }
 
+- (NSString *)getServerListByJson
+{
+    NSMutableString *serverListJson = [NSMutableString stringWithString:@"["];
+    NSMutableArray *serverIdArray = [self readServerIdListFromLocalFile];
+    if (serverIdArray != nil && [serverIdArray count] > 0) {
+        if ([serverIdArray count] == 1) {
+            [serverListJson appendFormat:@"{\"id\":\"%@\",\"selected\":true}",[serverIdArray objectAtIndex:0]];
+        } else {
+            for (int i=0; i<[serverIdArray count]; i++) {
+                NSString *serverId = [serverIdArray objectAtIndex:i];
+                if (i==0) {
+                    [serverListJson appendFormat:@"{\"id\":\"%@\",\"selected\":true}",serverId];
+                } else {
+                    [serverListJson appendFormat:@"{\"id\":\"%@\",\"selected\":false}",serverId];
+                }
+                
+                if (i <([serverIdArray count]-1)) {
+                    [serverListJson appendString:@","];
+                }
+            }
+        }
+    }
+    [serverListJson appendString:@"]"];
+    return serverListJson;
+}
+
 - (NSMutableArray *)readServerIdListFromLocalFile
 {
     NSString *path = [FileManager fileCachesPath:@"MyServerInfo.plist"];
