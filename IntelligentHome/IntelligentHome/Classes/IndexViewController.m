@@ -342,14 +342,15 @@
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
 {
     NSString *locationUrl = [[request URL] absoluteString];
+    NSString *compStr = [[locationUrl copy] lowercaseString];
     //获取serverId列表
-    if ([locationUrl hasPrefix:kServerIdList]) {
+    if ([compStr hasPrefix:kServerIdList]) {
         NSRange range = [locationUrl rangeOfString:kSeparateFlag];
         NSString *callFunction = [locationUrl substringFromIndex:(range.location+range.length)];
         NSString *jsCommand = [NSString stringWithFormat:@"if (typeof %@ != 'undefined' && %@ instanceof Function) {%@(%@);}", callFunction, callFunction, callFunction, [self.myServerIdManager getServerListByJson]];
         [self.mainWebView stringByEvaluatingJavaScriptFromString:jsCommand];
         return NO;
-    } else if ([locationUrl hasPrefix:kChangeServer]) {
+    } else if ([compStr hasPrefix:kChangeServer]) {
         NSRange range = [locationUrl rangeOfString:kSeparateFlag];
         NSString *targetServerId = [locationUrl substringFromIndex:(range.location+range.length)];
         //切换Server，切换之后一律通过云主机交互

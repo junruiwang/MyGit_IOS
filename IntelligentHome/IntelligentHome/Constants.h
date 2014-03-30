@@ -19,8 +19,8 @@
 #define kHtmlFinishLoadFunction @"onAppLoad"
 #define kTcpNotifyFunction @"onReceiveMessage"
 #define kUpperOk @"OK"
-#define kServerIdList @"getServerList://"
-#define kChangeServer @"changeServer://"
+#define kServerIdList @"getserverlist://"
+#define kChangeServer @"changeserver://"
 #define kSeparateFlag @"://"
 
 #ifdef DEBUG
