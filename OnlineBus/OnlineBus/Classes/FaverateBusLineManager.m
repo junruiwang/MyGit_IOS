@@ -19,7 +19,7 @@
 
 - (BOOL)insertIntoFaverateWithBusLine:(BusLine *) busLine
 {
-    NSString *path = [FileManager fileCachesPath:@"FaverateBusList.plist"];
+    NSString *path = [FileManager filePath:@"FaverateBusList.plist"];
     
     NSMutableArray *busArray = [self readFaverateBusListFromLocalFile];
     if (busArray == nil) {
@@ -72,7 +72,7 @@
         }
     }
     
-    NSString *path = [FileManager fileCachesPath:@"FaverateBusList.plist"];
+    NSString *path = [FileManager filePath:@"FaverateBusList.plist"];
     return [busArray writeToFile: path atomically:YES];
 }
 
@@ -80,13 +80,13 @@
 {
     NSMutableArray *busArray = [self readFaverateBusListFromLocalFile];
     [busArray removeAllObjects];
-    NSString *path = [FileManager fileCachesPath:@"FaverateBusList.plist"];
+    NSString *path = [FileManager filePath:@"FaverateBusList.plist"];
     return [busArray writeToFile: path atomically:YES];
 }
 
 - (NSMutableArray *)readFaverateBusListFromLocalFile
 {
-    NSString *path = [FileManager fileCachesPath:@"FaverateBusList.plist"];
+    NSString *path = [FileManager filePath:@"FaverateBusList.plist"];
     return [[NSMutableArray alloc] initWithContentsOfFile:path];
 }
 

@@ -421,7 +421,6 @@
         CGFloat hudHeight = 100;
         CGFloat stringWidth = 0;
         CGFloat stringHeight = 0;
-        CGRect labelRect = CGRectZero;
         if(string)
         {
             CGSize stringSize = [string sizeWithFont:self.stringLabel.font constrainedToSize:CGSizeMake(200, 300)];

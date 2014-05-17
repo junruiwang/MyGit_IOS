@@ -300,6 +300,9 @@
 		C4A6CDC81851FD02000CCAD4 /* heart_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "heart_icon@2x.png"; path = "Resources/heart_icon@2x.png"; sourceTree = "<group>"; };
 		C4A6CDC91851FD02000CCAD4 /* hotel-topbar-back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "hotel-topbar-back.png"; path = "Resources/hotel-topbar-back.png"; sourceTree = "<group>"; };
 		C4A6CDCA1851FD02000CCAD4 /* hotel-topbar-back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "hotel-topbar-back@2x.png"; path = "Resources/hotel-topbar-back@2x.png"; sourceTree = "<group>"; };
+		C4B3059519277F9B001DF5F0 /* GADInAppPurchase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADInAppPurchase.h; sourceTree = "<group>"; };
+		C4B3059619277F9B001DF5F0 /* GADInAppPurchaseDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADInAppPurchaseDelegate.h; sourceTree = "<group>"; };
+		C4B3059719277FAF001DF5F0 /* GADModules.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADModules.h; sourceTree = "<group>"; };
 		C4E0BA501852C51300FADB93 /* favorite_add.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = favorite_add.png; path = Resources/favorite_add.png; sourceTree = "<group>"; };
 		C4E0BA511852C51300FADB93 /* favorite_delete.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = favorite_delete.png; path = Resources/favorite_delete.png; sourceTree = "<group>"; };
 		C4E0BA541852C6EF00FADB93 /* synchronized.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = synchronized.png; path = Resources/synchronized.png; sourceTree = "<group>"; };
@@ -603,8 +606,11 @@
 				C43FE972184F850600436A14 /* GADAdSize.h */,
 				C43FE973184F850600436A14 /* GADBannerView.h */,
 				C43FE974184F850600436A14 /* GADBannerViewDelegate.h */,
+				C4B3059519277F9B001DF5F0 /* GADInAppPurchase.h */,
+				C4B3059619277F9B001DF5F0 /* GADInAppPurchaseDelegate.h */,
 				C43FE975184F850600436A14 /* GADInterstitial.h */,
 				C43FE976184F850600436A14 /* GADInterstitialDelegate.h */,
+				C4B3059719277FAF001DF5F0 /* GADModules.h */,
 				C43FE977184F850600436A14 /* GADRequest.h */,
 				C43FE978184F850600436A14 /* GADRequestError.h */,
 				C43FE979184F850600436A14 /* libGoogleAdMobAds.a */,
@@ -967,6 +973,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "苏州在线公交";
 				SDKROOT = iphoneos;
+				VALID_ARCHS = "armv7 armv7s";
 			};
 			name = Debug;
 		};
@@ -1002,6 +1009,7 @@
 				PRODUCT_NAME = "苏州在线公交";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
+				VALID_ARCHS = "armv7 armv7s";
 			};
 			name = Release;
 		};
@@ -1017,6 +1025,7 @@
 					"\"$(SRCROOT)/OnlineBus/Libraries/GoogleAnalytics\"",
 					"\"$(SRCROOT)/OnlineBus/Libraries/GoogleAdMob\"",
 				);
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "苏州在线公交";
 				WRAPPER_EXTENSION = app;
@@ -1035,6 +1044,7 @@
 					"\"$(SRCROOT)/OnlineBus/Libraries/GoogleAnalytics\"",
 					"\"$(SRCROOT)/OnlineBus/Libraries/GoogleAdMob\"",
 				);
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "苏州在线公交";
 				WRAPPER_EXTENSION = app;
@@ -1073,6 +1083,7 @@
 				PRODUCT_NAME = "苏州在线公交";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
+				VALID_ARCHS = "armv7 armv7s";
 			};
 			name = Distribution;
 		};
@@ -1088,6 +1099,7 @@
 					"\"$(SRCROOT)/OnlineBus/Libraries/GoogleAnalytics\"",
 					"\"$(SRCROOT)/OnlineBus/Libraries/GoogleAdMob\"",
 				);
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "苏州在线公交";
 				WRAPPER_EXTENSION = app;

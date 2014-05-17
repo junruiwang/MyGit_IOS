@@ -20,7 +20,7 @@
 
 - (BOOL)insertIntoFaverateWithStation:(BusStation *) busStation
 {
-    NSString *path = [FileManager fileCachesPath:@"FaverateBusStation.plist"];
+    NSString *path = [FileManager filePath:@"FaverateBusStation.plist"];
     
     NSMutableArray *stationArray = [self readFaverateBusStationFromLocalFile];
     if (stationArray == nil) {
@@ -69,7 +69,7 @@
         }
     }
     
-    NSString *path = [FileManager fileCachesPath:@"FaverateBusStation.plist"];
+    NSString *path = [FileManager filePath:@"FaverateBusStation.plist"];
     return [stationArray writeToFile: path atomically:YES];
 }
 
@@ -77,13 +77,13 @@
 {
     NSMutableArray *stationArray = [self readFaverateBusStationFromLocalFile];
     [stationArray removeAllObjects];
-    NSString *path = [FileManager fileCachesPath:@"FaverateBusStation.plist"];
+    NSString *path = [FileManager filePath:@"FaverateBusStation.plist"];
     return [stationArray writeToFile: path atomically:YES];
 }
 
 - (NSMutableArray *) readFaverateBusStationFromLocalFile
 {
-    NSString *path = [FileManager fileCachesPath:@"FaverateBusStation.plist"];
+    NSString *path = [FileManager filePath:@"FaverateBusStation.plist"];
     return [[NSMutableArray alloc] initWithContentsOfFile:path];
 }
 
