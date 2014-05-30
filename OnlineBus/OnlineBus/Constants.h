@@ -16,7 +16,7 @@
 #define query_station_line             [kBaseURL stringByAppendingPathComponent:@"/queryStationBus"]
 
 #define kCustomButtonHeight		30.0
-#define kSampleAdUnitID @"a15153e9211c6b8"
+#define kSampleAdUnitID @"ca-app-pub-9825699900937990/9724488669"
 #define kTrackingId  @"UA-39510485-3"
 #define RGB(R,G,B) [UIColor colorWithRed:(float)R/255.0 green:(float)G/255.0 blue:(float)B/255.0 alpha:1]
 #define kAppStoreUrl @"https://itunes.apple.com/us/app/su-zhou-zai-xian-gong-jiao/id639107014?ls=1&mt=8"
