@@ -109,6 +109,8 @@
 		C47A44E41852D1EA00567AD8 /* navigationbar_back_common.png in Resources */ = {isa = PBXBuildFile; fileRef = C47A44E31852D1EA00567AD8 /* navigationbar_back_common.png */; };
 		C48379B71852D432003491D4 /* StationBusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C48379B61852D432003491D4 /* StationBusViewController.m */; };
 		C48379BA1852D496003491D4 /* FaverateStationBusManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C48379B91852D496003491D4 /* FaverateStationBusManager.m */; };
+		C4946A3D193A191800DF31D6 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4946A3C193A191800DF31D6 /* iAd.framework */; };
+		C4946A3F193A1AA300DF31D6 /* libAdapterIAd.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C4946A3E193A1AA300DF31D6 /* libAdapterIAd.a */; };
 		C4A6CDB91851ACBB000CCAD4 /* FaverateBusLineManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C4A6CDB81851ACBB000CCAD4 /* FaverateBusLineManager.m */; };
 		C4A6CDBC1851B4B8000CCAD4 /* LineIndex.m in Sources */ = {isa = PBXBuildFile; fileRef = C4A6CDBB1851B4B8000CCAD4 /* LineIndex.m */; };
 		C4A6CDBF1851D791000CCAD4 /* navigationbar_back_highlighted_os7@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C4A6CDBD1851D791000CCAD4 /* navigationbar_back_highlighted_os7@2x.png */; };
@@ -288,6 +290,8 @@
 		C48379B61852D432003491D4 /* StationBusViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StationBusViewController.m; path = Classes/StationBusViewController.m; sourceTree = "<group>"; };
 		C48379B81852D496003491D4 /* FaverateStationBusManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FaverateStationBusManager.h; path = Classes/FaverateStationBusManager.h; sourceTree = "<group>"; };
 		C48379B91852D496003491D4 /* FaverateStationBusManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FaverateStationBusManager.m; path = Classes/FaverateStationBusManager.m; sourceTree = "<group>"; };
+		C4946A3C193A191800DF31D6 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
+		C4946A3E193A1AA300DF31D6 /* libAdapterIAd.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libAdapterIAd.a; sourceTree = "<group>"; };
 		C4A6CDB71851ACBB000CCAD4 /* FaverateBusLineManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FaverateBusLineManager.h; path = Classes/FaverateBusLineManager.h; sourceTree = "<group>"; };
 		C4A6CDB81851ACBB000CCAD4 /* FaverateBusLineManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FaverateBusLineManager.m; path = Classes/FaverateBusLineManager.m; sourceTree = "<group>"; };
 		C4A6CDBA1851B4B8000CCAD4 /* LineIndex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LineIndex.h; path = Classes/LineIndex.h; sourceTree = "<group>"; };
@@ -338,9 +342,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C4946A3D193A191800DF31D6 /* iAd.framework in Frameworks */,
 				C4345B5B1851989A00CCEF97 /* libicucore.dylib in Frameworks */,
 				C43FE991184F8B6800436A14 /* AVFoundation.framework in Frameworks */,
 				C43FE982184F85A400436A14 /* StoreKit.framework in Frameworks */,
+				C4946A3F193A1AA300DF31D6 /* libAdapterIAd.a in Frameworks */,
 				C43FE980184F859500436A14 /* MessageUI.framework in Frameworks */,
 				C43FE97E184F858200436A14 /* AudioToolbox.framework in Frameworks */,
 				C43FE97C184F856700436A14 /* AdSupport.framework in Frameworks */,
@@ -397,6 +403,7 @@
 				C43FE931184F737900436A14 /* CoreData.framework */,
 				C43FE88A184F542800436A14 /* CoreGraphics.framework */,
 				C43FE888184F542800436A14 /* Foundation.framework */,
+				C4946A3C193A191800DF31D6 /* iAd.framework */,
 				C43FE97F184F859500436A14 /* MessageUI.framework */,
 				C43FE981184F85A400436A14 /* StoreKit.framework */,
 				C43FE933184F739100436A14 /* SystemConfiguration.framework */,
@@ -614,6 +621,7 @@
 				C43FE977184F850600436A14 /* GADRequest.h */,
 				C43FE978184F850600436A14 /* GADRequestError.h */,
 				C43FE979184F850600436A14 /* libGoogleAdMobAds.a */,
+				C4946A3E193A1AA300DF31D6 /* libAdapterIAd.a */,
 			);
 			name = GoogleAdMob;
 			path = Libraries/GoogleAdMob;
@@ -1024,6 +1032,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/OnlineBus/Libraries/GoogleAnalytics\"",
 					"\"$(SRCROOT)/OnlineBus/Libraries/GoogleAdMob\"",
+					"$(PROJECT_DIR)/OnlineBus/Libraries/GoogleAdMob",
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
@@ -1043,6 +1052,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/OnlineBus/Libraries/GoogleAnalytics\"",
 					"\"$(SRCROOT)/OnlineBus/Libraries/GoogleAdMob\"",
+					"$(PROJECT_DIR)/OnlineBus/Libraries/GoogleAdMob",
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
@@ -1098,6 +1108,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/OnlineBus/Libraries/GoogleAnalytics\"",
 					"\"$(SRCROOT)/OnlineBus/Libraries/GoogleAdMob\"",
+					"$(PROJECT_DIR)/OnlineBus/Libraries/GoogleAdMob",
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";

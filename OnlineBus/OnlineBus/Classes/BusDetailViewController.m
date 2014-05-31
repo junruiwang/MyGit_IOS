@@ -48,6 +48,9 @@
 {
     [super viewDidLoad];
     self.screenName = @"运行车俩详情页面";
+    //清除无用数据
+    [self cleanUnUsedArray];
+    
     [self loadDefaultPageView];
     
     self.subScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
@@ -57,7 +60,6 @@
     self.toolView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bottom_jielong_bg_ios7.png"]];
     //添加底部工具栏
     [self.view addSubview:self.toolView];
-    
     [self loadSegmentedButton];
     [self loadReFlushButton];
     [self loadTopTitleView];
@@ -65,7 +67,45 @@
     self.subScrollView.showsHorizontalScrollIndicator = NO;
     self.subScrollView.showsVerticalScrollIndicator = NO;
     [self.view addSubview:self.subScrollView];
+    [self.view bringSubviewToFront:self.toolView];
+}
+
+- (void)cleanUnUsedArray
+{
+    NSInteger count = [self.busLineArray count];
+    if (count < 3) {
+        return;
+    }
+    //超过三条线路，数据进行筛选
+    [self sortByTotalStationDesc];
     
+    BusLine *busLine_1 = self.busLineArray[0];
+    BusLine *busLine_2 = self.busLineArray[1];
+    //判定是否同向线路
+    if ([busLine_2.startStation isEqualToString:busLine_1.startStation] || [busLine_2.endStation isEqualToString:busLine_1.endStation]) {
+        [self.busLineArray removeObjectAtIndex:1];
+    }
+    
+}
+
+//冒泡排序
+- (void)sortByTotalStationDesc
+{
+    int arraylength = [self.busLineArray count];
+    
+    if (arraylength > 0) {
+        for (int i=0; i < (arraylength - 1); i++) {
+            for (int m=0; m < (arraylength-i-1); m++) {
+                BusLine *currentBusLine = [self.busLineArray objectAtIndex:m];
+                BusLine *nextBusLine = [self.busLineArray objectAtIndex:m+1];
+                if (currentBusLine.totalStation < nextBusLine.totalStation) {
+                    [self.busLineArray replaceObjectAtIndex:m withObject:nextBusLine];
+                    [self.busLineArray replaceObjectAtIndex:(m+1) withObject:currentBusLine];
+                }
+            }
+        }
+        
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -159,7 +199,6 @@
         }
     }
     [self addRightBarButton:self.faverateButton];
-    
     [self loadBusBaseInfo:self.currentBusLine];
     [self downloadDataForBusStation];
 }
