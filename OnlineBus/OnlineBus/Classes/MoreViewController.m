@@ -96,7 +96,7 @@
             switch (indexPath.row) {
                 case 0:
                 {
-                    cell.textLabel.text = @"在线公交查询2.3版";
+                    cell.textLabel.text = @"在线公交查询2.4版";
                     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
                     return cell;
                 }
