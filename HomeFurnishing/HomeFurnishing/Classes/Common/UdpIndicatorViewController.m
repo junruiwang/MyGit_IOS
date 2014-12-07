@@ -52,7 +52,7 @@
 }
 
 - (void)setupInitialValues {
-    self.haloLayer.radius = 0.7 * kMaxRadius;
+    self.haloLayer.radius = 2 * kMaxRadius;
     UIColor *color = [UIColor colorWithRed:0 green:0.487 blue:1.0 alpha:1.0];
     self.haloLayer.backgroundColor = color.CGColor;
 }
