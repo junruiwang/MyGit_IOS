@@ -17,11 +17,10 @@
 #import "NetworkHelper.h"
 #import "UdpIndicatorViewController.h"
 #import "HZActivityIndicatorView.h"
-#import "TcpSocketHelper.h"
 #import "CodeUtil.h"
 #import "MyServerIdManager.h"
 
-@interface SceneModeViewController ()<GCDAsyncUdpSocketDelegate, JsonParserDelegate, TcpSocketHelperDelegate>
+@interface SceneModeViewController ()<GCDAsyncUdpSocketDelegate, JsonParserDelegate>
 
 @property (nonatomic, copy) NSString *currentIP;
 @property (nonatomic, strong) GCDAsyncUdpSocket *udpSocket;
@@ -36,8 +35,6 @@
 @property(nonatomic, strong) UdpIndicatorViewController *udpIndicatorViewController;
 //webView遮罩层效果
 @property(nonatomic, strong) HZActivityIndicatorView *customIndicator;
-//tcp通道
-@property(nonatomic, strong) TcpSocketHelper *tcpSocketHelper;
 
 @property (nonatomic, strong) BaseServerParser *baseServerParser;
 
@@ -60,9 +57,6 @@
     if (self) {
         self.udpBroadcastPort = kUdpBroadcastPort;
         self.isReceived = NO;
-        //初始化TCP通信通道
-        self.tcpSocketHelper = [[TcpSocketHelper alloc] init];
-        self.tcpSocketHelper.delegate = self;
         self.myServerIdManager = [[MyServerIdManager alloc] init];
         
         //注册通知
@@ -149,8 +143,6 @@
         [self.udpSocket close];
         self.udpSocket = nil;
     }
-    //关闭TCP连接通道
-    [self.tcpSocketHelper stopTcpSocket];
     //记录退出时间
     self.invokeTime = [NSDate date];
 }
@@ -282,8 +274,6 @@
         if (isReceive) {
             //加载用户已设置情景模式
             [self loadUserSettingModel:[NSString stringWithFormat:@"http://%@:%d/",host,self.localServerPort]];
-            //建立TCP通信通道
-            [self.tcpSocketHelper setupTcpConnection:host];
         }
     }
 }
@@ -408,28 +398,9 @@
 {
     [self hideIndicatorView];
     NSString *str_url = [data valueForKey:@"url"];
-    NSString *hostIp = [data valueForKey:@"host"];
+//    NSString *hostIp = [data valueForKey:@"host"];
     //加载用户已设置情景模式
     [self loadUserSettingModel:str_url];
-    //建立TCP通信通道
-    [self.tcpSocketHelper setupTcpConnection:hostIp];
-}
-
-#pragma mark TcpSocketHelperDelegate
-
-- (void)renewPage:(TcpSocketHelper*)socketHelper responseData:(NSData *)data
-{
-    NSString *httpResponse = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-    NSString *notifyMsg = [CodeUtil stringFromHexString:httpResponse];
-    if (kLogEnable) {
-        NSLog(@"HTTP Response:\n%@", notifyMsg);
-    }
-    if (![[notifyMsg uppercaseString] isEqualToString:kUpperOk]) {
-        
-        //执行JS调用
-//        NSString *jsCommand = [NSString stringWithFormat:@"if (typeof %@ != 'undefined' && %@ instanceof Function) {%@(%@);}", kTcpNotifyFunction, kTcpNotifyFunction, kTcpNotifyFunction, notifyMsg];
-//        [self.mainWebView stringByEvaluatingJavaScriptFromString:jsCommand];
-    }
 }
 
 @end
