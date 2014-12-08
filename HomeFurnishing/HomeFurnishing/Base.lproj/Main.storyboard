@@ -3,7 +3,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Scene Mode View Controller-->
@@ -19,19 +18,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ij3-34-BPq" userLabel="left">
-                                <rect key="frame" x="36" y="20" width="104" height="220"/>
+                                <rect key="frame" x="20" y="20" width="120" height="220"/>
                                 <color key="backgroundColor" red="0.60000002379999995" green="0.40000000600000002" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="icg-KT-p3V" userLabel="right">
-                                <rect key="frame" x="180" y="20" width="104" height="220"/>
+                                <rect key="frame" x="180" y="20" width="120" height="220"/>
                                 <color key="backgroundColor" red="0.65153321750000004" green="0.76183799230000004" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rEX-q3-o72" userLabel="bottom">
-                                <rect key="frame" x="36" y="280" width="248" height="220"/>
+                                <rect key="frame" x="20" y="280" width="280" height="220"/>
                                 <color key="backgroundColor" red="0.97647064920000004" green="0.45882356169999999" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OC5-Um-u8a">
-                                <rect key="frame" x="36" y="508" width="55" height="30"/>
+                                <rect key="frame" x="20" y="508" width="55" height="30"/>
                                 <state key="normal" title="Button1">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -43,7 +42,7 @@
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mnq-Sg-62c">
-                                <rect key="frame" x="229" y="508" width="55" height="30"/>
+                                <rect key="frame" x="245" y="508" width="55" height="30"/>
                                 <state key="normal" title="Button3">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -51,24 +50,24 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="rEX-q3-o72" secondAttribute="trailing" constant="20" id="0TN-kQ-sbP"/>
-                            <constraint firstItem="icg-KT-p3V" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="20" id="5uh-2D-yM3"/>
-                            <constraint firstItem="OC5-Um-u8a" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="ACv-ce-fvO"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="rEX-q3-o72" secondAttribute="bottom" constant="68" id="FAu-Jq-v3a"/>
+                            <constraint firstAttribute="trailing" secondItem="rEX-q3-o72" secondAttribute="trailing" constant="20" id="0TN-kQ-sbP"/>
+                            <constraint firstItem="icg-KT-p3V" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="20" id="5uh-2D-yM3"/>
+                            <constraint firstItem="OC5-Um-u8a" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="ACv-ce-fvO"/>
+                            <constraint firstAttribute="bottom" secondItem="rEX-q3-o72" secondAttribute="bottom" constant="68" id="FAu-Jq-v3a"/>
                             <constraint firstAttribute="centerX" secondItem="sXi-d4-kWz" secondAttribute="centerX" id="FCy-Xf-4io"/>
                             <constraint firstItem="icg-KT-p3V" firstAttribute="height" secondItem="rEX-q3-o72" secondAttribute="height" id="GFB-BG-O0a"/>
                             <constraint firstItem="icg-KT-p3V" firstAttribute="leading" secondItem="Ij3-34-BPq" secondAttribute="trailing" constant="40" id="HCj-yv-gbi"/>
-                            <constraint firstItem="Ij3-34-BPq" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="X3O-Ts-Yk7"/>
-                            <constraint firstItem="rEX-q3-o72" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="hUR-XC-2C4"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="icg-KT-p3V" secondAttribute="trailing" constant="20" id="hfq-1W-0Ru"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="mnq-Sg-62c" secondAttribute="bottom" constant="30" id="liL-rx-nOf"/>
+                            <constraint firstItem="Ij3-34-BPq" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="X3O-Ts-Yk7"/>
+                            <constraint firstItem="rEX-q3-o72" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="hUR-XC-2C4"/>
+                            <constraint firstAttribute="trailing" secondItem="icg-KT-p3V" secondAttribute="trailing" constant="20" id="hfq-1W-0Ru"/>
+                            <constraint firstAttribute="bottom" secondItem="mnq-Sg-62c" secondAttribute="bottom" constant="30" id="liL-rx-nOf"/>
                             <constraint firstItem="icg-KT-p3V" firstAttribute="height" secondItem="Ij3-34-BPq" secondAttribute="height" id="pd0-eR-wZo"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="mnq-Sg-62c" secondAttribute="trailing" constant="20" id="rdS-bV-mE3"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="sXi-d4-kWz" secondAttribute="bottom" constant="30" id="sfJ-57-8Th"/>
+                            <constraint firstAttribute="trailing" secondItem="mnq-Sg-62c" secondAttribute="trailing" constant="20" id="rdS-bV-mE3"/>
+                            <constraint firstAttribute="bottom" secondItem="sXi-d4-kWz" secondAttribute="bottom" constant="30" id="sfJ-57-8Th"/>
                             <constraint firstItem="icg-KT-p3V" firstAttribute="width" secondItem="Ij3-34-BPq" secondAttribute="width" id="ue1-gf-WKf"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="OC5-Um-u8a" secondAttribute="bottom" constant="30" id="viR-OH-b8O"/>
+                            <constraint firstAttribute="bottom" secondItem="OC5-Um-u8a" secondAttribute="bottom" constant="30" id="viR-OH-b8O"/>
                             <constraint firstItem="rEX-q3-o72" firstAttribute="top" secondItem="Ij3-34-BPq" secondAttribute="bottom" constant="40" id="vkh-Fa-ozd"/>
-                            <constraint firstItem="Ij3-34-BPq" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="20" id="xfM-dO-TVJ"/>
+                            <constraint firstItem="Ij3-34-BPq" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="20" id="xfM-dO-TVJ"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -88,19 +87,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view alpha="0.69999999999999996" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PlS-r4-ZUe">
+                            <view alpha="0.69999999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PlS-r4-ZUe">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HXl-v4-YvX">
-                                <rect key="frame" x="40" y="140" width="240" height="240"/>
+                                <rect key="frame" x="50" y="170" width="220" height="210"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" misplaced="YES" image="logo_phone.png" translatesAutoresizingMaskIntoConstraints="NO" id="4hZ-NK-YTh">
-                                        <rect key="frame" x="96" y="87" width="48" height="48"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="logo_phone.png" translatesAutoresizingMaskIntoConstraints="NO" id="4hZ-NK-YTh">
+                                        <rect key="frame" x="86" y="81" width="48" height="48"/>
                                     </imageView>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" misplaced="YES" text="正在为您查找服务器..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AlF-QT-tGB">
-                                        <rect key="frame" x="36" y="164" width="169" height="17"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="正在为您查找服务器..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AlF-QT-tGB">
+                                        <rect key="frame" x="31" y="158" width="158" height="19.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <color key="textColor" red="0.50196078430000002" green="0.50196078430000002" blue="0.50196078430000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -116,14 +115,14 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="PlS-r4-ZUe" firstAttribute="leading" secondItem="pxs-JM-B46" secondAttribute="leadingMargin" id="1gn-k4-fz1"/>
-                            <constraint firstItem="HXl-v4-YvX" firstAttribute="top" secondItem="pxs-JM-B46" secondAttribute="topMargin" constant="140" id="73e-mB-4TP"/>
-                            <constraint firstItem="HXl-v4-YvX" firstAttribute="leading" secondItem="pxs-JM-B46" secondAttribute="leadingMargin" constant="24" id="CZw-aI-c6h"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="HXl-v4-YvX" secondAttribute="bottom" constant="188" id="Icm-5E-cxx"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="PlS-r4-ZUe" secondAttribute="trailing" id="Yey-dq-YX3"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="HXl-v4-YvX" secondAttribute="trailing" constant="24" id="dp9-90-iPO"/>
-                            <constraint firstItem="PlS-r4-ZUe" firstAttribute="bottom" secondItem="pxs-JM-B46" secondAttribute="bottomMargin" id="hKI-ow-xoL"/>
-                            <constraint firstItem="PlS-r4-ZUe" firstAttribute="top" secondItem="pxs-JM-B46" secondAttribute="topMargin" id="zdK-b4-9bj"/>
+                            <constraint firstItem="PlS-r4-ZUe" firstAttribute="leading" secondItem="pxs-JM-B46" secondAttribute="leading" id="1gn-k4-fz1"/>
+                            <constraint firstItem="HXl-v4-YvX" firstAttribute="top" secondItem="pxs-JM-B46" secondAttribute="top" constant="170" id="73e-mB-4TP"/>
+                            <constraint firstItem="HXl-v4-YvX" firstAttribute="leading" secondItem="pxs-JM-B46" secondAttribute="leading" constant="50" id="CZw-aI-c6h"/>
+                            <constraint firstAttribute="bottom" secondItem="HXl-v4-YvX" secondAttribute="bottom" constant="188" id="Icm-5E-cxx"/>
+                            <constraint firstAttribute="trailing" secondItem="PlS-r4-ZUe" secondAttribute="trailing" id="Yey-dq-YX3"/>
+                            <constraint firstAttribute="trailing" secondItem="HXl-v4-YvX" secondAttribute="trailing" constant="50" id="dp9-90-iPO"/>
+                            <constraint firstItem="PlS-r4-ZUe" firstAttribute="bottom" secondItem="pxs-JM-B46" secondAttribute="bottom" id="hKI-ow-xoL"/>
+                            <constraint firstItem="PlS-r4-ZUe" firstAttribute="top" secondItem="pxs-JM-B46" secondAttribute="top" id="zdK-b4-9bj"/>
                         </constraints>
                     </view>
                     <connections>
