@@ -81,8 +81,26 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
     [self workingForFindServerUrl];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    UIDeviceOrientation orientation = [UIDevice currentDevice].orientation;
+    switch (orientation) {
+        case UIDeviceOrientationPortrait:
+            self.loadingView.image = [UIImage imageNamed:@"background-Portrait.png"];
+            break;
+        case UIDeviceOrientationLandscapeLeft:
+            self.loadingView.image = [UIImage imageNamed:@"background-Landscape.png"];
+            break;
+        case UIDeviceOrientationLandscapeRight:
+            self.loadingView.image = [UIImage imageNamed:@"background-Landscape.png"];
+            break;
+        default:
+            break;
+    }
 }
 
 - (void)didAppBecomeActive
@@ -401,6 +419,34 @@
 //    NSString *hostIp = [data valueForKey:@"host"];
     //加载用户已设置情景模式
     [self loadUserSettingModel:str_url];
+}
+
+#pragma mark auto Rotation
+- (BOOL)shouldAutorotate
+{
+    return YES;
+}
+
+- (NSUInteger)supportedInterfaceOrientations
+{
+    return UIInterfaceOrientationMaskAllButUpsideDown;
+}
+
+- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+{
+    switch (toInterfaceOrientation) {
+        case UIDeviceOrientationPortrait:
+            self.loadingView.image = [UIImage imageNamed:@"background-Portrait.png"];
+            break;
+        case UIDeviceOrientationLandscapeLeft:
+            self.loadingView.image = [UIImage imageNamed:@"background-Landscape.png"];
+            break;
+        case UIDeviceOrientationLandscapeRight:
+            self.loadingView.image = [UIImage imageNamed:@"background-Landscape.png"];
+            break;
+        default:
+            break;
+    }
 }
 
 @end

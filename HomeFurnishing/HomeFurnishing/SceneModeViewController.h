@@ -10,6 +10,7 @@
 
 @interface SceneModeViewController : UIViewController
 
+@property(nonatomic,weak) IBOutlet UIImageView *loadingView;
 
 @end
 
