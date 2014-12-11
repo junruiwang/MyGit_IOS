@@ -184,6 +184,7 @@
 		C46C74861A37486E00E1B99B /* message.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = message.png; path = Resources/message.png; sourceTree = "<group>"; };
 		C46C74871A37486E00E1B99B /* phone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = phone.png; path = Resources/phone.png; sourceTree = "<group>"; };
 		C46C74881A37486E00E1B99B /* setting.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = setting.png; path = Resources/setting.png; sourceTree = "<group>"; };
+		C4FD16EF1A39EBEC00EAF976 /* ControllerFunction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ControllerFunction.h; path = Classes/ControllerFunction.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -219,6 +220,7 @@
 				045774821A39659700F809D9 /* SceneModeViewController.m */,
 				045774841A3965EE00F809D9 /* LoginViewController.h */,
 				045774851A3965EE00F809D9 /* LoginViewController.m */,
+				C4FD16EF1A39EBEC00EAF976 /* ControllerFunction.h */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";

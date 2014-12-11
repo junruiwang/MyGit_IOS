@@ -24,6 +24,35 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    UIScreenMode *screenMode = [UIScreen mainScreen].currentMode;
+    //Screen width
+    CGFloat swidth = screenMode.size.width;
+    //Screen height
+    CGFloat sheight = screenMode.size.height;
+    
+    UIDeviceOrientation orientation = [UIDevice currentDevice].orientation;
+    
+    switch (orientation) {
+        case UIDeviceOrientationPortrait:
+            self.view.frame = CGRectMake(0, 0, swidth < sheight ? swidth : sheight, swidth < sheight ? sheight : swidth);
+            break;
+        case UIDeviceOrientationPortraitUpsideDown:
+            self.view.frame = CGRectMake(0, 0, swidth < sheight ? swidth : sheight, swidth < sheight ? sheight : swidth);
+            break;
+        case UIDeviceOrientationLandscapeLeft:
+            self.view.frame = CGRectMake(0, 0, swidth > sheight ? swidth : sheight, swidth > sheight ? sheight : swidth);
+            break;
+        case UIDeviceOrientationLandscapeRight:
+            self.view.frame = CGRectMake(0, 0, swidth > sheight ? swidth : sheight, swidth > sheight ? sheight : swidth);
+            break;
+        default:
+            break;
+    }
+}
+
 #pragma mark - webview loading
 
 - (void)showLoadingView

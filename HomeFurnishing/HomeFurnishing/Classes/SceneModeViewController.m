@@ -20,8 +20,9 @@
 #import "CodeUtil.h"
 #import "MyServerIdManager.h"
 #import "LoginViewController.h"
+#import "ControllerFunction.h"
 
-@interface SceneModeViewController ()<GCDAsyncUdpSocketDelegate, JsonParserDelegate>
+@interface SceneModeViewController ()<GCDAsyncUdpSocketDelegate, JsonParserDelegate, ControllerFunction>
 
 @property (nonatomic, copy) NSString *currentIP;
 @property (nonatomic, strong) GCDAsyncUdpSocket *udpSocket;
@@ -37,7 +38,7 @@
 //webView遮罩层效果
 @property(nonatomic, strong) HZActivityIndicatorView *customIndicator;
 
-@property(nonatomic, strong) LoginViewController *loginViewController;
+@property(nonatomic,strong) LoginViewController *loginViewController;
 
 @property (nonatomic, strong) BaseServerParser *baseServerParser;
 
@@ -79,12 +80,13 @@
     [self setupSocket];
     //设置调用时间
     self.invokeTime = [NSDate date];
+    //启动UDP查找主机
+    [self workingForFindServerUrl];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self workingForFindServerUrl];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -106,15 +108,26 @@
     }
 }
 
-- (IBAction)systemButtonClick:(id)sender
+-(IBAction)systemButtonClick:(id)sender
 {
-    if (self.loginViewController == nil)
-    {
+    if (!self.loginViewController) {
         UIStoryboard *board = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         self.loginViewController = [board instantiateViewControllerWithIdentifier:@"LoginViewController"];
+        self.loginViewController.delegate = self;
     }
-    [self.view addSubview:self.loginViewController.view];
-    [self.view bringSubviewToFront:self.loginViewController.view];
+    
+//    [self.view addSubview:self.loginViewController.view];
+//    [self.view bringSubviewToFront:self.loginViewController.view];
+    
+//    [UIView
+//     transitionWithView:current.navigationController.view
+//     duration:0.8
+//     options:UIViewAnimationOptionTransitionCurlUp
+//     animations:^{
+//         [current.navigationController pushViewController:next animated:NO];
+//     } completion:NULL];
+    
+    [UIView transitionFromView:self.view toView:self.loginViewController.view duration:0.8 options:UIViewAnimationOptionTransitionCurlUp completion:NULL];
     
 //    [UIView animateWithDuration:0.3 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^(void){
 //        [self.view addSubview:self.loginViewController.view];
@@ -424,6 +437,27 @@
             break;
         case UIDeviceOrientationLandscapeRight:
             self.loadingView.image = [UIImage imageNamed:@"background-Landscape.png"];
+            break;
+        default:
+            break;
+    }
+}
+
+#pragma mark delegate ControllerFunction
+
+- (void)dismissViewController:(HFController) viewController
+{
+    switch (viewController) {
+        case kLoginView:
+        {
+            [UIView transitionFromView:self.loginViewController.view toView:self.view duration:0.8 options:UIViewAnimationOptionTransitionCurlDown completion:NULL];
+            break;
+        }
+        case kSceneModeView:
+            
+            break;
+        case kSettingIndexView:
+            
             break;
         default:
             break;

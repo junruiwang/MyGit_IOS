@@ -8,9 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "BaseViewController.h"
+#import "ControllerFunction.h"
 
 @interface LoginViewController : BaseViewController
 
-@property(nonatomic,weak) IBOutlet UIImageView *loadingView;
+@property(nonatomic, weak) IBOutlet UIImageView *loadingView;
+@property(nonatomic, weak) id<ControllerFunction> delegate;
+
+-(IBAction)cancelLoginClicked:(id)sender;
 
 @end

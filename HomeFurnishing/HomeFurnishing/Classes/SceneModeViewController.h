@@ -13,7 +13,7 @@
 
 @property(nonatomic,weak) IBOutlet UIImageView *loadingView;
 
-- (IBAction)systemButtonClick:(id)sender;
+-(IBAction)systemButtonClick:(id)sender;
 
 @end
 
