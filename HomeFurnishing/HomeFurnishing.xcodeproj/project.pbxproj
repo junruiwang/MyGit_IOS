@@ -10,6 +10,15 @@
 		0452C09C1A346269009188E0 /* BaseServerParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 0452C09B1A346269009188E0 /* BaseServerParser.m */; };
 		0452C09F1A346F74009188E0 /* logo_phone.png in Resources */ = {isa = PBXBuildFile; fileRef = 0452C09D1A346F74009188E0 /* logo_phone.png */; };
 		0452C0A01A346F74009188E0 /* logo_phone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0452C09E1A346F74009188E0 /* logo_phone@2x.png */; };
+		045774831A39659700F809D9 /* SceneModeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 045774821A39659700F809D9 /* SceneModeViewController.m */; };
+		045774861A3965EE00F809D9 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 045774851A3965EE00F809D9 /* LoginViewController.m */; };
+		045774881A396A3100F809D9 /* divider_horizontal_line.png in Resources */ = {isa = PBXBuildFile; fileRef = 045774871A396A3100F809D9 /* divider_horizontal_line.png */; };
+		0457748A1A396C1200F809D9 /* login_input.png in Resources */ = {isa = PBXBuildFile; fileRef = 045774891A396C1200F809D9 /* login_input.png */; };
+		0457748D1A396D3B00F809D9 /* login_checkbox_btn_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 0457748B1A396D3B00F809D9 /* login_checkbox_btn_selected.png */; };
+		0457748E1A396D3B00F809D9 /* login_checkbox_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = 0457748C1A396D3B00F809D9 /* login_checkbox_btn.png */; };
+		045774911A3970C600F809D9 /* login_btn_press.png in Resources */ = {isa = PBXBuildFile; fileRef = 0457748F1A3970C600F809D9 /* login_btn_press.png */; };
+		045774921A3970C600F809D9 /* login_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = 045774901A3970C600F809D9 /* login_btn.png */; };
+		045774981A397F7900F809D9 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 045774971A397F7900F809D9 /* BaseViewController.m */; };
 		046CEE1A1A34463B00BC79E4 /* Default-Landscape@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 046CEE161A34463B00BC79E4 /* Default-Landscape@2x~ipad.png */; };
 		046CEE1B1A34463B00BC79E4 /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 046CEE171A34463B00BC79E4 /* Default-Landscape~ipad.png */; };
 		046CEE1C1A34463B00BC79E4 /* Default-Portrait@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 046CEE181A34463B00BC79E4 /* Default-Portrait@2x~ipad.png */; };
@@ -44,9 +53,10 @@
 		046CEE781A3455D000BC79E4 /* NetworkHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 046CEE711A3455D000BC79E4 /* NetworkHelper.m */; };
 		046CEE791A3455D000BC79E4 /* NSDataAES.m in Sources */ = {isa = PBXBuildFile; fileRef = 046CEE731A3455D000BC79E4 /* NSDataAES.m */; };
 		046CEE7A1A3455D000BC79E4 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 046CEE751A3455D000BC79E4 /* Reachability.m */; };
+		04BF07FD1A399A8B00F41510 /* input_bg_ipa.png in Resources */ = {isa = PBXBuildFile; fileRef = 04BF07FB1A399A8B00F41510 /* input_bg_ipa.png */; };
+		04BF07FE1A399A8B00F41510 /* input_bg_ipa@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04BF07FC1A399A8B00F41510 /* input_bg_ipa@2x.png */; };
 		04D3D3E71A34359A00C966EF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D3D3E61A34359A00C966EF /* main.m */; };
 		04D3D3EA1A34359A00C966EF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D3D3E91A34359A00C966EF /* AppDelegate.m */; };
-		04D3D3ED1A34359A00C966EF /* SceneModeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D3D3EC1A34359A00C966EF /* SceneModeViewController.m */; };
 		04D3D3F01A34359A00C966EF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04D3D3EE1A34359A00C966EF /* Main.storyboard */; };
 		04D3D3F21A34359A00C966EF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04D3D3F11A34359A00C966EF /* Images.xcassets */; };
 		04D3D3F51A34359A00C966EF /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04D3D3F31A34359A00C966EF /* LaunchScreen.xib */; };
@@ -73,6 +83,18 @@
 		0452C09B1A346269009188E0 /* BaseServerParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BaseServerParser.m; path = Classes/BaseServerParser.m; sourceTree = "<group>"; };
 		0452C09D1A346F74009188E0 /* logo_phone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = logo_phone.png; path = Resources/logo_phone.png; sourceTree = "<group>"; };
 		0452C09E1A346F74009188E0 /* logo_phone@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "logo_phone@2x.png"; path = "Resources/logo_phone@2x.png"; sourceTree = "<group>"; };
+		045774811A39659700F809D9 /* SceneModeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SceneModeViewController.h; path = Classes/SceneModeViewController.h; sourceTree = "<group>"; };
+		045774821A39659700F809D9 /* SceneModeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SceneModeViewController.m; path = Classes/SceneModeViewController.m; sourceTree = "<group>"; };
+		045774841A3965EE00F809D9 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginViewController.h; path = Classes/LoginViewController.h; sourceTree = "<group>"; };
+		045774851A3965EE00F809D9 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginViewController.m; path = Classes/LoginViewController.m; sourceTree = "<group>"; };
+		045774871A396A3100F809D9 /* divider_horizontal_line.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = divider_horizontal_line.png; path = Resources/divider_horizontal_line.png; sourceTree = "<group>"; };
+		045774891A396C1200F809D9 /* login_input.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = login_input.png; path = Resources/login_input.png; sourceTree = "<group>"; };
+		0457748B1A396D3B00F809D9 /* login_checkbox_btn_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = login_checkbox_btn_selected.png; path = Resources/login_checkbox_btn_selected.png; sourceTree = "<group>"; };
+		0457748C1A396D3B00F809D9 /* login_checkbox_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = login_checkbox_btn.png; path = Resources/login_checkbox_btn.png; sourceTree = "<group>"; };
+		0457748F1A3970C600F809D9 /* login_btn_press.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = login_btn_press.png; path = Resources/login_btn_press.png; sourceTree = "<group>"; };
+		045774901A3970C600F809D9 /* login_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = login_btn.png; path = Resources/login_btn.png; sourceTree = "<group>"; };
+		045774961A397F7900F809D9 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
+		045774971A397F7900F809D9 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
 		046CEE161A34463B00BC79E4 /* Default-Landscape@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Landscape@2x~ipad.png"; path = "Resources/Default-Landscape@2x~ipad.png"; sourceTree = "<group>"; };
 		046CEE171A34463B00BC79E4 /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Landscape~ipad.png"; path = "Resources/Default-Landscape~ipad.png"; sourceTree = "<group>"; };
 		046CEE181A34463B00BC79E4 /* Default-Portrait@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Portrait@2x~ipad.png"; path = "Resources/Default-Portrait@2x~ipad.png"; sourceTree = "<group>"; };
@@ -136,13 +158,13 @@
 		046CEE741A3455D000BC79E4 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		046CEE751A3455D000BC79E4 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		046CEE7B1A34570B00BC79E4 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		04BF07FB1A399A8B00F41510 /* input_bg_ipa.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = input_bg_ipa.png; path = Resources/input_bg_ipa.png; sourceTree = "<group>"; };
+		04BF07FC1A399A8B00F41510 /* input_bg_ipa@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "input_bg_ipa@2x.png"; path = "Resources/input_bg_ipa@2x.png"; sourceTree = "<group>"; };
 		04D3D3E11A34359A00C966EF /* HomeFurnishing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HomeFurnishing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04D3D3E51A34359A00C966EF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		04D3D3E61A34359A00C966EF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		04D3D3E81A34359A00C966EF /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		04D3D3E91A34359A00C966EF /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		04D3D3EB1A34359A00C966EF /* SceneModeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneModeViewController.h; sourceTree = "<group>"; };
-		04D3D3EC1A34359A00C966EF /* SceneModeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneModeViewController.m; sourceTree = "<group>"; };
 		04D3D3EF1A34359A00C966EF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		04D3D3F11A34359A00C966EF /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		04D3D3F41A34359A00C966EF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -190,6 +212,17 @@
 			name = Parser;
 			sourceTree = "<group>";
 		};
+		045774801A39656800F809D9 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				045774811A39659700F809D9 /* SceneModeViewController.h */,
+				045774821A39659700F809D9 /* SceneModeViewController.m */,
+				045774841A3965EE00F809D9 /* LoginViewController.h */,
+				045774851A3965EE00F809D9 /* LoginViewController.m */,
+			);
+			name = ViewController;
+			sourceTree = "<group>";
+		};
 		046CEE251A34557900BC79E4 /* Common */ = {
 			isa = PBXGroup;
 			children = (
@@ -209,6 +242,8 @@
 				046CEE331A34557900BC79E4 /* TcpSocketHelper.m */,
 				046CEE341A34557900BC79E4 /* UdpIndicatorViewController.h */,
 				046CEE351A34557900BC79E4 /* UdpIndicatorViewController.m */,
+				045774961A397F7900F809D9 /* BaseViewController.h */,
+				045774971A397F7900F809D9 /* BaseViewController.m */,
 			);
 			name = Common;
 			path = Classes/Common;
@@ -330,6 +365,7 @@
 		04D3D4121A34376800C966EF /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				045774801A39656800F809D9 /* ViewController */,
 				0452C0991A34623C009188E0 /* Parser */,
 				046CEE251A34557900BC79E4 /* Common */,
 				046CEE3E1A3455A000BC79E4 /* SBJson */,
@@ -338,8 +374,6 @@
 				046CEE7B1A34570B00BC79E4 /* Constants.h */,
 				04D3D3E81A34359A00C966EF /* AppDelegate.h */,
 				04D3D3E91A34359A00C966EF /* AppDelegate.m */,
-				04D3D3EB1A34359A00C966EF /* SceneModeViewController.h */,
-				04D3D3EC1A34359A00C966EF /* SceneModeViewController.m */,
 				04D3D3EE1A34359A00C966EF /* Main.storyboard */,
 				04D3D3F31A34359A00C966EF /* LaunchScreen.xib */,
 			);
@@ -358,6 +392,14 @@
 				C46C74861A37486E00E1B99B /* message.png */,
 				C46C74871A37486E00E1B99B /* phone.png */,
 				C46C74881A37486E00E1B99B /* setting.png */,
+				045774871A396A3100F809D9 /* divider_horizontal_line.png */,
+				045774891A396C1200F809D9 /* login_input.png */,
+				0457748B1A396D3B00F809D9 /* login_checkbox_btn_selected.png */,
+				0457748C1A396D3B00F809D9 /* login_checkbox_btn.png */,
+				0457748F1A3970C600F809D9 /* login_btn_press.png */,
+				045774901A3970C600F809D9 /* login_btn.png */,
+				04BF07FB1A399A8B00F41510 /* input_bg_ipa.png */,
+				04BF07FC1A399A8B00F41510 /* input_bg_ipa@2x.png */,
 				04D3D4151A34406900C966EF /* appicon */,
 			);
 			name = Resources;
@@ -437,20 +479,27 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				045774921A3970C600F809D9 /* login_btn.png in Resources */,
 				046CEE1C1A34463B00BC79E4 /* Default-Portrait@2x~ipad.png in Resources */,
 				0452C09F1A346F74009188E0 /* logo_phone.png in Resources */,
 				04D3D3F01A34359A00C966EF /* Main.storyboard in Resources */,
 				C46C74821A37320C00E1B99B /* background-Portrait.png in Resources */,
 				C46C74811A37320C00E1B99B /* background-Landscape.png in Resources */,
+				0457748D1A396D3B00F809D9 /* login_checkbox_btn_selected.png in Resources */,
 				046CEE1B1A34463B00BC79E4 /* Default-Landscape~ipad.png in Resources */,
+				04BF07FD1A399A8B00F41510 /* input_bg_ipa.png in Resources */,
 				04D3D4201A34408700C966EF /* AppIcon29x29@2x~ipad.png in Resources */,
 				04D3D4231A34408700C966EF /* AppIcon40x40~ipad.png in Resources */,
 				0452C0A01A346F74009188E0 /* logo_phone@2x.png in Resources */,
 				04D3D3F51A34359A00C966EF /* LaunchScreen.xib in Resources */,
+				0457748A1A396C1200F809D9 /* login_input.png in Resources */,
 				C46C74841A37442300E1B99B /* top_icon_bar.png in Resources */,
 				04D3D4211A34408700C966EF /* AppIcon29x29~ipad.png in Resources */,
 				C46C74891A37486E00E1B99B /* home.png in Resources */,
+				045774881A396A3100F809D9 /* divider_horizontal_line.png in Resources */,
 				046CEE1A1A34463B00BC79E4 /* Default-Landscape@2x~ipad.png in Resources */,
+				04BF07FE1A399A8B00F41510 /* input_bg_ipa@2x.png in Resources */,
+				045774911A3970C600F809D9 /* login_btn_press.png in Resources */,
 				04D3D4241A34408700C966EF /* AppIcon76x76@2x~ipad.png in Resources */,
 				04D3D4251A34408700C966EF /* AppIcon76x76~ipad.png in Resources */,
 				C46C748C1A37486E00E1B99B /* setting.png in Resources */,
@@ -459,6 +508,7 @@
 				04D3D4221A34408700C966EF /* AppIcon40x40@2x~ipad.png in Resources */,
 				046CEE1D1A34463B00BC79E4 /* Default-Portrait~ipad.png in Resources */,
 				C46C748A1A37486E00E1B99B /* message.png in Resources */,
+				0457748E1A396D3B00F809D9 /* login_checkbox_btn.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -470,17 +520,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				046CEE691A3455BC00BC79E4 /* GCDAsyncSocket.m in Sources */,
-				04D3D3ED1A34359A00C966EF /* SceneModeViewController.m in Sources */,
 				046CEE631A3455A000BC79E4 /* SBJsonWriter.m in Sources */,
 				046CEE791A3455D000BC79E4 /* NSDataAES.m in Sources */,
 				046CEE7A1A3455D000BC79E4 /* Reachability.m in Sources */,
 				046CEE5E1A3455A000BC79E4 /* SBJsonStreamWriter.m in Sources */,
 				046CEE781A3455D000BC79E4 /* NetworkHelper.m in Sources */,
+				045774831A39659700F809D9 /* SceneModeViewController.m in Sources */,
 				046CEE611A3455A000BC79E4 /* SBJsonTokeniser.m in Sources */,
+				045774861A3965EE00F809D9 /* LoginViewController.m in Sources */,
 				046CEE761A3455D000BC79E4 /* CloNetworkUtil.m in Sources */,
 				046CEE5F1A3455A000BC79E4 /* SBJsonStreamWriterAccumulator.m in Sources */,
 				046CEE6A1A3455BC00BC79E4 /* GCDAsyncUdpSocket.m in Sources */,
 				04D3D3EA1A34359A00C966EF /* AppDelegate.m in Sources */,
+				045774981A397F7900F809D9 /* BaseViewController.m in Sources */,
 				046CEE3C1A34557900BC79E4 /* TcpSocketHelper.m in Sources */,
 				046CEE361A34557900BC79E4 /* CodeUtil.m in Sources */,
 				046CEE5D1A3455A000BC79E4 /* SBJsonStreamParserState.m in Sources */,

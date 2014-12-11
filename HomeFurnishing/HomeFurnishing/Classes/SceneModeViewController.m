@@ -19,6 +19,7 @@
 #import "HZActivityIndicatorView.h"
 #import "CodeUtil.h"
 #import "MyServerIdManager.h"
+#import "LoginViewController.h"
 
 @interface SceneModeViewController ()<GCDAsyncUdpSocketDelegate, JsonParserDelegate>
 
@@ -35,6 +36,8 @@
 @property(nonatomic, strong) UdpIndicatorViewController *udpIndicatorViewController;
 //webView遮罩层效果
 @property(nonatomic, strong) HZActivityIndicatorView *customIndicator;
+
+@property(nonatomic, strong) LoginViewController *loginViewController;
 
 @property (nonatomic, strong) BaseServerParser *baseServerParser;
 
@@ -101,6 +104,22 @@
         default:
             break;
     }
+}
+
+- (IBAction)systemButtonClick:(id)sender
+{
+    if (self.loginViewController == nil)
+    {
+        UIStoryboard *board = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        self.loginViewController = [board instantiateViewControllerWithIdentifier:@"LoginViewController"];
+    }
+    [self.view addSubview:self.loginViewController.view];
+    [self.view bringSubviewToFront:self.loginViewController.view];
+    
+//    [UIView animateWithDuration:0.3 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^(void){
+//        [self.view addSubview:self.loginViewController.view];
+//        [self.view bringSubviewToFront:self.loginViewController.view];
+//    } completion:NULL];
 }
 
 - (void)didAppBecomeActive
@@ -375,35 +394,6 @@
     self.udpIndicatorViewController = nil;
 }
 
-#pragma mark - webview loading
-
-- (void)showLoadingView
-{
-    if (self.customIndicator == nil)
-    {
-        self.customIndicator = [[HZActivityIndicatorView alloc] initWithFrame:CGRectMake(100, 150, 0, 0)];
-        self.customIndicator.backgroundColor = self.view.backgroundColor;
-        self.customIndicator.opaque = YES;
-        self.customIndicator.steps = 16;
-        self.customIndicator.finSize = CGSizeMake(8, 40);
-        self.customIndicator.indicatorRadius = 20;
-        self.customIndicator.stepDuration = 0.100;
-        self.customIndicator.color = [UIColor colorWithRed:0.0 green:34.0/255.0 blue:85.0/255.0 alpha:1.000];
-        self.customIndicator.roundedCoreners = UIRectCornerTopRight;
-        self.customIndicator.cornerRadii = CGSizeMake(10, 10);
-        [self.customIndicator startAnimating];
-        
-        [self.view bringSubviewToFront:self.customIndicator];
-        [self.view addSubview:self.customIndicator];
-    }
-}
-
-- (void)hideLoadingView
-{
-    [self.customIndicator removeFromSuperview];
-    self.customIndicator = nil;
-}
-
 #pragma mark JsonParserDelegate
 
 - (void)parser:(JsonParser*)parser DidFailedParseWithMsg:(NSString*)msg errCode:(NSInteger)code
@@ -422,15 +412,6 @@
 }
 
 #pragma mark auto Rotation
-- (BOOL)shouldAutorotate
-{
-    return YES;
-}
-
-- (NSUInteger)supportedInterfaceOrientations
-{
-    return UIInterfaceOrientationMaskAllButUpsideDown;
-}
 
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
 {
