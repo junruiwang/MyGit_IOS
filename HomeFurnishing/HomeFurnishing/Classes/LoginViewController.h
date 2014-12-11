@@ -12,7 +12,6 @@
 
 @interface LoginViewController : BaseViewController
 
-@property(nonatomic, weak) IBOutlet UIImageView *loadingView;
 @property(nonatomic, weak) id<ControllerFunction> delegate;
 
 -(IBAction)cancelLoginClicked:(id)sender;

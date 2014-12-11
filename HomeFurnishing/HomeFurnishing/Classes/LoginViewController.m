@@ -25,25 +25,6 @@
     [super viewWillAppear:animated];
 }
 
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-    UIDeviceOrientation orientation = [UIDevice currentDevice].orientation;
-    switch (orientation) {
-        case UIDeviceOrientationPortrait:
-            self.loadingView.image = [UIImage imageNamed:@"background-Portrait.png"];
-            break;
-        case UIDeviceOrientationLandscapeLeft:
-            self.loadingView.image = [UIImage imageNamed:@"background-Landscape.png"];
-            break;
-        case UIDeviceOrientationLandscapeRight:
-            self.loadingView.image = [UIImage imageNamed:@"background-Landscape.png"];
-            break;
-        default:
-            break;
-    }
-}
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -53,25 +34,6 @@
 {
     if(self.delegate != nil && [self.delegate respondsToSelector:@selector(dismissViewController:)]) {
         [self.delegate dismissViewController:kLoginView];
-    }
-}
-
-#pragma mark auto Rotation
-
-- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
-{
-    switch (toInterfaceOrientation) {
-        case UIDeviceOrientationPortrait:
-            self.loadingView.image = [UIImage imageNamed:@"background-Portrait.png"];
-            break;
-        case UIDeviceOrientationLandscapeLeft:
-            self.loadingView.image = [UIImage imageNamed:@"background-Landscape.png"];
-            break;
-        case UIDeviceOrientationLandscapeRight:
-            self.loadingView.image = [UIImage imageNamed:@"background-Landscape.png"];
-            break;
-        default:
-            break;
     }
 }
 

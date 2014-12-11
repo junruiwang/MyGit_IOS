@@ -89,25 +89,6 @@
     [super viewWillAppear:animated];
 }
 
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-    UIDeviceOrientation orientation = [UIDevice currentDevice].orientation;
-    switch (orientation) {
-        case UIDeviceOrientationPortrait:
-            self.loadingView.image = [UIImage imageNamed:@"background-Portrait.png"];
-            break;
-        case UIDeviceOrientationLandscapeLeft:
-            self.loadingView.image = [UIImage imageNamed:@"background-Landscape.png"];
-            break;
-        case UIDeviceOrientationLandscapeRight:
-            self.loadingView.image = [UIImage imageNamed:@"background-Landscape.png"];
-            break;
-        default:
-            break;
-    }
-}
-
 -(IBAction)systemButtonClick:(id)sender
 {
     if (!self.loginViewController) {
@@ -424,24 +405,6 @@
     [self loadUserSettingModel:str_url];
 }
 
-#pragma mark auto Rotation
-
-- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
-{
-    switch (toInterfaceOrientation) {
-        case UIDeviceOrientationPortrait:
-            self.loadingView.image = [UIImage imageNamed:@"background-Portrait.png"];
-            break;
-        case UIDeviceOrientationLandscapeLeft:
-            self.loadingView.image = [UIImage imageNamed:@"background-Landscape.png"];
-            break;
-        case UIDeviceOrientationLandscapeRight:
-            self.loadingView.image = [UIImage imageNamed:@"background-Landscape.png"];
-            break;
-        default:
-            break;
-    }
-}
 
 #pragma mark delegate ControllerFunction
 

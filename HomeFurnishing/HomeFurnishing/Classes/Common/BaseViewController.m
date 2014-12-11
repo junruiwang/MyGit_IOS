@@ -10,12 +10,35 @@
 
 @interface BaseViewController ()
 
+@property(nonatomic, strong) UIImageView *bgImageView;
+
 @end
 
 @implementation BaseViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.bgImageView = [[UIImageView alloc] init];
+    self.bgImageView.backgroundColor = [UIColor clearColor];
+    [self.bgImageView sizeToFit];
+    [self.bgImageView setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [self.view addSubview:self.bgImageView];
+    [self.view sendSubviewToBack:self.bgImageView];
+    
+    NSLayoutConstraint *constraint = [NSLayoutConstraint constraintWithItem:self.bgImageView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeTop multiplier:1.0f constant:00.0f];
+    [self.view addConstraint:constraint];
+    
+    constraint = [NSLayoutConstraint constraintWithItem:self.bgImageView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeBottom multiplier:1.0f constant:00.0f];
+    [self.view addConstraint:constraint];
+    
+    constraint = [NSLayoutConstraint constraintWithItem:self.bgImageView attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeLeft multiplier:1.0f constant:00.0f];
+    [self.view addConstraint:constraint];
+    
+    constraint = [NSLayoutConstraint constraintWithItem:self.bgImageView attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeRight multiplier:1.0f constant:00.0f];
+    [self.view addConstraint:constraint];
+    
+    
+    
     // Do any additional setup after loading the view.
 }
 
@@ -47,6 +70,25 @@
             break;
         case UIDeviceOrientationLandscapeRight:
             self.view.frame = CGRectMake(0, 0, swidth > sheight ? swidth : sheight, swidth > sheight ? sheight : swidth);
+            break;
+        default:
+            break;
+    }
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    UIDeviceOrientation orientation = [UIDevice currentDevice].orientation;
+    switch (orientation) {
+        case UIDeviceOrientationPortrait:
+            self.bgImageView.image = [UIImage imageNamed:@"background-Portrait.png"];
+            break;
+        case UIDeviceOrientationLandscapeLeft:
+            self.bgImageView.image = [UIImage imageNamed:@"background-Landscape.png"];
+            break;
+        case UIDeviceOrientationLandscapeRight:
+            self.bgImageView.image = [UIImage imageNamed:@"background-Landscape.png"];
             break;
         default:
             break;
@@ -91,6 +133,23 @@
 - (NSUInteger)supportedInterfaceOrientations
 {
     return UIInterfaceOrientationMaskAllButUpsideDown;
+}
+
+- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+{
+    switch (toInterfaceOrientation) {
+        case UIDeviceOrientationPortrait:
+            self.bgImageView.image = [UIImage imageNamed:@"background-Portrait.png"];
+            break;
+        case UIDeviceOrientationLandscapeLeft:
+            self.bgImageView.image = [UIImage imageNamed:@"background-Landscape.png"];
+            break;
+        case UIDeviceOrientationLandscapeRight:
+            self.bgImageView.image = [UIImage imageNamed:@"background-Landscape.png"];
+            break;
+        default:
+            break;
+    }
 }
 
 @end
