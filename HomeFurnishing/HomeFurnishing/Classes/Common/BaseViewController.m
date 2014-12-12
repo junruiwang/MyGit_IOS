@@ -12,6 +12,8 @@
 
 @property(nonatomic, strong) UIImageView *bgImageView;
 
+- (void)resizePageView;
+
 @end
 
 @implementation BaseViewController
@@ -50,31 +52,9 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    UIScreenMode *screenMode = [UIScreen mainScreen].currentMode;
-    //Screen width
-    CGFloat swidth = screenMode.size.width;
-    //Screen height
-    CGFloat sheight = screenMode.size.height;
-    
-    UIDeviceOrientation orientation = [UIDevice currentDevice].orientation;
-    
-    switch (orientation) {
-        case UIDeviceOrientationPortrait:
-            self.view.frame = CGRectMake(0, 0, swidth < sheight ? swidth : sheight, swidth < sheight ? sheight : swidth);
-            break;
-        case UIDeviceOrientationPortraitUpsideDown:
-            self.view.frame = CGRectMake(0, 0, swidth < sheight ? swidth : sheight, swidth < sheight ? sheight : swidth);
-            break;
-        case UIDeviceOrientationLandscapeLeft:
-            self.view.frame = CGRectMake(0, 0, swidth > sheight ? swidth : sheight, swidth > sheight ? sheight : swidth);
-            break;
-        case UIDeviceOrientationLandscapeRight:
-            self.view.frame = CGRectMake(0, 0, swidth > sheight ? swidth : sheight, swidth > sheight ? sheight : swidth);
-            break;
-        default:
-            break;
-    }
+    [self resizePageView];
 }
+
 
 - (void)viewDidAppear:(BOOL)animated
 {
@@ -93,6 +73,12 @@
         default:
             break;
     }
+}
+
+- (void)resizePageView
+{
+    CGRect screenSize = [[UIScreen mainScreen] bounds];
+    self.view.frame = screenSize;
 }
 
 #pragma mark - webview loading
