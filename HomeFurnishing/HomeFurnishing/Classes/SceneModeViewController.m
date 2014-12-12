@@ -100,7 +100,7 @@
 //         [current.navigationController pushViewController:next animated:NO];
 //     } completion:NULL];
     
-    [UIView transitionFromView:self.view toView:self.loginViewController.view duration:0.8 options:UIViewAnimationOptionTransitionCurlUp completion:NULL];
+    [UIView transitionFromView:self.view toView:self.loginViewController.view duration:0.5 options:UIViewAnimationOptionTransitionCurlUp completion:NULL];
     
 //    [UIView animateWithDuration:0.3 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^(void){
 //        [self.view addSubview:self.loginViewController.view];
@@ -405,7 +405,7 @@
     switch (viewController) {
         case kLoginView:
         {
-            [UIView transitionFromView:self.loginViewController.view toView:self.view duration:0.8 options:UIViewAnimationOptionTransitionCurlDown completion:NULL];
+            [UIView transitionFromView:self.loginViewController.view toView:self.view duration:0.5 options:UIViewAnimationOptionTransitionCurlDown completion:NULL];
             break;
         }
         case kSceneModeView:
