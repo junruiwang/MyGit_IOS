@@ -16,7 +16,6 @@
 #import "Constants.h"
 #import "NetworkHelper.h"
 #import "UdpIndicatorViewController.h"
-#import "HZActivityIndicatorView.h"
 #import "CodeUtil.h"
 #import "MyServerIdManager.h"
 #import "LoginViewController.h"
@@ -35,8 +34,6 @@
 @property(nonatomic, strong) NSDate *invokeTime;
 //UDP广播遮罩层效果
 @property(nonatomic, strong) UdpIndicatorViewController *udpIndicatorViewController;
-//webView遮罩层效果
-@property(nonatomic, strong) HZActivityIndicatorView *customIndicator;
 
 @property(nonatomic,strong) LoginViewController *loginViewController;
 
@@ -82,11 +79,6 @@
     self.invokeTime = [NSDate date];
     //启动UDP查找主机
     [self workingForFindServerUrl];
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
 }
 
 -(IBAction)systemButtonClick:(id)sender
