@@ -21,7 +21,7 @@
 #import "LoginViewController.h"
 #import "ControllerFunction.h"
 
-@interface SceneModeViewController ()<GCDAsyncUdpSocketDelegate, JsonParserDelegate, ControllerFunction>
+@interface SceneModeViewController ()<GCDAsyncUdpSocketDelegate, JsonParserDelegate>
 
 @property (nonatomic, copy) NSString *currentIP;
 @property (nonatomic, strong) GCDAsyncUdpSocket *udpSocket;
@@ -34,8 +34,6 @@
 @property(nonatomic, strong) NSDate *invokeTime;
 //UDP广播遮罩层效果
 @property(nonatomic, strong) UdpIndicatorViewController *udpIndicatorViewController;
-
-@property(nonatomic,strong) LoginViewController *loginViewController;
 
 @property (nonatomic, strong) BaseServerParser *baseServerParser;
 
@@ -102,16 +100,13 @@
 
 -(IBAction)systemButtonClick:(id)sender
 {
-    if (!self.loginViewController) {
-        UIStoryboard *board = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        self.loginViewController = [board instantiateViewControllerWithIdentifier:@"LoginViewController"];
-        self.loginViewController.delegate = self;
-    }
+//    if (!self.loginViewController) {
+//        UIStoryboard *board = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//        self.loginViewController = [board instantiateViewControllerWithIdentifier:@"LoginViewController"];
+//        self.loginViewController.delegate = self;
+//    }
     
-//    [self presentViewController:self.loginViewController animated:YES completion:NULL];
-    
-//    [self.view addSubview:self.loginViewController.view];
-//    [self.view bringSubviewToFront:self.loginViewController.view];
+    [self performSegueWithIdentifier:@"fromSceneToLogin" sender:nil];
     
 //    [UIView
 //     transitionWithView:current.navigationController.view
@@ -121,7 +116,7 @@
 //         [current.navigationController pushViewController:next animated:NO];
 //     } completion:NULL];
     
-    [UIView transitionFromView:self.view toView:self.loginViewController.view duration:0.5 options:UIViewAnimationOptionTransitionCurlUp completion:NULL];
+//    [UIView transitionFromView:self.view toView:self.loginViewController.view duration:0.5 options:UIViewAnimationOptionTransitionCurlUp completion:NULL];
     
 //    [UIView animateWithDuration:0.3 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^(void){
 //        [self.view addSubview:self.loginViewController.view];
@@ -428,27 +423,6 @@
             break;
         case UIDeviceOrientationLandscapeRight:
             self.bgImageView.image = [UIImage imageNamed:@"background-Landscape.png"];
-            break;
-        default:
-            break;
-    }
-}
-
-#pragma mark delegate ControllerFunction
-
-- (void)dismissViewController:(HFController) viewController
-{
-    switch (viewController) {
-        case kLoginView:
-        {
-            [UIView transitionFromView:self.loginViewController.view toView:self.view duration:0.5 options:UIViewAnimationOptionTransitionCurlDown completion:NULL];
-            break;
-        }
-        case kSceneModeView:
-            
-            break;
-        case kSettingIndexView:
-            
             break;
         default:
             break;

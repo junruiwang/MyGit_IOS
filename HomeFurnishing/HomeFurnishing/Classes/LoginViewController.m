@@ -10,9 +10,7 @@
 #import "SceneModeViewController.h"
 #import "SettingIndexViewController.h"
 
-@interface LoginViewController ()<ControllerFunction>
-
-@property(nonatomic, strong) SettingIndexViewController *settingViewController;
+@interface LoginViewController ()
 
 @end
 
@@ -50,9 +48,7 @@
 -(IBAction)cancelLoginClicked:(id)sender
 {
     [self resignKeyboard];
-    if(self.delegate != nil && [self.delegate respondsToSelector:@selector(dismissViewController:)]) {
-        [self.delegate dismissViewController:kLoginView];
-    }
+    [self backToRootController];
 }
 
 -(IBAction)checkButtonClicked:(id)sender
@@ -65,12 +61,14 @@
 {
     [self resignKeyboard];
     
-    if (!self.settingViewController) {
-        UIStoryboard *board = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        self.settingViewController = [board instantiateViewControllerWithIdentifier:@"SettingIndexViewController"];
-        self.settingViewController.delegate = self;
-    }
-    [UIView transitionFromView:self.view toView:self.settingViewController.view duration:0.5 options:UIViewAnimationOptionTransitionCurlUp completion:NULL];
+//    if (!self.settingViewController) {
+//        UIStoryboard *board = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//        self.settingViewController = [board instantiateViewControllerWithIdentifier:@"SettingIndexViewController"];
+//        self.settingViewController.delegate = self;
+//    }
+//    [UIView transitionFromView:self.view toView:self.settingViewController.view duration:0.5 options:UIViewAnimationOptionTransitionCurlUp completion:NULL];
+    
+    [self performSegueWithIdentifier:@"fromLoginToSetting" sender:nil];
 }
 
 -(IBAction)dismissCurrentKeyboard:(id)sender
@@ -100,15 +98,6 @@
             break;
         default:
             break;
-    }
-}
-
-#pragma mark delegate ControllerFunction
-
-- (void)dismissViewController:(HFController) viewController
-{
-    if (viewController == kSettingIndexView) {
-        [UIView transitionFromView:self.settingViewController.view toView:self.view duration:0.5 options:UIViewAnimationOptionTransitionCurlDown completion:NULL];
     }
 }
 

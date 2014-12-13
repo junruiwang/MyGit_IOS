@@ -20,6 +20,8 @@
 		045774911A3970C600F809D9 /* login_btn_press.png in Resources */ = {isa = PBXBuildFile; fileRef = 0457748F1A3970C600F809D9 /* login_btn_press.png */; };
 		045774921A3970C600F809D9 /* login_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = 045774901A3970C600F809D9 /* login_btn.png */; };
 		045774981A397F7900F809D9 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 045774971A397F7900F809D9 /* BaseViewController.m */; };
+		046410DE1A3C01AD00571658 /* BaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 046410DD1A3C01AD00571658 /* BaseNavigationController.m */; };
+		046410E11A3C086F00571658 /* BasePushSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 046410E01A3C086F00571658 /* BasePushSegue.m */; };
 		046CEE1A1A34463B00BC79E4 /* Default-Landscape@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 046CEE161A34463B00BC79E4 /* Default-Landscape@2x~ipad.png */; };
 		046CEE1B1A34463B00BC79E4 /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 046CEE171A34463B00BC79E4 /* Default-Landscape~ipad.png */; };
 		046CEE1C1A34463B00BC79E4 /* Default-Portrait@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 046CEE181A34463B00BC79E4 /* Default-Portrait@2x~ipad.png */; };
@@ -96,8 +98,12 @@
 		0457748C1A396D3B00F809D9 /* login_checkbox_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = login_checkbox_btn.png; path = Resources/login_checkbox_btn.png; sourceTree = "<group>"; };
 		0457748F1A3970C600F809D9 /* login_btn_press.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = login_btn_press.png; path = Resources/login_btn_press.png; sourceTree = "<group>"; };
 		045774901A3970C600F809D9 /* login_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = login_btn.png; path = Resources/login_btn.png; sourceTree = "<group>"; };
-		045774961A397F7900F809D9 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
-		045774971A397F7900F809D9 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
+		045774961A397F7900F809D9 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BaseViewController.h; path = Classes/Common/BaseViewController.h; sourceTree = "<group>"; };
+		045774971A397F7900F809D9 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BaseViewController.m; path = Classes/Common/BaseViewController.m; sourceTree = "<group>"; };
+		046410DC1A3C01AD00571658 /* BaseNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BaseNavigationController.h; path = Classes/BaseNavigationController.h; sourceTree = "<group>"; };
+		046410DD1A3C01AD00571658 /* BaseNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BaseNavigationController.m; path = Classes/BaseNavigationController.m; sourceTree = "<group>"; };
+		046410DF1A3C086F00571658 /* BasePushSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasePushSegue.h; sourceTree = "<group>"; };
+		046410E01A3C086F00571658 /* BasePushSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BasePushSegue.m; sourceTree = "<group>"; };
 		046CEE161A34463B00BC79E4 /* Default-Landscape@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Landscape@2x~ipad.png"; path = "Resources/Default-Landscape@2x~ipad.png"; sourceTree = "<group>"; };
 		046CEE171A34463B00BC79E4 /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Landscape~ipad.png"; path = "Resources/Default-Landscape~ipad.png"; sourceTree = "<group>"; };
 		046CEE181A34463B00BC79E4 /* Default-Portrait@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Portrait@2x~ipad.png"; path = "Resources/Default-Portrait@2x~ipad.png"; sourceTree = "<group>"; };
@@ -119,8 +125,8 @@
 		046CEE311A34557900BC79E4 /* PulsingHaloLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PulsingHaloLayer.m; sourceTree = "<group>"; };
 		046CEE321A34557900BC79E4 /* TcpSocketHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TcpSocketHelper.h; sourceTree = "<group>"; };
 		046CEE331A34557900BC79E4 /* TcpSocketHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TcpSocketHelper.m; sourceTree = "<group>"; };
-		046CEE341A34557900BC79E4 /* UdpIndicatorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UdpIndicatorViewController.h; sourceTree = "<group>"; };
-		046CEE351A34557900BC79E4 /* UdpIndicatorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UdpIndicatorViewController.m; sourceTree = "<group>"; };
+		046CEE341A34557900BC79E4 /* UdpIndicatorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UdpIndicatorViewController.h; path = Classes/Common/UdpIndicatorViewController.h; sourceTree = "<group>"; };
+		046CEE351A34557900BC79E4 /* UdpIndicatorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UdpIndicatorViewController.m; path = Classes/Common/UdpIndicatorViewController.m; sourceTree = "<group>"; };
 		046CEE3F1A3455A000BC79E4 /* NSObject+SBJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJson.h"; sourceTree = "<group>"; };
 		046CEE401A3455A000BC79E4 /* NSObject+SBJson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SBJson.m"; sourceTree = "<group>"; };
 		046CEE411A3455A000BC79E4 /* SBJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJson.h; sourceTree = "<group>"; };
@@ -226,6 +232,12 @@
 				C4FD16EF1A39EBEC00EAF976 /* ControllerFunction.h */,
 				044BB2F11A3BF1260003B71D /* SettingIndexViewController.h */,
 				044BB2F21A3BF1260003B71D /* SettingIndexViewController.m */,
+				046410DC1A3C01AD00571658 /* BaseNavigationController.h */,
+				046410DD1A3C01AD00571658 /* BaseNavigationController.m */,
+				046CEE341A34557900BC79E4 /* UdpIndicatorViewController.h */,
+				046CEE351A34557900BC79E4 /* UdpIndicatorViewController.m */,
+				045774961A397F7900F809D9 /* BaseViewController.h */,
+				045774971A397F7900F809D9 /* BaseViewController.m */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -247,10 +259,8 @@
 				046CEE311A34557900BC79E4 /* PulsingHaloLayer.m */,
 				046CEE321A34557900BC79E4 /* TcpSocketHelper.h */,
 				046CEE331A34557900BC79E4 /* TcpSocketHelper.m */,
-				046CEE341A34557900BC79E4 /* UdpIndicatorViewController.h */,
-				046CEE351A34557900BC79E4 /* UdpIndicatorViewController.m */,
-				045774961A397F7900F809D9 /* BaseViewController.h */,
-				045774971A397F7900F809D9 /* BaseViewController.m */,
+				046410DF1A3C086F00571658 /* BasePushSegue.h */,
+				046410E01A3C086F00571658 /* BasePushSegue.m */,
 			);
 			name = Common;
 			path = Classes/Common;
@@ -528,6 +538,7 @@
 			files = (
 				046CEE691A3455BC00BC79E4 /* GCDAsyncSocket.m in Sources */,
 				046CEE631A3455A000BC79E4 /* SBJsonWriter.m in Sources */,
+				046410E11A3C086F00571658 /* BasePushSegue.m in Sources */,
 				046CEE791A3455D000BC79E4 /* NSDataAES.m in Sources */,
 				046CEE7A1A3455D000BC79E4 /* Reachability.m in Sources */,
 				046CEE5E1A3455A000BC79E4 /* SBJsonStreamWriter.m in Sources */,
@@ -555,6 +566,7 @@
 				046CEE371A34557900BC79E4 /* FileManager.m in Sources */,
 				0452C09C1A346269009188E0 /* BaseServerParser.m in Sources */,
 				04D3D3E71A34359A00C966EF /* main.m in Sources */,
+				046410DE1A3C01AD00571658 /* BaseNavigationController.m in Sources */,
 				046CEE5A1A3455A000BC79E4 /* SBJsonStreamParser.m in Sources */,
 				046CEE581A3455A000BC79E4 /* NSObject+SBJson.m in Sources */,
 				046CEE771A3455D000BC79E4 /* IPAdress.c in Sources */,

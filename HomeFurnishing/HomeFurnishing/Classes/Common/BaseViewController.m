@@ -48,6 +48,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    self.navigationController.navigationBarHidden = YES;
     [self resizePageView];
 }
 
@@ -80,6 +81,30 @@
     **/
 }
 
+
+- (void)backToRootController
+{
+    [UIView
+     transitionWithView:self.navigationController.view
+     duration:0.5
+     options:UIViewAnimationOptionTransitionCurlDown
+     animations:^{
+         [self.navigationController popToRootViewControllerAnimated:NO];
+     } completion:NULL];
+}
+
+- (void)backTotargetController:(UIViewController *)viewController
+{
+    [UIView
+     transitionWithView:self.navigationController.view
+     duration:0.5
+     options:UIViewAnimationOptionTransitionCurlDown
+     animations:^{
+         [self.navigationController popToViewController:viewController animated:NO];
+     } completion:NULL];
+}
+
+
 #pragma mark - webview loading
 
 - (void)showLoadingView
@@ -107,18 +132,6 @@
 {
     [self.customIndicator removeFromSuperview];
     self.customIndicator = nil;
-}
-
-#pragma mark auto Rotation
-
-- (BOOL)shouldAutorotate
-{
-    return YES;
-}
-
-- (NSUInteger)supportedInterfaceOrientations
-{
-    return UIInterfaceOrientationMaskAllButUpsideDown;
 }
 
 @end

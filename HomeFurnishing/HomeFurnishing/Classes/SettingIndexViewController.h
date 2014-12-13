@@ -8,12 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "BaseViewController.h"
-#import "ControllerFunction.h"
 
 @interface SettingIndexViewController : BaseViewController
 
 @property(nonatomic, weak) IBOutlet UIImageView *bgImageView;
-@property(nonatomic, weak) id<ControllerFunction> delegate;
 
 -(IBAction)loginoutButtonClicked:(id)sender;
 -(IBAction)backHome:(id)sender;

@@ -14,4 +14,7 @@
 //webView遮罩层效果
 @property(nonatomic, strong) HZActivityIndicatorView *customIndicator;
 
+- (void)backToRootController;
+- (void)backTotargetController:(UIViewController *)viewController;
+
 @end

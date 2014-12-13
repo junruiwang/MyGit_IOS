@@ -8,10 +8,9 @@
 
 #import "SettingIndexViewController.h"
 #import "SceneModeViewController.h"
+#import "LoginViewController.h"
 
 @interface SettingIndexViewController ()
-
-@property(nonatomic, strong) SceneModeViewController *sceneModeViewController;
 
 @end
 
@@ -48,18 +47,26 @@
 
 -(IBAction)loginoutButtonClicked:(id)sender
 {
-    if(self.delegate != nil && [self.delegate respondsToSelector:@selector(dismissViewController:)]) {
-        [self.delegate dismissViewController:kSettingIndexView];
+    BOOL isExist = NO;
+    UIViewController *loginViewController = nil;
+    NSArray *controllers = [self.navigationController viewControllers];
+    for (UIViewController *viewCtrl in controllers) {
+        if ([viewCtrl isKindOfClass:[LoginViewController class]]) {
+            loginViewController = viewCtrl;
+            isExist = YES;
+            break;
+        }
+    }
+    if (isExist) {
+        [self backTotargetController:loginViewController];
+    } else {
+        [self performSegueWithIdentifier:@"fromSettingToLogin" sender:nil];
     }
 }
 
 -(IBAction)backHome:(id)sender
 {
-    if (!self.sceneModeViewController) {
-        UIStoryboard *board = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        self.sceneModeViewController = [board instantiateViewControllerWithIdentifier:@"SceneModeViewController"];
-    }
-    [UIView transitionFromView:self.view toView:self.sceneModeViewController.view duration:0.5 options:UIViewAnimationOptionTransitionCurlUp completion:NULL];
+    [self backToRootController];
 }
 
 #pragma mark auto Rotation

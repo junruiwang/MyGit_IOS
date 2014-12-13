@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="13F34" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="13F34" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="hQa-2m-ZAW">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
@@ -120,13 +120,16 @@
                             <constraint firstAttribute="centerX" secondItem="wmX-9K-QTe" secondAttribute="centerX" id="yWs-BQ-Afn"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="93I-Mt-WCo"/>
                     <connections>
                         <outlet property="bgImageView" destination="1lF-U2-Sk2" id="wHV-Wg-LG6"/>
+                        <segue destination="mir-wy-YVs" kind="custom" identifier="fromSceneToLogin" customClass="BasePushSegue" id="CbL-L3-8FC"/>
+                        <segue destination="HPg-Zf-bbl" kind="custom" identifier="fromSceneToSetting" customClass="BasePushSegue" id="KG0-46-fln"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2761" y="-548"/>
+            <point key="canvasLocation" x="-3405" y="-532"/>
         </scene>
         <!--Udp Indicator View Controller-->
         <scene sceneID="E0Z-Kh-Vrr">
@@ -185,7 +188,23 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="92m-t0-fLd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2761" y="-1982"/>
+            <point key="canvasLocation" x="-4589" y="-2062"/>
+        </scene>
+        <!--Base Navigation Controller-->
+        <scene sceneID="IP0-yE-q6e">
+            <objects>
+                <navigationController navigationBarHidden="YES" id="hQa-2m-ZAW" customClass="BaseNavigationController" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="oKH-hm-ezJ">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="ZxL-JI-axX"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tUM-cq-Qi3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-4583" y="-532"/>
         </scene>
         <!--Setting Index View Controller-->
         <scene sceneID="t1k-tf-zzS">
@@ -266,13 +285,15 @@
                             <constraint firstItem="EmB-Jn-mw6" firstAttribute="top" secondItem="4hM-OG-W22" secondAttribute="top" constant="80" id="zLC-5B-gxB"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="za5-fG-IGt"/>
                     <connections>
                         <outlet property="bgImageView" destination="Kxy-dM-m7H" id="6Bj-n9-rzV"/>
+                        <segue destination="mir-wy-YVs" kind="custom" identifier="fromSettingToLogin" customClass="BasePushSegue" id="GWy-eC-fOo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oKQ-cQ-moB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1314" y="-1982"/>
+            <point key="canvasLocation" x="-1178" y="-2050"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="0eb-Tc-UPQ">
@@ -444,15 +465,17 @@
                             <constraint firstItem="B1L-jb-1BX" firstAttribute="top" secondItem="8Uf-OG-03U" secondAttribute="bottom" constant="38" id="yfa-a8-bAt"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="ipf-jf-C0n"/>
                     <connections>
                         <outlet property="bgImageView" destination="1hX-uZ-6gc" id="klb-lu-hJJ"/>
                         <outlet property="passwordField" destination="B1L-jb-1BX" id="4Bi-z2-DHr"/>
                         <outlet property="usernameField" destination="8Uf-OG-03U" id="2jC-je-yZU"/>
+                        <segue destination="HPg-Zf-bbl" kind="custom" identifier="fromLoginToSetting" customClass="BasePushSegue" id="NLw-Ci-OvP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cZi-GE-1e7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1314" y="-516"/>
+            <point key="canvasLocation" x="-2058" y="-532"/>
         </scene>
     </scenes>
     <resources>
@@ -475,4 +498,8 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="GWy-eC-fOo"/>
+        <segue reference="NLw-Ci-OvP"/>
+    </inferredMetricsTieBreakers>
 </document>

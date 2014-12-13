@@ -8,14 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "BaseViewController.h"
-#import "ControllerFunction.h"
 
 @interface LoginViewController : BaseViewController
 
 @property(nonatomic, weak) IBOutlet UIImageView *bgImageView;
 @property(nonatomic, weak) IBOutlet UITextField *usernameField;
 @property(nonatomic, weak) IBOutlet UITextField *passwordField;
-@property(nonatomic, weak) id<ControllerFunction> delegate;
 
 -(IBAction)cancelLoginClicked:(id)sender;
 -(IBAction)checkButtonClicked:(id)sender;
