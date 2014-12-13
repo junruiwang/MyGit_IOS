@@ -10,8 +10,6 @@
 
 @interface BaseViewController ()
 
-@property(nonatomic, strong) UIImageView *bgImageView;
-
 - (void)resizePageView;
 
 @end
@@ -20,6 +18,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    /*
     self.bgImageView = [[UIImageView alloc] init];
     self.bgImageView.backgroundColor = [UIColor clearColor];
     [self.bgImageView sizeToFit];
@@ -38,10 +37,7 @@
     
     constraint = [NSLayoutConstraint constraintWithItem:self.bgImageView attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeRight multiplier:1.0f constant:00.0f];
     [self.view addConstraint:constraint];
-    
-    
-    
-    // Do any additional setup after loading the view.
+    **/
 }
 
 - (void)didReceiveMemoryWarning {
@@ -55,30 +51,33 @@
     [self resizePageView];
 }
 
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-    UIDeviceOrientation orientation = [UIDevice currentDevice].orientation;
-    switch (orientation) {
-        case UIDeviceOrientationPortrait:
-            self.bgImageView.image = [UIImage imageNamed:@"background-Portrait.png"];
-            break;
-        case UIDeviceOrientationLandscapeLeft:
-            self.bgImageView.image = [UIImage imageNamed:@"background-Landscape.png"];
-            break;
-        case UIDeviceOrientationLandscapeRight:
-            self.bgImageView.image = [UIImage imageNamed:@"background-Landscape.png"];
-            break;
-        default:
-            break;
-    }
-}
-
 - (void)resizePageView
 {
     CGRect screenSize = [[UIScreen mainScreen] bounds];
     self.view.frame = screenSize;
+    /*
+    //Screen width
+    CGFloat swidth = screenSize.size.width;
+    //Screen height
+    CGFloat sheight = screenSize.size.height;
+    UIDeviceOrientation orientation = [UIDevice currentDevice].orientation;
+    switch (orientation) {
+        case UIDeviceOrientationPortrait:
+            self.view.frame = CGRectMake(0, 0, swidth < sheight ? swidth : sheight, swidth < sheight ? sheight : swidth);
+            break;
+        case UIDeviceOrientationPortraitUpsideDown:
+            self.view.frame = CGRectMake(0, 0, swidth < sheight ? swidth : sheight, swidth < sheight ? sheight : swidth);
+            break;
+        case UIDeviceOrientationLandscapeLeft:
+            self.view.frame = CGRectMake(0, 0, swidth > sheight ? swidth : sheight, swidth > sheight ? sheight : swidth);
+            break;
+        case UIDeviceOrientationLandscapeRight:
+            self.view.frame = CGRectMake(0, 0, swidth > sheight ? swidth : sheight, swidth > sheight ? sheight : swidth);
+            break;
+        default:
+            break;
+    }
+    **/
 }
 
 #pragma mark - webview loading
@@ -111,6 +110,7 @@
 }
 
 #pragma mark auto Rotation
+
 - (BOOL)shouldAutorotate
 {
     return YES;
@@ -119,23 +119,6 @@
 - (NSUInteger)supportedInterfaceOrientations
 {
     return UIInterfaceOrientationMaskAllButUpsideDown;
-}
-
-- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
-{
-    switch (toInterfaceOrientation) {
-        case UIDeviceOrientationPortrait:
-            self.bgImageView.image = [UIImage imageNamed:@"background-Portrait.png"];
-            break;
-        case UIDeviceOrientationLandscapeLeft:
-            self.bgImageView.image = [UIImage imageNamed:@"background-Landscape.png"];
-            break;
-        case UIDeviceOrientationLandscapeRight:
-            self.bgImageView.image = [UIImage imageNamed:@"background-Landscape.png"];
-            break;
-        default:
-            break;
-    }
 }
 
 @end

@@ -81,6 +81,25 @@
     [self workingForFindServerUrl];
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    UIDeviceOrientation orientation = [UIDevice currentDevice].orientation;
+    switch (orientation) {
+        case UIDeviceOrientationPortrait:
+            self.bgImageView.image = [UIImage imageNamed:@"background-Portrait.png"];
+            break;
+        case UIDeviceOrientationLandscapeLeft:
+            self.bgImageView.image = [UIImage imageNamed:@"background-Landscape.png"];
+            break;
+        case UIDeviceOrientationLandscapeRight:
+            self.bgImageView.image = [UIImage imageNamed:@"background-Landscape.png"];
+            break;
+        default:
+            break;
+    }
+}
+
 -(IBAction)systemButtonClick:(id)sender
 {
     if (!self.loginViewController) {
@@ -88,6 +107,8 @@
         self.loginViewController = [board instantiateViewControllerWithIdentifier:@"LoginViewController"];
         self.loginViewController.delegate = self;
     }
+    
+//    [self presentViewController:self.loginViewController animated:YES completion:NULL];
     
 //    [self.view addSubview:self.loginViewController.view];
 //    [self.view bringSubviewToFront:self.loginViewController.view];
@@ -317,7 +338,6 @@
     } else {
         return NO;
     }
-    
 }
 
 - (BOOL)isRightJsonData:(NSString *)responseData
@@ -366,9 +386,7 @@
     {
         UIStoryboard *board = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         self.udpIndicatorViewController = [board instantiateViewControllerWithIdentifier:@"UdpIndicatorViewController"];
-        CGRect frame = self.udpIndicatorViewController.view.frame;
-        frame.origin = CGPointMake(0, 0);
-        self.udpIndicatorViewController.view.frame = frame;
+        self.udpIndicatorViewController.view.frame = [UIScreen mainScreen].bounds;
         [self.view bringSubviewToFront:self.udpIndicatorViewController.view];
     }
     [self.view addSubview:self.udpIndicatorViewController.view];
@@ -397,6 +415,24 @@
     [self loadUserSettingModel:str_url];
 }
 
+#pragma mark auto Rotation
+
+- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+{
+    switch (toInterfaceOrientation) {
+        case UIDeviceOrientationPortrait:
+            self.bgImageView.image = [UIImage imageNamed:@"background-Portrait.png"];
+            break;
+        case UIDeviceOrientationLandscapeLeft:
+            self.bgImageView.image = [UIImage imageNamed:@"background-Landscape.png"];
+            break;
+        case UIDeviceOrientationLandscapeRight:
+            self.bgImageView.image = [UIImage imageNamed:@"background-Landscape.png"];
+            break;
+        default:
+            break;
+    }
+}
 
 #pragma mark delegate ControllerFunction
 
