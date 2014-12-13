@@ -266,6 +266,16 @@
                                     <action selector="loginoutButtonClicked:" destination="HPg-Zf-bbl" eventType="touchUpInside" id="h76-V8-MN8"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fRG-MW-bmu">
+                                <rect key="frame" x="0.0" y="174" width="768" height="850"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dbb-ty-NDm">
+                                <rect key="frame" x="682" y="497" width="56" height="30"/>
+                                <state key="normal" title="确定" backgroundImage="book.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -273,21 +283,29 @@
                             <constraint firstItem="rLX-Zp-fXe" firstAttribute="leading" secondItem="PUT-xX-Pvp" secondAttribute="trailing" constant="92" id="2hb-Je-wW2"/>
                             <constraint firstItem="PUT-xX-Pvp" firstAttribute="leading" secondItem="WPQ-M0-RV2" secondAttribute="trailing" constant="8" id="Abd-CU-DA6"/>
                             <constraint firstAttribute="trailing" secondItem="Kxy-dM-m7H" secondAttribute="trailing" id="BMB-eg-rpr"/>
+                            <constraint firstAttribute="trailing" secondItem="fRG-MW-bmu" secondAttribute="trailing" id="E2q-4c-fX0"/>
+                            <constraint firstItem="fRG-MW-bmu" firstAttribute="leading" secondItem="4hM-OG-W22" secondAttribute="leading" id="E7s-F9-5hK"/>
                             <constraint firstItem="PUT-xX-Pvp" firstAttribute="centerY" secondItem="rLX-Zp-fXe" secondAttribute="centerY" id="Hse-Lw-ol4"/>
                             <constraint firstItem="WPQ-M0-RV2" firstAttribute="leading" secondItem="GOd-38-2HW" secondAttribute="trailing" constant="133" id="Jg1-pj-X09"/>
                             <constraint firstItem="GOd-38-2HW" firstAttribute="top" secondItem="4hM-OG-W22" secondAttribute="top" constant="110" id="NPz-o1-tAK"/>
                             <constraint firstItem="PUT-xX-Pvp" firstAttribute="centerY" secondItem="WPQ-M0-RV2" secondAttribute="centerY" id="Q0s-IA-Thn"/>
+                            <constraint firstItem="fRG-MW-bmu" firstAttribute="top" secondItem="EmB-Jn-mw6" secondAttribute="bottom" id="SUP-XT-6Do"/>
                             <constraint firstItem="Kxy-dM-m7H" firstAttribute="leading" secondItem="4hM-OG-W22" secondAttribute="leading" id="b0z-1V-y8f"/>
+                            <constraint firstAttribute="trailing" secondItem="dbb-ty-NDm" secondAttribute="trailing" constant="30" id="enF-ld-etl"/>
                             <constraint firstAttribute="centerX" secondItem="WPQ-M0-RV2" secondAttribute="centerX" constant="25" id="fPS-TJ-dW5"/>
                             <constraint firstItem="WPQ-M0-RV2" firstAttribute="top" secondItem="4hM-OG-W22" secondAttribute="top" constant="110" id="hAL-6l-ABa"/>
+                            <constraint firstItem="dbb-ty-NDm" firstAttribute="top" secondItem="4hM-OG-W22" secondAttribute="top" constant="497" id="m1x-EQ-DID"/>
                             <constraint firstItem="Kxy-dM-m7H" firstAttribute="top" secondItem="4hM-OG-W22" secondAttribute="top" id="p7a-JT-VRG"/>
                             <constraint firstAttribute="centerX" secondItem="EmB-Jn-mw6" secondAttribute="centerX" id="sjC-MF-d5H"/>
+                            <constraint firstAttribute="bottom" secondItem="fRG-MW-bmu" secondAttribute="bottom" id="v2e-lb-1t5"/>
                             <constraint firstItem="EmB-Jn-mw6" firstAttribute="top" secondItem="4hM-OG-W22" secondAttribute="top" constant="80" id="zLC-5B-gxB"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="za5-fG-IGt"/>
                     <connections>
                         <outlet property="bgImageView" destination="Kxy-dM-m7H" id="6Bj-n9-rzV"/>
+                        <outlet property="doneButton" destination="dbb-ty-NDm" id="dSt-JH-gu9"/>
+                        <outlet property="mainLauncherView" destination="fRG-MW-bmu" id="6BC-ET-arW"/>
                         <segue destination="mir-wy-YVs" kind="custom" identifier="fromSettingToLogin" customClass="BasePushSegue" id="GWy-eC-fOo"/>
                     </connections>
                 </viewController>
@@ -480,6 +498,7 @@
     </scenes>
     <resources>
         <image name="background-Portrait.png" width="731" height="1280"/>
+        <image name="book.png" width="56" height="30"/>
         <image name="divider_horizontal_line.png" width="480" height="2"/>
         <image name="home.png" width="88" height="72"/>
         <image name="input_bg_ipa.png" width="320" height="50"/>

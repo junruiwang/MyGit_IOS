@@ -12,6 +12,8 @@
 @interface SettingIndexViewController : BaseViewController
 
 @property(nonatomic, weak) IBOutlet UIImageView *bgImageView;
+@property(nonatomic, weak) IBOutlet UIView *mainLauncherView;
+@property(nonatomic, weak) IBOutlet UIButton *doneButton;
 
 -(IBAction)loginoutButtonClicked:(id)sender;
 -(IBAction)backHome:(id)sender;
