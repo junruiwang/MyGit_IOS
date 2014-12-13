@@ -1,26 +1,30 @@
 //
-//  LoginViewController.m
+//  SettingIndexViewController.m
 //  HomeFurnishing
 //
-//  Created by jrwang on 14-12-11.
+//  Created by jrwang on 14-12-13.
 //  Copyright (c) 2014年 handpay. All rights reserved.
 //
 
-#import "LoginViewController.h"
-#import "SceneModeViewController.h"
 #import "SettingIndexViewController.h"
+#import "SceneModeViewController.h"
 
-@interface LoginViewController ()<ControllerFunction>
+@interface SettingIndexViewController ()
 
-@property(nonatomic, strong) SettingIndexViewController *settingViewController;
+@property(nonatomic, strong) SceneModeViewController *sceneModeViewController;
 
 @end
 
-@implementation LoginViewController
+@implementation SettingIndexViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -42,46 +46,20 @@
     }
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
--(IBAction)cancelLoginClicked:(id)sender
+-(IBAction)loginoutButtonClicked:(id)sender
 {
-    [self resignKeyboard];
     if(self.delegate != nil && [self.delegate respondsToSelector:@selector(dismissViewController:)]) {
-        [self.delegate dismissViewController:kLoginView];
+        [self.delegate dismissViewController:kSettingIndexView];
     }
 }
 
--(IBAction)checkButtonClicked:(id)sender
+-(IBAction)backHome:(id)sender
 {
-    UIButton *btn = (UIButton *)sender;
-    btn.selected = !btn.selected;
-}
-
--(IBAction)loginButtonClicked:(id)sender
-{
-    [self resignKeyboard];
-    
-    if (!self.settingViewController) {
+    if (!self.sceneModeViewController) {
         UIStoryboard *board = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        self.settingViewController = [board instantiateViewControllerWithIdentifier:@"SettingIndexViewController"];
-        self.settingViewController.delegate = self;
+        self.sceneModeViewController = [board instantiateViewControllerWithIdentifier:@"SceneModeViewController"];
     }
-    [UIView transitionFromView:self.view toView:self.settingViewController.view duration:0.5 options:UIViewAnimationOptionTransitionCurlUp completion:NULL];
-}
-
--(IBAction)dismissCurrentKeyboard:(id)sender
-{
-    [self resignKeyboard];
-}
-
--(void)resignKeyboard
-{
-    [self.usernameField resignFirstResponder];
-    [self.passwordField resignFirstResponder];
+    [UIView transitionFromView:self.view toView:self.sceneModeViewController.view duration:0.5 options:UIViewAnimationOptionTransitionCurlUp completion:NULL];
 }
 
 #pragma mark auto Rotation
@@ -100,15 +78,6 @@
             break;
         default:
             break;
-    }
-}
-
-#pragma mark delegate ControllerFunction
-
-- (void)dismissViewController:(HFController) viewController
-{
-    if (viewController == kSettingIndexView) {
-        [UIView transitionFromView:self.settingViewController.view toView:self.view duration:0.5 options:UIViewAnimationOptionTransitionCurlDown completion:NULL];
     }
 }
 

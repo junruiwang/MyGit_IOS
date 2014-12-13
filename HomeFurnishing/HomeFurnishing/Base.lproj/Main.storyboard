@@ -23,6 +23,7 @@
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="top_icon_bar.png" translatesAutoresizingMaskIntoConstraints="NO" id="wmX-9K-QTe">
                                 <rect key="frame" x="120" y="80" width="527" height="94"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rnt-xg-FQn">
                                 <rect key="frame" x="197" y="95" width="45" height="36"/>
@@ -186,6 +187,93 @@
             </objects>
             <point key="canvasLocation" x="-2761" y="-1982"/>
         </scene>
+        <!--Setting Index View Controller-->
+        <scene sceneID="t1k-tf-zzS">
+            <objects>
+                <viewController storyboardIdentifier="SettingIndexViewController" id="HPg-Zf-bbl" customClass="SettingIndexViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="nUT-bo-vOn"/>
+                        <viewControllerLayoutGuide type="bottom" id="cl7-Wn-sdc"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="4hM-OG-W22">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background-Portrait.png" translatesAutoresizingMaskIntoConstraints="NO" id="Kxy-dM-m7H">
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="top_icon_bar.png" translatesAutoresizingMaskIntoConstraints="NO" id="EmB-Jn-mw6">
+                                <rect key="frame" x="120" y="80" width="527" height="94"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GOd-38-2HW">
+                                <rect key="frame" x="163" y="110" width="45" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="BkB-tY-EQg"/>
+                                    <constraint firstAttribute="width" constant="45" id="Pdc-2u-RJY"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <state key="normal" image="home.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="backHome:" destination="HPg-Zf-bbl" eventType="touchUpInside" id="iLe-xN-Dxd"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="setting.png" translatesAutoresizingMaskIntoConstraints="NO" id="WPQ-M0-RV2">
+                                <rect key="frame" x="341" y="110" width="36" height="36"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="mmJ-xF-CY7"/>
+                                    <constraint firstAttribute="width" constant="36" id="pr9-za-vKS"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="情景设置" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PUT-xX-Pvp">
+                                <rect key="frame" x="385" y="116" width="80" height="24"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rLX-Zp-fXe">
+                                <rect key="frame" x="557" y="110" width="40" height="36"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <state key="normal" title="登出">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="loginoutButtonClicked:" destination="HPg-Zf-bbl" eventType="touchUpInside" id="h76-V8-MN8"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="Kxy-dM-m7H" secondAttribute="bottom" id="2St-Lu-CYQ"/>
+                            <constraint firstItem="rLX-Zp-fXe" firstAttribute="leading" secondItem="PUT-xX-Pvp" secondAttribute="trailing" constant="92" id="2hb-Je-wW2"/>
+                            <constraint firstItem="PUT-xX-Pvp" firstAttribute="leading" secondItem="WPQ-M0-RV2" secondAttribute="trailing" constant="8" id="Abd-CU-DA6"/>
+                            <constraint firstAttribute="trailing" secondItem="Kxy-dM-m7H" secondAttribute="trailing" id="BMB-eg-rpr"/>
+                            <constraint firstItem="PUT-xX-Pvp" firstAttribute="centerY" secondItem="rLX-Zp-fXe" secondAttribute="centerY" id="Hse-Lw-ol4"/>
+                            <constraint firstItem="WPQ-M0-RV2" firstAttribute="leading" secondItem="GOd-38-2HW" secondAttribute="trailing" constant="133" id="Jg1-pj-X09"/>
+                            <constraint firstItem="GOd-38-2HW" firstAttribute="top" secondItem="4hM-OG-W22" secondAttribute="top" constant="110" id="NPz-o1-tAK"/>
+                            <constraint firstItem="PUT-xX-Pvp" firstAttribute="centerY" secondItem="WPQ-M0-RV2" secondAttribute="centerY" id="Q0s-IA-Thn"/>
+                            <constraint firstItem="Kxy-dM-m7H" firstAttribute="leading" secondItem="4hM-OG-W22" secondAttribute="leading" id="b0z-1V-y8f"/>
+                            <constraint firstAttribute="centerX" secondItem="WPQ-M0-RV2" secondAttribute="centerX" constant="25" id="fPS-TJ-dW5"/>
+                            <constraint firstItem="WPQ-M0-RV2" firstAttribute="top" secondItem="4hM-OG-W22" secondAttribute="top" constant="110" id="hAL-6l-ABa"/>
+                            <constraint firstItem="Kxy-dM-m7H" firstAttribute="top" secondItem="4hM-OG-W22" secondAttribute="top" id="p7a-JT-VRG"/>
+                            <constraint firstAttribute="centerX" secondItem="EmB-Jn-mw6" secondAttribute="centerX" id="sjC-MF-d5H"/>
+                            <constraint firstItem="EmB-Jn-mw6" firstAttribute="top" secondItem="4hM-OG-W22" secondAttribute="top" constant="80" id="zLC-5B-gxB"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="bgImageView" destination="Kxy-dM-m7H" id="6Bj-n9-rzV"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oKQ-cQ-moB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1314" y="-1982"/>
+        </scene>
         <!--Login View Controller-->
         <scene sceneID="0eb-Tc-UPQ">
             <objects>
@@ -251,6 +339,9 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" keyboardAppearance="alert" returnKeyType="done"/>
+                                <connections>
+                                    <action selector="dismissCurrentKeyboard:" destination="mir-wy-YVs" eventType="editingDidEndOnExit" id="Hfw-OO-duk"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="B1L-jb-1BX" userLabel="password">
                                 <rect key="frame" x="306" y="238" width="250" height="30"/>
@@ -260,8 +351,11 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" keyboardAppearance="alert" returnKeyType="done" secureTextEntry="YES"/>
+                                <connections>
+                                    <action selector="dismissCurrentKeyboard:" destination="mir-wy-YVs" eventType="editingDidEndOnExit" id="ogY-Q9-cWu"/>
+                                </connections>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GTQ-uA-L50">
+                            <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GTQ-uA-L50">
                                 <rect key="frame" x="217" y="310" width="25" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="EAz-UR-cUc"/>
@@ -270,6 +364,10 @@
                                 <state key="normal" image="login_checkbox_btn.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <state key="selected" image="login_checkbox_btn_selected.png"/>
+                                <connections>
+                                    <action selector="checkButtonClicked:" destination="mir-wy-YVs" eventType="touchUpInside" id="6jf-Bl-rpT"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="记住" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sML-5C-NY2">
                                 <rect key="frame" x="250" y="314" width="32" height="19.5"/>
@@ -289,6 +387,9 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <state key="highlighted" backgroundImage="login_btn_press.png"/>
+                                <connections>
+                                    <action selector="loginButtonClicked:" destination="mir-wy-YVs" eventType="touchUpInside" id="kxh-YD-1of"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zQh-3w-b3O">
                                 <rect key="frame" x="436" y="340" width="80" height="40"/>
@@ -345,6 +446,8 @@
                     </view>
                     <connections>
                         <outlet property="bgImageView" destination="1hX-uZ-6gc" id="klb-lu-hJJ"/>
+                        <outlet property="passwordField" destination="B1L-jb-1BX" id="4Bi-z2-DHr"/>
+                        <outlet property="usernameField" destination="8Uf-OG-03U" id="2jC-je-yZU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cZi-GE-1e7" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -360,6 +463,7 @@
         <image name="login_btn.png" width="100" height="50"/>
         <image name="login_btn_press.png" width="100" height="50"/>
         <image name="login_checkbox_btn.png" width="37" height="37"/>
+        <image name="login_checkbox_btn_selected.png" width="37" height="37"/>
         <image name="logo_phone.png" width="48" height="48"/>
         <image name="message.png" width="101" height="72"/>
         <image name="phone.png" width="151" height="72"/>
