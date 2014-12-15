@@ -93,6 +93,9 @@
 		C46C748A1A37486E00E1B99B /* message.png in Resources */ = {isa = PBXBuildFile; fileRef = C46C74861A37486E00E1B99B /* message.png */; };
 		C46C748B1A37486E00E1B99B /* phone.png in Resources */ = {isa = PBXBuildFile; fileRef = C46C74871A37486E00E1B99B /* phone.png */; };
 		C46C748C1A37486E00E1B99B /* setting.png in Resources */ = {isa = PBXBuildFile; fileRef = C46C74881A37486E00E1B99B /* setting.png */; };
+		C4DD07711A3F269C0018DC8F /* addItemImage-iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = C4DD076E1A3F269C0018DC8F /* addItemImage-iPad.png */; };
+		C4DD07721A3F269C0018DC8F /* addItemImage.png in Resources */ = {isa = PBXBuildFile; fileRef = C4DD076F1A3F269C0018DC8F /* addItemImage.png */; };
+		C4DD07731A3F269C0018DC8F /* addItemImage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C4DD07701A3F269C0018DC8F /* addItemImage@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -228,6 +231,9 @@
 		C46C74861A37486E00E1B99B /* message.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = message.png; path = Resources/message.png; sourceTree = "<group>"; };
 		C46C74871A37486E00E1B99B /* phone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = phone.png; path = Resources/phone.png; sourceTree = "<group>"; };
 		C46C74881A37486E00E1B99B /* setting.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = setting.png; path = Resources/setting.png; sourceTree = "<group>"; };
+		C4DD076E1A3F269C0018DC8F /* addItemImage-iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "addItemImage-iPad.png"; path = "Resources/addItemImage-iPad.png"; sourceTree = "<group>"; };
+		C4DD076F1A3F269C0018DC8F /* addItemImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = addItemImage.png; path = Resources/addItemImage.png; sourceTree = "<group>"; };
+		C4DD07701A3F269C0018DC8F /* addItemImage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "addItemImage@2x.png"; path = "Resources/addItemImage@2x.png"; sourceTree = "<group>"; };
 		C4FD16EF1A39EBEC00EAF976 /* ControllerFunction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ControllerFunction.h; path = Classes/ControllerFunction.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -479,6 +485,9 @@
 				0474715D1A3C905C006FD502 /* itemImage-iPad.png */,
 				0474715E1A3C905C006FD502 /* itemImage.png */,
 				0474715F1A3C905C006FD502 /* itemImage@2x.png */,
+				C4DD076E1A3F269C0018DC8F /* addItemImage-iPad.png */,
+				C4DD076F1A3F269C0018DC8F /* addItemImage.png */,
+				C4DD07701A3F269C0018DC8F /* addItemImage@2x.png */,
 				047471601A3C905C006FD502 /* launcher.png */,
 				047471661A3CA647006FD502 /* book.png */,
 				047471671A3CA647006FD502 /* book@2x.png */,
@@ -563,6 +572,7 @@
 			files = (
 				045774921A3970C600F809D9 /* login_btn.png in Resources */,
 				046CEE1C1A34463B00BC79E4 /* Default-Portrait@2x~ipad.png in Resources */,
+				C4DD07711A3F269C0018DC8F /* addItemImage-iPad.png in Resources */,
 				047471681A3CA647006FD502 /* book.png in Resources */,
 				047471621A3C905C006FD502 /* itemImage-iPad.png in Resources */,
 				0452C09F1A346F74009188E0 /* logo_phone.png in Resources */,
@@ -571,6 +581,7 @@
 				C46C74821A37320C00E1B99B /* background-Portrait.png in Resources */,
 				C46C74811A37320C00E1B99B /* background-Landscape.png in Resources */,
 				0457748D1A396D3B00F809D9 /* login_checkbox_btn_selected.png in Resources */,
+				C4DD07731A3F269C0018DC8F /* addItemImage@2x.png in Resources */,
 				046CEE1B1A34463B00BC79E4 /* Default-Landscape~ipad.png in Resources */,
 				04BF07FD1A399A8B00F41510 /* input_bg_ipa.png in Resources */,
 				04D3D4201A34408700C966EF /* AppIcon29x29@2x~ipad.png in Resources */,
@@ -591,6 +602,7 @@
 				04D3D4251A34408700C966EF /* AppIcon76x76~ipad.png in Resources */,
 				C46C748C1A37486E00E1B99B /* setting.png in Resources */,
 				04D3D3F21A34359A00C966EF /* Images.xcassets in Resources */,
+				C4DD07721A3F269C0018DC8F /* addItemImage.png in Resources */,
 				047471631A3C905C006FD502 /* itemImage.png in Resources */,
 				C46C748B1A37486E00E1B99B /* phone.png in Resources */,
 				04D3D4221A34408700C966EF /* AppIcon40x40@2x~ipad.png in Resources */,
