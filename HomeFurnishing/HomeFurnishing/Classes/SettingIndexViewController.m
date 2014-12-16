@@ -23,12 +23,10 @@
 @property (nonatomic, strong) UIView *overlayView;
 
 -(BOOL)hasSavedLauncherItems;
--(void)clearSavedLauncherItems;
-
 -(void)launcherViewItemSelected:(MyLauncherItem*)item;
 -(void)closeView;
 
--(NSMutableArray *)savedLauncherItems;
+-(NSMutableArray *)savedLauncherItems:(MyLauncherItem *)item;
 -(NSArray*)retrieveFromUserDefaults:(NSString *)key;
 -(void)saveToUserDefaults:(id)object key:(NSString *)key;
 
@@ -37,18 +35,20 @@
 @implementation SettingIndexViewController
 
 - (void)viewDidLoad {
+    //初始化子组件视图容器
+    self.appControllers = [[NSMutableDictionary alloc] init];
+    
+    //Add your view controllers here to be picked up by the launcher; remember to import them above
+    //[[self appControllers] setObject:[MyCustomViewController class] forKey:@"MyCustomViewController"];
+    //[[self appControllers] setObject:[MyOtherCustomViewController class] forKey:@"MyOtherCustomViewController"];
+    [self.appControllers setObject:[ItemViewController class] forKey:@"ItemViewController"];
+    
     [super viewDidLoad];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    [self resetLauncherView];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -69,8 +69,8 @@
         default:
             break;
     }
-    //绘制launcherView
-    [self.launcherView viewDidAppear:animated];
+    //绘制spring board
+    [self resetLauncherView];
 }
 
 -(void)resetLauncherView
@@ -82,71 +82,74 @@
         self.launcherView = nil;
     }
     //重新绘制launcherView
-    UIDeviceOrientation orientation = [UIDevice currentDevice].orientation;
-    switch (orientation) {
-        case UIDeviceOrientationPortrait:
-            self.launcherView = [[MyLauncherView alloc] initWithFrame:CGRectMake(0, 0, self.mainLauncherView.frame.size.width, self.mainLauncherView.frame.size.height)];
-            break;
-        case UIDeviceOrientationPortraitUpsideDown:
-            self.launcherView = [[MyLauncherView alloc] initWithFrame:CGRectMake(0, 0, self.mainLauncherView.frame.size.width, self.mainLauncherView.frame.size.height)];
-            break;
-        case UIDeviceOrientationLandscapeLeft:
-            self.launcherView = [[MyLauncherView alloc] initWithFrame:CGRectMake(0, 0, 1024, 594)];
-            break;
-        case UIDeviceOrientationLandscapeRight:
-            self.launcherView = [[MyLauncherView alloc] initWithFrame:CGRectMake(0, 0, 1024, 594)];
-            break;
-        default:
-            break;
-    }
-//    [self.launcherView setBackgroundColor:COLOR(234,237,250)];
+//    UIDeviceOrientation orientation = [UIDevice currentDevice].orientation;
+//    switch (orientation) {
+//        case UIDeviceOrientationPortrait:
+//            self.launcherView = [[MyLauncherView alloc] initWithFrame:CGRectMake(0, 0, self.mainLauncherView.frame.size.width, self.mainLauncherView.frame.size.height)];
+//            break;
+//        case UIDeviceOrientationPortraitUpsideDown:
+//            self.launcherView = [[MyLauncherView alloc] initWithFrame:CGRectMake(0, 0, self.mainLauncherView.frame.size.width, self.mainLauncherView.frame.size.height)];
+//            break;
+//        case UIDeviceOrientationLandscapeLeft:
+//            self.launcherView = [[MyLauncherView alloc] initWithFrame:CGRectMake(0, 0, 1024, 594)];
+//            break;
+//        case UIDeviceOrientationLandscapeRight:
+//            self.launcherView = [[MyLauncherView alloc] initWithFrame:CGRectMake(0, 0, 1024, 594)];
+//            break;
+//        default:
+//            break;
+//    }
+    
+    self.launcherView = [[MyLauncherView alloc] initWithFrame:CGRectMake(0, 0, self.mainLauncherView.frame.size.width, self.mainLauncherView.frame.size.height)];
+    
     self.launcherView.backgroundColor = [UIColor clearColor];
     [self.launcherView setDelegate:self];
     [self.mainLauncherView addSubview:self.launcherView];
+    [self reloadLauncherView];
     
-    [self.launcherView setPages:[self savedLauncherItems]];
-    [self.launcherView setNumberOfImmovableItems:[(NSNumber *)[self retrieveFromUserDefaults:@"myLauncherViewImmovable"] intValue]];
+//    if(![self hasSavedLauncherItems])
+//    {
+//        [self.launcherView setPages:[NSMutableArray arrayWithObjects:
+//                                     [NSMutableArray arrayWithObjects:
+//                                      [[MyLauncherItem alloc] initWithTitle:@"Item 1"
+//                                                                iPhoneImage:@"itemImage"
+//                                                                  iPadImage:@"itemImage-iPad"
+//                                                                     target:@"ItemViewController"
+//                                                                targetTitle:@"Item 1 View"
+//                                                                  deletable:YES],
+//                                      [[MyLauncherItem alloc] initWithTitle:@"Item 2"
+//                                                                iPhoneImage:@"itemImage"
+//                                                                  iPadImage:@"itemImage-iPad"
+//                                                                     target:@"ItemViewController"
+//                                                                targetTitle:@"Item 2 View"
+//                                                                  deletable:YES],
+//                                      [[MyLauncherItem alloc] initWithTitle:@"Item 3"
+//                                                                iPhoneImage:@"itemImage"
+//                                                                  iPadImage:@"itemImage-iPad"
+//                                                                     target:@"ItemViewController"
+//                                                                targetTitle:@"Item 3 View"
+//                                                                  deletable:YES],
+//                                      [[MyLauncherItem alloc] initWithTitle:@"Item 4"
+//                                                                iPhoneImage:@"itemImage"
+//                                                                  iPadImage:@"itemImage-iPad"
+//                                                                     target:@"ItemViewController"
+//                                                                targetTitle:@"Item 4 View"
+//                                                                  deletable:YES],
+//                                      [[MyLauncherItem alloc] initWithTitle:@"Item 5"
+//                                                                iPhoneImage:@"itemImage"
+//                                                                  iPadImage:@"itemImage-iPad"
+//                                                                     target:@"ItemViewController"
+//                                                                targetTitle:@"Item 5 View"
+//                                                                  deletable:YES],
+//                                      [[MyLauncherItem alloc] initWithTitle:@"Item 6"
+//                                                                iPhoneImage:@"addItemImage"
+//                                                                  iPadImage:@"addItemImage-iPad"
+//                                                                     target:@"ItemViewController"
+//                                                                targetTitle:@"Item 6 View"
+//                                                                  deletable:NO],
+//                                      nil],
+//                                     nil]];
     
-    self.appControllers = [[NSMutableDictionary alloc] init];
-    // Do any additional setup after loading the view.
-    
-    [self.appControllers setObject:[ItemViewController class] forKey:@"ItemViewController"];
-    
-    //Add your view controllers here to be picked up by the launcher; remember to import them above
-    //[[self appControllers] setObject:[MyCustomViewController class] forKey:@"MyCustomViewController"];
-    //[[self appControllers] setObject:[MyOtherCustomViewController class] forKey:@"MyOtherCustomViewController"];
-    
-    if(![self hasSavedLauncherItems])
-    {
-        [self.launcherView setPages:[NSMutableArray arrayWithObjects:
-                                     [NSMutableArray arrayWithObjects:
-                                      [[MyLauncherItem alloc] initWithTitle:@"Item 1"
-                                                                iPhoneImage:@"itemImage"
-                                                                  iPadImage:@"itemImage-iPad"
-                                                                     target:@"ItemViewController"
-                                                                targetTitle:@"Item 1 View"
-                                                                  deletable:YES],
-                                      [[MyLauncherItem alloc] initWithTitle:@"Item 2"
-                                                                iPhoneImage:@"itemImage"
-                                                                  iPadImage:@"itemImage-iPad"
-                                                                     target:@"ItemViewController"
-                                                                targetTitle:@"Item 2 View"
-                                                                  deletable:YES],
-                                      [[MyLauncherItem alloc] initWithTitle:@"Item 3"
-                                                                iPhoneImage:@"itemImage"
-                                                                  iPadImage:@"itemImage-iPad"
-                                                                     target:@"ItemViewController"
-                                                                targetTitle:@"Item 3 View"
-                                                                  deletable:YES],
-                                      [[MyLauncherItem alloc] initWithTitle:@"Item 4"
-                                                                iPhoneImage:@"addItemImage"
-                                                                  iPadImage:@"addItemImage-iPad"
-                                                                     target:@"ItemViewController"
-                                                                targetTitle:@"Item 4 View"
-                                                                  deletable:YES],
-                                      nil],
-                                     nil]];
-        
         // Set number of immovable items below; only set it when you are setting the pages as the
         // user may still be able to delete these items and setting this then will cause movable
         // items to become immovable.
@@ -154,11 +157,31 @@
         
         // Or uncomment the line below to disable editing (moving/deleting) completely!
         // [self.launcherView setEditingAllowed:NO];
-    }
+//    }
     
     // Set badge text for a MyLauncherItem using it's setBadgeText: method
 //    [(MyLauncherItem *)[[[self.launcherView pages] objectAtIndex:0] objectAtIndex:0] setBadgeText:@"4"];
 }
+
+-(void)reloadLauncherView
+{
+    MyLauncherItem *addItem = [[MyLauncherItem alloc] initWithTitle:kAddSceneModeButton
+                                                        iPhoneImage:@"addItemImage"
+                                                          iPadImage:@"addItemImage-iPad"
+                                                             target:@"ItemViewController"
+                                                        targetTitle:@"添加情景模式"
+                                                          deletable:NO];
+    NSMutableArray *pages = [self savedLauncherItems:addItem];
+    
+    if (pages) {
+        [self.launcherView setPages:pages];
+        [self.launcherView setNumberOfImmovableItems:[(NSNumber *)[self retrieveFromUserDefaults:@"myLauncherViewImmovable"] integerValue]];
+    } else {
+        [self.launcherView setPages:[NSMutableArray arrayWithObjects:
+                                     [NSMutableArray arrayWithObjects:addItem, nil], nil] numberOfImmovableItems:1];
+    }
+}
+
 
 -(IBAction)loginoutButtonClicked:(id)sender
 {
@@ -201,7 +224,8 @@
         default:
             break;
     }
-    [self resetLauncherView];
+    self.launcherView.frame = CGRectMake(0, 0, self.mainLauncherView.frame.size.width, self.mainLauncherView.frame.size.height);
+    [self.launcherView layoutLauncher];
 }
 
 #pragma mark - MyLauncherItem management
@@ -220,12 +244,6 @@
     self.launcherNavigationController = [[BaseNavigationController alloc] initWithRootViewController:controller];
     [[self.launcherNavigationController topViewController] setTitle:item.controllerTitle];
     self.launcherNavigationController.view.frame = CGRectMake(100, 100, 500, 600);
-    
-//    [controller.navigationItem setLeftBarButtonItem:
-//     [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"launcher"]
-//                                      style:UIBarButtonItemStyleBordered
-//                                     target:self
-//                                     action:@selector(closeView)]];
 				
     UIView *viewToLaunch = [[self.launcherNavigationController topViewController] view];
     UIButton *closeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -276,6 +294,15 @@
     if (!viewToClose)
         return;
     
+    MyLauncherItem *item = [[MyLauncherItem alloc] initWithTitle:@"Item 1"
+                                                     iPhoneImage:@"itemImage"
+                                                       iPadImage:@"itemImage-iPad"
+                                                          target:@"ItemViewController"
+                                                     targetTitle:@"Item 1 View"
+                                                       deletable:YES];
+    
+    [self addNewLauncherItemPage:item];
+    
     viewToClose.transform = CGAffineTransformIdentity;
     
     [UIView animateWithDuration:0.3
@@ -290,22 +317,26 @@
                          [[self.launcherNavigationController view] removeFromSuperview];
                          [self.launcherNavigationController setDelegate:nil];
                          [self setLauncherNavigationController:nil];
-                         [self.parentViewController viewWillAppear:NO];
-                         [self.parentViewController viewDidAppear:NO];
+                         [self.overlayView removeFromSuperview];
+                         
+                         //重新布局
+                         self.launcherView.frame = CGRectMake(0, 0, self.mainLauncherView.frame.size.width, self.mainLauncherView.frame.size.height);
+                         [self reloadLauncherView];
                      }];
 }
 
 #pragma mark - myLauncher caching
 
--(NSMutableArray *)savedLauncherItems {
+-(NSMutableArray *)savedLauncherItems:(MyLauncherItem *)item {
     NSArray *savedPages = (NSArray *)[self retrieveFromUserDefaults:@"myLauncherView"];
     
     if(savedPages)
     {
         NSMutableArray *savedLauncherItems = [[NSMutableArray alloc] init];
-        
+        NSInteger index = 0;
         for (NSArray *page in savedPages)
         {
+            index += 1;
             NSMutableArray *savedPage = [[NSMutableArray alloc] init];
             for(NSDictionary *item in page)
             {
@@ -328,6 +359,10 @@
                                           deletable:[[item objectForKey:@"deletable"] boolValue]]];
                 }
             }
+            //最后一页的末尾加上新增按钮
+            if (index == savedPages.count) {
+                [savedPage addObject:item];
+            }
             
             [savedLauncherItems addObject:savedPage];
         }
@@ -338,9 +373,36 @@
     return nil;
 }
 
--(void)clearSavedLauncherItems {
-    [self saveToUserDefaults:nil key:@"myLauncherView"];
-    [self saveToUserDefaults:nil key:@"myLauncherViewImmovable"];
+-(void)addNewLauncherItemPage:(MyLauncherItem *)item {
+    NSMutableArray *pages = [self savedLauncherItems:item];
+    if (!pages) {
+        pages = [NSMutableArray arrayWithObjects:[NSMutableArray arrayWithObjects:item, nil], nil];
+    }
+    NSMutableArray *pagesToSave = [[NSMutableArray alloc] init];
+    
+    for(NSArray *page in pages)
+    {
+        NSMutableArray *pageToSave = [[NSMutableArray alloc] init];
+        
+        for(MyLauncherItem *item in page)
+        {
+            if (![item.title isEqualToString:kAddSceneModeButton]) {
+                NSMutableDictionary *itemToSave = [[NSMutableDictionary alloc] init];
+                [itemToSave setObject:item.title forKey:@"title"];
+                [itemToSave setObject:item.image forKey:@"image"];
+                [itemToSave setObject:item.iPadImage forKey:@"iPadImage"];
+                [itemToSave setObject:[NSString stringWithFormat:@"%d", [item deletable]] forKey:@"deletable"];
+                [itemToSave setObject:item.controllerStr forKey:@"controller"];
+                [itemToSave setObject:item.controllerTitle forKey:@"controllerTitle"];
+                [itemToSave setObject:[NSNumber numberWithInt:2] forKey:@"myLauncherViewItemVersion"];
+                
+                [pageToSave addObject:itemToSave];
+            }
+        }
+        [pagesToSave addObject:pageToSave];
+    }
+    
+    [self saveToUserDefaults:pagesToSave key:@"myLauncherView"];
 }
 
 -(id)retrieveFromUserDefaults:(NSString *)key {

@@ -23,6 +23,8 @@
 #define kChangeServer @"changeserver://"
 #define kSeparateFlag @"://"
 
+#define kAddSceneModeButton  @"添加情景"
+
 #ifdef DEBUG
 #define kLogEnable  YES
 #else

@@ -89,7 +89,7 @@
 }
 
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
-    [self.launcherView setCurrentOrientation:toInterfaceOrientation];
+    [self.launcherView setCurrentOrientation:(UIDeviceOrientation)toInterfaceOrientation];
     if (self.launcherNavigationController) {
         [self.launcherNavigationController setNavigationBarHidden:YES];
         [self.launcherNavigationController willRotateToInterfaceOrientation:toInterfaceOrientation duration:duration];

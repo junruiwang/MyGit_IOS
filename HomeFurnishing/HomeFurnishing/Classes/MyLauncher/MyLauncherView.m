@@ -19,6 +19,7 @@
 //
 
 #import "MyLauncherView.h"
+#import "Constants.h"
 
 struct NItemLocation {
 	NSInteger page; 
@@ -179,18 +180,18 @@ static const CGFloat iPadLandscapeYPadding = 30;
 
 #pragma mark - View Orientation
 
-- (void)setCurrentOrientation:(UIInterfaceOrientation)newOrientation {
+- (void)setCurrentOrientation:(UIDeviceOrientation)newOrientation {
     if (newOrientation != currentOrientation && 
         newOrientation != UIDeviceOrientationUnknown && 
         newOrientation != UIDeviceOrientationFaceUp && 
         newOrientation != UIDeviceOrientationFaceDown) {
-        currentOrientation = (UIDeviceOrientation)newOrientation;
+        currentOrientation = newOrientation;
     }
 }
 
 - (UIDeviceOrientation)currentLayoutOrientation {
     UIDeviceOrientation deviceOrientation = [UIDevice currentDevice].orientation;
-    [self setCurrentOrientation:(UIInterfaceOrientation)deviceOrientation];
+    [self setCurrentOrientation:deviceOrientation];
     return currentOrientation;
 }
 
@@ -765,7 +766,7 @@ static const CGFloat iPadLandscapeYPadding = 30;
 
 -(BOOL)itemMovable:(MyLauncherItem *)itemToSearch
 {
-    int count = 0;
+    NSInteger count = 0;
     for (NSMutableArray *page in self.pages) {
         if ([page containsObject:itemToSearch]) {
             count = count + [page indexOfObject:itemToSearch];
@@ -798,22 +799,24 @@ static const CGFloat iPadLandscapeYPadding = 30;
 		
 		for(MyLauncherItem *item in page)
 		{
-			NSMutableDictionary *itemToSave = [[NSMutableDictionary alloc] init];
-			[itemToSave setObject:item.title forKey:@"title"];
-			[itemToSave setObject:item.image forKey:@"image"];
-            [itemToSave setObject:item.iPadImage forKey:@"iPadImage"];
-			[itemToSave setObject:[NSString stringWithFormat:@"%d", [item deletable]] forKey:@"deletable"];
-			[itemToSave setObject:item.controllerStr forKey:@"controller"];
-            [itemToSave setObject:item.controllerTitle forKey:@"controllerTitle"];
-            [itemToSave setObject:[NSNumber numberWithInt:2] forKey:@"myLauncherViewItemVersion"];
-			
-			[pageToSave addObject:itemToSave];
+            if (![item.title isEqualToString:kAddSceneModeButton]) {
+                NSMutableDictionary *itemToSave = [[NSMutableDictionary alloc] init];
+                [itemToSave setObject:item.title forKey:@"title"];
+                [itemToSave setObject:item.image forKey:@"image"];
+                [itemToSave setObject:item.iPadImage forKey:@"iPadImage"];
+                [itemToSave setObject:[NSString stringWithFormat:@"%d", [item deletable]] forKey:@"deletable"];
+                [itemToSave setObject:item.controllerStr forKey:@"controller"];
+                [itemToSave setObject:item.controllerTitle forKey:@"controllerTitle"];
+                [itemToSave setObject:[NSNumber numberWithInt:2] forKey:@"myLauncherViewItemVersion"];
+                
+                [pageToSave addObject:itemToSave];
+            }
 		}
 		[pagesToSave addObject:pageToSave];
 	}
 	
 	[self saveToUserDefaults:pagesToSave key:@"myLauncherView"];
-    [self saveToUserDefaults:[NSNumber numberWithInt:numberOfImmovableItems] key:@"myLauncherViewImmovable"];
+    [self saveToUserDefaults:[NSNumber numberWithInteger:numberOfImmovableItems] key:@"myLauncherViewImmovable"];
 }
 
 -(void)saveToUserDefaults:(id)object key:(NSString *)key
