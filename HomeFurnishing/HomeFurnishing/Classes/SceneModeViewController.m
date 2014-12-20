@@ -75,8 +75,8 @@
     [self setupSocket];
     //设置调用时间
     self.invokeTime = [NSDate date];
-    //启动UDP查找主机
-    [self workingForFindServerUrl];
+    //启动UDP查找主机 延迟0.5秒执行
+    [self performSelector:@selector(workingForFindServerUrl) withObject:nil afterDelay:.2];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -99,13 +99,7 @@
 }
 
 -(IBAction)systemButtonClick:(id)sender
-{
-//    if (!self.loginViewController) {
-//        UIStoryboard *board = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-//        self.loginViewController = [board instantiateViewControllerWithIdentifier:@"LoginViewController"];
-//        self.loginViewController.delegate = self;
-//    }
-    
+{    
     [self performSegueWithIdentifier:@"fromSceneToLogin" sender:nil];
     
 //    [UIView
@@ -381,10 +375,32 @@
     {
         UIStoryboard *board = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         self.udpIndicatorViewController = [board instantiateViewControllerWithIdentifier:@"UdpIndicatorViewController"];
-        self.udpIndicatorViewController.view.frame = [UIScreen mainScreen].bounds;
-        [self.view bringSubviewToFront:self.udpIndicatorViewController.view];
+        
+        CGRect screenSize = [[UIScreen mainScreen] bounds];
+         //Screen width
+         CGFloat swidth = screenSize.size.width;
+         //Screen height
+         CGFloat sheight = screenSize.size.height;
+         UIDeviceOrientation orientation = [UIDevice currentDevice].orientation;
+         switch (orientation) {
+             case UIDeviceOrientationPortrait:
+                 self.udpIndicatorViewController.view.frame = CGRectMake(0, 0, swidth < sheight ? swidth : sheight, swidth < sheight ? sheight : swidth);
+                 break;
+             case UIDeviceOrientationPortraitUpsideDown:
+                 self.udpIndicatorViewController.view.frame = CGRectMake(0, 0, swidth < sheight ? swidth : sheight, swidth < sheight ? sheight : swidth);
+                 break;
+             case UIDeviceOrientationLandscapeLeft:
+                 self.udpIndicatorViewController.view.frame = CGRectMake(0, 0, swidth > sheight ? swidth : sheight, swidth > sheight ? sheight : swidth);
+                 break;
+             case UIDeviceOrientationLandscapeRight:
+                 self.udpIndicatorViewController.view.frame = CGRectMake(0, 0, swidth > sheight ? swidth : sheight, swidth > sheight ? sheight : swidth);
+                 break;
+             default:
+                 break;
+         }
     }
     [self.view addSubview:self.udpIndicatorViewController.view];
+    [self.view bringSubviewToFront:self.udpIndicatorViewController.view];
 }
 
 - (void)hideIndicatorView

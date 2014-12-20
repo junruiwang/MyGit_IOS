@@ -20,13 +20,12 @@
 @property (nonatomic, strong) MyLauncherView *launcherView;
 @property (nonatomic, strong) BaseNavigationController *launcherNavigationController;
 @property (nonatomic, strong) NSMutableDictionary *appControllers;
-@property (nonatomic, strong) UIView *overlayView;
 
 -(BOOL)hasSavedLauncherItems;
 -(void)launcherViewItemSelected:(MyLauncherItem*)item;
 -(void)closeView;
 
--(NSMutableArray *)savedLauncherItems:(MyLauncherItem *)item;
+-(NSMutableArray *)loadLauncherItems:(MyLauncherItem *)item;
 -(NSArray*)retrieveFromUserDefaults:(NSString *)key;
 -(void)saveToUserDefaults:(id)object key:(NSString *)key;
 
@@ -109,47 +108,6 @@
     
 //    if(![self hasSavedLauncherItems])
 //    {
-//        [self.launcherView setPages:[NSMutableArray arrayWithObjects:
-//                                     [NSMutableArray arrayWithObjects:
-//                                      [[MyLauncherItem alloc] initWithTitle:@"Item 1"
-//                                                                iPhoneImage:@"itemImage"
-//                                                                  iPadImage:@"itemImage-iPad"
-//                                                                     target:@"ItemViewController"
-//                                                                targetTitle:@"Item 1 View"
-//                                                                  deletable:YES],
-//                                      [[MyLauncherItem alloc] initWithTitle:@"Item 2"
-//                                                                iPhoneImage:@"itemImage"
-//                                                                  iPadImage:@"itemImage-iPad"
-//                                                                     target:@"ItemViewController"
-//                                                                targetTitle:@"Item 2 View"
-//                                                                  deletable:YES],
-//                                      [[MyLauncherItem alloc] initWithTitle:@"Item 3"
-//                                                                iPhoneImage:@"itemImage"
-//                                                                  iPadImage:@"itemImage-iPad"
-//                                                                     target:@"ItemViewController"
-//                                                                targetTitle:@"Item 3 View"
-//                                                                  deletable:YES],
-//                                      [[MyLauncherItem alloc] initWithTitle:@"Item 4"
-//                                                                iPhoneImage:@"itemImage"
-//                                                                  iPadImage:@"itemImage-iPad"
-//                                                                     target:@"ItemViewController"
-//                                                                targetTitle:@"Item 4 View"
-//                                                                  deletable:YES],
-//                                      [[MyLauncherItem alloc] initWithTitle:@"Item 5"
-//                                                                iPhoneImage:@"itemImage"
-//                                                                  iPadImage:@"itemImage-iPad"
-//                                                                     target:@"ItemViewController"
-//                                                                targetTitle:@"Item 5 View"
-//                                                                  deletable:YES],
-//                                      [[MyLauncherItem alloc] initWithTitle:@"Item 6"
-//                                                                iPhoneImage:@"addItemImage"
-//                                                                  iPadImage:@"addItemImage-iPad"
-//                                                                     target:@"ItemViewController"
-//                                                                targetTitle:@"Item 6 View"
-//                                                                  deletable:NO],
-//                                      nil],
-//                                     nil]];
-    
         // Set number of immovable items below; only set it when you are setting the pages as the
         // user may still be able to delete these items and setting this then will cause movable
         // items to become immovable.
@@ -166,12 +124,12 @@
 -(void)reloadLauncherView
 {
     MyLauncherItem *addItem = [[MyLauncherItem alloc] initWithTitle:kAddSceneModeButton
-                                                        iPhoneImage:@"addItemImage"
-                                                          iPadImage:@"addItemImage-iPad"
+                                                        iPhoneImage:@"setting_icon"
+                                                          iPadImage:@"setting_icon-iPad"
                                                              target:@"ItemViewController"
                                                         targetTitle:@"添加情景模式"
                                                           deletable:NO];
-    NSMutableArray *pages = [self savedLauncherItems:addItem];
+    NSMutableArray *pages = [self loadLauncherItems:addItem];
     
     if (pages) {
         [self.launcherView setPages:pages];
@@ -238,12 +196,14 @@
     if (![self appControllers] || [self launcherNavigationController]) {
         return;
     }
-    Class viewCtrClass = [self.appControllers objectForKey:[item controllerStr]];
-    UIViewController *controller = [[viewCtrClass alloc] init];
+//    Class viewCtrClass = [self.appControllers objectForKey:[item controllerStr]];
+//    UIViewController *controller = [[viewCtrClass alloc] init];
+    
+    UIStoryboard *board = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UIViewController *controller = [board instantiateViewControllerWithIdentifier:[item controllerStr]];
     
     self.launcherNavigationController = [[BaseNavigationController alloc] initWithRootViewController:controller];
     [[self.launcherNavigationController topViewController] setTitle:item.controllerTitle];
-    self.launcherNavigationController.view.frame = CGRectMake(100, 100, 500, 600);
 				
     UIView *viewToLaunch = [[self.launcherNavigationController topViewController] view];
     UIButton *closeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -252,21 +212,21 @@
     [closeBtn setTitle:@"关闭" forState:UIControlStateNormal];
     [closeBtn addTarget:self action:@selector(closeView) forControlEvents:UIControlEventTouchUpInside];
     [viewToLaunch addSubview:closeBtn];
+    [self.launcherNavigationController.view sizeToFit];
+    [self.launcherNavigationController.view setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [self.view addSubview:[self.launcherNavigationController view]];
     
+    NSLayoutConstraint *constraint = [NSLayoutConstraint constraintWithItem:self.launcherNavigationController.view attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeTop multiplier:1.0f constant:00.0f];
+    [self.view addConstraint:constraint];
+    constraint = [NSLayoutConstraint constraintWithItem:self.launcherNavigationController.view attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeBottom multiplier:1.0f constant:00.0f];
+    [self.view addConstraint:constraint];
+    constraint = [NSLayoutConstraint constraintWithItem:self.launcherNavigationController.view attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeLeft multiplier:1.0f constant:00.0f];
+    [self.view addConstraint:constraint];
+    constraint = [NSLayoutConstraint constraintWithItem:self.launcherNavigationController.view attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeRight multiplier:1.0f constant:00.0f];
+    [self.view addConstraint:constraint];
     
-    [self.parentViewController.view addSubview:[self.launcherNavigationController view]];
     viewToLaunch.alpha = 0;
     viewToLaunch.transform = CGAffineTransformMakeScale(0.00001, 0.00001);
-    
-    if (!self.overlayView)
-    {
-        self.overlayView = [[UIView alloc] initWithFrame:self.view.bounds];
-        self.overlayView.backgroundColor = [UIColor blackColor];
-        self.overlayView.alpha = 0;
-        self.overlayView.autoresizesSubviews = YES;
-        self.overlayView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin;
-        [self.view addSubview:self.overlayView];
-    }
     
     [UIView animateWithDuration:0.3
                           delay:0
@@ -274,7 +234,6 @@
                      animations:^{
                          viewToLaunch.alpha = 1.0;
                          viewToLaunch.transform = CGAffineTransformIdentity;
-                         self.overlayView.alpha = 0.7;
                      }
                      completion:nil];
 }
@@ -311,13 +270,11 @@
                      animations:^{
                          viewToClose.alpha = 0;
                          viewToClose.transform = CGAffineTransformMakeScale(0.00001, 0.00001);
-                         self.overlayView.alpha = 0;
                      }
                      completion:^(BOOL finished){
                          [[self.launcherNavigationController view] removeFromSuperview];
                          [self.launcherNavigationController setDelegate:nil];
                          [self setLauncherNavigationController:nil];
-                         [self.overlayView removeFromSuperview];
                          
                          //重新布局
                          self.launcherView.frame = CGRectMake(0, 0, self.mainLauncherView.frame.size.width, self.mainLauncherView.frame.size.height);
@@ -327,7 +284,7 @@
 
 #pragma mark - myLauncher caching
 
--(NSMutableArray *)savedLauncherItems:(MyLauncherItem *)item {
+-(NSMutableArray *)loadLauncherItems:(MyLauncherItem *)item {
     NSArray *savedPages = (NSArray *)[self retrieveFromUserDefaults:@"myLauncherView"];
     
     if(savedPages)
@@ -374,7 +331,7 @@
 }
 
 -(void)addNewLauncherItemPage:(MyLauncherItem *)item {
-    NSMutableArray *pages = [self savedLauncherItems:item];
+    NSMutableArray *pages = [self loadLauncherItems:item];
     if (!pages) {
         pages = [NSMutableArray arrayWithObjects:[NSMutableArray arrayWithObjects:item, nil], nil];
     }

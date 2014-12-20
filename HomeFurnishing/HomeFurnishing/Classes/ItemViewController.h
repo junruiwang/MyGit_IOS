@@ -11,4 +11,6 @@
 
 @interface ItemViewController : BaseViewController
 
+@property(nonatomic, weak) IBOutlet UIImageView *bgImageView;
+
 @end

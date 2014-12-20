@@ -37,12 +37,14 @@
     
     [self loadIndicateView];
     self.haloLayer = [PulsingHaloLayer layer];
-//    NSLog(@"------->%@",NSStringFromCGSize([UIScreen mainScreen].currentMode.size));
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
     self.haloLayer.position = CGPointMake(self.view.center.x-48, self.view.center.y-180);
-    
     [self.indicateView.layer insertSublayer:self.haloLayer below:self.beaconView.layer];
-    
-	[self setupInitialValues];
+    [self setupInitialValues];
 }
 
 - (void)loadIndicateView
