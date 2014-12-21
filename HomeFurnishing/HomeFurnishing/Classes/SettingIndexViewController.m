@@ -15,7 +15,7 @@
 #import "ItemViewController.h"
 #import "Constants.h"
 
-@interface SettingIndexViewController ()<MyLauncherViewDelegate>
+@interface SettingIndexViewController ()<MyLauncherViewDelegate,ItemViewControllerDelegate>
 
 @property (nonatomic, strong) MyLauncherView *launcherView;
 @property (nonatomic, strong) BaseNavigationController *launcherNavigationController;
@@ -23,7 +23,6 @@
 
 -(BOOL)hasSavedLauncherItems;
 -(void)launcherViewItemSelected:(MyLauncherItem*)item;
--(void)closeView;
 
 -(NSMutableArray *)loadLauncherItems:(MyLauncherItem *)item;
 -(NSArray*)retrieveFromUserDefaults:(NSString *)key;
@@ -200,18 +199,13 @@
 //    UIViewController *controller = [[viewCtrClass alloc] init];
     
     UIStoryboard *board = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    UIViewController *controller = [board instantiateViewControllerWithIdentifier:[item controllerStr]];
+    ItemViewController *controller = [board instantiateViewControllerWithIdentifier:[item controllerStr]];
+    controller.delegate = self;
     
     self.launcherNavigationController = [[BaseNavigationController alloc] initWithRootViewController:controller];
     [[self.launcherNavigationController topViewController] setTitle:item.controllerTitle];
 				
     UIView *viewToLaunch = [[self.launcherNavigationController topViewController] view];
-    UIButton *closeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    closeBtn.frame = CGRectMake(100, 200, 56, 30);
-    [closeBtn setBackgroundImage:[UIImage imageNamed:@"book.png"] forState:UIControlStateNormal];
-    [closeBtn setTitle:@"关闭" forState:UIControlStateNormal];
-    [closeBtn addTarget:self action:@selector(closeView) forControlEvents:UIControlEventTouchUpInside];
-    [viewToLaunch addSubview:closeBtn];
     [self.launcherNavigationController.view sizeToFit];
     [self.launcherNavigationController.view setTranslatesAutoresizingMaskIntoConstraints:NO];
     [self.view addSubview:[self.launcherNavigationController view]];
@@ -224,7 +218,6 @@
     [self.view addConstraint:constraint];
     constraint = [NSLayoutConstraint constraintWithItem:self.launcherNavigationController.view attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeRight multiplier:1.0f constant:00.0f];
     [self.view addConstraint:constraint];
-    
     viewToLaunch.alpha = 0;
     viewToLaunch.transform = CGAffineTransformMakeScale(0.00001, 0.00001);
     
@@ -246,40 +239,6 @@
 -(void)launcherViewDidEndEditing:(id)sender {
     [self.doneButton removeTarget:self.launcherView action:@selector(endEditing) forControlEvents:UIControlEventTouchUpInside];
     self.doneButton.hidden = YES;
-}
-
-- (void)closeView {
-    UIView *viewToClose = [[self.launcherNavigationController topViewController] view];
-    if (!viewToClose)
-        return;
-    
-    MyLauncherItem *item = [[MyLauncherItem alloc] initWithTitle:@"Item 1"
-                                                     iPhoneImage:@"itemImage"
-                                                       iPadImage:@"itemImage-iPad"
-                                                          target:@"ItemViewController"
-                                                     targetTitle:@"Item 1 View"
-                                                       deletable:YES];
-    
-    [self addNewLauncherItemPage:item];
-    
-    viewToClose.transform = CGAffineTransformIdentity;
-    
-    [UIView animateWithDuration:0.3
-                          delay:0
-                        options:UIViewAnimationOptionCurveEaseOut
-                     animations:^{
-                         viewToClose.alpha = 0;
-                         viewToClose.transform = CGAffineTransformMakeScale(0.00001, 0.00001);
-                     }
-                     completion:^(BOOL finished){
-                         [[self.launcherNavigationController view] removeFromSuperview];
-                         [self.launcherNavigationController setDelegate:nil];
-                         [self setLauncherNavigationController:nil];
-                         
-                         //重新布局
-                         self.launcherView.frame = CGRectMake(0, 0, self.mainLauncherView.frame.size.width, self.mainLauncherView.frame.size.height);
-                         [self reloadLauncherView];
-                     }];
 }
 
 #pragma mark - myLauncher caching
@@ -378,6 +337,51 @@
         [standardUserDefaults setObject:object forKey:key];
         [standardUserDefaults synchronize];
     }
+}
+
+
+- (void)removeTopViewPage
+{
+    UIView *viewToClose = [[self.launcherNavigationController topViewController] view];
+    if (!viewToClose)
+        return;
+    
+    viewToClose.transform = CGAffineTransformIdentity;
+    
+    [UIView animateWithDuration:0.3
+                          delay:0
+                        options:UIViewAnimationOptionCurveEaseOut
+                     animations:^{
+                         viewToClose.alpha = 0;
+                         viewToClose.transform = CGAffineTransformMakeScale(0.00001, 0.00001);
+                     }
+                     completion:^(BOOL finished){
+                         [[self.launcherNavigationController view] removeFromSuperview];
+                         ((ItemViewController *)self.launcherNavigationController.topViewController).delegate = nil;
+                         [self.launcherNavigationController setDelegate:nil];
+                         [self setLauncherNavigationController:nil];
+                         //重新布局
+                         self.launcherView.frame = CGRectMake(0, 0, self.mainLauncherView.frame.size.width, self.mainLauncherView.frame.size.height);
+                         [self reloadLauncherView];
+                     }];
+}
+
+#pragma mark ItemViewControllerDelegate
+
+- (void)backButtonClicked
+{
+    [self removeTopViewPage];
+}
+
+- (void)saveItemButtonClicked:(MyLauncherItem *)item
+{
+    [self addNewLauncherItemPage:item];
+    [self removeTopViewPage];
+}
+
+- (void)delItemButtonClicked:(MyLauncherItem *)item
+{
+    [self removeTopViewPage];
 }
 
 @end

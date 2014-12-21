@@ -8,9 +8,27 @@
 
 #import <UIKit/UIKit.h>
 #import "BaseViewController.h"
+#import "MyLauncherItem.h"
+
+@class ItemViewController;
+
+@protocol ItemViewControllerDelegate <NSObject>
+
+@optional
+
+- (void)backButtonClicked;
+- (void)saveItemButtonClicked:(MyLauncherItem *)item;
+- (void)delItemButtonClicked:(MyLauncherItem *)item;
+
+@end
 
 @interface ItemViewController : BaseViewController
 
 @property(nonatomic, weak) IBOutlet UIImageView *bgImageView;
+@property(nonatomic, weak) id<ItemViewControllerDelegate> delegate;
+
+- (IBAction)backBtnClicked:(id)sender;
+- (IBAction)saveBtnClicked:(id)sender;
+- (IBAction)deleteBtnClicked:(id)sender;
 
 @end

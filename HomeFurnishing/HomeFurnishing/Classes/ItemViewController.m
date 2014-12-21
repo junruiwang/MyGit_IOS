@@ -45,6 +45,45 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)backBtnClicked:(id)sender
+{
+    if(self.delegate != nil && [self.delegate respondsToSelector:@selector(backButtonClicked)])
+    {
+        [self.delegate backButtonClicked];
+    }
+}
+
+- (IBAction)saveBtnClicked:(id)sender
+{
+    if(self.delegate != nil && [self.delegate respondsToSelector:@selector(saveItemButtonClicked:)])
+    {
+        MyLauncherItem *item = [[MyLauncherItem alloc] initWithTitle:@"Item 1"
+                                                         iPhoneImage:@"itemImage"
+                                                           iPadImage:@"itemImage-iPad"
+                                                              target:@"ItemViewController"
+                                                         targetTitle:@"Item 1 View"
+                                                           deletable:YES];
+        
+        [self.delegate saveItemButtonClicked:item];
+    }
+}
+
+- (IBAction)deleteBtnClicked:(id)sender
+{
+    if(self.delegate != nil && [self.delegate respondsToSelector:@selector(delItemButtonClicked:)])
+    {
+        MyLauncherItem *item = [[MyLauncherItem alloc] initWithTitle:@"Item 1"
+                                                         iPhoneImage:@"itemImage"
+                                                           iPadImage:@"itemImage-iPad"
+                                                              target:@"ItemViewController"
+                                                         targetTitle:@"Item 1 View"
+                                                           deletable:YES];
+        
+        [self.delegate delItemButtonClicked:item];
+    }
+}
+
+
 #pragma mark auto Rotation
 
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
