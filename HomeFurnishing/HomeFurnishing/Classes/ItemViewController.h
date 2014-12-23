@@ -25,8 +25,10 @@
 @interface ItemViewController : BaseViewController
 
 @property(nonatomic, weak) IBOutlet UIImageView *bgImageView;
+@property(nonatomic, weak) IBOutlet UIButton *imageBtn;
 @property(nonatomic, weak) id<ItemViewControllerDelegate> delegate;
 
+- (IBAction)imageButtonClicked:(id)sender;
 - (IBAction)backBtnClicked:(id)sender;
 - (IBAction)saveBtnClicked:(id)sender;
 - (IBAction)deleteBtnClicked:(id)sender;
