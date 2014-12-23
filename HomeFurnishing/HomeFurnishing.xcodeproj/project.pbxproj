@@ -121,6 +121,8 @@
 		04D3D4231A34408700C966EF /* AppIcon40x40~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 04D3D4191A34408700C966EF /* AppIcon40x40~ipad.png */; };
 		04D3D4241A34408700C966EF /* AppIcon76x76@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 04D3D41A1A34408700C966EF /* AppIcon76x76@2x~ipad.png */; };
 		04D3D4251A34408700C966EF /* AppIcon76x76~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 04D3D41B1A34408700C966EF /* AppIcon76x76~ipad.png */; };
+		C46839CE1A49A4D600463841 /* ExecutionUnit.m in Sources */ = {isa = PBXBuildFile; fileRef = C46839CD1A49A4D600463841 /* ExecutionUnit.m */; };
+		C46839D11A49B26200463841 /* ValidateInputUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = C46839D01A49B26200463841 /* ValidateInputUtil.m */; };
 		C46C74811A37320C00E1B99B /* background-Landscape.png in Resources */ = {isa = PBXBuildFile; fileRef = C46C747F1A37320C00E1B99B /* background-Landscape.png */; };
 		C46C74821A37320C00E1B99B /* background-Portrait.png in Resources */ = {isa = PBXBuildFile; fileRef = C46C74801A37320C00E1B99B /* background-Portrait.png */; };
 		C46C74841A37442300E1B99B /* top_icon_bar.png in Resources */ = {isa = PBXBuildFile; fileRef = C46C74831A37442300E1B99B /* top_icon_bar.png */; };
@@ -294,6 +296,10 @@
 		04D3D4191A34408700C966EF /* AppIcon40x40~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "AppIcon40x40~ipad.png"; path = "Resources/AppIcon40x40~ipad.png"; sourceTree = "<group>"; };
 		04D3D41A1A34408700C966EF /* AppIcon76x76@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "AppIcon76x76@2x~ipad.png"; path = "Resources/AppIcon76x76@2x~ipad.png"; sourceTree = "<group>"; };
 		04D3D41B1A34408700C966EF /* AppIcon76x76~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "AppIcon76x76~ipad.png"; path = "Resources/AppIcon76x76~ipad.png"; sourceTree = "<group>"; };
+		C46839CC1A49A4D600463841 /* ExecutionUnit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExecutionUnit.h; path = Classes/ExecutionUnit.h; sourceTree = "<group>"; };
+		C46839CD1A49A4D600463841 /* ExecutionUnit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExecutionUnit.m; path = Classes/ExecutionUnit.m; sourceTree = "<group>"; };
+		C46839CF1A49B26200463841 /* ValidateInputUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ValidateInputUtil.h; sourceTree = "<group>"; };
+		C46839D01A49B26200463841 /* ValidateInputUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ValidateInputUtil.m; sourceTree = "<group>"; };
 		C46C747F1A37320C00E1B99B /* background-Landscape.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "background-Landscape.png"; path = "Resources/background-Landscape.png"; sourceTree = "<group>"; };
 		C46C74801A37320C00E1B99B /* background-Portrait.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "background-Portrait.png"; path = "Resources/background-Portrait.png"; sourceTree = "<group>"; };
 		C46C74831A37442300E1B99B /* top_icon_bar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = top_icon_bar.png; path = Resources/top_icon_bar.png; sourceTree = "<group>"; };
@@ -407,6 +413,8 @@
 				046CEE331A34557900BC79E4 /* TcpSocketHelper.m */,
 				046410DF1A3C086F00571658 /* BasePushSegue.h */,
 				046410E01A3C086F00571658 /* BasePushSegue.m */,
+				C46839CF1A49B26200463841 /* ValidateInputUtil.h */,
+				C46839D01A49B26200463841 /* ValidateInputUtil.m */,
 			);
 			name = Common;
 			path = Classes/Common;
@@ -548,6 +556,7 @@
 		04D3D4121A34376800C966EF /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				C46839CB1A49A36900463841 /* Model */,
 				047471461A3C88E4006FD502 /* MyLauncher */,
 				045774801A39656800F809D9 /* ViewController */,
 				0452C0991A34623C009188E0 /* Parser */,
@@ -625,6 +634,15 @@
 				046CEE191A34463B00BC79E4 /* Default-Portrait~ipad.png */,
 			);
 			name = appicon;
+			sourceTree = "<group>";
+		};
+		C46839CB1A49A36900463841 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C46839CC1A49A4D600463841 /* ExecutionUnit.h */,
+				C46839CD1A49A4D600463841 /* ExecutionUnit.m */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -779,6 +797,7 @@
 				046CEE5E1A3455A000BC79E4 /* SBJsonStreamWriter.m in Sources */,
 				046CEE781A3455D000BC79E4 /* NetworkHelper.m in Sources */,
 				045774831A39659700F809D9 /* SceneModeViewController.m in Sources */,
+				C46839CE1A49A4D600463841 /* ExecutionUnit.m in Sources */,
 				046CEE611A3455A000BC79E4 /* SBJsonTokeniser.m in Sources */,
 				045774861A3965EE00F809D9 /* LoginViewController.m in Sources */,
 				046CEE761A3455D000BC79E4 /* CloNetworkUtil.m in Sources */,
@@ -795,6 +814,7 @@
 				046CEE5B1A3455A000BC79E4 /* SBJsonStreamParserAccumulator.m in Sources */,
 				047471531A3C88E4006FD502 /* CustomBadge.m in Sources */,
 				0474715B1A3C894D006FD502 /* ItemViewController.m in Sources */,
+				C46839D11A49B26200463841 /* ValidateInputUtil.m in Sources */,
 				047471551A3C88E4006FD502 /* MyLauncherPageControl.m in Sources */,
 				046CEE601A3455A000BC79E4 /* SBJsonStreamWriterState.m in Sources */,
 				046CEE3B1A34557900BC79E4 /* PulsingHaloLayer.m in Sources */,
