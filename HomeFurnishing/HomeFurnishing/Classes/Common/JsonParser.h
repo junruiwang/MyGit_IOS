@@ -36,6 +36,7 @@
 @property (nonatomic, weak) id<JsonParserDelegate> delegate;
 @property (nonatomic, copy) NSString* serverAddress;
 @property (nonatomic, copy) NSString* requestString;
+@property (nonatomic) BOOL isArrayReturnValue;
 
 - (void)start;
 - (void)cancel;

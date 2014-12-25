@@ -69,6 +69,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    //TODO 临时测试
+    [self.myServerIdManager addServerIdToFile:@"7bdd277e-60c6-473c-983b-c77676a0f83d"];
+    
     self.title = @"SNB SmartHome";
     [self deviceIPAdress];
     //启动UPD服务
@@ -194,6 +198,7 @@
         self.baseServerParser = [[BaseServerParser alloc] init];
         self.baseServerParser.serverAddress = kAliyunURL;
         self.baseServerParser.requestString = [NSString stringWithFormat:@"id=%@",serverId];
+        self.baseServerParser.isArrayReturnValue = NO;
         self.baseServerParser.delegate = self;
         [self.baseServerParser start];
     }

@@ -130,6 +130,9 @@
 		C46C748A1A37486E00E1B99B /* message.png in Resources */ = {isa = PBXBuildFile; fileRef = C46C74861A37486E00E1B99B /* message.png */; };
 		C46C748B1A37486E00E1B99B /* phone.png in Resources */ = {isa = PBXBuildFile; fileRef = C46C74871A37486E00E1B99B /* phone.png */; };
 		C46C748C1A37486E00E1B99B /* setting.png in Resources */ = {isa = PBXBuildFile; fileRef = C46C74881A37486E00E1B99B /* setting.png */; };
+		C486C6D11A4C4761000425E5 /* SceneListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C486C6D01A4C4761000425E5 /* SceneListViewController.m */; };
+		C486C6D41A4C49F9000425E5 /* SceneListParser.m in Sources */ = {isa = PBXBuildFile; fileRef = C486C6D31A4C49F9000425E5 /* SceneListParser.m */; };
+		C486C6D81A4C5BEE000425E5 /* dashed_detail.png in Resources */ = {isa = PBXBuildFile; fileRef = C486C6D71A4C5BEE000425E5 /* dashed_detail.png */; };
 		C4DD07711A3F269C0018DC8F /* addItemImage-iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = C4DD076E1A3F269C0018DC8F /* addItemImage-iPad.png */; };
 		C4DD07721A3F269C0018DC8F /* addItemImage.png in Resources */ = {isa = PBXBuildFile; fileRef = C4DD076F1A3F269C0018DC8F /* addItemImage.png */; };
 		C4DD07731A3F269C0018DC8F /* addItemImage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C4DD07701A3F269C0018DC8F /* addItemImage@2x.png */; };
@@ -307,6 +310,11 @@
 		C46C74861A37486E00E1B99B /* message.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = message.png; path = Resources/message.png; sourceTree = "<group>"; };
 		C46C74871A37486E00E1B99B /* phone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = phone.png; path = Resources/phone.png; sourceTree = "<group>"; };
 		C46C74881A37486E00E1B99B /* setting.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = setting.png; path = Resources/setting.png; sourceTree = "<group>"; };
+		C486C6CF1A4C4761000425E5 /* SceneListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SceneListViewController.h; path = Classes/SceneListViewController.h; sourceTree = "<group>"; };
+		C486C6D01A4C4761000425E5 /* SceneListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SceneListViewController.m; path = Classes/SceneListViewController.m; sourceTree = "<group>"; };
+		C486C6D21A4C49F9000425E5 /* SceneListParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SceneListParser.h; path = Classes/SceneListParser.h; sourceTree = "<group>"; };
+		C486C6D31A4C49F9000425E5 /* SceneListParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SceneListParser.m; path = Classes/SceneListParser.m; sourceTree = "<group>"; };
+		C486C6D71A4C5BEE000425E5 /* dashed_detail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = dashed_detail.png; path = Resources/dashed_detail.png; sourceTree = "<group>"; };
 		C4DD076E1A3F269C0018DC8F /* addItemImage-iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "addItemImage-iPad.png"; path = "Resources/addItemImage-iPad.png"; sourceTree = "<group>"; };
 		C4DD076F1A3F269C0018DC8F /* addItemImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = addItemImage.png; path = Resources/addItemImage.png; sourceTree = "<group>"; };
 		C4DD07701A3F269C0018DC8F /* addItemImage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "addItemImage@2x.png"; path = "Resources/addItemImage@2x.png"; sourceTree = "<group>"; };
@@ -368,6 +376,8 @@
 			children = (
 				0452C09A1A346269009188E0 /* BaseServerParser.h */,
 				0452C09B1A346269009188E0 /* BaseServerParser.m */,
+				C486C6D21A4C49F9000425E5 /* SceneListParser.h */,
+				C486C6D31A4C49F9000425E5 /* SceneListParser.m */,
 			);
 			name = Parser;
 			sourceTree = "<group>";
@@ -390,6 +400,8 @@
 				045774971A397F7900F809D9 /* BaseViewController.m */,
 				047471591A3C894D006FD502 /* ItemViewController.h */,
 				0474715A1A3C894D006FD502 /* ItemViewController.m */,
+				C486C6CF1A4C4761000425E5 /* SceneListViewController.h */,
+				C486C6D01A4C4761000425E5 /* SceneListViewController.m */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -613,6 +625,7 @@
 				045106F61A45C59A0099BF0E /* setting_icon@2x.png */,
 				048C3CAA1A494273005180A3 /* icon_selected.png */,
 				048C3CAB1A494273005180A3 /* icon_selected@2x.png */,
+				C486C6D71A4C5BEE000425E5 /* dashed_detail.png */,
 				045106B81A45B6AB0099BF0E /* model */,
 				04D3D4151A34406900C966EF /* appicon */,
 			);
@@ -721,6 +734,7 @@
 				C46C74811A37320C00E1B99B /* background-Landscape.png in Resources */,
 				0457748D1A396D3B00F809D9 /* login_checkbox_btn_selected.png in Resources */,
 				045106DC1A45B6AB0099BF0E /* home_disarm.png in Resources */,
+				C486C6D81A4C5BEE000425E5 /* dashed_detail.png in Resources */,
 				045106E31A45B6AB0099BF0E /* romance.png in Resources */,
 				045106E41A45B6AB0099BF0E /* shower.png in Resources */,
 				C4DD07731A3F269C0018DC8F /* addItemImage@2x.png in Resources */,
@@ -815,6 +829,7 @@
 				047471531A3C88E4006FD502 /* CustomBadge.m in Sources */,
 				0474715B1A3C894D006FD502 /* ItemViewController.m in Sources */,
 				C46839D11A49B26200463841 /* ValidateInputUtil.m in Sources */,
+				C486C6D41A4C49F9000425E5 /* SceneListParser.m in Sources */,
 				047471551A3C88E4006FD502 /* MyLauncherPageControl.m in Sources */,
 				046CEE601A3455A000BC79E4 /* SBJsonStreamWriterState.m in Sources */,
 				046CEE3B1A34557900BC79E4 /* PulsingHaloLayer.m in Sources */,
@@ -828,6 +843,7 @@
 				046410DE1A3C01AD00571658 /* BaseNavigationController.m in Sources */,
 				046CEE5A1A3455A000BC79E4 /* SBJsonStreamParser.m in Sources */,
 				046CEE581A3455A000BC79E4 /* NSObject+SBJson.m in Sources */,
+				C486C6D11A4C4761000425E5 /* SceneListViewController.m in Sources */,
 				047471581A3C88E4006FD502 /* MyLauncherViewController.m in Sources */,
 				046CEE771A3455D000BC79E4 /* IPAdress.c in Sources */,
 				046CEE391A34557900BC79E4 /* JsonParser.m in Sources */,

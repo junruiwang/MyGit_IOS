@@ -9,6 +9,7 @@
 #define kHostAddress                   @"115.29.147.77"
 #define kBaseURL                       @"http://115.29.147.77:8080"
 #define kAliyunURL                     @"http://115.29.147.77/queryFamilyServer.dhtml"
+#define kSceneListURL                  @"http://115.29.147.77:8080/scene/list.dhtml"
 
 #define kUdpBroadcastHost    @"224.0.0.1"
 #define kUdpBroadcastPort    5225
@@ -24,6 +25,7 @@
 #define kSeparateFlag @"://"
 
 #define kAddSceneModeButton  @"添加情景"
+#define kSecretKey    @"2F7BD8C4-D337-4978-9443-852452C6AF57"
 
 #ifdef DEBUG
 #define kLogEnable  YES

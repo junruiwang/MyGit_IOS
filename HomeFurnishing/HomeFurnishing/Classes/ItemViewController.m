@@ -8,6 +8,7 @@
 
 #import "ItemViewController.h"
 #import "Constants.h"
+#import "SceneListViewController.h"
 
 #define ICON_IMAGE_TAG  100
 
@@ -16,21 +17,33 @@
 @property(nonatomic, strong) UIView *overlayView;
 @property(nonatomic, strong) UIView *imagePageView;
 @property(nonatomic, strong) UIScrollView *iconView;
+@property(nonatomic, strong) UIView *sceneListView;
 @property(nonatomic, strong) UIScrollView *modelsView;
 @property(nonatomic, strong) NSMutableArray *btnIconList;
 @property(nonatomic, strong) UIImageView *tapImageView;
-
 @property(nonatomic, strong) NSString *imageNameStr;
+@property(nonatomic, strong) SceneListViewController *sceneListViewController;
 
 @end
 
 @implementation ItemViewController
+
+- (SceneListViewController *)sceneListViewController
+{
+    if (!_sceneListViewController)
+    {
+        _sceneListViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil]
+                                   instantiateViewControllerWithIdentifier:@"SceneListViewController"];;
+    }
+    return _sceneListViewController;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.btnIconList = [NSMutableArray arrayWithObjects:@"aircona.png", @"curtain.png", @"curtaina.png", @"dinner.png", @"entertainment.png", @"fitting.png", @"gym.png", @"home_arming.png", @"home_at.png", @"home_away.png", @"home_disarm.png", @"home_midnight.png", @"makeup.png", @"meeting.png", @"party.png", @"playground.png", @"pray.png", @"romance.png", @"shower.png", @"silent.png", @"sleeping_day.png", @"sleeping_night.png", @"study.png", @"summer.png", @"winter.png", nil];
     
     [self loadPopImageView];
+    [self loadPopSceneListView];
     // Do any additional setup after loading the view.
 }
 
@@ -113,6 +126,20 @@
                      }
                      completion:NULL];
     
+}
+
+- (IBAction)sceneButtonClicked:(id)sender
+{
+    self.sceneListView.transform = CGAffineTransformMakeScale(0.00001, 0.00001);
+    self.sceneListView.hidden = NO;
+    [UIView animateWithDuration:0.3
+                          delay:0
+                        options:UIViewAnimationOptionCurveEaseIn
+                     animations:^{
+                         self.overlayView.alpha = 0.7;
+                         self.sceneListView.transform = CGAffineTransformIdentity;
+                     }
+                     completion:NULL];
 }
 
 - (IBAction)backBtnClicked:(id)sender
@@ -265,6 +292,81 @@
     [self.iconView addSubview:self.tapImageView];
     
     self.imagePageView.hidden = YES;
+}
+
+- (void)loadPopSceneListView
+{
+    //添加遮罩层
+    if (!self.overlayView)
+    {
+        self.overlayView = [[UIView alloc] initWithFrame:self.view.bounds];
+        self.overlayView.backgroundColor = [UIColor blackColor];
+        self.overlayView.alpha = 0;
+        self.overlayView.autoresizesSubviews = YES;
+        self.overlayView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin;
+        [self.view addSubview:self.overlayView];
+    }
+    //添加imagePageView视图
+    self.sceneListView = [[UIView alloc] init];
+    self.sceneListView.backgroundColor = COLOR(234,237,250);
+    self.sceneListView.layer.cornerRadius = 5;
+    self.sceneListView.layer.borderColor = [UIColor colorWithRed:215.0/255.0 green:215.0/255.0 blue:215.0/255.0 alpha:1.0].CGColor;
+    self.sceneListView.layer.borderWidth = 1.0;
+    [self.sceneListView setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [self.view addSubview:self.sceneListView];
+    //imagePageView添加约束
+    NSLayoutConstraint *constraint = [NSLayoutConstraint constraintWithItem:self.sceneListView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeTop multiplier:1.0f constant:200.0f];
+    [self.view addConstraint:constraint];
+    constraint = [NSLayoutConstraint constraintWithItem:self.sceneListView attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeCenterX multiplier:1.0f constant:00.0f];
+    [self.view addConstraint:constraint];
+    [self.sceneListView addConstraint:[NSLayoutConstraint constraintWithItem:self.sceneListView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0f constant:400.0f]];
+    [self.sceneListView addConstraint:[NSLayoutConstraint constraintWithItem:self.sceneListView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0f constant:450.0f]];
+    
+    UILabel *selIcon = [[UILabel alloc] initWithFrame:CGRectMake(20, 10, 80, 30)];
+    selIcon.backgroundColor = [UIColor clearColor];
+    selIcon.text = @"选择情景";
+    selIcon.textColor = COLOR(134,210,235);
+    selIcon.font = [UIFont systemFontOfSize:20];
+    [self.sceneListView addSubview:selIcon];
+    
+    UIImageView *line = [[UIImageView alloc] initWithFrame:CGRectMake(0, 50, 400, 1)];
+    line.backgroundColor = COLOR(134,210,235);
+    [self.sceneListView addSubview:line];
+    
+    [self.sceneListViewController.view setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [self.sceneListView addSubview:self.sceneListViewController.view];
+    
+    constraint = [NSLayoutConstraint constraintWithItem:self.sceneListViewController.view attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.sceneListView attribute:NSLayoutAttributeTop multiplier:1.0f constant:60.0f];
+    [self.sceneListView addConstraint:constraint];
+    constraint = [NSLayoutConstraint constraintWithItem:self.sceneListViewController.view attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:self.sceneListView attribute:NSLayoutAttributeLeading multiplier:1.0f constant:00.0f];
+    [self.sceneListView addConstraint:constraint];
+    constraint = [NSLayoutConstraint constraintWithItem:self.sceneListViewController.view attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationEqual toItem:self.sceneListView attribute:NSLayoutAttributeTrailing multiplier:1.0f constant:00.0f];
+    [self.sceneListView addConstraint:constraint];
+    [self.sceneListViewController.view addConstraint:[NSLayoutConstraint constraintWithItem:self.sceneListViewController.view attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0f constant:300.0f]];
+    
+    UIImageView *lineBottom = [[UIImageView alloc] initWithFrame:CGRectMake(0, 380, 400, 1)];
+    lineBottom.backgroundColor = COLOR(134,210,235);
+    [self.sceneListView addSubview:lineBottom];
+    
+    UIButton *submitBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    submitBtn.frame = CGRectMake(140, 400, 56, 30);
+    [submitBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [submitBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
+    [submitBtn setTitle:@"确定" forState:UIControlStateNormal];
+    [submitBtn setTitle:@"确定" forState:UIControlStateHighlighted];
+    [submitBtn setBackgroundImage:[UIImage imageNamed:@"book.png"] forState:UIControlStateNormal];
+    [self.sceneListView addSubview:submitBtn];
+    
+    UIButton *cancelBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    cancelBtn.frame = CGRectMake(240, 400, 56, 30);
+    [cancelBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [cancelBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
+    [cancelBtn setTitle:@"取消" forState:UIControlStateNormal];
+    [cancelBtn setTitle:@"取消" forState:UIControlStateHighlighted];
+    [cancelBtn setBackgroundImage:[UIImage imageNamed:@"book.png"] forState:UIControlStateNormal];
+    [self.sceneListView addSubview:cancelBtn];
+    
+    self.sceneListView.hidden = YES;
 }
 
 #pragma mark auto Rotation

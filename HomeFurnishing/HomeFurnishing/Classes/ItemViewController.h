@@ -29,6 +29,7 @@
 @property(nonatomic, weak) id<ItemViewControllerDelegate> delegate;
 
 - (IBAction)imageButtonClicked:(id)sender;
+- (IBAction)sceneButtonClicked:(id)sender;
 - (IBAction)backBtnClicked:(id)sender;
 - (IBAction)saveBtnClicked:(id)sender;
 - (IBAction)deleteBtnClicked:(id)sender;
