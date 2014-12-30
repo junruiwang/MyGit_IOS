@@ -18,7 +18,6 @@
 @property(nonatomic, strong) UIView *imagePageView;
 @property(nonatomic, strong) UIScrollView *iconView;
 @property(nonatomic, strong) UIView *sceneListView;
-@property(nonatomic, strong) UIScrollView *modelsView;
 @property(nonatomic, strong) NSMutableArray *btnIconList;
 @property(nonatomic, strong) UIImageView *tapImageView;
 @property(nonatomic, strong) NSString *imageNameStr;
@@ -110,6 +109,21 @@
                      completion:^(BOOL finished){
                          self.imagePageView.hidden = YES;
                          self.imagePageView.transform = CGAffineTransformIdentity;
+                     }];
+}
+
+- (void)cancelSelectClicked:(id)sender
+{
+    [UIView animateWithDuration:0.3
+                          delay:0
+                        options:UIViewAnimationOptionCurveEaseIn
+                     animations:^{
+                         self.overlayView.alpha = 0;
+                         self.sceneListView.transform = CGAffineTransformMakeScale(0.00001, 0.00001);
+                     }
+                     completion:^(BOOL finished){
+                         self.sceneListView.hidden = YES;
+                         self.sceneListView.transform = CGAffineTransformIdentity;
                      }];
 }
 
@@ -336,13 +350,15 @@
     [self.sceneListViewController.view setTranslatesAutoresizingMaskIntoConstraints:NO];
     [self.sceneListView addSubview:self.sceneListViewController.view];
     
-    constraint = [NSLayoutConstraint constraintWithItem:self.sceneListViewController.view attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.sceneListView attribute:NSLayoutAttributeTop multiplier:1.0f constant:60.0f];
+    constraint = [NSLayoutConstraint constraintWithItem:self.sceneListViewController.view attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.sceneListView attribute:NSLayoutAttributeTop multiplier:1.0f constant:55.0f];
     [self.sceneListView addConstraint:constraint];
     constraint = [NSLayoutConstraint constraintWithItem:self.sceneListViewController.view attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:self.sceneListView attribute:NSLayoutAttributeLeading multiplier:1.0f constant:00.0f];
     [self.sceneListView addConstraint:constraint];
     constraint = [NSLayoutConstraint constraintWithItem:self.sceneListViewController.view attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationEqual toItem:self.sceneListView attribute:NSLayoutAttributeTrailing multiplier:1.0f constant:00.0f];
     [self.sceneListView addConstraint:constraint];
-    [self.sceneListViewController.view addConstraint:[NSLayoutConstraint constraintWithItem:self.sceneListViewController.view attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0f constant:300.0f]];
+    
+    constraint = [NSLayoutConstraint constraintWithItem:self.sceneListViewController.view attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.sceneListView attribute:NSLayoutAttributeBottom multiplier:1.0f constant:-75.0f];
+    [self.sceneListView addConstraint:constraint];
     
     UIImageView *lineBottom = [[UIImageView alloc] initWithFrame:CGRectMake(0, 380, 400, 1)];
     lineBottom.backgroundColor = COLOR(134,210,235);
@@ -363,6 +379,7 @@
     [cancelBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
     [cancelBtn setTitle:@"取消" forState:UIControlStateNormal];
     [cancelBtn setTitle:@"取消" forState:UIControlStateHighlighted];
+    [cancelBtn addTarget:self action:@selector(cancelSelectClicked:) forControlEvents:UIControlEventTouchUpInside];
     [cancelBtn setBackgroundImage:[UIImage imageNamed:@"book.png"] forState:UIControlStateNormal];
     [self.sceneListView addSubview:cancelBtn];
     

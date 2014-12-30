@@ -15,9 +15,10 @@
 
 @interface SceneListViewController ()<JsonParserDelegate>
 
-@property (nonatomic, strong) SceneListParser *sceneListParser;
-@property (nonatomic, strong) NSMutableArray *sceneList;
+@property(nonatomic, strong) SceneListParser *sceneListParser;
+@property(nonatomic, strong) NSMutableArray *sceneList;
 @property(nonatomic, strong) MyServerIdManager *myServerIdManager;
+@property(nonatomic, strong) NSMutableArray *selectedSceneList;
 
 @end
 
@@ -26,7 +27,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.myServerIdManager = [[MyServerIdManager alloc] init];
-    
+    self.selectedSceneList = [[NSMutableArray alloc] initWithCapacity:5];
     self.view.backgroundColor = [UIColor clearColor];
     self.listTableView.backgroundColor = [UIColor clearColor];
     [self loadRemoteSceneList];
@@ -66,6 +67,19 @@
     return [NSString stringWithFormat:@"api=true&sign=E50AEBBE04A43A035629B463C138C3C6&token=123&serverId=%@",serverId];
 }
 
+- (void)checkButtonClicked:(id)sender
+{
+    UIButton *btn = (UIButton *)sender;
+    btn.selected = !btn.selected;
+    if (btn.selected) {
+        [btn setBackgroundImage:[UIImage imageNamed:@"checkbox_pressed"] forState:UIControlStateNormal];
+        [btn setBackgroundImage:[UIImage imageNamed:@"checkbox_pressed"] forState:UIControlStateHighlighted];
+    } else {
+        [btn setBackgroundImage:[UIImage imageNamed:@"checkbox_normal"] forState:UIControlStateNormal];
+        [btn setBackgroundImage:[UIImage imageNamed:@"checkbox_normal"] forState:UIControlStateHighlighted];
+    }
+}
+
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -79,6 +93,14 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        
+        UIButton *selBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        selBtn.frame = CGRectMake(350, 10, 30, 30);
+        [selBtn setBackgroundImage:[UIImage imageNamed:@"checkbox_normal"] forState:UIControlStateNormal];
+        [selBtn setBackgroundImage:[UIImage imageNamed:@"checkbox_normal"] forState:UIControlStateHighlighted];
+        [selBtn addTarget:self action:@selector(checkButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+        [cell.contentView addSubview:selBtn];
+        
         UIImageView *separatorImage = [[UIImageView alloc] initWithFrame:CGRectMake(0, 43, 400, 1)];
         separatorImage.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"dashed_detail.png"]];
         [cell addSubview:separatorImage];
