@@ -10,6 +10,7 @@
 #import "Constants.h"
 #import "SceneListViewController.h"
 #import "SceneTableCell.h"
+#import "ValidateInputUtil.h"
 
 #define ICON_IMAGE_TAG  100
 #define TABLE_ROW_INDEX_START 300
@@ -199,6 +200,23 @@
 
 - (IBAction)saveBtnClicked:(id)sender
 {
+    if (![ValidateInputUtil isNotEmpty:self.imageNameStr fieldCName:@"请选择图标"]) {
+        return;
+    }
+    
+    if (![ValidateInputUtil isNotEmpty:self.cnField.text fieldCName:@"请输入中文名"]) {
+        return;
+    }
+    
+    if (![ValidateInputUtil isNotEmpty:self.enField.text fieldCName:@"请输入英文名"]) {
+        return;
+    }
+    
+    if (self.execUnit.sceneArray == nil || self.execUnit.sceneArray.count == 0) {
+        [ValidateInputUtil showAlertMessage:@"请选择至少一个情景模式"];
+        return;
+    }
+    
     if(self.delegate != nil && [self.delegate respondsToSelector:@selector(saveItemButtonClicked:)])
     {
         MyLauncherItem *item = [[MyLauncherItem alloc] initWithTitle:@"Item 1"
@@ -225,6 +243,18 @@
         
         [self.delegate delItemButtonClicked:item];
     }
+}
+
+- (IBAction)cnButtonClicked:(id)sender
+{
+    self.enButton.selected = NO;
+    self.cnButton.selected = !self.cnButton.selected;
+}
+
+- (IBAction)enButtonClicked:(id)sender
+{
+    self.cnButton.selected = NO;
+    self.enButton.selected = !self.enButton.selected;
 }
 
 

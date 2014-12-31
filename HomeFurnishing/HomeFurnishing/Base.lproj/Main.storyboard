@@ -313,6 +313,9 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <state key="selected" image="checkbox_selected.png"/>
+                                <connections>
+                                    <action selector="cnButtonClicked:" destination="NK1-ZS-3bL" eventType="touchUpInside" id="1UB-ku-HK8"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ana-p4-fsr">
                                 <rect key="frame" x="389" y="406" width="30" height="30"/>
@@ -320,6 +323,9 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <state key="selected" image="checkbox_selected.png"/>
+                                <connections>
+                                    <action selector="enButtonClicked:" destination="NK1-ZS-3bL" eventType="touchUpInside" id="cUp-gV-6oK"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CuJ-Ia-Bxy">
                                 <rect key="frame" x="155" y="472" width="80" height="40"/>
@@ -498,6 +504,10 @@
                     </view>
                     <connections>
                         <outlet property="bgImageView" destination="QBQ-h3-puP" id="P52-V0-DI6"/>
+                        <outlet property="cnButton" destination="GNH-Y4-AhR" id="viT-Zl-lsX"/>
+                        <outlet property="cnField" destination="5Sf-XP-5on" id="Inq-9V-Blb"/>
+                        <outlet property="enButton" destination="Ana-p4-fsr" id="Wm8-cO-8fu"/>
+                        <outlet property="enField" destination="Htw-lj-AAb" id="BrJ-qz-G0c"/>
                         <outlet property="imageBtn" destination="f1R-jp-vHm" id="yRi-wK-aCL"/>
                         <outlet property="selSceneTableView" destination="Abf-OA-5wj" id="DJG-NQ-z2P"/>
                     </connections>
@@ -884,7 +894,7 @@
         <image name="checkbox_unselect.png" width="30" height="30"/>
         <image name="divider_horizontal_line.png" width="480" height="2"/>
         <image name="home.png" width="88" height="72"/>
-        <image name="image_model_add.png" width="256" height="256"/>
+        <image name="image_model_add.png" width="128" height="128"/>
         <image name="input_bg_ipa.png" width="320" height="50"/>
         <image name="login_btn.png" width="100" height="50"/>
         <image name="login_btn_press.png" width="100" height="50"/>

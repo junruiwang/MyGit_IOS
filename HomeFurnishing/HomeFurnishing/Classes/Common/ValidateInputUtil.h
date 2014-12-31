@@ -17,7 +17,7 @@
 + (BOOL)isEffectivePassword:(NSString *)text;
 + (BOOL)isPureInt:(NSString *) text;
 + (BOOL)isIdentifyNumber :(NSString *) text;
-
++ (void)showAlertMessage:(NSString *)msg;
 + (NSString *)valueOfObjectToString:(id) obj;
 
 @end

@@ -28,6 +28,11 @@
 @property(nonatomic, weak) IBOutlet UIImageView *bgImageView;
 @property(nonatomic, weak) IBOutlet UIButton *imageBtn;
 @property(nonatomic, weak) IBOutlet UITableView *selSceneTableView;
+@property(nonatomic, weak) IBOutlet UIButton *cnButton;
+@property(nonatomic, weak) IBOutlet UIButton *enButton;
+@property(nonatomic, weak) IBOutlet UITextField *cnField;
+@property(nonatomic, weak) IBOutlet UITextField *enField;
+
 @property(nonatomic, strong) ExecutionUnit *execUnit;
 @property(nonatomic, weak) id<ItemViewControllerDelegate> delegate;
 
@@ -36,5 +41,8 @@
 - (IBAction)backBtnClicked:(id)sender;
 - (IBAction)saveBtnClicked:(id)sender;
 - (IBAction)deleteBtnClicked:(id)sender;
+
+- (IBAction)cnButtonClicked:(id)sender;
+- (IBAction)enButtonClicked:(id)sender;
 
 @end

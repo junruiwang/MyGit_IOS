@@ -14,7 +14,7 @@
 {
     NSString *trimText = [text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     if (trimText == nil || [trimText isEqualToString:@""])
-    {   [self showAlertMessage: [NSString stringWithFormat:@"请输入%@", cName]];   return NO;  }
+    {   [self showAlertMessage: cName];   return NO;  }
     return YES;
 }
 
