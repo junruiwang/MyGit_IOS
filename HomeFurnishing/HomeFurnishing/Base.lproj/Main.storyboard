@@ -382,9 +382,64 @@
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PyH-sT-uPV">
                                 <rect key="frame" x="442" y="283" width="281" height="320"/>
+                                <subviews>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Abf-OA-5wj">
+                                        <rect key="frame" x="0.0" y="0.0" width="281" height="320"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <prototypes>
+                                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SceneSelectedTableCell" id="8wE-b3-CvD" customClass="SceneTableCell">
+                                                <rect key="frame" x="10" y="10" width="768" height="44"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8wE-b3-CvD" id="6F6-31-EVj">
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="awO-3w-lEG">
+                                                            <rect key="frame" x="231" y="6" width="30" height="30"/>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="30" id="KgZ-Wf-vs3"/>
+                                                                <constraint firstAttribute="width" constant="30" id="Th6-Oj-j4f"/>
+                                                            </constraints>
+                                                            <state key="normal" backgroundImage="checkbox_normal.png">
+                                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                            </state>
+                                                        </button>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="s45-WC-ajI">
+                                                            <rect key="frame" x="0.0" y="43" width="281" height="1"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="1" id="EeY-UY-LKJ"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="bottom" secondItem="s45-WC-ajI" secondAttribute="bottom" id="0E2-kV-Nbc"/>
+                                                        <constraint firstItem="awO-3w-lEG" firstAttribute="top" secondItem="6F6-31-EVj" secondAttribute="top" constant="6" id="1ct-gz-1eh"/>
+                                                        <constraint firstAttribute="trailing" secondItem="s45-WC-ajI" secondAttribute="trailing" id="N2n-kD-PYB"/>
+                                                        <constraint firstAttribute="trailing" secondItem="awO-3w-lEG" secondAttribute="trailing" constant="20" id="cxh-OV-yov"/>
+                                                        <constraint firstItem="s45-WC-ajI" firstAttribute="leading" secondItem="6F6-31-EVj" secondAttribute="leading" id="wvv-Fq-Pcz"/>
+                                                    </constraints>
+                                                </tableViewCellContentView>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <connections>
+                                                    <outlet property="selBtn" destination="awO-3w-lEG" id="Lb5-Rz-4yV"/>
+                                                    <outlet property="separatorImage" destination="s45-WC-ajI" id="ylY-8m-bma"/>
+                                                </connections>
+                                            </tableViewCell>
+                                        </prototypes>
+                                        <connections>
+                                            <outlet property="dataSource" destination="NK1-ZS-3bL" id="Xgi-Tw-IlH"/>
+                                            <outlet property="delegate" destination="NK1-ZS-3bL" id="OuE-Je-Mks"/>
+                                        </connections>
+                                    </tableView>
+                                </subviews>
                                 <color key="backgroundColor" red="0.18823531270027161" green="0.72156864404678345" blue="0.89411771297454834" alpha="1" colorSpace="deviceRGB"/>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="Abf-OA-5wj" secondAttribute="trailing" id="66a-G3-CDZ"/>
+                                    <constraint firstItem="Abf-OA-5wj" firstAttribute="leading" secondItem="PyH-sT-uPV" secondAttribute="leading" id="8he-Xl-NDW"/>
                                     <constraint firstAttribute="height" constant="320" id="Bcj-1t-Kk8"/>
+                                    <constraint firstAttribute="bottom" secondItem="Abf-OA-5wj" secondAttribute="bottom" id="lwx-iJ-pGg"/>
+                                    <constraint firstItem="Abf-OA-5wj" firstAttribute="top" secondItem="PyH-sT-uPV" secondAttribute="top" id="mez-po-xh3"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -444,6 +499,7 @@
                     <connections>
                         <outlet property="bgImageView" destination="QBQ-h3-puP" id="P52-V0-DI6"/>
                         <outlet property="imageBtn" destination="f1R-jp-vHm" id="yRi-wK-aCL"/>
+                        <outlet property="selSceneTableView" destination="Abf-OA-5wj" id="DJG-NQ-z2P"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lHT-9I-vg4" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -462,10 +518,51 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsMultipleSelection="YES" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Edq-qU-7H3">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Edq-qU-7H3">
                                 <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SceneTableCell" id="W0b-gd-5zj" customClass="SceneTableCell">
+                                        <rect key="frame" x="0.0" y="0.0" width="768" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="W0b-gd-5zj" id="WlJ-YT-5sN">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AEc-VA-6EG">
+                                                    <rect key="frame" x="718" y="6" width="30" height="30"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="30" id="1gA-UM-Gnx"/>
+                                                        <constraint firstAttribute="height" constant="30" id="smj-c9-EvY"/>
+                                                    </constraints>
+                                                    <state key="normal" backgroundImage="checkbox_normal.png">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                </button>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="i8d-O1-za0">
+                                                    <rect key="frame" x="0.0" y="43" width="768" height="1"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="1" id="T3s-jy-b0a"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstItem="AEc-VA-6EG" firstAttribute="top" secondItem="WlJ-YT-5sN" secondAttribute="top" constant="6" id="5cn-Nk-Uww"/>
+                                                <constraint firstItem="i8d-O1-za0" firstAttribute="leading" secondItem="WlJ-YT-5sN" secondAttribute="leading" id="7kx-dB-ezk"/>
+                                                <constraint firstAttribute="trailing" secondItem="AEc-VA-6EG" secondAttribute="trailing" constant="20" id="UIE-7P-0hg"/>
+                                                <constraint firstAttribute="trailing" secondItem="i8d-O1-za0" secondAttribute="trailing" id="dZY-L9-vnA"/>
+                                                <constraint firstAttribute="bottom" secondItem="i8d-O1-za0" secondAttribute="bottom" id="pxk-eC-0Fx"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <outlet property="selBtn" destination="AEc-VA-6EG" id="2CL-v1-TOJ"/>
+                                            <outlet property="separatorImage" destination="i8d-O1-za0" id="2Zg-xy-bL3"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="aLP-Eu-xz7" id="6l2-m2-dEC"/>
                                     <outlet property="delegate" destination="aLP-Eu-xz7" id="bKG-ab-2zU"/>
@@ -782,6 +879,7 @@
         <image name="add_model.png" width="64" height="64"/>
         <image name="background-Portrait.png" width="731" height="1280"/>
         <image name="book.png" width="56" height="30"/>
+        <image name="checkbox_normal.png" width="50" height="50"/>
         <image name="checkbox_selected.png" width="30" height="30"/>
         <image name="checkbox_unselect.png" width="30" height="30"/>
         <image name="divider_horizontal_line.png" width="480" height="2"/>

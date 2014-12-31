@@ -111,7 +111,7 @@
 {
     if (self.customIndicator == nil)
     {
-        self.customIndicator = [[HZActivityIndicatorView alloc] initWithFrame:CGRectMake(100, 150, 0, 0)];
+        self.customIndicator = [[HZActivityIndicatorView alloc] initWithFrame:CGRectMake(150, 150, 0, 0)];
         self.customIndicator.backgroundColor = self.view.backgroundColor;
         self.customIndicator.opaque = YES;
         self.customIndicator.steps = 16;

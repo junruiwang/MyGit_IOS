@@ -17,4 +17,8 @@
 - (void)backToRootController;
 - (void)backTotargetController:(UIViewController *)viewController;
 
+- (void)showLoadingView;
+- (void)hideLoadingView;
+
+
 @end

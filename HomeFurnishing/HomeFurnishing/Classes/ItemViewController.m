@@ -9,8 +9,10 @@
 #import "ItemViewController.h"
 #import "Constants.h"
 #import "SceneListViewController.h"
+#import "SceneTableCell.h"
 
 #define ICON_IMAGE_TAG  100
+#define TABLE_ROW_INDEX_START 300
 
 @interface ItemViewController ()
 
@@ -35,6 +37,14 @@
                                    instantiateViewControllerWithIdentifier:@"SceneListViewController"];;
     }
     return _sceneListViewController;
+}
+
+- (ExecutionUnit *)execUnit
+{
+    if (!_execUnit) {
+        _execUnit = [[ExecutionUnit alloc] init];
+    }
+    return _execUnit;
 }
 
 - (void)viewDidLoad {
@@ -112,6 +122,24 @@
                      }];
 }
 
+- (void)confirmSelectClicked:(id)sender
+{
+    self.execUnit.sceneArray = self.sceneListViewController.selectedSceneList;
+    
+    [UIView animateWithDuration:0.3
+                          delay:0
+                        options:UIViewAnimationOptionCurveEaseIn
+                     animations:^{
+                         self.overlayView.alpha = 0;
+                         self.sceneListView.transform = CGAffineTransformMakeScale(0.00001, 0.00001);
+                     }
+                     completion:^(BOOL finished){
+                         self.sceneListView.hidden = YES;
+                         self.sceneListView.transform = CGAffineTransformIdentity;
+                         [self.selSceneTableView reloadData];
+                     }];
+}
+
 - (void)cancelSelectClicked:(id)sender
 {
     [UIView animateWithDuration:0.3
@@ -125,6 +153,11 @@
                          self.sceneListView.hidden = YES;
                          self.sceneListView.transform = CGAffineTransformIdentity;
                      }];
+}
+
+- (void)refreshSelectClicked:(id)sender
+{
+    [self.sceneListViewController loadRemoteSceneList];
 }
 
 - (IBAction)imageButtonClicked:(id)sender
@@ -343,6 +376,14 @@
     selIcon.font = [UIFont systemFontOfSize:20];
     [self.sceneListView addSubview:selIcon];
     
+    
+    UIButton *refreshBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    refreshBtn.frame = CGRectMake(350, 10, 30, 30);
+    [refreshBtn setBackgroundImage:[UIImage imageNamed:@"synchronized"] forState:UIControlStateNormal];
+    [refreshBtn addTarget:self action:@selector(refreshSelectClicked:) forControlEvents:UIControlEventTouchUpInside];
+    [self.sceneListView addSubview:refreshBtn];
+    
+    
     UIImageView *line = [[UIImageView alloc] initWithFrame:CGRectMake(0, 50, 400, 1)];
     line.backgroundColor = COLOR(134,210,235);
     [self.sceneListView addSubview:line];
@@ -370,6 +411,7 @@
     [submitBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
     [submitBtn setTitle:@"确定" forState:UIControlStateNormal];
     [submitBtn setTitle:@"确定" forState:UIControlStateHighlighted];
+    [submitBtn addTarget:self action:@selector(confirmSelectClicked:) forControlEvents:UIControlEventTouchUpInside];
     [submitBtn setBackgroundImage:[UIImage imageNamed:@"book.png"] forState:UIControlStateNormal];
     [self.sceneListView addSubview:submitBtn];
     
@@ -404,6 +446,59 @@
             break;
     }
     self.overlayView.frame = self.view.frame;
+}
+
+- (void)checkButtonClicked:(id)sender
+{
+    UIButton *btn = (UIButton *)sender;
+    btn.selected = !btn.selected;
+    if (btn.selected) {
+        [btn setBackgroundImage:[UIImage imageNamed:@"checkbox_pressed"] forState:UIControlStateNormal];
+        [btn setBackgroundImage:[UIImage imageNamed:@"checkbox_pressed"] forState:UIControlStateHighlighted];
+        [btn setBackgroundImage:[UIImage imageNamed:@"checkbox_pressed"] forState:UIControlStateSelected];
+    } else {
+        [btn setBackgroundImage:[UIImage imageNamed:@"checkbox_normal"] forState:UIControlStateNormal];
+        [btn setBackgroundImage:[UIImage imageNamed:@"checkbox_normal"] forState:UIControlStateHighlighted];
+        [btn setBackgroundImage:[UIImage imageNamed:@"checkbox_normal"] forState:UIControlStateSelected];
+    }
+}
+
+#pragma mark - UITableViewDataSource
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return [self.execUnit.sceneArray count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSDictionary *dict = [self.execUnit.sceneArray objectAtIndex:[indexPath row]];
+    SceneTableCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SceneSelectedTableCell"];
+    cell.selBtn.tag = TABLE_ROW_INDEX_START + [indexPath row];
+    [cell.selBtn addTarget:self action:@selector(checkButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+    [cell.selBtn setBackgroundImage:[UIImage imageNamed:@"checkbox_pressed"] forState:UIControlStateNormal];
+    [cell.selBtn setBackgroundImage:[UIImage imageNamed:@"checkbox_pressed"] forState:UIControlStateHighlighted];
+    [cell.selBtn setBackgroundImage:[UIImage imageNamed:@"checkbox_pressed"] forState:UIControlStateSelected];
+    cell.selBtn.selected = YES;
+    cell.separatorImage.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"dashed_detail.png"]];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.textLabel.text = [dict objectForKey:@"name"];
+    cell.textLabel.font = [UIFont systemFontOfSize:18];
+    cell.backgroundColor = [UIColor clearColor];
+    
+    return cell;
+}
+
+#pragma mark - UITableViewDelegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [[tableView cellForRowAtIndexPath:indexPath] setSelected:NO];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 44;
 }
 
 @end

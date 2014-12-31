@@ -12,13 +12,15 @@
 #import "Constants.h"
 #import "CodeUtil.h"
 #import "NSDataAES.h"
+#import "SceneTableCell.h"
+
+#define TABLE_ROW_INDEX_START 200
 
 @interface SceneListViewController ()<JsonParserDelegate>
 
 @property(nonatomic, strong) SceneListParser *sceneListParser;
 @property(nonatomic, strong) NSMutableArray *sceneList;
 @property(nonatomic, strong) MyServerIdManager *myServerIdManager;
-@property(nonatomic, strong) NSMutableArray *selectedSceneList;
 
 @end
 
@@ -27,7 +29,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.myServerIdManager = [[MyServerIdManager alloc] init];
-    self.selectedSceneList = [[NSMutableArray alloc] initWithCapacity:5];
     self.view.backgroundColor = [UIColor clearColor];
     self.listTableView.backgroundColor = [UIColor clearColor];
     [self loadRemoteSceneList];
@@ -54,6 +55,7 @@
         self.sceneListParser.isArrayReturnValue = YES;
         self.sceneListParser.delegate = self;
         [self.sceneListParser start];
+        [self showLoadingView];
     }
 }
 
@@ -70,13 +72,34 @@
 - (void)checkButtonClicked:(id)sender
 {
     UIButton *btn = (UIButton *)sender;
+    NSInteger tagNum = btn.tag - TABLE_ROW_INDEX_START;
+    NSDictionary *dict = [self.sceneList objectAtIndex:tagNum];
+    BOOL isExit = NO;
+    if (self.selectedSceneList) {
+        for (NSDictionary *selDict in self.selectedSceneList) {
+            NSString *curId = [dict objectForKey:@"id"];
+            NSString *selId = [selDict objectForKey:@"id"];
+            //忽略大小写比较
+            if ([curId caseInsensitiveCompare:selId] == NSOrderedSame) {
+                isExit = YES;
+            }
+        }
+    } else {
+        self.selectedSceneList = [[NSMutableArray alloc] initWithCapacity:5];
+    }
+    if (!isExit) {
+        [self.selectedSceneList addObject:dict];
+    }
+    
     btn.selected = !btn.selected;
     if (btn.selected) {
         [btn setBackgroundImage:[UIImage imageNamed:@"checkbox_pressed"] forState:UIControlStateNormal];
         [btn setBackgroundImage:[UIImage imageNamed:@"checkbox_pressed"] forState:UIControlStateHighlighted];
+        [btn setBackgroundImage:[UIImage imageNamed:@"checkbox_pressed"] forState:UIControlStateSelected];
     } else {
         [btn setBackgroundImage:[UIImage imageNamed:@"checkbox_normal"] forState:UIControlStateNormal];
         [btn setBackgroundImage:[UIImage imageNamed:@"checkbox_normal"] forState:UIControlStateHighlighted];
+        [btn setBackgroundImage:[UIImage imageNamed:@"checkbox_normal"] forState:UIControlStateSelected];
     }
 }
 
@@ -89,28 +112,37 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-        
-        UIButton *selBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        selBtn.frame = CGRectMake(350, 10, 30, 30);
-        [selBtn setBackgroundImage:[UIImage imageNamed:@"checkbox_normal"] forState:UIControlStateNormal];
-        [selBtn setBackgroundImage:[UIImage imageNamed:@"checkbox_normal"] forState:UIControlStateHighlighted];
-        [selBtn addTarget:self action:@selector(checkButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
-        [cell.contentView addSubview:selBtn];
-        
-        UIImageView *separatorImage = [[UIImageView alloc] initWithFrame:CGRectMake(0, 43, 400, 1)];
-        separatorImage.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"dashed_detail.png"]];
-        [cell addSubview:separatorImage];
-    }
-    cell.backgroundColor = [UIColor clearColor];
-    
-    cell.selectionStyle = UITableViewCellSelectionStyleGray;
     NSDictionary *dict = [self.sceneList objectAtIndex:[indexPath row]];
+    SceneTableCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SceneTableCell"];
+    cell.selBtn.tag = TABLE_ROW_INDEX_START + [indexPath row];
+    [cell.selBtn addTarget:self action:@selector(checkButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+    BOOL isExit = NO;
+    if (self.selectedSceneList) {
+        for (NSDictionary *selDict in self.selectedSceneList) {
+            NSString *curId = [dict objectForKey:@"id"];
+            NSString *selId = [selDict objectForKey:@"id"];
+            //忽略大小写比较
+            if ([curId caseInsensitiveCompare:selId] == NSOrderedSame) {
+                isExit = YES;
+            }
+        }
+    }
+    if (isExit) {
+        [cell.selBtn setBackgroundImage:[UIImage imageNamed:@"checkbox_pressed"] forState:UIControlStateNormal];
+        [cell.selBtn setBackgroundImage:[UIImage imageNamed:@"checkbox_pressed"] forState:UIControlStateHighlighted];
+        [cell.selBtn setBackgroundImage:[UIImage imageNamed:@"checkbox_pressed"] forState:UIControlStateSelected];
+        cell.selBtn.selected = YES;
+    } else {
+        [cell.selBtn setBackgroundImage:[UIImage imageNamed:@"checkbox_normal"] forState:UIControlStateNormal];
+        [cell.selBtn setBackgroundImage:[UIImage imageNamed:@"checkbox_normal"] forState:UIControlStateHighlighted];
+        [cell.selBtn setBackgroundImage:[UIImage imageNamed:@"checkbox_normal"] forState:UIControlStateSelected];
+        cell.selBtn.selected = NO;
+    }
+    cell.separatorImage.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"dashed_detail.png"]];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.textLabel.text = [dict objectForKey:@"name"];
     cell.textLabel.font = [UIFont systemFontOfSize:18];
+    cell.backgroundColor = [UIColor clearColor];
     
     return cell;
 }
@@ -133,6 +165,7 @@
 - (void)parser:(JsonParser*)parser DidFailedParseWithMsg:(NSString*)msg errCode:(NSInteger)code
 {
     NSLog(@"%@",msg);
+    [self hideLoadingView];
 }
 
 - (void)parser:(JsonParser*)parser DidParsedData:(NSDictionary *)data
@@ -142,6 +175,7 @@
         self.sceneList = [list mutableCopy];
         [self.listTableView reloadData];
     }
+    [self hideLoadingView];
 }
 
 @end

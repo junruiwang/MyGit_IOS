@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "BaseViewController.h"
 #import "MyLauncherItem.h"
+#import "ExecutionUnit.h"
 
 @class ItemViewController;
 
@@ -22,10 +23,12 @@
 
 @end
 
-@interface ItemViewController : BaseViewController
+@interface ItemViewController : BaseViewController<UITableViewDataSource,UITableViewDelegate>
 
 @property(nonatomic, weak) IBOutlet UIImageView *bgImageView;
 @property(nonatomic, weak) IBOutlet UIButton *imageBtn;
+@property(nonatomic, weak) IBOutlet UITableView *selSceneTableView;
+@property(nonatomic, strong) ExecutionUnit *execUnit;
 @property(nonatomic, weak) id<ItemViewControllerDelegate> delegate;
 
 - (IBAction)imageButtonClicked:(id)sender;

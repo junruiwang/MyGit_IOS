@@ -7,9 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BaseViewController.h"
 
-@interface SceneListViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
+@interface SceneListViewController : BaseViewController<UITableViewDataSource,UITableViewDelegate>
 
-@property(nonatomic,strong) IBOutlet UITableView *listTableView;
+@property(nonatomic,weak) IBOutlet UITableView *listTableView;
+@property(nonatomic, strong) NSMutableArray *selectedSceneList;
+
+- (void)loadRemoteSceneList;
 
 @end
