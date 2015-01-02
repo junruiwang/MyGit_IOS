@@ -802,6 +802,7 @@ static const CGFloat iPadLandscapeYPadding = 30;
             if (![item.title isEqualToString:kAddSceneModeButton]) {
                 NSMutableDictionary *itemToSave = [[NSMutableDictionary alloc] init];
                 [itemToSave setObject:item.title forKey:@"title"];
+                [itemToSave setObject:item.relationCode forKey:@"relationCode"];
                 [itemToSave setObject:item.image forKey:@"image"];
                 [itemToSave setObject:item.iPadImage forKey:@"iPadImage"];
                 [itemToSave setObject:[NSString stringWithFormat:@"%d", [item deletable]] forKey:@"deletable"];

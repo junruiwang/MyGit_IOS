@@ -11,6 +11,7 @@
 #import "SceneListViewController.h"
 #import "SceneTableCell.h"
 #import "ValidateInputUtil.h"
+#import "LocalFileManager.h"
 
 #define ICON_IMAGE_TAG  100
 #define TABLE_ROW_INDEX_START 300
@@ -25,6 +26,7 @@
 @property(nonatomic, strong) UIImageView *tapImageView;
 @property(nonatomic, strong) NSString *imageNameStr;
 @property(nonatomic, strong) SceneListViewController *sceneListViewController;
+@property(nonatomic, strong) LocalFileManager *localFileManager;
 
 @end
 
@@ -35,9 +37,18 @@
     if (!_sceneListViewController)
     {
         _sceneListViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil]
-                                   instantiateViewControllerWithIdentifier:@"SceneListViewController"];;
+                                   instantiateViewControllerWithIdentifier:@"SceneListViewController"];
     }
     return _sceneListViewController;
+}
+
+- (LocalFileManager *)localFileManager
+{
+    if (!_localFileManager)
+    {
+        _localFileManager = [[LocalFileManager alloc] init];
+    }
+    return _localFileManager;
 }
 
 - (ExecutionUnit *)execUnit
@@ -74,6 +85,27 @@
         default:
             break;
     }
+    
+    //初始化控件原始值
+    self.imageNameStr = self.execUnit.imageName;
+    if (self.imageNameStr) {
+        [self.imageBtn setImage:[UIImage imageNamed:self.imageNameStr] forState:UIControlStateNormal];
+        [self.imageBtn setImage:[UIImage imageNamed:self.imageNameStr] forState:UIControlStateHighlighted];
+    }
+    if (self.execUnit.cName) {
+        self.cnField.text = self.execUnit.cName;
+    }
+    if (self.execUnit.eName) {
+        self.enField.text = self.execUnit.eName;
+    }
+    if (self.execUnit.displayNumber == 0) {
+        self.cnButton.selected = YES;
+        self.enButton.selected = NO;
+    } else if (self.execUnit.displayNumber == 1) {
+        self.enButton.selected = YES;
+        self.cnButton.selected = NO;
+    }
+    [self.selSceneTableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -126,6 +158,9 @@
 - (void)confirmSelectClicked:(id)sender
 {
     self.execUnit.sceneArray = self.sceneListViewController.selectedSceneList;
+    for (NSMutableDictionary *dict in self.execUnit.sceneArray) {
+        [dict setObject:@"1" forKey:@"isSelected"];
+    }
     
     [UIView animateWithDuration:0.3
                           delay:0
@@ -203,30 +238,67 @@
     if (![ValidateInputUtil isNotEmpty:self.imageNameStr fieldCName:@"请选择图标"]) {
         return;
     }
-    
     if (![ValidateInputUtil isNotEmpty:self.cnField.text fieldCName:@"请输入中文名"]) {
         return;
     }
-    
     if (![ValidateInputUtil isNotEmpty:self.enField.text fieldCName:@"请输入英文名"]) {
         return;
     }
-    
+    if (!self.cnButton.selected && !self.enButton.selected) {
+        [ValidateInputUtil showAlertMessage:@"请在显示的语言后面打勾√"];
+        return;
+    }
     if (self.execUnit.sceneArray == nil || self.execUnit.sceneArray.count == 0) {
-        [ValidateInputUtil showAlertMessage:@"请选择至少一个情景模式"];
+        [ValidateInputUtil showAlertMessage:@"请勾选至少一个情景"];
         return;
     }
     
+    //set value
+    NSString *trimText = [self.execUnit.executCode stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    if (trimText == nil || [trimText isEqualToString:@""])
+    {
+        self.execUnit.executCode = [[NSUUID UUID] UUIDString];
+    }
+    self.execUnit.imageName = self.imageNameStr;
+    self.execUnit.cName = self.cnField.text;
+    self.execUnit.eName = self.enField.text;
+    if (self.enButton.selected) {
+        self.execUnit.displayNumber = 1;
+    } else {
+        self.execUnit.displayNumber = 0;
+    }
+    
+    NSMutableArray *selAry = [[NSMutableArray alloc] initWithCapacity:5];
+    for (NSMutableDictionary *dict in self.execUnit.sceneArray) {
+        NSString *isSelected = [dict objectForKey:@"isSelected"];
+        if ([isSelected isEqualToString:@"1"]) {
+            [selAry addObject:dict];
+        }
+    }
+    self.execUnit.sceneArray = [selAry mutableCopy];
+    
     if(self.delegate != nil && [self.delegate respondsToSelector:@selector(saveItemButtonClicked:)])
     {
-        MyLauncherItem *item = [[MyLauncherItem alloc] initWithTitle:@"Item 1"
-                                                         iPhoneImage:@"itemImage"
-                                                           iPadImage:@"itemImage-iPad"
-                                                              target:@"ItemViewController"
-                                                         targetTitle:@"Item 1 View"
-                                                           deletable:YES];
-        
-        [self.delegate saveItemButtonClicked:item];
+        //保存信息
+        if ([self.localFileManager insertIntoLocalWithObject:self.execUnit]) {
+            //设置场景
+            NSString *displayName = @"";
+            if (self.execUnit.displayNumber == 0) {
+                displayName = self.execUnit.cName;
+            } else {
+                displayName = self.execUnit.eName;
+            }
+            
+            MyLauncherItem *item = [[MyLauncherItem alloc] initWithTitle:displayName
+                                                            relationCode:self.execUnit.executCode
+                                                             iPhoneImage:self.execUnit.imageName
+                                                               iPadImage:self.execUnit.imageName
+                                                                  target:@"ItemViewController"
+                                                             targetTitle:@"情景设置"
+                                                               deletable:YES];
+            
+            [self.delegate saveItemButtonClicked:item];
+        }
     }
 }
 
@@ -235,6 +307,7 @@
     if(self.delegate != nil && [self.delegate respondsToSelector:@selector(delItemButtonClicked:)])
     {
         MyLauncherItem *item = [[MyLauncherItem alloc] initWithTitle:@"Item 1"
+                                                        relationCode:@""
                                                          iPhoneImage:@"itemImage"
                                                            iPadImage:@"itemImage-iPad"
                                                               target:@"ItemViewController"
@@ -482,11 +555,17 @@
 {
     UIButton *btn = (UIButton *)sender;
     btn.selected = !btn.selected;
+    
+    NSInteger tagNum = btn.tag - TABLE_ROW_INDEX_START;
+    NSMutableDictionary *dict = [self.execUnit.sceneArray objectAtIndex:tagNum];
+    
     if (btn.selected) {
+        [dict setObject:@"1" forKey:@"isSelected"];
         [btn setBackgroundImage:[UIImage imageNamed:@"checkbox_pressed"] forState:UIControlStateNormal];
         [btn setBackgroundImage:[UIImage imageNamed:@"checkbox_pressed"] forState:UIControlStateHighlighted];
         [btn setBackgroundImage:[UIImage imageNamed:@"checkbox_pressed"] forState:UIControlStateSelected];
     } else {
+        [dict setObject:@"0" forKey:@"isSelected"];
         [btn setBackgroundImage:[UIImage imageNamed:@"checkbox_normal"] forState:UIControlStateNormal];
         [btn setBackgroundImage:[UIImage imageNamed:@"checkbox_normal"] forState:UIControlStateHighlighted];
         [btn setBackgroundImage:[UIImage imageNamed:@"checkbox_normal"] forState:UIControlStateSelected];

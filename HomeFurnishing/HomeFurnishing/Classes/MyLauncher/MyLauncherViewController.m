@@ -253,6 +253,7 @@
                     if ([version intValue] == 2) {
                         [savedPage addObject:[[MyLauncherItem alloc]
                                                initWithTitle:[item objectForKey:@"title"]
+                                               relationCode:[item objectForKey:@"relationCode"]
                                                iPhoneImage:[item objectForKey:@"image"]
                                                iPadImage:[item objectForKey:@"iPadImage"]
                                                target:[item objectForKey:@"controller"] 
@@ -262,6 +263,7 @@
                 } else {
                     [savedPage addObject:[[MyLauncherItem alloc]
                                            initWithTitle:[item objectForKey:@"title"]
+                                           relationCode:[item objectForKey:@"relationCode"]
                                            image:[item objectForKey:@"image"]
                                            target:[item objectForKey:@"controller"]
                                            deletable:[[item objectForKey:@"deletable"] boolValue]]];

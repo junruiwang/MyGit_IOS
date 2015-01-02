@@ -14,23 +14,34 @@
 #import "BaseNavigationController.h"
 #import "ItemViewController.h"
 #import "Constants.h"
+#import "LocalFileManager.h"
 
 @interface SettingIndexViewController ()<MyLauncherViewDelegate,ItemViewControllerDelegate>
 
 @property (nonatomic, strong) MyLauncherView *launcherView;
 @property (nonatomic, strong) BaseNavigationController *launcherNavigationController;
 @property (nonatomic, strong) NSMutableDictionary *appControllers;
+@property(nonatomic, strong) LocalFileManager *localFileManager;
 
 -(BOOL)hasSavedLauncherItems;
 -(void)launcherViewItemSelected:(MyLauncherItem*)item;
 
--(NSMutableArray *)loadLauncherItems:(MyLauncherItem *)item;
+-(NSMutableArray *)loadLauncherItems:(MyLauncherItem *)myItem;
 -(NSArray*)retrieveFromUserDefaults:(NSString *)key;
 -(void)saveToUserDefaults:(id)object key:(NSString *)key;
 
 @end
 
 @implementation SettingIndexViewController
+
+- (LocalFileManager *)localFileManager
+{
+    if (!_localFileManager)
+    {
+        _localFileManager = [[LocalFileManager alloc] init];
+    }
+    return _localFileManager;
+}
 
 - (void)viewDidLoad {
     //初始化子组件视图容器
@@ -123,6 +134,7 @@
 -(void)reloadLauncherView
 {
     MyLauncherItem *addItem = [[MyLauncherItem alloc] initWithTitle:kAddSceneModeButton
+                                                       relationCode:nil
                                                         iPhoneImage:@"setting_icon"
                                                           iPadImage:@"setting_icon-iPad"
                                                              target:@"ItemViewController"
@@ -197,9 +209,9 @@
     }
 //    Class viewCtrClass = [self.appControllers objectForKey:[item controllerStr]];
 //    UIViewController *controller = [[viewCtrClass alloc] init];
-    
     UIStoryboard *board = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     ItemViewController *controller = [board instantiateViewControllerWithIdentifier:[item controllerStr]];
+    controller.execUnit = [self.localFileManager buildLocalFileToObjectByCode:item.relationCode];
     controller.delegate = self;
     
     self.launcherNavigationController = [[BaseNavigationController alloc] initWithRootViewController:controller];
@@ -243,11 +255,12 @@
 
 #pragma mark - myLauncher caching
 
--(NSMutableArray *)loadLauncherItems:(MyLauncherItem *)item {
+-(NSMutableArray *)loadLauncherItems:(MyLauncherItem *)myItem {
     NSArray *savedPages = (NSArray *)[self retrieveFromUserDefaults:@"myLauncherView"];
     
     if(savedPages)
     {
+        BOOL isExist = NO;
         NSMutableArray *savedLauncherItems = [[NSMutableArray alloc] init];
         NSInteger index = 0;
         for (NSArray *page in savedPages)
@@ -259,25 +272,47 @@
                 NSNumber *version;
                 if ((version = [item objectForKey:@"myLauncherViewItemVersion"])) {
                     if ([version intValue] == 2) {
-                        [savedPage addObject:[[MyLauncherItem alloc]
-                                              initWithTitle:[item objectForKey:@"title"]
-                                              iPhoneImage:[item objectForKey:@"image"]
-                                              iPadImage:[item objectForKey:@"iPadImage"]
-                                              target:[item objectForKey:@"controller"]
-                                              targetTitle:[item objectForKey:@"controllerTitle"]
-                                              deletable:[[item objectForKey:@"deletable"] boolValue]]];
+                        NSString *relationCode = [item objectForKey:@"relationCode"];
+                        //已存在，更新配置
+                        if ([relationCode isEqualToString:myItem.relationCode]) {
+                            isExist = YES;
+                            [savedPage addObject:[[MyLauncherItem alloc]
+                                                  initWithTitle:myItem.title
+                                                  relationCode:myItem.relationCode
+                                                  iPhoneImage:myItem.image
+                                                  iPadImage:myItem.iPadImage
+                                                  target:myItem.controllerStr
+                                                  targetTitle:myItem.controllerTitle
+                                                  deletable:[[item objectForKey:@"deletable"] boolValue]]];
+                        } else {
+                            [savedPage addObject:[[MyLauncherItem alloc]
+                                                  initWithTitle:[item objectForKey:@"title"]
+                                                  relationCode:[item objectForKey:@"relationCode"]
+                                                  iPhoneImage:[item objectForKey:@"image"]
+                                                  iPadImage:[item objectForKey:@"iPadImage"]
+                                                  target:[item objectForKey:@"controller"]
+                                                  targetTitle:[item objectForKey:@"controllerTitle"]
+                                                  deletable:[[item objectForKey:@"deletable"] boolValue]]];
+                            
+                        }
+                        
+                        
                     }
                 } else {
                     [savedPage addObject:[[MyLauncherItem alloc]
                                           initWithTitle:[item objectForKey:@"title"]
+                                          relationCode:[item objectForKey:@"relationCode"]
                                           image:[item objectForKey:@"image"]
                                           target:[item objectForKey:@"controller"]
                                           deletable:[[item objectForKey:@"deletable"] boolValue]]];
                 }
             }
-            //最后一页的末尾加上新增按钮
-            if (index == savedPages.count) {
-                [savedPage addObject:item];
+            
+            if (!isExist) {
+                //最后一页的末尾加上新增按钮
+                if (index == savedPages.count) {
+                    [savedPage addObject:myItem];
+                }
             }
             
             [savedLauncherItems addObject:savedPage];
@@ -305,6 +340,7 @@
             if (![item.title isEqualToString:kAddSceneModeButton]) {
                 NSMutableDictionary *itemToSave = [[NSMutableDictionary alloc] init];
                 [itemToSave setObject:item.title forKey:@"title"];
+                [itemToSave setObject:item.relationCode forKey:@"relationCode"];
                 [itemToSave setObject:item.image forKey:@"image"];
                 [itemToSave setObject:item.iPadImage forKey:@"iPadImage"];
                 [itemToSave setObject:[NSString stringWithFormat:@"%d", [item deletable]] forKey:@"deletable"];

@@ -80,7 +80,7 @@
             NSString *curId = [dict objectForKey:@"id"];
             NSString *selId = [selDict objectForKey:@"id"];
             //忽略大小写比较
-            if ([curId caseInsensitiveCompare:selId] == NSOrderedSame) {
+            if ([curId isEqualToString:selId]) {
                 isExit = YES;
             }
         }
@@ -122,7 +122,7 @@
             NSString *curId = [dict objectForKey:@"id"];
             NSString *selId = [selDict objectForKey:@"id"];
             //忽略大小写比较
-            if ([curId caseInsensitiveCompare:selId] == NSOrderedSame) {
+            if ([curId isEqualToString:selId]) {
                 isExit = YES;
             }
         }

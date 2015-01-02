@@ -26,6 +26,7 @@
 
 @synthesize delegate = _delegate;
 @synthesize title = _title;
+@synthesize relationCode = _relationCode;
 @synthesize image = _image;
 @synthesize iPadImage = _iPadImage;
 @synthesize closeButton = _closeButton;
@@ -35,16 +36,17 @@
 
 #pragma mark - Lifecycle
 
--(id)initWithTitle:(NSString *)title image:(NSString *)image target:(NSString *)targetControllerStr deletable:(BOOL)_deletable {
-	return [self initWithTitle:title 
-                   iPhoneImage:image 
+-(id)initWithTitle:(NSString *)title relationCode:(NSString *)relationCode image:(NSString *)image target:(NSString *)targetControllerStr deletable:(BOOL)_deletable {
+	return [self initWithTitle:title
+                  relationCode:relationCode
+                   iPhoneImage:image
                      iPadImage:image 
                         target:targetControllerStr 
                    targetTitle:title 
                      deletable:_deletable];
 }
 
--(id)initWithTitle:(NSString *)title iPhoneImage:(NSString *)image iPadImage:(NSString *)iPadImage target:(NSString *)targetControllerStr targetTitle:(NSString *)targetTitle deletable:(BOOL)_deletable {
+-(id)initWithTitle:(NSString *)title relationCode:(NSString *)relationCode iPhoneImage:(NSString *)image iPadImage:(NSString *)iPadImage target:(NSString *)targetControllerStr targetTitle:(NSString *)targetTitle deletable:(BOOL)_deletable {
     
     if((self = [super init]))
 	{ 
@@ -52,6 +54,7 @@
 		deletable = _deletable;
 		
 		[self setTitle:title];
+        [self setRelationCode:relationCode];
 		[self setImage:image];
         [self setIPadImage:iPadImage];
 		[self setControllerStr:targetControllerStr];

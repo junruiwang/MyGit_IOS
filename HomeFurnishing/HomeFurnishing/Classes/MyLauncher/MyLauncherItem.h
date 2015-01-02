@@ -34,6 +34,7 @@
 
 @property (nonatomic, assign) id delegate;
 @property (nonatomic, retain) NSString *title;
+@property (nonatomic, retain) NSString *relationCode;
 @property (nonatomic, retain) NSString *image;
 @property (nonatomic, retain) NSString *iPadImage;
 @property (nonatomic, retain) NSString *controllerStr;
@@ -41,8 +42,8 @@
 @property (nonatomic, retain) UIButton *closeButton;
 @property (nonatomic, retain) CustomBadge *badge;
 
--(id)initWithTitle:(NSString *)title image:(NSString *)image target:(NSString *)targetControllerStr deletable:(BOOL)_deletable;
--(id)initWithTitle:(NSString *)title iPhoneImage:(NSString *)image iPadImage:(NSString *)iPadImage target:(NSString *)targetControllerStr targetTitle:(NSString *)targetTitle deletable:(BOOL)_deletable;
+-(id)initWithTitle:(NSString *)title relationCode:(NSString *)relationCode image:(NSString *)image target:(NSString *)targetControllerStr deletable:(BOOL)_deletable;
+-(id)initWithTitle:(NSString *)title relationCode:(NSString *)relationCode iPhoneImage:(NSString *)image iPadImage:(NSString *)iPadImage target:(NSString *)targetControllerStr targetTitle:(NSString *)targetTitle deletable:(BOOL)_deletable;
 -(void)layoutItem;
 -(void)setDragging:(BOOL)flag;
 -(BOOL)dragging;

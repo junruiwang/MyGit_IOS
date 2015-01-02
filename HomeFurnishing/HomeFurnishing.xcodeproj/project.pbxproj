@@ -110,6 +110,7 @@
 		049D55011A53899700C97B91 /* synchronized@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 049D54FF1A53899700C97B91 /* synchronized@2x.png */; };
 		04BF07FD1A399A8B00F41510 /* input_bg_ipa.png in Resources */ = {isa = PBXBuildFile; fileRef = 04BF07FB1A399A8B00F41510 /* input_bg_ipa.png */; };
 		04BF07FE1A399A8B00F41510 /* input_bg_ipa@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04BF07FC1A399A8B00F41510 /* input_bg_ipa@2x.png */; };
+		04C2C27B1A570381001A6E34 /* LocalFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C2C27A1A570381001A6E34 /* LocalFileManager.m */; };
 		04D3D3E71A34359A00C966EF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D3D3E61A34359A00C966EF /* main.m */; };
 		04D3D3EA1A34359A00C966EF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D3D3E91A34359A00C966EF /* AppDelegate.m */; };
 		04D3D3F01A34359A00C966EF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04D3D3EE1A34359A00C966EF /* Main.storyboard */; };
@@ -291,6 +292,8 @@
 		049D54FF1A53899700C97B91 /* synchronized@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "synchronized@2x.png"; path = "Resources/synchronized@2x.png"; sourceTree = "<group>"; };
 		04BF07FB1A399A8B00F41510 /* input_bg_ipa.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = input_bg_ipa.png; path = Resources/input_bg_ipa.png; sourceTree = "<group>"; };
 		04BF07FC1A399A8B00F41510 /* input_bg_ipa@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "input_bg_ipa@2x.png"; path = "Resources/input_bg_ipa@2x.png"; sourceTree = "<group>"; };
+		04C2C2791A570381001A6E34 /* LocalFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LocalFileManager.h; path = Classes/LocalFileManager.h; sourceTree = "<group>"; };
+		04C2C27A1A570381001A6E34 /* LocalFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LocalFileManager.m; path = Classes/LocalFileManager.m; sourceTree = "<group>"; };
 		04D3D3E11A34359A00C966EF /* HomeFurnishing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HomeFurnishing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04D3D3E51A34359A00C966EF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		04D3D3E61A34359A00C966EF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -671,6 +674,8 @@
 			children = (
 				C46839CC1A49A4D600463841 /* ExecutionUnit.h */,
 				C46839CD1A49A4D600463841 /* ExecutionUnit.m */,
+				04C2C2791A570381001A6E34 /* LocalFileManager.h */,
+				04C2C27A1A570381001A6E34 /* LocalFileManager.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -836,6 +841,7 @@
 				046CEE611A3455A000BC79E4 /* SBJsonTokeniser.m in Sources */,
 				045774861A3965EE00F809D9 /* LoginViewController.m in Sources */,
 				046CEE761A3455D000BC79E4 /* CloNetworkUtil.m in Sources */,
+				04C2C27B1A570381001A6E34 /* LocalFileManager.m in Sources */,
 				044BB2F31A3BF1260003B71D /* SettingIndexViewController.m in Sources */,
 				046CEE5F1A3455A000BC79E4 /* SBJsonStreamWriterAccumulator.m in Sources */,
 				046CEE6A1A3455BC00BC79E4 /* GCDAsyncUdpSocket.m in Sources */,
