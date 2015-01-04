@@ -310,7 +310,7 @@
             
             if (!isExist) {
                 //最后一页的末尾加上新增按钮
-                if (index == savedPages.count) {
+                if (index == savedPages.count && myItem != nil) {
                     [savedPage addObject:myItem];
                 }
             }
@@ -355,6 +355,37 @@
     }
     
     [self saveToUserDefaults:pagesToSave key:@"myLauncherView"];
+}
+
+-(void)deleteLauncherItemPage:(MyLauncherItem *)item {
+    NSMutableArray *pages = [self loadLauncherItems:nil];
+    if (pages) {
+        NSMutableArray *pagesToSave = [[NSMutableArray alloc] init];
+        for(NSArray *page in pages)
+        {
+            NSMutableArray *pageToSave = [[NSMutableArray alloc] init];
+            
+            for(MyLauncherItem *myItem in page)
+            {
+                if (![item.relationCode isEqualToString:myItem.relationCode]) {
+                    NSMutableDictionary *itemToSave = [[NSMutableDictionary alloc] init];
+                    [itemToSave setObject:myItem.title forKey:@"title"];
+                    [itemToSave setObject:myItem.relationCode forKey:@"relationCode"];
+                    [itemToSave setObject:myItem.image forKey:@"image"];
+                    [itemToSave setObject:myItem.iPadImage forKey:@"iPadImage"];
+                    [itemToSave setObject:[NSString stringWithFormat:@"%d", [myItem deletable]] forKey:@"deletable"];
+                    [itemToSave setObject:myItem.controllerStr forKey:@"controller"];
+                    [itemToSave setObject:myItem.controllerTitle forKey:@"controllerTitle"];
+                    [itemToSave setObject:[NSNumber numberWithInt:2] forKey:@"myLauncherViewItemVersion"];
+                    
+                    [pageToSave addObject:itemToSave];
+                }
+            }
+            [pagesToSave addObject:pageToSave];
+        }
+        
+        [self saveToUserDefaults:pagesToSave key:@"myLauncherView"];
+    }
 }
 
 -(id)retrieveFromUserDefaults:(NSString *)key {
@@ -417,7 +448,12 @@
 
 - (void)delItemButtonClicked:(MyLauncherItem *)item
 {
-    [self removeTopViewPage];
+    if (item) {
+        [self deleteLauncherItemPage:item];
+        [self removeTopViewPage];
+    } else {
+        [self removeTopViewPage];
+    }
 }
 
 @end

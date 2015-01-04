@@ -61,10 +61,10 @@
 
 - (NSString *)md5HexForRequest:(NSString *)serverId
 {
-//    NSString *udidString = [[UIDevice currentDevice].identifierForVendor UUIDString];
-//    NSString *token = [udidString stringByReplacingOccurrencesOfString:@"-" withString:@""];
-//    NSString *appendStr = [NSString stringWithFormat:@"%@%@",token,kSecretKey];
-//    NSString *sign = [CodeUtil hexStringFromString:[appendStr MD5String]];
+    NSString *token = [[NSUUID UUID] UUIDString];
+    NSString *appendStr = [NSString stringWithFormat:@"%@%@", token, kSecretKey];
+    NSString *sign = [CodeUtil hexStringFromString:[appendStr MD5String]];
+    NSLog(@"sign : %@",sign);
     
     return [NSString stringWithFormat:@"api=true&sign=E50AEBBE04A43A035629B463C138C3C6&token=123&serverId=%@",serverId];
 }

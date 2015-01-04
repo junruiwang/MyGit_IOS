@@ -304,17 +304,28 @@
 
 - (IBAction)deleteBtnClicked:(id)sender
 {
-    if(self.delegate != nil && [self.delegate respondsToSelector:@selector(delItemButtonClicked:)])
+    NSString *trimText = [self.execUnit.executCode stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    if (trimText == nil || [trimText isEqualToString:@""])
     {
-        MyLauncherItem *item = [[MyLauncherItem alloc] initWithTitle:@"Item 1"
-                                                        relationCode:@""
-                                                         iPhoneImage:@"itemImage"
-                                                           iPadImage:@"itemImage-iPad"
-                                                              target:@"ItemViewController"
-                                                         targetTitle:@"Item 1 View"
-                                                           deletable:YES];
+        if(self.delegate != nil && [self.delegate respondsToSelector:@selector(delItemButtonClicked:)])
+        {
+            [self.delegate delItemButtonClicked:nil];
+        }
+    } else {
+        if ([self.localFileManager deleteObjectInLocal:self.execUnit.executCode]) {
+            if(self.delegate != nil && [self.delegate respondsToSelector:@selector(delItemButtonClicked:)])
+            {
+                MyLauncherItem *item = [[MyLauncherItem alloc] initWithTitle:@""
+                                                                relationCode:self.execUnit.executCode
+                                                                 iPhoneImage:self.execUnit.imageName
+                                                                   iPadImage:self.execUnit.imageName
+                                                                      target:@"ItemViewController"
+                                                                 targetTitle:@"情景设置"
+                                                                   deletable:YES];
+                [self.delegate delItemButtonClicked:item];
+            }
+        }
         
-        [self.delegate delItemButtonClicked:item];
     }
 }
 
