@@ -20,6 +20,7 @@
 
 #import "MyLauncherView.h"
 #import "Constants.h"
+#import "AppDelegate.h"
 
 struct NItemLocation {
 	NSInteger page; 
@@ -815,9 +816,10 @@ static const CGFloat iPadLandscapeYPadding = 30;
 		}
 		[pagesToSave addObject:pageToSave];
 	}
-	
-	[self saveToUserDefaults:pagesToSave key:@"myLauncherView"];
-    [self saveToUserDefaults:[NSNumber numberWithInteger:numberOfImmovableItems] key:@"myLauncherViewImmovable"];
+    NSString *currentKey = [NSString stringWithFormat:@"%@-%@", @"myLauncherView", TheAppDelegate.currentServerId];
+	[self saveToUserDefaults:pagesToSave key:currentKey];
+    NSString *currentImmovableKey = [NSString stringWithFormat:@"%@-%@", @"myLauncherViewImmovable", TheAppDelegate.currentServerId];
+    [self saveToUserDefaults:[NSNumber numberWithInteger:numberOfImmovableItems] key:currentImmovableKey];
 }
 
 -(void)saveToUserDefaults:(id)object key:(NSString *)key

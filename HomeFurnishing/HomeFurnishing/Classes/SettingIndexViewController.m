@@ -15,6 +15,7 @@
 #import "ItemViewController.h"
 #import "Constants.h"
 #import "LocalFileManager.h"
+#import "AppDelegate.h"
 
 @interface SettingIndexViewController ()<MyLauncherViewDelegate,ItemViewControllerDelegate>
 
@@ -90,24 +91,6 @@
         self.launcherView.delegate = nil;
         self.launcherView = nil;
     }
-    //重新绘制launcherView
-//    UIDeviceOrientation orientation = [UIDevice currentDevice].orientation;
-//    switch (orientation) {
-//        case UIDeviceOrientationPortrait:
-//            self.launcherView = [[MyLauncherView alloc] initWithFrame:CGRectMake(0, 0, self.mainLauncherView.frame.size.width, self.mainLauncherView.frame.size.height)];
-//            break;
-//        case UIDeviceOrientationPortraitUpsideDown:
-//            self.launcherView = [[MyLauncherView alloc] initWithFrame:CGRectMake(0, 0, self.mainLauncherView.frame.size.width, self.mainLauncherView.frame.size.height)];
-//            break;
-//        case UIDeviceOrientationLandscapeLeft:
-//            self.launcherView = [[MyLauncherView alloc] initWithFrame:CGRectMake(0, 0, 1024, 594)];
-//            break;
-//        case UIDeviceOrientationLandscapeRight:
-//            self.launcherView = [[MyLauncherView alloc] initWithFrame:CGRectMake(0, 0, 1024, 594)];
-//            break;
-//        default:
-//            break;
-//    }
     
     self.launcherView = [[MyLauncherView alloc] initWithFrame:CGRectMake(0, 0, self.mainLauncherView.frame.size.width, self.mainLauncherView.frame.size.height)];
     
@@ -144,7 +127,8 @@
     
     if (pages) {
         [self.launcherView setPages:pages];
-        [self.launcherView setNumberOfImmovableItems:[(NSNumber *)[self retrieveFromUserDefaults:@"myLauncherViewImmovable"] integerValue]];
+        NSString *currentImmovableKey = [NSString stringWithFormat:@"%@-%@", @"myLauncherViewImmovable", TheAppDelegate.currentServerId];
+        [self.launcherView setNumberOfImmovableItems:[(NSNumber *)[self retrieveFromUserDefaults:currentImmovableKey] integerValue]];
     } else {
         [self.launcherView setPages:[NSMutableArray arrayWithObjects:
                                      [NSMutableArray arrayWithObjects:addItem, nil], nil] numberOfImmovableItems:1];
@@ -200,7 +184,8 @@
 #pragma mark - MyLauncherItem management
 
 -(BOOL)hasSavedLauncherItems {
-    return ([self retrieveFromUserDefaults:@"myLauncherView"] != nil);
+    NSString *currentKey = [NSString stringWithFormat:@"%@-%@", @"myLauncherView", TheAppDelegate.currentServerId];
+    return ([self retrieveFromUserDefaults:currentKey] != nil);
 }
 
 -(void)launcherViewItemSelected:(MyLauncherItem*)item {
@@ -256,7 +241,8 @@
 #pragma mark - myLauncher caching
 
 -(NSMutableArray *)loadLauncherItems:(MyLauncherItem *)myItem {
-    NSArray *savedPages = (NSArray *)[self retrieveFromUserDefaults:@"myLauncherView"];
+    NSString *currentKey = [NSString stringWithFormat:@"%@-%@", @"myLauncherView", TheAppDelegate.currentServerId];
+    NSArray *savedPages = (NSArray *)[self retrieveFromUserDefaults:currentKey];
     
     if(savedPages)
     {
@@ -353,8 +339,8 @@
         }
         [pagesToSave addObject:pageToSave];
     }
-    
-    [self saveToUserDefaults:pagesToSave key:@"myLauncherView"];
+    NSString *currentKey = [NSString stringWithFormat:@"%@-%@", @"myLauncherView", TheAppDelegate.currentServerId];
+    [self saveToUserDefaults:pagesToSave key:currentKey];
 }
 
 -(void)deleteLauncherItemPage:(MyLauncherItem *)item {
@@ -384,7 +370,8 @@
             [pagesToSave addObject:pageToSave];
         }
         
-        [self saveToUserDefaults:pagesToSave key:@"myLauncherView"];
+        NSString *currentKey = [NSString stringWithFormat:@"%@-%@", @"myLauncherView", TheAppDelegate.currentServerId];
+        [self saveToUserDefaults:pagesToSave key:currentKey];
     }
 }
 

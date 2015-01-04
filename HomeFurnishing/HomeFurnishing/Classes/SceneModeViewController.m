@@ -59,9 +59,10 @@
         self.myServerIdManager = [[MyServerIdManager alloc] init];
         
         //注册通知
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didAppBecomeActive) name:@"applicationDidBecomeActiveNotifi" object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didAppBecomeActive) name:UIApplicationDidBecomeActiveNotification object:nil];
         
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(killUdpSocketImmediately) name:@"applicationWillResignActiveNotifi" object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(killUdpSocketImmediately) name:UIApplicationWillResignActiveNotification object:nil];
+        
     }
     return self;
 }
@@ -207,7 +208,8 @@
 //加载用户已设置情景模式
 - (void)loadUserSettingModel:(NSString *)dataUrl
 {
-    NSLog(@"loadUserSettingModel...");
+    NSLog(@"Load user setting model url is : %@", dataUrl);
+    TheAppDelegate.currentServerId = [self.myServerIdManager getCurrentServerId];
 }
 
 - (void)didReceiveMemoryWarning

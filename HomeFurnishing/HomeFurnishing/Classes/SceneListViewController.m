@@ -8,11 +8,11 @@
 
 #import "SceneListViewController.h"
 #import "SceneListParser.h"
-#import "MyServerIdManager.h"
 #import "Constants.h"
 #import "CodeUtil.h"
 #import "NSDataAES.h"
 #import "SceneTableCell.h"
+#import "AppDelegate.h"
 
 #define TABLE_ROW_INDEX_START 200
 
@@ -20,7 +20,6 @@
 
 @property(nonatomic, strong) SceneListParser *sceneListParser;
 @property(nonatomic, strong) NSMutableArray *sceneList;
-@property(nonatomic, strong) MyServerIdManager *myServerIdManager;
 
 @end
 
@@ -28,7 +27,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.myServerIdManager = [[MyServerIdManager alloc] init];
     self.view.backgroundColor = [UIColor clearColor];
     self.listTableView.backgroundColor = [UIColor clearColor];
     [self loadRemoteSceneList];
@@ -42,7 +40,7 @@
 
 - (void)loadRemoteSceneList
 {
-    NSString *serverId = [self.myServerIdManager getCurrentServerId];
+    NSString *serverId = TheAppDelegate.currentServerId;
     
     if (serverId != nil) {
         if (self.sceneListParser != nil) {
@@ -79,7 +77,6 @@
         for (NSDictionary *selDict in self.selectedSceneList) {
             NSString *curId = [dict objectForKey:@"id"];
             NSString *selId = [selDict objectForKey:@"id"];
-            //忽略大小写比较
             if ([curId isEqualToString:selId]) {
                 isExit = YES;
             }
