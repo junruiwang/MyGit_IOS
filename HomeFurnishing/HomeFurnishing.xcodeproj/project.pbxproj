@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0425C93C1A592AC9000C2135 /* LoginParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 0425C93B1A592AC9000C2135 /* LoginParser.m */; };
 		044BB2F31A3BF1260003B71D /* SettingIndexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 044BB2F21A3BF1260003B71D /* SettingIndexViewController.m */; };
 		045106D21A45B6AB0099BF0E /* aircona.png in Resources */ = {isa = PBXBuildFile; fileRef = 045106B91A45B6AB0099BF0E /* aircona.png */; };
 		045106D31A45B6AB0099BF0E /* curtain.png in Resources */ = {isa = PBXBuildFile; fileRef = 045106BA1A45B6AB0099BF0E /* curtain.png */; };
@@ -145,6 +146,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0425C93A1A592AC9000C2135 /* LoginParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginParser.h; path = Classes/LoginParser.h; sourceTree = "<group>"; };
+		0425C93B1A592AC9000C2135 /* LoginParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginParser.m; path = Classes/LoginParser.m; sourceTree = "<group>"; };
 		044BB2F11A3BF1260003B71D /* SettingIndexViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingIndexViewController.h; path = Classes/SettingIndexViewController.h; sourceTree = "<group>"; };
 		044BB2F21A3BF1260003B71D /* SettingIndexViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingIndexViewController.m; path = Classes/SettingIndexViewController.m; sourceTree = "<group>"; };
 		045106B91A45B6AB0099BF0E /* aircona.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = aircona.png; sourceTree = "<group>"; };
@@ -392,6 +395,8 @@
 				0452C09B1A346269009188E0 /* BaseServerParser.m */,
 				C486C6D21A4C49F9000425E5 /* SceneListParser.h */,
 				C486C6D31A4C49F9000425E5 /* SceneListParser.m */,
+				0425C93A1A592AC9000C2135 /* LoginParser.h */,
+				0425C93B1A592AC9000C2135 /* LoginParser.m */,
 			);
 			name = Parser;
 			sourceTree = "<group>";
@@ -853,6 +858,7 @@
 				046CEE361A34557900BC79E4 /* CodeUtil.m in Sources */,
 				046CEE5D1A3455A000BC79E4 /* SBJsonStreamParserState.m in Sources */,
 				046CEE591A3455A000BC79E4 /* SBJsonParser.m in Sources */,
+				0425C93C1A592AC9000C2135 /* LoginParser.m in Sources */,
 				046CEE5B1A3455A000BC79E4 /* SBJsonStreamParserAccumulator.m in Sources */,
 				047471531A3C88E4006FD502 /* CustomBadge.m in Sources */,
 				0474715B1A3C894D006FD502 /* ItemViewController.m in Sources */,

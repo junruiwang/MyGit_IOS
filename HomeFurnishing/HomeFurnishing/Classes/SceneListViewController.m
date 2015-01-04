@@ -50,7 +50,7 @@
         self.sceneListParser = [[SceneListParser alloc] init];
         self.sceneListParser.serverAddress = kSceneListURL;
         self.sceneListParser.requestString = [self md5HexForRequest:serverId];
-        self.sceneListParser.isArrayReturnValue = YES;
+        self.sceneListParser.valType = ReturnValueTypeArray;
         self.sceneListParser.delegate = self;
         [self.sceneListParser start];
         [self showLoadingView];

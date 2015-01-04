@@ -737,8 +737,12 @@
                                     <constraint firstAttribute="width" constant="240" id="syk-cp-PJF"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="7bdd277e-60c6-473c-983b-c77676a0f83d" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gMr-zk-uMS">
-                                <rect key="frame" x="306" y="119" width="238" height="14.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gMr-zk-uMS">
+                                <rect key="frame" x="306" y="119" width="238" height="15"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="238" id="BAt-Va-9BM"/>
+                                    <constraint firstAttribute="height" constant="15" id="KeU-8l-KML"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -876,6 +880,7 @@
                     <connections>
                         <outlet property="bgImageView" destination="1hX-uZ-6gc" id="klb-lu-hJJ"/>
                         <outlet property="passwordField" destination="B1L-jb-1BX" id="4Bi-z2-DHr"/>
+                        <outlet property="serverIdLabel" destination="gMr-zk-uMS" id="1Ep-sI-4bJ"/>
                         <outlet property="usernameField" destination="8Uf-OG-03U" id="2jC-je-yZU"/>
                         <segue destination="HPg-Zf-bbl" kind="custom" identifier="fromLoginToSetting" customClass="BasePushSegue" id="NLw-Ci-OvP"/>
                     </connections>

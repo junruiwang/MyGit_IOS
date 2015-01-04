@@ -70,27 +70,41 @@
             [self.delegate parser:self DidFailedParseWithMsg:@"response data is nil or empty" errCode:-1];
         return NO;
     }
-    if (self.isArrayReturnValue) {
-        NSArray *array = [responseData JSONValue];
-        if (array == nil) {
-            if(self.delegate != nil && [self.delegate respondsToSelector:@selector(parser:DidFailedParseWithMsg:errCode:)])
-                [self.delegate parser:self DidFailedParseWithMsg:@"response data is not NSArray" errCode:-1];
-            return NO;
+    
+    switch (self.valType) {
+        case ReturnValueTypeString:
+        {
+            break;
         }
-    } else {
-        NSDictionary *dictionary = [responseData JSONValue];
-        if (dictionary == nil) {
-            if(self.delegate != nil && [self.delegate respondsToSelector:@selector(parser:DidFailedParseWithMsg:errCode:)])
-                [self.delegate parser:self DidFailedParseWithMsg:@"response data is not NSDictionary" errCode:-1];
-            return NO;
+        case ReturnValueTypeArray:
+        {
+            NSArray *array = [responseData JSONValue];
+            if (array == nil) {
+                if(self.delegate != nil && [self.delegate respondsToSelector:@selector(parser:DidFailedParseWithMsg:errCode:)])
+                    [self.delegate parser:self DidFailedParseWithMsg:@"response data is not NSArray" errCode:-1];
+                return NO;
+            }
+            break;
         }
-        int code = [[dictionary valueForKey:@"status"] intValue];
-        NSString *resultMsg = [dictionary valueForKey:@"description"];
-        if(code != 200){
-            if(self.delegate != nil && [self.delegate respondsToSelector:@selector(parser:DidFailedParseWithMsg:errCode:)])
-                [self.delegate parser:self DidFailedParseWithMsg:resultMsg errCode:code];
-            return NO;
+        case ReturnValueTypeDictionary:
+        {
+            NSDictionary *dictionary = [responseData JSONValue];
+            if (dictionary == nil) {
+                if(self.delegate != nil && [self.delegate respondsToSelector:@selector(parser:DidFailedParseWithMsg:errCode:)])
+                    [self.delegate parser:self DidFailedParseWithMsg:@"response data is not NSDictionary" errCode:-1];
+                return NO;
+            }
+            int code = [[dictionary valueForKey:@"status"] intValue];
+            NSString *resultMsg = [dictionary valueForKey:@"description"];
+            if(code != 200){
+                if(self.delegate != nil && [self.delegate respondsToSelector:@selector(parser:DidFailedParseWithMsg:errCode:)])
+                    [self.delegate parser:self DidFailedParseWithMsg:resultMsg errCode:code];
+                return NO;
+            }
+            break;
         }
+        default:
+            break;
     }
     
     return YES;

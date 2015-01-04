@@ -14,6 +14,7 @@
 @property(nonatomic, weak) IBOutlet UIImageView *bgImageView;
 @property(nonatomic, weak) IBOutlet UITextField *usernameField;
 @property(nonatomic, weak) IBOutlet UITextField *passwordField;
+@property(nonatomic, weak) IBOutlet UILabel *serverIdLabel;
 
 -(IBAction)cancelLoginClicked:(id)sender;
 -(IBAction)checkButtonClicked:(id)sender;

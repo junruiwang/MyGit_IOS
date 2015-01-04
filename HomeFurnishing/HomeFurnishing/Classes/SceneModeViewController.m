@@ -199,7 +199,7 @@
         self.baseServerParser = [[BaseServerParser alloc] init];
         self.baseServerParser.serverAddress = kAliyunURL;
         self.baseServerParser.requestString = [NSString stringWithFormat:@"id=%@",serverId];
-        self.baseServerParser.isArrayReturnValue = NO;
+        self.baseServerParser.valType = ReturnValueTypeDictionary;
         self.baseServerParser.delegate = self;
         [self.baseServerParser start];
     }

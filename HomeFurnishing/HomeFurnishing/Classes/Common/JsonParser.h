@@ -10,6 +10,12 @@
 #import <UIKit/UIKit.h>
 #import "SBJson.h"
 
+typedef enum : NSInteger {
+    ReturnValueTypeString = 0,
+    ReturnValueTypeArray,
+    ReturnValueTypeDictionary
+} ReturnValueType;
+
 @class JsonParser;
 
 #pragma mark - JsonParserDelegate
@@ -36,7 +42,7 @@
 @property (nonatomic, weak) id<JsonParserDelegate> delegate;
 @property (nonatomic, copy) NSString* serverAddress;
 @property (nonatomic, copy) NSString* requestString;
-@property (nonatomic) BOOL isArrayReturnValue;
+@property (nonatomic) ReturnValueType valType;
 
 - (void)start;
 - (void)cancel;
