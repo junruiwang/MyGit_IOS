@@ -20,8 +20,10 @@
 #import "MyServerIdManager.h"
 #import "LoginViewController.h"
 #import "ControllerFunction.h"
+#import "MyLauncherView.h"
+#import "MyLauncherItem.h"
 
-@interface SceneModeViewController ()<GCDAsyncUdpSocketDelegate, JsonParserDelegate>
+@interface SceneModeViewController ()<GCDAsyncUdpSocketDelegate, JsonParserDelegate, MyLauncherViewDelegate>
 
 @property (nonatomic, copy) NSString *currentIP;
 @property (nonatomic, strong) GCDAsyncUdpSocket *udpSocket;
@@ -39,12 +41,16 @@
 
 @property(nonatomic, strong) MyServerIdManager *myServerIdManager;
 
+@property (nonatomic, strong) MyLauncherView *launcherView;
+
 - (void)workingForFindServerUrl;
 - (void)sendUDPMessage;
 - (void)killUdpSocketImmediately;
 - (void)didAppBecomeActive;
 - (BOOL)isRightJsonData:(NSString *)responseData;
 - (void)loadUserSettingModel:(NSString *)dataUrl;
+
+-(NSMutableArray *)loadLauncherItems;
 
 @end
 
@@ -100,6 +106,11 @@
             break;
         default:
             break;
+    }
+    
+    if (self.launcherView) {
+        self.launcherView.frame = CGRectMake(0, 0, self.mainLauncherView.frame.size.width, self.mainLauncherView.frame.size.height);
+        [self reloadLauncherView];
     }
 }
 
@@ -210,6 +221,81 @@
 {
     NSLog(@"Load user setting model url is : %@", dataUrl);
     TheAppDelegate.currentServerId = [self.myServerIdManager getCurrentServerId];
+    [self addLauncherView];
+}
+
+-(void)addLauncherView
+{
+    //移除launcherView
+    if (self.launcherView) {
+        [self.launcherView removeFromSuperview];
+        self.launcherView.delegate = nil;
+        self.launcherView = nil;
+    }
+    
+    self.launcherView = [[MyLauncherView alloc] initWithFrame:CGRectMake(0, 0, self.mainLauncherView.frame.size.width, self.mainLauncherView.frame.size.height)];
+    [self.launcherView setEditingAllowed:NO];
+    self.launcherView.backgroundColor = [UIColor clearColor];
+    [self.launcherView setDelegate:self];
+    [self.mainLauncherView addSubview:self.launcherView];
+    [self reloadLauncherView];
+}
+
+-(void)reloadLauncherView
+{
+    NSMutableArray *pages = [self loadLauncherItems];
+    
+    if (pages) {
+        [self.launcherView setPages:pages];
+//        [self.launcherView setNumberOfImmovableItems:1];
+    }
+}
+
+-(NSMutableArray *)loadLauncherItems
+{
+    NSString *currentKey = [NSString stringWithFormat:@"%@-%@", @"myLauncherView", TheAppDelegate.currentServerId];
+    NSArray *savedPages = (NSArray *)[self retrieveFromUserDefaults:currentKey];
+    
+    if(savedPages)
+    {
+        NSMutableArray *savedLauncherItems = [[NSMutableArray alloc] init];
+        NSInteger index = 0;
+        for (NSArray *page in savedPages)
+        {
+            index += 1;
+            NSMutableArray *savedPage = [[NSMutableArray alloc] init];
+            for(NSDictionary *item in page)
+            {
+                NSNumber *version;
+                if ((version = [item objectForKey:@"myLauncherViewItemVersion"])) {
+                    if ([version intValue] == 2) {
+                        [savedPage addObject:[[MyLauncherItem alloc]
+                                              initWithTitle:[item objectForKey:@"title"]
+                                              relationCode:[item objectForKey:@"relationCode"]
+                                              iPhoneImage:[item objectForKey:@"image"]
+                                              iPadImage:[item objectForKey:@"iPadImage"]
+                                              target:[item objectForKey:@"controller"]
+                                              targetTitle:[item objectForKey:@"controllerTitle"]
+                                              deletable:[[item objectForKey:@"deletable"] boolValue]]];
+                        
+                        
+                    }
+                }
+            }
+            [savedLauncherItems addObject:savedPage];
+        }
+        return savedLauncherItems;
+    }
+    
+    return nil;
+}
+
+-(id)retrieveFromUserDefaults:(NSString *)key {
+    NSUserDefaults *standardUserDefaults = [NSUserDefaults standardUserDefaults];
+    
+    if (standardUserDefaults)
+        return [standardUserDefaults objectForKey:key];
+    return nil;
 }
 
 - (void)didReceiveMemoryWarning
@@ -450,6 +536,27 @@
         default:
             break;
     }
+    
+    if (self.launcherView) {
+        self.launcherView.frame = CGRectMake(0, 0, self.mainLauncherView.frame.size.width, self.mainLauncherView.frame.size.height);
+        [self.launcherView layoutLauncher];
+    }
+}
+
+#pragma mark MyLauncherViewDelegate
+
+-(void)launcherViewItemSelected:(MyLauncherItem*)item
+{
+    
+}
+
+-(void)launcherViewDidBeginEditing:(id)sender
+{
+    
+}
+-(void)launcherViewDidEndEditing:(id)sender
+{
+
 }
 
 @end

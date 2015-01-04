@@ -25,7 +25,6 @@
 @property(nonatomic, strong) LocalFileManager *localFileManager;
 
 -(BOOL)hasSavedLauncherItems;
--(void)launcherViewItemSelected:(MyLauncherItem*)item;
 
 -(NSMutableArray *)loadLauncherItems:(MyLauncherItem *)myItem;
 -(NSArray*)retrieveFromUserDefaults:(NSString *)key;

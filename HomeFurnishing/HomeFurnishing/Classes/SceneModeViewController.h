@@ -12,6 +12,7 @@
 @interface SceneModeViewController : BaseViewController
 
 @property(nonatomic, weak) IBOutlet UIImageView *bgImageView;
+@property(nonatomic, weak) IBOutlet UIView *mainLauncherView;
 
 -(IBAction)systemButtonClick:(id)sender;
 
