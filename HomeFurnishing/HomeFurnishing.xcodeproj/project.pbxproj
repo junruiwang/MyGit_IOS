@@ -109,6 +109,8 @@
 		048C3CAD1A494273005180A3 /* icon_selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 048C3CAB1A494273005180A3 /* icon_selected@2x.png */; };
 		049D55001A53899700C97B91 /* synchronized.png in Resources */ = {isa = PBXBuildFile; fileRef = 049D54FE1A53899700C97B91 /* synchronized.png */; };
 		049D55011A53899700C97B91 /* synchronized@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 049D54FF1A53899700C97B91 /* synchronized@2x.png */; };
+		049E43441A5A767F00691370 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 049E43431A5A767F00691370 /* MBProgressHUD.m */; };
+		049E43471A5A81D600691370 /* SceneExecParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 049E43461A5A81D600691370 /* SceneExecParser.m */; };
 		04BF07FD1A399A8B00F41510 /* input_bg_ipa.png in Resources */ = {isa = PBXBuildFile; fileRef = 04BF07FB1A399A8B00F41510 /* input_bg_ipa.png */; };
 		04BF07FE1A399A8B00F41510 /* input_bg_ipa@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04BF07FC1A399A8B00F41510 /* input_bg_ipa@2x.png */; };
 		04C2C27B1A570381001A6E34 /* LocalFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C2C27A1A570381001A6E34 /* LocalFileManager.m */; };
@@ -293,6 +295,10 @@
 		048C3CAB1A494273005180A3 /* icon_selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon_selected@2x.png"; path = "Resources/icon_selected@2x.png"; sourceTree = "<group>"; };
 		049D54FE1A53899700C97B91 /* synchronized.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = synchronized.png; path = Resources/synchronized.png; sourceTree = "<group>"; };
 		049D54FF1A53899700C97B91 /* synchronized@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "synchronized@2x.png"; path = "Resources/synchronized@2x.png"; sourceTree = "<group>"; };
+		049E43421A5A767F00691370 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		049E43431A5A767F00691370 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		049E43451A5A81D600691370 /* SceneExecParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SceneExecParser.h; path = Classes/SceneExecParser.h; sourceTree = "<group>"; };
+		049E43461A5A81D600691370 /* SceneExecParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SceneExecParser.m; path = Classes/SceneExecParser.m; sourceTree = "<group>"; };
 		04BF07FB1A399A8B00F41510 /* input_bg_ipa.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = input_bg_ipa.png; path = Resources/input_bg_ipa.png; sourceTree = "<group>"; };
 		04BF07FC1A399A8B00F41510 /* input_bg_ipa@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "input_bg_ipa@2x.png"; path = "Resources/input_bg_ipa@2x.png"; sourceTree = "<group>"; };
 		04C2C2791A570381001A6E34 /* LocalFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LocalFileManager.h; path = Classes/LocalFileManager.h; sourceTree = "<group>"; };
@@ -397,6 +403,8 @@
 				C486C6D31A4C49F9000425E5 /* SceneListParser.m */,
 				0425C93A1A592AC9000C2135 /* LoginParser.h */,
 				0425C93B1A592AC9000C2135 /* LoginParser.m */,
+				049E43451A5A81D600691370 /* SceneExecParser.h */,
+				049E43461A5A81D600691370 /* SceneExecParser.m */,
 			);
 			name = Parser;
 			sourceTree = "<group>";
@@ -448,6 +456,8 @@
 				C46839D01A49B26200463841 /* ValidateInputUtil.m */,
 				045F483E1A53D60D00AC520E /* SceneTableCell.h */,
 				045F483F1A53D60D00AC520E /* SceneTableCell.m */,
+				049E43421A5A767F00691370 /* MBProgressHUD.h */,
+				049E43431A5A767F00691370 /* MBProgressHUD.m */,
 			);
 			name = Common;
 			path = Classes/Common;
@@ -839,6 +849,7 @@
 				047471561A3C88E4006FD502 /* MyLauncherScrollView.m in Sources */,
 				046CEE791A3455D000BC79E4 /* NSDataAES.m in Sources */,
 				046CEE7A1A3455D000BC79E4 /* Reachability.m in Sources */,
+				049E43441A5A767F00691370 /* MBProgressHUD.m in Sources */,
 				046CEE5E1A3455A000BC79E4 /* SBJsonStreamWriter.m in Sources */,
 				046CEE781A3455D000BC79E4 /* NetworkHelper.m in Sources */,
 				045774831A39659700F809D9 /* SceneModeViewController.m in Sources */,
@@ -879,6 +890,7 @@
 				046CEE581A3455A000BC79E4 /* NSObject+SBJson.m in Sources */,
 				C486C6D11A4C4761000425E5 /* SceneListViewController.m in Sources */,
 				047471581A3C88E4006FD502 /* MyLauncherViewController.m in Sources */,
+				049E43471A5A81D600691370 /* SceneExecParser.m in Sources */,
 				046CEE771A3455D000BC79E4 /* IPAdress.c in Sources */,
 				046CEE391A34557900BC79E4 /* JsonParser.m in Sources */,
 				046CEE5C1A3455A000BC79E4 /* SBJsonStreamParserAdapter.m in Sources */,

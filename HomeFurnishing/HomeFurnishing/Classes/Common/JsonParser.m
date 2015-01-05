@@ -64,7 +64,7 @@
 
 - (BOOL)parserJSONString:(NSString *)responseData
 {
-    if(responseData == nil || [responseData length] == 0)
+    if(responseData == nil || [responseData length] == 0 || [responseData isEqualToString:@"null"])
     {
         if(self.delegate != nil && [self.delegate respondsToSelector:@selector(parser:DidFailedParseWithMsg:errCode:)])
             [self.delegate parser:self DidFailedParseWithMsg:@"response data is nil or empty" errCode:-1];

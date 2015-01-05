@@ -18,7 +18,7 @@
 
 @interface LoginViewController ()<JsonParserDelegate>
 
-@property(nonatomic, strong) UIActivityIndicatorView *indicatorView;
+//@property(nonatomic, strong) UIActivityIndicatorView *indicatorView;
 @property(nonatomic, strong) LoginParser *loginParser;
 
 @end
@@ -28,10 +28,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.serverIdLabel.text = TheAppDelegate.currentServerId;
-    self.indicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-    self.indicatorView.center = self.view.center;
-    self.indicatorView.hidden = YES;
-    [self.view addSubview:self.indicatorView];
+//    self.indicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+//    self.indicatorView.center = self.view.center;
+//    self.indicatorView.hidden = YES;
+//    [self.view addSubview:self.indicatorView];
     // Do any additional setup after loading the view.
 }
 
@@ -120,7 +120,7 @@
         self.loginParser.valType = ReturnValueTypeString;
         self.loginParser.delegate = self;
         [self.loginParser start];
-        [self.indicatorView startAnimating];
+        [self showLoadingView];
     }
 }
 
@@ -157,13 +157,13 @@
 
 - (void)parser:(JsonParser*)parser DidFailedParseWithMsg:(NSString*)msg errCode:(NSInteger)code
 {
-    [self.indicatorView stopAnimating];
+    [self hideLoadingView];
     NSLog(@"%@",msg);
 }
 
 - (void)parser:(JsonParser*)parser DidParsedData:(NSDictionary *)data
 {
-    [self.indicatorView stopAnimating];
+    [self hideLoadingView];
     NSString *flag = [data objectForKey:@"data"];
     if ([flag isEqualToString:@"true"]) {
         [self performSegueWithIdentifier:@"fromLoginToSetting" sender:nil];

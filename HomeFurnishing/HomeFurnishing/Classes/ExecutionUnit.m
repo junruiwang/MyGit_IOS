@@ -80,4 +80,21 @@
     return execUnit;
 }
 
+
+- (NSString *)getIdsByAll
+{
+    NSMutableString *ids = [NSMutableString stringWithString:@""];
+    for (NSInteger i=0; i<self.sceneArray.count; i++) {
+        NSMutableDictionary *dict = self.sceneArray[i];
+        if (i == 0) {
+            [ids appendString:[dict objectForKey:@"id"]];
+        } else {
+            [ids appendString:@","];
+            [ids appendString:[dict objectForKey:@"id"]];
+        }
+    }
+    
+    return [ids copy];
+}
+
 @end

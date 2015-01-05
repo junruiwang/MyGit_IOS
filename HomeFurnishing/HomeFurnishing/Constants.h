@@ -11,6 +11,7 @@
 #define kAliyunURL                     @"http://115.29.147.77/queryFamilyServer.dhtml"
 #define kSceneListURL                  @"http://115.29.147.77:8080/scene/list.dhtml"
 #define kUserLoginURL                  @"http://115.29.147.77:8080/user/validate.dhtml"
+#define kExecSceneURL                  @"http://115.29.147.77:8080/scene/exe.dhtml"
 
 #define kUdpBroadcastHost    @"224.0.0.1"
 #define kUdpBroadcastPort    5225

@@ -22,8 +22,11 @@
 #import "ControllerFunction.h"
 #import "MyLauncherView.h"
 #import "MyLauncherItem.h"
+#import "SceneExecParser.h"
+#import "LocalFileManager.h"
+#import "NSDataAES.h"
 
-@interface SceneModeViewController ()<GCDAsyncUdpSocketDelegate, JsonParserDelegate, MyLauncherViewDelegate>
+@interface SceneModeViewController ()<GCDAsyncUdpSocketDelegate, JsonParserDelegate, MyLauncherViewDelegate, JsonParserDelegate>
 
 @property (nonatomic, copy) NSString *currentIP;
 @property (nonatomic, strong) GCDAsyncUdpSocket *udpSocket;
@@ -36,12 +39,11 @@
 @property(nonatomic, strong) NSDate *invokeTime;
 //UDP广播遮罩层效果
 @property(nonatomic, strong) UdpIndicatorViewController *udpIndicatorViewController;
-
 @property (nonatomic, strong) BaseServerParser *baseServerParser;
-
 @property(nonatomic, strong) MyServerIdManager *myServerIdManager;
-
 @property (nonatomic, strong) MyLauncherView *launcherView;
+@property(nonatomic, strong) SceneExecParser *sceneExecParser;
+@property(nonatomic, strong) LocalFileManager *localFileManager;
 
 - (void)workingForFindServerUrl;
 - (void)sendUDPMessage;
@@ -112,6 +114,15 @@
         self.launcherView.frame = CGRectMake(0, 0, self.mainLauncherView.frame.size.width, self.mainLauncherView.frame.size.height);
         [self reloadLauncherView];
     }
+}
+
+- (LocalFileManager *)localFileManager
+{
+    if (!_localFileManager)
+    {
+        _localFileManager = [[LocalFileManager alloc] init];
+    }
+    return _localFileManager;
 }
 
 -(IBAction)systemButtonClick:(id)sender
@@ -502,21 +513,58 @@
     self.udpIndicatorViewController = nil;
 }
 
+- (void)execSceneAction:(ExecutionUnit *)executionUnit
+{
+    NSString *serverId = TheAppDelegate.currentServerId;
+    
+    if (serverId != nil) {
+        if (self.sceneExecParser != nil) {
+            [self.sceneExecParser cancel];
+            self.sceneExecParser = nil;
+        }
+        self.sceneExecParser = [[SceneExecParser alloc] init];
+        self.sceneExecParser.serverAddress = kExecSceneURL;
+        self.sceneExecParser.requestString = [self md5HexForRequest:serverId executionUnit:executionUnit];
+        self.sceneExecParser.valType = ReturnValueTypeDictionary;
+        self.sceneExecParser.delegate = self;
+        [self.sceneExecParser start];
+        [self showLoadingView];
+    }
+}
+
+- (NSString *)md5HexForRequest:(NSString *)serverId executionUnit:(ExecutionUnit *)executionUnit
+{
+    NSString *token = [[NSUUID UUID] UUIDString];
+    NSString *appendStr = [NSString stringWithFormat:@"%@%@", token, kSecretKey];
+    NSString *sign = [CodeUtil hexStringFromString:[appendStr MD5String]];
+    NSLog(@"sign : %@",sign);
+    
+    
+    return [NSString stringWithFormat:@"id=%@&api=true&sign=E50AEBBE04A43A035629B463C138C3C6&token=123&serverId=%@", [executionUnit getIdsByAll], serverId];
+}
+
 #pragma mark JsonParserDelegate
 
 - (void)parser:(JsonParser*)parser DidFailedParseWithMsg:(NSString*)msg errCode:(NSInteger)code
 {
-    [self showAlertMessage:@"Your network has been disconnected!"];
-    [self hideIndicatorView];
+    if ([parser isKindOfClass:[BaseServerParser class]]) {
+        [self showAlertMessage:@"Your network has been disconnected!"];
+        [self hideIndicatorView];
+    } else if ([parser isKindOfClass:[SceneExecParser class]]) {
+        [self hideLoadingView];
+    }
 }
 
 - (void)parser:(JsonParser*)parser DidParsedData:(NSDictionary *)data
 {
-    [self hideIndicatorView];
-    NSString *str_url = [data valueForKey:@"url"];
-//    NSString *hostIp = [data valueForKey:@"host"];
-    //加载用户已设置情景模式
-    [self loadUserSettingModel:str_url];
+    if ([parser isKindOfClass:[BaseServerParser class]]) {
+        [self hideIndicatorView];
+        NSString *str_url = [data valueForKey:@"url"];
+        //加载用户已设置情景模式
+        [self loadUserSettingModel:str_url];
+    } else if ([parser isKindOfClass:[SceneExecParser class]]) {
+        [self hideLoadingView];
+    }
 }
 
 #pragma mark auto Rotation
@@ -547,7 +595,9 @@
 
 -(void)launcherViewItemSelected:(MyLauncherItem*)item
 {
-    
+    NSLog(@"执行场景：%@ ,执行code：%@", item.title, item.relationCode);
+    ExecutionUnit *execUnit = [self.localFileManager buildLocalFileToObjectByCode:item.relationCode];
+    [self execSceneAction:execUnit];
 }
 
 -(void)launcherViewDidBeginEditing:(id)sender

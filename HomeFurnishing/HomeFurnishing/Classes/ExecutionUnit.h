@@ -20,5 +20,6 @@
 + (ExecutionUnit *)unarchived:(NSData *) data;
 - (id) initWithDictionary : (NSDictionary *) dict;
 - (NSData *)archived;
+- (NSString *)getIdsByAll;
 
 @end
