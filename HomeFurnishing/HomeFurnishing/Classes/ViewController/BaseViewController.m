@@ -115,7 +115,7 @@
     progressHUD = [[MBProgressHUD alloc] initWithView:self.view];
     [self.view addSubview:progressHUD];
     progressHUD.delegate = self;
-//    progressHUD.labelText = @"Loading";
+    progressHUD.labelText = @"Please waiting";
     [progressHUD show:YES];
 }
 

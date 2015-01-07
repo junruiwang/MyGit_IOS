@@ -68,9 +68,6 @@
 		04EE2EA51A5D0DE600B50571 /* SettingIndexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04EE2E721A5D0DE600B50571 /* SettingIndexViewController.m */; };
 		04EE2EA61A5D0DE600B50571 /* UdpIndicatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04EE2E741A5D0DE600B50571 /* UdpIndicatorViewController.m */; };
 		04EE2EEC1A5D0EAA00B50571 /* add_model.png in Resources */ = {isa = PBXBuildFile; fileRef = 04EE2EA81A5D0EAA00B50571 /* add_model.png */; };
-		04EE2EED1A5D0EAA00B50571 /* addItemImage-iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = 04EE2EA91A5D0EAA00B50571 /* addItemImage-iPad.png */; };
-		04EE2EEE1A5D0EAA00B50571 /* addItemImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 04EE2EAA1A5D0EAA00B50571 /* addItemImage.png */; };
-		04EE2EEF1A5D0EAA00B50571 /* addItemImage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04EE2EAB1A5D0EAA00B50571 /* addItemImage@2x.png */; };
 		04EE2EF01A5D0EAA00B50571 /* background-Landscape.png in Resources */ = {isa = PBXBuildFile; fileRef = 04EE2EAC1A5D0EAA00B50571 /* background-Landscape.png */; };
 		04EE2EF11A5D0EAA00B50571 /* background-Portrait.png in Resources */ = {isa = PBXBuildFile; fileRef = 04EE2EAD1A5D0EAA00B50571 /* background-Portrait.png */; };
 		04EE2EF21A5D0EAA00B50571 /* book.png in Resources */ = {isa = PBXBuildFile; fileRef = 04EE2EAE1A5D0EAA00B50571 /* book.png */; };
@@ -89,8 +86,6 @@
 		04EE2EFF1A5D0EAA00B50571 /* input_bg_ipa.png in Resources */ = {isa = PBXBuildFile; fileRef = 04EE2EBB1A5D0EAA00B50571 /* input_bg_ipa.png */; };
 		04EE2F001A5D0EAA00B50571 /* input_bg_ipa@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04EE2EBC1A5D0EAA00B50571 /* input_bg_ipa@2x.png */; };
 		04EE2F011A5D0EAA00B50571 /* itemImage-iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = 04EE2EBD1A5D0EAA00B50571 /* itemImage-iPad.png */; };
-		04EE2F021A5D0EAA00B50571 /* itemImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 04EE2EBE1A5D0EAA00B50571 /* itemImage.png */; };
-		04EE2F031A5D0EAA00B50571 /* itemImage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04EE2EBF1A5D0EAA00B50571 /* itemImage@2x.png */; };
 		04EE2F041A5D0EAA00B50571 /* launcher.png in Resources */ = {isa = PBXBuildFile; fileRef = 04EE2EC01A5D0EAA00B50571 /* launcher.png */; };
 		04EE2F051A5D0EAA00B50571 /* login_btn_press.png in Resources */ = {isa = PBXBuildFile; fileRef = 04EE2EC11A5D0EAA00B50571 /* login_btn_press.png */; };
 		04EE2F061A5D0EAA00B50571 /* login_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = 04EE2EC21A5D0EAA00B50571 /* login_btn.png */; };
@@ -254,9 +249,6 @@
 		04EE2E741A5D0DE600B50571 /* UdpIndicatorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UdpIndicatorViewController.m; sourceTree = "<group>"; };
 		04EE2EA71A5D0E2800B50571 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		04EE2EA81A5D0EAA00B50571 /* add_model.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = add_model.png; path = Resources/add_model.png; sourceTree = "<group>"; };
-		04EE2EA91A5D0EAA00B50571 /* addItemImage-iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "addItemImage-iPad.png"; path = "Resources/addItemImage-iPad.png"; sourceTree = "<group>"; };
-		04EE2EAA1A5D0EAA00B50571 /* addItemImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = addItemImage.png; path = Resources/addItemImage.png; sourceTree = "<group>"; };
-		04EE2EAB1A5D0EAA00B50571 /* addItemImage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "addItemImage@2x.png"; path = "Resources/addItemImage@2x.png"; sourceTree = "<group>"; };
 		04EE2EAC1A5D0EAA00B50571 /* background-Landscape.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "background-Landscape.png"; path = "Resources/background-Landscape.png"; sourceTree = "<group>"; };
 		04EE2EAD1A5D0EAA00B50571 /* background-Portrait.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "background-Portrait.png"; path = "Resources/background-Portrait.png"; sourceTree = "<group>"; };
 		04EE2EAE1A5D0EAA00B50571 /* book.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = book.png; path = Resources/book.png; sourceTree = "<group>"; };
@@ -275,8 +267,6 @@
 		04EE2EBB1A5D0EAA00B50571 /* input_bg_ipa.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = input_bg_ipa.png; path = Resources/input_bg_ipa.png; sourceTree = "<group>"; };
 		04EE2EBC1A5D0EAA00B50571 /* input_bg_ipa@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "input_bg_ipa@2x.png"; path = "Resources/input_bg_ipa@2x.png"; sourceTree = "<group>"; };
 		04EE2EBD1A5D0EAA00B50571 /* itemImage-iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "itemImage-iPad.png"; path = "Resources/itemImage-iPad.png"; sourceTree = "<group>"; };
-		04EE2EBE1A5D0EAA00B50571 /* itemImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = itemImage.png; path = Resources/itemImage.png; sourceTree = "<group>"; };
-		04EE2EBF1A5D0EAA00B50571 /* itemImage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "itemImage@2x.png"; path = "Resources/itemImage@2x.png"; sourceTree = "<group>"; };
 		04EE2EC01A5D0EAA00B50571 /* launcher.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = launcher.png; path = Resources/launcher.png; sourceTree = "<group>"; };
 		04EE2EC11A5D0EAA00B50571 /* login_btn_press.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = login_btn_press.png; path = Resources/login_btn_press.png; sourceTree = "<group>"; };
 		04EE2EC21A5D0EAA00B50571 /* login_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = login_btn.png; path = Resources/login_btn.png; sourceTree = "<group>"; };
@@ -412,9 +402,6 @@
 			isa = PBXGroup;
 			children = (
 				04EE2EA81A5D0EAA00B50571 /* add_model.png */,
-				04EE2EA91A5D0EAA00B50571 /* addItemImage-iPad.png */,
-				04EE2EAA1A5D0EAA00B50571 /* addItemImage.png */,
-				04EE2EAB1A5D0EAA00B50571 /* addItemImage@2x.png */,
 				04EE2EAC1A5D0EAA00B50571 /* background-Landscape.png */,
 				04EE2EAD1A5D0EAA00B50571 /* background-Portrait.png */,
 				04EE2EAE1A5D0EAA00B50571 /* book.png */,
@@ -433,8 +420,6 @@
 				04EE2EBB1A5D0EAA00B50571 /* input_bg_ipa.png */,
 				04EE2EBC1A5D0EAA00B50571 /* input_bg_ipa@2x.png */,
 				04EE2EBD1A5D0EAA00B50571 /* itemImage-iPad.png */,
-				04EE2EBE1A5D0EAA00B50571 /* itemImage.png */,
-				04EE2EBF1A5D0EAA00B50571 /* itemImage@2x.png */,
 				04EE2EC01A5D0EAA00B50571 /* launcher.png */,
 				04EE2EC11A5D0EAA00B50571 /* login_btn_press.png */,
 				04EE2EC21A5D0EAA00B50571 /* login_btn.png */,
@@ -715,7 +700,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				04EE2F0E1A5D0EAA00B50571 /* curtain.png in Resources */,
-				04EE2F021A5D0EAA00B50571 /* itemImage.png in Resources */,
 				04EE2DDE1A5D04A600B50571 /* Main.storyboard in Resources */,
 				04EE2F281A5D0EAA00B50571 /* setting_icon-iPad@2x.png in Resources */,
 				04EE2EFE1A5D0EAA00B50571 /* image_model_add.png in Resources */,
@@ -737,7 +721,6 @@
 				04EE2F0B1A5D0EAA00B50571 /* logo_phone@2x.png in Resources */,
 				04EE2F171A5D0EAA00B50571 /* home_disarm.png in Resources */,
 				04EE2F091A5D0EAA00B50571 /* login_input.png in Resources */,
-				04EE2F031A5D0EAA00B50571 /* itemImage@2x.png in Resources */,
 				04EE2F2A1A5D0EAA00B50571 /* setting_icon@2x.png in Resources */,
 				04EE2F071A5D0EAA00B50571 /* login_checkbox_btn_selected.png in Resources */,
 				04EE2F2C1A5D0EAA00B50571 /* synchronized.png in Resources */,
@@ -750,13 +733,11 @@
 				04EE2DE01A5D04A600B50571 /* Images.xcassets in Resources */,
 				04EE2F121A5D0EAA00B50571 /* fitting.png in Resources */,
 				04EE2F241A5D0EAA00B50571 /* summer.png in Resources */,
-				04EE2EED1A5D0EAA00B50571 /* addItemImage-iPad.png in Resources */,
 				04EE2EF71A5D0EAA00B50571 /* checkbox_unselect.png in Resources */,
 				04EE2EF11A5D0EAA00B50571 /* background-Portrait.png in Resources */,
 				04EE2F2B1A5D0EAA00B50571 /* setting.png in Resources */,
 				04EE2F0F1A5D0EAA00B50571 /* curtaina.png in Resources */,
 				04EE2F061A5D0EAA00B50571 /* login_btn.png in Resources */,
-				04EE2EEE1A5D0EAA00B50571 /* addItemImage.png in Resources */,
 				04EE2F1C1A5D0EAA00B50571 /* playground.png in Resources */,
 				04EE2EF41A5D0EAA00B50571 /* checkbox_normal.png in Resources */,
 				04EE2F161A5D0EAA00B50571 /* home_away.png in Resources */,
@@ -771,7 +752,6 @@
 				04EE2F0C1A5D0EAA00B50571 /* message.png in Resources */,
 				04EE2F101A5D0EAA00B50571 /* dinner.png in Resources */,
 				04EE2F2D1A5D0EAA00B50571 /* synchronized@2x.png in Resources */,
-				04EE2EEF1A5D0EAA00B50571 /* addItemImage@2x.png in Resources */,
 				04EE2F211A5D0EAA00B50571 /* sleeping_day.png in Resources */,
 				04EE2EF31A5D0EAA00B50571 /* book@2x.png in Resources */,
 				04EE2F201A5D0EAA00B50571 /* silent.png in Resources */,

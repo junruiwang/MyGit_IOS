@@ -601,7 +601,6 @@
 
 -(void)launcherViewItemSelected:(MyLauncherItem*)item
 {
-    NSLog(@"执行场景：%@ ,执行code：%@", item.title, item.relationCode);
     ExecutionUnit *execUnit = [self.localFileManager buildLocalFileToObjectByCode:item.relationCode];
     [self execSceneAction:execUnit];
 }
