@@ -888,6 +888,7 @@
                     <navigationItem key="navigationItem" id="ipf-jf-C0n"/>
                     <connections>
                         <outlet property="bgImageView" destination="1hX-uZ-6gc" id="klb-lu-hJJ"/>
+                        <outlet property="checkBtn" destination="GTQ-uA-L50" id="vFv-sG-g8o"/>
                         <outlet property="passwordField" destination="B1L-jb-1BX" id="4Bi-z2-DHr"/>
                         <outlet property="serverIdLabel" destination="gMr-zk-uMS" id="1Ep-sI-4bJ"/>
                         <outlet property="usernameField" destination="8Uf-OG-03U" id="2jC-je-yZU"/>

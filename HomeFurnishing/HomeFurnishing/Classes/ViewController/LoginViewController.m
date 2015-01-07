@@ -16,6 +16,9 @@
 #import "CodeUtil.h"
 #import "NSDataAES.h"
 
+#define RECODE_USERNAME  @"c_username"
+#define RECODE_PASSWORD  @"c_password"
+
 @interface LoginViewController ()<JsonParserDelegate>
 
 //@property(nonatomic, strong) UIActivityIndicatorView *indicatorView;
@@ -33,6 +36,15 @@
 //    self.indicatorView.hidden = YES;
 //    [self.view addSubview:self.indicatorView];
     // Do any additional setup after loading the view.
+    
+    NSString *uname = (NSString *)[self retrieveFromUserDefaults:RECODE_USERNAME];
+    if (uname) {
+        self.usernameField.text = uname;
+    }
+    NSString *upwd = (NSString *)[self retrieveFromUserDefaults:RECODE_PASSWORD];
+    if (upwd) {
+        self.passwordField.text = upwd;
+    }
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -91,6 +103,7 @@
         if (![ValidateInputUtil isNotEmpty:self.passwordField.text fieldCName:@"请输入密码"]) {
             return;
         }
+        
         [self loginAction];
     } else {
         [ValidateInputUtil showAlertMessage:@"未查找到有效的服务ID，无法登陆！"];
@@ -172,10 +185,37 @@
     [self hideLoadingView];
     NSString *flag = [data objectForKey:@"data"];
     if ([flag isEqualToString:@"true"]) {
+        //记住登录信息
+        if (self.checkBtn.selected) {
+            [self saveToUserDefaults:self.usernameField.text key:RECODE_USERNAME];
+            [self saveToUserDefaults:self.passwordField.text key:RECODE_PASSWORD];
+        } else {
+            [self saveToUserDefaults:nil key:RECODE_USERNAME];
+            [self saveToUserDefaults:nil key:RECODE_PASSWORD];
+        }
+        
         [self performSegueWithIdentifier:@"fromLoginToSetting" sender:nil];
     } else {
         [ValidateInputUtil showAlertMessage:@"账户或密码错误，无法登陆！"];
     }
+}
+
+- (void)saveToUserDefaults:(id)object key:(NSString *)key {
+    NSUserDefaults *standardUserDefaults = [NSUserDefaults standardUserDefaults];
+    
+    if (standardUserDefaults)
+    {
+        [standardUserDefaults setObject:object forKey:key];
+        [standardUserDefaults synchronize];
+    }
+}
+
+- (id)retrieveFromUserDefaults:(NSString *)key {
+    NSUserDefaults *standardUserDefaults = [NSUserDefaults standardUserDefaults];
+    
+    if (standardUserDefaults)
+        return [standardUserDefaults objectForKey:key];
+    return nil;
 }
 
 @end
