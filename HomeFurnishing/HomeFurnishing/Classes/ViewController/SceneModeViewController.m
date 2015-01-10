@@ -79,9 +79,6 @@
 {
     [super viewDidLoad];
     
-    //TODO 临时测试
-    [self.myServerIdManager addServerIdToFile:@"7bdd277e-60c6-473c-983b-c77676a0f83d"];
-    
     self.title = @"SNB SmartHome";
     [self deviceIPAdress];
     //启动UPD服务
@@ -234,8 +231,12 @@
 - (void)loadUserSettingModel:(NSString *)dataUrl
 {
     NSLog(@"Load user setting model url is : %@", dataUrl);
-    TheAppDelegate.currentServerId = [self.myServerIdManager getCurrentServerId];
-    [self addLauncherView];
+    NSString *tmpServerId = [self.myServerIdManager getCurrentServerId];
+    if (tmpServerId != nil && ![tmpServerId isEqualToString:@""])
+    {
+        TheAppDelegate.currentServerId = tmpServerId;
+        [self addLauncherView];
+    }
 }
 
 -(void)addLauncherView
@@ -539,11 +540,10 @@
 {
     NSString *token = [[NSUUID UUID] UUIDString];
     NSString *appendStr = [NSString stringWithFormat:@"%@%@", token, kSecretKey];
-    NSString *sign = [CodeUtil hexStringFromString:[appendStr MD5String]];
-    NSLog(@"sign : %@",sign);
+    NSString *md5Str = [[appendStr MD5String] uppercaseString];
+    //    NSString *sign = [[CodeUtil hexStringFromString:md5Str] uppercaseString];
     
-    
-    return [NSString stringWithFormat:@"id=%@&api=true&sign=E50AEBBE04A43A035629B463C138C3C6&token=123&serverId=%@", [executionUnit getIdsByAll], serverId];
+    return [NSString stringWithFormat:@"id=%@&api=true&sign=%@&token=%@&serverId=%@", [executionUnit getIdsByAll], md5Str, token, serverId];
 }
 
 #pragma mark JsonParserDelegate

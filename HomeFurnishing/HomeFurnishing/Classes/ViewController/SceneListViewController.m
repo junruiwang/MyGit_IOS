@@ -61,10 +61,10 @@
 {
     NSString *token = [[NSUUID UUID] UUIDString];
     NSString *appendStr = [NSString stringWithFormat:@"%@%@", token, kSecretKey];
-    NSString *sign = [CodeUtil hexStringFromString:[appendStr MD5String]];
-    NSLog(@"sign : %@",sign);
+    NSString *md5Str = [[appendStr MD5String] uppercaseString];
+    //    NSString *sign = [[CodeUtil hexStringFromString:md5Str] uppercaseString];
     
-    return [NSString stringWithFormat:@"api=true&sign=E50AEBBE04A43A035629B463C138C3C6&token=123&serverId=%@",serverId];
+    return [NSString stringWithFormat:@"api=true&sign=%@&token=%@&serverId=%@", md5Str, token, serverId];
 }
 
 - (void)checkButtonClicked:(id)sender

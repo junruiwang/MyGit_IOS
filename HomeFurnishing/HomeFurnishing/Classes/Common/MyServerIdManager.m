@@ -61,7 +61,7 @@
     if (serverIdArray != nil && [serverIdArray count] > 0) {
         return [serverIdArray objectAtIndex:0];
     }
-    return @"";
+    return nil;
 }
 
 - (NSString *)getServerListByJson
