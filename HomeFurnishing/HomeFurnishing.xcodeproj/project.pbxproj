@@ -132,7 +132,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		04EE2DCF1A5D04A600B50571 /* HomeFurnishing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HomeFurnishing.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		04EE2DCF1A5D04A600B50571 /* SNB智能家居.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SNB智能家居.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		04EE2DD31A5D04A600B50571 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		04EE2DD41A5D04A600B50571 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		04EE2DD61A5D04A600B50571 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -341,7 +341,7 @@
 		04EE2DD01A5D04A600B50571 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				04EE2DCF1A5D04A600B50571 /* HomeFurnishing.app */,
+				04EE2DCF1A5D04A600B50571 /* SNB智能家居.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -659,7 +659,7 @@
 			);
 			name = HomeFurnishing;
 			productName = HomeFurnishing;
-			productReference = 04EE2DCF1A5D04A600B50571 /* HomeFurnishing.app */;
+			productReference = 04EE2DCF1A5D04A600B50571 /* SNB智能家居.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -859,7 +859,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Shanghai Handpay Information & Technology Co.,Ltd";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Shanghai Handpay Information & Technology Co.,Ltd";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -879,6 +880,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "0562988A-B33D-404E-9A19-CA91CD4D7882";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
 			};
@@ -901,7 +903,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Shanghai Handpay Information & Technology Co.,Ltd";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Shanghai Handpay Information & Technology Co.,Ltd";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -914,6 +917,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PROVISIONING_PROFILE = "0562988A-B33D-404E-9A19-CA91CD4D7882";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
 				VALIDATE_PRODUCT = YES;
@@ -925,9 +929,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Shanghai Handpay Information & Technology Co.,Ltd";
 				INFOPLIST_FILE = HomeFurnishing/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "SNB智能家居";
+				PROVISIONING_PROFILE = "0562988A-B33D-404E-9A19-CA91CD4D7882";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};
@@ -936,9 +943,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Shanghai Handpay Information & Technology Co.,Ltd";
 				INFOPLIST_FILE = HomeFurnishing/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "SNB智能家居";
+				PROVISIONING_PROFILE = "0562988A-B33D-404E-9A19-CA91CD4D7882";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
 		};
