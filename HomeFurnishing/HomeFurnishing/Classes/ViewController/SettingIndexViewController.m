@@ -140,6 +140,7 @@
 
 -(IBAction)loginoutButtonClicked:(id)sender
 {
+    TheAppDelegate.isLogin = NO;
     BOOL isExist = NO;
     UIViewController *loginViewController = nil;
     NSArray *controllers = [self.navigationController viewControllers];

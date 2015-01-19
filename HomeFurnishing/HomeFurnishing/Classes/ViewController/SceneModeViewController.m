@@ -79,6 +79,9 @@
 {
     [super viewDidLoad];
     
+    //TODO 临时测试
+//    [self.myServerIdManager addServerIdToFile:@"7bdd277e-60c6-473c-983b-c77676a0f83d"];
+    
     self.title = @"SNB SmartHome";
     [self deviceIPAdress];
     //启动UPD服务
@@ -126,8 +129,12 @@
 }
 
 -(IBAction)systemButtonClick:(id)sender
-{    
-    [self performSegueWithIdentifier:@"fromSceneToLogin" sender:nil];
+{
+    if (TheAppDelegate.isLogin) {
+        [self performSegueWithIdentifier:@"fromSceneToSetting" sender:nil];
+    } else {
+        [self performSegueWithIdentifier:@"fromSceneToLogin" sender:nil];
+    }
     
 //    [UIView
 //     transitionWithView:current.navigationController.view

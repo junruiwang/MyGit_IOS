@@ -193,7 +193,7 @@
             [self saveToUserDefaults:nil key:RECODE_USERNAME];
             [self saveToUserDefaults:nil key:RECODE_PASSWORD];
         }
-        
+        TheAppDelegate.isLogin = YES;
         [self performSegueWithIdentifier:@"fromLoginToSetting" sender:nil];
     } else {
         [ValidateInputUtil showAlertMessage:@"账户或密码错误，无法登陆！"];

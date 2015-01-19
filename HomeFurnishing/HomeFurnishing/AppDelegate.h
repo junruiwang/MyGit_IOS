@@ -12,6 +12,7 @@
 
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) NSString *currentServerId;
+@property (nonatomic) BOOL isLogin;
 
 @end
 
