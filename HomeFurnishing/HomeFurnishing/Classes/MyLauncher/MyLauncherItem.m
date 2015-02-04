@@ -84,6 +84,9 @@
     }
     
 	UIImageView *itemImage = [[UIImageView alloc] initWithImage:image];
+    itemImage.layer.masksToBounds = YES;
+    itemImage.layer.cornerRadius = 10;
+    
 	CGFloat itemImageX = (self.bounds.size.width/2) - (itemImage.bounds.size.width/2);
 	CGFloat itemImageY = (self.bounds.size.height/2) - (itemImage.bounds.size.height/2);
 	itemImage.frame = CGRectMake(itemImageX, itemImageY, itemImage.bounds.size.width, itemImage.bounds.size.height);

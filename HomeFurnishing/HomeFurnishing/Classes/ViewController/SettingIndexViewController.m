@@ -11,7 +11,6 @@
 #import "LoginViewController.h"
 #import "MyLauncherView.h"
 #import "MyLauncherItem.h"
-#import "BaseNavigationController.h"
 #import "ItemViewController.h"
 #import "Constants.h"
 #import "LocalFileManager.h"
@@ -20,9 +19,9 @@
 @interface SettingIndexViewController ()<MyLauncherViewDelegate,ItemViewControllerDelegate>
 
 @property (nonatomic, strong) MyLauncherView *launcherView;
-@property (nonatomic, strong) BaseNavigationController *launcherNavigationController;
+@property (nonatomic, strong) ItemViewController *hitViewController;
 @property (nonatomic, strong) NSMutableDictionary *appControllers;
-@property(nonatomic, strong) LocalFileManager *localFileManager;
+@property (nonatomic, strong) LocalFileManager *localFileManager;
 
 -(BOOL)hasSavedLauncherItems;
 
@@ -101,19 +100,19 @@
     [self.mainLauncherView addSubview:self.launcherView];
     [self reloadLauncherView];
     
-//    if(![self hasSavedLauncherItems])
-//    {
-        // Set number of immovable items below; only set it when you are setting the pages as the
-        // user may still be able to delete these items and setting this then will cause movable
-        // items to become immovable.
-//         [self.launcherView setNumberOfImmovableItems:1];
-        
-        // Or uncomment the line below to disable editing (moving/deleting) completely!
-        // [self.launcherView setEditingAllowed:NO];
-//    }
+    //    if(![self hasSavedLauncherItems])
+    //    {
+    // Set number of immovable items below; only set it when you are setting the pages as the
+    // user may still be able to delete these items and setting this then will cause movable
+    // items to become immovable.
+    //         [self.launcherView setNumberOfImmovableItems:1];
+    
+    // Or uncomment the line below to disable editing (moving/deleting) completely!
+    // [self.launcherView setEditingAllowed:NO];
+    //    }
     
     // Set badge text for a MyLauncherItem using it's setBadgeText: method
-//    [(MyLauncherItem *)[[[self.launcherView pages] objectAtIndex:0] objectAtIndex:0] setBadgeText:@"4"];
+    //    [(MyLauncherItem *)[[[self.launcherView pages] objectAtIndex:0] objectAtIndex:0] setBadgeText:@"4"];
 }
 
 -(void)reloadLauncherView
@@ -195,41 +194,41 @@
 }
 
 -(void)launcherViewItemSelected:(MyLauncherItem*)item {
-    if (![self appControllers] || [self launcherNavigationController]) {
+    if (![self appControllers]) {
         return;
     }
-//    Class viewCtrClass = [self.appControllers objectForKey:[item controllerStr]];
-//    UIViewController *controller = [[viewCtrClass alloc] init];
+    if (self.hitViewController) {
+        return;
+    }
+    //    Class viewCtrClass = [self.appControllers objectForKey:[item controllerStr]];
+    //    UIViewController *controller = [[viewCtrClass alloc] init];
     UIStoryboard *board = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    ItemViewController *controller = [board instantiateViewControllerWithIdentifier:[item controllerStr]];
-    controller.execUnit = [self.localFileManager buildLocalFileToObjectByCode:item.relationCode];
-    controller.delegate = self;
+    self.hitViewController = [board instantiateViewControllerWithIdentifier:[item controllerStr]];
+    self.hitViewController.execUnit = [self.localFileManager buildLocalFileToObjectByCode:item.relationCode];
+    self.hitViewController.delegate = self;
+    self.hitViewController.title = item.controllerTitle;
+    self.hitViewController.view.frame = self.view.frame;
+    [self.hitViewController.view sizeToFit];
+    [self.hitViewController.view setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [self.view addSubview:self.hitViewController.view];
     
-    self.launcherNavigationController = [[BaseNavigationController alloc] initWithRootViewController:controller];
-    [[self.launcherNavigationController topViewController] setTitle:item.controllerTitle];
-				
-    UIView *viewToLaunch = [[self.launcherNavigationController topViewController] view];
-    [self.launcherNavigationController.view sizeToFit];
-    [self.launcherNavigationController.view setTranslatesAutoresizingMaskIntoConstraints:NO];
-    [self.view addSubview:[self.launcherNavigationController view]];
-    
-    NSLayoutConstraint *constraint = [NSLayoutConstraint constraintWithItem:self.launcherNavigationController.view attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeTop multiplier:1.0f constant:00.0f];
+    NSLayoutConstraint *constraint = [NSLayoutConstraint constraintWithItem:self.hitViewController.view attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeTop multiplier:1.0f constant:00.0f];
     [self.view addConstraint:constraint];
-    constraint = [NSLayoutConstraint constraintWithItem:self.launcherNavigationController.view attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeBottom multiplier:1.0f constant:00.0f];
+    constraint = [NSLayoutConstraint constraintWithItem:self.hitViewController.view attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeBottom multiplier:1.0f constant:00.0f];
     [self.view addConstraint:constraint];
-    constraint = [NSLayoutConstraint constraintWithItem:self.launcherNavigationController.view attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeLeft multiplier:1.0f constant:00.0f];
+    constraint = [NSLayoutConstraint constraintWithItem:self.hitViewController.view attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeLeft multiplier:1.0f constant:00.0f];
     [self.view addConstraint:constraint];
-    constraint = [NSLayoutConstraint constraintWithItem:self.launcherNavigationController.view attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeRight multiplier:1.0f constant:00.0f];
+    constraint = [NSLayoutConstraint constraintWithItem:self.hitViewController.view attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeRight multiplier:1.0f constant:00.0f];
     [self.view addConstraint:constraint];
-    viewToLaunch.alpha = 0;
-    viewToLaunch.transform = CGAffineTransformMakeScale(0.00001, 0.00001);
+    self.hitViewController.view.alpha = 0;
+    self.hitViewController.view.transform = CGAffineTransformMakeScale(0.00001, 0.00001);
     
     [UIView animateWithDuration:0.3
                           delay:0
                         options:UIViewAnimationOptionCurveEaseIn
                      animations:^{
-                         viewToLaunch.alpha = 1.0;
-                         viewToLaunch.transform = CGAffineTransformIdentity;
+                         self.hitViewController.view.alpha = 1.0;
+                         self.hitViewController.view.transform = CGAffineTransformIdentity;
                      }
                      completion:nil];
 }
@@ -402,7 +401,7 @@
 
 - (void)removeTopViewPage
 {
-    UIView *viewToClose = [[self.launcherNavigationController topViewController] view];
+    UIView *viewToClose = self.hitViewController.view;
     if (!viewToClose)
         return;
     
@@ -416,10 +415,9 @@
                          viewToClose.transform = CGAffineTransformMakeScale(0.00001, 0.00001);
                      }
                      completion:^(BOOL finished){
-                         [[self.launcherNavigationController view] removeFromSuperview];
-                         ((ItemViewController *)self.launcherNavigationController.topViewController).delegate = nil;
-                         [self.launcherNavigationController setDelegate:nil];
-                         [self setLauncherNavigationController:nil];
+                         [self.hitViewController.view removeFromSuperview];
+                         self.hitViewController.delegate = nil;
+                         self.hitViewController = nil;
                          //重新布局
                          self.launcherView.frame = CGRectMake(0, 0, self.mainLauncherView.frame.size.width, self.mainLauncherView.frame.size.height);
                          [self reloadLauncherView];

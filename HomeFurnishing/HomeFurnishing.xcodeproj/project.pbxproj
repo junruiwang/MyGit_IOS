@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04D4FFEC1A6FA84A0051650C /* UIImage+ClacSize.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D4FFEB1A6FA84A0051650C /* UIImage+ClacSize.m */; };
 		04EE2DD51A5D04A600B50571 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 04EE2DD41A5D04A600B50571 /* main.m */; };
 		04EE2DD81A5D04A600B50571 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 04EE2DD71A5D04A600B50571 /* AppDelegate.m */; };
 		04EE2DDE1A5D04A600B50571 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04EE2DDC1A5D04A600B50571 /* Main.storyboard */; };
@@ -132,6 +133,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		04D4FFEA1A6FA84A0051650C /* UIImage+ClacSize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ClacSize.h"; sourceTree = "<group>"; };
+		04D4FFEB1A6FA84A0051650C /* UIImage+ClacSize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ClacSize.m"; sourceTree = "<group>"; };
 		04EE2DCF1A5D04A600B50571 /* SNB智能家居.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SNB智能家居.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		04EE2DD31A5D04A600B50571 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		04EE2DD41A5D04A600B50571 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -470,6 +473,8 @@
 				04EE2E1D1A5D0DE600B50571 /* TcpSocketHelper.m */,
 				04EE2E1E1A5D0DE600B50571 /* ValidateInputUtil.h */,
 				04EE2E1F1A5D0DE600B50571 /* ValidateInputUtil.m */,
+				04D4FFEA1A6FA84A0051650C /* UIImage+ClacSize.h */,
+				04D4FFEB1A6FA84A0051650C /* UIImage+ClacSize.m */,
 			);
 			name = Common;
 			path = Classes/Common;
@@ -809,6 +814,7 @@
 				04EE2E781A5D0DE600B50571 /* HZActivityIndicatorView.m in Sources */,
 				04EE2E771A5D0DE600B50571 /* FileManager.m in Sources */,
 				04EE2E7D1A5D0DE600B50571 /* PulsingHaloLayer.m in Sources */,
+				04D4FFEC1A6FA84A0051650C /* UIImage+ClacSize.m in Sources */,
 				04EE2E8C1A5D0DE600B50571 /* NSObject+SBJson.m in Sources */,
 				04EE2E9B1A5D0DE600B50571 /* IPAdress.c in Sources */,
 				04EE2E971A5D0DE600B50571 /* SBJsonWriter.m in Sources */,
@@ -859,8 +865,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Shanghai Handpay Information & Technology Co.,Ltd";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Shanghai Handpay Information & Technology Co.,Ltd";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Cao Jun (5FF74893EG)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Cao Jun (5FF74893EG)";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -880,7 +886,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "0562988A-B33D-404E-9A19-CA91CD4D7882";
+				PROVISIONING_PROFILE = "3b7f93bb-769e-42f4-9c72-6e820b99f77b";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
 			};
@@ -903,8 +909,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Shanghai Handpay Information & Technology Co.,Ltd";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Shanghai Handpay Information & Technology Co.,Ltd";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Cao Jun (5FF74893EG)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Cao Jun (5FF74893EG)";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -917,7 +923,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "0562988A-B33D-404E-9A19-CA91CD4D7882";
+				PROVISIONING_PROFILE = "3b7f93bb-769e-42f4-9c72-6e820b99f77b";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
 				VALIDATE_PRODUCT = YES;
@@ -929,11 +935,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Shanghai Handpay Information & Technology Co.,Ltd";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Cao Jun (5FF74893EG)";
 				INFOPLIST_FILE = HomeFurnishing/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "SNB智能家居";
-				PROVISIONING_PROFILE = "0562988A-B33D-404E-9A19-CA91CD4D7882";
+				PROVISIONING_PROFILE = "3b7f93bb-769e-42f4-9c72-6e820b99f77b";
 				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
@@ -943,11 +949,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Shanghai Handpay Information & Technology Co.,Ltd";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Cao Jun (5FF74893EG)";
 				INFOPLIST_FILE = HomeFurnishing/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "SNB智能家居";
-				PROVISIONING_PROFILE = "0562988A-B33D-404E-9A19-CA91CD4D7882";
+				PROVISIONING_PROFILE = "3b7f93bb-769e-42f4-9c72-6e820b99f77b";
 				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;

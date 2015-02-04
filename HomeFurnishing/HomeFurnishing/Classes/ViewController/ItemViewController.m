@@ -12,11 +12,13 @@
 #import "SceneTableCell.h"
 #import "ValidateInputUtil.h"
 #import "LocalFileManager.h"
+#import "UIImage+ClacSize.h"
+#import "FileManager.h"
 
 #define ICON_IMAGE_TAG  100
 #define TABLE_ROW_INDEX_START 300
 
-@interface ItemViewController ()
+@interface ItemViewController ()<UINavigationControllerDelegate,UIImagePickerControllerDelegate>
 
 @property(nonatomic, strong) UIView *overlayView;
 @property(nonatomic, strong) UIView *imagePageView;
@@ -27,6 +29,7 @@
 @property(nonatomic, strong) NSString *imageNameStr;
 @property(nonatomic, strong) SceneListViewController *sceneListViewController;
 @property(nonatomic, strong) LocalFileManager *localFileManager;
+@property(nonatomic, strong) UIViewController *modelController;
 
 @end
 
@@ -61,10 +64,16 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    //构造弹出拍照视图
+    self.modelController = [[UIViewController alloc] init];
+    [self.bgImageView addSubview:self.modelController.view];
+    
     self.btnIconList = [NSMutableArray arrayWithObjects:@"aircona.png", @"curtain.png", @"curtaina.png", @"dinner.png", @"entertainment.png", @"fitting.png", @"gym.png", @"home_arming.png", @"home_at.png", @"home_away.png", @"home_disarm.png", @"home_midnight.png", @"makeup.png", @"meeting.png", @"party.png", @"playground.png", @"pray.png", @"romance.png", @"shower.png", @"silent.png", @"sleeping_day.png", @"sleeping_night.png", @"study.png", @"summer.png", @"winter.png", nil];
     
     [self loadPopImageView];
     [self loadPopSceneListView];
+    
     // Do any additional setup after loading the view.
 }
 
@@ -116,6 +125,40 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)photoLibraryButtonClicked:(id)sender
+{
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary]) {
+        UIImagePickerController* pickerView = [[UIImagePickerController alloc] init];
+        pickerView.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        pickerView.allowsEditing = YES;
+        pickerView.delegate = self;
+        [self.modelController presentViewController:pickerView animated:YES completion:^{
+            
+        }];
+    } else {
+        [ValidateInputUtil showAlertMessage:@"无法使用相册"];
+        return;
+    }
+}
+
+- (void)snapButtonClicked:(id)sender
+{
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+        UIImagePickerController* pickerView = [[UIImagePickerController alloc] init];
+        pickerView.sourceType = UIImagePickerControllerSourceTypeCamera;
+        pickerView.videoQuality = UIImagePickerControllerQualityTypeLow;
+        pickerView.allowsEditing = YES;
+        pickerView.showsCameraControls = YES;
+        pickerView.delegate = self;
+        [self.modelController presentViewController:pickerView animated:YES completion:^{
+        
+        }];
+    } else {
+        [ValidateInputUtil showAlertMessage:@"无照相机，无法拍照！"];
+        return;
+    }
+}
+
 - (void)iconButtonClicked:(id)sender
 {
     UIButton *btn = (UIButton *)sender;
@@ -127,8 +170,8 @@
 - (void)submitButtonClicked:(id)sender
 {
     if (self.imageNameStr) {
-        [self.imageBtn setImage:[UIImage imageNamed:self.imageNameStr] forState:UIControlStateNormal];
-        [self.imageBtn setImage:[UIImage imageNamed:self.imageNameStr] forState:UIControlStateHighlighted];
+        [self.imageBtn setImage:[UIImage getImage:self.imageNameStr] forState:UIControlStateNormal];
+        [self.imageBtn setImage:[UIImage getImage:self.imageNameStr] forState:UIControlStateHighlighted];
     }
     [UIView animateWithDuration:0.3
                           delay:0
@@ -371,7 +414,7 @@
     constraint = [NSLayoutConstraint constraintWithItem:self.imagePageView attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeCenterX multiplier:1.0f constant:00.0f];
     [self.view addConstraint:constraint];
     [self.imagePageView addConstraint:[NSLayoutConstraint constraintWithItem:self.imagePageView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0f constant:600.0f]];
-    [self.imagePageView addConstraint:[NSLayoutConstraint constraintWithItem:self.imagePageView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0f constant:450.0f]];
+    [self.imagePageView addConstraint:[NSLayoutConstraint constraintWithItem:self.imagePageView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0f constant:360.0f]];
     
     UILabel *selIcon = [[UILabel alloc] initWithFrame:CGRectMake(20, 10, 80, 30)];
     selIcon.backgroundColor = [UIColor clearColor];
@@ -398,7 +441,7 @@
     
     constraint = [NSLayoutConstraint constraintWithItem:self.iconView attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationEqual toItem:self.imagePageView attribute:NSLayoutAttributeTrailing multiplier:1.0f constant:00.0f];
     [self.imagePageView addConstraint:constraint];
-    [self.iconView addConstraint:[NSLayoutConstraint constraintWithItem:self.iconView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0f constant:300.0f]];
+    [self.iconView addConstraint:[NSLayoutConstraint constraintWithItem:self.iconView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0f constant:240.0f]];
     
     self.iconView.contentSize = CGSizeMake(600, 500);
     self.iconView.bounces = NO;
@@ -427,27 +470,57 @@
         [btn addTarget:self action:@selector(iconButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
         [self.iconView addSubview:btn];
     }
-    UIImageView *lineBottom = [[UIImageView alloc] initWithFrame:CGRectMake(0, 380, 600, 1)];
-    lineBottom.backgroundColor = COLOR(134,210,235);
+    UIImageView *lineBottom = [[UIImageView alloc] initWithFrame:CGRectMake(0, 310, 600, 1)];
+    lineBottom.backgroundColor = COLOR(202,202,202);
     [self.imagePageView addSubview:lineBottom];
     
+    UIImageView *separateline1 = [[UIImageView alloc] initWithFrame:CGRectMake(150, 310, 1, 50)];
+    separateline1.backgroundColor = COLOR(202,202,202);
+    [self.imagePageView addSubview:separateline1];
+    UIImageView *separateline2 = [[UIImageView alloc] initWithFrame:CGRectMake(300, 310, 1, 50)];
+    separateline2.backgroundColor = COLOR(202,202,202);
+    [self.imagePageView addSubview:separateline2];
+    UIImageView *separateline3 = [[UIImageView alloc] initWithFrame:CGRectMake(450, 310, 1, 50)];
+    separateline3.backgroundColor = COLOR(202,202,202);
+    [self.imagePageView addSubview:separateline3];
+    
+    UIButton *iphotoBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    iphotoBtn.frame = CGRectMake(20, 320, 110, 30);
+    [iphotoBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [iphotoBtn setTitleColor:[UIColor blackColor] forState:UIControlStateHighlighted];
+    [iphotoBtn setTitle:@"从相册选择" forState:UIControlStateNormal];
+    [iphotoBtn setTitle:@"从相册选择" forState:UIControlStateHighlighted];
+    iphotoBtn.titleLabel.font = [UIFont boldSystemFontOfSize:18];
+    [iphotoBtn addTarget:self action:@selector(photoLibraryButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+    [self.imagePageView addSubview:iphotoBtn];
+    
+    UIButton *snapBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    snapBtn.frame = CGRectMake(200, 320, 56, 30);
+    [snapBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [snapBtn setTitleColor:[UIColor blackColor] forState:UIControlStateHighlighted];
+    [snapBtn setTitle:@"拍照" forState:UIControlStateNormal];
+    [snapBtn setTitle:@"拍照" forState:UIControlStateHighlighted];
+    snapBtn.titleLabel.font = [UIFont boldSystemFontOfSize:18];
+    [snapBtn addTarget:self action:@selector(snapButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+    [self.imagePageView addSubview:snapBtn];
+    
     UIButton *submitBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    submitBtn.frame = CGRectMake(240, 400, 56, 30);
-    [submitBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [submitBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
+    submitBtn.frame = CGRectMake(350, 320, 56, 30);
+    [submitBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [submitBtn setTitleColor:[UIColor blackColor] forState:UIControlStateHighlighted];
     [submitBtn setTitle:@"确定" forState:UIControlStateNormal];
     [submitBtn setTitle:@"确定" forState:UIControlStateHighlighted];
-    [submitBtn setBackgroundImage:[UIImage imageNamed:@"book.png"] forState:UIControlStateNormal];
+    submitBtn.titleLabel.font = [UIFont boldSystemFontOfSize:18];
     [submitBtn addTarget:self action:@selector(submitButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
     [self.imagePageView addSubview:submitBtn];
     
     UIButton *cancelBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    cancelBtn.frame = CGRectMake(340, 400, 56, 30);
-    [cancelBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [cancelBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
+    cancelBtn.frame = CGRectMake(500, 320, 56, 30);
+    [cancelBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [cancelBtn setTitleColor:[UIColor blackColor] forState:UIControlStateHighlighted];
     [cancelBtn setTitle:@"取消" forState:UIControlStateNormal];
     [cancelBtn setTitle:@"取消" forState:UIControlStateHighlighted];
-    [cancelBtn setBackgroundImage:[UIImage imageNamed:@"book.png"] forState:UIControlStateNormal];
+    cancelBtn.titleLabel.font = [UIFont boldSystemFontOfSize:18];
     [cancelBtn addTarget:self action:@selector(cancelButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
     [self.imagePageView addSubview:cancelBtn];
     
@@ -625,6 +698,24 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 44;
+}
+
+#pragma mark - UIImagePickerControllerDelegate
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
+    [picker dismissViewControllerAnimated:YES completion:nil];
+    
+    UIImage* img = [info objectForKey:UIImagePickerControllerEditedImage];
+    UIImage *scaleImage = [img reSize:CGSizeMake(72, 72)];
+    NSString *path = [FileManager filePath:[NSString stringWithFormat:@"%.png",[[NSUUID UUID] UUIDString]]];
+    [UIImagePNGRepresentation(scaleImage) writeToFile:path atomically:YES];
+    self.imageNameStr = path;
+    [self submitButtonClicked:nil];
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker{
+    [picker dismissViewControllerAnimated:YES completion:nil];
+    [self.modelController.view removeFromSuperview];
 }
 
 @end
